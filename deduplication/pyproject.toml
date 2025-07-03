@@ -1,0 +1,12 @@
+[project]
+name = "mapwisefox-deduplication"
+version = "0.1.0"
+
+dependencies = [
+    "bibtexparser>=1.4.3",
+    "dedupe>=3.0.3",
+    "pandas>=2.3.0",
+]
+
+[project.scripts]
+deduplicate = "mapwisefox.deduplication:run_command"
