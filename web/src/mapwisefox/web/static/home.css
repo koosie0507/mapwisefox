@@ -1,0 +1,54 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1em;
+}
+
+th, td {
+    padding: 0.5em;
+    border-bottom: 1px solid #ccc;
+}
+
+button {
+    margin-right: 0.5em;
+}
+
+form.upload {
+    margin-bottom: 2em;
+}
+
+.file-list {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.file-list form {
+    min-width: 320px;
+    max-width: 800px;
+}
+
+.file-list table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.file-list th:first-child,
+.file-list td:first-child {
+  width: auto;
+}
+
+.file-list th:last-child,
+.file-list td:last-child {
+  width: 180px; /* Adjust width as needed */
+  text-align: center;
+}
+
+.file-list th,
+.file-list td {
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  word-wrap: break-word;
+}

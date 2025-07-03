@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block head %}
+        <title>ERSA-SMS Survey - {% block page_title %}{% endblock %}</title>
+        <link id="favicon" rel="icon" type="image/x-icon" href="/static/favicon.ico">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/static/style.css"/>
+    {% endblock %}
+</head>
+<body>
+<div class="root-container">
+    {% if not auth_enabled or user %}
+        <header class="header-container">
+            {% block page_header %}
+                <form method="post">
+                    <div class="toolbar">
+                        <div class="left-toolbar">
+                            {% if request.url != url_for('home') %}
+                                <button type="submit" formaction="{{ url_for('home') }}" formmethod="get" title="Home">
+                                    <span class="emoji">🏠</span>Survey List
+                                </button>
+                            {% endif %}
+                        </div>
+                        <div class="right-toolbar">
+                            {% if auth_enabled %}
+                            <button type="submit" formaction="{{ url_for('logout') }}">
+                                <span class="emoji">⏻</span>Log out
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </form>
+            {% endblock %}
+        </header>
+
+        <main class="main-container">
+            {% block page_content %}
+                <p>empty page...</p>
+            {% endblock %}
+        </main>
+
+        <footer class="footer-container">
+            {% block footer %}
+                <small>Entity Resolution Software Architecture - A systematic mapping study</small>
+            {% endblock %}
+        </footer>
+    {% else %}
+        <div class="login-container">
+            <p>You must log in to use this app.</p>
+            <form action="{{ url_for('login') }}" method="post">
+                <button type="submit" class="microsoft-btn">
+                    <img
+                            class="microsoft-logo"
+                            src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg"
+                            alt="Microsoft logo"
+                    />
+                    Log in with Microsoft
+                </button>
+            </form>
+        </div>
+    {% endif %}
+</div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% extends "_base.j2" %}
+
+{% block page_title %}Survey List{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path="home.css") }}"/>
+{% endblock %}
+
+{% block page_header %}
+    {{ super() }}
+    <p>👋 Welcome, {{ user.display_name or user.email }}</p>
+    <h1>📂 Primary Study Lists</h1>
+
+    <!-- Upload Form -->
+    <form class="upload" action="{{url_for('upload_file')}}" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" required>
+        <button type="submit">Upload</button>
+    </form>
+{% endblock %}
+
+{% block page_content %}
+    <!-- File List -->
+    {% if files %}
+        <div class="file-list">
+            <form method="get">
+                <table>
+                    <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for file in files %}
+                        <tr>
+                            <td>{{ file.name }}</td>
+                            <td>
+                                <button type="submit" formaction="{{ url_for('show_evidence', filename=file.name) }}">Edit</button>
+                                <button type="submit" formmethod="post" formaction="{{ url_for('delete_file', filename=file.name) }}">Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    {% else %}
+        <p>No files uploaded yet.</p>
+    {% endif %}
+{% endblock %}
+
+{% block page_footer %}
+    {{ super() }}
+{% endblock %}

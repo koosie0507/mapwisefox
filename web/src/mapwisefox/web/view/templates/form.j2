@@ -1,0 +1,80 @@
+{% extends "_base.j2" %}
+
+{% block page_title %}{{ filename }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='form.css') }}" />
+{% endblock %}
+
+{% block page_header %}
+    {{ super() }}
+    <h1>#{{ index + 1 }}. {{ record.title }}</h1>
+{% endblock %}
+
+{% block page_content %}
+    <div class="article-info">
+        <div class="source-container">
+            Source: <a
+                href="{{ record.url or "https://scholar.google.com?q={}".format(urlencode(record.title)) }}">{{ record.source }}</a>
+            <small style="font-size: 9px; margin: 2px;"><b>DOI:</b>{{ record.doi or "n/a" }}</small>
+        </div>
+        <div class="abstract-label"><b>Abstract</b></div>
+        <div class="scrollbox">
+            {{ record.abstract }}
+        </div>
+        <p class="keywords"><strong>Keywords:</strong> {{ record.keywords }}</p>
+    </div>
+    <aside class="sidebar">
+        <form class="criteria-form" onsubmit="return false;">
+            <h3>Inclusion Criteria</h3>
+            <ul>
+                <li><input type="checkbox" id="include_1"/><label class="include" for="include_1">2010-2025</label></li>
+                <li><input type="checkbox" id="include_2"/><label class="include" for="include_2">English</label></li>
+                <li><input type="checkbox" id="include_3"/><label class="include" for="include_3">Access to full text
+                    available</label></li>
+                <li><input type="checkbox" id="include_4"/><label class="include" for="include_4">Is indicated by
+                    authors or the most comprehensive description of the system</label></li>
+            </ul>
+            <h3>Exclusion Criteria</h3>
+            <ul>
+                <li><input type="checkbox" id="exclude_1"/><label class="exclude" for="exclude_1">Does not have
+                    peer-reviewed paper</label></li>
+                <li><input type="checkbox" id="exclude_2"/><label class="exclude" for="exclude_2">Does not describe
+                    software service, app, tool, library or framework</label></li>
+                <li><input type="checkbox" id="exclude_3"/><label class="exclude" for="exclude_3">Does not describe <b>end-to-end</b>
+                    process</label></li>
+                <li><input type="checkbox" id="exclude_4"/><label class="exclude" for="exclude_4">Does not describe ER
+                    generically, but an application of ER</label></li>
+                <li><input type="checkbox" id="exclude_5"/><label class="exclude" for="exclude_5">Does not describe an
+                    entire system, but a technique, method or experiment</label></li>
+                <li><input type="checkbox" id="exclude_6"/><label class="exclude" for="exclude_6">Is a secondary study
+                    (review, sms, etc.)</label></li>
+                <li><input type="checkbox" id="exclude_7"/><label class="exclude" for="exclude_7">Is low quality (<i>only
+                    after QA</i>)</label></li>
+            </ul>
+        </form>
+    </aside>
+{% endblock %}
+
+{% block footer %}
+    <div class="button-bar">
+        <form method="post" action="/evidence/{{ filename }}/process-form">
+            <input type="hidden" name="id" value="{{ record.cluster_id }}">
+            <span class="radio-group">
+        <label><input type="radio" name="include" value="include"
+                      {% if record.include == "include" %}checked{% endif %}>Include</label>
+        <label><input type="radio" name="include" value="exclude"
+                      {% if record.include == "exclude" %}checked{% endif %}>Exclude</label></span>
+            <button type="submit" name="action" value="prev" {% if index < 1 %}disabled{% endif %}>Previous</button>
+            <button type="submit" name="action" value="next" {% if index >= count - 1 %}disabled{% endif %}>Next
+            </button>
+            <span class="goto-group">
+                <input type="number" name="index" value="{{ index + 1 }}" min="1" max="{{ count }}" style="width: 4em;">
+                <button type="submit" name="action" value="goto">Go To</button>
+            </span>
+            <button type="submit" name="action" value="next-unfilled">First Unfilled</button>
+        </form>
+    </div>
+
+    {{ super() }}
+{% endblock %}
