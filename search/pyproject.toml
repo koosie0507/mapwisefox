@@ -1,3 +1,15 @@
 [project]
-name = "mapwisefox-deduplication"
+name = "mapwisefox-search"
 version = "0.1.0"
+dependencies = [
+    "clarivate-wos-starter-python-client",
+    "dotenv>=0.9.9",
+    "pandas>=2.3.0",
+    "requests>=2.32.4",
+]
+
+[project.scripts]
+search = "mapwisefox.search:run_command"
+
+[tool.uv.sources]
+clarivate-wos-starter-python-client = { git = "https://github.com/clarivate/wosstarter_python_client.git" }
