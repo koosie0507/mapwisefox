@@ -593,7 +593,7 @@ requires-dist = [
 [[package]]
 name = "mapwisefox-web"
 version = "0.1.0"
-source = { virtual = "web" }
+source = { editable = "web" }
 dependencies = [
     { name = "authlib" },
     { name = "cachetools" },

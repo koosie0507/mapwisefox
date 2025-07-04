@@ -14,3 +14,6 @@ dependencies = [
 
 [project.scripts]
 web = "mapwisefox.web:run_command"
+
+[tool.uv]
+package = true
