@@ -21,13 +21,18 @@ attributes from each study.
 
 ## Running
 
-Python 3.13 and [`uv`](https://docs.astral.sh/uv/) are required.
+Either [Docker](https://www.docker.com) or another
+[OCI](https://opencontainers.org) container manager
+(e.g. [Podman](https://podman.io)) must be installed.
+At least a `docker` shell alias is required for the instructions below to work.
+
+Then you must create a `.env`
 
 ```shell
-$ make bootstrap
-$ uv run web -D <local path where you want to store files> 
+# set UPLOADS_DIR to a path where you store the Excel files containing primary studies
+$ docker build -t ersa .
+$ docker run -it -p 8000:8000 -v "$UPLOADS_DIR:/app/uploads" ersa web
 ```
-
 
 ## Contributing
 
