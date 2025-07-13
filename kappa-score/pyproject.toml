@@ -9,4 +9,4 @@ dependencies = [
 ]
 
 [project.scripts]
-deduplicate = "mapwisefox.kappa_score:run_command"
+kappa-score = "mapwisefox.kappa_score:run_command"
