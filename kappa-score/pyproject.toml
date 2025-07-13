@@ -8,5 +8,8 @@ dependencies = [
     "scikit-learn>=1.7.0",
 ]
 
+[tool.uv]
+package = true
+
 [project.scripts]
 kappa-score = "mapwisefox.kappa_score:run_command"
