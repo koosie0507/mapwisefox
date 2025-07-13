@@ -1,0 +1,12 @@
+[project]
+name = "mapwisefox-kappa-score"
+version = "0.1.0"
+
+dependencies = [
+    "dedupe>=3.0.3",
+    "pandas>=2.3.0",
+    "scikit-learn>=1.7.0",
+]
+
+[project.scripts]
+deduplicate = "mapwisefox.kappa_score:run_command"
