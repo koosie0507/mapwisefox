@@ -9,6 +9,7 @@ resolution-markers = [
 members = [
     "mapwisefox",
     "mapwisefox-deduplication",
+    "mapwisefox-kappa-score",
     "mapwisefox-search",
     "mapwisefox-split",
     "mapwisefox-web",
@@ -552,6 +553,23 @@ requires-dist = [
     { name = "bibtexparser", specifier = ">=1.4.3" },
     { name = "dedupe", specifier = ">=3.0.3" },
     { name = "pandas", specifier = ">=2.3.0" },
+]
+
+[[package]]
+name = "mapwisefox-kappa-score"
+version = "0.1.0"
+source = { virtual = "kappa-score" }
+dependencies = [
+    { name = "dedupe" },
+    { name = "pandas" },
+    { name = "scikit-learn" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "dedupe", specifier = ">=3.0.3" },
+    { name = "pandas", specifier = ">=2.3.0" },
+    { name = "scikit-learn", specifier = ">=1.7.0" },
 ]
 
 [[package]]
