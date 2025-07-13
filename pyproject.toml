@@ -14,6 +14,7 @@ package = false
 [tool.uv.workspace]
 members = [
     "deduplication",
+    "kappa-score",
     "search",
     "split",
     "web"
