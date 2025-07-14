@@ -16,6 +16,7 @@ members = [
     "deduplication",
     "kappa-score",
     "search",
+    "search-judge",
     "split",
     "web"
 ]

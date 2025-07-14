@@ -1,0 +1,14 @@
+[project]
+name = "mapwisefox-search-judge"
+version = "0.1.0"
+dependencies = [
+    "bibtexparser>=1.4.3",
+    "openpyxl>=3.1.5",
+    "pandas>=2.3.1",
+]
+
+[project.scripts]
+search-judge = "mapwisefox.search_judge:run_command"
+
+[tool.uv]
+package = true
