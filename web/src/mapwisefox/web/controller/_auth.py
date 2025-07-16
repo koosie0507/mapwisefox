@@ -45,7 +45,7 @@ class OAuthSingleton:
         return result
 
 
-def get_oauth(config: AppSettings=Depends(settings)) -> OAuth:
+def get_oauth(config: AppSettings = Depends(settings)) -> OAuth:
     return OAuthSingleton(config).oauth
 
 

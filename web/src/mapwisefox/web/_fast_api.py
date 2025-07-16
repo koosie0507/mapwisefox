@@ -14,9 +14,6 @@ from mapwisefox.web.static import static_dir_path
 APP_BASE_DIR = Path(__file__).resolve().parent
 
 
-app = FastAPI()
-
-
 def _init_app():
     app = FastAPI(title="ERSA SMS - Primary Study Selection")
     app.add_middleware(SessionMiddleware, secret_key="secret")

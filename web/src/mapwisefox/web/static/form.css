@@ -86,21 +86,21 @@
 }
 
 .criteria-form label.exclude::before {
-    content: "❌";
+    content: "✅";
 }
 
 .criteria-form label.include::before {
-    content: "✅";
+    content: "❌";
     color: green;
 }
 
 .criteria-form input[type="checkbox"]:checked + label.exclude::before {
-    content: "👎";
+    content: "❌";
     color: green;
 }
 
 .criteria-form input[type="checkbox"]:checked + label.include::before {
-    content: "👍";
+    content: "✅";
     color: green;
 }
 

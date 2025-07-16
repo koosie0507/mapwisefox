@@ -3,7 +3,10 @@
 {% block page_title %}{{ filename }}{% endblock %}
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='form.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='form.css') }}"/>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 {% endblock %}
 
 {% block page_header %}
@@ -24,35 +27,7 @@
         </div>
         <p class="keywords"><strong>Keywords:</strong> {{ record.keywords }}</p>
     </div>
-    <aside class="sidebar">
-        <form class="criteria-form" onsubmit="return false;">
-            <h3>Inclusion Criteria</h3>
-            <ul>
-                <li><input type="checkbox" id="include_1"/><label class="include" for="include_1">2010-2025</label></li>
-                <li><input type="checkbox" id="include_2"/><label class="include" for="include_2">English</label></li>
-                <li><input type="checkbox" id="include_3"/><label class="include" for="include_3">Access to full text
-                    available</label></li>
-                <li><input type="checkbox" id="include_4"/><label class="include" for="include_4">Is indicated by
-                    authors or the most comprehensive description of the system</label></li>
-            </ul>
-            <h3>Exclusion Criteria</h3>
-            <ul>
-                <li><input type="checkbox" id="exclude_1"/><label class="exclude" for="exclude_1">Does not have
-                    peer-reviewed paper</label></li>
-                <li><input type="checkbox" id="exclude_2"/><label class="exclude" for="exclude_2">Does not describe
-                    software service, app, tool, library or framework</label></li>
-                <li><input type="checkbox" id="exclude_3"/><label class="exclude" for="exclude_3">Does not describe <b>end-to-end</b>
-                    process</label></li>
-                <li><input type="checkbox" id="exclude_4"/><label class="exclude" for="exclude_4">Does not describe ER
-                    generically, but an application of ER</label></li>
-                <li><input type="checkbox" id="exclude_5"/><label class="exclude" for="exclude_5">Does not describe an
-                    entire system, but a technique, method or experiment</label></li>
-                <li><input type="checkbox" id="exclude_6"/><label class="exclude" for="exclude_6">Is a secondary study
-                    (review, sms, etc.)</label></li>
-                <li><input type="checkbox" id="exclude_7"/><label class="exclude" for="exclude_7">Is low quality (<i>only
-                    after QA</i>)</label></li>
-            </ul>
-        </form>
+    <aside class="sidebar" id="selection-criteria">
     </aside>
 {% endblock %}
 
@@ -60,14 +35,8 @@
     <div class="button-bar">
         <form method="post" action="/evidence/{{ filename }}/process-form">
             <input type="hidden" name="id" value="{{ record.cluster_id }}">
-            <span class="radio-group">
-        <label><input type="radio" name="include" value="include"
-                      {% if record.include == "include" %}checked{% endif %}>Include</label>
-        <label><input type="radio" name="include" value="exclude"
-                      {% if record.include == "exclude" %}checked{% endif %}>Exclude</label></span>
             <button type="submit" name="action" value="prev" {% if index < 1 %}disabled{% endif %}>Previous</button>
-            <button type="submit" name="action" value="next" {% if index >= count - 1 %}disabled{% endif %}>Next
-            </button>
+            <button type="submit" name="action" value="next" {% if index >= count - 1 %}disabled{% endif %}>Next</button>
             <span class="goto-group">
                 <input type="number" name="index" value="{{ index + 1 }}" min="1" max="{{ count }}" style="width: 4em;">
                 <button type="submit" name="action" value="goto">Go To</button>
@@ -77,4 +46,131 @@
     </div>
 
     {{ super() }}
+{% endblock %}
+
+{% block appscript %}
+    <script type="text/babel">
+        const entryId = {{ record.cluster_id }}
+        const exclusionCriteria = {{ record.exclude_reason | tojson }}
+        const selectionCriteriaSidebar = document.getElementById('selection-criteria');
+
+        function Criterion({children, criterionId, criterionType, excludeReason, onToggleCompleted}) {
+            const [checked, setChecked] = React.useState(
+                (
+                    (criterionType === "exclude" && exclusionCriteria.includes(excludeReason))
+                    ||
+                    (criterionType !== "exclude" && !exclusionCriteria.includes(excludeReason))
+                )
+            )
+            const handleChange = (evt) => {
+                const newValue = evt.target.checked
+                fetch("{{ url_for('toggle_exclude_reason', filename=filename) }}", {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        id: parseInt(entryId),
+                        toggle: (criterionType === "exclude") ? newValue : !newValue,
+                        exclude_reason: excludeReason
+                    })
+                }).then(res => {
+                    res.json().then(data => {
+                        console.log(data)
+                        onToggleCompleted({
+                            status: data.selection_status,
+                            remainingExclusions: data.remaining_exclusions
+                        })
+                    }).catch(err => console.error(err));
+                    setChecked(newValue);
+                }).catch(err => {
+                    console.error("Failed to send update:", err);
+                });
+            }
+            return (
+                <li>
+                    <input type="checkbox"
+                           id={criterionId}
+                           // the default state is to include
+                           checked={checked}
+                           onChange={handleChange}
+                    />
+                    <label className={criterionType} htmlFor={criterionId}>{children}</label>
+                </li>
+            )
+        }
+
+        function RecordStatus({status, exclusionReasons}) {
+            if (status === "include") {
+                return (
+                    <h3><font color="green">Included</font></h3>
+                )
+            } else {
+                return (
+                    <div>
+                        <h3><font color="red">Excluded</font></h3>
+                        <span><b>Exclusion reasons:</b> {exclusionReasons.join(", ")}</span>
+                    </div>
+                )
+            }
+        }
+
+        function SelectionCriteriaForm() {
+            const [include, setInclude] = React.useState({{ record.include | tojson }})
+            const [exclusionReasons, setExclusionReasons] = React.useState(exclusionCriteria)
+
+            function handleToggle({status, remainingExclusions}) {
+                setInclude(status)
+                setExclusionReasons(remainingExclusions)
+            }
+
+            return (
+                <form className="criteria-form" onSubmit={(e) => e.preventDefault()}>
+                    <RecordStatus status={include} exclusionReasons={exclusionReasons} />
+                    <h3>Inclusion Criteria</h3>
+                    <ul>
+                        <Criterion criterionId="include_1" criterionType="include" excludeReason="not published 2010-2025" onToggleCompleted={handleToggle}>
+                            2010-2025
+                        </Criterion>
+                        <Criterion criterionId="include_2" criterionType="include" excludeReason="not english" onToggleCompleted={handleToggle}>
+                            Written in English
+                        </Criterion>
+                        <Criterion criterionId="include_3" criterionType="include" excludeReason="not accessible" onToggleCompleted={handleToggle}>
+                            Access to full text available
+                        </Criterion>
+                        <Criterion criterionId="include_4" criterionType="include" excludeReason="not most comprehensive system description" onToggleCompleted={handleToggle}>
+                            Most comprehensive description of system according to authors
+                        </Criterion>
+                    </ul>
+                    <h3>Exclusion Criteria</h3>
+                    <ul>
+                        <Criterion criterionId="exclude_1" criterionType="exclude" excludeReason="not peer reviewed" onToggleCompleted={handleToggle}>
+                            Does not have peer-reviewed paper
+                        </Criterion>
+                        <Criterion criterionId="exclude_2" criterionType="exclude" excludeReason="not software" onToggleCompleted={handleToggle}>
+                            Does not describe software
+                        </Criterion>
+                        <Criterion criterionId="exclude_3" criterionType="exclude" excludeReason="not e2e" onToggleCompleted={handleToggle}>
+                            Focused on a component of ER without mentioning the end-to-end ER process
+                        </Criterion>
+                        <Criterion criterionId="exclude_4" criterionType="exclude" excludeReason="not generic er" onToggleCompleted={handleToggle}>
+                            Does not describe ER, but an application of ER
+                        </Criterion>
+                        <Criterion criterionId="exclude_5" criterionType="exclude" excludeReason="not system" onToggleCompleted={handleToggle}>
+                            Describes a technique, method or experiment instead of a full-blown system
+                        </Criterion>
+                        <Criterion criterionId="exclude_6" criterionType="exclude" excludeReason="secondary study" onToggleCompleted={handleToggle}>
+                            Is a secondary study (review, mapping study, etc.)
+                        </Criterion>
+                        <Criterion criterionId="exclude_7" criterionType="exclude" excludeReason="low quality" onToggleCompleted={handleToggle}>
+                            Is low quality(<i>only after QA</i>)
+                        </Criterion>
+                    </ul>
+                </form>
+            )
+        }
+
+        ReactDOM.render(<SelectionCriteriaForm/>, selectionCriteriaSidebar)
+    </script>
+
 {% endblock %}
