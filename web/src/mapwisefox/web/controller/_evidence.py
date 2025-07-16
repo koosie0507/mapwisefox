@@ -29,11 +29,12 @@ class EvidenceController:
         self._excel_file = Path(excel_file)
         self._df = pd.read_excel(excel_file).sort_index(axis=1, inplace=False)
         self._df["include"] = self._df["include"].astype(str).replace("nan", None)
-        self._df["exclude_reason"] = self._df["include"].case_when([
-            (self._df["include"] == "include", ""),
-            (self._df["include"] == "exclude", self.UNSPECIFIED_REASON),
-            (self._df["include"].isna(), None),
-        ])
+        if "exclude_reason" not in self._df.columns:
+            self._df["exclude_reason"] = self._df["include"].case_when([
+                (self._df["include"] == "include", ""),
+                (self._df["include"] == "exclude", self.UNSPECIFIED_REASON),
+                (self._df["include"].isna(), None),
+            ])
         self._df.set_index("cluster_id", inplace=True)
         self._current_index = -1
 
@@ -141,7 +142,7 @@ def show_form(
         all_done = True
         controller.selected_index = 0
 
-    current_record_obj = controller.current_record.to_dict()
+    current_record_obj = controller.current_record.fillna("").to_dict()
     current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"] or ""
     current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"].split(", ")
     return templates.TemplateResponse(
