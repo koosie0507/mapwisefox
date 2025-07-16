@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 class AppSettings(BaseSettings):
-    model_config = SettingsConfigDict(env_prefix='mwf_web_')
+    model_config = SettingsConfigDict(env_prefix="mwf_web_")
 
     auth_enabled: bool = False
     basedir: DirectoryPath = Field(Path(__file__).parent)

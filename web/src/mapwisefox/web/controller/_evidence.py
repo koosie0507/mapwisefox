@@ -1,18 +1,21 @@
+from http import HTTPStatus
 from pathlib import Path
 from threading import RLock
 
 import numpy as np
 import pandas as pd
 from cachetools import TTLCache
-from fastapi import APIRouter, Request, Form, Depends
+from fastapi import APIRouter, Request, Form, Depends, Body
 from fastapi.exceptions import HTTPException
 from fastapi.responses import RedirectResponse
 from numpy import clip
+from pydantic import BaseModel, Field
+from starlette.responses import JSONResponse
 
+from ._deps import user_upload_dir, current_user, settings
 from .._settings import AppSettings
 from ..model import UserInfo
 from ..view import templates
-from ._deps import user_upload_dir, current_user, settings
 
 router = APIRouter(prefix="/evidence", dependencies=[Depends(user_upload_dir)])
 cache_lock = RLock()
@@ -20,10 +23,17 @@ controller_cache = TTLCache(maxsize=12, ttl=600)
 
 
 class EvidenceController:
+    UNSPECIFIED_REASON = "<unspecified reason>"
+
     def __init__(self, excel_file: Path):
         self._excel_file = Path(excel_file)
         self._df = pd.read_excel(excel_file).sort_index(axis=1, inplace=False)
         self._df["include"] = self._df["include"].astype(str).replace("nan", None)
+        self._df["exclude_reason"] = self._df["include"].case_when([
+            (self._df["include"] == "include", ""),
+            (self._df["include"] == "exclude", self.UNSPECIFIED_REASON),
+            (self._df["include"].isna(), None),
+        ])
         self._df.set_index("cluster_id", inplace=True)
         self._current_index = -1
 
@@ -71,6 +81,33 @@ class EvidenceController:
         self._df.at[cluster_id, "include"] = include
         self._df.to_excel(self._excel_file)
 
+    def update_exclude_reason(self, cluster_id: int, exclude: bool, reason: str):
+        reason = reason.lower().strip()
+        exclude_reasons = self._df.at[cluster_id, "exclude_reason"] or ""
+        # retain unique values preserving order
+        exclude_reasons = {reason.strip(): None for reason in exclude_reasons.split(",") if reason}
+
+        # remove placeholder from importing files saved with a previous version of the app
+        if self.UNSPECIFIED_REASON in exclude_reasons:
+            del exclude_reasons[self.UNSPECIFIED_REASON]
+        before_len = len(exclude_reasons)
+
+        # add or remove exclude reason based on toggle
+        if exclude:
+            exclude_reasons[reason] = None
+        else:
+            if reason in exclude_reasons:
+                del exclude_reasons[reason]
+        after_len = len(exclude_reasons)
+        self._df.at[cluster_id, "exclude_reason"] = ", ".join(exclude_reasons)
+
+        # update the include/exclude flag
+        self._df.at[cluster_id, "include"] = "exclude" if after_len > 0 else "include"
+        self._df.to_excel(self._excel_file)
+
+        # the number of reasons changed
+        return after_len != before_len
+
 
 def create_controller(path: Path) -> EvidenceController:
     with cache_lock:
@@ -104,6 +141,9 @@ def show_form(
         all_done = True
         controller.selected_index = 0
 
+    current_record_obj = controller.current_record.to_dict()
+    current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"] or ""
+    current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"].split(", ")
     return templates.TemplateResponse(
         "form.j2",
         {
@@ -111,7 +151,7 @@ def show_form(
             "user": user,
             "auth_enabled": config.auth_enabled,
             "all_done": all_done,
-            "record": controller.current_record,
+            "record": current_record_obj,
             "filename": controller.filename,
             "index": controller.selected_index,
             "count": controller.count,
@@ -122,8 +162,6 @@ def show_form(
 @router.post("/{filename}/process-form", name="edit_evidence")
 def handle_navigation(
     filename: str,
-    id: int = Form(...),
-    include: str = Form(None),
     action: str = Form(...),
     index: int = Form(0),
     controller: EvidenceController = Depends(get_evidence_controller),
@@ -135,9 +173,8 @@ def handle_navigation(
     if action == "next-unfilled":
         return RedirectResponse(basepath, status_code=303)
     if action == "goto":
-        return RedirectResponse(f"{basepath}?index={index-1}", status_code=303)
+        return RedirectResponse(f"{basepath}?index={index - 1}", status_code=303)
     # Navigation logic
-    controller.update(id, include)
     next_index = controller.selected_index
     if action == "next" and next_index < controller.count - 1:
         next_index = next_index + 1
@@ -147,3 +184,32 @@ def handle_navigation(
         raise HTTPException(status_code=400, detail="Unknown action")
     url = f"{basepath}?index={next_index}" if next_index is not None else basepath
     return RedirectResponse(url, status_code=303)
+
+
+class ReasonToggle(BaseModel):
+    id: int
+    toggle: bool
+    exclude_reason: str
+
+
+@router.patch("/{filename}/toggle-exclude-reason", name="toggle_exclude_reason")
+def handle_toggle_include(
+    toggle_data: ReasonToggle = Body(...),
+    controller: EvidenceController = Depends(get_evidence_controller),
+):
+    changed = controller.update_exclude_reason(
+        toggle_data.id, toggle_data.toggle, toggle_data.exclude_reason
+    )
+    selection_status = str(controller.current_record["include"])
+    remaining_exclude_reasons = [
+        reason for reason in controller.current_record["exclude_reason"].split(", ") if reason
+    ]
+    return JSONResponse(
+        {
+            "id": toggle_data.id,
+            "saved": changed,
+            "selection_status": selection_status,
+            "remaining_exclusions": remaining_exclude_reasons,
+        },
+        status_code=HTTPStatus.ACCEPTED,
+    )
