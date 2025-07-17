@@ -1,4 +1,3 @@
-// Minimal string
 "transformers"
 ---
 "deep learning"
@@ -25,17 +24,17 @@ approx("transformers") & match(loose)("attention" in abstract)
 ---
 ("transformers" in title | "neural networks" in abstract) & !"deep learning" in keywords
 ---
-[->result: "transformers"]
+[->query: "transformers"]
 ---
 [->filter: approx("transformers" in title)]
 ---
 [->both: ("transformers" in title | "deep learning" in abstract)]
 ---
-[->filter: "deep learning" in title] & [->result: approx("sequence modeling" in abstract)]
+[->filter: "deep learning" in title] & [->query: approx("sequence modeling" in abstract)]
 ---
 [->both: (
   "transformers" in title |
-  [->result: match(regex)("context windows" in abstract)]
+  [->query: match(regex)("context windows" in abstract)]
 )]
 ---
-[->result: nearest(3)("attention span" in abstract, keywords)] & "transformers"
+[->query: nearest(3)("attention span" in abstract, keywords)] & "transformers"
