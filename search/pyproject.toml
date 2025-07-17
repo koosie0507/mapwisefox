@@ -4,6 +4,7 @@ version = "0.1.0"
 dependencies = [
     "clarivate-wos-starter-python-client",
     "dotenv>=0.9.9",
+    "lark>=1.2.2",
     "pandas>=2.3.0",
     "requests>=2.32.4",
 ]

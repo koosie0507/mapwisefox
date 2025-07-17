@@ -1,0 +1,41 @@
+// Minimal string
+"transformers"
+---
+"deep learning"
+---
+"graph matching" in title
+---
+approx("fuzzy search")
+---
+approx("transformers" in title)
+---
+nearest(5)("attention" in abstract)
+---
+match(strict)("attention mechanism" in abstract)
+---
+"transformers" in title & "sequence modeling" in abstract
+---
+"transformers" in title | "sequence modeling" in abstract
+---
+!"transformers" in keywords
+---
+approx("transformers") & match(loose)("attention" in abstract)
+---
+("transformers" in title & "neural networks" in abstract)
+---
+("transformers" in title | "neural networks" in abstract) & !"deep learning" in keywords
+---
+[->result: "transformers"]
+---
+[->filter: approx("transformers" in title)]
+---
+[->both: ("transformers" in title | "deep learning" in abstract)]
+---
+[->filter: "deep learning" in title] & [->result: approx("sequence modeling" in abstract)]
+---
+[->both: (
+  "transformers" in title |
+  [->result: match(regex)("context windows" in abstract)]
+)]
+---
+[->result: nearest(3)("attention span" in abstract, keywords)] & "transformers"
