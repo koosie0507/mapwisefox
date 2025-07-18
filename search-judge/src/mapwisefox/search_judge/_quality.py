@@ -2,46 +2,9 @@ import re
 from pathlib import Path
 
 import click
-import pandas as pd
-from bibtexparser import load as load_bibtex
-from bibtexparser.bparser import BibTexParser
 
 from ._base import search_judge
-
-
-def _read_bibliography(path):
-    with open(path) as bibtex_file:
-        parser = BibTexParser(common_strings=True)
-        bib_database = load_bibtex(bibtex_file, parser=parser)
-        records = [
-            {
-                "title": entry["title"],
-                "abstract": entry.get("abstract", ""),
-                "authors": entry.get("author", "").replace(" and", ";"),
-                "keywords": entry.get("keywords", "").replace(", ", "; "),
-                "source": entry.get("booktitle", entry.get("journal", "")),
-                "year": int(entry["year"]),
-                "doi": entry.get("doi", "N/A"),
-                "url": entry.get(
-                    "url",
-                    f"https://doi.org/{entry['doi']}" if "doi" in entry else "N/A",
-                ),
-            }
-            for entry in bib_database.entries
-        ]
-        return pd.DataFrame(records)
-
-
-def _load_df(path):
-    fh = {
-        ".bib": _read_bibliography,
-        ".xlsx": pd.read_excel,
-        ".csv": pd.read_csv,
-    }
-    file_loader = fh.get(path.suffix)
-    if not file_loader:
-        raise ValueError("unsupported file type", path.suffix)
-    return file_loader(path)
+from ._utils import load_df
 
 
 @search_judge.command()
@@ -76,8 +39,8 @@ def quality(judgment_file, search_results_file) -> None:
     Returns:
         precision, recall, f1 score
     """
-    judgment_df = _load_df(Path(judgment_file)).fillna(value="")
-    search_results_df = _load_df(Path(search_results_file)).fillna(value="")
+    judgment_df = load_df(Path(judgment_file)).fillna(value="")
+    search_results_df = load_df(Path(search_results_file)).fillna(value="")
 
     def _extract_str(record):
         if "doi" in record and record["doi"] not in {"N/A", ""}:
