@@ -9,7 +9,7 @@ from fastapi import APIRouter, Request, Form, Depends, Body
 from fastapi.exceptions import HTTPException
 from fastapi.responses import RedirectResponse
 from numpy import clip
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from starlette.responses import JSONResponse
 
 from ._deps import user_upload_dir, current_user, settings
@@ -30,11 +30,13 @@ class EvidenceController:
         self._df = pd.read_excel(excel_file).sort_index(axis=1, inplace=False)
         self._df["include"] = self._df["include"].astype(str).replace("nan", None)
         if "exclude_reason" not in self._df.columns:
-            self._df["exclude_reason"] = self._df["include"].case_when([
-                (self._df["include"] == "include", ""),
-                (self._df["include"] == "exclude", self.UNSPECIFIED_REASON),
-                (self._df["include"].isna(), None),
-            ])
+            self._df["exclude_reason"] = self._df["include"].case_when(
+                [
+                    (self._df["include"] == "include", ""),
+                    (self._df["include"] == "exclude", self.UNSPECIFIED_REASON),
+                    (self._df["include"].isna(), None),
+                ]
+            )
         self._df.set_index("cluster_id", inplace=True)
         self._current_index = -1
 
@@ -86,7 +88,9 @@ class EvidenceController:
         reason = reason.lower().strip()
         exclude_reasons = self._df.at[cluster_id, "exclude_reason"] or ""
         # retain unique values preserving order
-        exclude_reasons = {reason.strip(): None for reason in exclude_reasons.split(",") if reason}
+        exclude_reasons = {
+            reason.strip(): None for reason in exclude_reasons.split(",") if reason
+        }
 
         # remove placeholder from importing files saved with a previous version of the app
         if self.UNSPECIFIED_REASON in exclude_reasons:
@@ -144,7 +148,9 @@ def show_form(
 
     current_record_obj = controller.current_record.fillna("").to_dict()
     current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"] or ""
-    current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"].split(", ")
+    current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"].split(
+        ", "
+    )
     return templates.TemplateResponse(
         "form.j2",
         {
@@ -203,7 +209,9 @@ def handle_toggle_include(
     )
     selection_status = str(controller.current_record["include"])
     remaining_exclude_reasons = [
-        reason for reason in controller.current_record["exclude_reason"].split(", ") if reason
+        reason
+        for reason in controller.current_record["exclude_reason"].split(", ")
+        if reason
     ]
     return JSONResponse(
         {
