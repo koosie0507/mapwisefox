@@ -1,5 +1,6 @@
 import json
 import os
+import re
 from itertools import islice
 from json import JSONDecodeError
 from pathlib import Path
@@ -29,7 +30,8 @@ def _generate(client, rule_config, model, title_abs):
     tpl = _load_system_prompt_template()
     system_prompt = tpl.render(**rule_config)
     response = client.generate(model=model, prompt=title_abs, system=system_prompt)
-    return response.response
+    answer = re.sub(r"```\w*[\s$]*(\{.+\})[$\s]*```", r"\1", response.response)
+    return answer
 
 
 @search_judge.command()
@@ -39,13 +41,15 @@ def _generate(client, rule_config, model, title_abs):
     type=click.Path(exists=True, dir_okay=False, file_okay=True, readable=True),
 )
 @click.option(
-    "-c", "--config-file",
+    "-c",
+    "--config-file",
     type=click.Path(exists=True, dir_okay=False, file_okay=True, readable=True),
     required=True,
     help="path to a JSON configuration containing inclusion and exclusion criteria",
 )
 @click.option(
-    "-m", "--model",
+    "-m",
+    "--model",
     type=click.Choice(["llama3.1", "command-r7b", "gemma3n", "deepseek-r1:14b"]),
     default="llama3.1",
     help="the name of the large language model to use",
@@ -99,7 +103,9 @@ def llm(search_results, config_file, model, ollama_host, ollama_port, limit):
             )
             answered = False
             answer_obj = {}
-            while not answered and (answer := _generate(ollama_client, rule_config, model, row_str)):
+            while not answered and (
+                answer := _generate(ollama_client, rule_config, model, row_str)
+            ):
                 try:
                     answer_obj = json.loads(answer)
                     answered = True
@@ -113,6 +119,11 @@ def llm(search_results, config_file, model, ollama_host, ollama_port, limit):
             elif status == "include":
                 results_df.at[ix, "exclude_reason"] = ""
 
-    output_path = search_results_path.parent / f"{search_results_path.stem}-llm.xlsx"
+    model_stem = model.replace(":", "_")
+    output_path = (
+        search_results_path.parent / f"{search_results_path.stem}-{model_stem}.xlsx"
+    )
     results_df.to_excel(output_path, index=False)
-    click.echo(f"saved results to {click.style(output_path, bold=True)}", color=True, err=False)
+    click.echo(
+        f"saved results to {click.style(output_path, bold=True)}", color=True, err=False
+    )
