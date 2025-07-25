@@ -18,7 +18,7 @@
     <div class="article-info">
         <div class="source-container">
             Source: <a
-                href="{{ record.url or "https://scholar.google.com?q={}".format(urlencode(record.title)) }}">{{ record.source }}</a>
+                href="{{ record.url or "#" }}">{{ record.source }}</a>
             <small style="font-size: 9px; margin: 2px;"><b>DOI:</b>{{ record.doi or "n/a" }}</small>
         </div>
         <div class="abstract-label"><b>Abstract</b></div>
