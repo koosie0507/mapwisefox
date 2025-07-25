@@ -1,6 +1,7 @@
 from http import HTTPStatus
 from pathlib import Path
 from threading import RLock
+from urllib.parse import urlencode
 
 import numpy as np
 import pandas as pd
@@ -150,6 +151,13 @@ def show_form(
     current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"] or ""
     current_record_obj["exclude_reason"] = current_record_obj["exclude_reason"].split(
         ", "
+    )
+    current_record_obj["url"] = current_record_obj["url"] or (
+        "https://www.semanticscholar.org/search?{}".format(
+            urlencode({
+                "q": current_record_obj["title"],
+            })
+        )
     )
     return templates.TemplateResponse(
         "form.j2",
