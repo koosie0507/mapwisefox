@@ -2,8 +2,10 @@
 name = "mapwisefox-snowballing"
 version = "0.1.0"
 dependencies = [
-    "click>=8.2.1",
+    "asyncclick>=8.2.2.2",
     "dotenv>=0.9.9",
+    "meta-paper>=0.4.0",
+    "openpyxl>=3.1.5",
     "pandas>=2.3.0",
     "requests>=2.32.4",
 ]
@@ -13,3 +15,8 @@ search = "mapwisefox.snowballing:run_command"
 
 [tool.uv]
 package = true
+
+[dependency-groups]
+dev = [
+    "pandas-stubs>=2.3.0.250703",
+]

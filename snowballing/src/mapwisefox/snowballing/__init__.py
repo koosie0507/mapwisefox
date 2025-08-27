@@ -1,4 +1,4 @@
-from mapwisefox.snowballing.__main__ import main as run_command
+from mapwisefox.snowballing.__cli import run_command
 
 
 __all__ = ["run_command"]
