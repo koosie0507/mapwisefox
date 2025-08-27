@@ -1,0 +1,15 @@
+[project]
+name = "mapwisefox-snowballing"
+version = "0.1.0"
+dependencies = [
+    "click>=8.2.1",
+    "dotenv>=0.9.9",
+    "pandas>=2.3.0",
+    "requests>=2.32.4",
+]
+
+[project.scripts]
+search = "mapwisefox.snowballing:run_command"
+
+[tool.uv]
+package = true

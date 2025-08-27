@@ -12,6 +12,7 @@ members = [
     "mapwisefox-kappa-score",
     "mapwisefox-search",
     "mapwisefox-search-judge",
+    "mapwisefox-snowballing",
     "mapwisefox-split",
     "mapwisefox-web",
 ]
@@ -611,6 +612,25 @@ requires-dist = [
     { name = "ollama", specifier = ">=0.5.1" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.1" },
+]
+
+[[package]]
+name = "mapwisefox-snowballing"
+version = "0.1.0"
+source = { editable = "snowballing" }
+dependencies = [
+    { name = "click" },
+    { name = "dotenv" },
+    { name = "pandas" },
+    { name = "requests" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "click", specifier = ">=8.2.1" },
+    { name = "dotenv", specifier = ">=0.9.9" },
+    { name = "pandas", specifier = ">=2.3.0" },
+    { name = "requests", specifier = ">=2.32.4" },
 ]
 
 [[package]]
