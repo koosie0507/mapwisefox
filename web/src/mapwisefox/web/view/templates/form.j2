@@ -18,6 +18,7 @@
     <div class="article-info">
         <div class="source-container">
             Source: <a
+                target="_blank"
                 href="{{ record.url or "#" }}">{{ record.source }}</a>
             <small style="font-size: 9px; margin: 2px;"><b>DOI:</b>{{ record.doi or "n/a" }}</small>
         </div>
@@ -76,7 +77,6 @@
                     })
                 }).then(res => {
                     res.json().then(data => {
-                        console.log(data)
                         onToggleCompleted({
                             status: data.selection_status,
                             remainingExclusions: data.remaining_exclusions
@@ -129,8 +129,11 @@
                     <RecordStatus status={include} exclusionReasons={exclusionReasons} />
                     <h3>Inclusion Criteria</h3>
                     <ul>
+                        <Criterion criterionId="include_0" criterionType="include" excludeReason="not ER" onToggleCompleted={handleToggle}>
+                            is about entity resolution (or a derivative)
+                        </Criterion>
                         <Criterion criterionId="include_1" criterionType="include" excludeReason="not published 2010-2025" onToggleCompleted={handleToggle}>
-                            2010-2025
+                            01.01.2010 &dash; 15.06.2025
                         </Criterion>
                         <Criterion criterionId="include_2" criterionType="include" excludeReason="not english" onToggleCompleted={handleToggle}>
                             Written in English

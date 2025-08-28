@@ -29,7 +29,10 @@ class EvidenceController:
     def __init__(self, excel_file: Path):
         self._excel_file = Path(excel_file)
         self._df = pd.read_excel(excel_file).sort_index(axis=1, inplace=False)
-        self._df["include"] = self._df["include"].astype(str).replace("nan", None)
+        if "include" in self._df.columns:
+            self._df["include"] = self._df["include"].astype(str).replace("nan", None)
+        else:
+            self._df["include"] = None
         if "exclude_reason" not in self._df.columns:
             self._df["exclude_reason"] = self._df["include"].case_when(
                 [
@@ -38,7 +41,12 @@ class EvidenceController:
                     (self._df["include"].isna(), None),
                 ]
             )
-        self._df.set_index("cluster_id", inplace=True)
+        else:
+            self._df["exclude_reason"] = self._df["exclude_reason"].astype(str).replace("nan", "")
+        if "cluster_id" in self._df.columns:
+            self._df.set_index("cluster_id", inplace=True)
+        else:
+            self._df.index.set_names(["cluster_id"], inplace=True)
         self._current_index = -1
 
     def __hash__(self):
