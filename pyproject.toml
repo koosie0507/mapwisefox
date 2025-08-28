@@ -17,6 +17,7 @@ members = [
     "kappa-score",
     "search",
     "search-judge",
+    "snowballing",
     "split",
     "web"
 ]
