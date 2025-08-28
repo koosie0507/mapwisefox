@@ -1,4 +1,4 @@
-FROM alpine:3.22 as base
+FROM alpine:3.22 AS base
 LABEL authors="Andrei Olar"
 ENV PYTHONUNBUFFERED=1
 
@@ -20,7 +20,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --no-editable
 
 
-FROM alpine:3.22 as runtime
+FROM alpine:3.22 AS runtime
 LABEL authors="Andrei Olar"
 
 EXPOSE 8000
