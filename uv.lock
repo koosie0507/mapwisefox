@@ -633,6 +633,7 @@ source = { editable = "snowballing" }
 dependencies = [
     { name = "asyncclick" },
     { name = "dotenv" },
+    { name = "httpx" },
     { name = "meta-paper" },
     { name = "openpyxl" },
     { name = "pandas" },
@@ -648,6 +649,7 @@ dev = [
 requires-dist = [
     { name = "asyncclick", specifier = ">=8.2.2.2" },
     { name = "dotenv", specifier = ">=0.9.9" },
+    { name = "httpx", specifier = ">=0.28.1" },
     { name = "meta-paper", specifier = ">=0.4.0" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.0" },
