@@ -32,6 +32,7 @@ class Evidence(BaseModel):
     has_pdf: bool
     pdf_url: str
     exclude_reasons: list[str]
+    referencing_evidence: list[str]
 
     @staticmethod
     def _parse_list(data: dict[str, Any], field: str, separator: str = ";") -> list[str]:
@@ -83,7 +84,7 @@ class Evidence(BaseModel):
     def _coerce_values(cls, data: dict[str, Any]) -> "dict[str, Any] | Evidence":
         if isinstance(data, cls):
             return data
-        for field in ["authors", "keywords", "exclude_reasons"]:
+        for field in ["authors", "keywords", "exclude_reasons", "referencing_evidence"]:
             data[field] = cls._parse_list(data, field)
         for field in ["include", "has_pdf"]:
             data[field] = cls._parse_boolean(data, field)

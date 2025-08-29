@@ -3,6 +3,7 @@ from datetime import datetime, UTC
 import numpy as np
 import pytest
 
+
 LIST_PARSER_TEST_DATA = [
     ("test", ["test"]),
     ("test1;test2", ["test1", "test2"]),
@@ -40,7 +41,7 @@ def test_init_invalid_date(new_evidence, publication_date):
         new_evidence(1, publication_date=publication_date)
 
     assert str(err_proxy.value) == f"""1 validation error for Evidence
-  Value error, Invalid publication date: '{publication_date}' [type=value_error, input_value={{'cluster_id': 1, 'includ...'reason 1', 'reason 2']}}, input_type=dict]
+  Value error, Invalid publication date: '{publication_date}' [type=value_error, input_value={{'cluster_id': 1, 'includ...ferencing_evidence': []}}, input_type=dict]
     For further information visit https://errors.pydantic.dev/2.11/v/value_error"""
 
 
@@ -71,6 +72,11 @@ def test_init_parses_keywords(new_evidence, keyword_str, expected):
     assert new_evidence(1, keywords=keyword_str).keywords == expected
 
 
+@pytest.mark.parametrize("referencing_evidence_str,expected", LIST_PARSER_TEST_DATA)
+def test_init_parses_referencing_evidence(new_evidence, referencing_evidence_str, expected):
+    assert new_evidence(1, referencing_evidence=referencing_evidence_str).referencing_evidence == expected
+
+
 @pytest.mark.parametrize("exclude_reason_str,expected", LIST_PARSER_TEST_DATA)
 def test_init_parses_exclude_reasons(new_evidence, exclude_reason_str, expected):
     assert new_evidence(1, exclude_reasons=exclude_reason_str).exclude_reasons == expected
@@ -79,6 +85,7 @@ def test_init_parses_exclude_reasons(new_evidence, exclude_reason_str, expected)
 @pytest.mark.parametrize("include,expected", BOOL_PARSER_TEST_DATA)
 def test_init_parses_includes(new_evidence, include, expected):
     assert new_evidence(1, include=include).include == expected
+
 
 @pytest.mark.parametrize("has_pdf,expected", BOOL_PARSER_TEST_DATA)
 def test_init_parses_has_pdf(new_evidence, has_pdf, expected):
