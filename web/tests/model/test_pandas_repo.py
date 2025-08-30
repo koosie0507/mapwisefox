@@ -1,6 +1,12 @@
+from datetime import datetime, UTC
+from unittest.mock import MagicMock, call, ANY
+
+import pandas as pd
 import pytest
 
 from mapwisefox.web.model import PandasRepo
+
+ALL_SHEETS = ["Sheet1", "FinalSelection", "ExtraColumns", "WithReferences", "WithoutClusterId1", "WithoutClusterId2"]
 
 
 @pytest.fixture
@@ -16,9 +22,93 @@ def sheet_name(request):
 
 
 @pytest.fixture
-def pandas_repo(excel_path, sheet_name):
-    return PandasRepo(excel_path)
+def to_excel_mock():
+    return MagicMock(spec=pd.DataFrame.to_excel)
 
 
+@pytest.fixture
+def pandas_repo(excel_path, sheet_name, monkeypatch, to_excel_mock) -> PandasRepo:
+    repo = PandasRepo(excel_path, sheet_name, aliases={
+        "exclude_reason": "exclude_reasons",
+        "source": "publication_venue",
+        "year": "publication_date"
+    })
+    monkeypatch.setattr(repo.dataframe, "to_excel", to_excel_mock)
+    return repo
+
+
+@pytest.mark.parametrize("sheet_name", ALL_SHEETS, indirect=["sheet_name"])
 def test_init_pandas_repo(pandas_repo, sheet_name):
     assert pandas_repo is not None
+    assert pandas_repo.dataframe is not None
+
+
+@pytest.mark.parametrize("sheet_name", ALL_SHEETS, indirect=["sheet_name"])
+def test_init_pandas_repo_infers_cluster_id_automatically(pandas_repo, sheet_name):
+    assert pandas_repo.dataframe is not None
+    assert "cluster_id" in pandas_repo.dataframe.index.names
+
+
+def test_get_existing_id(pandas_repo):
+    evidence = pandas_repo.get(0)
+
+    assert evidence.cluster_id == 0
+    assert evidence.authors == ["Zhou, Yinle", "Nelson, Eric", "Kobayashi, Fumiko", "Talburt, John R."]
+    assert evidence.keywords == ['record linkage',
+                                 'design',
+                                 'entity resolution',
+                                 'graduate-level er course',
+                                 'information quality',
+                                 'measurement',
+                                 'corporate house-holding',
+                                 'data quality']
+    assert evidence.exclude_reasons == ['secondary study, not system, not software']
+    assert evidence.doi == "10.1145/2435221.2435226"
+    assert evidence.has_pdf == False
+    assert evidence.referencing_evidence == []
+    assert evidence.exclude_reasons == ["secondary study, not system, not software"]
+    assert evidence.include == False
+    assert evidence.publication_venue == "ACM JOURNAL OF DATA AND INFORMATION QUALITY"
+    assert evidence.title == "A Graduate-Level Course on Entity Resolution and Information Quality: A Step toward ER Education"
+    assert evidence.url == "http://dx.doi.org/10.1145/2435221.2435226"
+    assert evidence.pdf_url is None
+    assert evidence.publication_date == datetime(2013, 1, 1, tzinfo=UTC)
+
+
+def test_get_non_existing_id(pandas_repo):
+    with pytest.raises(KeyError) as err_proxy:
+        pandas_repo.get(-1)
+
+    assert str(err_proxy.value) == "-1"
+
+
+def test_update_persists_data(pandas_repo):
+    evidence = pandas_repo.get(0)
+    evidence.doi = "10.1145/2435221.2435227"
+
+    pandas_repo.update(evidence)
+
+    assert pandas_repo.dataframe.loc[0, ["doi"]].values[0] == "10.1145/2435221.2435227"
+
+
+def test_update_calls_to_excel(pandas_repo, sheet_name, to_excel_mock):
+    evidence = pandas_repo.get(0)
+    evidence.doi = "10.1145/2435221.2435227"
+
+    pandas_repo.update(evidence)
+
+    assert to_excel_mock.call_count == 1
+    assert to_excel_mock.call_args_list == [
+        call(ANY, sheet_name, index=True, index_label="cluster_id", na_rep="")
+    ]
+
+
+def test_update_non_existent_cluster_id(pandas_repo, to_excel_mock):
+    evidence = pandas_repo.get(0)
+    evidence.cluster_id = -1
+
+    with pytest.raises(KeyError) as err_proxy:
+        pandas_repo.update(evidence)
+
+    assert to_excel_mock.call_count == 0
+    assert str(err_proxy.value) == "-1"

@@ -30,9 +30,9 @@ class Evidence(BaseModel):
     publication_venue: str
     url: str
     has_pdf: bool
-    pdf_url: str
     exclude_reasons: list[str]
     referencing_evidence: list[str]
+    pdf_url: Optional[str] = None
 
     @staticmethod
     def _parse_list(data: dict[str, Any], field: str, separator: str = ";") -> list[str]:
