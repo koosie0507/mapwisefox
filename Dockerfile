@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED=1
 WORKDIR /app
 
 ENV UV_INSTALL_DIR=/usr/local/bin
-RUN apk add --update --no-cache python3 py3-pip py3-setuptools git &&\
+RUN apk add --update --no-cache python3 py3-pip py3-setuptools git nodejs npm &&\
     ln -sf python3 /usr/bin/python && \
     wget -qO- https://astral.sh/uv/install.sh | sh
 
@@ -17,7 +17,8 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 
 COPY web/ /app
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --no-editable
+    uv sync --no-editable && \
+    (cd /app/src/mapwisefox/frontend && npm install && npm run build)
 
 
 FROM alpine:3.22 AS runtime
@@ -26,10 +27,12 @@ LABEL authors="Andrei Olar"
 EXPOSE 8000
 WORKDIR /app
 ENV PATH="$PATH:/app/.venv/bin"
+ENV MWF_WEB_DEBUG=0
 
 RUN apk add --update --no-cache python3
 COPY --from=base --chown=app:app /app/.venv /app/.venv
-COPY --from=base --chown=app:app /app/src/mapwisefox/web/static/ /app/.venv/lib/python3.12/site-packages/mapwisefox/web/static/
+COPY --from=base --chown=app:app /app/.venv /app/.venv
+COPY --from=base --chown=app:app /app/src/mapwisefox/static/ /app/.venv/lib/python3.12/site-packages/mapwisefox/static/
 COPY --from=base --chown=app:app /app/src/mapwisefox/web/view/templates /app/.venv/lib/python3.12/site-packages/mapwisefox/web/view/templates
 
 CMD ["web"]
