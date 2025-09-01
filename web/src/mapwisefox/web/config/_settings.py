@@ -8,6 +8,7 @@ class AppSettings(BaseSettings):
     model_config = SettingsConfigDict(env_prefix="mwf_web_")
 
     debug: bool = True
+    dev_server_url: str = "http://localhost:5173"
     auth_enabled: bool = False
     basedir: DirectoryPath = Field(Path(__file__).parent.parent.parent)  # 'mapwisefox' dir
     uploads_dir: DirectoryPath = Field(Path.cwd() / "uploads")

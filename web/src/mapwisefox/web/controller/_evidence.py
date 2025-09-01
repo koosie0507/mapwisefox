@@ -12,7 +12,7 @@ from starlette.responses import JSONResponse
 from ._deps import user_upload_dir, current_user, settings
 from ._evidence_viewmodel import ReasonToggle, EvidenceViewModel
 from ..config import AppSettings
-from ..utils import any_to_bool, KeyedInstanceCache
+from ..utils import any_to_bool, KeyedInstanceCache, resolve_frontend_info
 from ..model import UserInfo, PandasRepo
 from ..view import templates
 
@@ -45,7 +45,7 @@ class EvidenceController(metaclass=KeyedInstanceCache):
             return -1
         include = self._repo.dataframe["include"]
         mask = (include.isnull()) | (include.isna()) | (include == "")
-        start_id = np.argmax(mask.to_numpy()) if mask.any() else -1
+        start_id = self._repo.dataframe.index[np.argmax(mask.to_numpy())] if mask.any() else -1
         return start_id
 
     @staticmethod
@@ -153,11 +153,16 @@ def show_form(
     if controller.selected_index < 0:
         all_done = True
         controller.selected_index = controller.first_id
+    frontend_ok, res_or_info = resolve_frontend_info(config, "src/main.ts")
+    if not frontend_ok:
+        return res_or_info
 
     viewmodel = EvidenceViewModel(controller.current_record)
     return templates.TemplateResponse(
         "form.j2",
         {
+            "debug": config.debug,
+            "dev_server_url": config.dev_server_url,
             "request": request,
             "user": user,
             "auth_enabled": config.auth_enabled,
@@ -166,6 +171,10 @@ def show_form(
             "filename": controller.filename,
             "index": controller.selected_index,
             "count": controller.count,
+            # frontend
+            "script_src": res_or_info.script_source,
+            "css_hrefs": res_or_info.css_hrefs,
+            "widget_name": "EvidenceEditor"
         },
     )
 
