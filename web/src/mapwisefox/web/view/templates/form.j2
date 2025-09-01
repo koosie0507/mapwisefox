@@ -3,7 +3,27 @@
 {% block page_title %}{{ filename }}{% endblock %}
 {% block head %}
     {{ super() }}
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='form.css') }}"/>
+    {% for href in css_hrefs %}
+        <link rel="stylesheet" type="text/css" href="{{ href }}"/>
+    {% endfor %}
+    {% if debug %}
+        <!-- Dev build uses Vite dev server -->
+        <script type="module" src="{{ dev_server_url }}/@vite/client"></script>
+        <script type="module">
+            import RefreshRuntime from "{{ dev_server_url }}/@react-refresh";
+
+            RefreshRuntime.injectIntoGlobalHook(window);
+            window.$RefreshReg$ = () => {
+            };
+            window.$RefreshSig$ = () => (type) => type;
+            window.__vite_plugin_react_preamble_installed__ = true;
+        </script>
+        <script type="module" src="{{ script_src }}"></script>
+    {% else %}
+        <!-- Production build entry from manifest -->
+        <script type="module" src="{{ script_src }}"></script>
+    {% endif %}
+    <script type="module" src="{{ script_src }}" onload="window.mountAll && window.mountAll()"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -11,7 +31,7 @@
 
 {% block page_header %}
     {{ super() }}
-    <h1>#{{ index + 1 }}. {{ record.title }}</h1>
+    <h1>#{{ index }}. {{ record.title }}</h1>
 {% endblock %}
 
 {% block page_content %}
@@ -20,9 +40,12 @@
             Source: <a
                 target="_blank"
                 href="{{ record.url or "#" }}">{{ record.publication_venue }}</a>
-            <small style="font-size: 9px; margin: 2px;"><b>DOI:</b>&nbsp;<a href="{{ record.doi_link or "#" }}" target="_blank">{{ record.doi or "n/a" }}</a></small>
-            <small style="font-size: 9px; margin: 2px;"><b>SciHub:</b>&nbsp;<a href="{{ record.scihub_link or "#" }}" target="_blank">{{ record.doi or "n/a" }}</a></small>
-            <small style="font-size: 9px; margin: 2px;"><b>Date Published:</b>&nbsp;{{ record.published_at or "n/a" }}</small>
+            <small style="font-size: 9px; margin: 2px;"><b>DOI:</b>&nbsp;<a href="{{ record.doi_link or "#" }}"
+                                                                            target="_blank">{{ record.doi or "n/a" }}</a></small>
+            <small style="font-size: 9px; margin: 2px;"><b>SciHub:</b>&nbsp;<a href="{{ record.scihub_link or "#" }}"
+                                                                               target="_blank">{{ record.doi or "n/a" }}</a></small>
+            <small style="font-size: 9px; margin: 2px;"><b>Date Published:</b>&nbsp;{{ record.published_at or "n/a" }}
+            </small>
         </div>
         <div class="abstract-label"><b>Abstract</b></div>
         <div class="scrollbox">
@@ -31,6 +54,12 @@
         <p class="keywords"><strong>Keywords:</strong> {{ record.keywords }}</p>
     </div>
     <aside class="sidebar" id="selection-criteria">
+        <div data-widget="EvidenceEditor" data-props='{{ {
+    "include": record.selection_status in ["include", true],
+    "exclusionCriteria": record.exclude_reasons,
+    "evidenceId": record.cluster_id,
+    "fileName": filename
+  } | tojson }}'></div>
     </aside>
 {% endblock %}
 
@@ -38,10 +67,11 @@
     <div class="button-bar">
         <form method="post" action="/evidence/{{ filename }}/process-form">
             <input type="hidden" name="id" value="{{ record.cluster_id }}">
-            <button type="submit" name="action" value="prev" {% if index < 1 %}disabled{% endif %}>Previous</button>
-            <button type="submit" name="action" value="next" {% if index >= count - 1 %}disabled{% endif %}>Next</button>
+            <button type="submit" name="action" value="prev">Previous</button>
+            <button type="submit" name="action" value="next">Next
+            </button>
             <span class="goto-group">
-                <input type="number" name="index" value="{{ index + 1 }}" min="1" max="{{ count }}" style="width: 4em;">
+                <input type="number" name="index" value="{{ index }}" style="width: 4em;">
                 <button type="submit" name="action" value="goto">Go To</button>
             </span>
             <button type="submit" name="action" value="next-unfilled">First Unfilled</button>
@@ -52,131 +82,4 @@
 {% endblock %}
 
 {% block appscript %}
-    <script type="text/babel">
-        const entryId = {{ record.cluster_id }}
-        const exclusionCriteria = {{ record.exclude_reasons | tojson | lower }}
-        console.log(exclusionCriteria)
-        const selectionCriteriaSidebar = document.getElementById('selection-criteria');
-
-        function Criterion({children, criterionId, criterionType, excludeReason, onToggleCompleted}) {
-            const [checked, setChecked] = React.useState(
-                (
-                    (criterionType === "exclude" && exclusionCriteria.includes(excludeReason))
-                    ||
-                    (criterionType !== "exclude" && !exclusionCriteria.includes(excludeReason))
-                )
-            )
-            const handleChange = (evt) => {
-                const newValue = evt.target.checked
-                fetch("{{ url_for('toggle_exclude_reason', filename=filename) }}", {
-                    method: 'PATCH',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        id: parseInt(entryId),
-                        toggle: (criterionType === "exclude") ? newValue : !newValue,
-                        exclude_reason: excludeReason
-                    })
-                }).then(res => {
-                    res.json().then(data => {
-                        onToggleCompleted({
-                            status: data.selection_status,
-                            remainingExclusions: data.remaining_exclusions
-                        })
-                    }).catch(err => console.error(err));
-                    setChecked(newValue);
-                }).catch(err => {
-                    console.error("Failed to send update:", err);
-                });
-            }
-            return (
-                <li>
-                    <input type="checkbox"
-                           id={criterionId}
-                           // the default state is to include
-                           checked={checked}
-                           onChange={handleChange}
-                    />
-                    <label className={criterionType} htmlFor={criterionId}>{children}</label>
-                </li>
-            )
-        }
-
-        function RecordStatus({status, exclusionReasons}) {
-            if (status===true || status === "include") {
-                return (
-                    <h3><font color="green">Included</font></h3>
-                )
-            } else {
-                return (
-                    <div>
-                        <h3><font color="red">Excluded</font></h3>
-                        <span><b>Exclusion reasons:</b> {exclusionReasons.join(", ")}</span>
-                    </div>
-                )
-            }
-        }
-
-        function SelectionCriteriaForm() {
-            const [include, setInclude] = React.useState({{ record.include | tojson }})
-            const [exclusionReasons, setExclusionReasons] = React.useState(exclusionCriteria)
-
-            function handleToggle({status, remainingExclusions}) {
-                setInclude(status)
-                setExclusionReasons(remainingExclusions)
-            }
-
-            return (
-                <form className="criteria-form" onSubmit={(e) => e.preventDefault()}>
-                    <RecordStatus status={include} exclusionReasons={exclusionReasons} />
-                    <h3>Inclusion Criteria</h3>
-                    <ul>
-                        <Criterion criterionId="include_0" criterionType="include" excludeReason="not er" onToggleCompleted={handleToggle}>
-                            is about entity resolution (or a derivative)
-                        </Criterion>
-                        <Criterion criterionId="include_1" criterionType="include" excludeReason="not published 2010-2025" onToggleCompleted={handleToggle}>
-                            01.01.2010 &dash; 15.06.2025
-                        </Criterion>
-                        <Criterion criterionId="include_2" criterionType="include" excludeReason="not english" onToggleCompleted={handleToggle}>
-                            Written in English
-                        </Criterion>
-                        <Criterion criterionId="include_3" criterionType="include" excludeReason="not accessible" onToggleCompleted={handleToggle}>
-                            Access to full text available
-                        </Criterion>
-                        <Criterion criterionId="include_4" criterionType="include" excludeReason="not most comprehensive system description" onToggleCompleted={handleToggle}>
-                            Most comprehensive description of system according to authors
-                        </Criterion>
-                    </ul>
-                    <h3>Exclusion Criteria</h3>
-                    <ul>
-                        <Criterion criterionId="exclude_1" criterionType="exclude" excludeReason="not peer reviewed" onToggleCompleted={handleToggle}>
-                            Does not have peer-reviewed paper
-                        </Criterion>
-                        <Criterion criterionId="exclude_2" criterionType="exclude" excludeReason="not software" onToggleCompleted={handleToggle}>
-                            Does not describe software
-                        </Criterion>
-                        <Criterion criterionId="exclude_3" criterionType="exclude" excludeReason="not e2e" onToggleCompleted={handleToggle}>
-                            Focused on a component of ER without mentioning the end-to-end ER process
-                        </Criterion>
-                        <Criterion criterionId="exclude_4" criterionType="exclude" excludeReason="not generic er" onToggleCompleted={handleToggle}>
-                            Does not describe ER, but an application of ER
-                        </Criterion>
-                        <Criterion criterionId="exclude_5" criterionType="exclude" excludeReason="not system" onToggleCompleted={handleToggle}>
-                            Describes a technique, method or experiment instead of a full-blown system
-                        </Criterion>
-                        <Criterion criterionId="exclude_6" criterionType="exclude" excludeReason="secondary study" onToggleCompleted={handleToggle}>
-                            Is a secondary study (review, mapping study, etc.)
-                        </Criterion>
-                        <Criterion criterionId="exclude_7" criterionType="exclude" excludeReason="low quality" onToggleCompleted={handleToggle}>
-                            Is low quality(<i>only after QA</i>)
-                        </Criterion>
-                    </ul>
-                </form>
-            )
-        }
-
-        ReactDOM.render(<SelectionCriteriaForm/>, selectionCriteriaSidebar)
-    </script>
-
 {% endblock %}

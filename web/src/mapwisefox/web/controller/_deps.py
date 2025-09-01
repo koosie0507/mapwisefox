@@ -1,16 +1,10 @@
 import json
-from functools import lru_cache
 from pathlib import Path
 
 from fastapi import Depends, Request
 
-from mapwisefox.web._settings import AppSettings
+from mapwisefox.web.config import settings, AppSettings
 from mapwisefox.web.model import UserInfo
-
-
-@lru_cache()
-def settings() -> AppSettings:
-    return AppSettings()
 
 
 def app_basedir(config: AppSettings = Depends(settings)) -> Path:

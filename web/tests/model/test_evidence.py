@@ -46,9 +46,9 @@ def test_init_invalid_date(new_evidence, publication_date):
 
 
 @pytest.mark.parametrize("publication_date,expected", [
-    ("2025", datetime(2025, 1, 1, tzinfo=UTC)),
-    ("2025-06", datetime(2025, 6, 1, tzinfo=UTC)),
-    ("2025-06-15", datetime(2025, 6, 15, tzinfo=UTC)),
+    ("2025", datetime(2025, 1, 1)),
+    ("2025-06", datetime(2025, 6, 1)),
+    ("2025-06-15", datetime(2025, 6, 15)),
     (None, None),
     ("", None),
     ("\r", None),

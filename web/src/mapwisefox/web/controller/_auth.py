@@ -4,7 +4,7 @@ from authlib.integrations.starlette_client import OAuth
 from fastapi import APIRouter, Request, Response, Depends
 from fastapi.responses import RedirectResponse
 
-from mapwisefox.web._settings import AppSettings
+from mapwisefox.web.config import AppSettings
 from mapwisefox.web.model import UserInfo
 from mapwisefox.web.controller._deps import settings
 
