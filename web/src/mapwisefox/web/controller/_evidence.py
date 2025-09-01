@@ -3,7 +3,6 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
-from cachetools import TTLCache
 from fastapi import APIRouter, Request, Form, Depends, Body
 from fastapi.exceptions import HTTPException
 from fastapi.responses import RedirectResponse
@@ -12,7 +11,7 @@ from starlette.responses import JSONResponse
 
 from ._deps import user_upload_dir, current_user, settings
 from ._evidence_viewmodel import ReasonToggle, EvidenceViewModel
-from .._settings import AppSettings
+from ..config import AppSettings
 from ..utils import any_to_bool, KeyedInstanceCache
 from ..model import UserInfo, PandasRepo
 from ..view import templates

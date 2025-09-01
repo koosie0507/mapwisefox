@@ -72,7 +72,7 @@ def test_get_existing_id(pandas_repo):
     assert evidence.title == "A Graduate-Level Course on Entity Resolution and Information Quality: A Step toward ER Education"
     assert evidence.url == "http://dx.doi.org/10.1145/2435221.2435226"
     assert evidence.pdf_url is None
-    assert evidence.publication_date == datetime(2013, 1, 1, tzinfo=UTC)
+    assert evidence.publication_date == datetime(2013, 1, 1)
 
 
 def test_get_non_existing_id(pandas_repo):

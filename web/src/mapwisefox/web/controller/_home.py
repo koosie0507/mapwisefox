@@ -5,7 +5,7 @@ from pathlib import Path
 from fastapi import HTTPException, APIRouter, Request, UploadFile, File, Depends
 from fastapi.responses import RedirectResponse
 
-from .._settings import AppSettings
+from ..config import AppSettings
 from ..model import UserInfo
 from ..view import templates
 
