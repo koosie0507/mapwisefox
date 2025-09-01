@@ -1,10 +1,13 @@
 from datetime import datetime, UTC
-from typing import Any, Optional
+from numbers import Number
+from typing import Any, Optional, ClassVar
 
 import arrow
 import numpy as np
-from pydantic import BaseModel, model_validator
+import pandas as pd
+from pydantic import BaseModel, model_validator, model_serializer, field_serializer
 
+from mapwisefox.web.utils import any_to_bool
 
 NON_VALUES = {
     None,
@@ -19,15 +22,18 @@ NON_VALUES = {
 
 
 class Evidence(BaseModel):
+    __LIST_VALUED_FIELDS: ClassVar[list[str]] = ["authors", "keywords", "exclude_reasons", "referencing_evidence"]
+    __DEFAULT_LIST_SEPARATOR: ClassVar[str] = ";"
+
     cluster_id: int
     include: bool
     doi: str
     title: str
-    abstract: str
+    abstract: Optional[str]
     authors: list[str]
     keywords: list[str]
     publication_date: Optional[datetime]
-    publication_venue: str
+    publication_venue: Optional[str]
     url: str
     has_pdf: bool
     exclude_reasons: list[str]
@@ -35,7 +41,7 @@ class Evidence(BaseModel):
     pdf_url: Optional[str] = None
 
     @staticmethod
-    def _parse_list(data: dict[str, Any], field: str, separator: str = ";") -> list[str]:
+    def _parse_list(data: dict[str, Any], field: str, separator: str = __DEFAULT_LIST_SEPARATOR) -> list[str]:
         if data.get(field) is None:
             return []
         if isinstance(data[field], (list, tuple, set, dict)):
@@ -60,9 +66,9 @@ class Evidence(BaseModel):
             return None
         try:
             if pubdate_str.isdigit():
-                return datetime(year=int(pubdate_str), month=1, day=1, tzinfo=UTC)
+                return datetime(year=int(pubdate_str), month=1, day=1)
             else:
-                return arrow.get(pubdate_str).to("UTC").datetime
+                return arrow.get(pubdate_str).datetime.replace(tzinfo=None)
 
         except ValueError as e:
             raise ValueError(f"Invalid publication date: '{pubdate_str}'") from e
@@ -71,22 +77,29 @@ class Evidence(BaseModel):
     def _parse_boolean(data: dict[str, Any], field: str) -> Any:
         if data.get(field) in NON_VALUES:
             return False
-        bool_str = str(data[field]).lower()
-        if bool_str == "include":
-            return True
-        if bool_str == "exclude":
-            return False
-        # pydantic already handles more common str -> bool conversions
-        return bool_str
+        return any_to_bool(data[field])
 
     @model_validator(mode="before")
     @classmethod
     def _coerce_values(cls, data: dict[str, Any]) -> "dict[str, Any] | Evidence":
         if isinstance(data, cls):
             return data
-        for field in ["authors", "keywords", "exclude_reasons", "referencing_evidence"]:
+        for field in Evidence.__LIST_VALUED_FIELDS:
             data[field] = cls._parse_list(data, field)
         for field in ["include", "has_pdf"]:
             data[field] = cls._parse_boolean(data, field)
+        if (exclude_reasons:=data.get("exclude_reasons")) is None or len(exclude_reasons) == 0:
+            data["include"] = True
+        for field in data:
+            if isinstance(data.get(field), Number) and (pd.isna(data[field]) or np.isnan(data[field])):
+                data[field] = None
         data["publication_date"] = cls._parse_date(data, "publication_date")
         return data
+
+    @field_serializer(*__LIST_VALUED_FIELDS)
+    def serialize_lists(self, data: list, _info):
+        return self.__DEFAULT_LIST_SEPARATOR.join(data)
+
+    @field_serializer("include")
+    def serialize_include(self, include: bool, _) -> str:
+        return "include" if include else "exclude"
