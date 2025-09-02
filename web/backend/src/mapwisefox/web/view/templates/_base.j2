@@ -34,11 +34,11 @@
             {% endblock %}
         </header>
 
+        {% block page_content %}
         <main class="main-container">
-            {% block page_content %}
-                <p>empty page...</p>
-            {% endblock %}
+            <p>empty page...</p>
         </main>
+        {% endblock %}
 
         <footer class="footer-container">
             {% block footer %}

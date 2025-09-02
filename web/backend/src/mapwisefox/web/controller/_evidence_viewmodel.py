@@ -1,7 +1,7 @@
 from typing import Optional
 from urllib.parse import urlencode
 
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, model_validator, Field
 
 from mapwisefox.web.utils import any_to_bool
 from mapwisefox.web.model import Evidence
@@ -15,9 +15,9 @@ class ReasonToggle(BaseModel):
 
 class EvidenceViewModel(Evidence):
     selection_status: Optional[str] = None
-    published_at: Optional[str] = None
-    doi_link: Optional[str] = None
-    scihub_link: Optional[str] = None
+    published_at: Optional[str] = Field(None, alias="publishedAt")
+    doi_link: Optional[str] = Field(None, alias="doiLink")
+    scihub_link: Optional[str] = Field(None, alias="sciHubLink")
 
     def __init__(self, evidence: Evidence):
         super().__init__(**evidence.model_dump())

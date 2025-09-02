@@ -158,6 +158,7 @@ def show_form(
         return res_or_info
 
     viewmodel = EvidenceViewModel(controller.current_record)
+    json_record = viewmodel.model_dump(by_alias=True)
     return templates.TemplateResponse(
         "form.j2",
         {
@@ -167,7 +168,7 @@ def show_form(
             "user": user,
             "auth_enabled": config.auth_enabled,
             "all_done": all_done,
-            "record": viewmodel,
+            "record": json_record,
             "filename": controller.filename,
             "index": controller.selected_index,
             "count": controller.count,

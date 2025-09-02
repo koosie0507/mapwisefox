@@ -32,32 +32,10 @@
 {% endblock %}
 
 {% block page_content %}
-    <div class="article-info">
-        <div class="source-container">
-            Source: <a
-                target="_blank"
-                href="{{ record.url or "#" }}">{{ record.publication_venue }}</a>
-            <small style="font-size: 9px; margin: 2px;"><b>DOI:</b>&nbsp;<a href="{{ record.doi_link or "#" }}"
-                                                                            target="_blank">{{ record.doi or "n/a" }}</a></small>
-            <small style="font-size: 9px; margin: 2px;"><b>SciHub:</b>&nbsp;<a href="{{ record.scihub_link or "#" }}"
-                                                                               target="_blank">{{ record.doi or "n/a" }}</a></small>
-            <small style="font-size: 9px; margin: 2px;"><b>Date Published:</b>&nbsp;{{ record.published_at or "n/a" }}
-            </small>
-        </div>
-        <div class="abstract-label"><b>Abstract</b></div>
-        <div class="scrollbox">
-            {{ record.abstract }}
-        </div>
-        <p class="keywords"><strong>Keywords:</strong> {{ record.keywords }}</p>
-    </div>
-    <aside class="sidebar" id="selection-criteria">
-        <div data-widget="EvidenceEditor" data-props='{{ {
-    "include": record.selection_status in ["include", true],
-    "exclusionCriteria": record.exclude_reasons,
-    "evidenceId": record.cluster_id,
-    "fileName": filename
-  } | tojson }}'></div>
-    </aside>
+    <div data-widget="EvidenceEditor" data-props='{{ {
+        "evidence": record,
+        "fileName": filename
+      } | tojson }}'></div>
 {% endblock %}
 
 {% block footer %}
