@@ -39,12 +39,11 @@
             <p>empty page...</p>
         </main>
         {% endblock %}
-
-        <footer class="footer-container">
-            {% block footer %}
+        {% block footer %}
+            <footer class="footer-container">
                 <small>Entity Resolution Software Architecture - A systematic mapping study</small>
-            {% endblock %}
-        </footer>
+            </footer>
+        {% endblock %}
     {% else %}
         <div class="login-container">
             <p>You must log in to use this app.</p>

@@ -39,22 +39,4 @@
 {% endblock %}
 
 {% block footer %}
-    <div class="button-bar">
-        <form method="post" action="/evidence/{{ filename }}/process-form">
-            <input type="hidden" name="id" value="{{ record.cluster_id }}">
-            <button type="submit" name="action" value="prev">Previous</button>
-            <button type="submit" name="action" value="next">Next
-            </button>
-            <span class="goto-group">
-                <input type="number" name="index" value="{{ index }}" style="width: 4em;">
-                <button type="submit" name="action" value="goto">Go To</button>
-            </span>
-            <button type="submit" name="action" value="next-unfilled">First Unfilled</button>
-        </form>
-    </div>
-
-    {{ super() }}
-{% endblock %}
-
-{% block appscript %}
 {% endblock %}
