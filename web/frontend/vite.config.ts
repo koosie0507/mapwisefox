@@ -7,7 +7,7 @@ export default defineConfig({
   appType: 'custom',
   plugins: [react()],
   build: {
-    outDir: resolve(__dirname, "../static/dist"),
+    outDir: resolve(__dirname, "../assets/dist"),
     emptyOutDir: true,
     manifest: true,
     rollupOptions: {

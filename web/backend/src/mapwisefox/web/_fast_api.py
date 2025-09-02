@@ -8,19 +8,17 @@ from mapwisefox.web.controller import (
     main_router,
     auth_router,
 )
+from mapwisefox.web.utils import MultiStaticFiles
 
 
 def _init_app():
     app_settings = settings()
     app = FastAPI(title="ERSA SMS - Primary Study Selection")
     app.add_middleware(SessionMiddleware, secret_key="secret")
-    app.mount(STATIC_ROUTE, StaticFiles(directory=app_settings.static_files_dir), name="static")
+    staticfile_dirs = [app_settings.static_files_dir]
     if not app_settings.debug:
-        app.mount(
-            "/assets",
-            StaticFiles(directory=app_settings.static_files_dir / "dist" / "assets"),
-            name="assets"
-        )
+        staticfile_dirs.append(app_settings.static_files_dir / "dist" / "assets")
+    app.mount(STATIC_ROUTE, MultiStaticFiles(staticfile_dirs), name="assets")
     app.include_router(evidence_router)
     app.include_router(auth_router)
     app.include_router(main_router)

@@ -3,9 +3,9 @@
 <head>
     {% block head %}
         <title>ERSA-SMS Survey - {% block page_title %}{% endblock %}</title>
-        <link id="favicon" rel="icon" type="image/x-icon" href="/static/favicon.ico">
+        <link id="favicon" rel="icon" type="image/x-icon" href="{{ url_for('assets', path="favicon.ico") }}">
         <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="/static/style.css"/>
+        <link rel="stylesheet" href="{{ url_for('assets', path="style.css") }}"/>
     {% endblock %}
 </head>
 <body>
