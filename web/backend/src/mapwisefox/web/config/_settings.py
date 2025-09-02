@@ -10,7 +10,7 @@ class AppSettings(BaseSettings):
     debug: bool = True
     dev_server_url: str = "http://localhost:5173"
     auth_enabled: bool = False
-    basedir: DirectoryPath = Field(Path(__file__).parent.parent.parent)  # 'mapwisefox' dir
+    basedir: DirectoryPath = Path.cwd() / "web" # 'web' app dir
     uploads_dir: DirectoryPath = Field(Path.cwd() / "uploads")
     ms_client_id: str | None = Field(None)
     ms_client_secret: str | None = Field(None)
@@ -18,4 +18,4 @@ class AppSettings(BaseSettings):
 
     @property
     def static_files_dir(self) -> Path:
-        return self.basedir / "static"
+        return self.basedir / "assets"

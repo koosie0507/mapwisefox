@@ -1,6 +1,10 @@
+[build-system]
+requires = ["uv_build>=0.8.14,<0.9.0"]
+build-backend = "uv_build"
+
 [project]
-name = "mapwisefox-web"
-version = "0.3.0"
+name = "mapwisefox-web-backend"
+version = "0.4.0"
 dependencies = [
     "arrow>=1.3.0",
     "authlib>=1.6.0",
@@ -18,3 +22,7 @@ web = "mapwisefox.web:run_command"
 
 [tool.uv]
 package = true
+
+[tool.uv.build-backend]
+module-name = "mapwisefox"
+namespace = true

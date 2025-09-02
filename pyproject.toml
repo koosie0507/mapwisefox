@@ -19,8 +19,9 @@ members = [
     "search-judge",
     "snowballing",
     "split",
-    "web"
+    "web/*"
 ]
+exclude = ["web/assets", "web/frontend"]
 
 [dependency-groups]
 dev = [
