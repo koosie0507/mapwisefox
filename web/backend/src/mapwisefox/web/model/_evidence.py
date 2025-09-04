@@ -5,7 +5,7 @@ from typing import Any, Optional, ClassVar
 import arrow
 import numpy as np
 import pandas as pd
-from pydantic import BaseModel, model_validator, model_serializer, field_serializer
+from pydantic import BaseModel, model_validator, model_serializer, field_serializer, Field
 
 from mapwisefox.web.utils import any_to_bool
 
@@ -22,23 +22,26 @@ NON_VALUES = {
 
 
 class Evidence(BaseModel):
-    __LIST_VALUED_FIELDS: ClassVar[list[str]] = ["authors", "keywords", "exclude_reasons", "referencing_evidence"]
+    _LIST_VALUED_FIELDS: ClassVar[list[str]] = ["authors", "keywords", "exclude_reasons", "referencing_evidence"]
     __DEFAULT_LIST_SEPARATOR: ClassVar[str] = ";"
 
-    cluster_id: int
+    class Config:
+        populate_by_name = True
+
+    cluster_id: int = Field(..., alias="clusterId")
     include: bool
     doi: str
     title: str
     abstract: Optional[str]
     authors: list[str]
     keywords: list[str]
-    publication_date: Optional[datetime]
-    publication_venue: Optional[str]
+    publication_date: Optional[datetime] = Field(..., alias="publicationDate")
+    publication_venue: Optional[str] = Field(..., alias="publicationVenue")
     url: str
-    has_pdf: bool
-    exclude_reasons: list[str]
-    referencing_evidence: list[str]
-    pdf_url: Optional[str] = None
+    has_pdf: bool = Field(..., alias="hasPdf")
+    exclude_reasons: list[str] = Field(..., alias="excludeReasons")
+    referencing_evidence: list[str] = Field(..., alias="referencingEvidence")
+    pdf_url: Optional[str] = Field(None, alias="pdfUrl")
 
     @staticmethod
     def _parse_list(data: dict[str, Any], field: str, separator: str = __DEFAULT_LIST_SEPARATOR) -> list[str]:
@@ -84,7 +87,7 @@ class Evidence(BaseModel):
     def _coerce_values(cls, data: dict[str, Any]) -> "dict[str, Any] | Evidence":
         if isinstance(data, cls):
             return data
-        for field in Evidence.__LIST_VALUED_FIELDS:
+        for field in Evidence._LIST_VALUED_FIELDS:
             data[field] = cls._parse_list(data, field)
         for field in ["include", "has_pdf"]:
             data[field] = cls._parse_boolean(data, field)
@@ -96,10 +99,14 @@ class Evidence(BaseModel):
         data["publication_date"] = cls._parse_date(data, "publication_date")
         return data
 
-    @field_serializer(*__LIST_VALUED_FIELDS)
+    @field_serializer(*_LIST_VALUED_FIELDS)
     def serialize_lists(self, data: list, _info):
         return self.__DEFAULT_LIST_SEPARATOR.join(data)
 
     @field_serializer("include")
-    def serialize_include(self, include: bool, _) -> str:
+    def serialize_include(self, include: bool, _) -> str|bool:
         return "include" if include else "exclude"
+
+    @field_serializer("publication_date")
+    def serialize_publication_date(self, pubdate: datetime, _) -> str:
+        return pubdate.isoformat()

@@ -1,20 +1,19 @@
 from http import HTTPStatus
 from pathlib import Path
 
-import numpy as np
-import pandas as pd
-from fastapi import APIRouter, Request, Form, Depends, Body
-from fastapi.exceptions import HTTPException
-from fastapi.responses import RedirectResponse
+from fastapi import APIRouter, Request, Depends, Body
+from mapwisefox.web.model import Evidence
 from numpy import clip
 from starlette.responses import JSONResponse
 
 from ._deps import user_upload_dir, current_user, settings
-from ._evidence_viewmodel import ReasonToggle, EvidenceViewModel
+from ._evidence_viewmodel import ToggleEvidenceStatusRequestBody, EvidenceViewModel, NavigateRequestBody, \
+    NavigateResponseBody, ToggleEvidenceStatusResponseBody
 from ..config import AppSettings
 from ..utils import any_to_bool, KeyedInstanceCache, resolve_frontend_info
-from ..model import UserInfo, PandasRepo
+from ..model import UserInfo, PandasRepo, NavigateAction
 from ..view import templates
+
 
 router = APIRouter(prefix="/evidence", dependencies=[Depends(user_upload_dir)])
 
@@ -41,34 +40,27 @@ class EvidenceController(metaclass=KeyedInstanceCache):
 
     @property
     def next_non_specified(self):
-        if "include" not in self._repo.dataframe.columns:
-            return -1
-        include = self._repo.dataframe["include"]
-        mask = (include.isnull()) | (include.isna()) | (include == "")
-        start_id = self._repo.dataframe.index[np.argmax(mask.to_numpy())] if mask.any() else -1
-        return start_id
+        return self._repo.navigate(self._current_id, "unfilled")
 
-    @staticmethod
-    def __safe_int(value):
-        if pd.isna(value):
-            return -1
-        return int(value)
+    @property
+    def first_non_specified(self):
+        return self._repo.navigate(0, "unfilled")
 
     @property
     def first_id(self):
-        return self.__safe_int(self._repo.dataframe.index.min())
+        return self._repo.navigate(self._current_id, "first")
 
     @property
     def last_id(self):
-        return self.__safe_int(self._repo.dataframe.index.max())
+        return self._repo.navigate(self._current_id, "last")
 
     @property
     def next_id(self):
-        return self.__safe_int(self._repo.dataframe[self._repo.dataframe.index > self._current_id].index.min() or -1)
+        return self._repo.navigate(self._current_id, "next")
 
     @property
     def prev_id(self):
-        return self.__safe_int(self._repo.dataframe[self._repo.dataframe.index < self._current_id].index.max() or -1)
+        return self._repo.navigate(self._current_id, "prev")
 
     @property
     def count(self):
@@ -95,6 +87,11 @@ class EvidenceController(metaclass=KeyedInstanceCache):
             raise ValueError("selected index explicitly deactivated current record")
         return self._repo.get(self.selected_index)
 
+    def navigate(self, cluster_id: int, action: NavigateAction) -> Evidence:
+        desired_id = self._repo.navigate(cluster_id, action)
+        self.selected_index = desired_id
+        return self.current_record
+
     def update(self, cluster_id: int, include: str):
         evidence = self._repo.get(cluster_id)
         evidence.include = any_to_bool(include)
@@ -106,30 +103,23 @@ class EvidenceController(metaclass=KeyedInstanceCache):
         except ValueError:
             return
 
-    def update_exclude_reason(self, cluster_id: int, exclude: bool, reason: str):
+    @staticmethod
+    def __sanitize_exclude_reason(exclude_reason: str) -> str:
+        if exclude_reason is None or not isinstance(exclude_reason, str):
+            return ""
+        return exclude_reason.strip().lower()
+
+    def toggle_status(self, cluster_id: int, include: bool, exclude_reasons: list[str]):
         evidence = self._repo.get(cluster_id)
-        exclude_reasons = {
-            reason.strip(): None for reason in evidence.exclude_reasons if reason
-        }
-        if self.UNSPECIFIED_REASON in exclude_reasons:
-            del exclude_reasons[self.UNSPECIFIED_REASON]
-        before_len = len(exclude_reasons)
 
-        # add or remove exclude reason based on toggle
-        if exclude:
-            exclude_reasons[reason] = None
-        else:
-            if reason in exclude_reasons:
-                del exclude_reasons[reason]
-        after_len = len(exclude_reasons)
-        evidence.exclude_reasons = list(exclude_reasons)
+        # remove duplicates, sanitize, update include status
+        changed = evidence.include != include
+        evidence.include = include
+        evidence.exclude_reasons = list({self.__sanitize_exclude_reason(r): None for r in exclude_reasons})
 
-        # update the include/exclude flag
-        evidence.include = after_len <= 0
         self._repo.update(evidence)
 
-        # the number of reasons changed
-        return after_len != before_len
+        return changed
 
 
 def get_evidence_controller(
@@ -147,7 +137,7 @@ def show_form(
         controller: EvidenceController = Depends(get_evidence_controller),
 ):
     controller.selected_index = (
-        index if index is not None else controller.next_non_specified
+        index if index is not None else controller.first_non_specified
     )
     all_done = False
     if controller.selected_index < 0:
@@ -158,6 +148,7 @@ def show_form(
         return res_or_info
 
     viewmodel = EvidenceViewModel(controller.current_record)
+    json_record = viewmodel.model_dump(by_alias=True)
     return templates.TemplateResponse(
         "form.j2",
         {
@@ -167,7 +158,7 @@ def show_form(
             "user": user,
             "auth_enabled": config.auth_enabled,
             "all_done": all_done,
-            "record": viewmodel,
+            "record": json_record,
             "filename": controller.filename,
             "index": controller.selected_index,
             "count": controller.count,
@@ -179,49 +170,30 @@ def show_form(
     )
 
 
-@router.post("/{filename}/process-form", name="edit_evidence")
-def handle_navigation(
-        filename: str,
-        action: str = Form(...),
-        index: int = Form(0),
-        controller: EvidenceController = Depends(get_evidence_controller),
-):
-    if controller is None:
-        return RedirectResponse("/", status_code=303)
+@router.post("/{filename}/navigate", name="navigate")
+def navigate(
+    data: NavigateRequestBody = Body(),
+    controller: EvidenceController = Depends(get_evidence_controller)
+) -> NavigateResponseBody:
+    evidence = controller.navigate(data.cluster_id, data.action)
 
-    basepath = f"/evidence/{filename}"
-    if action == "next-unfilled":
-        return RedirectResponse(basepath, status_code=303)
-    if action == "goto":
-        return RedirectResponse(f"{basepath}?index={index - 1}", status_code=303)
-    # Navigation logic
-    controller.save_current_record()
-    next_index = controller.selected_index
-    if action == "next" and next_index < controller.last_id:
-        next_index = controller.next_id
-    elif action == "prev" and next_index > controller.first_id:
-        next_index = controller.prev_id
-    else:
-        raise HTTPException(status_code=400, detail="Unknown action")
-    url = f"{basepath}?index={next_index}" if next_index is not None else basepath
-    return RedirectResponse(url, status_code=303)
+    return NavigateResponseBody(
+        evidence=EvidenceViewModel(evidence),
+        minId=controller.first_id,
+        maxId=controller.last_id
+    )
 
 
-@router.patch("/{filename}/toggle-exclude-reason", name="toggle_exclude_reason")
-def handle_toggle_include(
-        toggle_data: ReasonToggle = Body(...),
-        controller: EvidenceController = Depends(get_evidence_controller),
-):
-    changed = controller.update_exclude_reason(
-        toggle_data.id, toggle_data.toggle, toggle_data.exclude_reason
+@router.patch("/{filename}/save", name="save_status")
+def toggle_status(
+    toggle_data: ToggleEvidenceStatusRequestBody = Body(),
+    controller: EvidenceController = Depends(get_evidence_controller),
+) -> ToggleEvidenceStatusResponseBody:
+    changed = controller.toggle_status(
+        toggle_data.cluster_id, toggle_data.include, toggle_data.exclude_reasons
     )
     current_record_vm = EvidenceViewModel(controller.current_record)
-    return JSONResponse(
-        {
-            "id": toggle_data.id,
-            "saved": changed,
-            "selection_status": current_record_vm.selection_status,
-            "remaining_exclusions": current_record_vm.exclude_reasons,
-        },
-        status_code=HTTPStatus.ACCEPTED,
+    return ToggleEvidenceStatusResponseBody(
+        changed=changed,
+        evidence=EvidenceViewModel(current_record_vm)
     )

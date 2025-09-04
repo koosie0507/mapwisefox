@@ -1,23 +1,28 @@
-from typing import Optional
+from typing import Optional, Literal
 from urllib.parse import urlencode
 
-from pydantic import BaseModel, model_validator
+from pydantic import BaseModel, model_validator, Field
 
 from mapwisefox.web.utils import any_to_bool
 from mapwisefox.web.model import Evidence
 
 
-class ReasonToggle(BaseModel):
-    id: int
-    toggle: bool
-    exclude_reason: str
+class NavigateRequestBody(BaseModel):
+    cluster_id: int = Field(..., alias="clusterId")
+    action: Literal["first", "prev", "next", "last", "unfilled"]
+
+
+class ToggleEvidenceStatusRequestBody(BaseModel):
+    cluster_id: int = Field(..., alias="clusterId")
+    include: bool
+    exclude_reasons: list[str] = Field(..., alias="excludeReasons")
 
 
 class EvidenceViewModel(Evidence):
     selection_status: Optional[str] = None
-    published_at: Optional[str] = None
-    doi_link: Optional[str] = None
-    scihub_link: Optional[str] = None
+    published_at: Optional[str] = Field(None, alias="publishedAt")
+    doi_link: Optional[str] = Field(None, alias="doiLink")
+    scihub_link: Optional[str] = Field(None, alias="sciHubLink")
 
     def __init__(self, evidence: Evidence):
         super().__init__(**evidence.model_dump())
@@ -51,3 +56,20 @@ class EvidenceViewModel(Evidence):
             data["scihub_link"] = f"https://sci-hub.se/{data["doi"]}"
         data["selection_status"] = "include" if any_to_bool(data["include"]) else "exclude"
         return data
+
+    def serialize_lists(self, data: list, _info):
+        return data
+
+    def serialize_include(self, include: bool, _) -> str|bool:
+        return include
+
+
+class NavigateResponseBody(BaseModel):
+    evidence: EvidenceViewModel
+    min_id: int = Field(..., alias="minId")
+    max_id: int = Field(..., alias="maxId")
+
+
+class ToggleEvidenceStatusResponseBody(BaseModel):
+    evidence: EvidenceViewModel
+    changed: bool
