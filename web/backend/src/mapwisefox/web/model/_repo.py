@@ -1,11 +1,15 @@
+from functools import partial
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Literal
 
 import pandas as pd
 from openpyxl import Workbook, load_workbook
 from pandas import ExcelWriter
 
 from mapwisefox.web.model import Evidence
+
+
+type NavigateAction = Literal["first", "prev", "next", "last", "unfilled"]
 
 
 class PandasRepo:
@@ -38,6 +42,48 @@ class PandasRepo:
             "cluster_id": cluster_id,
         })
         return Evidence(**params)
+
+    @classmethod
+    def __safe_int(cls, value):
+        if pd.isna(value):
+            return -1
+        return int(value)
+
+    @classmethod
+    def __min_id(cls, df: pd.DataFrame) -> int:
+        return cls.__safe_int(df.index.min(skipna=True))
+
+    @classmethod
+    def __max_id(cls, df: pd.DataFrame) -> int:
+        return cls.__safe_int(df.index.max(skipna=True))
+
+    def __find_first_id(self) -> int:
+        return self.__min_id(self._df)
+
+    def __find_next_id(self, current_id: int) -> int:
+        return self.__min_id(self._df[self._df.index > current_id])
+
+    def __find_prev_id(self, current_id: int) -> int:
+        return self.__max_id(self._df[self._df.index < current_id])
+
+    def __find_last_id(self) -> int:
+        return self.__max_id(self._df)
+
+    def __find_next_unfilled(self, current_id: int) -> int:
+        include = self._df["include"] if "include" in self._df.columns else pd.Series([])
+        next_id = self._df.index > current_id
+        next_unfilled_df = self._df[((include.isnull()) | (include.isna()) | (include == "")) & next_id]
+        return self.__min_id(next_unfilled_df)
+
+    def navigate(self, cluster_id: int, action: NavigateAction) -> int:
+        navigate_actions = {
+            "first": self.__find_first_id,
+            "prev": partial(self.__find_prev_id, cluster_id),
+            "next": partial(self.__find_next_id, cluster_id),
+            "last": self.__find_last_id,
+            "unfilled": partial(self.__find_next_unfilled, cluster_id),
+        }
+        return navigate_actions[action]()
 
     def update(self, evidence: Evidence) -> None:
         if evidence.cluster_id not in self._df.index:

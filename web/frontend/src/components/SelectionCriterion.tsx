@@ -1,71 +1,47 @@
+import React, {type ChangeEvent, useCallback, useEffect} from "react";
+import type {EvidenceViewModel} from "../models/viewmodel.ts";
 
-import React from "react";
+export type StatusChangedArgs = {
+    oldValue: boolean,
+    newValue: boolean,
+    excludeReason: string
+}
 
 export type SelectionCriterionProps = {
-  children: React.ReactNode;
-  fileName: string;
-  evidenceId: number | string;
-  criterionId: string;
-  criterionType: "include" | "exclude";
-  excludeReason: string;
-  exclusionCriteria: string[];
-  onToggleCompleted: (payload: {
-    status: "include" | "exclude" | boolean;
-    remainingExclusions: string[];
-  }) => void;
+    children: React.ReactNode;
+    criterionId: string;
+    criterionType: "include" | "exclude";
+    evidence: EvidenceViewModel;
+    excludeReason: string;
+    onStatusChanged: (data: StatusChangedArgs) => Promise<void>;
 };
 
-const TOGGLE_EXCLUDE_REASON_ENDPOINT: string = "/toggle-exclude-reason"
+export function SelectionCriterion(props: SelectionCriterionProps) {
+    const {
+        children, criterionId, criterionType, evidence, excludeReason, onStatusChanged,
+    } = props;
 
-export default function SelectionCriterion({
-    children,
-    fileName,
-    evidenceId,
-    criterionId,
-    criterionType,
-    excludeReason,
-    onToggleCompleted,
-    exclusionCriteria,
-}: SelectionCriterionProps) {
-    const [checked, setChecked] = React.useState(
-        (
-            (criterionType === "exclude" && exclusionCriteria.includes(excludeReason))
-            ||
-            (criterionType === "include" && !exclusionCriteria.includes(excludeReason))
-        )
-    )
-    const handleChange: React.ChangeEventHandler<HTMLInputElement> = (evt) => {
-        const newValue = evt.target.checked;
-        fetch(`/evidence/${fileName}${TOGGLE_EXCLUDE_REASON_ENDPOINT}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: Number(evidenceId),
-                toggle: (criterionType === "exclude") ? newValue : !newValue,
-                exclude_reason: excludeReason
-            })
-        }).then(res => {
-            res.json().then(data => {
-                onToggleCompleted({
-                    status: data.selection_status,
-                    remainingExclusions: data.remaining_exclusions
-                })
-            }).catch(err => console.error(err));
-            setChecked(newValue);
-        }).catch(err => {
-            console.error("Failed to send update:", err);
-        });
+    const isInitiallyChecked = useCallback(() => {
+        const isExcludeReason = evidence.excludeReasons.includes(excludeReason);
+        return (criterionType === "exclude" && isExcludeReason
+            || criterionType === "include" && !isExcludeReason);
+    }, [evidence, excludeReason, criterionType]);
+    const [checked, setChecked] = React.useState(isInitiallyChecked())
+    useEffect(() => {setChecked(isInitiallyChecked())}, [isInitiallyChecked]);
+
+    function shouldInclude(isChecked: boolean) {
+        return criterionType === "exclude" && !isChecked || criterionType === "include" && isChecked
     }
+
+    async function handleChanged(evt: ChangeEvent<HTMLInputElement>) {
+        const newValue = shouldInclude(evt.target.checked);
+        setChecked(evt.target.checked);
+        await onStatusChanged({oldValue: !newValue, newValue, excludeReason});
+    }
+
     return (
         <li>
-            <input type="checkbox"
-                   id={criterionId}
-                // the default state is to include
-                   checked={checked}
-                   onChange={handleChange}
-            />
+            <input type="checkbox" id={criterionId} checked={checked} onChange={handleChanged}/>
             <label className={criterionType} htmlFor={criterionId}>{children}</label>
         </li>
     )

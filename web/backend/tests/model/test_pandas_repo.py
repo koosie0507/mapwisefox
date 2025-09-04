@@ -1,4 +1,4 @@
-from datetime import datetime, UTC
+from datetime import datetime
 from unittest.mock import MagicMock, call, ANY
 
 import pandas as pd
@@ -24,6 +24,11 @@ def sheet_name(request):
 @pytest.fixture
 def to_excel_mock():
     return MagicMock(spec=pd.DataFrame.to_excel)
+
+
+@pytest.fixture
+def excel_df(excel_path, sheet_name):
+    return pd.read_excel(excel_path, sheet_name)
 
 
 @pytest.fixture
@@ -112,3 +117,79 @@ def test_update_non_existent_cluster_id(pandas_repo, to_excel_mock):
 
     assert to_excel_mock.call_count == 0
     assert str(err_proxy.value) == "-1"
+
+
+@pytest.mark.parametrize("current_id", [-1, 0, 1])
+def test_navigate_to_first_always_returns_min_id(pandas_repo, excel_df, current_id):
+    expected_id = int(excel_df.index.min())
+    first_id = pandas_repo.navigate(current_id, "first")
+
+    assert first_id == expected_id
+
+
+@pytest.mark.parametrize("current_id", [-1, 0, 1])
+def test_navigate_to_last_always_returns_max_id(pandas_repo, excel_df, current_id):
+    expected_id = int(excel_df.index.max())
+    last_id = pandas_repo.navigate(current_id, "last")
+
+    assert last_id == expected_id
+
+
+@pytest.mark.parametrize("sheet_name,action", [
+    ("Empty", "first"),
+    ("Empty", "prev"),
+    ("Empty", "next"),
+    ("Empty", "last"),
+    ("Empty", "unfilled"),
+], indirect=["sheet_name"])
+def test_navigate_to_last_empty_sheet_returns_negative(pandas_repo, action):
+    actual_id = pandas_repo.navigate(15, action)
+
+    assert actual_id == -1
+
+
+def test_navigate_prev_returns_negative_for_first_item(pandas_repo):
+    prev_id = pandas_repo.navigate(pandas_repo.navigate(0, "first"), "prev")
+
+    assert prev_id == -1
+
+
+def test_navigate_prev_returns_previous_id(pandas_repo, excel_df):
+    expected = excel_df.index[-2]
+    prev_id = pandas_repo.navigate(pandas_repo.navigate(0, "last"), "prev")
+
+    assert prev_id == expected
+
+
+def test_navigate_next_returns_next_id(pandas_repo, excel_df):
+    expected = excel_df.index[1]
+    next_id = pandas_repo.navigate(pandas_repo.navigate(0, "first"), "next")
+
+    assert next_id == expected
+
+
+def test_navigate_next_prev_returns_starting_id(pandas_repo):
+    expected_id = 15
+    actual_id = pandas_repo.navigate(pandas_repo.navigate(expected_id, "prev"), "next")
+
+    assert actual_id == expected_id
+
+def test_navigate_prev_next_returns_starting_id(pandas_repo):
+    expected_id = 15
+    actual_id = pandas_repo.navigate(pandas_repo.navigate(expected_id, "next"), "prev")
+
+    assert actual_id == expected_id
+
+
+def test_navigate_prev_oob_last_returns_last(pandas_repo):
+    last_id = pandas_repo.navigate(0, "last")
+    prev_id = pandas_repo.navigate(last_id + 1, "prev")
+
+    assert prev_id == last_id
+
+
+def test_navigate_next_oob_first_returns_first(pandas_repo):
+    first_id = pandas_repo.navigate(0, "first")
+    next_id = pandas_repo.navigate(first_id -1, "next")
+
+    assert next_id == first_id

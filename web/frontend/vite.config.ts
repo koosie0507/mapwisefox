@@ -6,6 +6,11 @@ import { resolve } from 'node:path'
 export default defineConfig({
   appType: 'custom',
   plugins: [react()],
+  css: {
+      modules: {
+          localsConvention: "camelCase"
+      }
+  },
   build: {
     outDir: resolve(__dirname, "../assets/dist"),
     emptyOutDir: true,

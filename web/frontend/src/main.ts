@@ -16,13 +16,10 @@ for (const [path, loader] of Object.entries(modules)) {
 }
 
 function mountAll() {
-    console.log("mount all");
     document.querySelectorAll<HTMLElement>("[data-widget]").forEach((el) => {
         const name = el.dataset.widget!;
         const raw = el.dataset.props;
-        console.log(raw)
         const props = raw ? JSON.parse(raw) : undefined;
-        console.log(props);
         const mount = registry.get(name);
         if (mount) {
             mount(el, props).catch(console.error);

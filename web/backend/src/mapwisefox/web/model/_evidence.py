@@ -22,7 +22,7 @@ NON_VALUES = {
 
 
 class Evidence(BaseModel):
-    __LIST_VALUED_FIELDS: ClassVar[list[str]] = ["authors", "keywords", "exclude_reasons", "referencing_evidence"]
+    _LIST_VALUED_FIELDS: ClassVar[list[str]] = ["authors", "keywords", "exclude_reasons", "referencing_evidence"]
     __DEFAULT_LIST_SEPARATOR: ClassVar[str] = ";"
 
     class Config:
@@ -87,7 +87,7 @@ class Evidence(BaseModel):
     def _coerce_values(cls, data: dict[str, Any]) -> "dict[str, Any] | Evidence":
         if isinstance(data, cls):
             return data
-        for field in Evidence.__LIST_VALUED_FIELDS:
+        for field in Evidence._LIST_VALUED_FIELDS:
             data[field] = cls._parse_list(data, field)
         for field in ["include", "has_pdf"]:
             data[field] = cls._parse_boolean(data, field)
@@ -99,12 +99,12 @@ class Evidence(BaseModel):
         data["publication_date"] = cls._parse_date(data, "publication_date")
         return data
 
-    @field_serializer(*__LIST_VALUED_FIELDS)
+    @field_serializer(*_LIST_VALUED_FIELDS)
     def serialize_lists(self, data: list, _info):
         return self.__DEFAULT_LIST_SEPARATOR.join(data)
 
     @field_serializer("include")
-    def serialize_include(self, include: bool, _) -> str:
+    def serialize_include(self, include: bool, _) -> str|bool:
         return "include" if include else "exclude"
 
     @field_serializer("publication_date")

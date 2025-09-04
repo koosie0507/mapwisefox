@@ -1,24 +1,34 @@
+import styles from "./InclusionStatus.module.css";
+
 type InclusionStatusProps = {
-    status: "include" | "exclude" | boolean
-    exclusionReasons?: string[] | string | null
+    include: boolean | "include" | "exclude";
+    excludeReasons: string[];
 }
-export default function InclusionStatus({status, exclusionReasons}: InclusionStatusProps) {
-    if (status === true || status === "include") {
-        return <h3 style={{color: "green"}}>Included</h3>;
-    } else {
-        let exclusionText = "-"
-        if (typeof(exclusionReasons) !== "undefined" && exclusionReasons !== null) {
-            if (Array.isArray(exclusionReasons)) {
-                exclusionText = exclusionReasons?.length > 0 ? exclusionReasons.join("; ") : "-"
-            } else {
-                exclusionText = exclusionReasons
-            }
-        }
+
+export default function InclusionStatus({include, excludeReasons}: InclusionStatusProps) {
+    if (include) {
         return (
-            <div>
-                <h3 style={{color: "red"}}>Excluded</h3>
-                <span><b>Exclusion reasons:</b>{exclusionText}</span>
+            <div className={styles.panel}>
+                <button type="submit" className={styles.btnInclude}>Include</button>
             </div>
         )
+    } else {
+        const reasons = Array.isArray(excludeReasons) ? excludeReasons : [];
+        return (
+            <div className={styles.panel}>
+                <button type="submit" className={styles.btnExclude}>Exclude</button>
+                <div className={styles.reasons}>
+                    <span className={styles.reasonsHeading}>Reasons:</span>
+                    {reasons.length > 0 ? (
+                        <ul className={styles.reasonList}>
+                            {reasons.map((r, idx) => (
+                                <li key={idx} className={styles.reasonItem}>{r}</li>
+                            ))}
+                        </ul>
+                    ) : (<span className={styles.noReasons}>-</span>)}
+                </div>
+            </div>
+        )
+            ;
     }
 }
