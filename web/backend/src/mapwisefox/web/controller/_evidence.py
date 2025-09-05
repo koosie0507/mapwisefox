@@ -115,10 +115,18 @@ class EvidenceController(metaclass=KeyedInstanceCache):
         # remove duplicates, sanitize, update include status
         changed = evidence.include != include
         evidence.include = include
-        evidence.exclude_reasons = list({self.__sanitize_exclude_reason(r): None for r in exclude_reasons})
+
+        new_exclude_reasons = {
+            reason: None
+            for r in exclude_reasons
+            if (reason:=self.__sanitize_exclude_reason(r))
+        }
+        if len(new_exclude_reasons) > 1 and self.UNSPECIFIED_REASON in new_exclude_reasons:
+            del new_exclude_reasons[self.UNSPECIFIED_REASON]
+        evidence.exclude_reasons = list(new_exclude_reasons)
+        changed &= len(evidence.exclude_reasons) == len(exclude_reasons)
 
         self._repo.update(evidence)
-
         return changed
 
 
@@ -189,6 +197,7 @@ def toggle_status(
     toggle_data: ToggleEvidenceStatusRequestBody = Body(),
     controller: EvidenceController = Depends(get_evidence_controller),
 ) -> ToggleEvidenceStatusResponseBody:
+    controller.selected_index = toggle_data.cluster_id
     changed = controller.toggle_status(
         toggle_data.cluster_id, toggle_data.include, toggle_data.exclude_reasons
     )
