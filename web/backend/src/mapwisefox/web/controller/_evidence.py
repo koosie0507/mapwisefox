@@ -1,10 +1,8 @@
-from http import HTTPStatus
 from pathlib import Path
 
 from fastapi import APIRouter, Request, Depends, Body
 from mapwisefox.web.model import Evidence
 from numpy import clip
-from starlette.responses import JSONResponse
 
 from ._deps import user_upload_dir, current_user, settings
 from ._evidence_viewmodel import ToggleEvidenceStatusRequestBody, EvidenceViewModel, NavigateRequestBody, \
@@ -86,6 +84,10 @@ class EvidenceController(metaclass=KeyedInstanceCache):
         if self.selected_index == -1:
             raise ValueError("selected index explicitly deactivated current record")
         return self._repo.get(self.selected_index)
+
+    @property
+    def all_filled(self) -> bool:
+        return not self._repo.has_unfilled
 
     def navigate(self, cluster_id: int, action: NavigateAction) -> Evidence:
         desired_id = self._repo.navigate(cluster_id, action)
@@ -204,5 +206,6 @@ def toggle_status(
     current_record_vm = EvidenceViewModel(controller.current_record)
     return ToggleEvidenceStatusResponseBody(
         changed=changed,
-        evidence=EvidenceViewModel(current_record_vm)
+        evidence=EvidenceViewModel(current_record_vm),
+        complete=controller.all_filled,
     )

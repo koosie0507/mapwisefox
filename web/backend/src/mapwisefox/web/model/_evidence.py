@@ -109,4 +109,4 @@ class Evidence(BaseModel):
 
     @field_serializer("publication_date")
     def serialize_publication_date(self, pubdate: datetime, _) -> str:
-        return pubdate.isoformat()
+        return pubdate.isoformat() if pubdate else ""
