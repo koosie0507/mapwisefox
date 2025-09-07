@@ -43,6 +43,10 @@ class PandasRepo:
         })
         return Evidence(**params)
 
+    @property
+    def has_unfilled(self) -> bool:
+        return self.navigate(0, "unfilled") >= 0
+
     @classmethod
     def __safe_int(cls, value):
         if pd.isna(value):

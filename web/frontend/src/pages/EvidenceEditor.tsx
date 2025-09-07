@@ -74,7 +74,8 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
         if (data.changed) {
             setModel(data.evidence)
         }
-        await navigate("unfilled")
+        const navAction = (data.complete) ? "next": "unfilled";
+        await navigate(navAction);
     }
 
     return (

@@ -73,3 +73,4 @@ class NavigateResponseBody(BaseModel):
 class ToggleEvidenceStatusResponseBody(BaseModel):
     evidence: EvidenceViewModel
     changed: bool
+    complete: bool
