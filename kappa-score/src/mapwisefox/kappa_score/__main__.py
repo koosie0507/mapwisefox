@@ -3,39 +3,54 @@ from pathlib import Path
 import click
 import pandas as pd
 from sklearn.metrics import cohen_kappa_score
+from dataclasses import dataclass
+
 
 DEFAULT_LABELS = ["include", "exclude"]
 _RIGHT_SUFFIX = "_right"
 
 
-def _kappa_score(
-    left_df,
-    left_label_col,
-    left_name,
-    right_df,
-    right_label_col,
-    right_name,
-    labels=None,
-):
+@dataclass
+class CmpSettings:
+    dataframe: pd.DataFrame
+    name: str
+    label_col: str
+    reason_col: str
+
+    @property
+    def label_values(self):
+        return self.dataframe[self.label_col]
+
+
+def _kappa_score(left: CmpSettings, right: CmpSettings, labels=None):
     labels = labels or DEFAULT_LABELS
-    disagreements_df = left_df.join(right_df, how="inner", rsuffix=_RIGHT_SUFFIX)
+    disagreements_df = left.dataframe.join(
+        right.dataframe, how="inner", rsuffix=_RIGHT_SUFFIX
+    )
+    right_label_col = f"{right.label_col}{_RIGHT_SUFFIX}"
+    right_reason_col = f"{right.reason_col}{_RIGHT_SUFFIX}"
     disagreements_df = disagreements_df[
-        disagreements_df[left_label_col]
-        != disagreements_df[f"{right_label_col}{_RIGHT_SUFFIX}"]
+        disagreements_df[left.label_col] != disagreements_df[right_label_col]
     ]
-    output_columns = [left_label_col, f"{right_label_col}{_RIGHT_SUFFIX}"] + [
-        col for col in left_df.columns if col != left_label_col
+    output_columns = [
+        left.label_col,
+        right_label_col,
+        left.reason_col,
+        right_reason_col,
+    ] + [
+        col
+        for col in left.dataframe.columns
+        if col not in {left.label_col, left.reason_col}
     ]
     disagreements_df = disagreements_df[output_columns].rename(
         columns={
-            left_label_col: f"{left_name}_decision",
-            f"{right_label_col}{_RIGHT_SUFFIX}": f"{right_name}_decision",
+            left.label_col: f"{left.name}_decision",
+            right_label_col: f"{right.name}_decision",
         }
-    )
+    ).set_index(disagreements_df.index)
+    disagreements_df.index.set_names(["cluster_id"], inplace=True)
 
-    kappa = cohen_kappa_score(
-        left_df[left_label_col], right_df[right_label_col], labels=labels
-    )
+    kappa = cohen_kappa_score(left.label_values, right.label_values, labels=labels)
 
     return kappa, disagreements_df
 
@@ -59,6 +74,11 @@ def _kappa_score(
     default="include",
     type=click.STRING,
 )
+@click.option(
+    "--left-reason-column",
+    default="exclude_reasons",
+    type=click.STRING,
+)
 @click.argument(
     "right_file_path",
     type=click.Path(
@@ -78,6 +98,11 @@ def _kappa_score(
     type=click.STRING,
 )
 @click.option(
+    "--right-reason-column",
+    default="exclude_reasons",
+    type=click.STRING,
+)
+@click.option(
     "--out-file-path",
     "-o",
     required=True,
@@ -87,9 +112,11 @@ def main(
     left_file_path,
     left_id_column,
     left_decision_column,
+    left_reason_column,
     right_file_path,
     right_id_column,
     right_decision_column,
+    right_reason_column,
     out_file_path,
 ):
     left_file_path = Path(left_file_path)
@@ -101,15 +128,22 @@ def main(
     result_idx = left_df.index.intersection(right_df.index)
     left_df = left_df.loc[result_idx]
     right_df = right_df.loc[result_idx]
-    my_kappa, disagreements_df = _kappa_score(
+
+    left = CmpSettings(
         left_df,
-        left_decision_column,
         left_file_path.stem,
-        right_df,
-        right_decision_column,
-        right_file_path.stem,
+        left_decision_column,
+        left_reason_column,
     )
-    disagreements_df.to_excel(out_file_path, index=False)
+    right = CmpSettings(
+        right_df,
+        right_file_path.stem,
+        right_decision_column,
+        right_reason_column,
+    )
+
+    my_kappa, disagreements_df = _kappa_score(left, right)
+    disagreements_df.to_excel(out_file_path, index=True)
     _print_kappa_score(my_kappa, left_file_path, right_file_path)
 
 
