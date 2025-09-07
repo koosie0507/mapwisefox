@@ -4,12 +4,12 @@ from urllib.parse import urlencode
 from pydantic import BaseModel, model_validator, Field
 
 from mapwisefox.web.utils import any_to_bool
-from mapwisefox.web.model import Evidence
+from mapwisefox.web.model import Evidence, NavigateAction
 
 
 class NavigateRequestBody(BaseModel):
     cluster_id: int = Field(..., alias="clusterId")
-    action: Literal["first", "prev", "next", "last", "unfilled"]
+    action: NavigateAction
 
 
 class ToggleEvidenceStatusRequestBody(BaseModel):

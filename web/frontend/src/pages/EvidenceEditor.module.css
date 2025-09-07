@@ -38,13 +38,24 @@
     overflow: auto;
 }
 
+:root {
+    --nav-btn-h: 32px;
+}
+
+/* tweak if needed */
+
 .buttonBar {
-    display: flex;
+    display: flex; /* full-width flex row */
+    align-items: center;
     padding: 1em;
-    justify-content: center;
-    margin-top: 12px;
-    z-index: 100;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    gap: 0;
+}
+
+.buttonBar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap; /* prevent wrapping (fixes stacked 'Go to') */
 }
 
 .buttonBar button {
@@ -56,19 +67,73 @@
     margin: 0;
     font-weight: 600;
     cursor: pointer;
+    height: var(--nav-btn-h);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
 }
 
-/* eliminate spacing between buttons */
-.buttonBar button + button {
+.buttonBar .gotoGroup {
+    display: flex;
+    margin: 0 16px;
+    flex: 0 0 auto;
+    align-items: stretch;
+}
+
+.buttonBar .navGroup {
+    display: flex;
+    align-items: center;
+    margin-left: auto; /* pushes nav group to the remaining space center with goto on the left */
+    margin-right: auto;
+}
+
+/* Go-to input: left piece of the group */
+.buttonBar input.gotoInput {
+    width: 88px; /* decreased width */
+    height: var(--nav-btn-h); /* same height as buttons */
+    line-height: 1;
+    padding: 0 10px;
+    margin: 0;
+    background: #fff;
+    color: #333;
+    border: 1px solid #bbb;
+    border-right: none; /* tie to the Go button */
+    border-radius: 6px 0 0 6px; /* round top/bottom-left corners */
+    outline: none;
+}
+
+/* The Go button: right piece of the go-group */
+.buttonBar button.gotoBtn {
+    border: 1px solid #bbb;
+    border-left: none; /* join to input */
+    border-radius: 0 6px 6px 0; /* round top/bottom-right corners */
+    background: #f0f0f0; /* ordinary styling */
+    color: #333;
+    padding: 0 10px;
+    height: var(--nav-btn-h);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.buttonBar input.gotoInput,
+.buttonBar button.gotoBtn {
+    box-sizing: border-box;
+    line-height: normal;
+}
+
+/* eliminate spacing between NAV buttons only (not the Go group) */
+.buttonBar .navGroup button + button {
     border-left: none;
 }
 
-/* round only the outermost buttons */
-.buttonBar button:first-child {
+/* round only the outermost buttons in the NAV group */
+.buttonBar .navGroup button:first-child {
     border-radius: 6px 0 0 6px;
 }
 
-.buttonBar button:last-child {
+.buttonBar .navGroup button:last-child {
     border-radius: 0 6px 6px 0;
 }
 
@@ -92,28 +157,28 @@
 }
 
 .buttonBar button.firstGap {
-  background: #e6e6e6;       /* same as regular buttons */
-  color: #f57c00;            /* icon stroke uses currentColor */
-  border-color: #bbbbbb;
+    background: #e6e6e6; /* same as regular buttons */
+    color: #f57c00; /* icon stroke uses currentColor */
+    border-color: #bbbbbb;
 }
 
 .buttonBar button.firstGap svg {
-  stroke-width: 2;
-  transition: stroke-width 0.15s ease;
+    stroke-width: 2;
+    transition: stroke-width 0.15s ease;
 }
 
 .buttonBar button.firstGap:hover {
-  background: #696969;       /* slightly darker gray */
-  color: #e65100;            /* deeper orange for the icon */
+    background: #696969; /* slightly darker gray */
+    color: #e65100; /* deeper orange for the icon */
 }
 
 .buttonBar button.firstGap:hover svg {
-  stroke-width: 3; /* makes it visually bolder */
+    stroke-width: 3; /* makes it visually bolder */
 }
 
 .buttonBar button.firstGap:active {
-  background: #d6d6d6;       /* pressed background */
-  transform: translateY(1px);
+    background: #d6d6d6; /* pressed background */
+    transform: translateY(1px);
 }
 
 .buttonBar button:active {

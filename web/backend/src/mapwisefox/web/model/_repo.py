@@ -3,13 +3,14 @@ from pathlib import Path
 from typing import Optional, Literal
 
 import pandas as pd
+from numpy import clip
 from openpyxl import Workbook, load_workbook
 from pandas import ExcelWriter
 
 from mapwisefox.web.model import Evidence
 
 
-type NavigateAction = Literal["first", "prev", "next", "last", "unfilled"]
+type NavigateAction = Literal["first", "prev", "next", "last", "unfilled", "goto"]
 
 
 class PandasRepo:
@@ -86,6 +87,7 @@ class PandasRepo:
             "next": partial(self.__find_next_id, cluster_id),
             "last": self.__find_last_id,
             "unfilled": partial(self.__find_next_unfilled, cluster_id),
+            "goto": lambda: clip(cluster_id, self.__find_first_id(), self.__find_last_id())
         }
         return navigate_actions[action]()
 

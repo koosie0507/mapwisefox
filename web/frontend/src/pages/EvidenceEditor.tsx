@@ -1,6 +1,6 @@
 import {type IncludeStatusArgs, SelectionCriteriaForm} from "../components/SelectionCriteriaForm";
-import React, {useState} from "react";
-import {SkipBack, ChevronLeft, ChevronRight, SkipForward, FastForward, CircleDashed} from "lucide-react";
+import React, {useRef, useState} from "react";
+import {ChevronLeft, ChevronRight, CircleDashed, FastForward, SkipBack, SkipForward} from "lucide-react";
 import styles from "./EvidenceEditor.module.css";
 import type {NavigationAction} from "../models/transfer.ts";
 import type {EvidenceViewModel} from "../models/viewmodel.ts";
@@ -38,11 +38,10 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
     const navigateEndpoint = `/evidence/${fileName}/navigate`
     const toggleStatusEndpoint = `/evidence/${fileName}/save`
     const [model, setModel] = useState<EvidenceViewModel>(evidence)
+    const gotoInputRef = useRef<HTMLInputElement>(null);
 
-    async function navigate(action: NavigationAction) {
-        let clusterId = model.clusterId
+    async function navigate(clusterId: string | number, action: NavigationAction) {
         if (action == "firstUnfilled") {
-            clusterId = 0
             action = "unfilled"
         }
         const res = await fetch(navigateEndpoint, {
@@ -74,8 +73,8 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
         if (data.changed) {
             setModel(data.evidence)
         }
-        const navAction = (data.complete) ? "next": "unfilled";
-        await navigate(navAction);
+        const navAction = (data.complete) ? "next" : "unfilled";
+        await navigate(model.clusterId, navAction);
     }
 
     return (
@@ -104,17 +103,58 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
                 </p>
             </main>
             <aside className={`${styles.rightSidebar} sidebar`}>
-                <SelectionCriteriaForm evidence={model} fileName={fileName} onFormSubmit={toggleStatus} />
+                <SelectionCriteriaForm evidence={model} fileName={fileName} onFormSubmit={toggleStatus}/>
             </aside>
             <footer className={styles.bottomPanel}>
                 <div className={styles.buttonBar}>
-                    <form method="post" action="" onSubmit={evt=>evt.preventDefault()}>
-                        <button type="submit" title="First item" onClick={async () => await navigate("first")}><SkipBack size={18} /></button>
-                        <button type="submit" title="Previous item" onClick={async () => await navigate("prev")}><ChevronLeft size={18} /></button>
-                        <button type="submit" title="Next item" onClick={async () => await navigate("next")}><ChevronRight size={18} /></button>
-                        <button type="submit" title="Last item" onClick={async () => await navigate("last")}><SkipForward size={18} /></button>
-                        <button type="submit" title="First unfilled item" className={styles.firstGap} onClick={async () => await navigate("firstUnfilled")}><CircleDashed size={18} /></button>
-                        <button type="submit" title="Next unfilled item" className={styles.nextUndecided} onClick={async () => await navigate("unfilled")}><FastForward size={18} /></button>
+                    <form method="post" action="" onSubmit={evt => evt.preventDefault()}>
+                        <div className={styles.gotoGroup}>
+                            <input
+                                type="text"
+                                ref={gotoInputRef}
+                                placeholder="Go to…"
+                                title="Enter an ID to go to"
+                                className={styles.gotoInput}
+                                onKeyDown={async (e) => {
+                                    if (e.key === 'Enter') {
+                                        e.preventDefault();
+                                        const v = gotoInputRef.current?.value?.trim();
+                                        if (v) await navigate(v, "goto");
+                                    }
+                                }}
+                            />
+                            <button
+                                type="submit"
+                                title="Go to item"
+                                className={styles.gotoBtn}
+                                onClick={async () => {
+                                    const v = gotoInputRef.current?.value?.trim();
+                                    if (v) await navigate(v, "goto");
+                                }}
+                            >
+                                <ChevronRight size={18}/>
+                            </button>
+                        </div>
+                        <div className={styles.navGroup}>
+                            <button type="submit" title="First item" onClick={async () => await navigate(0, "first")}>
+                                <SkipBack size={18}/></button>
+                            <button type="submit" title="Previous item"
+                                    onClick={async () => await navigate(model.clusterId, "prev")}><ChevronLeft
+                                size={18}/>
+                            </button>
+                            <button type="submit" title="Next item"
+                                    onClick={async () => await navigate(model.clusterId, "next")}><ChevronRight
+                                size={18}/>
+                            </button>
+                            <button type="submit" title="Last item" onClick={async () => await navigate(0, "last")}>
+                                <SkipForward size={18}/></button>
+                            <button type="submit" title="First unfilled item" className={styles.firstGap}
+                                    onClick={async () => await navigate(0, "firstUnfilled")}><CircleDashed size={18}/>
+                            </button>
+                            <button type="submit" title="Next unfilled item" className={styles.nextUndecided}
+                                    onClick={async () => await navigate(model.clusterId, "unfilled")}><FastForward
+                                size={18}/></button>
+                        </div>
                     </form>
                 </div>
             </footer>

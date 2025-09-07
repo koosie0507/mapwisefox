@@ -4,4 +4,4 @@ export type ToggleEvidenceStatusRequestBody = {
     exclude_reasons: string[];
 }
 
-export type NavigationAction = "first" | "firstUnfilled" | "prev" | "next" | "last" | "unfilled"
+export type NavigationAction = "first" | "firstUnfilled" | "prev" | "next" | "last" | "unfilled" | "goto"
