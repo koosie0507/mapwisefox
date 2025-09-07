@@ -36,7 +36,7 @@ def _kappa_score(left: CmpSettings, right: CmpSettings, labels=None):
         left.label_col,
         right_label_col,
         left.reason_col,
-        right.reason_col,
+        right_reason_col,
     ] + [
         col
         for col in left.dataframe.columns
@@ -47,7 +47,8 @@ def _kappa_score(left: CmpSettings, right: CmpSettings, labels=None):
             left.label_col: f"{left.name}_decision",
             right_label_col: f"{right.name}_decision",
         }
-    )
+    ).set_index(disagreements_df.index)
+    disagreements_df.index.set_names(["cluster_id"], inplace=True)
 
     kappa = cohen_kappa_score(left.label_values, right.label_values, labels=labels)
 
@@ -142,7 +143,7 @@ def main(
     )
 
     my_kappa, disagreements_df = _kappa_score(left, right)
-    disagreements_df.to_excel(out_file_path, index=False)
+    disagreements_df.to_excel(out_file_path, index=True)
     _print_kappa_score(my_kappa, left_file_path, right_file_path)
 
 
