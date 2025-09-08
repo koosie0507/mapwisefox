@@ -13,7 +13,6 @@ BUMP_KIND := $(or $(VERSION_COMPONENT),pre_label)
 	@command -v git >/dev/null 2>&1 || { echo "Error: 'git' is not installed or not in PATH." >&2; exit 1; }
 	@command -v uv >/dev/null 2>&1 || { echo "Error: 'uv' is not installed or not in PATH." >&2; exit 1; }
 	@command -v npm >/dev/null 2>&1 || { echo "Error: 'npm' is not installed or not in PATH" >&2; exit 1; }
-	@command -v bump-my-version >/dev/null 2>&1 || { echo "Error: 'bump-my-version' is not installed or not in PATH." >&2; exit 1; }
 
 $(VENV): | .check-deps
 	@if [ ! -d "$(VENV)" ]; then \
@@ -41,11 +40,12 @@ clean:
 	git clean -fdx -e .venv
 
 format: bootstrap
-	uv tool run black $(PYTHON_PACKAGE_DIRS) --fast
+	uv tool run black --fast $(PYTHON_PACKAGE_DIRS)
+	uv tool run ruff check --fix $(PYTHON_PACKAGE_DIRS)
 
 check: bootstrap
 	uv tool run black --check $(PYTHON_PACKAGE_DIRS)
-	uv tool run ruff check $(PYTHON_PACKAGE_DIRS) --fix
+	uv tool run ruff check $(PYTHON_PACKAGE_DIRS)
 
 PYTHON_EXISTING_TEST_DIRS := $(foreach d,$(PYTHON_TEST_DIRS),$(if $(wildcard $(d)),$(d),))
 test: bootstrap
@@ -74,3 +74,17 @@ bump-prerelease: .bump-version
 
 bump-release: BUMP_KIND=pre_label
 bump-release: .bump-version
+
+new-tag: .check-deps
+	@VERSION=$$(uv tool run bump-my-version show current_version); \
+	@TAG="v$$VERSION"
+	git tag -a "$$TAG" -m "Version $$VERSION" && \
+	git push --tags && echo "Pushed tag $$TAG || echo "Failed to push tag $$TAG
+
+re-tag: .check-deps
+	@$(if $(TAG),,$(error 're-tagging requires specifying a TAG'))
+	git push --delete origin refs/tags/$(TAG) && \
+	git tag --delete $(TAG) && \
+	git tag $(TAG) && \
+	git push --tags
+
