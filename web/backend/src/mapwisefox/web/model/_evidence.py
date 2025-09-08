@@ -1,11 +1,16 @@
-from datetime import datetime, UTC
+from datetime import datetime
 from numbers import Number
 from typing import Any, Optional, ClassVar
 
 import arrow
 import numpy as np
 import pandas as pd
-from pydantic import BaseModel, model_validator, model_serializer, field_serializer, Field
+from pydantic import (
+    BaseModel,
+    model_validator,
+    field_serializer,
+    Field,
+)
 
 from mapwisefox.web.utils import any_to_bool
 
@@ -22,7 +27,12 @@ NON_VALUES = {
 
 
 class Evidence(BaseModel):
-    _LIST_VALUED_FIELDS: ClassVar[list[str]] = ["authors", "keywords", "exclude_reasons", "referencing_evidence"]
+    _LIST_VALUED_FIELDS: ClassVar[list[str]] = [
+        "authors",
+        "keywords",
+        "exclude_reasons",
+        "referencing_evidence",
+    ]
     __DEFAULT_LIST_SEPARATOR: ClassVar[str] = ";"
 
     class Config:
@@ -44,7 +54,9 @@ class Evidence(BaseModel):
     pdf_url: Optional[str] = Field(None, alias="pdfUrl")
 
     @staticmethod
-    def _parse_list(data: dict[str, Any], field: str, separator: str = __DEFAULT_LIST_SEPARATOR) -> list[str]:
+    def _parse_list(
+        data: dict[str, Any], field: str, separator: str = __DEFAULT_LIST_SEPARATOR
+    ) -> list[str]:
         if data.get(field) is None:
             return []
         if isinstance(data[field], (list, tuple, set, dict)):
@@ -91,10 +103,14 @@ class Evidence(BaseModel):
             data[field] = cls._parse_list(data, field)
         for field in ["include", "has_pdf"]:
             data[field] = cls._parse_boolean(data, field)
-        if (exclude_reasons:=data.get("exclude_reasons")) is None or len(exclude_reasons) == 0:
+        if (exclude_reasons := data.get("exclude_reasons")) is None or len(
+            exclude_reasons
+        ) == 0:
             data["include"] = True
         for field in data:
-            if isinstance(data.get(field), Number) and (pd.isna(data[field]) or np.isnan(data[field])):
+            if isinstance(data.get(field), Number) and (
+                pd.isna(data[field]) or np.isnan(data[field])
+            ):
                 data[field] = None
         data["publication_date"] = cls._parse_date(data, "publication_date")
         return data
@@ -104,7 +120,7 @@ class Evidence(BaseModel):
         return self.__DEFAULT_LIST_SEPARATOR.join(data)
 
     @field_serializer("include")
-    def serialize_include(self, include: bool, _) -> str|bool:
+    def serialize_include(self, include: bool, _) -> str | bool:
         return "include" if include else "exclude"
 
     @field_serializer("publication_date")

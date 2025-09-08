@@ -10,20 +10,20 @@ from mapwisefox.web.model import Evidence
 @pytest.fixture(scope="session")
 def new_evidence() -> Callable[[...], Evidence]:
     def _evidence_factory(
-            cluster_id,
-            include=False,
-            doi="10.1016/j.cpc.2019.01.011",
-            title="test title",
-            abstract="test abstract",
-            authors=["test author"],
-            keywords=["test keyword"],
-            publication_date=datetime.now(UTC),
-            publication_venue="test venue",
-            url="https://doi.org/10.1016/j.cpc.2019.01.011",
-            has_pdf=True,
-            pdf_url="https://example.com/10.1016/j.cpc.2019.01.011/pdf",
-            exclude_reasons=["reason 1", "reason 2"],
-            referencing_evidence=None,
+        cluster_id,
+        include=False,
+        doi="10.1016/j.cpc.2019.01.011",
+        title="test title",
+        abstract="test abstract",
+        authors=["test author"],
+        keywords=["test keyword"],
+        publication_date=datetime.now(UTC),
+        publication_venue="test venue",
+        url="https://doi.org/10.1016/j.cpc.2019.01.011",
+        has_pdf=True,
+        pdf_url="https://example.com/10.1016/j.cpc.2019.01.011/pdf",
+        exclude_reasons=["reason 1", "reason 2"],
+        referencing_evidence=None,
     ):
         return Evidence(
             cluster_id=cluster_id,
@@ -41,6 +41,7 @@ def new_evidence() -> Callable[[...], Evidence]:
             exclude_reasons=exclude_reasons,
             referencing_evidence=referencing_evidence,
         )
+
     return _evidence_factory
 
 

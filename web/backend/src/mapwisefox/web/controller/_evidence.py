@@ -5,8 +5,13 @@ from mapwisefox.web.model import Evidence
 from numpy import clip
 
 from ._deps import user_upload_dir, current_user, settings
-from ._evidence_viewmodel import ToggleEvidenceStatusRequestBody, EvidenceViewModel, NavigateRequestBody, \
-    NavigateResponseBody, ToggleEvidenceStatusResponseBody
+from ._evidence_viewmodel import (
+    ToggleEvidenceStatusRequestBody,
+    EvidenceViewModel,
+    NavigateRequestBody,
+    NavigateResponseBody,
+    ToggleEvidenceStatusResponseBody,
+)
 from ..config import AppSettings
 from ..utils import any_to_bool, KeyedInstanceCache, resolve_frontend_info
 from ..model import UserInfo, PandasRepo, NavigateAction
@@ -22,7 +27,7 @@ class EvidenceController(metaclass=KeyedInstanceCache):
         "exclude_reason": "exclude_reasons",
         "source": "publication_venue",
         "year": "publication_date",
-        "referencing_paper_ids": "referencing_evidence"
+        "referencing_paper_ids": "referencing_evidence",
     }
 
     def __init__(self, excel_file: Path):
@@ -121,9 +126,12 @@ class EvidenceController(metaclass=KeyedInstanceCache):
         new_exclude_reasons = {
             reason: None
             for r in exclude_reasons
-            if (reason:=self.__sanitize_exclude_reason(r))
+            if (reason := self.__sanitize_exclude_reason(r))
         }
-        if len(new_exclude_reasons) > 1 and self.UNSPECIFIED_REASON in new_exclude_reasons:
+        if (
+            len(new_exclude_reasons) > 1
+            and self.UNSPECIFIED_REASON in new_exclude_reasons
+        ):
             del new_exclude_reasons[self.UNSPECIFIED_REASON]
         evidence.exclude_reasons = list(new_exclude_reasons)
         changed &= len(evidence.exclude_reasons) == len(exclude_reasons)
@@ -133,18 +141,18 @@ class EvidenceController(metaclass=KeyedInstanceCache):
 
 
 def get_evidence_controller(
-        filename: str, upload_dir=Depends(user_upload_dir)
+    filename: str, upload_dir=Depends(user_upload_dir)
 ) -> EvidenceController:
     return EvidenceController(upload_dir / filename)
 
 
 @router.get("/{filename}", name="show_evidence")
 def show_form(
-        request: Request,
-        index: int | None = None,
-        config: AppSettings = Depends(settings),
-        user: UserInfo = Depends(current_user),
-        controller: EvidenceController = Depends(get_evidence_controller),
+    request: Request,
+    index: int | None = None,
+    config: AppSettings = Depends(settings),
+    user: UserInfo = Depends(current_user),
+    controller: EvidenceController = Depends(get_evidence_controller),
 ):
     controller.selected_index = (
         index if index is not None else controller.first_non_specified
@@ -175,7 +183,7 @@ def show_form(
             # frontend
             "script_src": res_or_info.script_source,
             "css_hrefs": res_or_info.css_hrefs,
-            "widget_name": "EvidenceEditor"
+            "widget_name": "EvidenceEditor",
         },
     )
 
@@ -183,14 +191,14 @@ def show_form(
 @router.post("/{filename}/navigate", name="navigate")
 def navigate(
     data: NavigateRequestBody = Body(),
-    controller: EvidenceController = Depends(get_evidence_controller)
+    controller: EvidenceController = Depends(get_evidence_controller),
 ) -> NavigateResponseBody:
     evidence = controller.navigate(data.cluster_id, data.action)
 
     return NavigateResponseBody(
         evidence=EvidenceViewModel(evidence),
         minId=controller.first_id,
-        maxId=controller.last_id
+        maxId=controller.last_id,
     )
 
 

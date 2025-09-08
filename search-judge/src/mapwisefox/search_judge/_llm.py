@@ -29,7 +29,9 @@ def _load_system_prompt_template():
 def _generate(client, rule_config, model, title_abs):
     tpl = _load_system_prompt_template()
     system_prompt = tpl.render(**rule_config)
-    response = client.generate(model=model, prompt=title_abs, system=system_prompt, think=False)
+    response = client.generate(
+        model=model, prompt=title_abs, system=system_prompt, think=False
+    )
     answer = re.sub(r"```\w*[\s$]*(\{.+\})[$\s]*```", r"\1", response.response)
     return answer
 
