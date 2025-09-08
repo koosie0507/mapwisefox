@@ -39,8 +39,8 @@ jobs:
 
           # Skip if tag already exists
           if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
-            echo "Tag $tag already exists; re-tagging."
-            make re-tag TAG="$tag"
+            echo "Tag $tag already exists; skipping."
+            exit 0
           else
             make new-tag
           fi
