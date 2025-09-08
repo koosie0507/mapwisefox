@@ -163,9 +163,9 @@ def _print_kappa_score(my_kappa, left_file_path, right_file_path):
     elif my_kappa <= 0.29:
         click.echo(click.style("poor agreement", fg="red"), nl=False, color=True)
     elif my_kappa <= 0.40:
-        click.echo(click.style("fair agreement", fg="orange"), nl=False, color=True)
+        click.echo(click.style("fair agreement", fg="yellow"), nl=False, color=True)
     elif my_kappa <= 0.60:
-        click.echo(click.style("moderate agreement", fg="gray"), nl=False, color=True)
+        click.echo(click.style("moderate agreement", fg="cyan"), nl=False, color=True)
     elif my_kappa <= 0.80:
         click.echo(
             click.style("substantial agreement", fg="green", bold=True),
