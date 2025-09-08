@@ -77,7 +77,7 @@ bump-release: .bump-version
 
 new-tag: .check-deps
 	@VERSION=$$(uv tool run bump-my-version show current_version); \
-	@TAG="v$$VERSION"
+	@TAG="v$$VERSION" \
 	git tag -a "$$TAG" -m "Version $$VERSION" && \
 	git push --tags && echo "Pushed tag $$TAG || echo "Failed to push tag $$TAG
 
