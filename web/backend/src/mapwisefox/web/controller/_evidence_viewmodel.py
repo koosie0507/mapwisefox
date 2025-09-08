@@ -1,4 +1,4 @@
-from typing import Optional, Literal
+from typing import Optional
 from urllib.parse import urlencode
 
 from pydantic import BaseModel, model_validator, Field
@@ -33,13 +33,15 @@ class EvidenceViewModel(Evidence):
         data = super()._coerce_values(data)
         if data.get("url") is None:
             data["url"] = "https://www.semanticscholar.org/search?{}".format(
-                urlencode({
-                    "q": data["title"],
-                })
+                urlencode(
+                    {
+                        "q": data["title"],
+                    }
+                )
             )
         if data.get("publication_date"):
             data["published_at"] = data["publication_date"].strftime("%Y-%m-%d")
-        if exclude_reasons:=data.get("exclude_reasons"):
+        if exclude_reasons := data.get("exclude_reasons"):
             data["exclude_reasons"] = [
                 r.strip()
                 for reason_string in exclude_reasons
@@ -52,15 +54,18 @@ class EvidenceViewModel(Evidence):
         if not data.get("publication_venue"):
             data["publication_venue"] = "<not specified>"
         if data.get("doi"):
-            data["doi_link"] = f"https://dx.doi.org/{data["doi"]}"
-            data["scihub_link"] = f"https://sci-hub.se/{data["doi"]}"
-        data["selection_status"] = "include" if any_to_bool(data["include"]) else "exclude"
+            data_doi = data["doi"]
+            data["doi_link"] = f"https://dx.doi.org/{data_doi}"
+            data["scihub_link"] = f"https://sci-hub.se/{data_doi}"
+        data["selection_status"] = (
+            "include" if any_to_bool(data["include"]) else "exclude"
+        )
         return data
 
     def serialize_lists(self, data: list, _info):
         return data
 
-    def serialize_include(self, include: bool, _) -> str|bool:
+    def serialize_include(self, include: bool, _) -> str | bool:
         return include
 
 

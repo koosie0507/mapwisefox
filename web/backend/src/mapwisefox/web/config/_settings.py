@@ -10,7 +10,7 @@ class AppSettings(BaseSettings):
     debug: bool = True
     dev_server_url: str = "http://localhost:5173"
     auth_enabled: bool = False
-    basedir: DirectoryPath = Path.cwd() / "web" # 'web' app dir
+    basedir: DirectoryPath = Path.cwd() / "web"  # 'web' app dir
     uploads_dir: DirectoryPath = Field(Path.cwd() / "uploads")
     ms_client_id: str | None = Field(None)
     ms_client_secret: str | None = Field(None)

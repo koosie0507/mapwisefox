@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
 from mapwisefox.web.config import settings, STATIC_ROUTE

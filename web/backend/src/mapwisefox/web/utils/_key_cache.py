@@ -9,7 +9,7 @@ from fastapi import HTTPException
 class KeyedInstanceCache(type):
     __CACHE_LOCK = threading.RLock()
     __CACHE = cachetools.TTLCache(maxsize=12, ttl=600)
-    __KEYS = {"path", "excel_path", 'excel_file'}
+    __KEYS = {"path", "excel_path", "excel_file"}
     __DEFAULT_KEY = "<default>"
 
     @classmethod
@@ -29,7 +29,9 @@ class KeyedInstanceCache(type):
 
         with cls.__CACHE_LOCK:
             path = Path(cache_key)
-            if cache_key != cls.__DEFAULT_KEY and (not path.exists() or not path.is_file()):
+            if cache_key != cls.__DEFAULT_KEY and (
+                not path.exists() or not path.is_file()
+            ):
                 raise HTTPException(status_code=404, detail="File not found")
 
             if cache_key not in cls.__CACHE:

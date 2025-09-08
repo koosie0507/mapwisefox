@@ -1,12 +1,9 @@
 [project]
 name = "mapwisefox"
-version = "0.1.0"
+version = "0.1.1"
 description = "Utilities for creating systematic literature reviews"
 readme = "README.md"
 requires-python = ">=3.13"
-dependencies = [
-    "click>=8.2.1",
-]
 
 [tool.uv]
 package = false
@@ -26,7 +23,45 @@ exclude = ["web/assets", "web/frontend"]
 [dependency-groups]
 dev = [
     "black>=25.1.0",
-    "mypy>=1.16.1",
-    "pytest>=8.4.1",
-    "ruff>=0.12.0",
+    "mypy>=1.17.1",
+    "pytest>=8.4.2",
+    "ruff>=0.12.12",
 ]
+
+[tool.bumpversion]
+current_version = "0.1.1"
+parse = """(?x)
+    (?P<major>0|[1-9]\\d*)\\.
+    (?P<minor>0|[1-9]\\d*)\\.
+    (?P<patch>0|[1-9]\\d*)
+    (?:-(?P<pre_label>[a-zA-Z-]+)(?P<pre_number>:0|[1-9]\\d*))?
+"""
+serialize = [
+    "{major}.{minor}.{patch}-{pre_label}{pre_number}",
+    "{major}.{minor}.{patch}",
+]
+
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = false
+sign_tags = false
+tag_name = "v{new_version}"
+tag_message = "Bump mapwisefox version: {current_version} → {new_version}"
+allow_dirty = true
+commit = true
+message = "Bump mapwisefox version: {current_version} → {new_version}"
+moveable_tags = []
+commit_args = ""
+setup_hooks = []
+pre_commit_hooks = []
+post_commit_hooks = []
+
+[tool.bumpversion.parts.pre_label]
+values = ["dev", "final"]
+optional_value= "final"
+
+[tool.bumpversion.parts.pre_number]
+first_value = 1

@@ -42,12 +42,16 @@ def _kappa_score(left: CmpSettings, right: CmpSettings, labels=None):
         for col in left.dataframe.columns
         if col not in {left.label_col, left.reason_col}
     ]
-    disagreements_df = disagreements_df[output_columns].rename(
-        columns={
-            left.label_col: f"{left.name}_decision",
-            right_label_col: f"{right.name}_decision",
-        }
-    ).set_index(disagreements_df.index)
+    disagreements_df = (
+        disagreements_df[output_columns]
+        .rename(
+            columns={
+                left.label_col: f"{left.name}_decision",
+                right_label_col: f"{right.name}_decision",
+            }
+        )
+        .set_index(disagreements_df.index)
+    )
     disagreements_df.index.set_names(["cluster_id"], inplace=True)
 
     kappa = cohen_kappa_score(left.label_values, right.label_values, labels=labels)

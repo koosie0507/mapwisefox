@@ -1,6 +1,5 @@
 import json
 from pathlib import Path
-from typing import Any
 
 from pydantic.dataclasses import dataclass
 from starlette.responses import HTMLResponse, Response
@@ -22,7 +21,8 @@ def _manifest_lookup(static_dir: Path, entry: str) -> str | None:
     item = manifest.get(entry)
     if not item:
         return None
-    return f"{STATIC_ROUTE}/dist/{item["file"]}"
+    item_file = item["file"]
+    return f"{STATIC_ROUTE}/dist/{item_file}"
 
 
 @dataclass(frozen=True)
@@ -31,7 +31,9 @@ class FrontendInfo:
     css_hrefs: list[str]
 
 
-def resolve_frontend_info(settings: AppSettings, entry: str) -> tuple[bool, FrontendInfo | Response]:
+def resolve_frontend_info(
+    settings: AppSettings, entry: str
+) -> tuple[bool, FrontendInfo | Response]:
     if settings.debug:
         script_src = f"{settings.dev_server_url}/src/main.ts"
         css_hrefs: list[str] = []  # Vite injects styles in dev
@@ -50,7 +52,9 @@ def resolve_frontend_info(settings: AppSettings, entry: str) -> tuple[bool, Fron
         script_src = built_js
         css_hrefs = []
         try:
-            with open(_resolve_manifest_path(settings.static_files_dir), "r", encoding="utf-8") as f:
+            with open(
+                _resolve_manifest_path(settings.static_files_dir), "r", encoding="utf-8"
+            ) as f:
                 manifest = json.load(f)
             if manifest.get(entry, {}).get("css"):
                 css_hrefs = [f"/{STATIC_ROUTE}/{p}" for p in manifest[entry]["css"]]
