@@ -13,3 +13,24 @@ package = true
 
 [project.scripts]
 kappa-score = "mapwisefox.kappa_score:run_command"
+
+[tool.tbump]
+github_url = "https://github.com/koosie0507/mapwisefox"
+
+[tool.tbump.version]
+current = "0.1.3"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  '''
+
+[tool.tbump.git]
+message_template = "Bump kappa-score package to {new_version}"
+tag_template = "kappa-score-v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+search = 'version = "{current_version}"'

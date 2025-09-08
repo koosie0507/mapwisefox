@@ -17,6 +17,27 @@ search = "mapwisefox.snowballing:run_command"
 [tool.uv]
 package = true
 
+[tool.tbump]
+github_url = "https://github.com/koosie0507/mapwisefox"
+
+[tool.tbump.version]
+current = "0.1.0"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  '''
+
+[tool.tbump.git]
+message_template = "Bump snowballing package to {new_version}"
+tag_template = "snowballing-v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+search = 'version = "{current_version}"'
+
 [dependency-groups]
 dev = [
     "pandas-stubs>=2.3.0.250703",

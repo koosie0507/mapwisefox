@@ -13,3 +13,24 @@ search = "mapwisefox.search:run_command"
 
 [tool.uv.sources]
 clarivate-wos-starter-python-client = { git = "https://github.com/clarivate/wosstarter_python_client.git" }
+
+[tool.tbump]
+github_url = "https://github.com/koosie0507/mapwisefox"
+
+[tool.tbump.version]
+current = "0.1.0"
+regex = '''
+  (?P<major>\d+)
+  \.
+  (?P<minor>\d+)
+  \.
+  (?P<patch>\d+)
+  '''
+
+[tool.tbump.git]
+message_template = "Bump search package to {new_version}"
+tag_template = "search-v{new_version}"
+
+[[tool.tbump.file]]
+src = "pyproject.toml"
+search = 'version = "{current_version}"'
