@@ -52,12 +52,13 @@ test: bootstrap
 	uv run pytest -q $(PYTHON_EXISTING_TEST_DIRS)
 
 .bump-version:
-	@$(if $(PACKAGE),,$(error PACKAGE is required. Choose one of: $(VALID_PACKAGES)))
-	@$(if $(filter $(PACKAGE),$(VALID_PACKAGES)),,$(error PACKAGE='$(PACKAGE)' is not one of: $(VALID_PACKAGES)))
-	@$(info Using VERSION_COMPONENT='$(BUMP_KIND)')
+	@$(if $(PACKAGE),$(if $(filter $(PACKAGE),$(VALID_PACKAGES)),,$(error PACKAGE='$(PACKAGE)' is not one of: $(VALID_PACKAGES))),)
+	@$(if $(PACKAGE),$(info Using PACKAGE='$(PACKAGE)'),$(info PACKAGE not set; bumping workspace root))
+	@$(info VERSION_COMPONENT='$(BUMP_KIND)')
 	@VERSION_COMPONENT='$(BUMP_KIND)'; \
 	echo "Bumping Python package $(PACKAGE) ($$VERSION_COMPONENT)"; \
-	(cd "$(PACKAGE)" && uv tool run bump-my-version bump --dry-run -vv --no-tag "$$VERSION_COMPONENT")
+	if [ -n "$(PACKAGE)" ]; then cd "$(PACKAGE)"; fi; \
+	uv tool run bump-my-version bump --no-tag "$$VERSION_COMPONENT"
 
 bump-major: BUMP_KIND=major
 bump-major: .bump-version
