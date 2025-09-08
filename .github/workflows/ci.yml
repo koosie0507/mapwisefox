@@ -1,0 +1,49 @@
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+    branches: [ main ]  # adjust if needed
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Bootstrap
+        run: make bootstrap
+
+      - name: Lint / format check
+        run: make check
+
+      - name: Run tests
+        run: make test
+
+  # Optional gate: block merges if version is prerelease
+  version-final:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        run: |
+          curl -LsSf https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Assert version is FINAL (no prerelease)
+        shell: bash
+        run: |
+          ver="$(uv tool run bump-my-version show current_version)"
+          echo "current_version=$ver"
+          if [[ "$ver" == *-* ]]; then
+            echo "::error::Version is prerelease ($ver). Bump to a release before merging."
+            exit 1
+          fi
