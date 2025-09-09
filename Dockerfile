@@ -51,6 +51,7 @@ USER mapwisefox
 CMD ["pytest", "-q", "web/backend/tests"]
 
 FROM python-build AS python-runtime
+ARG RUNTIME_PKGS=libgomp
 
 ENV VIRTUALENV="/opt/python-build/.venv"
 ENV PATH="$VIRTUALENV/bin:/root/.local/bin:$PATH"
@@ -59,7 +60,7 @@ WORKDIR "/opt/mapwisefox"
 COPY . .
 
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --all-packages --no-editable --no-dev --locked
+    uv sync --all-packages --no-editable --no-dev --locked 
 
 FROM python:3.13.7-alpine3.22
 LABEL authors="Andrei Olar"
@@ -72,7 +73,9 @@ ENV PATH="$VIRTUALENV/bin:$PATH"
 ENV MWF_WEB_DEBUG=0
 ENV MWF_WEB_BASEDIR="/opt/mapwisefox"
 
-RUN adduser -u 1001 -S -D -s /bin/sh -h /opt/mapwisefox mapwisefox && mkdir -p uploads
+RUN apk add libgomp libstdc++ && \
+    adduser -u 1001 -S -D -s /bin/sh -h /opt/mapwisefox mapwisefox && \
+    mkdir -p uploads
 
 COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/.venv .venv
 COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/web/assets assets
