@@ -18,15 +18,13 @@ def _assign_papers(paper_count: int, evaluators: int, eval_count: int):
 
     total_performed_evals = paper_count * eval_count
     complete_cycles = total_performed_evals // evaluators
-    remainder = total_performed_evals % evaluators
 
     # Build a cyclic sequence of people repeated r times
     people_seq = list(range(evaluators)) * complete_cycles
 
     # Partition into N consecutive blocks of eval_count size
     evaluations = [
-        people_seq[j * eval_count:(j + 1) * eval_count]
-        for j in range(paper_count)
+        people_seq[j * eval_count : (j + 1) * eval_count] for j in range(paper_count)
     ]
     assert all(len(set(block)) == eval_count for block in evaluations)
 
@@ -38,7 +36,9 @@ def _assign_papers(paper_count: int, evaluators: int, eval_count: int):
     return evaluations, loads
 
 
-def _validate_evaluation_count(ctx: click.Context, param: click.Option, value: int) -> int:
+def _validate_evaluation_count(
+    ctx: click.Context, param: click.Option, value: int
+) -> int:
     if param.name != "evaluation_count":
         return value
     evaluator_count = ctx.params.get("evaluator_count")
@@ -62,8 +62,11 @@ def _init_eval_criteria(eval_criteria_config: str | Path | None) -> list[str]:
     return criteria
 
 
-def _load_workload_df(selection: str | Path, worksheet_name: str | None) -> dict[Any, DataFrame] | dict[
-    str, DataFrame] | dict[int | str, DataFrame] | DataFrame:
+def _load_workload_df(
+    selection: str | Path, worksheet_name: str | None
+) -> (
+    dict[Any, DataFrame] | dict[str, DataFrame] | dict[int | str, DataFrame] | DataFrame
+):
     with open(selection, "rb") as xls:
         kwargs = dict(engine="openpyxl", header=0)
         if worksheet_name is not None:
@@ -75,27 +78,35 @@ def _load_workload_df(selection: str | Path, worksheet_name: str | None) -> dict
 @click.command("for-evaluation")
 @click.argument(
     "selection",
-    type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True, resolve_path=True),
+    type=click.Path(
+        exists=True, file_okay=True, dir_okay=False, readable=True, resolve_path=True
+    ),
 )
 @click.option(
-    "-n", "--evaluator-count",
+    "-n",
+    "--evaluator-count",
     type=click.IntRange(min=1, max_open=True),
-    help="number of evaluators to split the workload to"
+    help="number of evaluators to split the workload to",
 )
 @click.option(
-    "-k", "--evaluation-count",
+    "-k",
+    "--evaluation-count",
     type=int,
     callback=_validate_evaluation_count,
     help="number of times each paper must be evaluated by different evaluators: [1 .. evaluator count]",
 )
 @click.option(
-    "-w", "--worksheet-name",
+    "-w",
+    "--worksheet-name",
     type=str,
     help="name of the worksheet containing the studies to be evaluated",
 )
 @click.option(
-    "-c", "--evaluation-criteria-config",
-    type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True, resolve_path=True),
+    "-c",
+    "--evaluation-criteria-config",
+    type=click.Path(
+        exists=True, file_okay=True, dir_okay=False, readable=True, resolve_path=True
+    ),
     required=False,
     help="path to a JSON config file containing evaluation criteria",
 )
@@ -113,7 +124,7 @@ def n_by_k_evals(
     evaluations_per_paper = evaluation_count
 
     jobs, loads = _assign_papers(df.shape[0], evaluators, evaluations_per_paper)
-    evaluator_papers = {evaluator_idx:[] for evaluator_idx in range(evaluators)}
+    evaluator_papers = {evaluator_idx: [] for evaluator_idx in range(evaluators)}
     for j, evaluator_ids in enumerate(jobs):
         for eid in evaluator_ids:
             row = df.iloc[j].to_dict()
