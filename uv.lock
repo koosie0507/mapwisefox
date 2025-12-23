@@ -742,7 +742,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.1.4"
+version = "0.1.5"
 source = { virtual = "." }
 
 [package.dev-dependencies]
@@ -873,7 +873,7 @@ dev = [{ name = "pandas-stubs", specifier = ">=2.3.0.250703" }]
 [[package]]
 name = "mapwisefox-split"
 version = "0.1.0"
-source = { virtual = "split" }
+source = { editable = "split" }
 dependencies = [
     { name = "numpy" },
     { name = "openpyxl" },
@@ -889,7 +889,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-web-backend"
-version = "0.6.0"
+version = "0.6.1"
 source = { editable = "web/backend" }
 dependencies = [
     { name = "arrow" },
