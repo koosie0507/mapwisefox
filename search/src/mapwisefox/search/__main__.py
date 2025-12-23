@@ -124,9 +124,9 @@ def _springer(data_dir, api_key, fetch_all=True):
 
 
 @click.command("search")
-@click.option("--clarivate-api-key", envvar="CLARIVATE_API_KEY")
-@click.option("--elsevier-api-key", envvar="ELSEVIER_API_KEY")
-@click.option("--springer-api-key", envvar="SPRINGER_API_KEY")
+@click.option("--clarivate-api-key", envvar="MWF_SEARCH_CLARIVATE_API_KEY")
+@click.option("--elsevier-api-key", envvar="MWF_SEARCH_ELSEVIER_API_KEY")
+@click.option("--springer-api-key", envvar="MWF_SEARCH_SPRINGER_API_KEY")
 @click.option("--data-dir", "-D", default=Path().cwd() / "data", envvar="DATA_DIR")
 def main(clarivate_api_key, elsevier_api_key, springer_api_key, data_dir):
     api_backends = {
