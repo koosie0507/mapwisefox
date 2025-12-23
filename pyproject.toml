@@ -23,9 +23,9 @@ exclude = ["web/assets", "web/frontend"]
 [dependency-groups]
 dev = [
     "black>=25.1.0",
-    "mypy>=1.17.1",
-    "pytest>=8.4.2",
-    "ruff>=0.12.12",
+    "mypy>=1.19",
+    "pytest>=9.0",
+    "ruff>=0.14",
 ]
 
 [tool.bumpversion]
