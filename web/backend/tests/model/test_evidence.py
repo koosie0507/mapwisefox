@@ -44,7 +44,7 @@ def test_init_invalid_date(new_evidence, publication_date):
         str(err_proxy.value)
         == f"""1 validation error for Evidence
   Value error, Invalid publication date: '{publication_date}' [type=value_error, input_value={{'cluster_id': 1, 'includ...ferencing_evidence': []}}, input_type=dict]
-    For further information visit https://errors.pydantic.dev/2.11/v/value_error"""
+    For further information visit https://errors.pydantic.dev/2.12/v/value_error"""
     )
 
 
