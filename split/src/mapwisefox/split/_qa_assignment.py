@@ -1,11 +1,14 @@
 import json
 from pathlib import Path
+from typing import Any
 
 import click
 import pandas as pd
 from datetime import datetime
 
 from collections import Counter
+
+from pandas import DataFrame
 
 
 def _assign_papers(paper_count: int, evaluators: int, eval_count: int):
@@ -45,12 +48,31 @@ def _validate_evaluation_count(ctx: click.Context, param: click.Option, value: i
 
     if not (0 < value <= evaluator_count):
         raise click.BadParameter(
-            f"must be between 0 and {evaluator_count} (got {value})"
+            f"must be between 1 and {evaluator_count} (got {value})"
         )
     return value
 
 
-@click.command("n-by-k-evals")
+def _init_eval_criteria(eval_criteria_config: str | Path | None) -> list[str]:
+    criteria = ["study quality"]
+    if eval_criteria_config is not None:
+        with open(eval_criteria_config) as cfg:
+            cfg_obj = json.load(cfg)
+            criteria = [x["label"] for x in cfg_obj["criteria"]]
+    return criteria
+
+
+def _load_workload_df(selection: str | Path, worksheet_name: str | None) -> dict[Any, DataFrame] | dict[
+    str, DataFrame] | dict[int | str, DataFrame] | DataFrame:
+    with open(selection, "rb") as xls:
+        kwargs = dict(engine="openpyxl", header=0)
+        if worksheet_name is not None:
+            kwargs.update(dict(sheet_name=worksheet_name))
+        df = pd.read_excel(xls, **kwargs)
+    return df
+
+
+@click.command("for-evaluation")
 @click.argument(
     "selection",
     type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True, resolve_path=True),
@@ -82,15 +104,14 @@ def n_by_k_evals(
     evaluator_count: int,
     evaluation_count: int,
     worksheet_name: str | None = None,
-    eval_criteria_config: str | Path | None = None,
+    evaluation_criteria_config: str | Path | None = None,
 ):
-    with open("uploads/20250813-ersa-sms-selection.xlsx", "rb") as xls:
-        df = pd.read_excel(xls, "Selection-Before-QA", engine="openpyxl", header=0)
-    with open("uploads/ersa-sms-qa-config.json") as cfg:
-        criteria_config = json.load(cfg)
-    criteria = [x["label"] for x in criteria_config["criteria"]]
-    evaluators = 5
-    evaluations_per_paper = 3
+    df = _load_workload_df(selection, worksheet_name)
+    criteria = _init_eval_criteria(evaluation_criteria_config)
+
+    evaluators = evaluator_count
+    evaluations_per_paper = evaluation_count
+
     jobs, loads = _assign_papers(df.shape[0], evaluators, evaluations_per_paper)
     evaluator_papers = {evaluator_idx:[] for evaluator_idx in range(evaluators)}
     for j, evaluator_ids in enumerate(jobs):
