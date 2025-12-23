@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [project.scripts]
-search = "mapwisefox.snowballing:run_command"
+snowball = "mapwisefox.snowballing:run_command"
 
 [tool.uv]
 package = true
