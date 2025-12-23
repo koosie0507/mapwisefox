@@ -116,7 +116,7 @@ async def run_command(
     forward_df = pd.DataFrame(forward_details)
 
     output_file = (
-        input_file.parent / f"{output_prefix}-snowballing.xlsx"
+        input_file.parent / f"{output_prefix}-snowball.xlsx"
         if not in_place
         else input_file
     )
@@ -125,5 +125,3 @@ async def run_command(
     ) as xls_writer:
         backward_df.to_excel(xls_writer, sheet_name="Back")
         forward_df.to_excel(xls_writer, sheet_name="Forward")
-
-    # print(len(backward_snowball), len(forward_snowball))
