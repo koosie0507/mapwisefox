@@ -59,7 +59,8 @@ def _generate(client, rule_config, model, title_abs):
     required=False,
 )
 @click.option(
-    "-i", "--ignore-attributes",
+    "-i",
+    "--ignore-attributes",
     type=click.STRING,
     multiple=True,
     help="ignore these attributes from the processing of individual selection records",
@@ -74,7 +75,9 @@ def select_studies(ctx, search_results, config_file, limit, ignore_attributes):
     decides based whether each record meets a set of criteria (which are also
     provided by the user).
     """
-    ignored_attrs = set(ignore_attributes if len(ignore_attributes) > 0 else DEFAULT_EXCLUDED_ATTRIBUTES)
+    ignored_attrs = set(
+        ignore_attributes if len(ignore_attributes) > 0 else DEFAULT_EXCLUDED_ATTRIBUTES
+    )
     search_results_path = Path(search_results)
     results_df = load_df(search_results_path)
     with open(config_file, "r") as f:
