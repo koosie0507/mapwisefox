@@ -4,6 +4,7 @@ requires-python = ">=3.13"
 [manifest]
 members = [
     "mapwisefox",
+    "mapwisefox-assistant",
     "mapwisefox-deduplication",
     "mapwisefox-kappa-score",
     "mapwisefox-search",
@@ -764,6 +765,27 @@ dev = [
 ]
 
 [[package]]
+name = "mapwisefox-assistant"
+version = "0.1.0"
+source = { editable = "assistant" }
+dependencies = [
+    { name = "bibtexparser" },
+    { name = "jinja2" },
+    { name = "ollama" },
+    { name = "openpyxl" },
+    { name = "pandas" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "bibtexparser", specifier = ">=1.4.3" },
+    { name = "jinja2", specifier = ">=3.1.6" },
+    { name = "ollama", specifier = ">=0.5.1" },
+    { name = "openpyxl", specifier = ">=3.1.5" },
+    { name = "pandas", specifier = ">=2.3.1" },
+]
+
+[[package]]
 name = "mapwisefox-deduplication"
 version = "0.1.0"
 source = { virtual = "deduplication" }
@@ -818,7 +840,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-search-judge"
-version = "0.1.0"
+version = "0.7.0"
 source = { editable = "search-judge" }
 dependencies = [
     { name = "bibtexparser" },

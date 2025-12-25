@@ -9,8 +9,8 @@ import click
 from jinja2 import FileSystemLoader, Environment
 from ollama import Client
 
-from ._base import assistant
-from ._utils import load_df
+from mapwisefox.assistant._base import assistant
+from mapwisefox.assistant._utils import load_df
 
 
 SYSTEM_PROMPT_TEMPLATE_NAME = f"{Path(__file__).stem}.j2"
@@ -51,35 +51,14 @@ def _generate(client, rule_config, model, title_abs):
     help="path to a JSON configuration containing inclusion and exclusion criteria",
 )
 @click.option(
-    "-m",
-    "--model",
-    type=click.Choice(["llama3.1", "gemma3n", "deepseek-r1:14b"]),
-    default="llama3.1",
-    help="the name of the large language model to use",
-    show_default=True,
-)
-@click.option(
-    "--ollama-host",
-    type=click.STRING,
-    default="localhost",
-    help="host running Ollama",
-    show_default=True,
-)
-@click.option(
-    "--ollama-port",
-    type=click.IntRange(1024, 65535, clamp=True),
-    default=11434,
-    help="port on which Ollama is listening",
-    show_default=True,
-)
-@click.option(
     "--limit",
     type=click.INT,
     default=None,
     help="maximum number of results to process",
     required=False,
 )
-def select_studies(search_results, config_file, model, ollama_host, ollama_port, limit):
+@click.pass_context
+def select_studies(ctx, search_results, config_file, limit):
     """Use an LLM to select primary studies according to criteria.
 
     A file containing a table of primary studies containing at least the title,
@@ -92,7 +71,7 @@ def select_studies(search_results, config_file, model, ollama_host, ollama_port,
     results_df = load_df(search_results_path)
     with open(config_file, "r") as f:
         rule_config = json.load(f)
-    ollama_client = _new_connection(ollama_host, ollama_port)
+    ollama_client = _new_connection(ctx.obj.ollama_host, ctx.obj.ollama_port)
 
     count = len(results_df) if limit is None else limit
     items = islice(results_df.iterrows(), 0, count)
@@ -113,7 +92,9 @@ def select_studies(search_results, config_file, model, ollama_host, ollama_port,
             answered = False
             answer_obj = {}
             while not answered and (
-                answer := _generate(ollama_client, rule_config, model, row_str)
+                answer := _generate(
+                    ollama_client, rule_config, ctx.obj.model_choice, row_str
+                )
             ):
                 try:
                     answer_obj = json.loads(answer)
@@ -128,7 +109,7 @@ def select_studies(search_results, config_file, model, ollama_host, ollama_port,
             elif status == "include":
                 results_df.at[ix, "exclude_reason"] = ""
 
-    model_stem = model.replace(":", "_")
+    model_stem = ctx.obj.model_choice.replace(":", "_")
     output_path = (
         search_results_path.parent / f"{search_results_path.stem}-{model_stem}.xlsx"
     )
