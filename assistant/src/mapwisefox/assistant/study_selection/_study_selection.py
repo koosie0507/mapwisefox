@@ -14,6 +14,7 @@ from mapwisefox.assistant._utils import load_df
 
 
 SYSTEM_PROMPT_TEMPLATE_NAME = f"{Path(__file__).stem}.j2"
+DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
 
 
 def _new_connection(host, port):
@@ -57,8 +58,15 @@ def _generate(client, rule_config, model, title_abs):
     help="maximum number of results to process",
     required=False,
 )
+@click.option(
+    "-i", "--ignore-attributes",
+    type=click.STRING,
+    multiple=True,
+    help="ignore these attributes from the processing of individual selection records",
+    default=DEFAULT_EXCLUDED_ATTRIBUTES,
+)
 @click.pass_context
-def select_studies(ctx, search_results, config_file, limit):
+def select_studies(ctx, search_results, config_file, limit, ignore_attributes):
     """Use an LLM to select primary studies according to criteria.
 
     A file containing a table of primary studies containing at least the title,
@@ -66,7 +74,7 @@ def select_studies(ctx, search_results, config_file, limit):
     decides based whether each record meets a set of criteria (which are also
     provided by the user).
     """
-    DEFAULT_EXCLUDED_ATTRIBUTES = {"cluster_id", "include", "exclude_reason"}
+    ignored_attrs = set(ignore_attributes if len(ignore_attributes) > 0 else DEFAULT_EXCLUDED_ATTRIBUTES)
     search_results_path = Path(search_results)
     results_df = load_df(search_results_path)
     with open(config_file, "r") as f:
@@ -87,7 +95,7 @@ def select_studies(ctx, search_results, config_file, limit):
             row_str = os.linesep.join(
                 f"{key}: {value}"
                 for key, value in row.items()
-                if key not in DEFAULT_EXCLUDED_ATTRIBUTES
+                if key not in ignored_attrs
             )
             answered = False
             answer_obj = {}

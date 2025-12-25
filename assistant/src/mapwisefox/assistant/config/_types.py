@@ -11,7 +11,7 @@ class ModelChoice(StrEnum):
     qwen3 = "qwen3:8b"
 
 
-@dataclass(frozen=True)
+@dataclass
 class AssistantParams:
     model_choice: ModelChoice = field(init=True, repr=True, default=ModelChoice.gpt)
     ollama_host: str = field(init=True, repr=True, default="localhost")
