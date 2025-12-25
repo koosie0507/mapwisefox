@@ -1,7 +1,7 @@
 VENV := .venv
 TIMESTAMP := $(VENV)/.last_sync
 PYTHON_VERSION := 3.13
-PYTHON_PACKAGE_DIRS := deduplication kappa-score search search-judge snowballing split web/backend
+PYTHON_PACKAGE_DIRS := assistant deduplication kappa-score search search-judge snowballing split web/backend
 PYTHON_TEST_DIRS := $(addsuffix /tests,$(PYTHON_PACKAGE_DIRS))
 NODE_PACKAGE_DIRS := web/frontend
 VALID_PACKAGES := $(PYTHON_PACKAGE_DIRS) $(NODE_PACKAGE_DIRS)
