@@ -9,8 +9,8 @@ import click
 from jinja2 import FileSystemLoader, Environment
 from ollama import Client
 
+from mapwisefox.assistant.tools import load_df
 from mapwisefox.assistant._base import assistant
-from mapwisefox.assistant._utils import load_df
 
 
 SYSTEM_PROMPT_TEMPLATE_NAME = f"{Path(__file__).stem}.j2"
