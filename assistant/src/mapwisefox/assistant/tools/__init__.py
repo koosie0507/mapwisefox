@@ -1,5 +1,5 @@
-from ._pdf import extract_pdf_text
+from .pdf import Paper as PaperPdf
 from ._utils import load_df
 
 
-__all__ = ["load_df", "extract_pdf_text"]
+__all__ = ["load_df", "PaperPdf"]

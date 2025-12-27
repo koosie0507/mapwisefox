@@ -1,7 +1,7 @@
 import click
 
 from mapwisefox.assistant._base import assistant
-from mapwisefox.assistant.tools import extract_pdf_text
+from mapwisefox.assistant.tools import PaperPdf
 
 
 @assistant.command("judge")
@@ -11,5 +11,5 @@ from mapwisefox.assistant.tools import extract_pdf_text
 )
 @click.pass_context
 def judge(ctx, file):
-    text = extract_pdf_text(file)
-    print(text)
+    with PaperPdf(file) as p:
+        print(p.text)
