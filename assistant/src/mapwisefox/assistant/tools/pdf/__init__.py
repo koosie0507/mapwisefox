@@ -1,4 +1,4 @@
-from ._pdf import Paper
+from ._pdf import PdfFileExtractor, PdfTextFileExtractor
 
 
-__all__ = ["Paper"]
+__all__ = ["PdfFileExtractor", "PdfTextFileExtractor"]

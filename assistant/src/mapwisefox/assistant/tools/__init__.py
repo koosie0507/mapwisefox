@@ -1,4 +1,4 @@
-from .pdf import Paper as PaperPdf
+from .pdf import PdfFileExtractor as PaperPdf
 from ._utils import load_df
 
 

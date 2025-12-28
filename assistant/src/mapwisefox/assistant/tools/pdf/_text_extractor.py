@@ -1,11 +1,23 @@
 import math
+import re
 from collections import defaultdict
 from functools import partial
 from pathlib import Path
 
+import stopwords
 from pypdf import PdfReader
 
 from ._types import Point, Rect, Size, TextItem
+
+EN_STOPWORDS = stopwords.get_stopwords("english")
+SENTENCE_TERMINATION_RE = re.compile(r"(?<=[.!?])\s+", re.M)
+NON_SENTENCE_TERMINATION_RE = re.compile(r"(?<=[^\s.!?])\s+(?=[^\s.!?])", re.M)
+LINE_NUMBERING_RE = re.compile(r"(\n|\s)\d+?(?:\n|$)", re.M)
+BIBLIOGRAPHY_SECTION_RE = re.compile(r"\b(references|bibliography|文献)\b", re.I)
+SECTION_HEADER_RE = re.compile(
+    r"((?:(?:[IVXLCDM]+)|\d+)(?:[.)](?:[a-z]+|\d+|(?:ix|iv|v?i{0,3}|xl|xc|cd|cm|d?c{0,3})))*[.)\n])\s*([^\n.?!]{,50})(?:[\n.?!]|$)",
+    re.M,
+)
 
 
 class PdfTextExtractor:
