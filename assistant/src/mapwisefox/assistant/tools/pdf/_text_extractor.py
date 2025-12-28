@@ -5,7 +5,7 @@ from pathlib import Path
 
 from pypdf import PdfReader
 
-from ._types import *
+from ._types import Point, Rect, Size, TextItem
 
 
 class PdfTextExtractor:
