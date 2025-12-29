@@ -1,4 +1,5 @@
 import abc
+import io
 from pathlib import Path
 
 from ._text_extractor import PdfTextExtractor
@@ -38,7 +39,7 @@ class PdfFileExtractor(metaclass=abc.ABCMeta):
         return boxes_by_page
 
     @abc.abstractmethod
-    def _prepare_text(
+    def _prepare_output(
         self, by_page: dict[int, tuple[list[LayoutBox], list[TextItem]]]
     ) -> str:
         pass
@@ -52,7 +53,7 @@ class PdfFileExtractor(metaclass=abc.ABCMeta):
         scale = self.__compute_text_to_layout_scale()
         boxes_by_page = self.__compute_boxes_by_page(scale)
 
-        return self._prepare_text(boxes_by_page)
+        return self._prepare_output(boxes_by_page)
 
 
 class PdfTextFileExtractor(PdfFileExtractor):
@@ -86,10 +87,10 @@ class PdfTextFileExtractor(PdfFileExtractor):
             if box.bounds.overlap_ratio(text_item.bounds) >= self._min_overlap_ratio
         ]
 
-    def _prepare_text(
+    def _prepare_output(
         self, by_page: dict[int, tuple[list[LayoutBox], list[TextItem]]]
     ) -> str:
-        merged: list[str] = []
+        output_buffer = io.StringIO()
         current_type: str | None = None
         current_texts: list[str] = []
 
@@ -105,13 +106,17 @@ class PdfTextFileExtractor(PdfFileExtractor):
 
                 if current_type != box_type:
                     if len(current_texts) > 0:
-                        merged.append(self.__join_text(current_type, current_texts))
+                        output_buffer.write(
+                            self.__join_text(current_type, current_texts)
+                        )
                     current_type = box_type
                     current_texts = []
 
                 self.__append_text(current_texts, text_item.text)
 
         if len(current_texts) > 0:
-            merged.append(self.__join_text(current_type, current_texts))
+            output_buffer.write(
+                self.__join_text(current_type, current_texts)
+            )
 
-        return "".join(merged)
+        return output_buffer.getvalue()
