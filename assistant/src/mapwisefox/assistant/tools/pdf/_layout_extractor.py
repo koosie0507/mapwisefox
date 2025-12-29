@@ -143,12 +143,10 @@ Then re-run the extractor."""
         return result
 
     def _process_page(self, file_path: Path, model, page_no: int, image):
-        self.__image_sizes[page_no] = Size(image.size[0], image.size[1])
         layout = model.detect(image)
-        self.__layout_boxes[page_no] = self.__greedy_overlap_merge(
+        return self.__greedy_overlap_merge(
             list(map(self.__to_layout_box, filter(self.__is_supported, layout)))
         )
-        self._write_debug_image(file_path, page_no, image)
 
     def __call__(
         self,
@@ -172,12 +170,18 @@ Then re-run the extractor."""
             file_path, dpi=self.__dpi, first_page=first_page, last_page=last_page
         )
         executor = ProcessPoolExecutor(max_workers=os.cpu_count() - 1)
-        futures = []
+
+        futures = {}
         for page_no, image in enumerate(images):
+            self.__image_sizes[page_no] = Size(image.size[0], image.size[1])
             process_page = partial(self._process_page, file_path, model)
-            futures.append(executor.submit(process_page, page_no, image))
-        done, not_done = wait(futures)
-        print(done, not_done)
+            futures[page_no] = executor.submit(process_page, page_no, image)
+        wait(futures.values())
+
+        for page_no, image in enumerate(images):
+            self.__layout_boxes[page_no] = futures[page_no].result()
+            self._write_debug_image(file_path, page_no, image)
+
         return file_path
 
     def _write_debug_image(

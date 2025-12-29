@@ -70,13 +70,13 @@ class PdfTextFileExtractor(PdfFileExtractor):
 
     @staticmethod
     def __append_text(existing: list[str], new_text: str) -> list[str]:
+        hyphenated = False
         if len(existing) > 0:
-            prev = existing[-1].strip()
+            prev = existing[-1].rstrip()
             if prev.endswith("-"):
                 existing[-1] = prev[:-1] + new_text.lstrip()
-            else:
-                existing.append(new_text)
-        else:
+                hyphenated = True
+        if not hyphenated:
             existing.append(new_text)
         return existing
 
@@ -115,9 +115,7 @@ class PdfTextFileExtractor(PdfFileExtractor):
                 self.__append_text(current_texts, text_item.text)
 
         if len(current_texts) > 0:
-            output_buffer.write(
-                self._join_texts(current_type, current_texts)
-            )
+            output_buffer.write(self._join_texts(current_type, current_texts))
 
         return output_buffer.getvalue()
 
@@ -126,5 +124,5 @@ class PdfMarkdownFileExtractor(PdfTextFileExtractor):
     @classmethod
     def _join_texts(cls, box_type: str, texts: list[str]) -> str:
         box_type = box_type.lower()
-        joined_text = " ".join(texts).strip()
-        return f"## {joined_text}\n" if box_type == "title" else joined_text
+        joined_text = "\n".join(texts).strip()
+        return f"\n\n## {joined_text}\n\n" if box_type == "title" else joined_text

@@ -1,4 +1,4 @@
-from ._pdf import PdfFileExtractor, PdfTextFileExtractor
+from ._pdf import PdfFileExtractor, PdfTextFileExtractor, PdfMarkdownFileExtractor
 
 
-__all__ = ["PdfFileExtractor", "PdfTextFileExtractor"]
+__all__ = ["PdfFileExtractor", "PdfTextFileExtractor", "PdfMarkdownFileExtractor"]
