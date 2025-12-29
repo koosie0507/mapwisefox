@@ -57,13 +57,13 @@ class PdfFileExtractor(metaclass=abc.ABCMeta):
 
 
 class PdfTextFileExtractor(PdfFileExtractor):
-    @staticmethod
-    def __layout_type_priority(box_type: str) -> int:
+    @classmethod
+    def _get_box_type_priority(cls, box_type: str) -> int:
         box_type = box_type.lower().strip()
         return {"title": 3, "list": 2, "text": 1}.get(box_type, -1)
 
-    @staticmethod
-    def __join_text(box_type: str, texts: list[str]) -> str:
+    @classmethod
+    def _join_texts(cls, box_type: str, texts: list[str]) -> str:
         box_type = box_type.lower()
         joined_text = " ".join(texts).strip()
         return f"\n**{joined_text}**\n" if box_type == "title" else joined_text
@@ -101,13 +101,13 @@ class PdfTextFileExtractor(PdfFileExtractor):
                     continue
                 box_type = max(
                     (t for box in overlapping_boxes for t in box.types),
-                    key=self.__layout_type_priority,
+                    key=self._get_box_type_priority,
                 )
 
                 if current_type != box_type:
                     if len(current_texts) > 0:
                         output_buffer.write(
-                            self.__join_text(current_type, current_texts)
+                            self._join_texts(current_type, current_texts)
                         )
                     current_type = box_type
                     current_texts = []
@@ -116,7 +116,15 @@ class PdfTextFileExtractor(PdfFileExtractor):
 
         if len(current_texts) > 0:
             output_buffer.write(
-                self.__join_text(current_type, current_texts)
+                self._join_texts(current_type, current_texts)
             )
 
         return output_buffer.getvalue()
+
+
+class PdfMarkdownFileExtractor(PdfTextFileExtractor):
+    @classmethod
+    def _join_texts(cls, box_type: str, texts: list[str]) -> str:
+        box_type = box_type.lower()
+        joined_text = " ".join(texts).strip()
+        return f"## {joined_text}\n" if box_type == "title" else joined_text
