@@ -62,12 +62,10 @@ class PdfTextFileExtractor(PdfFileExtractor):
         return {"title": 3, "list": 2, "text": 1}.get(box_type, -1)
 
     @staticmethod
-    def __to_string(box_type: str, texts: list[str]) -> str:
-        if box_type == "title":
-            return "\n**" + " ".join(texts).strip() + "**\n"
-        if box_type == "list":
-            return "\n".join(texts) + "\n"
-        return " ".join(texts) + " "
+    def __join_text(box_type: str, texts: list[str]) -> str:
+        box_type = box_type.lower()
+        joined_text = " ".join(texts).strip()
+        return f"\n**{joined_text}**\n" if box_type == "title" else joined_text
 
     @staticmethod
     def __append_text(existing: list[str], new_text: str) -> list[str]:
@@ -107,11 +105,13 @@ class PdfTextFileExtractor(PdfFileExtractor):
 
                 if current_type != box_type:
                     if len(current_texts) > 0:
-                        merged.append(self.__to_string(current_type, current_texts))
+                        merged.append(self.__join_text(current_type, current_texts))
                     current_type = box_type
                     current_texts = []
 
+                self.__append_text(current_texts, text_item.text)
+
         if len(current_texts) > 0:
-            merged.append(self.__to_string(current_type, current_texts))
+            merged.append(self.__join_text(current_type, current_texts))
 
         return "".join(merged)

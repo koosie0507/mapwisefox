@@ -1,6 +1,9 @@
 import itertools
+import os
 import shutil
+from concurrent.futures import ProcessPoolExecutor, wait
 from collections import defaultdict
+from functools import partial
 from pathlib import Path
 from types import ModuleType
 
@@ -139,6 +142,14 @@ Then re-run the extractor."""
             result.append(current)
         return result
 
+    def _process_page(self, file_path: Path, model, page_no: int, image):
+        self.__image_sizes[page_no] = Size(image.size[0], image.size[1])
+        layout = model.detect(image)
+        self.__layout_boxes[page_no] = self.__greedy_overlap_merge(
+            list(map(self.__to_layout_box, filter(self.__is_supported, layout)))
+        )
+        self._write_debug_image(file_path, page_no, image)
+
     def __call__(
         self,
         file: str | Path,
@@ -160,13 +171,13 @@ Then re-run the extractor."""
         images = pdf2image.convert_from_path(
             file_path, dpi=self.__dpi, first_page=first_page, last_page=last_page
         )
+        executor = ProcessPoolExecutor(max_workers=os.cpu_count() - 1)
+        futures = []
         for page_no, image in enumerate(images):
-            self.__image_sizes[page_no] = Size(image.size[0], image.size[1])
-            layout = model.detect(image)
-            self.__layout_boxes[page_no] = self.__greedy_overlap_merge(
-                list(map(self.__to_layout_box, filter(self.__is_supported, layout)))
-            )
-            self._write_debug_image(file_path, page_no, image)
+            process_page = partial(self._process_page, file_path, model)
+            futures.append(executor.submit(process_page, page_no, image))
+        done, not_done = wait(futures)
+        print(done, not_done)
         return file_path
 
     def _write_debug_image(
@@ -196,5 +207,7 @@ Then re-run the extractor."""
 
 
 if __name__ == "__main__":
-    extract = PdfLayoutExtractor(debug=True)
-    extract("./uploads/cluster-ea.pdf", first_page=7, last_page=7)
+    extract = PdfLayoutExtractor(
+        config_path="lp://PubLayNet/tf_efficientdet_d1/config", debug=True
+    )
+    extract("./uploads/nguyen2016.pdf")  # , first_page=7, last_page=7)

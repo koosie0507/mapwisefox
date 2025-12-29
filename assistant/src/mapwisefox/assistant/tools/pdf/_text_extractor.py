@@ -9,15 +9,8 @@ from pypdf import PdfReader
 
 from ._types import Point, Rect, Size, TextItem
 
-EN_STOPWORDS = stopwords.get_stopwords("english")
-SENTENCE_TERMINATION_RE = re.compile(r"(?<=[.!?])\s+", re.M)
-NON_SENTENCE_TERMINATION_RE = re.compile(r"(?<=[^\s.!?])\s+(?=[^\s.!?])", re.M)
-LINE_NUMBERING_RE = re.compile(r"(\n|\s)\d+?(?:\n|$)", re.M)
-BIBLIOGRAPHY_SECTION_RE = re.compile(r"\b(references|bibliography|文献)\b", re.I)
-SECTION_HEADER_RE = re.compile(
-    r"((?:(?:[IVXLCDM]+)|\d+)(?:[.)](?:[a-z]+|\d+|(?:ix|iv|v?i{0,3}|xl|xc|cd|cm|d?c{0,3})))*[.)\n])\s*([^\n.?!]{,50})(?:[\n.?!]|$)",
-    re.M,
-)
+
+EN_STOPWORDS = set(stopwords.get_stopwords("english"))
 
 
 class PdfTextExtractor:
@@ -110,10 +103,30 @@ class PdfTextExtractor:
             end=Point(origin.x + text_size.width, page_height - origin.y),
         )
 
+    @staticmethod
+    def __is_text_valid(text) -> bool:
+        if text is None:
+            return False
+        stripped = str(text).strip()
+        if len(stripped) == 0:
+            return False
+        if all((not ch.isalnum()) for ch in stripped):
+            return False
+        tokens = [t.lower() for t in re.findall(r"\b\w+\b", stripped)]
+        if tokens and all(t in EN_STOPWORDS for t in tokens):
+            return False
+        return True
+
     def __visit_text(
-        self, page, text, user_matrix, text_matrix, font_dictionary, font_size
+        self,
+        page: int,
+        text: str,
+        user_matrix: list[float],
+        text_matrix: list[float],
+        font_dictionary: dict,
+        font_size: float,
     ):
-        if text is None or not str(text).strip():
+        if not self.__is_text_valid(text):
             return
 
         # get translation from text_matrix
