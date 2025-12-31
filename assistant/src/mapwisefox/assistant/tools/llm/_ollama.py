@@ -36,6 +36,7 @@ class OllamaJSONGenerator(JSONGenerator):
     def _generate_text(
         self, system_prompt: str, user_prompt: str, response_format: str | dict
     ) -> str:
+        self.__client
         response = self.__client.chat(
             model=self.__model_name,
             messages=[
@@ -50,13 +51,18 @@ class OllamaJSONGenerator(JSONGenerator):
         )
 
         buf = io.StringIO()
+        thoughts = False
         for chunk in response:
             if chunk.message.thinking:
                 self._thinking_callback(chunk.message.thinking)
+                thoughts = True
             elif chunk_text := chunk.message.content:
-                self._text_callback(chunk.message.content)
                 buf.write(chunk_text)
-
+                if thoughts:
+                    self._text_callback("\n")
+                    thoughts = False
+                self._text_callback(chunk_text)
+        self._text_callback("\n")
         return buf.getvalue()
 
 

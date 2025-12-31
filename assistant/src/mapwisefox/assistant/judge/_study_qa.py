@@ -1,4 +1,9 @@
+import io
 import json
+import logging
+import os
+import sys
+from collections import defaultdict
 
 import urllib3
 from functools import partial
@@ -21,6 +26,8 @@ from mapwisefox.assistant.tools.pdf import (
     PdfMarkdownFileExtractor,
 )
 
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+log = logging.getLogger(__file__)
 
 urllib3.disable_warnings()
 
@@ -52,22 +59,22 @@ def _write_stdout(msg: str, *args):
 
 
 def _write_stderr(msg: str, e: Exception):
-    click.echo(f"{msg}\n{e}", err=True)
+    log.error(msg, exc_info=e)
 
 
-@timer(callback=_write_stdout, label="read-pdf")
+@timer(callback=log.info, label="read-pdf")
 def _read_text(local_path: Path) -> str:
     extractor = PdfMarkdownFileExtractor()
     return extractor.read_file(local_path)
 
 
-@timer(callback=_write_stdout, label="evaluate-paper")
+@timer(callback=log.info, label="evaluate-paper")
 def _evaluate_paper(
     local_path: Path,
     generate_json: Callable[[dict, str], dict],
     qa_config: dict,
     qa_criteria: dict,
-) -> list[dict]:
+) -> dict | None:
     try:
         user_prompt = _read_text(local_path)
         result = {}
@@ -75,19 +82,19 @@ def _evaluate_paper(
             key = c["label"]
             ctx = _extract_context(qa_config, c)
 
-            c_timer = timer(_write_stdout, f"{local_path.stem}: generate-json({key})")
+            c_timer = timer(log.info, f"{local_path.stem}: generate-json({key})")
             eval_c = c_timer(generate_json)
             obj = None
             while obj is None or not obj.get("score"):
                 obj = eval_c(template_data=ctx, user_prompt=user_prompt)
-                _write_stdout("LLM answer: %s", obj)
+                log.debug("LLM answer: %s", obj)
             result[key] = obj
 
-        return [result]
+        return result
     except Exception as e:
         styled_url = click.style(local_path, italic=True, underline=True)
         click.echo(f"Failed to evaluate paper {styled_url}. Error: {e}", err=True)
-        return []
+        return None
 
 
 @click.command("study-qa")
@@ -117,13 +124,17 @@ def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
     with open(qa_config_path, "r") as jfp:
         qa_config = json.load(jfp)
     qa_criteria = qa_config["criteria"]
+
     df = load_df(file)
+    for c in qa_criteria:
+        df[c["label"]] = df[c["label"]].astype("Float64")
     expected_json_schema = {
         "title": "evaluation",
         "description": "primary study evaluation",
         "type": "object",
         "properties": {"score": {"type": "number"}, "reason": {"type": "string"}},
     }
+
     factory = OllamaProvider(
         ctx.obj.model_choice,
         ollama_host=f"{ctx.obj.ollama_host}:{ctx.obj.ollama_port}",
@@ -140,22 +151,44 @@ def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
         response_schema=expected_json_schema,
     )
 
-    results = []
+    results = {}
     with ThreadPoolExecutor(max_workers=2) as pool:
-        fs = []
+        fs = {}
         for idx, paper_metadata in df.iterrows():
-            if idx != 2:
+            if idx != 1:
                 continue
             local_file_path = file_provider(paper_metadata[url_column])
-            fs.append(
-                pool.submit(
-                    _evaluate_paper,
-                    local_file_path,
-                    generate_json,
-                    qa_config,
-                    qa_criteria,
-                )
+            fs[pool.submit(
+                _evaluate_paper,
+                local_file_path,
+                generate_json,
+                qa_config,
+                qa_criteria,
+            )] = idx
+        results = {
+            fs[f]: result
+            for f in as_completed(fs)
+            if (result:=f.result()) is not None
+        }
+    criteria_dict = {c["label"]: c for c in qa_criteria}
+    for idx, result in results.items():
+        evaluation = defaultdict(list)
+        for idx, label in enumerate(result, 1):
+            score = result[label].pop("score", 0)
+            df.loc[idx, label] = score
+            evaluation[criteria_dict[label]["category"]].append(
+                os.linesep.join([
+                    f"{idx}. **{criteria_dict[label]["question"]}**",
+                    *result[label].values()
+                ])
             )
-            break
-        results.extend(result for f in as_completed(fs) for result in f.result())
-    print(results)
+        evaluation_text = io.StringIO()
+        for category, answers in evaluation.items():
+            evaluation_text.write(f"{os.linesep}# {category}{2*os.linesep}")
+            evaluation_text.write(f"{2*os.linesep}".join(answers))
+            evaluation_text.write(os.linesep)
+
+        df.loc[idx, "evaluation"] = evaluation_text.getvalue()
+
+    output_path = file.parent / f"{file.stem}-evaluated{file.suffix}"
+    df.to_excel(output_path, index=False)
