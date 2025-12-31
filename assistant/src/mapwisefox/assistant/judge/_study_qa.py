@@ -9,7 +9,6 @@ import urllib3
 from functools import partial
 from typing import Callable
 
-from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
 import click
@@ -21,7 +20,6 @@ from mapwisefox.assistant.tools import (
     load_template,
     FileProvider,
 )
-from mapwisefox.assistant.tools.llm import OllamaProvider
 from mapwisefox.assistant.tools.pdf import (
     PdfMarkdownFileExtractor,
 )
@@ -63,20 +61,22 @@ def _write_stderr(msg: str, e: Exception):
 
 
 @timer(callback=log.info, label="read-pdf")
-def _read_text(local_path: Path) -> str:
-    extractor = PdfMarkdownFileExtractor()
+def _read_text(layout_model: str, local_path: Path, dpi: int = 150) -> str:
+    extractor = PdfMarkdownFileExtractor(dpi, layout_model=layout_model)
     return extractor.read_file(local_path)
 
 
 @timer(callback=log.info, label="evaluate-paper")
 def _evaluate_paper(
+    layout_model: str,
     local_path: Path,
     generate_json: Callable[[dict, str], dict],
     qa_config: dict,
     qa_criteria: dict,
+    **kwargs,
 ) -> dict | None:
     try:
-        user_prompt = _read_text(local_path)
+        user_prompt = _read_text(layout_model, local_path, kwargs.pop("dpi", 150))
         result = {}
         for c in qa_criteria:
             key = c["label"]
@@ -117,8 +117,19 @@ def _evaluate_paper(
     required=True,
     help="path to QA rule config file",
 )
+@click.option(
+    "-l",
+    "--layout-model",
+    "layout_config_path",
+    type=click.STRING,
+    required=True,
+    default="lp://PubLayNet/tf_efficientdet_d0/config",
+    help="model used to infer the layout of a PDF file; see LayoutParser for values.",
+)
 @click.pass_context
-def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
+def study_qa(
+    ctx, file: Path, url_column: str, qa_config_path: Path, layout_config_path: str
+):
     file = Path(file).resolve()
     file_provider = FileProvider(file.parent / "downloads")
     with open(qa_config_path, "r") as jfp:
@@ -133,16 +144,14 @@ def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
         "description": "primary study evaluation",
         "type": "object",
         "properties": {"score": {"type": "number"}, "reason": {"type": "string"}},
+        "additionalProperties": False,
+        "strict": True,
+        "required": ["score", "reason"],
     }
-
-    factory = OllamaProvider(
-        ctx.obj.model_choice,
-        ollama_host=f"{ctx.obj.ollama_host}:{ctx.obj.ollama_port}",
-        on_error=_write_stderr,
-        on_thinking=_write_thoughts(),
-        on_text=_write_stdout,
+    provider = ctx.obj.provider_factory(
+        on_error=_write_stderr, on_thinking=_write_thoughts(), on_text=_write_stdout
     )
-    json_generator = factory.new_json_generator()
+    json_generator = provider.new_json_generator()
     generate_json = partial(
         json_generator.generate_json,
         system_prompt_template=load_template(
@@ -152,35 +161,34 @@ def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
     )
 
     results = {}
-    with ThreadPoolExecutor(max_workers=2) as pool:
-        fs = {}
-        for idx, paper_metadata in df.iterrows():
-            if idx != 1:
-                continue
-            local_file_path = file_provider(paper_metadata[url_column])
-            fs[pool.submit(
-                _evaluate_paper,
-                local_file_path,
-                generate_json,
-                qa_config,
-                qa_criteria,
-            )] = idx
-        results = {
-            fs[f]: result
-            for f in as_completed(fs)
-            if (result:=f.result()) is not None
-        }
+    for idx, paper_metadata in df.iterrows():
+        download_url = paper_metadata[url_column]
+        local_file_path = file_provider(download_url)
+        result = _evaluate_paper(
+            layout_config_path,
+            local_file_path,
+            generate_json,
+            qa_config,
+            qa_criteria,
+        )
+        if result is None:
+            log.warning("unable to process item %d: %r", idx, download_url)
+            continue
+        results[idx] = result
+
     criteria_dict = {c["label"]: c for c in qa_criteria}
     for idx, result in results.items():
         evaluation = defaultdict(list)
-        for idx, label in enumerate(result, 1):
+        for i, label in enumerate(result, 1):
             score = result[label].pop("score", 0)
             df.loc[idx, label] = score
             evaluation[criteria_dict[label]["category"]].append(
-                os.linesep.join([
-                    f"{idx}. **{criteria_dict[label]["question"]}**",
-                    *result[label].values()
-                ])
+                os.linesep.join(
+                    [
+                        f"{i}. **{criteria_dict[label]["question"]}**",
+                        *result[label].values(),
+                    ]
+                )
             )
         evaluation_text = io.StringIO()
         for category, answers in evaluation.items():
@@ -190,5 +198,5 @@ def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
 
         df.loc[idx, "evaluation"] = evaluation_text.getvalue()
 
-    output_path = file.parent / f"{file.stem}-evaluated{file.suffix}"
+    output_path = file.parent / f"{file.stem}-{ctx.obj.model_choice}{file.suffix}"
     df.to_excel(output_path, index=False)

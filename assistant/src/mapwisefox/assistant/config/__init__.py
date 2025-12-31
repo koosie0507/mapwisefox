@@ -1,4 +1,4 @@
-from ._types import ModelChoice, AssistantParams
+from ._types import ModelChoice, ProviderChoice, AssistantParams
 
 
-__all__ = ["ModelChoice", "AssistantParams"]
+__all__ = ["ModelChoice", "ProviderChoice", "AssistantParams"]

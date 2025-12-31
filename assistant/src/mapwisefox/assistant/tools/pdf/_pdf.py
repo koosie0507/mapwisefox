@@ -12,10 +12,11 @@ class PdfFileExtractor(metaclass=abc.ABCMeta):
         self,
         dpi: int = 150,
         text_to_layout_min_overlap_ratio: float = 0.5,
+        layout_model: str = "lp://PubLayNet/tf_efficientdet_d0/config",
     ):
         self._min_overlap_ratio = text_to_layout_min_overlap_ratio
         self.__text_extractor = PdfTextExtractor()
-        self.__layout_extractor = PdfLayoutExtractor(dpi)
+        self.__layout_extractor = PdfLayoutExtractor(dpi, config_path=layout_model)
 
     def __compute_text_to_layout_scale(self) -> dict[int, tuple[float, float]]:
         return {
