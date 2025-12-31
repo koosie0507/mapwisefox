@@ -161,6 +161,5 @@ class PdfTextExtractor:
                 _, _, page_w, page_h = map(float, page.mediabox)
                 self._page_sizes[page_number] = Size(page_w, page_h)
                 visit_page_text = partial(self.__visit_text, page_number)
-                text = page.extract_text(visitor_text=visit_page_text)
-                print(text)
+                page.extract_text(visitor_text=visit_page_text)
         return file_path

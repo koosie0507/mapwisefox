@@ -1,0 +1,161 @@
+import json
+
+import urllib3
+from functools import partial
+from typing import Callable
+
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from pathlib import Path
+
+import click
+
+
+from mapwisefox.assistant.instrumentation import timer
+from mapwisefox.assistant.tools import (
+    load_df,
+    load_template,
+    FileProvider,
+)
+from mapwisefox.assistant.tools.llm import OllamaProvider
+from mapwisefox.assistant.tools.pdf import (
+    PdfMarkdownFileExtractor,
+)
+
+
+urllib3.disable_warnings()
+
+
+def _extract_context(cfg: dict, crit: dict) -> dict:
+    return {
+        "topic": cfg["topic"],
+        "question": crit["question"],
+        "description": crit["description"],
+        "scoring": crit["scoring"],
+    }
+
+
+def _write_thoughts():
+    wrote_label = False
+
+    def _(msg: str):
+        nonlocal wrote_label
+        if not wrote_label:
+            click.secho("Thinking ... ", nl=True, color=True, fg="blue", italic=True)
+        click.secho(msg, nl=False, color=True, fg="blue", italic=True)
+        wrote_label = True
+
+    return _
+
+
+def _write_stdout(msg: str, *args):
+    click.echo(msg % args, nl=False)
+
+
+def _write_stderr(msg: str, e: Exception):
+    click.echo(f"{msg}\n{e}", err=True)
+
+
+@timer(callback=_write_stdout, label="read-pdf")
+def _read_text(local_path: Path) -> str:
+    extractor = PdfMarkdownFileExtractor()
+    return extractor.read_file(local_path)
+
+
+@timer(callback=_write_stdout, label="evaluate-paper")
+def _evaluate_paper(
+    local_path: Path,
+    generate_json: Callable[[dict, str], dict],
+    qa_config: dict,
+    qa_criteria: dict,
+) -> list[dict]:
+    try:
+        user_prompt = _read_text(local_path)
+        result = {}
+        for c in qa_criteria:
+            key = c["label"]
+            ctx = _extract_context(qa_config, c)
+
+            c_timer = timer(_write_stdout, f"{local_path.stem}: generate-json({key})")
+            eval_c = c_timer(generate_json)
+            obj = None
+            while obj is None or not obj.get("score"):
+                obj = eval_c(template_data=ctx, user_prompt=user_prompt)
+                _write_stdout("LLM answer: %s", obj)
+            result[key] = obj
+
+        return [result]
+    except Exception as e:
+        styled_url = click.style(local_path, italic=True, underline=True)
+        click.echo(f"Failed to evaluate paper {styled_url}. Error: {e}", err=True)
+        return []
+
+
+@click.command("study-qa")
+@click.argument(
+    "file",
+    type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True),
+)
+@click.option(
+    "-u",
+    "--url-column",
+    type=click.STRING,
+    default="url",
+    help="column in the Excel sheet which contains URLs to primary studies",
+)
+@click.option(
+    "-c",
+    "--config",
+    "qa_config_path",
+    type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True),
+    required=True,
+    help="path to QA rule config file",
+)
+@click.pass_context
+def study_qa(ctx, file: Path, url_column: str, qa_config_path: Path):
+    file = Path(file).resolve()
+    file_provider = FileProvider(file.parent / "downloads")
+    with open(qa_config_path, "r") as jfp:
+        qa_config = json.load(jfp)
+    qa_criteria = qa_config["criteria"]
+    df = load_df(file)
+    expected_json_schema = {
+        "title": "evaluation",
+        "description": "primary study evaluation",
+        "type": "object",
+        "properties": {"score": {"type": "number"}, "reason": {"type": "string"}},
+    }
+    factory = OllamaProvider(
+        ctx.obj.model_choice,
+        ollama_host=f"{ctx.obj.ollama_host}:{ctx.obj.ollama_port}",
+        on_error=_write_stderr,
+        on_thinking=_write_thoughts(),
+        on_text=_write_stdout,
+    )
+    json_generator = factory.new_json_generator()
+    generate_json = partial(
+        json_generator.generate_json,
+        system_prompt_template=load_template(
+            Path(__file__).parent / f"{Path(__file__).stem}.j2"
+        ),
+        response_schema=expected_json_schema,
+    )
+
+    results = []
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        fs = []
+        for idx, paper_metadata in df.iterrows():
+            if idx != 2:
+                continue
+            local_file_path = file_provider(paper_metadata[url_column])
+            fs.append(
+                pool.submit(
+                    _evaluate_paper,
+                    local_file_path,
+                    generate_json,
+                    qa_config,
+                    qa_criteria,
+                )
+            )
+            break
+        results.extend(result for f in as_completed(fs) for result in f.result())
+    print(results)

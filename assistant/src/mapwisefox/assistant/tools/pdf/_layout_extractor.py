@@ -1,8 +1,8 @@
 import itertools
 import os
 import shutil
-from concurrent.futures import ProcessPoolExecutor, wait
 from collections import defaultdict
+from concurrent.futures import ThreadPoolExecutor, wait
 from functools import partial
 from pathlib import Path
 from types import ModuleType
@@ -142,7 +142,7 @@ Then re-run the extractor."""
             result.append(current)
         return result
 
-    def _process_page(self, file_path: Path, model, page_no: int, image):
+    def _process_page(self, model, image):
         layout = model.detect(image)
         return self.__greedy_overlap_merge(
             list(map(self.__to_layout_box, filter(self.__is_supported, layout)))
@@ -158,29 +158,40 @@ Then re-run the extractor."""
         self.__image_sizes.clear()
         self.__layout_boxes.clear()
         file_path = Path(file).resolve()
-
-        model = AutoLayoutModel(
-            config_path=self.__config_path,
-            label_map=self.__label_map,
-            device="cuda",  # or "cpu"
-            extra_config={"output_confidence_threshold": 0.25},
+        process_page = partial(
+            self._process_page,
+            model=AutoLayoutModel(
+                config_path=self.__config_path,
+                label_map=self.__label_map,
+            ),
         )
+        images = {
+            page_no: image
+            for page_no, image in enumerate(
+                pdf2image.convert_from_path(
+                    file_path,
+                    dpi=self.__dpi,
+                    first_page=first_page,
+                    last_page=last_page,
+                ),
+                first_page if first_page is not None else 0,
+            )
+        }
+        self.__image_sizes = {
+            page_no: Size(image.size[0], image.size[1])
+            for page_no, image in images.items()
+        }
 
-        images = pdf2image.convert_from_path(
-            file_path, dpi=self.__dpi, first_page=first_page, last_page=last_page
-        )
-        executor = ProcessPoolExecutor(max_workers=os.cpu_count() - 1)
-
-        futures = {}
-        for page_no, image in enumerate(images):
-            self.__image_sizes[page_no] = Size(image.size[0], image.size[1])
-            process_page = partial(self._process_page, file_path, model)
-            futures[page_no] = executor.submit(process_page, page_no, image)
-        wait(futures.values())
-
-        for page_no, image in enumerate(images):
-            self.__layout_boxes[page_no] = futures[page_no].result()
-            self._write_debug_image(file_path, page_no, image)
+        with ThreadPoolExecutor(max_workers=os.cpu_count() - 1) as pool:
+            futures = {
+                pool.submit(process_page, image=image): page_no
+                for page_no, image in images.items()
+            }
+            wait(futures)
+            for f in futures:
+                page_no = futures[f]
+                self.__layout_boxes[page_no] = f.result()
+                self._write_debug_image(file_path, page_no, images[page_no])
 
         return file_path
 

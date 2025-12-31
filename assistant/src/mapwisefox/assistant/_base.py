@@ -1,6 +1,8 @@
 import click
 
 from mapwisefox.assistant.config import AssistantParams, ModelChoice
+from mapwisefox.assistant.judge._study_qa import study_qa
+from mapwisefox.assistant.study_selection._study_selection import study_selection
 
 
 @click.group()
@@ -33,3 +35,7 @@ def assistant(ctx, model, ollama_host, ollama_port):
     obj.model_choice = ModelChoice(model)
     obj.ollama_host = ollama_host
     obj.ollama_port = int(ollama_port)
+
+
+assistant.add_command(study_selection)
+assistant.add_command(study_qa)
