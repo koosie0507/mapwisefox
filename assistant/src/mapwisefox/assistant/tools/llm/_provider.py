@@ -59,6 +59,10 @@ class JSONGenerator(ABC):
                 self._error_callback(
                     f"decoding LLM answer as JSON failed; {attempts} retries left", err
                 )
+            except ValueError as err:
+                self._error_callback(
+                    f"value error while generating text; {attempts} retries left", err
+                )
             finally:
                 attempts -= 1
 

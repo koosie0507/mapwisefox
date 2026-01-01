@@ -1,4 +1,5 @@
 import io
+import os
 from typing import TYPE_CHECKING
 
 import openai
@@ -71,6 +72,7 @@ class OpenAIJSONGenerator(JSONGenerator):
                         self._text_callback("\n")
                     if event.type == "error":
                         self._error_callback("", ValueError(""))
+            self._text_callback(os.linesep)
         except TypeError:
             pass
 

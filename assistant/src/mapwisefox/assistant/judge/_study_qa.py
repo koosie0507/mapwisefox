@@ -53,7 +53,8 @@ def _write_thoughts():
 
 
 def _write_stdout(msg: str, *args):
-    click.echo(msg % args, nl=False)
+    output_text = msg % args if len(args) > 0 else msg
+    click.echo(output_text, nl=False)
 
 
 def _write_stderr(msg: str, e: Exception):

@@ -36,7 +36,6 @@ class OllamaJSONGenerator(JSONGenerator):
     def _generate_text(
         self, system_prompt: str, user_prompt: str, response_format: str | dict
     ) -> str:
-        self.__client
         response = self.__client.chat(
             model=self.__model_name,
             messages=[
