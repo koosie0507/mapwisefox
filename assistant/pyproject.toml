@@ -4,9 +4,14 @@ version = "0.2.1"
 dependencies = [
     "bibtexparser>=1.4.3",
     "jinja2>=3.1.6",
-    "ollama>=0.5.1",
+    "layoutparser[effdet]>=0.3.4",
+    "ollama>=0.6",
     "openpyxl>=3.1.5",
     "pandas>=2.3.1",
+    "pdf2image>=1.17.0",
+    "pypdf>=6.5.0",
+    "requests>=2.32.5",
+    "stopwords>=1.0.2",
 ]
 
 [project.scripts]

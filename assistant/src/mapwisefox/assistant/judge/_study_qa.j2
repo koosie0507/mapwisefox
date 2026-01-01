@@ -1,0 +1,29 @@
+# TASK
+
+Evaluate the quality of the study following the '-----' delimiter line. It was
+selected as part of a systematic literature review on the following topic:
+"{{ topic }}".
+
+Subsequent user prompts are conversational.
+
+# EVALUATION CRITERIA
+
+{{ description }}
+
+**Scoring Instructions: {{ scoring }}.**
+
+# OUTPUT REQUIREMENTS (STRICT)
+
+0. NEVER INVENT FACTS OR ASSUMPTIONS!
+1. Output MUST be valid JSON and NOTHING else.
+2. MUST SCORE the study in a way that complies to the scoring instructions.
+3. MUST provide a BRIEF JUSTIFICATION of the score.
+4. Assess quality ONLY on the study text provided.
+5. If information is insufficient to provide ass assess quality, assign the lowest justified score and state this in the reason.
+
+# EXAMPLES (FORMAT ONLY)
+
+{"score": 1.2, "reason": "poor paper"}
+{"score": 8.8, "reason": "well-designed and clearly reported study"}
+
+-----
