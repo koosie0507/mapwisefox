@@ -21,7 +21,8 @@ from mapwisefox.assistant.tools import (
     FileProvider,
 )
 from mapwisefox.assistant.tools.pdf import (
-    PdfMarkdownFileExtractor, DoclingExtractor,
+    PdfMarkdownFileExtractor,
+    DoclingExtractor,
 )
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -66,10 +67,12 @@ def _read_text(layout_model: str, local_path: Path, dpi: int = 150) -> str:
     extractor = PdfMarkdownFileExtractor(dpi, layout_model=layout_model)
     return extractor.read_file(local_path)
 
+
 @timer(callback=log.info, label="read-pdf")
 def _read_docling(local_path: Path) -> str:
     extractor = DoclingExtractor()
     return extractor.read_file(local_path)
+
 
 @timer(callback=log.info, label="evaluate-paper")
 def _evaluate_paper(
@@ -133,7 +136,7 @@ def _evaluate_paper(
     "reader_type",
     type=click.Choice(choices=list(ReaderType)),
     default=ReaderType.custom,
-    help="the type of engine to use for reading documents"
+    help="the type of engine to use for reading documents",
 )
 @click.option(
     "-l",
@@ -146,7 +149,12 @@ def _evaluate_paper(
 )
 @click.pass_context
 def study_qa(
-    ctx, file: Path, url_column: str, qa_config_path: Path, layout_config_path: str, reader_type: ReaderType
+    ctx,
+    file: Path,
+    url_column: str,
+    qa_config_path: Path,
+    layout_config_path: str,
+    reader_type: ReaderType,
 ):
     file = Path(file).resolve()
     file_provider = FileProvider(file.parent / "downloads")
