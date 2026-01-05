@@ -13,7 +13,7 @@ from pathlib import Path
 
 import click
 
-
+from mapwisefox.assistant.config import ReaderType
 from mapwisefox.assistant.instrumentation import timer
 from mapwisefox.assistant.tools import (
     load_df,
@@ -21,7 +21,7 @@ from mapwisefox.assistant.tools import (
     FileProvider,
 )
 from mapwisefox.assistant.tools.pdf import (
-    PdfMarkdownFileExtractor,
+    PdfMarkdownFileExtractor, DoclingExtractor,
 )
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -66,9 +66,14 @@ def _read_text(layout_model: str, local_path: Path, dpi: int = 150) -> str:
     extractor = PdfMarkdownFileExtractor(dpi, layout_model=layout_model)
     return extractor.read_file(local_path)
 
+@timer(callback=log.info, label="read-pdf")
+def _read_docling(local_path: Path) -> str:
+    extractor = DoclingExtractor()
+    return extractor.read_file(local_path)
 
 @timer(callback=log.info, label="evaluate-paper")
 def _evaluate_paper(
+    reader_type: ReaderType,
     layout_model: str,
     local_path: Path,
     generate_json: Callable[[dict, str], dict],
@@ -77,7 +82,11 @@ def _evaluate_paper(
     **kwargs,
 ) -> dict | None:
     try:
-        user_prompt = _read_text(layout_model, local_path, kwargs.pop("dpi", 150))
+        user_prompt = (
+            _read_text(layout_model, local_path, kwargs.pop("dpi", 150))
+            if reader_type == ReaderType.custom
+            else _read_docling(local_path)
+        )
         result = {}
         for c in qa_criteria:
             key = c["label"]
@@ -119,6 +128,14 @@ def _evaluate_paper(
     help="path to QA rule config file",
 )
 @click.option(
+    "-e",
+    "--reader-type",
+    "reader_type",
+    type=click.Choice(choices=list(ReaderType)),
+    default=ReaderType.custom,
+    help="the type of engine to use for reading documents"
+)
+@click.option(
     "-l",
     "--layout-model",
     "layout_config_path",
@@ -129,7 +146,7 @@ def _evaluate_paper(
 )
 @click.pass_context
 def study_qa(
-    ctx, file: Path, url_column: str, qa_config_path: Path, layout_config_path: str
+    ctx, file: Path, url_column: str, qa_config_path: Path, layout_config_path: str, reader_type: ReaderType
 ):
     file = Path(file).resolve()
     file_provider = FileProvider(file.parent / "downloads")
@@ -169,6 +186,7 @@ def study_qa(
         download_url = paper_metadata[url_column]
         local_file_path = file_provider(download_url)
         result = _evaluate_paper(
+            reader_type,
             layout_config_path,
             local_file_path,
             generate_json,
