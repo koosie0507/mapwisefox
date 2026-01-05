@@ -12,10 +12,10 @@ dependencies = [
 package = true
 
 [project.scripts]
-kappa-score = "mapwisefox.metrics.kappa_score:run_command"
+metrics = "mapwisefox.metrics:run_command"
 
 [tool.bumpversion]
-current_version = "0.6.0"
+current_version = "0.7.0-dev1"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.

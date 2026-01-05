@@ -59,7 +59,41 @@ def _kappa_score(left: CmpSettings, right: CmpSettings, labels=None):
     return kappa, disagreements_df
 
 
-@click.command()
+def _print_kappa_score(my_kappa, left_file_path, right_file_path):
+    click.echo(
+        f"The Cohen Kappa agreement score between {left_file_path.stem} and {right_file_path.stem} is ",
+        nl=False,
+    )
+    click.echo(click.style(f"{my_kappa:.2f}", bold=True), nl=False, color=True)
+    click.echo(": [", nl=False)
+    if my_kappa <= 0:
+        click.echo(
+            click.style("chance agreement", fg="white", bg="red", bold=True),
+            nl=False,
+            color=True,
+        )
+    elif my_kappa <= 0.29:
+        click.echo(click.style("poor agreement", fg="red"), nl=False, color=True)
+    elif my_kappa <= 0.40:
+        click.echo(click.style("fair agreement", fg="yellow"), nl=False, color=True)
+    elif my_kappa <= 0.60:
+        click.echo(click.style("moderate agreement", fg="cyan"), nl=False, color=True)
+    elif my_kappa <= 0.80:
+        click.echo(
+            click.style("substantial agreement", fg="green", bold=True),
+            nl=False,
+            color=True,
+        )
+    else:
+        click.echo(
+            click.style("almost perfect agreement", fg="white", bg="green", bold=True),
+            nl=False,
+            color=True,
+        )
+    click.echo("]")
+
+
+@click.command("kappa-score")
 @click.argument(
     "left_file_path",
     type=click.Path(
@@ -149,40 +183,6 @@ def main(
     my_kappa, disagreements_df = _kappa_score(left, right)
     disagreements_df.to_excel(out_file_path, index=True)
     _print_kappa_score(my_kappa, left_file_path, right_file_path)
-
-
-def _print_kappa_score(my_kappa, left_file_path, right_file_path):
-    click.echo(
-        f"The Cohen Kappa agreement score between {left_file_path.stem} and {right_file_path.stem} is ",
-        nl=False,
-    )
-    click.echo(click.style(f"{my_kappa:.2f}", bold=True), nl=False, color=True)
-    click.echo(": [", nl=False)
-    if my_kappa <= 0:
-        click.echo(
-            click.style("chance agreement", fg="white", bg="red", bold=True),
-            nl=False,
-            color=True,
-        )
-    elif my_kappa <= 0.29:
-        click.echo(click.style("poor agreement", fg="red"), nl=False, color=True)
-    elif my_kappa <= 0.40:
-        click.echo(click.style("fair agreement", fg="yellow"), nl=False, color=True)
-    elif my_kappa <= 0.60:
-        click.echo(click.style("moderate agreement", fg="cyan"), nl=False, color=True)
-    elif my_kappa <= 0.80:
-        click.echo(
-            click.style("substantial agreement", fg="green", bold=True),
-            nl=False,
-            color=True,
-        )
-    else:
-        click.echo(
-            click.style("almost perfect agreement", fg="white", bg="green", bold=True),
-            nl=False,
-            color=True,
-        )
-    click.echo("]")
 
 
 if __name__ == "__main__":
