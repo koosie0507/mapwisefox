@@ -86,6 +86,10 @@ class LLMProviderBase(ABC):
         self._text_callback = on_text
 
     @abstractmethod
+    def ensure_model(self) -> bool:
+        pass
+
+    @abstractmethod
     def new_json_generator(
         self, max_retries: int = 1, thinking: bool = False
     ) -> JSONGenerator:

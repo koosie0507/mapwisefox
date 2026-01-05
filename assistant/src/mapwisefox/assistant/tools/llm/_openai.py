@@ -2,17 +2,16 @@ import io
 import os
 from typing import TYPE_CHECKING
 
-import openai
-
 from mapwisefox.assistant.tools.extras import try_import
 from mapwisefox.assistant.tools.llm._provider import LLMProviderBase, JSONGenerator
 
 
-class OpenAIJSONGenerator(JSONGenerator):
-    if TYPE_CHECKING:
-        import openai
-        import openai.types.responses
+if TYPE_CHECKING:
+    import openai
+    import openai.types.responses
 
+
+class OpenAIJSONGenerator(JSONGenerator):
     def __init__(
         self,
         client: "openai.OpenAI",
@@ -26,7 +25,7 @@ class OpenAIJSONGenerator(JSONGenerator):
             kwargs.pop("on_thinking", None),
             kwargs.pop("on_text", None),
         )
-        self.__client: openai.OpenAI = client
+        self.__client: "openai.OpenAI" = client
         self.__model_name = model_name
         self.__max_retries = max_retries
         self.__thinking = thinking
@@ -82,6 +81,13 @@ class OpenAIJSONGenerator(JSONGenerator):
 class OpenAIProvider(LLMProviderBase):
     """Factory that returns Ollama clients for various tasks."""
 
+    def __new__(cls, *args, **kwargs):
+        proto = super().__new__(cls)
+        openai_module = try_import("openai")
+        proto.OpenAI = openai_module.OpenAI
+        proto.APIError = openai_module.APIError
+        return proto
+
     def __init__(self, model: str, api_key: str, **kwargs):
         super().__init__(
             model,
@@ -89,7 +95,15 @@ class OpenAIProvider(LLMProviderBase):
             kwargs.pop("on_thinking", None),
             kwargs.pop("on_text", None),
         )
-        self.__client = try_import("openai").OpenAI(api_key=api_key)
+        self.__client = self.OpenAI(api_key=api_key)
+
+    def ensure_model(self) -> bool:
+        try:
+            model = self.__client.models.retrieve(self._model_name)
+            return model is not None
+        except (ValueError, self.APIError) as err:
+            self._error_callback("error loading OpenAI model", err)
+            return False
 
     def new_json_generator(
         self, max_retries: int = 1, thinking: str = "low"

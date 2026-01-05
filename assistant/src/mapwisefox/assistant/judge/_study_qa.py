@@ -152,6 +152,9 @@ def study_qa(
     provider = ctx.obj.provider_factory(
         on_error=_write_stderr, on_thinking=_write_thoughts(), on_text=_write_stdout
     )
+    if not provider.ensure_model():
+        exit(1)
+
     json_generator = provider.new_json_generator()
     generate_json = partial(
         json_generator.generate_json,
