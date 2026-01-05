@@ -20,6 +20,11 @@ class ModelChoice(StrEnum):
     gpt_5_mini = "gpt-5-mini-2025-08-07"
 
 
+class ReaderType(StrEnum):
+    docling = "docling"
+    custom = "custom"
+
+
 @dataclass
 class AssistantParams:
     provider_factory: Optional[Callable] = field(init=True, repr=True, default=None)
