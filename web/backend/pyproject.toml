@@ -24,7 +24,7 @@ web = "mapwisefox.web:run_command"
 package = true
 
 [tool.uv.build-backend]
-module-name = "mapwisefox"
+module-name = "mapwisefox.web"
 namespace = true
 
 [tool.bumpversion]

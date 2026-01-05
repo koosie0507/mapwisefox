@@ -1,44 +1,19 @@
 import json
 import os
-import re
+from functools import partial
 from itertools import islice
-from json import JSONDecodeError
 from pathlib import Path
 
 import click
-from jinja2 import FileSystemLoader, Environment
-from ollama import Client
 
-from mapwisefox.assistant._base import assistant
-from mapwisefox.assistant._utils import load_df
+from mapwisefox.assistant.tools import load_df, OllamaProvider, load_template
 
 
-SYSTEM_PROMPT_TEMPLATE_NAME = f"{Path(__file__).stem}.j2"
+SYSTEM_PROMPT_TEMPLATE = Path(__file__).parent / f"{Path(__file__).stem}.j2"
 DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
 
 
-def _new_connection(host, port):
-    return Client(f"{host}:{port}")
-
-
-def _load_system_prompt_template():
-    loader = FileSystemLoader(Path(__file__).parent)
-    env = Environment(loader=loader)
-    tpl = env.get_template(SYSTEM_PROMPT_TEMPLATE_NAME)
-    return tpl
-
-
-def _generate(client, rule_config, model, title_abs):
-    tpl = _load_system_prompt_template()
-    system_prompt = tpl.render(**rule_config)
-    response = client.generate(
-        model=model, prompt=title_abs, system=system_prompt, think=False
-    )
-    answer = re.sub(r"```\w*[\s$]*(\{.+\})[$\s]*```", r"\1", response.response)
-    return answer
-
-
-@assistant.command("select-studies")
+@click.command("study-selection")
 @click.argument(
     "search_results",
     required=True,
@@ -67,7 +42,7 @@ def _generate(client, rule_config, model, title_abs):
     default=DEFAULT_EXCLUDED_ATTRIBUTES,
 )
 @click.pass_context
-def select_studies(ctx, search_results, config_file, limit, ignore_attributes):
+def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
     """Use an LLM to select primary studies according to criteria.
 
     A file containing a table of primary studies containing at least the title,
@@ -82,7 +57,15 @@ def select_studies(ctx, search_results, config_file, limit, ignore_attributes):
     results_df = load_df(search_results_path)
     with open(config_file, "r") as f:
         rule_config = json.load(f)
-    ollama_client = _new_connection(ctx.obj.ollama_host, ctx.obj.ollama_port)
+    provider = OllamaProvider(
+        ctx.obj.model_choice, f"{ctx.obj.ollama_host}:{ctx.obj.ollama_port}"
+    )
+    json_generator = provider.new_json_generator()
+    generate_json = partial(
+        json_generator.generate_json,
+        system_prompt_template=load_template(SYSTEM_PROMPT_TEMPLATE),
+        template_data=rule_config,
+    )
 
     count = len(results_df) if limit is None else limit
     items = islice(results_df.iterrows(), 0, count)
@@ -100,18 +83,7 @@ def select_studies(ctx, search_results, config_file, limit, ignore_attributes):
                 for key, value in row.items()
                 if key not in ignored_attrs
             )
-            answered = False
-            answer_obj = {}
-            while not answered and (
-                answer := _generate(
-                    ollama_client, rule_config, ctx.obj.model_choice, row_str
-                )
-            ):
-                try:
-                    answer_obj = json.loads(answer)
-                    answered = True
-                except JSONDecodeError as err:
-                    click.echo(err, err=True)
+            answer_obj = generate_json(row_str)
             status = answer_obj["answer"]
             results_df.at[ix, "include"] = status
 
