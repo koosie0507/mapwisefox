@@ -22,6 +22,7 @@ from mapwisefox.assistant.tools import (
 )
 from mapwisefox.assistant.tools.extras import try_import
 
+
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 log = logging.getLogger(__file__)
 
