@@ -27,6 +27,7 @@ members = [
 [dependency-groups]
 dev = [
     "black>=25.1.0",
+    "memray>=1.19.1",
     "mypy>=1.19",
     "pytest>=9.0",
     "ruff>=0.14",
