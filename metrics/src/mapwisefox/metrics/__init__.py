@@ -1,4 +1,4 @@
-from mapwisefox.metrics._group import metrics as run_command
+from mapwisefox.metrics._cli import metrics as run_command
 
 
 __all__ = ["run_command"]
