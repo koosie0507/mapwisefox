@@ -20,10 +20,7 @@ from mapwisefox.assistant.tools import (
     load_template,
     FileProvider,
 )
-from mapwisefox.assistant.tools.pdf import (
-    PdfMarkdownFileExtractor,
-    DoclingExtractor,
-)
+from mapwisefox.assistant.tools.extras import try_import
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 log = logging.getLogger(__file__)
@@ -62,34 +59,30 @@ def _write_stderr(msg: str, e: Exception):
     log.error(msg, exc_info=e)
 
 
-@timer(callback=log.info, label="read-pdf")
-def _read_text(layout_model: str, local_path: Path, dpi: int = 150) -> str:
-    extractor = PdfMarkdownFileExtractor(dpi, layout_model=layout_model)
-    return extractor.read_file(local_path)
+def reader_factory(reader_type: ReaderType, layout_model: str, dpi: int = 150):
+    if reader_type == ReaderType.docling:
+        docling = try_import("mapwisefox.assistant.tools.pdf._docling")
+        return docling.DoclingExtractor()
+    else:
+        pdf = try_import("mapwisefox.assistant.tools.pdf._pdf")
+        return pdf.PdfMarkdownFileExtractor(dpi=dpi, layout_model=layout_model)
 
 
 @timer(callback=log.info, label="read-pdf")
-def _read_docling(local_path: Path) -> str:
-    extractor = DoclingExtractor()
+def _read_markdown(extractor, local_path: Path) -> str:
     return extractor.read_file(local_path)
 
 
 @timer(callback=log.info, label="evaluate-paper")
 def _evaluate_paper(
-    reader_type: ReaderType,
-    layout_model: str,
+    extractor,
     local_path: Path,
     generate_json: Callable[[dict, str], dict],
     qa_config: dict,
     qa_criteria: dict,
-    **kwargs,
 ) -> dict | None:
     try:
-        user_prompt = (
-            _read_text(layout_model, local_path, kwargs.pop("dpi", 150))
-            if reader_type == ReaderType.custom
-            else _read_docling(local_path)
-        )
+        user_prompt = _read_markdown(extractor, local_path)
         result = {}
         for c in qa_criteria:
             key = c["label"]
@@ -161,6 +154,7 @@ def study_qa(
     with open(qa_config_path, "r") as jfp:
         qa_config = json.load(jfp)
     qa_criteria = qa_config["criteria"]
+    pdf_reader = reader_factory(reader_type, layout_config_path)
 
     df = load_df(file)
     for c in qa_criteria:
@@ -194,8 +188,7 @@ def study_qa(
         download_url = paper_metadata[url_column]
         local_file_path = file_provider(download_url)
         result = _evaluate_paper(
-            reader_type,
-            layout_config_path,
+            pdf_reader,
             local_file_path,
             generate_json,
             qa_config,
