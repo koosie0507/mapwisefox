@@ -15,7 +15,7 @@ package = false
 members = [
     "assistant",
     "deduplication",
-    "kappa-score",
+    "metrics",
     "search",
     "search-judge",
     "snowballing",

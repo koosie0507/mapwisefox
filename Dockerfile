@@ -12,7 +12,7 @@ RUN apk add --update --no-cache ${BUILD_PKGS} &&\
 COPY uv.lock uv.lock
 COPY pyproject.toml pyproject.toml
 COPY deduplication/pyproject.toml deduplication/pyproject.toml
-COPY kappa-score/pyproject.toml kappa-score/pyproject.toml
+COPY metrics/pyproject.toml kappa-score/pyproject.toml
 COPY search/pyproject.toml search/pyproject.toml
 COPY search-judge/pyproject.toml search-judge/pyproject.toml
 COPY snowballing/pyproject.toml snowballing/pyproject.toml

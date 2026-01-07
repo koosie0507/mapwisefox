@@ -14,7 +14,7 @@ members = [
     "mapwisefox",
     "mapwisefox-assistant",
     "mapwisefox-deduplication",
-    "mapwisefox-kappa-score",
+    "mapwisefox-metrics",
     "mapwisefox-search",
     "mapwisefox-search-judge",
     "mapwisefox-snowballing",
@@ -1349,9 +1349,9 @@ requires-dist = [
 ]
 
 [[package]]
-name = "mapwisefox-kappa-score"
-version = "0.1.3"
-source = { editable = "kappa-score" }
+name = "mapwisefox-metrics"
+version = "0.8.0"
+source = { editable = "metrics" }
 dependencies = [
     { name = "dedupe" },
     { name = "pandas" },
