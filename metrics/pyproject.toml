@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox-metrics"
-version = "0.1.3"
+version = "0.8.0"
 
 dependencies = [
     "dedupe>=3.0.3",
