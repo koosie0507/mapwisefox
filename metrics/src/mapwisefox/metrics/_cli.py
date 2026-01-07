@@ -1,41 +1,17 @@
-from dataclasses import dataclass, field
 from pathlib import Path
 
 import click
 import pandas as pd
 
 import mapwisefox.metrics._utils as util
+from mapwisefox.metrics._types import CommonArgs
 from mapwisefox.metrics.categorical import kappa_score
 
-
-@dataclass
-class GroupArgs:
-    input_files: list[Path] = field(default_factory=list)
-    target_attrs: list[str] = field(default_factory=list)
-    id_attr: str = "id"
-    output_file: Path = ""
-    extra_cols: list[str] = field(default_factory=list)
-    input_dfs: list[pd.DataFrame] = field(default_factory=list)
-
-
-def _validate_input_file_types(_, param, value):
-    if param.name != "input_files":
-        return value
-    input_files = [Path(x).resolve() for x in value]
-    for path in input_files:
-        if path.suffix in util.SUPPORTED_FILE_HANDLERS:
-            continue
-        raise click.BadParameter(f"unsupported file type {path.suffix!r}")
-    return input_files
-
-
-def _validate_output_file_type(_, param, value):
-    if param.name != "output_file":
-        return value
-    output_path = Path(value).resolve()
-    if output_path.suffix != ".xls":
-        raise click.BadParameter("will output only .xls files")
-    return output_path
+from mapwisefox.metrics._validators import (
+    validate_input_file_type,
+    validate_output_file_type,
+)
+from mapwisefox.metrics.continuous import mae
 
 
 def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.DataFrame]:
@@ -56,7 +32,7 @@ def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.Data
     "input_files",
     type=click.Path(exists=True, readable=True, dir_okay=False, file_okay=True),
     multiple=True,
-    callback=_validate_input_file_types,
+    callback=validate_input_file_type,
     help="files to use as input to the metrics",
 )
 @click.option(
@@ -79,7 +55,7 @@ def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.Data
     "-o",
     "--output-file",
     type=click.Path(writable=True, file_okay=True, dir_okay=False),
-    callback=_validate_input_file_types,
+    callback=validate_output_file_type,
     help="file where to output the computed metrics",
 )
 @click.option(
@@ -99,7 +75,7 @@ def metrics(
     output_file: Path,
     extra_columns: list[str],
 ) -> None:
-    obj = ctx.ensure_object(GroupArgs)
+    obj = ctx.ensure_object(CommonArgs)
     obj.input_files = input_files
     obj.target_attrs = target_attrs
     obj.id_attr = key_attr
@@ -110,3 +86,4 @@ def metrics(
 
 
 metrics.add_command(kappa_score, "kappa-score")
+metrics.add_command(mae, "mae")
