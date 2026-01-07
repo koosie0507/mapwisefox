@@ -3,7 +3,7 @@ from bibtexparser import load as load_bibtex
 from bibtexparser.bparser import BibTexParser
 
 
-def _read_bibliography(path):
+def _read_bibliography(path, index_col=None):
     with open(path) as bibtex_file:
         parser = BibTexParser(common_strings=True)
         bib_database = load_bibtex(bibtex_file, parser=parser)
@@ -23,10 +23,10 @@ def _read_bibliography(path):
             }
             for entry in bib_database.entries
         ]
-        return pd.DataFrame(records)
+        return pd.DataFrame(records, index=index_col)
 
 
-def load_df(path):
+def load_df(path, index_col=None):
     """Load a ``.bib``, ``.csv`` or ``.xlsx`` file into a pandas DataFrame.
 
     Args:
@@ -46,4 +46,4 @@ def load_df(path):
     file_loader = fh.get(path.suffix)
     if not file_loader:
         raise ValueError("unsupported file type", path.suffix)
-    return file_loader(path)
+    return file_loader(path, index_col=index_col)

@@ -1,10 +1,5 @@
-from ._pdf import PdfFileExtractor, PdfTextFileExtractor, PdfMarkdownFileExtractor
-from ._docling import DoclingExtractor
+from mapwisefox.assistant.tools.pdf._base import FileContentsExtractor
+from mapwisefox.assistant.tools.pdf._preprocessor import ensure_page_dimensions
 
 
-__all__ = [
-    "DoclingExtractor",
-    "PdfFileExtractor",
-    "PdfTextFileExtractor",
-    "PdfMarkdownFileExtractor",
-]
+__all__ = ["FileContentsExtractor", "ensure_page_dimensions"]
