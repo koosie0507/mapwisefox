@@ -3,7 +3,6 @@ import pandas as pd
 from dataclasses import dataclass
 from typing import TypedDict
 
-
 from sklearn.metrics import cohen_kappa_score
 
 
@@ -125,7 +124,7 @@ def _print_kappa_score(decision_col, my_kappa, left_file_path, right_file_path):
 
 @click.command("kappa-score")
 @click.pass_context
-def main(ctx: click.Context):
+def kappa_score(ctx: click.Context):
     group_args = ctx.obj
     if len(group_args.input_files) != 2:
         raise click.BadOptionUsage(
@@ -184,7 +183,3 @@ def main(ctx: click.Context):
         pd.DataFrame(stats).to_excel(writer, sheet_name="stats", index=False)
         for sheet_name, df in disagreements.items():
             df.to_excel(writer, sheet_name=sheet_name, index=True)
-
-
-if __name__ == "__main__":
-    main()

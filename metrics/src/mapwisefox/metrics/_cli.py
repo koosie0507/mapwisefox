@@ -4,8 +4,8 @@ from pathlib import Path
 import click
 import pandas as pd
 
-import mapwisefox.metrics._kappa_score as ks
 import mapwisefox.metrics._utils as util
+from mapwisefox.metrics.categorical import kappa_score
 
 
 @dataclass
@@ -109,4 +109,4 @@ def metrics(
     obj.input_dfs = _load_dataframes(ctx, input_files, key_attr)
 
 
-metrics.add_command(ks.main, "kappa-score")
+metrics.add_command(kappa_score, "kappa-score")
