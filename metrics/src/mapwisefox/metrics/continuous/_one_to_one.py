@@ -45,7 +45,7 @@ def compute_metric(
         [
             {
                 "evaluator": evaluator_name,
-                "human raters": stat_label,
+                "ground truth": stat_label,
                 **{
                     attr: _compute_one2one_metric(
                         metric, input_dfs, eval_df, attr, stat
