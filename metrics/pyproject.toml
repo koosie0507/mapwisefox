@@ -15,7 +15,7 @@ package = true
 metrics = "mapwisefox.metrics:run_command"
 
 [tool.bumpversion]
-current_version = "0.8.0-dev1"
+current_version = "0.8.0"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.
