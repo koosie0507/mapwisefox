@@ -1,4 +1,4 @@
-from mapwisefox.metrics.continuous._cli import mae, rmse
+from mapwisefox.metrics.continuous._cli import mae, rmse, ccc
 
 
-__all__ = ["mae", "rmse"]
+__all__ = ["mae", "rmse", "ccc"]

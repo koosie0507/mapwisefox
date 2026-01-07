@@ -11,7 +11,7 @@ from mapwisefox.metrics._validators import (
     validate_input_file_type,
     validate_output_file_type,
 )
-from mapwisefox.metrics.continuous import mae, rmse
+from mapwisefox.metrics.continuous import mae, rmse, ccc
 
 
 def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.DataFrame]:
@@ -88,3 +88,4 @@ def metrics(
 metrics.add_command(kappa_score, "kappa-score")
 metrics.add_command(mae, "mae")
 metrics.add_command(rmse, "rmse")
+metrics.add_command(ccc, "lin-ccc")
