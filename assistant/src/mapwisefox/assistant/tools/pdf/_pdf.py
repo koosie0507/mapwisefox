@@ -2,12 +2,13 @@ import abc
 import io
 from pathlib import Path
 
-from ._text_extractor import PdfTextExtractor
-from ._layout_extractor import PdfLayoutExtractor
-from ._types import LayoutBox, TextItem
+from mapwisefox.assistant.tools.pdf._text_extractor import PdfTextExtractor
+from mapwisefox.assistant.tools.pdf._layout_extractor import PdfLayoutExtractor
+from mapwisefox.assistant.tools.pdf._types import LayoutBox, TextItem
+from mapwisefox.assistant.tools.pdf._base import FileContentsExtractor
 
 
-class PdfFileExtractor(metaclass=abc.ABCMeta):
+class BasicPdfContentsExtractor(FileContentsExtractor, metaclass=abc.ABCMeta):
     def __init__(
         self,
         dpi: int = 150,
@@ -57,7 +58,7 @@ class PdfFileExtractor(metaclass=abc.ABCMeta):
         return self._prepare_output(boxes_by_page)
 
 
-class PdfTextFileExtractor(PdfFileExtractor):
+class BasicPdfTextExtractor(BasicPdfContentsExtractor):
     @classmethod
     def _get_box_type_priority(cls, box_type: str) -> int:
         box_type = box_type.lower().strip()
@@ -121,7 +122,7 @@ class PdfTextFileExtractor(PdfFileExtractor):
         return output_buffer.getvalue()
 
 
-class PdfMarkdownFileExtractor(PdfTextFileExtractor):
+class BasicPdfMarkdownExtractor(BasicPdfTextExtractor):
     @classmethod
     def _join_texts(cls, box_type: str, texts: list[str]) -> str:
         box_type = box_type.lower()

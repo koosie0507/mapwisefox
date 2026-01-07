@@ -12,13 +12,16 @@ from mapwisefox.assistant.tools.urlparse import UrlInfo
 class FileProvider:
     __FILENAME_RE = re.compile(r"filename=(.+)\b")
 
-    def __init__(self, cache_dir: Path, chunk_size: int = 16384) -> None:
+    def __init__(
+        self, cache_dir: Path, chunk_size: int = 16384, timeout: int = 60
+    ) -> None:
         if cache_dir.exists() and not cache_dir.is_dir():
             raise ValueError(f"{cache_dir} exists and is not a directory")
         self.__cache_dir = Path(cache_dir).resolve()
         self.__session = requests.Session()
         self.__cookie_jar = {}
         self.__chunk_size = chunk_size
+        self.__timeout = timeout
 
     @staticmethod
     def __local_filename(download_url: str) -> str:
@@ -44,7 +47,11 @@ class FileProvider:
             return file_path
 
         with self.__session.get(
-            url, verify=False, cookies=self.__cookie_jar, timeout=3, stream=True
+            url,
+            verify=False,
+            cookies=self.__cookie_jar,
+            timeout=self.__timeout,
+            stream=True,
         ) as res:
             res.raise_for_status()
             content_type = res.headers["Content-Type"]
