@@ -4,10 +4,13 @@ import logging
 import os
 import sys
 from collections import defaultdict
+from multiprocessing import Process, Pipe, Lock as create_lock
+from multiprocessing.connection import Connection
 
+import pandas as pd
 import urllib3
 from functools import partial
-from typing import Callable
+from typing import Callable, Any
 
 from pathlib import Path
 
@@ -21,6 +24,7 @@ from mapwisefox.assistant.tools import (
     FileProvider,
 )
 from mapwisefox.assistant.tools.extras import try_import
+from mapwisefox.assistant.tools.pdf import FileContentsExtractor
 
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -60,31 +64,109 @@ def _write_stderr(msg: str, e: Exception):
     log.error(msg, exc_info=e)
 
 
-def reader_factory(reader_type: ReaderType, layout_model: str, dpi: int = 150):
+def get_default_pdf_reader(dpi: int, layout_model: str) -> FileContentsExtractor:
+    pdf = try_import("mapwisefox.assistant.tools.pdf._pdf")
+    return pdf.BasicPdfMarkdownExtractor(dpi=dpi, layout_model=layout_model)
+
+
+def reader_factory(
+    reader_type: ReaderType, layout_model: str, dpi: int = 150
+) -> FileContentsExtractor:
     if reader_type == ReaderType.docling:
         docling = try_import("mapwisefox.assistant.tools.pdf._docling")
-        return docling.DoclingExtractor()
-    else:
-        pdf = try_import("mapwisefox.assistant.tools.pdf._pdf")
-        return pdf.PdfMarkdownFileExtractor(dpi=dpi, layout_model=layout_model)
+        return docling.DoclingExtractor(error_callback=log.warning)
+
+    return get_default_pdf_reader(dpi, layout_model)
 
 
 @timer(callback=log.info, label="read-pdf")
-def _read_markdown(extractor, local_path: Path) -> str:
-    return extractor.read_file(local_path)
+def _read_markdown(
+    conn: Connection, extractor: FileContentsExtractor, local_path: Path
+) -> None:
+    try:
+        markdown = extractor.read_file(local_path)
+        conn.send(markdown)
+        exit(0)
+    except Exception:
+        conn.send("")
+        exit(1)
+    finally:
+        conn.close()
 
 
-@timer(callback=log.info, label="evaluate-paper")
+@timer(log.info, "read-pdf-files")
+def _extract_pdf_contents(
+    df: pd.DataFrame,
+    url_column: str,
+    file_provider: FileProvider,
+    pdf_reader: FileContentsExtractor,
+    default_pdf_reader_factory: Callable[[], FileContentsExtractor],
+    max_retries: int = 3,
+    document_timeout_seconds: float = 60.0,
+):
+    user_prompts = dict()
+    lock = create_lock()
+    failed = []
+    for idx, paper_metadata in df.iterrows():
+        download_url = paper_metadata[url_column]
+        read, retries, local_reader = False, max_retries, pdf_reader
+        while not read and retries >= 0:
+            try:
+                lock.acquire()
+                local_file_path = file_provider(download_url)
+                recv_conn, send_conn = Pipe()
+                process = Process(
+                    target=_read_markdown,
+                    args=(send_conn, local_reader, local_file_path),
+                )
+                process.start()
+
+                # wait up to document_timeout_seconds to finish reading the PDF
+                timed_out = True
+                if recv_conn.poll(timeout=document_timeout_seconds):
+                    markdown = recv_conn.recv()
+                    timed_out = False
+                else:
+                    markdown = "timeout"
+                    process.terminate()
+
+                process.join()
+                if timed_out:
+                    raise TimeoutError(document_timeout_seconds)
+                if process.exitcode != 0:
+                    raise Exception(markdown)
+
+                user_prompts[(idx, download_url, local_file_path)] = markdown
+                read = True
+            except Exception as e:
+                log.error(
+                    "couldn't process paper %r using %r: %r. reverting to failsafe reader",
+                    idx,
+                    str(type(pdf_reader).__name__),
+                    str(e)[:50],
+                )
+                local_reader = default_pdf_reader_factory()
+                retries -= 1
+            finally:
+                lock.release()
+
+        if not read:
+            failed.append((idx, download_url))
+
+    return user_prompts, failed
+
+
+@timer(callback=log.info, label="paper-evaluation")
 def _evaluate_paper(
-    extractor,
+    user_prompt: str,
     local_path: Path,
     generate_json: Callable[[dict, str], dict],
     qa_config: dict,
     qa_criteria: dict,
 ) -> dict | None:
     try:
-        user_prompt = _read_markdown(extractor, local_path)
         result = {}
+
         for c in qa_criteria:
             key = c["label"]
             ctx = _extract_context(qa_config, c)
@@ -104,6 +186,53 @@ def _evaluate_paper(
         return None
 
 
+@timer(log.info, "evaluation")
+def _evaluate_papers(
+    paper_contents: dict[Any, Any], generate_json: partial[Any], qa_config, qa_criteria
+) -> dict[Any, Any]:
+    results = {}
+    for (idx, download_url, local_file_path), user_prompt in paper_contents.items():
+        result = _evaluate_paper(
+            user_prompt,
+            local_file_path,
+            generate_json,
+            qa_config,
+            qa_criteria,
+        )
+        if result is None:
+            log.warning("unable to process item %d: %r", idx, download_url)
+            continue
+        results[idx] = result
+    return results
+
+
+def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.DataFrame:
+    criteria_dict = {c["label"]: c for c in qa_criteria}
+
+    for idx, result in results.items():
+        evaluation = defaultdict(list)
+        for i, label in enumerate(result, 1):
+            score = result[label].pop("score", 0)
+            df.loc[idx, label] = score
+            evaluation[criteria_dict[label]["category"]].append(
+                os.linesep.join(
+                    [
+                        f"{i}. **{criteria_dict[label]["question"]}**",
+                        *result[label].values(),
+                    ]
+                )
+            )
+        evaluation_text = io.StringIO()
+        for category, answers in evaluation.items():
+            evaluation_text.write(f"{os.linesep}# {category}{2 * os.linesep}")
+            evaluation_text.write(f"{2 * os.linesep}".join(answers))
+            evaluation_text.write(os.linesep)
+
+        df.loc[idx, "evaluation"] = evaluation_text.getvalue()
+
+    return df
+
+
 @click.command("study-qa")
 @click.argument(
     "file",
@@ -115,6 +244,15 @@ def _evaluate_paper(
     type=click.STRING,
     default="url",
     help="column in the Excel sheet which contains URLs to primary studies",
+)
+@click.option(
+    "-k",
+    "--key",
+    "index_col",
+    type=click.STRING,
+    required=False,
+    default=None,
+    help="column in the source Excel sheet containing row identifier",
 )
 @click.option(
     "-c",
@@ -145,6 +283,7 @@ def _evaluate_paper(
 def study_qa(
     ctx,
     file: Path,
+    index_col: str,
     url_column: str,
     qa_config_path: Path,
     layout_config_path: str,
@@ -157,7 +296,7 @@ def study_qa(
     qa_criteria = qa_config["criteria"]
     pdf_reader = reader_factory(reader_type, layout_config_path)
 
-    df = load_df(file)
+    df = load_df(file, index_col=index_col)
     for c in qa_criteria:
         df[c["label"]] = df[c["label"]].astype("Float64")
     expected_json_schema = {
@@ -184,43 +323,13 @@ def study_qa(
         response_schema=expected_json_schema,
     )
 
-    results = {}
-    for idx, paper_metadata in df.iterrows():
-        download_url = paper_metadata[url_column]
-        local_file_path = file_provider(download_url)
-        result = _evaluate_paper(
-            pdf_reader,
-            local_file_path,
-            generate_json,
-            qa_config,
-            qa_criteria,
-        )
-        if result is None:
-            log.warning("unable to process item %d: %r", idx, download_url)
-            continue
-        results[idx] = result
-
-    criteria_dict = {c["label"]: c for c in qa_criteria}
-    for idx, result in results.items():
-        evaluation = defaultdict(list)
-        for i, label in enumerate(result, 1):
-            score = result[label].pop("score", 0)
-            df.loc[idx, label] = score
-            evaluation[criteria_dict[label]["category"]].append(
-                os.linesep.join(
-                    [
-                        f"{i}. **{criteria_dict[label]["question"]}**",
-                        *result[label].values(),
-                    ]
-                )
-            )
-        evaluation_text = io.StringIO()
-        for category, answers in evaluation.items():
-            evaluation_text.write(f"{os.linesep}# {category}{2*os.linesep}")
-            evaluation_text.write(f"{2*os.linesep}".join(answers))
-            evaluation_text.write(os.linesep)
-
-        df.loc[idx, "evaluation"] = evaluation_text.getvalue()
-
+    default_reader = partial(
+        get_default_pdf_reader, dpi=150, layout_model=layout_config_path
+    )
+    markdown_texts, failed = _extract_pdf_contents(
+        df, url_column, file_provider, pdf_reader, default_reader, 1, 30
+    )
+    results = _evaluate_papers(markdown_texts, generate_json, qa_config, qa_criteria)
+    df = _fill_results(df, qa_criteria, results)
     output_path = file.parent / f"{file.stem}-{ctx.obj.model_choice}{file.suffix}"
     df.to_excel(output_path, index=False)

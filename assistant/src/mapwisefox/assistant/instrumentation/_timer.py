@@ -1,12 +1,9 @@
 import time
 from functools import wraps
-from typing import Callable, Concatenate, Optional
+from typing import Callable, Optional
 
 
-LoggerCallback = Callable[Concatenate[str, ...], None]
-
-
-def timer(callback: LoggerCallback, label: Optional[str] = None):
+def timer(callback: Callable, label: Optional[str] = None):
     label = label or "operation"
 
     def wrapper(f):
