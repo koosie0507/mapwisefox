@@ -40,7 +40,9 @@ def _kappa_score(
         right.dataframe, how="inner", rsuffix=_RIGHT_SUFFIX
     )
     right_label_col = f"{right.label_col}{_RIGHT_SUFFIX}"
-    right_extra_cols = [f"{col_name}{_RIGHT_SUFFIX}" for col_name in right.extra_output_cols]
+    right_extra_cols = [
+        f"{col_name}{_RIGHT_SUFFIX}" for col_name in right.extra_output_cols
+    ]
     disagreements_df = disagreements_df[
         disagreements_df[left.label_col] != disagreements_df[right_label_col]
     ]
