@@ -6,6 +6,7 @@ from typing import Optional, Callable
 class ProviderChoice(StrEnum):
     ollama = "ollama"
     openai = "openai"
+    anthropic = "anthropic"
 
 
 class ModelChoice(StrEnum):
@@ -18,6 +19,9 @@ class ModelChoice(StrEnum):
     gpt_52 = "gpt-5.2-2025-12-11"
     gpt_5 = "gpt-5-2025-08-07"
     gpt_5_mini = "gpt-5-mini-2025-08-07"
+    sonnet_4_5 = "claude-sonnet-4-5-20250929"
+    haiku_4_5 = "claude-haiku-4-5-20251001"
+    opus_4_5 = "claude-opus-4-5-20251101"
 
 
 class ReaderType(StrEnum):

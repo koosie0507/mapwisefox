@@ -65,6 +65,25 @@ wheels = [
 ]
 
 [[package]]
+name = "anthropic"
+version = "0.75.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "anyio" },
+    { name = "distro" },
+    { name = "docstring-parser" },
+    { name = "httpx" },
+    { name = "jiter" },
+    { name = "pydantic" },
+    { name = "sniffio" },
+    { name = "typing-extensions" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/04/1f/08e95f4b7e2d35205ae5dcbb4ae97e7d477fc521c275c02609e2931ece2d/anthropic-0.75.0.tar.gz", hash = "sha256:e8607422f4ab616db2ea5baacc215dd5f028da99ce2f022e33c7c535b29f3dfb", size = 439565 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/60/1c/1cd02b7ae64302a6e06724bf80a96401d5313708651d277b1458504a1730/anthropic-0.75.0-py3-none-any.whl", hash = "sha256:ea8317271b6c15d80225a9f3c670152746e88805a7a61e14d4a374577164965b", size = 388164 },
+]
+
+[[package]]
 name = "antlr4-python3-runtime"
 version = "4.9.3"
 source = { registry = "https://pypi.org/simple" }
@@ -599,6 +618,15 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/98/e7/a79392f9500625270466dd035593c480929e32cc257b769403d5f8ac9151/docling_parse-4.7.2-cp314-cp314-manylinux_2_26_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:5e83b2a981c6b402666331ff92d98443492722c659f8867088cad40f2713cdd4", size = 14981588 },
     { url = "https://files.pythonhosted.org/packages/a4/8c/0450290ee2ac0a2140c4ebc3200ae7c854ee13edd6419405fe5495a36747/docling_parse-4.7.2-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:30e1a531d183fc8e8ab37d596484d99c48d0cbf00805b4904ce7ff7d39573441", size = 15092383 },
     { url = "https://files.pythonhosted.org/packages/63/ad/f8db83c3b57fc12c5c38aa7794f0e0d47fd94ad31bfa6d2392bfca7d13ac/docling_parse-4.7.2-cp314-cp314-win_amd64.whl", hash = "sha256:5884094ac8b03066f018956e9fea215ca396e74c9ba51b93be4940797994ce87", size = 16786739 },
+]
+
+[[package]]
+name = "docstring-parser"
+version = "0.17.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b2/9d/c3b43da9515bd270df0f80548d9944e389870713cc1fe2b8fb35fe2bcefd/docstring_parser-0.17.0.tar.gz", hash = "sha256:583de4a309722b3315439bb31d64ba3eebada841f2e2cee23b99df001434c912", size = 27442 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/55/e2/2537ebcff11c1ee1ff17d8d0b6f4db75873e3b0fb32c2d4a2ee31ecb310a/docstring_parser-0.17.0-py3-none-any.whl", hash = "sha256:cf2569abd23dce8099b300f9b4fa8191e9582dda731fd533daf54c4551658708", size = 36896 },
 ]
 
 [[package]]
@@ -1300,9 +1328,10 @@ dev = [
 
 [[package]]
 name = "mapwisefox-assistant"
-version = "0.5.0"
+version = "0.6.0"
 source = { editable = "assistant" }
 dependencies = [
+    { name = "anthropic" },
     { name = "bibtexparser" },
     { name = "docling" },
     { name = "jinja2" },
@@ -1311,6 +1340,7 @@ dependencies = [
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "pdf2image" },
+    { name = "pydantic" },
     { name = "pypdf" },
     { name = "requests" },
     { name = "stopwords" },
@@ -1318,6 +1348,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "anthropic", specifier = ">=0.75.0" },
     { name = "bibtexparser", specifier = ">=1.4.3" },
     { name = "docling", specifier = ">=2.66.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
@@ -1326,6 +1357,7 @@ requires-dist = [
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.1" },
     { name = "pdf2image", specifier = ">=1.17.0" },
+    { name = "pydantic", specifier = ">=2.12.5" },
     { name = "pypdf", specifier = ">=6.5.0" },
     { name = "requests", specifier = ">=2.32.5" },
     { name = "stopwords", specifier = ">=1.0.2" },
