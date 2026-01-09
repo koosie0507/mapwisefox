@@ -24,7 +24,10 @@ from mapwisefox.assistant.tools import (
     FileProvider,
 )
 from mapwisefox.assistant.tools.extras import try_import
-from mapwisefox.assistant.tools.pdf import FileContentsExtractor, CachingFileContentsExtractor
+from mapwisefox.assistant.tools.pdf import (
+    FileContentsExtractor,
+    CachingFileContentsExtractor,
+)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 log = logging.getLogger(__file__)
