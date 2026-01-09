@@ -1271,7 +1271,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.2.0"
+version = "0.3.0"
 source = { virtual = "." }
 dependencies = [
     { name = "openai" },
@@ -1300,7 +1300,7 @@ dev = [
 
 [[package]]
 name = "mapwisefox-assistant"
-version = "0.4.1"
+version = "0.5.0"
 source = { editable = "assistant" }
 dependencies = [
     { name = "bibtexparser" },

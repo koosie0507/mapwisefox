@@ -90,9 +90,9 @@ def icc_cli(ctx: click.Context, evaluated_file: Path):
     metric_df = compute_many_metrics(
         evaluated_file.stem,
         {
-            "ICC(1, 1)": partial(icc, icc_type=ICCType.SingleMeasure),
-            "ICC(2, 1)": partial(icc, icc_type=ICCType.RandomK),
-            "ICC(3, 1)": partial(icc, icc_type=ICCType.FixedK),
+            "ICC(1, 1)": (partial(icc, icc_type=ICCType.SingleMeasure), True),
+            "ICC(2, 1)": (partial(icc, icc_type=ICCType.RandomK), True),
+            "ICC(3, 1)": (partial(icc, icc_type=ICCType.FixedK), False),
         },
         dict(zip([x.stem for x in common_args.input_files], common_args.input_dfs)),
         eval_df,
