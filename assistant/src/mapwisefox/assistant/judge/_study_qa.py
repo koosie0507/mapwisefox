@@ -4,8 +4,6 @@ import logging
 import os
 import sys
 from collections import defaultdict
-from multiprocessing import Process, Pipe, Lock as create_lock
-from multiprocessing.connection import Connection
 
 import pandas as pd
 import urllib3
@@ -27,6 +25,8 @@ from mapwisefox.assistant.tools.extras import try_import
 from mapwisefox.assistant.tools.pdf import (
     FileContentsExtractor,
     CachingFileContentsExtractor,
+    FileContentsExtractionError,
+    ExtractionFailureReason,
 )
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
@@ -72,29 +72,56 @@ def get_default_pdf_reader(dpi: int, layout_model: str) -> FileContentsExtractor
 
 
 def reader_factory(
-    reader_type: ReaderType, layout_model: str, dpi: int = 150
+    reader_type: ReaderType,
+    layout_model: str,
+    dpi: int = 150,
+    timeout_seconds: float = 30.0,
 ) -> FileContentsExtractor:
     if reader_type == ReaderType.docling:
         docling = try_import("mapwisefox.assistant.tools.pdf._docling")
-        return docling.DoclingExtractor(error_callback=log.warning)
+        return docling.DoclingExtractor(
+            error_callback=log.warning, timeout_seconds=timeout_seconds
+        )
 
     return get_default_pdf_reader(dpi, layout_model)
 
 
 @timer(callback=log.info, label="read-pdf")
-def _read_markdown(
-    conn: Connection, extractor: FileContentsExtractor, local_path: Path
-) -> None:
-    try:
-        caching_reader = CachingFileContentsExtractor(local_path.parent, extractor)
-        markdown = caching_reader.read_file(local_path)
-        conn.send(markdown)
-        exit(0)
-    except Exception:
-        conn.send("")
-        exit(1)
-    finally:
-        conn.close()
+def _extract_file_contents(extractor: FileContentsExtractor, local_path: Path) -> str:
+    caching_reader = CachingFileContentsExtractor(local_path.parent, extractor)
+    return caching_reader.read_file(local_path)
+
+
+def _read_paper(
+    paper_id: Any,
+    local_file_path: Path,
+    pdf_reader: FileContentsExtractor,
+    max_retries: int,
+    get_failsafe_reader: Callable,
+):
+    retries, local_reader = max_retries, pdf_reader
+    while retries >= 0:
+        try:
+            return True, _extract_file_contents(local_reader, local_file_path)
+        except FileContentsExtractionError as exc:
+            if exc.reason not in {
+                ExtractionFailureReason.Timeout,
+                ExtractionFailureReason.BackendError,
+            }:
+                log.error(
+                    "unhandled error while extracting contents of paper %r", paper_id
+                )
+                break  # return False, None
+
+            log.warning(
+                "failed to extract contents of paper %r, defaulting to failsafe reader",
+                paper_id,
+            )
+            local_reader = get_failsafe_reader()
+            retries -= 1
+
+    # maximum retries exceeded
+    return False, None
 
 
 @timer(log.info, "read-pdf-files")
@@ -105,57 +132,20 @@ def _extract_pdf_contents(
     pdf_reader: FileContentsExtractor,
     default_pdf_reader_factory: Callable[[], FileContentsExtractor],
     max_retries: int = 3,
-    document_timeout_seconds: float = 60.0,
 ):
     user_prompts = dict()
-    lock = create_lock()
     failed = []
     for idx, paper_metadata in df.iterrows():
         download_url = paper_metadata[url_column]
-        read, retries, local_reader = False, max_retries, pdf_reader
-        while not read and retries >= 0:
-            try:
-                lock.acquire()
-                local_file_path = file_provider(download_url)
-                recv_conn, send_conn = Pipe()
-                process = Process(
-                    target=_read_markdown,
-                    args=(send_conn, local_reader, local_file_path),
-                )
-                process.start()
+        local_file_path = file_provider(download_url)
 
-                # wait up to document_timeout_seconds to finish reading the PDF
-                timed_out = True
-                if recv_conn.poll(timeout=document_timeout_seconds):
-                    markdown = recv_conn.recv()
-                    timed_out = False
-                else:
-                    markdown = "timeout"
-                    process.terminate()
-
-                process.join()
-                if timed_out:
-                    raise TimeoutError(document_timeout_seconds)
-                if process.exitcode != 0:
-                    raise Exception(markdown)
-
-                user_prompts[(idx, download_url, local_file_path)] = markdown
-                read = True
-            except Exception as e:
-                log.error(
-                    "couldn't process paper %r using %r: %r. reverting to failsafe reader",
-                    idx,
-                    str(type(pdf_reader).__name__),
-                    str(e)[:50],
-                )
-                local_reader = default_pdf_reader_factory()
-                retries -= 1
-            finally:
-                lock.release()
-
-        if not read:
+        read_ok, contents = _read_paper(
+            idx, local_file_path, pdf_reader, max_retries, default_pdf_reader_factory
+        )
+        if read_ok:
+            user_prompts[(idx, download_url, local_file_path)] = contents
+        else:
             failed.append((idx, download_url))
-
     return user_prompts, failed
 
 
@@ -330,7 +320,7 @@ def study_qa(
         get_default_pdf_reader, dpi=150, layout_model=layout_config_path
     )
     markdown_texts, failed = _extract_pdf_contents(
-        df, url_column, file_provider, pdf_reader, default_reader, 1, 30
+        df, url_column, file_provider, pdf_reader, default_reader, 1
     )
     results = _evaluate_papers(markdown_texts, generate_json, qa_config, qa_criteria)
     df = _fill_results(df, qa_criteria, results)
