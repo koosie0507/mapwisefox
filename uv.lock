@@ -1300,7 +1300,7 @@ dev = [
 
 [[package]]
 name = "mapwisefox-assistant"
-version = "0.4.0"
+version = "0.4.1"
 source = { editable = "assistant" }
 dependencies = [
     { name = "bibtexparser" },
