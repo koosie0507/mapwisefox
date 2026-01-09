@@ -5,7 +5,7 @@ import click
 from mapwisefox.assistant.config import AssistantParams, ModelChoice, ProviderChoice
 from mapwisefox.assistant.judge._study_qa import study_qa
 from mapwisefox.assistant.study_selection._study_selection import study_selection
-from mapwisefox.assistant.tools.llm import OllamaProvider, OpenAIProvider
+from mapwisefox.assistant.tools.llm import OllamaProvider, OpenAIProvider, AnthropicProvider
 
 
 def _ollama_provider(model_choice: str, ollama_host: str, ollama_port: int):
@@ -18,8 +18,12 @@ def _openai_provider(model_choice: str, api_key: str):
     return partial(OpenAIProvider, model=model_choice, api_key=api_key)
 
 
+def _anthropic_provider(model_choice: str, api_key: str):
+    return partial(AnthropicProvider, model=model_choice, api_key=api_key)
+
+
 def _validate_api_key(ctx, param, value):
-    if param.name != "api_key" or ctx.params["provider"] != ProviderChoice.openai:
+    if param.name != "api_key" or ctx.params["provider"] not in {ProviderChoice.openai, ProviderChoice.anthropic}:
         return value
     if value is None or len(val_str := str(value).strip()) < 1:
         raise click.BadParameter(
@@ -76,11 +80,15 @@ def assistant(ctx, model, provider, ollama_host, ollama_port, api_key):
     obj.ollama_host = ollama_host
     obj.ollama_port = int(ollama_port)
     obj.api_key = api_key
-    obj.provider_factory = (
-        _openai_provider(model, api_key)
-        if provider == ProviderChoice.openai
-        else _ollama_provider(model, ollama_host, ollama_port)
-    )
+
+    match provider:
+        case ProviderChoice.openai:
+            obj.provider_factory = _openai_provider(model, api_key)
+        case ProviderChoice.anthropic:
+            obj.provider_factory = _anthropic_provider(model, api_key)
+        case _:
+            obj.provider_factory = _ollama_provider(model, ollama_host, ollama_port)
+
 
 
 assistant.add_command(study_selection)
