@@ -44,10 +44,14 @@ class AnthropicJSONGenerator(JSONGenerator):
         self.__max_retries = max_retries
         self.__thinking = self._new_thinking_obj(thinking)
 
-    def _new_thinking_obj(self, thinking: bool) -> "beta.BetaThinkingConfigEnabledParam|beta.BetaThinkingConfigDisabledParam":
-        return self._BetaThinkingEnabled(
-            type="enabled", budget_tokens=1025
-        ) if thinking else self._BetaThinkingDisabled(type="disabled")
+    def _new_thinking_obj(
+        self, thinking: bool
+    ) -> "beta.BetaThinkingConfigEnabledParam|beta.BetaThinkingConfigDisabledParam":
+        return (
+            self._BetaThinkingEnabled(type="enabled", budget_tokens=1025)
+            if thinking
+            else self._BetaThinkingDisabled(type="disabled")
+        )
 
     @staticmethod
     def _json_schema_to_pydantic(schema: dict, model_name: str = "MessageResponse"):
@@ -75,7 +79,9 @@ class AnthropicJSONGenerator(JSONGenerator):
 
         return create_model(model_name, **fields)
 
-    def _new_output_format_obj(self, response_format: str | dict) -> Optional["beta.BetaJSONOutputFormatParam"]:
+    def _new_output_format_obj(
+        self, response_format: str | dict
+    ) -> Optional["beta.BetaJSONOutputFormatParam"]:
         if not isinstance(response_format, dict):
             return None
         return self._json_schema_to_pydantic(response_format)
@@ -86,7 +92,10 @@ class AnthropicJSONGenerator(JSONGenerator):
         time.sleep(5)
         anthropic_output_format = self._new_output_format_obj(response_format)
         max_tokens = 2050 if self.__thinking else 1024
-        prompt = self._BetaMessageParam(role="user", content="\n".join([system_prompt, user_prompt]), )
+        prompt = self._BetaMessageParam(
+            role="user",
+            content="\n".join([system_prompt, user_prompt]),
+        )
         with self.__client.beta.messages.stream(
             model=self.__model_name,
             max_tokens=max_tokens,
@@ -98,12 +107,14 @@ class AnthropicJSONGenerator(JSONGenerator):
             buf = io.StringIO()
             thoughts = False
             for event in stream:
-                if event.type != 'content_block_delta':
+                if event.type != "content_block_delta":
                     continue
                 if event.delta.type == "thinking_delta":
                     self._thinking_callback(event.delta.thinking)
                     thoughts = True
-                elif (event.delta.type == "text_delta") and (chunk_text := event.delta.text):
+                elif (event.delta.type == "text_delta") and (
+                    chunk_text := event.delta.text
+                ):
                     buf.write(chunk_text)
                     if thoughts:
                         self._text_callback("\n")
@@ -124,7 +135,7 @@ class AnthropicProvider(LLMProviderBase):
         proto.APIError = anthropic_module.APIError
         return proto
 
-    def __init__(self,  model: str, api_key: str, **kwargs):
+    def __init__(self, model: str, api_key: str, **kwargs):
         super().__init__(
             model,
             kwargs.pop("on_error", None),
@@ -138,7 +149,9 @@ class AnthropicProvider(LLMProviderBase):
             model_info = self.__client.models.retrieve(self._model_name)
             return model_info is not None
         except self.APIError as err:
-            self._error_callback("unable to fetch information about Anthropic model", err)
+            self._error_callback(
+                "unable to fetch information about Anthropic model", err
+            )
             return False
 
     def new_json_generator(
