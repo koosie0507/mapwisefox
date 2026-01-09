@@ -24,8 +24,10 @@ from mapwisefox.assistant.tools import (
     FileProvider,
 )
 from mapwisefox.assistant.tools.extras import try_import
-from mapwisefox.assistant.tools.pdf import FileContentsExtractor
-
+from mapwisefox.assistant.tools.pdf import (
+    FileContentsExtractor,
+    CachingFileContentsExtractor,
+)
 
 logging.basicConfig(stream=sys.stdout, level=logging.INFO)
 log = logging.getLogger(__file__)
@@ -84,7 +86,8 @@ def _read_markdown(
     conn: Connection, extractor: FileContentsExtractor, local_path: Path
 ) -> None:
     try:
-        markdown = extractor.read_file(local_path)
+        caching_reader = CachingFileContentsExtractor(local_path.parent, extractor)
+        markdown = caching_reader.read_file(local_path)
         conn.send(markdown)
         exit(0)
     except Exception:
