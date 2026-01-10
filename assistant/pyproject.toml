@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox-assistant"
-version = "0.6.0"
+version = "0.7.0"
 dependencies = [
     "anthropic>=0.75.0",
     "bibtexparser>=1.4.3",
@@ -25,7 +25,7 @@ assistant = "mapwisefox.assistant:run_command"
 package = true
 
 [tool.bumpversion]
-current_version = "0.6.0"
+current_version = "0.7.0"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.

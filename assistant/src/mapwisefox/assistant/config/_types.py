@@ -7,6 +7,7 @@ class ProviderChoice(StrEnum):
     ollama = "ollama"
     openai = "openai"
     anthropic = "anthropic"
+    google = "google"
 
 
 class ModelChoice(StrEnum):
@@ -22,6 +23,11 @@ class ModelChoice(StrEnum):
     sonnet_4_5 = "claude-sonnet-4-5-20250929"
     haiku_4_5 = "claude-haiku-4-5-20251001"
     opus_4_5 = "claude-opus-4-5-20251101"
+    gemini_2_5_flash_lite = "gemini-2.5-flash-lite"
+    gemini_2_5_flash = "gemini-2.5-flash"
+    gemini_2_5_pro = "gemini-2.5-pro"
+    gemini_3_flash_preview = "gemini-3-flash-preview"
+    gemini_3_pro_preview = "gemini-3-pro-preview"
 
 
 class ReaderType(StrEnum):
