@@ -325,4 +325,4 @@ def study_qa(
     results = _evaluate_papers(markdown_texts, generate_json, qa_config, qa_criteria)
     df = _fill_results(df, qa_criteria, results)
     output_path = file.parent / f"{file.stem}-{ctx.obj.model_choice}{file.suffix}"
-    df.to_excel(output_path, index=False)
+    df.to_excel(output_path, index=False if index_col is None else True)
