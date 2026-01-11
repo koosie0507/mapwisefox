@@ -47,7 +47,7 @@ class BedrockJSONGenerator(JSONGenerator):
         self.__model_name = model_name
         self.__max_retries = max_retries
         self.__thinking = thinking
-        is_anthropic = model_name.startswith("eu.")
+        is_anthropic = "anthropic." in model_name
         self.__create_request_body = (
             self._anthropic_request_body if is_anthropic else self._openai_request_body
         )
@@ -224,6 +224,7 @@ class BedrockProvider(LLMProviderBase):
         ModelChoice.sonnet_4_5.value: "anthropic.claude-sonnet-4-5-20250929-v1:0",
         ModelChoice.opus_4_5.value: "anthropic.claude-opus-4-5-20251101-v1:0",
         ModelChoice.gpt_oss: "openai.gpt-oss-20b-1:0",
+        ModelChoice.gpt_oss_120b: "openai.gpt-oss-120b-1:0",
     }
 
     def __new__(cls, *args, **kwargs):
