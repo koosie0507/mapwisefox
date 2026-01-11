@@ -47,15 +47,17 @@ class BedrockJSONGenerator(JSONGenerator):
         self.__model_name = model_name
         self.__max_retries = max_retries
         self.__thinking = thinking
-        is_anthropic = "anthropic." in model_name
-        self.__create_request_body = (
-            self._anthropic_request_body if is_anthropic else self._openai_request_body
-        )
-        self.__process_event_obj = (
-            self._process_anthropic_event_obj
-            if is_anthropic
-            else self._process_openai_event_obj
-        )
+        self.__request_body_factories = [
+            (lambda: "anthropic." in self.__model_name, self._anthropic_request_body),
+            (lambda: "openai." in self.__model_name, self._openai_request_body),
+        ]
+        self.__event_obj_processors = [
+            (
+                lambda: "anthropic." in self.__model_name,
+                self._process_anthropic_event_obj,
+            ),
+            (lambda: "openai." in self.__model_name, self._process_openai_event_obj),
+        ]
 
     @staticmethod
     def _create_formatting_prompt(response_format: str | dict) -> str:
@@ -111,6 +113,17 @@ class BedrockJSONGenerator(JSONGenerator):
             }
         )
         return request_body
+
+    def __create_request_body(
+        self, response_format: str | dict, system_prompt: str, user_prompt: str
+    ) -> str:
+        for condition, factory in self.__request_body_factories:
+            if not condition():
+                continue
+            return factory(response_format, system_prompt, user_prompt)
+        raise ValueError(
+            f"no idea how to handle requests for model {self.__model_name}"
+        )
 
     @retry(
         wait=wait_random_exponential(multiplier=1, max=60),
@@ -185,6 +198,17 @@ class BedrockJSONGenerator(JSONGenerator):
             self._text_callback(chunk_text)
 
         return currently_thinking
+
+    def __process_event_obj(
+        self, buf: io.StringIO, event_obj: dict, currently_thinking: bool
+    ):
+        for condition, processor in self.__event_obj_processors:
+            if not condition():
+                continue
+            return processor(buf, event_obj, currently_thinking)
+        raise ValueError(
+            f"no idea how to handle requests for model {self.__model_name}"
+        )
 
     def _process_stream(self, stream: Generator) -> str:
         buf = io.StringIO()
