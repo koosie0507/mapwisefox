@@ -10,6 +10,7 @@ from mapwisefox.assistant.tools.llm import (
     OpenAIProvider,
     AnthropicProvider,
     GoogleProvider,
+    BedrockProvider,
 )
 
 
@@ -29,6 +30,10 @@ def _anthropic_provider(model_choice: str, api_key: str):
 
 def _google_provider(model_choice: str, api_key: str):
     return partial(GoogleProvider, model=model_choice, api_key=api_key)
+
+
+def _bedrock_provider(model_choice: str, api_key: str):
+    return partial(BedrockProvider, model=model_choice, api_key=api_key)
 
 
 def _validate_api_key(ctx, param, value):
@@ -76,7 +81,6 @@ def _validate_api_key(ctx, param, value):
     show_default=True,
 )
 @click.option(
-    "-k",
     "--api-key",
     type=click.UNPROCESSED,
     callback=_validate_api_key,
@@ -100,6 +104,8 @@ def assistant(ctx, model, provider, ollama_host, ollama_port, api_key):
             obj.provider_factory = _anthropic_provider(model, api_key)
         case ProviderChoice.google:
             obj.provider_factory = _google_provider(model, api_key)
+        case ProviderChoice.bedrock:
+            obj.provider_factory = _bedrock_provider(model, api_key)
         case _:
             obj.provider_factory = _ollama_provider(model, ollama_host, ollama_port)
 

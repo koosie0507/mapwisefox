@@ -1422,6 +1422,7 @@ dependencies = [
     { name = "pypdf" },
     { name = "requests" },
     { name = "stopwords" },
+    { name = "tenacity" },
 ]
 
 [package.metadata]
@@ -1441,6 +1442,7 @@ requires-dist = [
     { name = "pypdf", specifier = ">=6.5.0" },
     { name = "requests", specifier = ">=2.32.5" },
     { name = "stopwords", specifier = ">=1.0.2" },
+    { name = "tenacity", specifier = ">=9.1.2" },
 ]
 
 [[package]]

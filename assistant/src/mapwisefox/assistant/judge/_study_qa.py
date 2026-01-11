@@ -239,8 +239,7 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     help="column in the Excel sheet which contains URLs to primary studies",
 )
 @click.option(
-    "-k",
-    "--key",
+    "--index-column",
     "index_col",
     type=click.STRING,
     required=False,

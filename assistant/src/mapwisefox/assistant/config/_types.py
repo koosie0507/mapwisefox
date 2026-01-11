@@ -8,6 +8,7 @@ class ProviderChoice(StrEnum):
     openai = "openai"
     anthropic = "anthropic"
     google = "google"
+    bedrock = "aws-bedrock"
 
 
 class ModelChoice(StrEnum):
