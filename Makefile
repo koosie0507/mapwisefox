@@ -44,7 +44,7 @@ format: bootstrap
 	uv tool run ruff check --fix $(PYTHON_PACKAGE_DIRS)
 
 check: bootstrap
-	uv tool run black --check $(PYTHON_PACKAGE_DIRS)
+	uv tool run black --check --diff $(PYTHON_PACKAGE_DIRS)
 	uv tool run ruff check $(PYTHON_PACKAGE_DIRS)
 
 PYTHON_EXISTING_TEST_DIRS := $(foreach d,$(PYTHON_TEST_DIRS),$(if $(wildcard $(d)),$(d),))
