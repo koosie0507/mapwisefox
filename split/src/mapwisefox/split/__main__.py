@@ -1,7 +1,7 @@
 import click
 
 from ._simple import simple
-from ._qa_assignment import n_by_k_evals
+from ._assignment import n_by_k_evals
 
 
 @click.group()
