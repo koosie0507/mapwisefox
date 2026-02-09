@@ -8,12 +8,14 @@ class ProviderChoice(StrEnum):
     openai = "openai"
     anthropic = "anthropic"
     google = "google"
+    bedrock = "aws-bedrock"
 
 
 class ModelChoice(StrEnum):
     ministral = "ministral-3:14b"
     qwen3_vl = "qwen3-vl:8b"
     gpt_oss = "gpt-oss:20b"
+    gpt_oss_120b = "gpt-oss:120b"
     deepseek = "deepseek-r1:14b"
     llama = "llama3.1:8b"
     qwen3 = "qwen3:8b"
