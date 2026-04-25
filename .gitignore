@@ -1,4 +1,6 @@
 *.~lock*
+*.xls?
+data/
 uploads/
 .env*
 .idea/
