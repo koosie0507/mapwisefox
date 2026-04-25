@@ -53,8 +53,8 @@ def _validate_evaluation_count(
     return value
 
 
-def _init_eval_criteria(eval_criteria_config: str | Path | None) -> list[str]:
-    criteria = ["study quality"]
+def _init_additional_cols(eval_criteria_config: str | Path | None) -> list[str]:
+    criteria = []
     if eval_criteria_config is not None:
         with open(eval_criteria_config) as cfg:
             cfg_obj = json.load(cfg)
@@ -118,7 +118,7 @@ def n_by_k_evals(
     evaluation_criteria_config: str | Path | None = None,
 ):
     df = _load_workload_df(selection, worksheet_name)
-    criteria = _init_eval_criteria(evaluation_criteria_config)
+    criteria = _init_additional_cols(evaluation_criteria_config)
 
     evaluators = evaluator_count
     evaluations_per_paper = evaluation_count
@@ -135,7 +135,7 @@ def n_by_k_evals(
         today = datetime.now().strftime("%Y%m%d")
         f = f"uploads/{today}-evaluator{e+1:02}.xlsx"
         print(f"saving papers for evaluator {e+1} to file {f}")
-        bundle.to_excel(excel_writer=f, index=False, freeze_panes=(1, 5))
+        bundle.to_excel(excel_writer=f, index=False)
 
 
 if __name__ == "__main__":
