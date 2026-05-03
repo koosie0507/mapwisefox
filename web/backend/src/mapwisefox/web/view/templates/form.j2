@@ -1,0 +1,37 @@
+{% extends "_base.j2" %}
+
+{% block page_title %}{{ filename }}{% endblock %}
+{% block head %}
+    {{ super() }}
+    {% for href in css_hrefs %}
+        <link rel="stylesheet" type="text/css" href="{{ href }}"/>
+    {% endfor %}
+    {% if debug %}
+        <!-- Dev build uses Vite dev server -->
+        <script type="module" src="{{ dev_server_url }}/@vite/client"></script>
+        <script type="module">
+            import RefreshRuntime from "{{ dev_server_url }}/@react-refresh";
+
+            RefreshRuntime.injectIntoGlobalHook(window);
+            window.$RefreshReg$ = () => {
+            };
+            window.$RefreshSig$ = () => (type) => type;
+            window.__vite_plugin_react_preamble_installed__ = true;
+        </script>
+        <script type="module" src="{{ script_src }}"></script>
+    {% else %}
+        <!-- Production build entry from manifest -->
+        <script type="module" src="{{ script_src }}"></script>
+    {% endif %}
+    <script type="module" src="{{ script_src }}" onload="window.mountAll && window.mountAll()"></script>
+{% endblock %}
+
+{% block page_content %}
+    <div data-widget="EvidenceEditor" data-props='{{ {
+        "evidence": record,
+        "fileName": filename
+      } | tojson }}'></div>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

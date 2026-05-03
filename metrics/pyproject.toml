@@ -1,0 +1,53 @@
+[project]
+name = "mapwisefox-metrics"
+version = "0.8.0"
+
+dependencies = [
+    "dedupe>=3.0.3",
+    "pandas>=2.3.0",
+    "scikit-learn>=1.7.0",
+]
+
+[tool.uv]
+package = true
+
+[project.scripts]
+metrics = "mapwisefox.metrics:run_command"
+
+[tool.bumpversion]
+current_version = "0.8.0"
+parse = """(?x)
+    (?P<major>0|[1-9]\\d*)\\.
+    (?P<minor>0|[1-9]\\d*)\\.
+    (?P<patch>0|[1-9]\\d*)
+    (?:-(?P<pre_label>[a-zA-Z-]+)(?P<pre_number>:0|[1-9]\\d*))?
+"""
+serialize = [
+    "{major}.{minor}.{patch}-{pre_label}{pre_number}",
+    "{major}.{minor}.{patch}",
+]
+
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = false
+sign_tags = false
+tag_name = "metrics-v{new_version}"
+tag_message = "Bump metrics version: {current_version} → {new_version}"
+allow_dirty = true
+commit = true
+message = "Bump metrics version: {current_version} → {new_version}"
+moveable_tags = []
+commit_args = ""
+setup_hooks = []
+pre_commit_hooks = []
+post_commit_hooks = []
+
+[tool.bumpversion.parts.pre_label]
+values = ["dev", "final"]
+optional_value= "final"
+
+[tool.bumpversion.parts.pre_number]
+first_value = 1

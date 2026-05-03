@@ -1,0 +1,101 @@
+.panel {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 8px;
+    height: 80px;
+}
+
+.btnInclude {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid rgba(20, 89, 25, 0.85);
+    background: linear-gradient(#429942, #328f32);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btnInclude:hover {
+    filter: brightness(1.1);
+}
+
+.btnInclude:focus {
+    outline: 2px solid rgb(82, 186, 82);
+    outline-offset: 2px;
+}
+
+.btnInclude:active {
+    transform: translateY(1px);
+}
+
+/* White-on-red, clear semantics for Exclude */
+.btnExclude {
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #8e0000;
+    background: linear-gradient(#e53935, #c62828);
+    color: #ffffff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.08), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btnExclude:hover {
+    filter: brightness(1.1);
+}
+
+.btnExclude:focus {
+    outline: 2px solid rgba(229, 57, 53, 0.35);
+    outline-offset: 2px;
+}
+
+.btnExclude:active {
+    transform: translateY(1px);
+}
+
+/* Reasons layout */
+.reasons {
+    display: block;
+    gap: 6px;
+    border-left: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0 8px;
+    vertical-align: text-top;
+    height: 100%;
+}
+
+/* Very small heading reading "Reasons" */
+.reasonsHeading {
+    font-size: 1.1rem;
+    line-height: 1;
+    font-weight: 600;
+    color: #555;
+}
+
+/* Horizontal list with 1–2px spacing, slightly bolder */
+.reasonList {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    padding-top: 8px;
+    margin: 0;
+    gap: 0 1px; /* horizontal spacing */
+    line-height: 0.9;
+    font-weight: 650; /* slightly bolder than normal */
+    max-height: calc(80px - 24px);
+    overflow-y: auto;      /* scroll ONLY when content exceeds height */
+}
+
+.reasonItem {
+    display: inline;
+}
+
+.reasonItem:not(:last-child)::after {
+    content: " \25C6 ";
+    opacity: 0.6;
+    margin: 0 2px; /* breathing room around the diamond */
+}
+
+.noReasons {
+    color: #888;
+    font-style: italic;
+}
