@@ -16,6 +16,7 @@ def load_data_file(datadir):
         if not fpath.exists() or not fpath.is_file() or not access(fpath, R_OK):
             raise ValueError("the test_cases fixture requires path to a readable file")
         return fpath.read_text(encoding="utf-8")
+
     return _
 
 

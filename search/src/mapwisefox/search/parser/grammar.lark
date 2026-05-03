@@ -6,7 +6,7 @@ output_spec: "->" ("query" | "filter" | "both") ":"
 attr_clause: "in" field_list
 field_list: field_name ("," field_name)*
 
-?compound_expr: ( group_expr | binary_expr | unary_expr | value_expr ) attr_clause?
+compound_expr: ( group_expr | binary_expr | unary_expr | value_expr ) attr_clause?
 
 group_expr: "(" expr ")"
 

@@ -160,4 +160,67 @@ def main(clarivate_api_key, elsevier_api_key, springer_api_key, data_dir):
 
 
 if __name__ == "__main__":
+    from parser import run_dsl
+    from parser.backends import ScopusDSLAdapter, SpringerDSLAdapter
+
+    # ── Example 1: simple AND with field restriction ──────────────────────────────
+    dsl = '"entity resolution" & "record linkage" in title, abstract'
+
+    scopus_q = run_dsl(dsl, ScopusDSLAdapter())
+    springer_q = run_dsl(dsl, SpringerDSLAdapter())
+
+    print(scopus_q)
+    # TITLE-ABS("entity resolution") AND TITLE-ABS("record linkage")
+
+    print(springer_q)
+    # (title:"entity resolution" OR Abstract:"entity resolution")
+    # AND (title:"record linkage" OR Abstract:"record linkage")
+
+    # ── Example 2: output routing ─────────────────────────────────────────────────
+    dsl2 = '[-> query: "entity alignment" & "deep learning" in title]'
+
+    result = run_dsl(dsl2, ScopusDSLAdapter())
+    # {"query": 'TITLE("entity alignment") AND TITLE("deep learning")', "filter": None}
+
+    api_query = result["query"]  # → send to Scopus API
+    post_filter = result["filter"]  # → None, no post-filter
+
+    # ── Example 3: proximity + negation ──────────────────────────────────────────
+    dsl3 = 'nearest(5)("entity" & "resolution") & !"survey"'
+
+    print(run_dsl(dsl3, ScopusDSLAdapter()))
+    # "entity" W/5 "resolution" AND NOT "survey"
+
+    print(run_dsl(dsl3, SpringerDSLAdapter()))
+    # ("entity" "resolution"~5 AND NOT "survey")
+
+    # ── Example 4: regex match routed to filter ───────────────────────────────────
+    dsl4 = '[-> filter: match(regex)("entit(y|ies)")]'
+
+    result = run_dsl(dsl4, SpringerDSLAdapter())
+    # {"query": None, "filter": '"entit(y|ies)"', "regex": "entit(y|ies)"}
+
+    # Use result["regex"] with re.search() on retrieved abstracts
+
+    # ── Example 5: combining with existing QueryBuilder output ───────────────────
+    from mapwisefox.search import QueryBuilder, TitleAbsExpr
+    from mapwisefox.search.backends import ScopusBackend
+
+    # Build the base query the old way, then augment with DSL filter
+    base_query = (
+        QueryBuilder()
+        .year_range(2010, 2025)
+        .groups(
+            QueryBuilder.or_group(
+                *map(TitleAbsExpr, ["entity resolution", "record linkage"])
+            )
+        )
+    )
+
+    dsl_filter = run_dsl(
+        '[-> filter: match(regex)("framework|architect")]', SpringerDSLAdapter()
+    )
+
+    # Pass base_query to the backend, apply dsl_filter["regex"] post-retrieval
+
     main()

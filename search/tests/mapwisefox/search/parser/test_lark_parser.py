@@ -1,23 +1,26 @@
 import pytest
 
-from mapwisefox.search.parser import QueryParser
+from mapwisefox.search.parser._parser import Parser
 
 
 @pytest.fixture
 def sut():
-    return QueryParser()
+    return Parser()
 
 
-@pytest.mark.parametrize("test_cases", ["valid_expressions.txt"], indirect=["test_cases"])
+@pytest.mark.parametrize(
+    "test_cases", ["valid_expressions.txt"], indirect=["test_cases"]
+)
 def test_sanity(sut, test_cases):
     for tc in test_cases:
-        ast = sut.parse(tc)
+        ast = sut(tc)
 
         assert ast is not None
 
 
 def test_entity_resolution_architecture_query(sut):
-    ast = sut.parse(r'''(
+    ast = sut(
+        r"""(
   (
     ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching")
       &
@@ -31,7 +34,7 @@ def test_entity_resolution_architecture_query(sut):
   [->filter: ("article" | "conference" | "book") in evidence_type]
 ) & (
   [->filter: "computer science" in subject]
-)''')
+)"""
+    )
 
     assert ast is not None
-
