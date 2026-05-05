@@ -1,92 +1,112 @@
-import sys
+"""Intermediate representation for the search DSL.
+
+Each AST node is a dataclass discoverable by `lark.ast_utils.create_transformer`.
+Nodes that may carry an `attr_clause` (field list) expose a `fields: list[str]`
+attribute populated by the transformer in `_parser.py`.
+"""
+
 from dataclasses import dataclass, field
-from enum import StrEnum
-from typing import List
+from enum import Enum
+from typing import List, Optional
 
 from lark import ast_utils
-
-this_module = sys.modules[__name__]
-
-
-class BoolOp(StrEnum):
-    AND = "&"
-    OR = "|"
+from lark.tree import Meta
 
 
-class MatchType(StrEnum):
+class _Ast(ast_utils.Ast):
+    """Marker base. `create_transformer` discovers all subclasses in this module."""
+
+    pass
+
+
+class _AstWithMeta(ast_utils.Ast, ast_utils.WithMeta):
+    """Variant that retains source-position metadata."""
+
+    meta: Meta
+
+
+class BoolOp(str, Enum):
+    AND = "AND"
+    OR = "OR"
+    NOT = "NOT"
+
+
+class MatchType(str, Enum):
     STRICT = "strict"
     LOOSE = "loose"
     REGEX = "regex"
 
 
-class OutputTarget(StrEnum):
+class OutputTarget(str, Enum):
     QUERY = "query"
     FILTER = "filter"
     BOTH = "both"
 
 
-class _Ast(ast_utils.Ast):
-    pass
-
-
-@dataclass
-class ValueExpr(_Ast):
-    """value_expr: STRING"""
-
-    value: str
-    fields: list[str] = field(default_factory=list)
-
-
 @dataclass
 class FieldList(_Ast, ast_utils.AsList):
-    """field_list: field_name ("," field_name)*"""
+    """`title, abstract, keywords` → FieldList(items=['title','abstract','keywords'])"""
 
     items: List[str]
 
 
 @dataclass
 class AttrClause(_Ast):
-    """attr_clause: "in" field_list"""
+    """`in <FieldList>` — consumed by the transformer; never appears in final AST."""
 
     field_list: FieldList
 
 
 @dataclass
-class BinaryExpr(_Ast):
-    """binary_expr: expr boolean_op expr"""
+class MatchOp(_Ast):
+    """Wraps a match operator and its optional argument(s)."""
 
-    left: object  # DSLNode
-    op: BoolOp
-    right: object  # DSLNode
-    fields: list[str] = field(default_factory=list)
+    kind: str  # 'approx' | 'nearest' | 'match'
+    arg: Optional[object] = None  # int for nearest, MatchType for match
 
 
 @dataclass
-class GroupExpr(_Ast):
-    """group_expr: "(" expr ")" """
-
-    child: object
-    fields: list[str] = field(default_factory=list)
-
-
-@dataclass
-class UnaryExpr(_Ast):
-    """unary_expr: "!" expr  |  match_expr"""
-
-    child: object
+class ValueExpr(_Ast):
+    value: str  # raw, unquoted
+    fields: List[str] = field(default_factory=list)
 
 
 @dataclass
 class MatchExpr(_Ast):
-    """match_expr: match_op "(" compound_expr ")" """
-
-    op: object  # tuple produced by ToAst.match_op
+    op: MatchOp
     child: object
+    fields: List[str] = field(default_factory=list)
+
+
+@dataclass
+class UnaryExpr(_Ast):
+    op: BoolOp  # NOT
+    child: object
+    fields: List[str] = field(default_factory=list)
+
+
+@dataclass
+class BinaryExpr(_Ast):
+    left: object
+    op: BoolOp
+    right: object
+    fields: List[str] = field(default_factory=list)
+
+
+@dataclass
+class GroupExpr(_Ast):
+    child: object
+    fields: List[str] = field(default_factory=list)
 
 
 @dataclass
 class OutputSpecExpr(_Ast):
-    """output_spec_expr: "[" output_spec compound_expr "]" """
-
     target: OutputTarget
     child: object
+
+
+@dataclass
+class Query(_Ast):
+    """Root node returned by `Parser.__call__`."""
+
+    body: object

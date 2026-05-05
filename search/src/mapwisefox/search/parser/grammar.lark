@@ -1,32 +1,40 @@
 start: expr
 ?expr: ( output_spec_expr | compound_expr )
 
-output_spec_expr: "[" output_spec compound_expr "]"
-output_spec: "->" ("query" | "filter" | "both") ":"
+
+output_spec_expr: "[" "->" output_target ":" compound_expr "]"
+!output_target: "query" | "filter" | "both"
 attr_clause: "in" field_list
 field_list: field_name ("," field_name)*
 
-compound_expr: ( group_expr | binary_expr | unary_expr | value_expr ) attr_clause?
+compound_expr: ( group_expr | binary_expr | unary_expr | match_expr | value_expr ) attr_clause?
 
 group_expr: "(" expr ")"
 
 binary_expr: expr boolean_op expr
-unary_expr: "!" expr
-          | match_expr
+unary_expr: NOT_OP expr
 
 match_expr: match_op "(" compound_expr ")"
 
-match_op: "approx"
-        | "nearest" "(" SIGNED_NUMBER ")"
-        | "match" "(" match_type ")"
+match_op: APPROX
+        | NEAREST "(" SIGNED_NUMBER ")"
+        | MATCH_LITERAL "(" match_type ")"
 
 value_expr: STRING
 
-boolean_op: "&" | "|"
+boolean_op: AND_OP | OR_OP
+
+APPROX: "approx"
+NEAREST: "nearest"
+MATCH_LITERAL: "match"
+
+AND_OP: "&"
+OR_OP: "|"
+NOT_OP: "!"
 
 field_name: CNAME
 
-match_type: "strict" | "loose" | "regex"
+!match_type: "strict" | "loose" | "regex"
 
 %import common.ESCAPED_STRING -> STRING
 %import common.CNAME

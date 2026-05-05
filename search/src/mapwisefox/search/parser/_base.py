@@ -1,109 +1,90 @@
 from abc import ABCMeta, abstractmethod
 from functools import singledispatchmethod
-
-from lark import Tree
+from typing import Any
 
 from ._ir import (
-    ValueExpr,
     BinaryExpr,
     GroupExpr,
-    UnaryExpr,
     MatchExpr,
     OutputSpecExpr,
     OutputTarget,
+    Query,
+    UnaryExpr,
+    ValueExpr,
 )
 
 
 class DSLAdapter(metaclass=ABCMeta):
-    """
-    Base adapter: dispatches on IR node type via singledispatchmethod,
-    mirroring how ast_utils.create_transformer dispatches on grammar rule
-    by class name.
-
-    Subclasses override the typed emit_* methods; they never touch adapt()
-    or the dispatch table.
-    """
-
-    # ── public entry point ────────────────────────────────────────────────────
 
     @singledispatchmethod
-    def adapt(self, node) -> object:
+    def adapt(self, node: Any) -> Any:
         raise TypeError(f"No adapter registered for IR node type: {type(node)!r}")
 
-    # ── register one handler per IR node type ─────────────────────────────────
+    @adapt.register(Query)
+    def _(self, node: Query) -> Any:
+        return self.emit_query(node)
 
     @adapt.register(ValueExpr)
-    def _(self, node: ValueExpr) -> str:
+    def _(self, node: ValueExpr) -> Any:
         return self.emit_value(node)
 
     @adapt.register(BinaryExpr)
-    def _(self, node: BinaryExpr) -> str:
+    def _(self, node: BinaryExpr) -> Any:
         return self.emit_binary(node)
 
     @adapt.register(UnaryExpr)
-    def _(self, node: UnaryExpr) -> str:
-        # UnaryExpr wraps either a negation child or a MatchExpr
-        if isinstance(node.child, MatchExpr):
-            return self.adapt(node.child)
+    def _(self, node: UnaryExpr) -> Any:
         return self.emit_not(node)
 
     @adapt.register(MatchExpr)
-    def _(self, node: MatchExpr) -> str:
-        tag = node.op[0]
+    def _(self, node: MatchExpr) -> Any:
+        tag = node.op.kind
         if tag == "approx":
             return self.emit_approx(node)
         elif tag == "nearest":
             return self.emit_nearest(node)
-        else:  # "match"
+        else:
             return self.emit_match(node)
 
     @adapt.register(GroupExpr)
-    def _(self, node: GroupExpr) -> str:
+    def _(self, node: GroupExpr) -> Any:
         return self.emit_group(node)
 
     @adapt.register(OutputSpecExpr)
-    def _(self, node: OutputSpecExpr) -> dict:
+    def _(self, node: OutputSpecExpr) -> Any:
         return self.emit_output(node)
 
-    # ── abstract: subclasses must implement these ─────────────────────────────
+    @abstractmethod
+    def emit_value(self, node: ValueExpr) -> Any: ...
 
     @abstractmethod
-    def emit_value(self, node: ValueExpr) -> str: ...
+    def emit_binary(self, node: BinaryExpr) -> Any: ...
 
     @abstractmethod
-    def emit_binary(self, node: BinaryExpr) -> str: ...
+    def emit_not(self, node: UnaryExpr) -> Any: ...
 
-    @abstractmethod
-    def emit_not(self, node: UnaryExpr) -> str: ...
+    def emit_query(self, node: Query) -> Any:
+        return self.adapt(node.body)
 
-    # ── concrete defaults: subclasses may override ────────────────────────────
-
-    def emit_group(self, node: GroupExpr) -> str:
+    def emit_group(self, node: GroupExpr) -> Any:
         return f"({self.adapt(node.child)})"
 
-    def emit_approx(self, node: MatchExpr) -> str:
-        """Default: treat approx as a plain grouped expression."""
+    def emit_approx(self, node: MatchExpr) -> Any:
         return self.adapt(node.child)
 
-    def emit_nearest(self, node: MatchExpr) -> str:
-        """Default: treat nearest as a plain grouped expression."""
+    def emit_nearest(self, node: MatchExpr) -> Any:
         return self.adapt(node.child)
 
-    def emit_match(self, node: MatchExpr) -> str:
-        """Default: treat match as a plain expression."""
+    def emit_match(self, node: MatchExpr) -> Any:
         return self.adapt(node.child)
 
-    def emit_output(self, node: OutputSpecExpr) -> dict:
-        """
-        Default routing: emit the child and wrap in a dict keyed by target.
-        Subclasses can override to split query vs. filter differently.
-        """
-        child_str = self.adapt(node.child)
+    def emit_output(self, node: OutputSpecExpr) -> Any:
+        child_val = self.adapt(node.child)
         return {
             OutputTarget.QUERY: (
-                child_str if node.target != OutputTarget.FILTER else None
+                child_val if node.target != OutputTarget.FILTER else None
             ),
             OutputTarget.FILTER: (
-                child_str if node.target != OutputTarget.QUERY else None
+                child_val if node.target != OutputTarget.QUERY else None
             ),
         }

@@ -1,5 +1,8 @@
 from ._base import DSLAdapter
-from ._parser import parse
+from ._parser import Parser
+
+
+parse = Parser()
 
 
 def run_dsl(dsl_text: str, adapter: DSLAdapter) -> dict | str:
