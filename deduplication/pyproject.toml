@@ -11,6 +11,9 @@ dependencies = [
 [project.scripts]
 deduplicate = "mapwisefox.deduplication:run_command"
 
+[tool.uv]
+package = true
+
 [tool.bumpversion]
 current_version = "0.6.0"
 parse = """(?x)

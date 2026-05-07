@@ -1457,7 +1457,7 @@ requires-dist = [
 [[package]]
 name = "mapwisefox-deduplication"
 version = "0.1.0"
-source = { virtual = "deduplication" }
+source = { editable = "deduplication" }
 dependencies = [
     { name = "bibtexparser" },
     { name = "dedupe" },
@@ -1491,7 +1491,7 @@ requires-dist = [
 [[package]]
 name = "mapwisefox-search"
 version = "0.1.0"
-source = { virtual = "search" }
+source = { editable = "search" }
 dependencies = [
     { name = "clarivate-wos-starter-python-client" },
     { name = "dotenv" },
