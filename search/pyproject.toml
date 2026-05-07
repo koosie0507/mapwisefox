@@ -11,6 +11,9 @@ dependencies = [
 [project.scripts]
 search = "mapwisefox.search:run_command"
 
+[tool.uv]
+package = true
+
 [tool.uv.sources]
 clarivate-wos-starter-python-client = { git = "https://github.com/clarivate/wosstarter_python_client.git" }
 
