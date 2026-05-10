@@ -40,7 +40,6 @@ class MatchType(str, Enum):
 class OutputTarget(str, Enum):
     QUERY = "query"
     FILTER = "filter"
-    BOTH = "both"
 
 
 @dataclass

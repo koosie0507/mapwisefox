@@ -1,6 +1,6 @@
 import pytest
 
-from mapwisefox.search.parser.backends import ScopusDSLAdapter
+from mapwisefox.search.parser.adapters import ScopusDSLAdapter
 
 
 @pytest.fixture

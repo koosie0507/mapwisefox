@@ -143,7 +143,6 @@ def test_output_query_target(parse):
     [
         ("query", _ir.OutputTarget.QUERY),
         ("filter", _ir.OutputTarget.FILTER),
-        ("both", _ir.OutputTarget.BOTH),
     ],
 )
 def test_all_output_targets(parse, target, enum):

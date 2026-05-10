@@ -89,12 +89,6 @@ def test_adapt_output_filter(adapter):
     assert res == {OutputTarget.QUERY: None, OutputTarget.FILTER: "VAL(H)"}
 
 
-def test_adapt_output_both(adapter):
-    node = OutputSpecExpr(target=OutputTarget.BOTH, child=ValueExpr(value="H"))
-    res = adapter.adapt(node)
-    assert res == {OutputTarget.QUERY: "VAL(H)", OutputTarget.FILTER: "VAL(H)"}
-
-
 def test_adapt_unregistered(adapter):
     with pytest.raises(TypeError):
         adapter.adapt("unsupported")

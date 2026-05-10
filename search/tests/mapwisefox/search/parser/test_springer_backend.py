@@ -1,6 +1,6 @@
 import pytest
 
-from mapwisefox.search.parser.backends import SpringerDSLAdapter
+from mapwisefox.search.parser.adapters import SpringerDSLAdapter
 
 
 @pytest.fixture
