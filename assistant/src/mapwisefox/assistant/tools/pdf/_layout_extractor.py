@@ -224,12 +224,3 @@ Then re-run the extractor."""
         debug_dir.mkdir(exist_ok=True)
         out_path = debug_dir / f"page_{page_no:04d}.png"
         img.save(out_path)
-
-
-if __name__ == "__main__":
-    extract = PdfLayoutExtractor(
-        model_path="/Users/cusi/.torch/iopath_cache/s/gxy11xkkiwnpgog/publaynet-tf_efficientdet_d1.pth.tar?dl=1",
-        config_path="lp://PubLayNet/tf_efficientdet_d1/config",
-        debug=True
-    )
-    extract("./uploads/downloads/nguyen2016-9ad729ba21355486c7830d828d56da35.pdf")  # , first_page=7, last_page=7)
