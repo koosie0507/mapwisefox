@@ -142,7 +142,11 @@ def _extract_pdf_contents(
             local_file_path = file_provider(download_url)
 
             read_ok, contents = _read_paper(
-                idx, local_file_path, pdf_reader, max_retries, default_pdf_reader_factory
+                idx,
+                local_file_path,
+                pdf_reader,
+                max_retries,
+                default_pdf_reader_factory,
             )
             if read_ok:
                 user_prompts[(idx, download_url, local_file_path)] = contents

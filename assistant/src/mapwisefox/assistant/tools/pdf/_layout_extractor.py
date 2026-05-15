@@ -7,8 +7,6 @@ from functools import partial
 from pathlib import Path
 from types import ModuleType
 
-import numpy
-import torch
 from PIL.PpmImagePlugin import PpmImageFile
 from layoutparser.elements import layout_elements
 from layoutparser.models import AutoLayoutModel

@@ -1,6 +1,5 @@
 import abc
 import io
-import sys
 from pathlib import Path
 
 from mapwisefox.assistant.tools.pdf._text_extractor import PdfTextExtractor
@@ -18,9 +17,7 @@ class BasicPdfContentsExtractor(FileContentsExtractor, metaclass=abc.ABCMeta):
     ):
         self._min_overlap_ratio = text_to_layout_min_overlap_ratio
         self.__text_extractor = PdfTextExtractor()
-        self.__layout_extractor = PdfLayoutExtractor(
-            dpi, config_path=layout_model
-        )
+        self.__layout_extractor = PdfLayoutExtractor(dpi, config_path=layout_model)
 
     def __compute_text_to_layout_scale(self) -> dict[int, tuple[float, float]]:
         return {

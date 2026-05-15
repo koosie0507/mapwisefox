@@ -1,7 +1,6 @@
 from dataclasses import asdict
 from functools import reduce, partial
 from pathlib import Path
-from typing import Literal
 
 import asyncclick as click
 import httpx
@@ -126,10 +125,11 @@ async def run_command(
         if not in_place
         else input_file
     )
-    kwargs = {
-        "mode": "a",
-        "if_sheet_exists": "replace"
-    } if output_file.exists() and output_file.is_file() else {"mode": "w"}
+    kwargs = (
+        {"mode": "a", "if_sheet_exists": "replace"}
+        if output_file.exists() and output_file.is_file()
+        else {"mode": "w"}
+    )
     with pd.ExcelWriter(output_file, engine="openpyxl", **kwargs) as xls_writer:
         backward_df.to_excel(xls_writer, sheet_name="Back")
         forward_df.to_excel(xls_writer, sheet_name="Forward")
