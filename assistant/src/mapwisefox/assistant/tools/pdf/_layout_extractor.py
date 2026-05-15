@@ -7,6 +7,8 @@ from functools import partial
 from pathlib import Path
 from types import ModuleType
 
+import numpy
+import torch
 from PIL.PpmImagePlugin import PpmImageFile
 from layoutparser.elements import layout_elements
 from layoutparser.models import AutoLayoutModel
@@ -55,6 +57,7 @@ Then re-run the extractor."""
         self,
         dpi: int = 150,
         config_path: str = "lp://PubLayNet/tf_efficientdet_d0/config",
+        model_path: str = None,
         label_map: dict[int, str] = None,
         min_merge_overlap_ratio=0.5,
         debug: bool = False,
@@ -80,6 +83,7 @@ Then re-run the extractor."""
         on the extracted PDF page. Default=**``False``**
         """
         self.__config_path = config_path
+        self.__model_path = model_path
         self.__label_map = label_map or {
             1: "Text",
             2: "Title",
@@ -162,7 +166,9 @@ Then re-run the extractor."""
             self._process_page,
             model=AutoLayoutModel(
                 config_path=self.__config_path,
+                model_path=self.__model_path,
                 label_map=self.__label_map,
+                extra_config=dict(weights_only=False),
             ),
         )
         images = {
@@ -181,17 +187,17 @@ Then re-run the extractor."""
             page_no: Size(image.size[0], image.size[1])
             for page_no, image in images.items()
         }
-
-        with ThreadPoolExecutor(max_workers=os.cpu_count() - 1) as pool:
-            futures = {
-                pool.submit(process_page, image=image): page_no
-                for page_no, image in images.items()
-            }
-            wait(futures)
-            for f in futures:
-                page_no = futures[f]
-                self.__layout_boxes[page_no] = f.result()
-                self._write_debug_image(file_path, page_no, images[page_no])
+        with torch.serialization.safe_globals([numpy.core.multiarray.scalar]):
+            with ThreadPoolExecutor(max_workers=os.cpu_count() - 1) as pool:
+                futures = {
+                    pool.submit(process_page, image=image): page_no
+                    for page_no, image in images.items()
+                }
+                wait(futures)
+                for f in futures:
+                    page_no = futures[f]
+                    self.__layout_boxes[page_no] = f.result()
+                    self._write_debug_image(file_path, page_no, images[page_no])
 
         return file_path
 
@@ -223,6 +229,8 @@ Then re-run the extractor."""
 
 if __name__ == "__main__":
     extract = PdfLayoutExtractor(
-        config_path="lp://PubLayNet/tf_efficientdet_d1/config", debug=True
+        model_path="/Users/cusi/.torch/iopath_cache/s/gxy11xkkiwnpgog/publaynet-tf_efficientdet_d1.pth.tar?dl=1",
+        config_path="lp://PubLayNet/tf_efficientdet_d1/config",
+        debug=True
     )
-    extract("./uploads/nguyen2016.pdf")  # , first_page=7, last_page=7)
+    extract("./uploads/downloads/nguyen2016-9ad729ba21355486c7830d828d56da35.pdf")  # , first_page=7, last_page=7)

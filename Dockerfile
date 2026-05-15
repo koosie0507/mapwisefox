@@ -1,18 +1,19 @@
-FROM python:3.13.7-alpine3.22 AS python-build
-ARG BUILD_PKGS="git build-base"
-LABEL authors="Andrei Olar"
+FROM python:3.13.7-slim AS python-build
+ARG BUILD_PKGS="git build-essential"
+LABEL authors="Andrei Olar <andrei.olar@gmail.com>"
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /opt/python-build
 
 ENV UV_INSTALL_DIR=/usr/local/bin
-RUN apk add --update --no-cache ${BUILD_PKGS} &&\
-    wget -qO- https://astral.sh/uv/install.sh | sh
+RUN apt update -yqq && apt install ${BUILD_PKGS} -yqq
 
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
 COPY uv.lock uv.lock
 COPY pyproject.toml pyproject.toml
+COPY assistant/pyproject.toml assistant/pyproject.toml
 COPY deduplication/pyproject.toml deduplication/pyproject.toml
-COPY metrics/pyproject.toml kappa-score/pyproject.toml
+COPY metrics/pyproject.toml metrics/pyproject.toml
 COPY search/pyproject.toml search/pyproject.toml
 COPY search-judge/pyproject.toml search-judge/pyproject.toml
 COPY snowballing/pyproject.toml snowballing/pyproject.toml
@@ -21,10 +22,12 @@ RUN mkdir -p web/backend
 COPY web/backend/pyproject.toml web/backend/pyproject.toml
 
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --no-install-workspace --no-editable --all-packages --no-dev --locked && \
-    apk del ${BUILD_PKGS}
+    uv sync --no-install-workspace --no-editable --all-packages --no-dev --frozen && \
+    apt remove ${BUILD_PKGS} -yqq &&\
+    apt clean -yqq && \
+    rm -rf /var/lib/apt/lists/*
 
-FROM node:22.19-alpine3.22 AS node-build
+FROM node:22.19 AS node-build
 
 WORKDIR /opt/node-build
 
@@ -60,9 +63,9 @@ WORKDIR "/opt/mapwisefox"
 COPY . .
 
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --all-packages --no-editable --no-dev --locked 
+    uv sync --all-packages --no-editable --no-dev --frozen
 
-FROM python:3.13.7-alpine3.22
+FROM python:3.13.7-slim
 LABEL authors="Andrei Olar"
 
 EXPOSE 8000
@@ -72,10 +75,14 @@ ENV VIRTUALENV="/opt/mapwisefox/.venv"
 ENV PATH="$VIRTUALENV/bin:$PATH"
 ENV MWF_WEB_DEBUG=0
 ENV MWF_WEB_BASEDIR="/opt/mapwisefox"
+ENV TORCH_LOAD_WEIGHTS_ONLY=0
 
-RUN apk add libgomp libstdc++ && \
-    adduser -u 1001 -S -D -s /bin/sh -h /opt/mapwisefox mapwisefox && \
-    mkdir -p uploads
+RUN apt update -yqq && apt install libgomp1 libstdc++6 ffmpeg libsm6 libxext6 poppler-utils -yqq && \
+    useradd -u 1001 -r -s /bin/sh -d /opt/mapwisefox mapwisefox && \
+    mkdir -p uploads .cache && \
+    chown -R mapwisefox:users /opt/mapwisefox && \
+    apt clean && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/.venv .venv
 COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/web/assets assets

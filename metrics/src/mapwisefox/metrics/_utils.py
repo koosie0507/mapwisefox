@@ -54,4 +54,7 @@ def load_df(path, index_col=None):
     file_loader = SUPPORTED_FILE_HANDLERS.get(path.suffix)
     if not file_loader:
         raise ValueError("unsupported file type", path.suffix)
-    return file_loader(path, index_col=index_col)
+    try:
+        return file_loader(path, index_col=index_col)
+    except Exception as e:
+        raise ValueError(f"error loading file {path}") from e
