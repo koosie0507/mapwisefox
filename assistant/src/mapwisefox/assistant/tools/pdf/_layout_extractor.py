@@ -187,17 +187,16 @@ Then re-run the extractor."""
             page_no: Size(image.size[0], image.size[1])
             for page_no, image in images.items()
         }
-        with torch.serialization.safe_globals([numpy.core.multiarray.scalar]):
-            with ThreadPoolExecutor(max_workers=os.cpu_count() - 1) as pool:
-                futures = {
-                    pool.submit(process_page, image=image): page_no
-                    for page_no, image in images.items()
-                }
-                wait(futures)
-                for f in futures:
-                    page_no = futures[f]
-                    self.__layout_boxes[page_no] = f.result()
-                    self._write_debug_image(file_path, page_no, images[page_no])
+        with ThreadPoolExecutor(max_workers=os.cpu_count() - 1) as pool:
+            futures = {
+                pool.submit(process_page, image=image): page_no
+                for page_no, image in images.items()
+            }
+            wait(futures)
+            for f in futures:
+                page_no = futures[f]
+                self.__layout_boxes[page_no] = f.result()
+                self._write_debug_image(file_path, page_no, images[page_no])
 
         return file_path
 
