@@ -26,6 +26,9 @@ assistant = "mapwisefox.assistant:run_command"
 [tool.uv]
 package = true
 
+[tool.setuptools.package-data]
+"*" = ["*.j2", "*.pth.tar"]
+
 [tool.bumpversion]
 current_version = "0.7.0"
 parse = """(?x)

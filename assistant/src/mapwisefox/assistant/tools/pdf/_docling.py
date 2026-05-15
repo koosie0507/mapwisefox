@@ -81,7 +81,8 @@ class DoclingExtractor(FileContentsExtractor):
                 backend.unload()
                 del backend
             del converter
-            torch.mps.empty_cache()
+            if torch.backends.mps.is_available() and torch.backends.mps.is_built():
+                torch.mps.empty_cache()
             gc.collect()
 
     def read_file(self, file: str | Path) -> str:

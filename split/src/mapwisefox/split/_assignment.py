@@ -117,6 +117,7 @@ def n_by_k_evals(
     worksheet_name: str | None = None,
     evaluation_criteria_config: str | Path | None = None,
 ):
+    selection = Path(selection)
     df = _load_workload_df(selection, worksheet_name)
     criteria = _init_additional_cols(evaluation_criteria_config)
 
@@ -131,9 +132,10 @@ def n_by_k_evals(
             row.update({k: 0.0 for k in criteria})
             evaluator_papers[eid].append(row)
     evaluator_papers = {k: pd.DataFrame(v) for k, v in evaluator_papers.items()}
+
     for e, bundle in evaluator_papers.items():
         today = datetime.now().strftime("%Y%m%d")
-        f = f"uploads/{today}-evaluator{e+1:02}.xlsx"
+        f = f"{selection.parent}/{today}-evaluator{e+1:02}.xlsx"
         print(f"saving papers for evaluator {e+1} to file {f}")
         bundle.to_excel(excel_writer=f, index=False)
 
