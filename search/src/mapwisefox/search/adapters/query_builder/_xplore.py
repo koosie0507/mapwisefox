@@ -1,6 +1,6 @@
 from typing import Any
 
-from mapwisefox.search import (
+from mapwisefox.search.query_builder import (
     EvidenceAttributes,
     AttrExpr,
     EvidenceTypeExpr,

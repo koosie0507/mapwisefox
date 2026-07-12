@@ -1,8 +1,7 @@
-from mapwisefox.search import EvidenceAttributes, YearRangeExpr
-from mapwisefox.search.adapters._expr_tree import ExprTreeAdapter
+from ._base import DSLAdapter
 
 
-class ACMAdapter(ExprTreeAdapter):
+class ACMAdapter(DSLAdapter):
     EVIDENCE_ATTR_MAP = {
         EvidenceAttributes.TITLE: "Title",
         EvidenceAttributes.ABSTRACT: "Abstract",

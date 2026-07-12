@@ -1,6 +1,6 @@
 from enum import StrEnum
 
-from mapwisefox.search._enum import EvidenceAttributes
+from ._enum import EvidenceAttributes
 
 
 class LogicalOperators(StrEnum):

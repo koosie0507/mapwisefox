@@ -1,4 +1,4 @@
-from mapwisefox.search._expr import (
+from ._expr import (
     LogicalOperators,
     YearRangeExpr,
     NaryExpr,

@@ -1,4 +1,4 @@
-from mapwisefox.search import EvidenceAttributes, YearRangeExpr
+from mapwisefox.search.query_builder import EvidenceAttributes, YearRangeExpr
 
 from ._expr_tree import ExprTreeAdapter
 

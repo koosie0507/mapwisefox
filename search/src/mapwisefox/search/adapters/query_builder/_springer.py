@@ -1,15 +1,13 @@
 from datetime import datetime, timezone
 
 
-from mapwisefox.search import (
+from mapwisefox.search.query_builder import (
     EvidenceAttributes,
     EvidenceTypes,
     EvidenceTypeExpr,
     YearRangeExpr,
     SubjectAreaExpr,
     TitleExpr,
-)
-from mapwisefox.search._expr import (
     NaryExpr,
     AttrExpr,
     LanguageExpr,

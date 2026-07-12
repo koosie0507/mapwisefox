@@ -1,12 +1,11 @@
 import datetime
-from functools import partial
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import click
 import dotenv
 
-from mapwisefox.search import (
+from mapwisefox.search.query_builder import (
     QueryBuilder,
     EvidenceTypes,
     SubjectAreas,
@@ -18,7 +17,6 @@ from mapwisefox.search.adapters.query_builder import (
     ScopusAdapter,
     SpringerAdapter,
     WebOfScienceAdapter,
-    XploreAdapter,
 )
 from mapwisefox.search.backends.query_builder import (
     ConsoleBackend,
