@@ -75,7 +75,12 @@ async def run_command(
     input_file = Path(input_file).absolute()
     output_prefix = output_prefix or input_file.stem
 
-    xls = pd.read_excel(input_file, sheet_name=sheet_name)
+    if sheet_name is not None:
+        xls = pd.read_excel(input_file, sheet_name=sheet_name)
+    else:
+        xls = pd.read_excel(input_file)
+    if isinstance(xls, dict) and len(xls) < 2:
+        xls = next(iter(xls.values()))
 
     unique_ids = set(xls[id_column].unique())
     excluded_unique_ids = set()
@@ -120,8 +125,11 @@ async def run_command(
         if not in_place
         else input_file
     )
-    with pd.ExcelWriter(
-        output_file, engine="openpyxl", mode="a", if_sheet_exists="replace"
-    ) as xls_writer:
+    kwargs = (
+        {"mode": "a", "if_sheet_exists": "replace"}
+        if output_file.exists() and output_file.is_file()
+        else {"mode": "w"}
+    )
+    with pd.ExcelWriter(output_file, engine="openpyxl", **kwargs) as xls_writer:
         backward_df.to_excel(xls_writer, sheet_name="Back")
         forward_df.to_excel(xls_writer, sheet_name="Forward")

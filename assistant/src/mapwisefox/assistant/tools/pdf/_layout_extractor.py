@@ -55,6 +55,7 @@ Then re-run the extractor."""
         self,
         dpi: int = 150,
         config_path: str = "lp://PubLayNet/tf_efficientdet_d0/config",
+        model_path: str = None,
         label_map: dict[int, str] = None,
         min_merge_overlap_ratio=0.5,
         debug: bool = False,
@@ -80,6 +81,7 @@ Then re-run the extractor."""
         on the extracted PDF page. Default=**``False``**
         """
         self.__config_path = config_path
+        self.__model_path = model_path
         self.__label_map = label_map or {
             1: "Text",
             2: "Title",
@@ -162,7 +164,9 @@ Then re-run the extractor."""
             self._process_page,
             model=AutoLayoutModel(
                 config_path=self.__config_path,
+                model_path=self.__model_path,
                 label_map=self.__label_map,
+                extra_config=dict(weights_only=False),
             ),
         )
         images = {
@@ -181,7 +185,6 @@ Then re-run the extractor."""
             page_no: Size(image.size[0], image.size[1])
             for page_no, image in images.items()
         }
-
         with ThreadPoolExecutor(max_workers=os.cpu_count() - 1) as pool:
             futures = {
                 pool.submit(process_page, image=image): page_no
@@ -219,10 +222,3 @@ Then re-run the extractor."""
         debug_dir.mkdir(exist_ok=True)
         out_path = debug_dir / f"page_{page_no:04d}.png"
         img.save(out_path)
-
-
-if __name__ == "__main__":
-    extract = PdfLayoutExtractor(
-        config_path="lp://PubLayNet/tf_efficientdet_d1/config", debug=True
-    )
-    extract("./uploads/nguyen2016.pdf")  # , first_page=7, last_page=7)

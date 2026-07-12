@@ -1,37 +1,69 @@
 # MapwiseFox
 
-MapwiseFox is a suite of tools that aims to alleviate the process of creating
-systematic literature reviews. It is primarily aimed at the software engineering
-field, but there's nothing preventing researchers, academics and practitioners
-from other fields to use it.
+MapwiseFox is a suite of tools for performing systematic literature reviews.
 
-The package provides the following utilities geared at key steps in the
-systematic literature review process:
+The package provides several utilities:
 
-- [x] `mws-search` - allows searching one or more online databases using the 
-same input query (write the query once, search it across multiple DBs) :rocket:.
-- [x] `mws-deduplicate` - deduplicates the search results retrieved from
-multiple databases.
-- [x] `mws-split` - basic data splitter which allows assigning smaller workloads
-to the team of reviewers.
+- [x] `search` - provide one search query and run it against multiple backends.
+- [x] `deduplicate` - deduplicate search results stored across multiple files.
+- [x] `split-workload` - partitions review workloads among multiple team members.
+- [x] `snowball` - performs one level of snowballing in both directions based
+  on an input set of primary studies.
+- [x] `assistant` - runs include/exclude or quality assessment filters using LLMs.
+- [x] `metrics` - implements various metrics for inter-rater agreement.
+- [x] `web` - standardized web form that allows manually selecting large numbers
+  of primary studies using customizable inclusion/exclusion criteria.
 
-The cornerstone of the suite is the homonymous application aimed at easing the
-selection of primary studies, their evaluation as well as the extraction of data
-attributes from each study.
+## Building
+
+To prevent most portability issues, a `Dockerfile` is provided. To build the
+MapwiseFox Docker image locally, either [Docker](https://www.docker.com) or another [OCI](https://opencontainers.org)
+container manager (e.g. [Podman](https://podman.io)) is required. The instructions below
+assume a Linux/MacOSX environment and a `docker` shell alias.
+
+Download or clone this repository to a local directory which we're going to
+call `$MWFDIR`.
+
+```shell
+$ cd $MWFDIR
+$ docker build -t mwf .
+```
+
+The result is a local Docker image containing all CLIs in the MapwiseFox suite.
 
 ## Running
 
-Either [Docker](https://www.docker.com) or another
-[OCI](https://opencontainers.org) container manager
-(e.g. [Podman](https://podman.io)) must be installed.
-At least a `docker` shell alias is required for the instructions below to work.
+MapwiseFox uses standard Python tooling and `uv` to manage packages. Those
+familiar can build and run all MapwiseFox tools locally.
 
-Then you must create a `.env`
+The Docker image should be run with a volume mount for the local working
+directory containing the data set of the systematic literature review. A good
+choice for this local working directory is `$MWFDIR/data`, but anything that
+can be mounted as a Docker volume with read-write access will work. For example,
+here's how to run the `search` command and store data in `$MWFDIR/data`:
 
 ```shell
-# set UPLOADS_DIR to a path where you store the Excel files containing primary studies
-$ docker build -t ersa .
-$ docker run -it -p 8000:8000 -v "$UPLOADS_DIR:/app/uploads" ersa web
+$ docker run -it -v "$MWFDIR/data:/opt/mapwisefox/data" mwf search -D ./data/search-test
+```
+
+To run the interactive web form, you must specify a free local listening port.
+
+```shell
+$ docker run -it -v "$MWFDIR/data:/opt/mapwisefox/data" -p "8000:8000" mwf web
+```
+
+
+Some search backends (Web of Science, Elsevier, Springer) and all LLM backends
+except local ones require API keys to access their APIs. These can be provided
+in an environment file. Example `.env` file:
+
+```dotenv
+MWF_WEB_AUTH_ENABLED=False
+MWF_SEARCH_CLARIVATE_API_KEY=# API key for accessing Web of Science APIs
+MWF_SEARCH_ELSEVIER_API_KEY=# API key for accessing Scopus/ScienceDirect
+MWF_SEARCH_SPRINGER_API_KEY=# API key for accessing SpringerLink APIs
+# The assistant only supports one provider at a time
+MWF_ASSISTANT_API_KEY=# your OpenAI, Anthropic, Google or AWS Bedrock API key
 ```
 
 ## Contributing

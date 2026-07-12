@@ -29,6 +29,7 @@ XPLORE_MAPPINGS = {
 
 FILENAME_MAPPINGS = {
     "xplore": XPLORE_MAPPINGS,
+    "ieee": XPLORE_MAPPINGS,
     "wos": WOS_MAPPINGS,
 }
 

@@ -41,6 +41,9 @@ def _monday():
 )
 def main(input_dir, output_dir, dd_training_file, dd_settings_file):
     # input, blocking & filtering
+    output_dir = Path(output_dir)
+    dd_training_file = Path(dd_training_file)
+    dd_settings_file = Path(dd_settings_file)
     full_df = _load_input_files(input_dir)
 
     # matching & clustering

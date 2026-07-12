@@ -13,6 +13,7 @@ from typing import Callable, Any
 from pathlib import Path
 
 import click
+from requests.exceptions import HTTPError
 
 from mapwisefox.assistant.config import ReaderType
 from mapwisefox.assistant.instrumentation import timer
@@ -137,15 +138,24 @@ def _extract_pdf_contents(
     failed = []
     for idx, paper_metadata in df.iterrows():
         download_url = paper_metadata[url_column]
-        local_file_path = file_provider(download_url)
+        try:
+            local_file_path = file_provider(download_url)
 
-        read_ok, contents = _read_paper(
-            idx, local_file_path, pdf_reader, max_retries, default_pdf_reader_factory
-        )
-        if read_ok:
-            user_prompts[(idx, download_url, local_file_path)] = contents
-        else:
+            read_ok, contents = _read_paper(
+                idx,
+                local_file_path,
+                pdf_reader,
+                max_retries,
+                default_pdf_reader_factory,
+            )
+            if read_ok:
+                user_prompts[(idx, download_url, local_file_path)] = contents
+            else:
+                failed.append((idx, download_url))
+        except (AttributeError, ValueError, HTTPError) as e:
             failed.append((idx, download_url))
+            log.warning("failed to download %s: %s", download_url, e)
+
     return user_prompts, failed
 
 
