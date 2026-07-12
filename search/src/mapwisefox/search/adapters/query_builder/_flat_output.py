@@ -1,7 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from io import StringIO
 
-from mapwisefox.search.adapters._base import QueryBuilderAdapter
+from ._base import QueryBuilderAdapter
 
 
 class FlatOutputAdapter(QueryBuilderAdapter, metaclass=ABCMeta):

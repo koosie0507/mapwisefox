@@ -4,17 +4,18 @@ import pandas as pd
 import requests
 
 from mapwisefox.search.adapters import ScopusAdapter
+from mapwisefox.search.adapters.dsl._scopus import ScopusDSLAdapter
 from mapwisefox.search.backends import SearchBackend
 from mapwisefox.search.persistence import PandasCsvAdapter
 
 
-class ScopusBackend(SearchBackend):
+class ScopusDSLBackend(SearchBackend):
     API_ENDPOINT_URL = "https://api.elsevier.com/content/search/scopus"
 
     def __init__(
         self, api_key, save=True, csv_path="scopus_results.csv", fetch_all=True
     ):
-        super().__init__(ScopusAdapter, save, PandasCsvAdapter(csv_path))
+        super().__init__(save, PandasCsvAdapter(csv_path))
         self._session = requests.Session()
         self._session.headers = {
             "X-ELS-APIKey": api_key,

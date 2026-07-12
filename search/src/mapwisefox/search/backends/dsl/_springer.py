@@ -12,11 +12,7 @@ from mapwisefox.search.persistence import PandasCsvAdapter
 
 class SpringerBackend(SearchBackend):
     def __init__(self, api_key, csv_path=None, is_premium=False, fetch_all=True):
-        super().__init__(
-            partial(SpringerAdapter, is_premium),
-            csv_path is not None,
-            PandasCsvAdapter(csv_path) if csv_path is not None else None,
-        )
+        super().__init__(csv_path is not None, PandasCsvAdapter(csv_path) if csv_path is not None else None)
         self._page_size = 25
         self._params = {"api_key": api_key, "p": self._page_size}
         self._session = requests.Session()

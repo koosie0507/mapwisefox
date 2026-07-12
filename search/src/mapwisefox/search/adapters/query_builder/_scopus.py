@@ -3,9 +3,6 @@ from mapwisefox.search._enum import (
     EvidenceTypes,
     SubjectAreas,
 )
-from mapwisefox.search.adapters._flat_output import (
-    FlatOutputAdapter,
-)
 from mapwisefox.search._expr import (
     AttrExpr,
     YearRangeExpr,
@@ -14,6 +11,7 @@ from mapwisefox.search._expr import (
     LanguageExpr,
     AuthorKeysExpr,
 )
+from ._flat_output import FlatOutputAdapter
 
 
 class ScopusAdapter(FlatOutputAdapter):

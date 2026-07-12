@@ -15,7 +15,7 @@ from mapwisefox.search._expr import (
     LanguageExpr,
     LogicalOperators,
 )
-from mapwisefox.search.adapters._expr_tree import ExprTreeAdapter
+from ._expr_tree import ExprTreeAdapter
 
 
 class SpringerAdapter(ExprTreeAdapter):

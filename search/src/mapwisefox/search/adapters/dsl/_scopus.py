@@ -9,8 +9,8 @@ Scopus Advanced Search syntax reference:
   https://dev.elsevier.com/sc_search_tips.html
 """
 
-from .._base import DSLAdapter
-from .._ir import (
+
+from mapwisefox.search.parser import (
     ValueExpr,
     BinaryExpr,
     GroupExpr,
@@ -22,8 +22,8 @@ from .._ir import (
     MatchType,
     Query,
 )
+from ._base import DSLAdapter
 
-# ── field mapping ─────────────────────────────────────────────────────────────
 
 _FIELD_MAP: dict[str, str] = {
     "title": "TITLE",
@@ -33,7 +33,7 @@ _FIELD_MAP: dict[str, str] = {
     "affil": "AFFIL",
 }
 
-# Multi-field shortcuts — mirrors _extract_group_str's TITLE-ABS logic
+
 _COMBINED: dict[frozenset, str] = {
     frozenset({"title", "abstract"}): "TITLE-ABS",
     frozenset({"title", "abstract", "keywords"}): "TITLE-ABS-KEY",

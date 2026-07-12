@@ -25,3 +25,22 @@ def test_cases(request, load_data_file, datadir):
     if not hasattr(request, "param"):
         raise ValueError("the test_cases fixture must be parametrized")
     return list(map(lambda x: x.strip(), load_data_file(request.param).split("---")))
+
+
+@pytest.fixture
+def ersa_query_text():
+    return r"""(
+  (
+    ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching")
+      &
+    ("system" | "tool*" | "framework" | "architect*" | "library")
+  ) in title,abstract
+) & (
+  ("system" | "tool*" | "framework" | "architect*" | "library") in keywords
+) & (
+  [->filter: "english" in language]
+) & (
+  [->filter: ("article" | "conference" | "book") in evidence_type]
+) & (
+  [->filter: "computer science" in subject]
+)"""

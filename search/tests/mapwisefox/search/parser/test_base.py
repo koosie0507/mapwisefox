@@ -1,6 +1,6 @@
 import pytest
 
-from mapwisefox.search.parser._base import DSLAdapter
+from mapwisefox.search.adapters.dsl import DSLAdapter
 from mapwisefox.search.parser._ir import (
     BinaryExpr,
     BoolOp,

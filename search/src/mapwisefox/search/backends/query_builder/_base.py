@@ -2,8 +2,7 @@ from abc import ABCMeta, abstractmethod
 
 
 class SearchBackend(metaclass=ABCMeta):
-    def __init__(self, query_adapter_type, save_result=False, persistence_adapter=None):
-        self._query_adapter_type = query_adapter_type
+    def __init__(self, save_result=False, persistence_adapter=None):
         self._save_result = save_result
         self._persistence_adapter = persistence_adapter
 
@@ -18,7 +17,6 @@ class SearchBackend(metaclass=ABCMeta):
             return
         self._persistence_adapter.save(results)
 
-    def __call__(self, query_builder):
-        query_obj = query_builder.build(self._query_adapter_type)
+    def __call__(self, query_obj):
         results = self._perform_query(query_obj)
         self._save(results)

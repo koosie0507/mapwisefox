@@ -2,7 +2,8 @@ from collections import defaultdict
 
 from mapwisefox.search import YearRangeExpr
 from mapwisefox.search._expr import NaryExpr, AttrExpr
-from mapwisefox.search.adapters._base import QueryBuilderAdapter
+
+from ._base import QueryBuilderAdapter
 
 
 class ExprTreeAdapter(QueryBuilderAdapter):

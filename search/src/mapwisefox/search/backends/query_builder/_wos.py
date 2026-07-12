@@ -1,10 +1,7 @@
-from functools import partial
-
 import pandas as pd
 from clarivate.wos_starter.client import Configuration, ApiClient, DocumentsApi
 
-from mapwisefox.search.adapters import WebOfScienceAdapter
-from mapwisefox.search.backends import (
+from mapwisefox.search.backends.query_builder import (
     SearchBackend,
     ConsoleBackend,
 )
@@ -21,13 +18,11 @@ class WebOfScienceBackend(SearchBackend):
     ):
         if api_key is None:
             raise ValueError("api_key is required")
-        wos_typ = partial(WebOfScienceAdapter, use_starter_api)
         if use_starter_api:
             persistence_adapter = None
             save = False
-        super().__init__(wos_typ, save, persistence_adapter)
-
-        self.__console = ConsoleBackend(wos_typ)
+        super().__init__(save, persistence_adapter)
+        self.__console = ConsoleBackend()
         self.__cfg = Configuration(host="https://api.clarivate.com/apis/wos-starter/v1")
         self.__cfg.api_key["ClarivateApiKeyAuth"] = api_key
         self.__cfg.retries = 1

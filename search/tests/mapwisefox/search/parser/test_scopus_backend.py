@@ -32,23 +32,8 @@ def test_springer_sanity_check(parsed_text, expected):
     assert parsed_text == expected
 
 
-def test_entity_resolution_mapping_study_query(parse, adapter):
-    text = r"""(
-      (
-        ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching")
-          &
-        ("system" | "tool*" | "framework" | "architect*" | "library")
-      ) in title,abstract
-    ) & (
-      ("system" | "tool*" | "framework" | "architect*" | "library") in keywords
-    ) & (
-      [->filter: "english" in language]
-    ) & (
-      [->filter: ("article" | "conference" | "book") in evidence_type]
-    ) & (
-      [->filter: "computer science" in subject]
-    )"""
-    ir = parse(text)
+def test_ersa_query(parse, adapter, ersa_query_text):
+    ir = parse(ersa_query_text)
     out = adapter.adapt(ir)
 
     assert isinstance(out, str)

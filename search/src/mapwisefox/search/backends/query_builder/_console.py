@@ -1,9 +1,9 @@
-from mapwisefox.search.backends._base import SearchBackend
+from mapwisefox.search.backends.query_builder._base import SearchBackend
 
 
 class ConsoleBackend(SearchBackend):
-    def __init__(self, query_adapter_type):
-        super().__init__(query_adapter_type, False, None)
+    def __init__(self):
+        super().__init__(False, None)
 
     def _perform_query(self, query_obj):
         print(

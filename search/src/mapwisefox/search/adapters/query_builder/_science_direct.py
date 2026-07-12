@@ -4,7 +4,7 @@ from mapwisefox.search import (
     YearRangeExpr,
     EvidenceTypeExpr,
 )
-from mapwisefox.search.adapters._expr_tree import ExprTreeAdapter
+from ._expr_tree import ExprTreeAdapter
 
 
 class ScienceDirectAdapter(ExprTreeAdapter):
