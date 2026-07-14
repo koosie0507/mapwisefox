@@ -76,7 +76,7 @@ def test_adapt_unary(adapter):
 
 def test_adapt_group(adapter):
     node = GroupExpr(child=ValueExpr(value="D"))
-    assert adapter.adapt(node) == "(VAL(D))"
+    assert adapter.adapt(node) == "VAL(D)"
 
 
 def test_adapt_match_approx(adapter):

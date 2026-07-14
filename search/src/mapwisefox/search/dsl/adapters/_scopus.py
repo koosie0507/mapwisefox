@@ -17,7 +17,6 @@ from ..parser import (
     ValueExpr,
     BinaryExpr,
     GroupExpr,
-    UnaryExpr,
     MatchExpr,
     OutputSpecExpr,
     OutputTarget,
@@ -138,9 +137,6 @@ class ScopusDSLAdapter(DSLAdapter):
 
         return {OutputTarget.QUERY: query_str, OutputTarget.FILTER: filter_str}
 
-    def emit_not(self, node: UnaryExpr) -> str:
-        return f"NOT {self.adapt(node.child)}"
-
     def emit_approx(self, node: MatchExpr) -> str:
         # Scopus has no generic approx operator; treat as a grouped expression.
         return f"({self.adapt(node.child)})"
@@ -171,28 +167,6 @@ class ScopusDSLAdapter(DSLAdapter):
                 inner = f'"{inner}"'
         # MatchType.LOOSE: default Scopus behaviour — no change needed
         return inner
-
-    def _is_fully_enclosed(self, text: str) -> bool:
-        """
-        Checks if a string is safely enclosed by a single pair of parentheses.
-        Prevents redundant grouping like '((A OR B))' while protecting '(A) OR (B)'.
-        """
-        if not text or not text.startswith("(") or not text.endswith(")"):
-            return False
-
-        depth = 0
-        for i, char in enumerate(text):
-            if char == "(":
-                depth += 1
-            elif char == ")":
-                depth -= 1
-
-            # If depth drops to 0 before the end, it's not a single enclosing group
-            # e.g., "(A) AND (B)" drops to 0 after the first ')'
-            if depth == 0 and i < len(text) - 1:
-                return False
-
-        return depth == 0
 
     def emit_group(self, node: GroupExpr) -> dict:
         inner = self._normalize(self.adapt(node.child))
