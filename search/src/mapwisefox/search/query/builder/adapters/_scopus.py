@@ -1,7 +1,5 @@
-from mapwisefox.search.query_builder import (
-    EvidenceAttributes,
-    EvidenceTypes,
-    SubjectAreas,
+from .._enum import EvidenceAttributes, EvidenceTypes, SubjectAreas
+from .._expr import (
     AttrExpr,
     YearRangeExpr,
     EvidenceTypeExpr,

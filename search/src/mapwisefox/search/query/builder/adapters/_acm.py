@@ -1,6 +1,8 @@
-from mapwisefox.search.query_builder import EvidenceAttributes, YearRangeExpr
+from .._enum import EvidenceAttributes
+from .._expr import YearRangeExpr
 
 from ._expr_tree import ExprTreeAdapter
+from ... import QueryObject
 
 
 class ACMAdapter(ExprTreeAdapter):
@@ -34,14 +36,14 @@ class ACMAdapter(ExprTreeAdapter):
         title = expr_dict[EvidenceAttributes.TITLE]
         abstract = expr_dict[EvidenceAttributes.ABSTRACT]
         title_abstract = f"(Title: { self._emit_expr(title) } OR Abstract: { self._emit_expr(abstract) })"
-        return {
-            "query": f" {root_op.upper()} ".join([title_abstract, basic_clauses]),
-            "filter": {
+        return QueryObject(
+            query=f" {root_op.upper()} ".join([title_abstract, basic_clauses]),
+            filters={
                 self.EVIDENCE_ATTR_MAP[key]: self._emit_expr(value)
                 for key, value in expr_dict.items()
                 if key in {self.YEAR_RANGE_KEY}
             },
-        }
+        )
 
     def _map_expr_tuples(self, expr_tuples):
         return (

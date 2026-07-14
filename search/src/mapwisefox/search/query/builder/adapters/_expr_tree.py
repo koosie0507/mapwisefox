@@ -1,7 +1,8 @@
 from collections import defaultdict
 
-from mapwisefox.search.query_builder import YearRangeExpr, NaryExpr, AttrExpr
+from mapwisefox.search.query import QueryObject
 
+from .._expr import YearRangeExpr, NaryExpr, AttrExpr
 from ._base import QueryBuilderAdapter
 
 
@@ -102,4 +103,5 @@ class ExprTreeAdapter(QueryBuilderAdapter):
 
     def result(self):
         factored = self.__factor_by_key(self._root)
-        return self._emit_factored(self._root.op, factored)
+        query = self._emit_factored(self._root.op, factored)
+        return QueryObject(query=query) if isinstance(query, str) else query

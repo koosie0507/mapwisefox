@@ -5,13 +5,13 @@ from time import sleep, strptime
 import pandas as pd
 import requests
 
-from mapwisefox.search.adapters import SpringerAdapter
-from mapwisefox.search.backends import SearchBackend
 from mapwisefox.search.persistence import PandasCsvAdapter
+
+from ._base import SearchBackend
 
 
 class SpringerBackend(SearchBackend):
-    def __init__(self, api_key, csv_path=None, is_premium=False, fetch_all=True):
+    def __init__(self, api_key, csv_path=None, fetch_all=True):
         super().__init__(csv_path is not None, PandasCsvAdapter(csv_path) if csv_path is not None else None)
         self._page_size = 25
         self._params = {"api_key": api_key, "p": self._page_size}
@@ -41,7 +41,7 @@ class SpringerBackend(SearchBackend):
     def _perform_query(self, query_obj):
         results = []
         try:
-            data = self._fetch_one_page(query_obj["query"], 0, retry_no=1)
+            data = self._fetch_one_page(query_obj.query, 0, retry_no=1)
             results.extend(data["records"])
             stats = data.get("result", [])
             if len(stats) == 0:
@@ -51,7 +51,7 @@ class SpringerBackend(SearchBackend):
             while (
                 self.__fetch_all
                 and len(
-                    data := self._fetch_one_page(query_obj["query"], page, retry_no=1)
+                    data := self._fetch_one_page(query_obj.query, page, retry_no=1)
                 )
                 > 0
                 and len(results) < total
@@ -61,8 +61,10 @@ class SpringerBackend(SearchBackend):
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 429:
                 print("exceeded retry count... working with what we've got so far")
+        except Exception as e:
+            raise e
 
-        regex_filter = re.compile(query_obj["regex"], re.I)
+        regex_filter = re.compile(query_obj.regex, re.I)
         results = filter(partial(self._local_filter, regex_filter), results)
 
         def _get_url(record):

@@ -5,20 +5,20 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import click
 import dotenv
 
-from mapwisefox.search.query_builder import (
+from mapwisefox.search.query.builder import (
     QueryBuilder,
     EvidenceTypes,
     SubjectAreas,
     TitleAbsExpr,
 )
-from mapwisefox.search.query_builder.adapters import (
+from mapwisefox.search.query.builder.adapters import (
     ACMAdapter,
     ScienceDirectAdapter,
     ScopusAdapter,
     SpringerAdapter,
     WebOfScienceAdapter,
 )
-from mapwisefox.search.query_builder.backends import (
+from mapwisefox.search.backends import (
     ConsoleBackend,
     WebOfScienceBackend,
     ScopusBackend,
@@ -141,6 +141,8 @@ def main(clarivate_api_key, elsevier_api_key, springer_api_key, data_dir):
             name = future_dict[future]
             try:
                 future.done()
+                if (exc:=future.exception()) is not None:
+                    raise exc
             except Exception as exc:
                 print(f"error occured in {name} backend: {exc}")
             else:

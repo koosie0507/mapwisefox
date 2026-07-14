@@ -1,6 +1,8 @@
 from abc import ABCMeta, abstractmethod
 from io import StringIO
 
+from mapwisefox.search.query import QueryObject
+
 from ._base import QueryBuilderAdapter
 
 
@@ -27,4 +29,4 @@ class FlatOutputAdapter(QueryBuilderAdapter, metaclass=ABCMeta):
         raise NotImplementedError()
 
     def result(self):
-        return self._output.getvalue()
+        return QueryObject(query=self._output.getvalue())

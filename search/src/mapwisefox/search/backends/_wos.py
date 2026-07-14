@@ -1,7 +1,8 @@
 import pandas as pd
 from clarivate.wos_starter.client import Configuration, ApiClient, DocumentsApi
 
-from ._base import SearchBackend
+from mapwisefox.search.backends import SearchBackend
+
 from ._console import ConsoleBackend
 
 

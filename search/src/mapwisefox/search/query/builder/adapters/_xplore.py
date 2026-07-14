@@ -1,13 +1,14 @@
 from typing import Any
 
-from mapwisefox.search.query_builder import (
+from .._expr import (
     EvidenceAttributes,
-    AttrExpr,
     EvidenceTypeExpr,
     YearRangeExpr,
-    EvidenceTypes,
+    AttrExpr,
 )
+from .._enum import EvidenceTypes
 from ._flat_output import FlatOutputAdapter
+from ... import QueryObject
 
 
 class XploreAdapter(FlatOutputAdapter):
@@ -50,17 +51,18 @@ class XploreAdapter(FlatOutputAdapter):
         return f"({query_text})" if len(query_text) > 0 else ""
 
     def result(self):
-        params: dict[str, Any] = {
-            "query_text": self._output.getvalue(),
-        }
         supported_doc_types = [
             self.DOCTYPE_MAP[doc_type]
             for doc_type in self._doc_types
             if doc_type in self.DOCTYPE_MAP
         ]
+        params = {}
         if len(supported_doc_types) > 0:
             params["content_type"] = supported_doc_types
         if self._year_range is not None:
             params["start_year"] = self._year_range.start
             params["end_year"] = self._year_range.end
-        return params
+        return QueryObject(
+            query=self._output.getvalue(),
+            filters=params,
+        )

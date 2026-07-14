@@ -3,13 +3,13 @@ from time import strptime
 import pandas as pd
 import requests
 
-from mapwisefox.search.adapters import ScopusAdapter
-from mapwisefox.search.adapters.dsl._scopus import ScopusDSLAdapter
-from mapwisefox.search.backends import SearchBackend
 from mapwisefox.search.persistence import PandasCsvAdapter
+from mapwisefox.search.query import QueryObject
+
+from ._base import SearchBackend
 
 
-class ScopusDSLBackend(SearchBackend):
+class ScopusBackend(SearchBackend):
     API_ENDPOINT_URL = "https://api.elsevier.com/content/search/scopus"
 
     def __init__(
@@ -67,9 +67,9 @@ class ScopusDSLBackend(SearchBackend):
         date = strptime(entry["prism:coverDate"], "%Y-%m-%d")
         return date.tm_year
 
-    def _perform_query(self, query_obj):
+    def _perform_query(self, query_obj: QueryObject):
         cursor = "*" if self._fetch_all else None
-        json_obj = self._fetch_page(query_obj, cursor)
+        json_obj = self._fetch_page(query_obj.query, cursor)
         records = []
         total = int(json_obj["search-results"]["opensearch:totalResults"])
         fetched = len(json_obj["search-results"]["entry"])
@@ -94,6 +94,6 @@ class ScopusDSLBackend(SearchBackend):
                 )
             fetched += len(hits)
             print(f"{fetched} / {total} records fetched")
-            json_obj = self._fetch_page(query_obj, cursor)
+            json_obj = self._fetch_page(query_obj.query, cursor)
 
         return pd.DataFrame(records)

@@ -1,9 +1,8 @@
 from datetime import datetime, timezone
 
 
-from mapwisefox.search.query_builder import (
+from .._expr import (
     EvidenceAttributes,
-    EvidenceTypes,
     EvidenceTypeExpr,
     YearRangeExpr,
     SubjectAreaExpr,
@@ -13,7 +12,9 @@ from mapwisefox.search.query_builder import (
     LanguageExpr,
     LogicalOperators,
 )
+from .._enum import EvidenceTypes
 from ._expr_tree import ExprTreeAdapter
+from ... import QueryObject
 
 
 class SpringerAdapter(ExprTreeAdapter):
@@ -133,7 +134,7 @@ class SpringerAdapter(ExprTreeAdapter):
         if pub_range:
             top_level_clauses.append(self._emit_expr(pub_range))
 
-        return {
-            "query": f" {root_op.upper()} ".join(top_level_clauses),
-            "regex": self._build_regex(expr_dict),
-        }
+        return QueryObject(
+            query=f" {root_op.upper()} ".join(top_level_clauses),
+            regex=self._build_regex(expr_dict),
+        )

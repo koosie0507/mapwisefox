@@ -15,7 +15,6 @@ from ..parser._ir import (
 
 
 class DSLAdapter(metaclass=ABCMeta):
-
     @singledispatchmethod
     def adapt(self, node: Any) -> Any:
         raise TypeError(f"No adapter registered for IR node type: {type(node)!r}")

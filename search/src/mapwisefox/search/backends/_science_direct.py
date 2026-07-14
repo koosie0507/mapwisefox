@@ -4,6 +4,8 @@ import pandas as pd
 import requests
 
 from mapwisefox.search.persistence import PandasCsvAdapter
+from mapwisefox.search.query import QueryObject
+
 from ._base import SearchBackend
 
 
@@ -26,13 +28,13 @@ class ScienceDirectBackend(SearchBackend):
         data = response.json()
         return data["search-results"]
 
-    def _perform_query(self, query_obj):
+    def _perform_query(self, query_obj: QueryObject):
         page_size = 10
         query_params = {
             "start": 0,
             "count": page_size,
             "view": "COMPLETE",
-            **query_obj,
+            "query": query_obj.query
         }
         results = []
         while (

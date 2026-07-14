@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from mapwisefox.search.query import QueryObject
 
 
 class SearchBackend(metaclass=ABCMeta):
@@ -7,7 +8,7 @@ class SearchBackend(metaclass=ABCMeta):
         self._persistence_adapter = persistence_adapter
 
     @abstractmethod
-    def _perform_query(self, query_obj):
+    def _perform_query(self, query_obj: QueryObject):
         raise NotImplementedError()
 
     def _save(self, results):
@@ -17,6 +18,6 @@ class SearchBackend(metaclass=ABCMeta):
             return
         self._persistence_adapter.save(results)
 
-    def __call__(self, query_obj):
+    def __call__(self, query_obj: QueryObject):
         results = self._perform_query(query_obj)
         self._save(results)
