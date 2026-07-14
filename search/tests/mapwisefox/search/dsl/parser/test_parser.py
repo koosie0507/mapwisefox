@@ -10,7 +10,7 @@ from dataclasses import fields as dc_fields, is_dataclass
 import pytest
 from lark.exceptions import UnexpectedInput
 
-from mapwisefox.search.parser import _ir
+from mapwisefox.search.dsl.parser import _ir
 
 
 def body(query):

@@ -14,4 +14,3 @@ def run_dsl(dsl_text: str, adapter: DSLAdapter) -> dict | str:
     """
     ir = parse(dsl_text)
     return adapter.adapt(ir)
-

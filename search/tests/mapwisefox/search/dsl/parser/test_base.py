@@ -1,7 +1,9 @@
+from typing import Any
+
 import pytest
 
-from mapwisefox.search.adapters.dsl import DSLAdapter
-from mapwisefox.search.parser._ir import (
+from mapwisefox.search.dsl.adapters import DSLAdapter
+from mapwisefox.search.dsl.parser._ir import (
     BinaryExpr,
     BoolOp,
     GroupExpr,
@@ -13,10 +15,14 @@ from mapwisefox.search.parser._ir import (
     Query,
     UnaryExpr,
     ValueExpr,
+    DateExpr,
 )
 
 
 class StubAdapter(DSLAdapter):
+    def emit_date(self, node: DateExpr) -> Any:
+        return f"{node.field}({node.date_lo},{node.date_hi},{node.op})"
+
     def emit_value(self, node: ValueExpr) -> str:
         fields = f" in {node.fields}" if node.fields else ""
         return f"VAL({node.value}{fields})"
@@ -41,6 +47,19 @@ def test_adapt_query(adapter):
 def test_adapt_value(adapter):
     node = ValueExpr(value="hello", fields=["title"])
     assert adapter.adapt(node) == "VAL(hello in ['title'])"
+
+
+@pytest.mark.parametrize(
+    "lo,hi,op,field,expected",
+    [
+        ("2010", None, "after", "abc", "abc(2010,None,after)"),
+        ("2010", "2011", "between", "abc", "abc(2010,2011,between)"),
+        (None, "2011", "before", "abc", "abc(None,2011,before)"),
+    ],
+)
+def test_adapt_date(adapter, lo, hi, op, field, expected):
+    node = DateExpr(field=field, date_lo=lo, date_hi=hi, op=op)
+    assert adapter.adapt(node) == expected
 
 
 def test_adapt_binary(adapter):

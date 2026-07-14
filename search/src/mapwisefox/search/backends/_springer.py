@@ -12,7 +12,10 @@ from ._base import SearchBackend
 
 class SpringerBackend(SearchBackend):
     def __init__(self, api_key, csv_path=None, fetch_all=True):
-        super().__init__(csv_path is not None, PandasCsvAdapter(csv_path) if csv_path is not None else None)
+        super().__init__(
+            csv_path is not None,
+            PandasCsvAdapter(csv_path) if csv_path is not None else None,
+        )
         self._page_size = 25
         self._params = {"api_key": api_key, "p": self._page_size}
         self._session = requests.Session()
@@ -50,9 +53,7 @@ class SpringerBackend(SearchBackend):
             page = 1
             while (
                 self.__fetch_all
-                and len(
-                    data := self._fetch_one_page(query_obj.query, page, retry_no=1)
-                )
+                and len(data := self._fetch_one_page(query_obj.query, page, retry_no=1))
                 > 0
                 and len(results) < total
             ):

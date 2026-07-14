@@ -1,6 +1,6 @@
 import pytest
 
-from mapwisefox.search.parser import Parser
+from mapwisefox.search.dsl.parser import Parser
 
 
 @pytest.fixture(scope="module")

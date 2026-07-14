@@ -1,0 +1,56 @@
+import pytest
+
+from mapwisefox.search.dsl.adapters import SpringerDSLAdapter
+from mapwisefox.search.query import QueryObject
+
+
+@pytest.fixture
+def adapter():
+    return SpringerDSLAdapter()
+
+
+@pytest.fixture
+def query_obj(parse, adapter, request):
+    text = getattr(request, "param", "")
+    ir = parse(text)
+    out = adapter.adapt(ir)
+    return out
+
+
+@pytest.mark.parametrize(
+    "query_obj,expected_query,expected_regex",
+    [
+        ('"machine learning" in title', "", r"machine\ learning"),
+        ('"machine learning" in title, abstract', "", r"machine\ learning"),
+        (
+            '"machine learning" in title & "machine learning" in abstract',
+            "",
+            r"machine\ learning",
+        ),
+        (
+            '"machine learning" in title & "machine learning" in keyword',
+            'keyword:"machine learning"',
+            r"machine\ learning",
+        ),
+    ],
+    indirect=["query_obj"],
+)
+def test_springer_sanity_check(query_obj, expected_query, expected_regex):
+    assert query_obj.query == expected_query
+    assert query_obj.regex == expected_regex
+
+
+def test_ersa_query(parse, adapter, ersa_query_text):
+    ir = parse(ersa_query_text)
+    out = adapter.adapt(ir)
+
+    assert isinstance(out, QueryObject)
+    assert out.filters is not None
+    assert (
+        out.query
+        == '(keyword:"entity resolution" OR keyword:"entity alignment" OR keyword:"record linkage" OR keyword:"data deduplication" OR keyword:"merge/purge" OR keyword:"entity linking" OR keyword:"entity matching") AND (type:"Journal" AND datefrom:"2010-01-01" AND dateto:"2025-12-31")'
+    )
+    assert (
+        out.regex
+        == r"(entity\ matching|entity\ linking|merge/purge|data\ deduplication|record\ linkage|entity\ alignment|entity\ resolution).+(library|architect.*|framework|tool.*|system)"
+    )

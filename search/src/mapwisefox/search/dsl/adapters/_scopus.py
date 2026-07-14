@@ -9,6 +9,9 @@ Scopus Advanced Search syntax reference:
   https://dev.elsevier.com/sc_search_tips.html
 """
 
+from typing import Any
+
+import arrow
 
 from ..parser import (
     ValueExpr,
@@ -23,14 +26,18 @@ from ..parser import (
     Query,
 )
 from ._base import DSLAdapter
-
+from ..parser._ir import DateExpr
+from ...query import QueryObject
 
 _FIELD_MAP: dict[str, str] = {
     "title": "TITLE",
     "abstract": "ABS",
-    "keywords": "KEY",
+    "keywords": "AUTHKEY",
     "author": "AUTH",
     "affil": "AFFIL",
+    "evidence_type": "DOCTYPE",
+    "language": "LANGUAGE",
+    "subject": "SUBJAREA",
 }
 
 
@@ -50,17 +57,55 @@ class ScopusDSLAdapter(DSLAdapter):
       -> both    → same string used for both
     """
 
-    @staticmethod
-    def _normalize(result) -> dict:
-        """Ensure all nodes return a consistent dict structure."""
-        if isinstance(result, str):
-            return {OutputTarget.QUERY: result, OutputTarget.FILTER: None}
-        return result
+    _DATE_FIELD_MAP: dict[str, str] = {
+        "published": "PUBYEAR",
+        # add more DSL date fields here
+    }
+
+    _VALUE_MAP: dict[str, dict[str, str | None]] = {
+        "evidence_type": {
+            "article": "ar",
+            "conference": "cp",
+            # "book" is intentionally absent → treated as None (dropped)
+        },
+        "subject": {"computer science": "COMP"},
+    }
+
+    def _map_value(cls, fields, value):
+        for f in fields:
+            field_value_map = cls._VALUE_MAP.get(f)
+            if field_value_map is None:
+                continue
+            return field_value_map.get(value, value)
+        return value
 
     def emit_value(self, node: ValueExpr) -> str:
-        quoted = f'"{node.value}"'
+        quoted = f'"{self._map_value(node.fields or self.field_ctx, node.value)}"'
         prefix = self._scopus_field_prefix(node.fields)
         return f"{prefix}({quoted})" if prefix else quoted
+
+    def emit_date(self, node: DateExpr) -> Any:
+        scopus_field = self._DATE_FIELD_MAP.get(node.field, node.field.upper())
+        start_date = arrow.get(node.date_lo)
+        end_date = arrow.get(node.date_hi)
+
+        if node.op == "after":
+            expr = f"{scopus_field} AFT '{start_date.isoformat()}'"
+        elif node.op == "before":
+            expr = f"{scopus_field} BEF '{end_date.isoformat()}"
+        elif node.op == "between":
+            # Scopus uses strict > / <, so expand the range by 1 year on each side
+            sd_repr = start_date.isoformat()
+            if start_date.floor(frame="year") == start_date:
+                sd_repr = start_date.date().year - 1
+            ed_repr = end_date.isoformat()
+            if end_date.floor(frame="year") == end_date:
+                ed_repr = end_date.date().year + 1
+            expr = f"({scopus_field} AFT {sd_repr} AND {scopus_field} BEF {ed_repr})"
+        else:
+            raise ValueError(f"Unknown date operator: {node.op!r}")
+
+        return {OutputTarget.QUERY: expr, OutputTarget.FILTER: None}
 
     def emit_binary(self, node: BinaryExpr) -> dict:
         left = self._normalize(self.adapt(node.left))
@@ -86,8 +131,10 @@ class ScopusDSLAdapter(DSLAdapter):
         if node.fields:
             prefix = self._scopus_field_prefix(node.fields)
             if prefix:
-                if query_str: query_str = f"{prefix}({query_str})"
-                if filter_str: filter_str = f"{prefix}({filter_str})"
+                if query_str:
+                    query_str = f"{prefix}({query_str})"
+                if filter_str:
+                    filter_str = f"{prefix}({filter_str})"
 
         return {OutputTarget.QUERY: query_str, OutputTarget.FILTER: filter_str}
 
@@ -130,14 +177,14 @@ class ScopusDSLAdapter(DSLAdapter):
         Checks if a string is safely enclosed by a single pair of parentheses.
         Prevents redundant grouping like '((A OR B))' while protecting '(A) OR (B)'.
         """
-        if not text or not text.startswith('(') or not text.endswith(')'):
+        if not text or not text.startswith("(") or not text.endswith(")"):
             return False
 
         depth = 0
         for i, char in enumerate(text):
-            if char == '(':
+            if char == "(":
                 depth += 1
-            elif char == ')':
+            elif char == ")":
                 depth -= 1
 
             # If depth drops to 0 before the end, it's not a single enclosing group
@@ -182,21 +229,25 @@ class ScopusDSLAdapter(DSLAdapter):
             content = child[OutputTarget.QUERY] or child[OutputTarget.FILTER]
             return {OutputTarget.QUERY: None, OutputTarget.FILTER: content}
 
-        return {OutputTarget.QUERY: child[OutputTarget.QUERY], OutputTarget.FILTER: None}
+        return {
+            OutputTarget.QUERY: child[OutputTarget.QUERY],
+            OutputTarget.FILTER: None,
+        }
 
-    def emit_query(self, ast_root: Query) -> str:
+    def emit_query(self, ast_root: Query) -> QueryObject:
         """Top-level method to generate the final Scopus string."""
         result = self._normalize(self.adapt(ast_root.body))
         q = result.get(OutputTarget.QUERY)
         f = result.get(OutputTarget.FILTER)
 
+        content = ""
         if q and f:
-            return f"({q}) AND ({f})"
-        if q:
-            return q
-        if f:
-            return f
-        return ""
+            content = f"({q}) AND ({f})"
+        elif q:
+            content = q
+        elif f:
+            content = f
+        return QueryObject(query=content)
 
     @staticmethod
     def _scopus_field_prefix(fields: list[str]) -> str:

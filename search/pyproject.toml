@@ -2,6 +2,7 @@
 name = "mapwisefox-search"
 version = "0.1.0"
 dependencies = [
+    "arrow>=1.4.0",
     "clarivate-wos-starter-python-client",
     "dotenv>=0.9.9",
     "lark>=1.2.2",

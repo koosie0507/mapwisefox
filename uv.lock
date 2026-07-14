@@ -1490,6 +1490,7 @@ name = "mapwisefox-search"
 version = "0.1.0"
 source = { editable = "search" }
 dependencies = [
+    { name = "arrow" },
     { name = "clarivate-wos-starter-python-client" },
     { name = "dotenv" },
     { name = "lark" },
@@ -1499,6 +1500,7 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
+    { name = "arrow", specifier = ">=1.4.0" },
     { name = "clarivate-wos-starter-python-client", git = "https://github.com/clarivate/wosstarter_python_client.git" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "lark", specifier = ">=1.2.2" },

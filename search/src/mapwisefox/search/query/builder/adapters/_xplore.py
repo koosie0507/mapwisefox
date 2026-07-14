@@ -1,5 +1,3 @@
-from typing import Any
-
 from .._expr import (
     EvidenceAttributes,
     EvidenceTypeExpr,

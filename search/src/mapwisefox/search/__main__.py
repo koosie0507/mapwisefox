@@ -73,7 +73,9 @@ def _ensure_input_dir(data_dir):
     return input_dir
 
 
-def _ersa_qb_search_configs(data_dir, elsevier_api_key, springer_api_key, clarivate_api_key):
+def _ersa_qb_search_configs(
+    data_dir, elsevier_api_key, springer_api_key, clarivate_api_key
+):
     qb = _query_builder()
     yield (
         "ScienceDirect",
@@ -81,7 +83,7 @@ def _ersa_qb_search_configs(data_dir, elsevier_api_key, springer_api_key, clariv
             api_key=elsevier_api_key,
             csv_path=_ensure_input_dir(data_dir) / "science_direct.csv",
         ),
-        qb.build(ScienceDirectAdapter)
+        qb.build(ScienceDirectAdapter),
     )
     yield (
         "Springer",
@@ -90,7 +92,7 @@ def _ersa_qb_search_configs(data_dir, elsevier_api_key, springer_api_key, clariv
             csv_path=_ensure_input_dir(data_dir) / "springer.csv",
             fetch_all=True,
         ),
-        qb.build(SpringerAdapter)
+        qb.build(SpringerAdapter),
     )
     yield (
         "Scopus",
@@ -98,14 +100,10 @@ def _ersa_qb_search_configs(data_dir, elsevier_api_key, springer_api_key, clariv
             api_key=elsevier_api_key,
             csv_path=_ensure_input_dir(data_dir) / "scopus.csv",
         ),
-        qb.build(ScopusAdapter)
+        qb.build(ScopusAdapter),
     )
     yield "ACM", ConsoleBackend(), qb.build(ACMAdapter)
-    yield (
-        "IEEE Xplore",
-        ConsoleBackend(),
-        qb.build(ScienceDirectAdapter)
-    )
+    yield ("IEEE Xplore", ConsoleBackend(), qb.build(ScienceDirectAdapter))
     yield (
         "Web of Science",
         WebOfScienceBackend(
@@ -120,7 +118,7 @@ def _ersa_qb_search_configs(data_dir, elsevier_api_key, springer_api_key, clariv
             page=1,
             sort_field="RS+D",
         ),
-        qb.build(WebOfScienceAdapter)
+        qb.build(WebOfScienceAdapter),
     )
 
 
@@ -141,7 +139,7 @@ def main(clarivate_api_key, elsevier_api_key, springer_api_key, data_dir):
             name = future_dict[future]
             try:
                 future.done()
-                if (exc:=future.exception()) is not None:
+                if (exc := future.exception()) is not None:
                     raise exc
             except Exception as exc:
                 print(f"error occured in {name} backend: {exc}")

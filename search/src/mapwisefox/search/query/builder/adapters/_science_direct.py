@@ -1,7 +1,6 @@
 from ._expr_tree import ExprTreeAdapter
 from .._enum import EvidenceAttributes, EvidenceTypes
 from .._expr import YearRangeExpr, EvidenceTypeExpr
-from ... import QueryObject
 
 
 class ScienceDirectAdapter(ExprTreeAdapter):
@@ -40,7 +39,9 @@ class ScienceDirectAdapter(ExprTreeAdapter):
         )
         title = expr_dict[EvidenceAttributes.TITLE]
         abstract = expr_dict[EvidenceAttributes.ABSTRACT]
-        title_abstract = f"(TITLE{self._emit_expr(title)} OR ABSTRACT{self._emit_expr(abstract)})"
+        title_abstract = (
+            f"(TITLE{self._emit_expr(title)} OR ABSTRACT{self._emit_expr(abstract)})"
+        )
         clauses = [title_abstract, basic_clauses]
         if self.YEAR_RANGE_KEY in expr_dict:
             clauses.append(self._emit_expr(expr_dict[self.YEAR_RANGE_KEY]))

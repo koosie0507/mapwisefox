@@ -21,6 +21,8 @@ class ConsoleBackend(SearchBackend):
             print(f"regex to run on downloaded results: {query_obj.regex}")
             print(horizontal_line)
         if query_obj.filters:
-            filter_str = os.linesep.join(f"{k}={v}" for k, v in query_obj.filters.items())
+            filter_str = os.linesep.join(
+                f"{k}={v}" for k, v in query_obj.filters.items()
+            )
             print(f"use these filters in the UI:{os.linesep*2}{filter_str}{os.linesep}")
             print(horizontal_line)

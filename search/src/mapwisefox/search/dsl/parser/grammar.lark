@@ -7,7 +7,15 @@ output_spec_expr: "[" "->" output_target ":" compound_expr "]"
 attr_clause: "in" field_list
 field_list: field_name ("," field_name)*
 
-compound_expr: ( group_expr | binary_expr | unary_expr | match_expr | value_expr ) attr_clause?
+compound_expr: ( group_expr | binary_expr | unary_expr | match_expr | date_expr | value_expr ) attr_clause?
+
+date_expr: field_name DATE_BETWEEN STRING "and" STRING   -> date_between
+         | field_name DATE_AFTER  STRING                 -> date_after
+         | field_name DATE_BEFORE STRING                 -> date_before
+
+DATE_BETWEEN: "between"
+DATE_AFTER:   "after"
+DATE_BEFORE:  "before"
 
 group_expr: "(" expr ")"
 

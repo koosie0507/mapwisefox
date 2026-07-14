@@ -34,7 +34,7 @@ class ScienceDirectBackend(SearchBackend):
             "start": 0,
             "count": page_size,
             "view": "COMPLETE",
-            "query": query_obj.query
+            "query": query_obj.query,
         }
         results = []
         while (

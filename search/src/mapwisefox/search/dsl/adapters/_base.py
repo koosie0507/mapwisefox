@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from contextlib import contextmanager
 from functools import singledispatchmethod
 from typing import Any
 
@@ -11,10 +12,36 @@ from ..parser._ir import (
     GroupExpr,
     OutputSpecExpr,
     OutputTarget,
+    DateExpr,
 )
 
 
 class DSLAdapter(metaclass=ABCMeta):
+    def __init__(self):
+        self._field_ctx_stack: list[list[str]] = []
+
+    @staticmethod
+    def _normalize(result) -> dict:
+        """Ensure all nodes return a consistent dict structure."""
+        if isinstance(result, str):
+            return {OutputTarget.QUERY: result, OutputTarget.FILTER: None}
+        return result
+
+    @property
+    def field_ctx(self) -> list[str]:
+        """Get the innermost active field context pushed by the closest enclosing GroupExpr."""
+        return self._field_ctx_stack[-1] if self._field_ctx_stack else []
+
+    @contextmanager
+    def _scoped_fields(self, fields: list[str]):
+        if fields:
+            self._field_ctx_stack.append(fields)
+        try:
+            yield
+        finally:
+            if fields:
+                self._field_ctx_stack.pop()
+
     @singledispatchmethod
     def adapt(self, node: Any) -> Any:
         raise TypeError(f"No adapter registered for IR node type: {type(node)!r}")
@@ -26,6 +53,10 @@ class DSLAdapter(metaclass=ABCMeta):
     @adapt.register(ValueExpr)
     def _(self, node: ValueExpr) -> Any:
         return self.emit_value(node)
+
+    @adapt.register(DateExpr)
+    def _(self, node: DateExpr) -> Any:
+        return self.emit_date(node)
 
     @adapt.register(BinaryExpr)
     def _(self, node: BinaryExpr) -> Any:
@@ -47,7 +78,8 @@ class DSLAdapter(metaclass=ABCMeta):
 
     @adapt.register(GroupExpr)
     def _(self, node: GroupExpr) -> Any:
-        return self.emit_group(node)
+        with self._scoped_fields(fields=node.fields):
+            return self.emit_group(node)
 
     @adapt.register(OutputSpecExpr)
     def _(self, node: OutputSpecExpr) -> Any:
@@ -55,6 +87,9 @@ class DSLAdapter(metaclass=ABCMeta):
 
     @abstractmethod
     def emit_value(self, node: ValueExpr) -> Any: ...
+
+    @abstractmethod
+    def emit_date(self, node: DateExpr) -> Any: ...
 
     @abstractmethod
     def emit_binary(self, node: BinaryExpr) -> Any: ...

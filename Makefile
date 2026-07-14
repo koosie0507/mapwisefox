@@ -20,7 +20,7 @@ $(VENV): | .check-deps
 	fi
 
 $(TIMESTAMP): pyproject.toml uv.lock | $(VENV)
-	uv sync --all-packages
+	uv sync --all-packages --active
 	uv run python -c "from pathlib import Path; p=Path('$(TIMESTAMP)'); p.parent.mkdir(parents=True, exist_ok=True); p.touch()"
 
 bootstrap: $(TIMESTAMP)
@@ -40,16 +40,16 @@ clean:
 	git clean -fdx -e .venv
 
 format: bootstrap
-	uv run black $(PYTHON_PACKAGE_DIRS)
-	uv run ruff check --fix $(PYTHON_PACKAGE_DIRS)
+	uv run --active black $(PYTHON_PACKAGE_DIRS)
+	uv run --active ruff check --fix $(PYTHON_PACKAGE_DIRS)
 
 check: bootstrap
-	uv run black --check --diff $(PYTHON_PACKAGE_DIRS)
-	uv run ruff check $(PYTHON_PACKAGE_DIRS)
+	uv run --active black --check --diff $(PYTHON_PACKAGE_DIRS)
+	uv run --active ruff check $(PYTHON_PACKAGE_DIRS)
 
 PYTHON_EXISTING_TEST_DIRS := $(foreach d,$(PYTHON_TEST_DIRS),$(if $(wildcard $(d)),$(d),))
 test: bootstrap
-	uv run pytest -rA -vvs --log-level INFO $(PYTHON_EXISTING_TEST_DIRS)
+	uv run --active pytest -rA -vvs --log-level INFO $(PYTHON_EXISTING_TEST_DIRS)
 
 .bump-version:
 	@$(if $(PACKAGE),$(if $(filter $(PACKAGE),$(VALID_PACKAGES)),,$(error PACKAGE='$(PACKAGE)' is not one of: $(VALID_PACKAGES))),)

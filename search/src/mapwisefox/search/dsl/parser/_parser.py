@@ -56,6 +56,23 @@ class _ToAst(Transformer):
     def field_name(self, name):
         return name  # already str from CNAME
 
+    @v_args(inline=True)
+    def date_between(self, field_tok, _kw, date_lo, date_hi):
+        return _ir.DateExpr(
+            field=str(field_tok),
+            op="between",
+            date_lo=str(date_lo),
+            date_hi=str(date_hi),
+        )
+
+    @v_args(inline=True)
+    def date_after(self, field_tok, _kw, date_lo):
+        return _ir.DateExpr(field=str(field_tok), op="after", date_lo=str(date_lo))
+
+    @v_args(inline=True)
+    def date_before(self, field_tok, _kw, date_hi):
+        return _ir.DateExpr(field=str(field_tok), op="before", date_lo=str(date_hi))
+
     def match_op(self, children):
         """match_op: 'approx' | 'nearest' INT | 'match' match_type"""
         kind = str(children[0]).lower()

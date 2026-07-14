@@ -7,7 +7,7 @@ attribute populated by the transformer in `_parser.py`.
 
 from dataclasses import dataclass, field
 from enum import Enum
-from typing import List, Optional
+from typing import List, Optional, Literal
 
 from lark import ast_utils
 from lark.tree import Meta
@@ -75,6 +75,14 @@ class MatchExpr(_Ast):
     op: MatchOp
     child: object
     fields: List[str] = field(default_factory=list)
+
+
+@dataclass
+class DateExpr(_Ast):
+    field: str
+    op: Literal["between", "after", "before"]
+    date_lo: str
+    date_hi: Optional[str] = None
 
 
 @dataclass
