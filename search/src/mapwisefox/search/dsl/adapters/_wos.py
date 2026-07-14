@@ -7,10 +7,10 @@ from mapwisefox.search.query_builder import (
     LanguageExpr,
     YearRangeExpr,
 )
-from mapwisefox.search.adapters._expr_tree import ExprTreeAdapter
+from ._base import DSLAdapter
 
 
-class WebOfScienceAdapter(ExprTreeAdapter):
+class WebOfScienceAdapter(DSLAdapter):
     EVIDENCE_ATTR_MAP = {
         EvidenceAttributes.TITLE: "TI",
         EvidenceAttributes.ABSTRACT: "AB",

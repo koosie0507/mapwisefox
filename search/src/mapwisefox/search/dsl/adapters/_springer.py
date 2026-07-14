@@ -1,19 +1,4 @@
-"""
-Springer DSL adapter.
-
-Mirrors the factored-query + regex logic of the original SpringerAdapter
-(ExprTreeAdapter) but walks the DSL IR instead of the QueryBuilder NaryExpr
-tree.
-
-Springer Meta API query syntax:
-  https://dev.springernature.com/adding-constraints
-
-Lucene-like syntax:
-  field:"value" AND field:"value"
-"""
-
-from .._base import DSLAdapter
-from .._ir import (
+from ..parser import (
     ValueExpr,
     BinaryExpr,
     GroupExpr,
@@ -25,7 +10,8 @@ from .._ir import (
     MatchType,
 )
 
-# ── field mapping ─────────────────────────────────────────────────────────────
+from ._base import DSLAdapter
+
 
 _FIELD_MAP: dict[str, str] = {
     "title": "title",
@@ -37,7 +23,6 @@ _FIELD_MAP: dict[str, str] = {
     "doctype": "type",
 }
 
-# Fields that Springer supports as disjunctive (OR'd) field prefixes
 _DISJUNCTIVE_FIELDS = {"title", "abstract"}
 
 

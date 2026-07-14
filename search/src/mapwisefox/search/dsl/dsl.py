@@ -1,5 +1,5 @@
-from mapwisefox.search.parser import Parser
-from ._base import DSLAdapter
+from .parser import Parser
+from .adapters import DSLAdapter
 
 
 parse = Parser()
@@ -14,5 +14,4 @@ def run_dsl(dsl_text: str, adapter: DSLAdapter) -> dict | str:
     """
     ir = parse(dsl_text)
     return adapter.adapt(ir)
-
 

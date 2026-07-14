@@ -2,8 +2,16 @@ from abc import ABCMeta, abstractmethod
 from functools import singledispatchmethod
 from typing import Any
 
-from mapwisefox.search.parser._ir import Query, ValueExpr, BinaryExpr, UnaryExpr, MatchExpr, GroupExpr, OutputSpecExpr, \
-    OutputTarget
+from ..parser._ir import (
+    Query,
+    ValueExpr,
+    BinaryExpr,
+    UnaryExpr,
+    MatchExpr,
+    GroupExpr,
+    OutputSpecExpr,
+    OutputTarget,
+)
 
 
 class DSLAdapter(metaclass=ABCMeta):

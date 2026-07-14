@@ -1,10 +1,8 @@
 import pandas as pd
 from clarivate.wos_starter.client import Configuration, ApiClient, DocumentsApi
 
-from mapwisefox.search.backends.query_builder import (
-    SearchBackend,
-    ConsoleBackend,
-)
+from ._base import SearchBackend
+from ._console import ConsoleBackend
 
 
 class WebOfScienceBackend(SearchBackend):

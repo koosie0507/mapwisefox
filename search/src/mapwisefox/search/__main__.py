@@ -11,14 +11,14 @@ from mapwisefox.search.query_builder import (
     SubjectAreas,
     TitleAbsExpr,
 )
-from mapwisefox.search.adapters.query_builder import (
+from mapwisefox.search.query_builder.adapters import (
     ACMAdapter,
     ScienceDirectAdapter,
     ScopusAdapter,
     SpringerAdapter,
     WebOfScienceAdapter,
 )
-from mapwisefox.search.backends.query_builder import (
+from mapwisefox.search.query_builder.backends import (
     ConsoleBackend,
     WebOfScienceBackend,
     ScopusBackend,
@@ -26,6 +26,7 @@ from mapwisefox.search.backends.query_builder import (
     SpringerBackend,
 )
 from mapwisefox.search.persistence import PandasCsvAdapter
+
 
 dotenv.load_dotenv()
 

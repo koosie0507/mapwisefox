@@ -1,4 +1,4 @@
-from mapwisefox.search.backends.query_builder._base import SearchBackend
+from ._base import SearchBackend
 
 
 class ConsoleBackend(SearchBackend):

@@ -7,12 +7,10 @@ from mapwisefox.search.query_builder import (
     YearRangeExpr,
     EvidenceTypes,
 )
-from mapwisefox.search.adapters._flat_output import (
-    FlatOutputAdapter,
-)
+from ._base import DSLAdapter
 
 
-class XploreAdapter(FlatOutputAdapter):
+class XploreAdapter(DSLAdapter):
     ATTR_MAP = {
         EvidenceAttributes.TITLE: "Document Title",
         EvidenceAttributes.ABSTRACT: "Abstract",

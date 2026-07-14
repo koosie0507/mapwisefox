@@ -10,7 +10,7 @@ Scopus Advanced Search syntax reference:
 """
 
 
-from mapwisefox.search.parser import (
+from ..parser import (
     ValueExpr,
     BinaryExpr,
     GroupExpr,
