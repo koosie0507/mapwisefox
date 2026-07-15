@@ -4,6 +4,7 @@ from contextlib import contextmanager
 from functools import singledispatchmethod
 from typing import Any, Callable
 
+from mapwisefox.search.query import QueryObject
 from ..parser._ir import (
     Query,
     BoolOp,
@@ -16,7 +17,6 @@ from ..parser._ir import (
     OutputTarget,
     DateExpr,
 )
-from ...query import QueryObject
 
 
 class DSLAdapter(metaclass=ABCMeta):
@@ -178,7 +178,9 @@ class DSLAdapter(metaclass=ABCMeta):
         return self.adapt(node.child)
 
     def emit_output(self, node: OutputSpecExpr) -> Any:
-        return self._normalize(self.adapt(node.child))
+        inner_expr = self.adapt(node.child)
+
+        return self._normalize(inner_expr)
 
     @classmethod
     def _is_fully_enclosed(cls, text: str) -> bool:
@@ -302,3 +304,11 @@ class DSLAdapter(metaclass=ABCMeta):
                 continue
             result[key] = merge_values(left[key], right[key])
         return result
+
+    def _emit_leaf_target(self, prefix: str, expr: str) -> QueryObject:
+        match self.output_ctx:
+            case OutputTarget.QUERY:
+                emitted = f"{prefix}({expr})" if prefix else expr
+                return QueryObject(query=emitted)
+            case OutputTarget.FILTER:
+                return QueryObject(filters={prefix: [expr]})

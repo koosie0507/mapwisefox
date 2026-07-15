@@ -42,5 +42,5 @@ def test_ersa_query(parse, adapter, ersa_query_text):
     assert len(out.filters) == 0
     assert (
         out.query
-        == '((TITLE-ABS(("entity resolution" OR "entity alignment" OR "record linkage" OR "data deduplication" OR "merge/purge" OR "entity linking" OR "entity matching") AND ("system" OR "tool*" OR "framework" OR "architect*" OR "library"))) AND (AUTHKEY("entity resolution" OR "entity alignment" OR "record linkage" OR "data deduplication" OR "merge/purge" OR "entity linking" OR "entity matching"))) AND (LANGUAGE("english") AND DOCTYPE("ar" OR "cp") AND SUBJAREA("COMP") AND (PUBYEAR AFT 2009 AND PUBYEAR BEF 2026))'
+        == r'((TITLE-ABS(("entity resolution" OR "entity alignment" OR "record linkage" OR "data deduplication" OR "merge/purge" OR "entity linking" OR "entity matching") AND ("system" OR "tool*" OR "framework" OR "architect*" OR "library"))) AND (AUTHKEY("entity resolution" OR "entity alignment" OR "record linkage" OR "data deduplication" OR "merge/purge" OR "entity linking" OR "entity matching"))) AND (LANGUAGE("english") AND DOCTYPE("ar" OR "cp") AND SUBJAREA("COMP") AND (PUBYEAR AFT 2009 AND PUBYEAR BEF 2026))'
     )

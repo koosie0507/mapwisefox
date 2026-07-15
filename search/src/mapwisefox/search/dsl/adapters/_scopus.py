@@ -32,7 +32,7 @@ _FIELD_MAP: dict[str, str] = {
     "abstract": "ABS",
     "keywords": "AUTHKEY",
     "author": "AUTH",
-    "affil": "AFFIL",
+    "affiliation": "AFFIL",
     "evidence_type": "DOCTYPE",
     "language": "LANGUAGE",
     "subject": "SUBJAREA",
@@ -69,6 +69,7 @@ class ScopusDSLAdapter(DSLAdapter):
         "subject": {"computer science": "COMP"},
     }
 
+    @classmethod
     def _map_value(cls, fields, value):
         for f in fields:
             field_value_map = cls._VALUE_MAP.get(f)
@@ -76,14 +77,6 @@ class ScopusDSLAdapter(DSLAdapter):
                 continue
             return field_value_map.get(value, value)
         return value
-
-    def _emit_leaf_target(self, prefix: str, expr: str) -> QueryObject:
-        match self.output_ctx:
-            case OutputTarget.QUERY:
-                emitted = f"{prefix}({expr})" if prefix else expr
-                return QueryObject(query=emitted)
-            case OutputTarget.FILTER:
-                return QueryObject(filters={prefix: [expr]})
 
     def emit_value(self, node: ValueExpr) -> QueryObject:
         fields = node.fields or self.field_ctx
