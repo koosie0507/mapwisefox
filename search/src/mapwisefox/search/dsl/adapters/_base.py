@@ -2,7 +2,7 @@ import re as _re
 from abc import ABCMeta, abstractmethod
 from contextlib import contextmanager
 from functools import singledispatchmethod
-from typing import Any
+from typing import Any, Callable
 
 from ..parser._ir import (
     Query,
@@ -16,24 +16,63 @@ from ..parser._ir import (
     OutputTarget,
     DateExpr,
 )
+from ...query import QueryObject
 
 
 class DSLAdapter(metaclass=ABCMeta):
+    _REGEX_NORM_KEY = "regex"
+
     def __init__(self):
         self._field_ctx_stack: list[list[str]] = []
+        self._output_ctx_stack: list[OutputTarget] = []
         self._regex_parts: list[str] = []
 
-    @staticmethod
-    def _normalize(result) -> dict:
-        """Ensure all nodes return a consistent dict structure."""
-        if isinstance(result, str):
-            return {OutputTarget.QUERY: result, OutputTarget.FILTER: None}
-        return result
+    @classmethod
+    def _normalize(cls, value: str | dict | QueryObject | None) -> QueryObject | None:
+        """Ensure all nodes consistently return a ``QueryObject``.
+
+        If ``value`` is a ``str`` then only the ``query`` attribute of the
+        ``QueryObject`` is initialized. If it's a ``dict``, we look for specific
+        ``OutputTarget`` keys in the dict, plus the special ``regex`` key.
+        ``None`` input values simply pass through, as do ``QueryObject`` values.
+
+        :param value: input value that must be converted to a ``QueryObject``
+
+        :return: a ``QueryObject`` initialized per type specific rules applied
+            to the input ``value``.
+        :raises: ``ValueError`` is raised if the input value type is not
+            supported.
+        """
+        if value is None:
+            return None
+
+        match value:
+            case str():
+                return QueryObject(query=value)
+            case dict():
+                return QueryObject(
+                    query=value.get(OutputTarget.QUERY, ""),
+                    filters=value.get(OutputTarget.FILTER, {}),
+                    regex=value.get(cls._REGEX_NORM_KEY, {}),
+                )
+            case QueryObject():
+                return value
+            case _:
+                raise ValueError(
+                    "normalization is supported for instances of type str, dict and QueryObject"
+                )
 
     @property
     def field_ctx(self) -> list[str]:
         """Get the innermost active field context pushed by the closest enclosing GroupExpr."""
         return self._field_ctx_stack[-1] if self._field_ctx_stack else []
+
+    @property
+    def output_ctx(self) -> OutputTarget:
+        """Get the current active output target."""
+        return (
+            self._output_ctx_stack[-1] if self._output_ctx_stack else OutputTarget.QUERY
+        )
 
     @contextmanager
     def _scoped_fields(self, fields: list[str]):
@@ -44,6 +83,14 @@ class DSLAdapter(metaclass=ABCMeta):
         finally:
             if fields:
                 self._field_ctx_stack.pop()
+
+    @contextmanager
+    def _scoped_output(self, output: OutputTarget):
+        self._output_ctx_stack.append(output)
+        try:
+            yield
+        finally:
+            self._output_ctx_stack.pop()
 
     @singledispatchmethod
     def adapt(self, node: Any) -> Any:
@@ -86,7 +133,8 @@ class DSLAdapter(metaclass=ABCMeta):
 
     @adapt.register(OutputSpecExpr)
     def _(self, node: OutputSpecExpr) -> Any:
-        return self.emit_output(node)
+        with self._scoped_output(node.target):
+            return self.emit_output(node)
 
     @abstractmethod
     def emit_value(self, node: ValueExpr) -> Any: ...
@@ -108,8 +156,8 @@ class DSLAdapter(metaclass=ABCMeta):
     def _is_negation_of(cls, a: str, b: str) -> bool:
         return a == cls._format_negation(a) or b == cls._format_negation(a)
 
-    def emit_query(self, node: Query) -> Any:
-        return self.adapt(node.body)
+    def emit_query(self, ast_root: Query) -> QueryObject:
+        return self._normalize(self.adapt(ast_root.body))
 
     def emit_group(self, node: GroupExpr) -> str:
         if self._handle_unsearchable_fields(node):
@@ -130,15 +178,7 @@ class DSLAdapter(metaclass=ABCMeta):
         return self.adapt(node.child)
 
     def emit_output(self, node: OutputSpecExpr) -> Any:
-        child_val = self.adapt(node.child)
-        return {
-            OutputTarget.QUERY: (
-                child_val if node.target != OutputTarget.FILTER else None
-            ),
-            OutputTarget.FILTER: (
-                child_val if node.target != OutputTarget.QUERY else None
-            ),
-        }
+        return self._normalize(self.adapt(node.child))
 
     @classmethod
     def _is_fully_enclosed(cls, text: str) -> bool:
@@ -246,3 +286,19 @@ class DSLAdapter(metaclass=ABCMeta):
         escaped wildcard `\\*` is replaced with `.*`.
         """
         return _re.escape(value).replace(r"\*", ".*")
+
+    @classmethod
+    def _merge_dicts(
+        cls, left: dict, right: dict, merge_values: Callable[[Any, Any], Any]
+    ) -> dict:
+        """Merge two dictionaries using the ``merge_values`` criterion to merge keys that exist in both."""
+        if left is None or right is None:
+            return left or right
+
+        result = left.copy()
+        for key, value in right.items():
+            if key not in left:
+                result[key] = right[key]
+                continue
+            result[key] = merge_values(left[key], right[key])
+        return result

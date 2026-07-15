@@ -99,8 +99,8 @@ class AcmDSLAdapter(DSLAdapter):
     def emit_output(self, node: OutputSpecExpr) -> Any:
         return self.adapt(node.child)
 
-    def emit_query(self, node: Query) -> Any:
-        result = self.adapt(node.body)
+    def emit_query(self, ast_root: Query) -> Any:
+        result = self.adapt(ast_root.body)
         return QueryObject(query=result, filters=self._filters)
 
     def _apply_fields(self, expr: str, fields: list[str]) -> str:

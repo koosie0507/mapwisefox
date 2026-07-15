@@ -8,7 +8,6 @@ from ..parser import (
     UnaryExpr,
     MatchExpr,
     OutputSpecExpr,
-    OutputTarget,
     BoolOp,
     MatchType,
 )
@@ -175,11 +174,10 @@ class SpringerDSLAdapter(DSLAdapter):
     def emit_query(self, ast_root: Query) -> QueryObject:
         """Top-level method to generate the final Scopus string."""
         result = self._normalize(self.adapt(ast_root.body))
-        q = result.get(OutputTarget.QUERY)
         uq_regex_parts = dict.fromkeys(self._regex_parts)
-        regex = "|".join(uq_regex_parts) if uq_regex_parts else ""
+        result.regex = "|".join(uq_regex_parts) if uq_regex_parts else ""
 
-        return QueryObject(query=q, filters={}, regex=regex)
+        return result
 
     @classmethod
     def _is_unsearchable(cls, field: str) -> bool:

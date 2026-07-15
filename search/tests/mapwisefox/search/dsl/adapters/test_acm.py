@@ -40,7 +40,7 @@ def query_obj(parse, adapter, request):
 def test_sanity(query_obj, expected_query, expected_filters):
     assert isinstance(query_obj, QueryObject)
 
-    assert query_obj.regex == ""
+    assert query_obj.regex == {}
     assert query_obj.query == expected_query
     assert query_obj.filters == expected_filters
 

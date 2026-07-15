@@ -17,6 +17,7 @@ from mapwisefox.search.dsl.parser._ir import (
     ValueExpr,
     DateExpr,
 )
+from mapwisefox.search.query import QueryObject
 
 
 class StubAdapter(DSLAdapter):
@@ -41,7 +42,7 @@ def adapter():
 
 def test_adapt_query(adapter):
     node = Query(body=ValueExpr(value="test"))
-    assert adapter.adapt(node) == "VAL(test)"
+    assert adapter.adapt(node) == QueryObject(query="VAL(test)")
 
 
 def test_adapt_value(adapter):
@@ -99,13 +100,13 @@ def test_adapt_match_match(adapter):
 def test_adapt_output_query(adapter):
     node = OutputSpecExpr(target=OutputTarget.QUERY, child=ValueExpr(value="H"))
     res = adapter.adapt(node)
-    assert res == {OutputTarget.QUERY: "VAL(H)", OutputTarget.FILTER: None}
+    assert res == QueryObject(query="VAL(H)")
 
 
 def test_adapt_output_filter(adapter):
     node = OutputSpecExpr(target=OutputTarget.FILTER, child=ValueExpr(value="H"))
     res = adapter.adapt(node)
-    assert res == {OutputTarget.QUERY: None, OutputTarget.FILTER: "VAL(H)"}
+    assert res == QueryObject(query="VAL(H)")
 
 
 def test_adapt_unregistered(adapter):

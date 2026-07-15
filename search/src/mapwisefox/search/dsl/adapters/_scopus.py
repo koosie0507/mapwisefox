@@ -18,7 +18,6 @@ from ..parser import (
     BinaryExpr,
     GroupExpr,
     MatchExpr,
-    OutputSpecExpr,
     OutputTarget,
     BoolOp,
     MatchType,
@@ -78,10 +77,23 @@ class ScopusDSLAdapter(DSLAdapter):
             return field_value_map.get(value, value)
         return value
 
-    def emit_value(self, node: ValueExpr) -> str:
-        quoted = f'"{self._map_value(node.fields or self.field_ctx, node.value)}"'
-        prefix = self._scopus_field_prefix(node.fields)
-        return f"{prefix}({quoted})" if prefix else quoted
+    def _emit_leaf_target(self, prefix: str, expr: str) -> QueryObject:
+        match self.output_ctx:
+            case OutputTarget.QUERY:
+                emitted = f"{prefix}({expr})" if prefix else expr
+                return QueryObject(query=emitted)
+            case OutputTarget.FILTER:
+                return QueryObject(filters={prefix: [expr]})
+
+    def emit_value(self, node: ValueExpr) -> QueryObject:
+        fields = node.fields or self.field_ctx
+        quoted = f'"{self._map_value(fields, node.value)}"'
+        prefix = (
+            self._scopus_field_prefix(node.fields)
+            if self.output_ctx == OutputTarget.QUERY
+            else self._scopus_field_prefix(fields)
+        )
+        return self._emit_leaf_target(prefix, quoted)
 
     def emit_date(self, node: DateExpr) -> Any:
         scopus_field = self._DATE_FIELD_MAP.get(node.field, node.field.upper())
@@ -104,27 +116,45 @@ class ScopusDSLAdapter(DSLAdapter):
         else:
             raise ValueError(f"Unknown date operator: {node.op!r}")
 
-        return {OutputTarget.QUERY: expr, OutputTarget.FILTER: None}
+        return self._emit_leaf_target("", expr)
 
-    def emit_binary(self, node: BinaryExpr) -> dict:
+    @staticmethod
+    def _merge_filters(left_clauses, right_clauses):
+        return list(
+            filter(
+                lambda x: x is not None and len(x.strip()) > 0,
+                dict.fromkeys(left_clauses + right_clauses),
+            )
+        )
+
+    @staticmethod
+    def _format_filter_clauses(operand: list) -> str:
+        operand_str = " AND ".join(operand)
+        if len(operand) > 1:
+            operand_str = f"({operand_str})"
+        return operand_str
+
+    def emit_binary(self, node: BinaryExpr) -> QueryObject:
         left = self._normalize(self.adapt(node.left))
         right = self._normalize(self.adapt(node.right))
 
         op = "AND" if node.op == BoolOp.AND else "OR"
 
-        # Merge Queries using the AST operator
-        q_left, q_right = left.get(OutputTarget.QUERY), right.get(OutputTarget.QUERY)
-        if q_left and q_right:
-            query_str = f"{q_left} {op} {q_right}"
+        if left.query and right.query:
+            query_str = f"{left.query} {op} {right.query}"
         else:
-            query_str = q_left or q_right
+            query_str = left.query or right.query
 
-        # Merge Filters ALWAYS using AND
-        f_left, f_right = left.get(OutputTarget.FILTER), right.get(OutputTarget.FILTER)
-        if f_left and f_right:
-            filter_str = f"{f_left} AND {f_right}"
+        if left.filters and right.filters:
+            filters = self._merge_dicts(
+                left.filters,
+                right.filters,
+                lambda x, y: [
+                    f"{self._format_filter_clauses(x)} {op} {self._format_filter_clauses(y)}"
+                ],
+            )
         else:
-            filter_str = f_left or f_right
+            filters = left.filters or right.filters
 
         # Apply SCOPUS field prefixes if necessary
         if node.fields:
@@ -132,19 +162,15 @@ class ScopusDSLAdapter(DSLAdapter):
             if prefix:
                 if query_str:
                     query_str = f"{prefix}({query_str})"
-                if filter_str:
-                    filter_str = f"{prefix}({filter_str})"
 
-        return {OutputTarget.QUERY: query_str, OutputTarget.FILTER: filter_str}
+        return QueryObject(query=query_str, filters=filters)
 
     def emit_approx(self, node: MatchExpr) -> str:
         # Scopus has no generic approx operator; treat as a grouped expression.
         return f"({self.adapt(node.child)})"
 
     def emit_nearest(self, node: MatchExpr) -> str:
-        # Scopus proximity: term1 W/N term2
-        # node.op == ("nearest", N)
-        n = node.op[1]
+        n = int(node.op[1])
         child = node.child
         if isinstance(child, BinaryExpr):
             left = self.adapt(child.left)
@@ -153,33 +179,22 @@ class ScopusDSLAdapter(DSLAdapter):
         return self.adapt(child)
 
     def emit_match(self, node: MatchExpr) -> str:
-        # node.op == ("match", MatchType)
-        match_type = node.op[1]
-        if match_type == MatchType.REGEX:
-            raise NotImplementedError(
-                "Scopus does not support regex matching natively. "
-                "Use '-> filter:' to apply regex post-retrieval."
-            )
+        match_type = str(node.op[1])
         inner = self.adapt(node.child)
         if match_type == MatchType.STRICT:
-            # Ensure the value is quoted for an exact-phrase search
             if not inner.startswith('"'):
                 inner = f'"{inner}"'
-        # MatchType.LOOSE: default Scopus behaviour — no change needed
         return inner
 
-    def emit_group(self, node: GroupExpr) -> dict:
+    def emit_group(self, node: GroupExpr) -> QueryObject:
         inner = self._normalize(self.adapt(node.child))
-        inner_q = inner.get(OutputTarget.QUERY)
-        inner_f = inner.get(OutputTarget.FILTER)
-
         prefix = self._scopus_field_prefix(node.fields) if node.fields else ""
 
         def safe_wrap(text: str) -> str:
             if not text:
-                return None
+                return ""
             # If we have a field prefix, we MUST wrap to bind it: PREFIX(text)
-            if prefix:
+            if prefix and self.output_ctx == OutputTarget.QUERY:
                 return f"{prefix}({text})"
             # If it's already safely enclosed without a prefix, don't double-wrap
             if self._is_fully_enclosed(text):
@@ -187,40 +202,34 @@ class ScopusDSLAdapter(DSLAdapter):
             # Otherwise, wrap it to preserve precedence
             return f"({text})"
 
-        result = {}
-        if inner_q:
-            result[OutputTarget.QUERY] = safe_wrap(inner_q)
-        if inner_f:
-            result[OutputTarget.FILTER] = safe_wrap(inner_f)
-
+        filters = (
+            self._merge_dicts(
+                inner.filters,
+                {prefix: [inner.query]},
+                self._merge_filters,
+            )
+            if self.output_ctx == OutputTarget.FILTER
+            else inner.filters
+        )
+        result = QueryObject(query=safe_wrap(inner.query), filters=filters)
         return result
-
-    def emit_output(self, node: OutputSpecExpr) -> dict:
-        child = self._normalize(self.adapt(node.child))
-
-        if node.target == OutputTarget.FILTER:
-            # Move whatever the child evaluated to into the filter stream
-            content = child[OutputTarget.QUERY] or child[OutputTarget.FILTER]
-            return {OutputTarget.QUERY: None, OutputTarget.FILTER: content}
-
-        return {
-            OutputTarget.QUERY: child[OutputTarget.QUERY],
-            OutputTarget.FILTER: None,
-        }
 
     def emit_query(self, ast_root: Query) -> QueryObject:
         """Top-level method to generate the final Scopus string."""
         result = self._normalize(self.adapt(ast_root.body))
-        q = result.get(OutputTarget.QUERY)
-        f = result.get(OutputTarget.FILTER)
-
+        filter_clauses = [
+            f"{attr}({filter_clause})" if attr else filter_clause
+            for attr, filters in result.filters.items()
+            for filter_clause in filters
+        ]
+        compound_filter_clause = self._format_filter_clauses(filter_clauses)
         content = ""
-        if q and f:
-            content = f"({q}) AND ({f})"
-        elif q:
-            content = q
-        elif f:
-            content = f
+        if result.query and result.filters:
+            content = f"({result.query}) AND {compound_filter_clause}"
+        elif result.query:
+            content = result.query
+        elif result.filters:
+            content = compound_filter_clause
         return QueryObject(query=content)
 
     @staticmethod
