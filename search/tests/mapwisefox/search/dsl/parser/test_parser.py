@@ -1,8 +1,3 @@
-"""AST sanity checks.
-
-Run with: pytest -q tests/test_ast.py
-"""
-
 from __future__ import annotations
 
 from dataclasses import fields as dc_fields, is_dataclass
@@ -72,11 +67,21 @@ def test_simple_or(parse):
     assert n.op is _ir.BoolOp.OR
 
 
-def test_not(parse):
-    n = body(parse('!"a" in title'))
+@pytest.mark.parametrize(
+    "text,value,fields",
+    [
+        ('!"a"', "a", []),
+        ('!"a" in title', "a", ["title"]),
+        ('!"a" in title, abstract', "a", ["title", "abstract"]),
+    ],
+)
+def test_not(parse, text, value, fields):
+    n = body(parse(text))
     assert isinstance(n, _ir.UnaryExpr)
     assert n.op is _ir.BoolOp.NOT
-    assert_value(n.child, "a", ("title",))
+    assert isinstance(n.child, _ir.ValueExpr)
+    assert n.child.value == value
+    assert n.fields == fields
 
 
 # ── 3. Grouping and precedence ──────────────────────────────────────────────
@@ -115,15 +120,23 @@ def test_approx(parse):
     assert_value(n.child, "data science")
 
 
-def test_nearest(parse):
-    n = body(parse('nearest (5) ("a" in abstract)'))
+@pytest.mark.parametrize(
+    "text,kind,arg",
+    [
+        ('nearest [5] ("a") in abstract', "nearest", 5),
+        ('nearest[5]("a") in abstract', "nearest", 5),
+        ('nearest[5]("a")', "nearest", 5),
+    ],
+)
+def test_nearest(parse, text, kind, arg):
+    n = body(parse(text))
     assert n.op.kind == "nearest"
     assert n.op.arg == 5
 
 
 @pytest.mark.parametrize("match_type", list(_ir.MatchType))
 def test_match_typed(parse, match_type):
-    n = body(parse(f'match({match_type.value}) ("hello world" in title)'))
+    n = body(parse(f'match[{match_type.value}]("hello world") in title'))
     assert n.op.kind == "match"
     assert n.op.arg is match_type
 

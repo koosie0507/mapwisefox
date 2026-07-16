@@ -20,17 +20,21 @@ def query_obj(parse, adapter, request):
 @pytest.mark.parametrize(
     "query_obj,expected_query,expected_regex",
     [
-        ('"machine learning" in title', "", r"machine\ learning"),
-        ('"machine learning" in title, abstract', "", r"machine\ learning"),
+        ('"machine learning" in title', "", {"title": r"machine\slearning"}),
+        (
+            '"machine learning" in title, abstract',
+            "",
+            {"title": r"machine\slearning", "abstract": r"machine\slearning"},
+        ),
         (
             '"machine learning" in title & "machine learning" in abstract',
             "",
-            r"machine\ learning",
+            {"title": r"machine\slearning", "abstract": r"machine\slearning"},
         ),
         (
             '"machine learning" in title & "machine learning" in keyword',
             'keyword:"machine learning"',
-            r"machine\ learning",
+            {"title": r"machine\slearning"},
         ),
     ],
     indirect=["query_obj"],
@@ -50,7 +54,7 @@ def test_ersa_query(parse, adapter, ersa_query_text):
         out.query
         == '(keyword:"entity resolution" OR keyword:"entity alignment" OR keyword:"record linkage" OR keyword:"data deduplication" OR keyword:"merge/purge" OR keyword:"entity linking" OR keyword:"entity matching") AND (type:"Journal" AND datefrom:"2010-01-01" AND dateto:"2025-12-31")'
     )
-    assert (
-        out.regex
-        == r"(entity\ matching|entity\ linking|merge/purge|data\ deduplication|record\ linkage|entity\ alignment|entity\ resolution).+(library|architect.*|framework|tool.*|system)"
-    )
+    assert out.regex == {
+        "title": r"^(?=.*(entity\sresolution|entity\salignment|record\slinkage|data\sdeduplication|merge/purge|entity\slinking|entity\smatching))(?=.*(system|tool\w*|framework|architect\w*|library))",
+        "abstract": r"^(?=.*(entity\sresolution|entity\salignment|record\slinkage|data\sdeduplication|merge/purge|entity\slinking|entity\smatching))(?=.*(system|tool\w*|framework|architect\w*|library))",
+    }

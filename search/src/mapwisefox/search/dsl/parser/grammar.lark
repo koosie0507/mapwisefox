@@ -18,31 +18,26 @@ DATE_AFTER:   "after"
 DATE_BEFORE:  "before"
 
 group_expr: "(" expr ")"
-
 binary_expr: expr boolean_op expr
-unary_expr: NOT_OP expr
-
-match_expr: match_op "(" compound_expr ")"
-
-match_op: APPROX
-        | NEAREST "(" SIGNED_NUMBER ")"
-        | MATCH_LITERAL "(" match_type ")"
-
+match_expr: match_op "(" value_expr ")"
+unary_expr: NOT_OP value_expr
 value_expr: STRING
 
 boolean_op: AND_OP | OR_OP
 
+match_op: APPROX
+        | NEAREST "[" SIGNED_NUMBER "]"
+        | MATCH_LITERAL "[" match_type "]"
 APPROX: "approx"
 NEAREST: "nearest"
 MATCH_LITERAL: "match"
+!match_type: "strict" | "loose" | "regex"
 
 AND_OP: "&"
 OR_OP: "|"
 NOT_OP: "!"
 
 field_name: CNAME
-
-!match_type: "strict" | "loose" | "regex"
 
 %import common.ESCAPED_STRING -> STRING
 %import common.CNAME

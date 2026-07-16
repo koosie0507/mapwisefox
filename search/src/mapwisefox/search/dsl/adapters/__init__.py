@@ -4,6 +4,7 @@ from ._science_direct import ScienceDirectDSLAdapter
 from ._scopus import ScopusDSLAdapter
 from ._springer import SpringerDSLAdapter
 from ._wos import WebOfScienceDSLAdapter
+from ._xplore import XploreDSLAdapter
 
 __all__ = [
     "DSLAdapter",
@@ -12,4 +13,5 @@ __all__ = [
     "ScopusDSLAdapter",
     "SpringerDSLAdapter",
     "WebOfScienceDSLAdapter",
+    "XploreDSLAdapter",
 ]

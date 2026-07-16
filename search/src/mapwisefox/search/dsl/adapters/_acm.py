@@ -3,7 +3,7 @@ from typing import Any
 import arrow
 
 from ._base import DSLAdapter
-from ..parser import OutputSpecExpr, GroupExpr
+from ..parser import GroupExpr
 from ..parser._ir import BinaryExpr, ValueExpr, DateExpr, BoolOp, Query
 from ...query import QueryObject
 
@@ -24,22 +24,16 @@ class AcmDSLAdapter(DSLAdapter):
     }
     _FILTER_FIELDS: set[str] = {"evidence_type", "language", "subject"}
 
-    def __init__(self):
-        super().__init__()
-        self._filters = {}
-
     def emit_value(self, node: ValueExpr) -> Any:
-        if self._handle_unsearchable_fields(node):
-            return ""
-
         val = node.value
-        fields = node.fields or self.field_ctx
+        fields = self._get_all_node_fields(node)
         for f in fields:
             val = self._VALUE_MAP.get(f, {}).get(val, val)
-
-        return (
-            self._apply_fields(f'"{val}"', node.fields) if node.fields else f'"{val}"'
-        )
+        val = f'"{val.strip('"')}"'
+        expr = self._emit_leaf_targets(fields, val)
+        if node.fields:
+            expr = self._apply_fields(expr, node.fields)
+        return expr
 
     def emit_date(self, node: DateExpr) -> Any:
         lo = arrow.get(node.date_lo) if node.date_lo else None
@@ -50,69 +44,57 @@ class AcmDSLAdapter(DSLAdapter):
             hi = hi.ceil(frame="year").format("MM/DD/YYYY")
 
         field_name = self._FIELD_MAP.get(node.field, node.field)
+        filters = {}
         if lo and hi:
-            self._filters[field_name] = f"({lo} TO {hi})"
+            filters[field_name] = [f"({lo} TO {hi})"]
         elif lo:
-            self._filters[field_name] = f"({lo} TO *)"
+            filters[field_name] = [f"({lo} TO *)"]
         elif hi:
-            self._filters[field_name] = f"(* TO {hi})"
+            filters[field_name] = [f"(* TO {hi})"]
 
-        return ""
+        return QueryObject(filters=filters)
 
-    def emit_binary(self, node: BinaryExpr) -> Any:
-        if self._handle_unsearchable_fields(node):
-            return ""
-
-        left = self.adapt(node.left)
-        right = self.adapt(node.right)
-
-        if not left and not right:
-            # all child nodes were either unsearchable or in the premium API
-            return ""
-
-        if left == right:
-            return left or ""
-
-        if left and right and self._is_negation_of(left, right):
-            if node.op == BoolOp.AND:
-                return ""  # contradiction: a and NOT a -> suppress
-            if node.op == BoolOp.OR:
-                return left  # tautology: a or NOT a
-
-        op = "AND" if node.op == BoolOp.AND else "OR"
-        if not left:
-            inner = right
-        elif not right:
-            inner = left
-        else:
-            inner = f"{left} {op} {right}"
-
+    def emit_binary(self, node: BinaryExpr) -> QueryObject:
+        inner = super().emit_binary(node)
         if node.fields:
-            return self._apply_fields(inner, node.fields)
-
+            inner = self._apply_fields(inner, node.fields)
         return inner
 
-    def emit_group(self, node: GroupExpr) -> str:
-        expr = super().emit_group(node)
-        return self._apply_fields(expr, node.fields) if node.fields else expr
+    def emit_group(self, node: GroupExpr) -> QueryObject:
+        result = super().emit_group(node)
+        if node.fields:
+            result = self._apply_fields(result, node.fields)
+        return result
 
-    def emit_output(self, node: OutputSpecExpr) -> Any:
-        return self.adapt(node.child)
+    def emit_query(self, ast_root: Query) -> QueryObject:
+        """Top-level method to generate the final Scopus string."""
+        result = self._normalize(self.adapt(ast_root.body))
+        result.filters = {
+            k: [v.strip('"') for v in clauses] for k, clauses in result.filters.items()
+        }
+        return result
 
-    def emit_query(self, ast_root: Query) -> Any:
-        result = self.adapt(ast_root.body)
-        return QueryObject(query=result, filters=self._filters)
+    def _enclose_field(self, field: str, query: str) -> str:
+        return f"{field}:{query}"
 
-    def _apply_fields(self, expr: str, fields: list[str]) -> str:
-        parts = []
-        for f in fields:
-            target_field_name = self._FIELD_MAP.get(f)
-            if target_field_name is None:
-                continue
-            if f in self._FILTER_FIELDS:
-                self._filters[target_field_name] = expr.strip('"')
-            else:
-                parts.append(f"{target_field_name}:{expr}")
-        if not parts:
-            return ""
-        return " OR ".join(parts)
+    def _is_filter_field(self, field: str) -> bool:
+        if field not in self._FIELD_MAP:
+            return False
+        return super()._is_filter_field(field) or field in self._FILTER_FIELDS
+
+    def _is_query_field(self, field: str) -> bool:
+        return super()._is_query_field(field) and field in self._FIELD_MAP
+
+    @classmethod
+    def _map_bool_op(cls, op: BoolOp) -> str:
+        match op:
+            case BoolOp.AND:
+                return "AND"
+            case BoolOp.OR:
+                return "OR"
+            case BoolOp.NOT:
+                return "NOT"
+
+    @classmethod
+    def _map_field_name(cls, field: str) -> str:
+        return cls._FIELD_MAP.get(field, field)

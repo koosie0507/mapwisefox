@@ -1,8 +1,5 @@
-from typing import Any
-
 import pytest
 
-from mapwisefox.search.dsl.adapters import DSLAdapter
 from mapwisefox.search.dsl.parser._ir import (
     BinaryExpr,
     BoolOp,
@@ -20,34 +17,14 @@ from mapwisefox.search.dsl.parser._ir import (
 from mapwisefox.search.query import QueryObject
 
 
-class StubAdapter(DSLAdapter):
-    def emit_date(self, node: DateExpr) -> Any:
-        return f"{node.field}({node.date_lo},{node.date_hi},{node.op})"
-
-    def emit_value(self, node: ValueExpr) -> str:
-        fields = f" in {node.fields}" if node.fields else ""
-        return f"VAL({node.value}{fields})"
-
-    def emit_binary(self, node: BinaryExpr) -> str:
-        return f"BIN({self.adapt(node.left)} {node.op.value} {self.adapt(node.right)})"
-
-    def emit_not(self, node: UnaryExpr) -> str:
-        return f"NOT({self.adapt(node.child)})"
-
-
-@pytest.fixture
-def adapter():
-    return StubAdapter()
-
-
-def test_adapt_query(adapter):
+def test_adapt_query(stub_adapter):
     node = Query(body=ValueExpr(value="test"))
-    assert adapter.adapt(node) == QueryObject(query="VAL(test)")
+    assert stub_adapter.adapt(node) == QueryObject(query="VAL(test)")
 
 
-def test_adapt_value(adapter):
+def test_adapt_value(stub_adapter):
     node = ValueExpr(value="hello", fields=["title"])
-    assert adapter.adapt(node) == "VAL(hello in ['title'])"
+    assert stub_adapter.adapt(node).query == "VAL(hello in ['title'])"
 
 
 @pytest.mark.parametrize(
@@ -58,57 +35,60 @@ def test_adapt_value(adapter):
         (None, "2011", "before", "abc", "abc(None,2011,before)"),
     ],
 )
-def test_adapt_date(adapter, lo, hi, op, field, expected):
+def test_adapt_date(stub_adapter, lo, hi, op, field, expected):
     node = DateExpr(field=field, date_lo=lo, date_hi=hi, op=op)
-    assert adapter.adapt(node) == expected
+    assert stub_adapter.adapt(node).query == expected
 
 
-def test_adapt_binary(adapter):
+def test_adapt_binary(stub_adapter):
     node = BinaryExpr(
         left=ValueExpr(value="A"), op=BoolOp.AND, right=ValueExpr(value="B")
     )
-    assert adapter.adapt(node) == "BIN(VAL(A) AND VAL(B))"
+    assert stub_adapter.adapt(node).query == "VAL(A) and VAL(B)"
 
 
-def test_adapt_unary(adapter):
+def test_adapt_unary(stub_adapter):
     node = UnaryExpr(op=BoolOp.NOT, child=ValueExpr(value="C"))
-    assert adapter.adapt(node) == "NOT(VAL(C))"
+    assert stub_adapter.adapt(node).query == "NOT VAL(C)"
 
 
-def test_adapt_group(adapter):
+def test_adapt_group(stub_adapter):
     node = GroupExpr(child=ValueExpr(value="D"))
-    assert adapter.adapt(node) == "VAL(D)"
+    result = stub_adapter.adapt(node)
+
+    assert isinstance(result, QueryObject)
+    assert result.query == "VAL(D)"
 
 
-def test_adapt_match_approx(adapter):
+def test_adapt_match_approx(stub_adapter):
     node = MatchExpr(op=MatchOp(kind="approx"), child=ValueExpr(value="E"))
-    assert adapter.adapt(node) == "VAL(E)"
+    assert stub_adapter.adapt(node).query == "VAL(E)"
 
 
-def test_adapt_match_nearest(adapter):
+def test_adapt_match_nearest(stub_adapter):
     node = MatchExpr(op=MatchOp(kind="nearest", arg=3), child=ValueExpr(value="F"))
-    assert adapter.adapt(node) == "VAL(F)"
+    assert stub_adapter.adapt(node).query == "VAL(F)"
 
 
-def test_adapt_match_match(adapter):
+def test_adapt_match_match(stub_adapter):
     node = MatchExpr(
         op=MatchOp(kind="match", arg=MatchType.STRICT), child=ValueExpr(value="G")
     )
-    assert adapter.adapt(node) == "VAL(G)"
+    assert stub_adapter.adapt(node).query == "VAL(G)"
 
 
-def test_adapt_output_query(adapter):
+def test_adapt_output_query(stub_adapter):
     node = OutputSpecExpr(target=OutputTarget.QUERY, child=ValueExpr(value="H"))
-    res = adapter.adapt(node)
+    res = stub_adapter.adapt(node)
     assert res == QueryObject(query="VAL(H)")
 
 
-def test_adapt_output_filter(adapter):
+def test_adapt_output_filter(stub_adapter):
     node = OutputSpecExpr(target=OutputTarget.FILTER, child=ValueExpr(value="H"))
-    res = adapter.adapt(node)
+    res = stub_adapter.adapt(node)
     assert res == QueryObject(query="VAL(H)")
 
 
-def test_adapt_unregistered(adapter):
+def test_adapt_unregistered(stub_adapter):
     with pytest.raises(TypeError):
-        adapter.adapt("unsupported")
+        stub_adapter.adapt("unsupported")

@@ -21,13 +21,13 @@ def query_obj(parse, adapter, request):
         ('"machine learning" in title', 'Title:"machine learning"', {}),
         (
             '"machine learning" in title,abstract',
-            'Title:"machine learning" OR Abstract:"machine learning"',
+            '(Title:"machine learning" OR Abstract:"machine learning")',
             {},
         ),
         (
             '"machine learning" in title & "conference" in evidence_type',
             'Title:"machine learning"',
-            {"Article Type": "Research Article"},
+            {"Article Type": ["Research Article"]},
         ),
         (
             '("image processing" & "CNN") in abstract',
@@ -56,6 +56,6 @@ def test_ersa_query(parse, adapter, ersa_query_text):
     )
     assert q.filters is not None
     assert "E-Publication Date" in q.filters
-    assert q.filters["E-Publication Date"] == "(01/01/2010 TO 12/31/2025)"
+    assert q.filters["E-Publication Date"] == ["(01/01/2010 TO 12/31/2025)"]
     assert "Article Type" in q.filters
-    assert q.filters["Article Type"] == "Research Article"
+    assert q.filters["Article Type"] == ["Research Article"]

@@ -60,8 +60,8 @@ class AttrClause(_Ast):
 class MatchOp(_Ast):
     """Wraps a match operator and its optional argument(s)."""
 
-    kind: str  # 'approx' | 'nearest' | 'match'
-    arg: Optional[object] = None  # int for nearest, MatchType for match
+    kind: Literal["approx", "near", "match"]
+    arg: Optional[int | MatchType] = None
 
 
 @dataclass
