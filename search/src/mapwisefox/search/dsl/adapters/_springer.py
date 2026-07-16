@@ -1,4 +1,3 @@
-
 import arrow
 
 from ..parser import (
@@ -119,15 +118,6 @@ class SpringerDSLAdapter(DSLAdapter):
     @classmethod
     def _map_field_name(cls, field: str) -> str:
         return cls._FIELD_MAP.get(field, field)
-
-    @classmethod
-    def _map_bool_op(cls, op: BoolOp) -> str:
-        match op:
-            case BoolOp.AND:
-                return "AND"
-            case BoolOp.OR:
-                return "OR"
-        raise ValueError(f"unsupported bool operation '{op}'")
 
     @classmethod
     def _format_filter_clauses(cls, operands: list) -> str:

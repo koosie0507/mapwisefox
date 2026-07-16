@@ -58,8 +58,8 @@ class XploreAdapter(FlatOutputAdapter):
         if len(supported_doc_types) > 0:
             params["content_type"] = supported_doc_types
         if self._year_range is not None:
-            params["start_year"] = self._year_range.start
-            params["end_year"] = self._year_range.end
+            params["start_year"] = [str(self._year_range.start)]
+            params["end_year"] = [str(self._year_range.end)]
         return QueryObject(
             query=self._output.getvalue(),
             filters=params,

@@ -4,7 +4,7 @@ import arrow
 
 from ._base import DSLAdapter
 from ..parser import GroupExpr
-from ..parser._ir import BinaryExpr, ValueExpr, DateExpr, BoolOp, Query
+from ..parser._ir import BinaryExpr, ValueExpr, DateExpr, Query
 from ...query import QueryObject
 
 
@@ -84,16 +84,6 @@ class AcmDSLAdapter(DSLAdapter):
 
     def _is_query_field(self, field: str) -> bool:
         return super()._is_query_field(field) and field in self._FIELD_MAP
-
-    @classmethod
-    def _map_bool_op(cls, op: BoolOp) -> str:
-        match op:
-            case BoolOp.AND:
-                return "AND"
-            case BoolOp.OR:
-                return "OR"
-            case BoolOp.NOT:
-                return "NOT"
 
     @classmethod
     def _map_field_name(cls, field: str) -> str:

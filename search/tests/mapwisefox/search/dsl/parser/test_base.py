@@ -44,7 +44,7 @@ def test_adapt_binary(stub_adapter):
     node = BinaryExpr(
         left=ValueExpr(value="A"), op=BoolOp.AND, right=ValueExpr(value="B")
     )
-    assert stub_adapter.adapt(node).query == "VAL(A) and VAL(B)"
+    assert stub_adapter.adapt(node).query == "VAL(A) AND VAL(B)"
 
 
 def test_adapt_unary(stub_adapter):

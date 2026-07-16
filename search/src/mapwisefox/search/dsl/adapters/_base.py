@@ -125,10 +125,11 @@ class DSLAdapter(metaclass=ABCMeta):
     def _map_bool_op(cls, op: BoolOp) -> str:
         match op:
             case BoolOp.AND:
-                return "and"
+                return "AND"
             case BoolOp.OR:
-                return "or"
-        raise ValueError(f"unsupported binary operation {op}")
+                return "OR"
+            case BoolOp.NOT:
+                return "NOT"
 
     def emit_not(self, node: UnaryExpr) -> QueryObject:
         inner = self.adapt(node.child)

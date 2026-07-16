@@ -1,66 +1,78 @@
-# from typing import Any
-#
-# from mapwisefox.search.query_builder import (
-#     EvidenceAttributes,
-#     AttrExpr,
-#     EvidenceTypeExpr,
-#     YearRangeExpr,
-#     EvidenceTypes,
-# )
-# from ._base import DSLAdapter
-#
-#
-# class XploreAdapter(DSLAdapter):
-#     ATTR_MAP = {
-#         EvidenceAttributes.TITLE: "Document Title",
-#         EvidenceAttributes.ABSTRACT: "Abstract",
-#         EvidenceAttributes.KEYS: "Author Keywords",
-#     }
-#     DOCTYPE_MAP = {
-#         EvidenceTypes.ARTICLE: "Journals",
-#         EvidenceTypes.CONFERENCE: "Conferences",
-#     }
-#
-#     def __init__(self):
-#         super().__init__()
-#         self._doc_types = set()
-#         self._year_range = None
-#
-#     def _stringify(self, item):
-#         if isinstance(item, str):
-#             return item
-#         is_wildcard = "*" in item.value or "?" in item.value
-#         value = item.value if is_wildcard else f'"{item.value}"'
-#         return f'"{self.ATTR_MAP[item.name]}":{value}'
-#
-#     def _extract_group_str(self, buf, group):
-#         query_text_clauses = []
-#         for item in buf:
-#             if isinstance(item, EvidenceTypeExpr):
-#                 self._doc_types.add(item.value)
-#             elif (
-#                 isinstance(item, AttrExpr) and item.name in self.ATTR_MAP
-#             ) or isinstance(item, str):
-#                 query_text_clauses.append(item)
-#             elif isinstance(item, YearRangeExpr):
-#                 self._year_range = item
-#         query_text = f" {group.op.upper()} ".join(
-#             map(self._stringify, query_text_clauses)
-#         )
-#         return f"({query_text})" if len(query_text) > 0 else ""
-#
-#     def result(self):
-#         params: dict[str, Any] = {
-#             "query_text": self._output.getvalue(),
-#         }
-#         supported_doc_types = [
-#             self.DOCTYPE_MAP[doc_type]
-#             for doc_type in self._doc_types
-#             if doc_type in self.DOCTYPE_MAP
-#         ]
-#         if len(supported_doc_types) > 0:
-#             params["content_type"] = supported_doc_types
-#         if self._year_range is not None:
-#             params["start_year"] = self._year_range.start
-#             params["end_year"] = self._year_range.end
-#         return params
+from typing import Any
+
+import arrow
+from mapwisefox.search.query import QueryObject
+
+from ._base import DSLAdapter
+from ..parser import DateExpr, ValueExpr, BoolOp
+
+
+class XploreDSLAdapter(DSLAdapter):
+    _FIELD_MAP = {
+        "title": "Document Title",
+        "abstract": "Abstract",
+        "author": "Authors",
+        "keywords": "Author Keywords",
+        "affiliation": "Author Affiliations",
+        "evidence_type": "content_type",
+    }
+    _VALUE_MAP = {
+        "evidence_type": {
+            "article": "Journals",
+            "conference": "Conferences",
+        }
+    }
+    _ALWAYS_FILTER_FIELDS = {"evidence_type"}
+
+    def emit_value(self, node: ValueExpr) -> Any:
+        all_fields = self._get_all_node_fields(node)
+        q_obj = self._emit_leaf_targets(all_fields, self._map_value(node))
+        if all_fields:
+            q_obj = self._apply_fields(q_obj, all_fields)
+        return q_obj
+
+    def emit_date(self, node: DateExpr) -> Any:
+        result = QueryObject()
+        if node.date_lo:
+            result.filters["start_year"] = [arrow.get(node.date_lo).format("YYYY")]
+        if node.date_hi:
+            result.filters["end_year"] = [arrow.get(node.date_hi).format("YYYY")]
+        return result
+
+    @classmethod
+    def _is_field_supported(cls, field: str) -> bool:
+        return field in cls._FIELD_MAP
+
+    def _is_filter_field(self, field: str) -> bool:
+        return super()._is_filter_field(field) or field in self._ALWAYS_FILTER_FIELDS
+
+    def _enclose_field(self, field: str, query: str) -> str:
+        if all(c not in query for c in ["*", "?"]):
+            query = f'"{query}"'
+        return f'"{field}":{query}'
+
+    def _map_field_name(cls, field: str) -> str:
+        return cls._FIELD_MAP.get(field, field)
+
+    def _map_value(self, node: ValueExpr) -> str:
+        all_fields = self._get_all_node_fields(node)
+        try:
+            return next(
+                val
+                for val in (
+                    val_dict.get(node.value, node.value)
+                    for val_dict in (
+                        self._VALUE_MAP.get(field, {}) for field in all_fields
+                    )
+                    if val_dict is not None and node.value in val_dict
+                )
+            )
+        except StopIteration:
+            return node.value
+
+    @classmethod
+    def _format_filter_clauses(cls, operands: list) -> str:
+        operand_str = f" {cls._map_bool_op(BoolOp.AND)} ".join(operands)
+        if len(operands) > 1:
+            operand_str = f"({operand_str})"
+        return operand_str
