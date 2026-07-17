@@ -12,9 +12,7 @@ from ._base import SearchBackend
 class ScopusBackend(SearchBackend):
     API_ENDPOINT_URL = "https://api.elsevier.com/content/search/scopus"
 
-    def __init__(
-        self, api_key, save=True, csv_path="scopus_results.csv", fetch_all=True
-    ):
+    def __init__(self, api_key, save=True, csv_path=None, fetch_all=True):
         super().__init__(save, PandasCsvAdapter(csv_path))
         self._session = requests.Session()
         self._session.headers = {

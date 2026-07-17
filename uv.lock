@@ -1492,9 +1492,12 @@ source = { editable = "search" }
 dependencies = [
     { name = "arrow" },
     { name = "clarivate-wos-starter-python-client" },
+    { name = "click" },
     { name = "dotenv" },
     { name = "lark" },
     { name = "pandas" },
+    { name = "pydantic" },
+    { name = "pyyaml" },
     { name = "requests" },
 ]
 
@@ -1502,9 +1505,12 @@ dependencies = [
 requires-dist = [
     { name = "arrow", specifier = ">=1.4.0" },
     { name = "clarivate-wos-starter-python-client", git = "https://github.com/clarivate/wosstarter_python_client.git" },
+    { name = "click", specifier = ">=8.3.1" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "lark", specifier = ">=1.2.2" },
     { name = "pandas", specifier = ">=2.3.0" },
+    { name = "pydantic", specifier = ">=2.12.5" },
+    { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "requests", specifier = ">=2.32.4" },
 ]
 

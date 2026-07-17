@@ -36,10 +36,10 @@ class SpringerBackend(SearchBackend):
         return resp.json()
 
     def _local_filter(self, regex, record):
-        title, abstract = record["title"], record["abstract"]
-        title_match = regex.match(title)
-        abstract_match = regex.match(abstract)
-        return title_match or abstract_match
+        filters = [
+            (compiled_re, record[k]) for k, compiled_re in regex.items() if k in record
+        ]
+        return any(compiled_re.match(value) for compiled_re, value in filters)
 
     def _perform_query(self, query_obj):
         results = []
@@ -65,7 +65,7 @@ class SpringerBackend(SearchBackend):
         except Exception as e:
             raise e
 
-        regex_filter = re.compile(query_obj.regex, re.I)
+        regex_filter = {k: re.compile(v, re.I) for k, v in query_obj.regex.items()}
         results = filter(partial(self._local_filter, regex_filter), results)
 
         def _get_url(record):

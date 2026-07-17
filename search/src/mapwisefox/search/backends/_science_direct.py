@@ -10,7 +10,7 @@ from ._base import SearchBackend
 
 
 class ScienceDirectBackend(SearchBackend):
-    def __init__(self, api_key, save=True, csv_path="scopus_results.csv"):
+    def __init__(self, api_key, save=True, csv_path=None):
         super().__init__(save, PandasCsvAdapter(csv_path))
         self.__api_key = api_key
 

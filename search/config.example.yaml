@@ -1,0 +1,97 @@
+# Example MapwiseFox search configuration.
+#
+# Run it with:
+#   uv run search --config config.example.yaml
+# or:
+#   MWF_SEARCH_CONFIG=config.example.yaml uv run search
+#
+# `query` holds the DSL search text (see
+# mapwisefox/search/src/mapwisefox/search/dsl/parser/grammar.lark for the
+# grammar). Use `query_file: path/to/query.dsl` instead of `query` to load the
+# DSL text from a separate file; relative paths are resolved relative to this
+# config file.
+#
+# Each entry under `backends` describes one search run:
+#   - name:    a unique label used throughout the CLI (logs, error messages)
+#   - adapter: name of a mapwisefox.search.dsl.adapters class, used to turn
+#              the parsed query into a QueryObject
+#   - backend: either a bare string naming a mapwisefox.search.backends class
+#              (when no constructor options are needed, e.g. ConsoleBackend),
+#              or a mapping of:
+#                - type:    the backend class name
+#                - options: keyword arguments forwarded to its constructor
+#                           (optional; defaults apply when omitted)
+#   - adapter_options: keyword arguments forwarded to the adapter constructor
+#              (optional)
+#
+# String option values are passed through os.path.expandvars, so
+# `${MY_ENV_VAR}` (or a .env file, loaded automatically) can be used to avoid
+# committing secrets such as API keys. The backend options `csv_path` and
+# `persistence_adapter` are resolved relative to this run's dated input
+# directory (<data-dir>/input/<YYYYMMDD of the most recent Monday>); for
+# `persistence_adapter`, the path is wrapped in a PandasCsvAdapter.
+#
+# Backends using ConsoleBackend always run first, sequentially (so their
+# interactive output isn't interleaved with other backends). Every other
+# backend then runs concurrently.
+
+query: |
+  (
+    (
+      ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching")
+        &
+      ("system" | "tool*" | "framework" | "architect*" | "library")
+    ) in title,abstract
+  ) & (
+    ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching") in keywords
+  ) & (
+    [->filter: "english" in language & ("article" | "conference") in evidence_type & "computer science" in subject & published between "2010" and "2025"]
+  )
+
+backends:
+  - name: ACM
+    adapter: AcmDSLAdapter
+    backend: ConsoleBackend
+
+  - name: IEEE Xplore
+    adapter: XploreDSLAdapter
+    backend: ConsoleBackend
+
+  - name: ScienceDirect
+    adapter: ScienceDirectDSLAdapter
+    backend:
+      type: ScienceDirectBackend
+      options:
+        api_key: ${MWF_SEARCH_ELSEVIER_API_KEY}
+        csv_path: science_direct.csv
+
+  - name: Scopus
+    adapter: ScopusDSLAdapter
+    backend:
+      type: ScopusBackend
+      options:
+        api_key: ${MWF_SEARCH_ELSEVIER_API_KEY}
+        csv_path: scopus.csv
+
+  - name: Springer
+    adapter: SpringerDSLAdapter
+    backend:
+      type: SpringerBackend
+      options:
+        api_key: ${MWF_SEARCH_SPRINGER_API_KEY}
+        csv_path: springer.csv
+        fetch_all: true
+
+  - name: Web of Science
+    adapter: WebOfScienceDSLAdapter
+    backend:
+      type: WebOfScienceBackend
+      options:
+        api_key: ${MWF_SEARCH_CLARIVATE_API_KEY}
+        use_starter_api: false
+        save: false
+        persistence_adapter: wos-api.csv
+        db: WOS
+        limit: 50
+        page: 1
+        sort_field: RS+D
