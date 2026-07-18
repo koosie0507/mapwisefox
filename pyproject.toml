@@ -32,6 +32,11 @@ dev = [
     "pytest>=9.0",
     "ruff>=0.14",
 ]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.26",
+    "mkdocs-include-markdown-plugin>=6.2",
+]
 
 [tool.bumpversion]
 current_version = "0.4.2"
