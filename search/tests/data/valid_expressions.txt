@@ -6,11 +6,11 @@
 ---
 approx("fuzzy search")
 ---
-approx("transformers" in title)
+approx("transformers") in title
 ---
-nearest(5)("attention" in abstract)
+nearest[5]("attention") in abstract
 ---
-match(strict)("attention mechanism" in abstract)
+match[strict]("attention mechanism") in abstract
 ---
 "transformers" in title & "sequence modeling" in abstract
 ---
@@ -18,7 +18,7 @@ match(strict)("attention mechanism" in abstract)
 ---
 !"transformers" in keywords
 ---
-approx("transformers") & match(loose)("attention" in abstract)
+approx("transformers") & match[loose]("attention") in abstract
 ---
 ("transformers" in title & "neural networks" in abstract)
 ---
@@ -26,15 +26,12 @@ approx("transformers") & match(loose)("attention" in abstract)
 ---
 [->query: "transformers"]
 ---
-[->filter: approx("transformers" in title)]
+[->filter: approx("transformers") in title]
 ---
-[->both: ("transformers" in title | "deep learning" in abstract)]
+[->query: "transformers" in title | "deep learning" in abstract]
 ---
-[->filter: "deep learning" in title] & [->query: approx("sequence modeling" in abstract)]
+[->filter: "deep learning" in title] & [->query: approx("sequence modeling") in abstract]
 ---
-[->both: (
-  "transformers" in title |
-  [->query: match(regex)("context windows" in abstract)]
-)]
+[->query: "transformers" in title | match[regex]("context windows") in abstract]
 ---
-[->query: nearest(3)("attention span" in abstract, keywords)] & "transformers"
+nearest[3]("attention span") in abstract, keywords & "transformers"
