@@ -30,6 +30,7 @@ dev = [
     "memray>=1.19.1",
     "mypy>=1.19",
     "pytest>=9.0",
+    "responses>=0.25",
     "ruff>=0.14",
 ]
 docs = [

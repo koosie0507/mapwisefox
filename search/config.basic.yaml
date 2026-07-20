@@ -1,0 +1,58 @@
+# Basic search configuration for getting started.
+#
+# Runs the same DSL query through all six supported adapters using only the
+# ConsoleBackend — no API keys or network calls required. Perfect for learning
+# the CLI, testing query syntax, or verifying adapter output before setting up
+# live API backends.
+#
+# Run it with:
+#   uv run search --config search/config.basic.yaml
+# or:
+#   MWF_SEARCH_CONFIG=search/config.basic.yaml uv run search
+#
+# The query below searches for academic literature on entity resolution systems
+# published between 2010 and 2025, requiring:
+#   - Title or abstract mentions both an ER-related term (entity resolution, 
+#     record linkage, etc.) AND a system-related term (system, tool, framework, etc.)
+#   - Keywords include at least one ER-related term
+#   - English-language articles or conference papers in computer science
+#
+# See docs/search/dsl/overview.md for the query language reference.
+
+query: |
+  (
+    (
+      ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching")
+        &
+      ("system" | "tool*" | "framework" | "architect*" | "library")
+    ) in title,abstract
+  ) & (
+    ("entity resolution" | "entity alignment" | "record linkage" | "data deduplication" | "merge/purge" | "entity linking" | "entity matching") in keywords
+  ) & (
+    [->filter: "english" in language & ("article" | "conference") in evidence_type & "computer science" in subject & published between "2010" and "2025"]
+  )
+
+backends:
+  - name: ACM
+    adapter: AcmDSLAdapter
+    backend: ConsoleBackend
+
+  - name: IEEE Xplore
+    adapter: XploreDSLAdapter
+    backend: ConsoleBackend
+
+  - name: ScienceDirect
+    adapter: ScienceDirectDSLAdapter
+    backend: ConsoleBackend
+
+  - name: Scopus
+    adapter: ScopusDSLAdapter
+    backend: ConsoleBackend
+
+  - name: Springer
+    adapter: SpringerDSLAdapter
+    backend: ConsoleBackend
+
+  - name: Web of Science
+    adapter: WebOfScienceDSLAdapter
+    backend: ConsoleBackend

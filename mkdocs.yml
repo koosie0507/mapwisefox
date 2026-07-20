@@ -62,7 +62,7 @@ nav:
       - search/index.md
       - Getting Started:
           - search/getting-started/installation.md
-          - search/getting-started/quickstart.md
+          - search/getting-started/usage.md
           - search/getting-started/cli-reference.md
       - DSL:
           - search/dsl/overview.md

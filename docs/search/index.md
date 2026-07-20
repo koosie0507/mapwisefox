@@ -42,7 +42,7 @@ graceful failover mechanisms and simplifies making one change across all backend
 ## Where to go next
 
 - New here? Start with **[Installation](getting-started/installation.md)**
-  and **[Quickstart](getting-started/quickstart.md)**.
+  and **[Usage](getting-started/usage.md)**.
 - Want to write a query? Read the **[DSL](dsl/overview.md)** section.
 - Adding a new backend or debugging an adapter? See
   **[Architecture](architecture/overview.md)**.

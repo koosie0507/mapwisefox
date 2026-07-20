@@ -42,7 +42,7 @@ class WebOfScienceBackend(SearchBackend):
                 len(
                     (
                         resp := api.documents_get(
-                            query_obj, _request_timeout=10, **params
+                            query_obj.query, _request_timeout=10, **params
                         )
                     ).hits
                 )
