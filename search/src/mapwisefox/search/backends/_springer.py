@@ -5,15 +5,14 @@ from time import sleep, strptime
 import pandas as pd
 import requests
 
-from mapwisefox.search.adapters import SpringerAdapter
-from mapwisefox.search.backends import SearchBackend
 from mapwisefox.search.persistence import PandasCsvAdapter
+
+from ._base import SearchBackend
 
 
 class SpringerBackend(SearchBackend):
-    def __init__(self, api_key, csv_path=None, is_premium=False, fetch_all=True):
+    def __init__(self, api_key, csv_path=None, fetch_all=True):
         super().__init__(
-            partial(SpringerAdapter, is_premium),
             csv_path is not None,
             PandasCsvAdapter(csv_path) if csv_path is not None else None,
         )
@@ -37,15 +36,15 @@ class SpringerBackend(SearchBackend):
         return resp.json()
 
     def _local_filter(self, regex, record):
-        title, abstract = record["title"], record["abstract"]
-        title_match = regex.match(title)
-        abstract_match = regex.match(abstract)
-        return title_match or abstract_match
+        filters = [
+            (compiled_re, record[k]) for k, compiled_re in regex.items() if k in record
+        ]
+        return any(compiled_re.match(value) for compiled_re, value in filters)
 
     def _perform_query(self, query_obj):
         results = []
         try:
-            data = self._fetch_one_page(query_obj["query"], 0, retry_no=1)
+            data = self._fetch_one_page(query_obj.query, 0, retry_no=1)
             results.extend(data["records"])
             stats = data.get("result", [])
             if len(stats) == 0:
@@ -54,9 +53,7 @@ class SpringerBackend(SearchBackend):
             page = 1
             while (
                 self.__fetch_all
-                and len(
-                    data := self._fetch_one_page(query_obj["query"], page, retry_no=1)
-                )
+                and len(data := self._fetch_one_page(query_obj.query, page, retry_no=1))
                 > 0
                 and len(results) < total
             ):
@@ -65,8 +62,10 @@ class SpringerBackend(SearchBackend):
         except requests.exceptions.HTTPError as e:
             if e.response.status_code == 429:
                 print("exceeded retry count... working with what we've got so far")
+        except Exception as e:
+            raise e
 
-        regex_filter = re.compile(query_obj["regex"], re.I)
+        regex_filter = {k: re.compile(v, re.I) for k, v in query_obj.regex.items()}
         results = filter(partial(self._local_filter, regex_filter), results)
 
         def _get_url(record):

@@ -1,0 +1,94 @@
+site_name: MapwiseFox
+site_description: Systematic literature review tooling
+repo_url: https://github.com/koosie0507/mapwisefox
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  features:
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - content.code.copy
+    - content.action.edit
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - tables
+  - toc:
+      permalink: true
+
+plugins:
+  - search
+  - include-markdown
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - search/src # add one entry per workspace member as docs expand to it
+          options:
+            docstring_style: google
+            show_source: true
+            show_root_heading: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - getting-started/installation.md
+  - Search:
+      - search/index.md
+      - Getting Started:
+          - search/getting-started/installation.md
+          - search/getting-started/usage.md
+          - search/getting-started/cli-reference.md
+      - DSL:
+          - search/dsl/overview.md
+          - search/dsl/syntax.md
+          - search/dsl/operators.md
+          - search/dsl/dates.md
+          - search/dsl/output-spec.md
+      - Architecture:
+          - search/architecture/overview.md
+          - search/architecture/ir.md
+          - search/architecture/adapters.md
+          - search/architecture/field-mapping.md
+          - search/architecture/regex-handling.md
+          - search/architecture/query-object.md
+      - Backends:
+          - search/backends/overview.md
+          - search/backends/acm.md
+          - search/backends/ieee-xplore.md
+          - search/backends/science-direct.md
+          - search/backends/scopus.md
+          - search/backends/springer.md
+          - search/backends/web-of-science.md
+      - Configuration:
+          - search/configuration/config-file.md
+          - search/configuration/persistence.md
+      - Legacy:
+          - search/legacy/query-builder.md
+      - Reference:
+          - search/reference/grammar.md

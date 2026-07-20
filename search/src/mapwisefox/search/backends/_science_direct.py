@@ -3,14 +3,15 @@ from time import strptime
 import pandas as pd
 import requests
 
-from mapwisefox.search.adapters import ScienceDirectAdapter
-from mapwisefox.search.backends import SearchBackend
 from mapwisefox.search.persistence import PandasCsvAdapter
+from mapwisefox.search.query import QueryObject
+
+from ._base import SearchBackend
 
 
 class ScienceDirectBackend(SearchBackend):
-    def __init__(self, api_key, save=True, csv_path="scopus_results.csv"):
-        super().__init__(ScienceDirectAdapter, save, PandasCsvAdapter(csv_path))
+    def __init__(self, api_key, save=True, csv_path=None):
+        super().__init__(save, PandasCsvAdapter(csv_path))
         self.__api_key = api_key
 
     def _sd_fetch_one_page(self, query_params):
@@ -27,13 +28,13 @@ class ScienceDirectBackend(SearchBackend):
         data = response.json()
         return data["search-results"]
 
-    def _perform_query(self, query_obj):
+    def _perform_query(self, query_obj: QueryObject):
         page_size = 10
         query_params = {
             "start": 0,
             "count": page_size,
             "view": "COMPLETE",
-            **query_obj,
+            "query": query_obj.query,
         }
         results = []
         while (

@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox"
-version = "0.4.2"
+version = "0.5.0"
 description = "Utilities for creating systematic literature reviews"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -30,11 +30,17 @@ dev = [
     "memray>=1.19.1",
     "mypy>=1.19",
     "pytest>=9.0",
+    "responses>=0.25",
     "ruff>=0.14",
+]
+docs = [
+    "mkdocs-material>=9.5",
+    "mkdocstrings[python]>=0.26",
+    "mkdocs-include-markdown-plugin>=6.2",
 ]
 
 [tool.bumpversion]
-current_version = "0.4.2"
+current_version = "0.5.0"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.

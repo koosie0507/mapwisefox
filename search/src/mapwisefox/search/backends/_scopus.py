@@ -3,18 +3,17 @@ from time import strptime
 import pandas as pd
 import requests
 
-from mapwisefox.search.adapters import ScopusAdapter
-from mapwisefox.search.backends import SearchBackend
 from mapwisefox.search.persistence import PandasCsvAdapter
+from mapwisefox.search.query import QueryObject
+
+from ._base import SearchBackend
 
 
 class ScopusBackend(SearchBackend):
     API_ENDPOINT_URL = "https://api.elsevier.com/content/search/scopus"
 
-    def __init__(
-        self, api_key, save=True, csv_path="scopus_results.csv", fetch_all=True
-    ):
-        super().__init__(ScopusAdapter, save, PandasCsvAdapter(csv_path))
+    def __init__(self, api_key, save=True, csv_path=None, fetch_all=True):
+        super().__init__(save, PandasCsvAdapter(csv_path))
         self._session = requests.Session()
         self._session.headers = {
             "X-ELS-APIKey": api_key,
@@ -66,9 +65,9 @@ class ScopusBackend(SearchBackend):
         date = strptime(entry["prism:coverDate"], "%Y-%m-%d")
         return date.tm_year
 
-    def _perform_query(self, query_obj):
+    def _perform_query(self, query_obj: QueryObject):
         cursor = "*" if self._fetch_all else None
-        json_obj = self._fetch_page(query_obj, cursor)
+        json_obj = self._fetch_page(query_obj.query, cursor)
         records = []
         total = int(json_obj["search-results"]["opensearch:totalResults"])
         fetched = len(json_obj["search-results"]["entry"])
@@ -93,6 +92,6 @@ class ScopusBackend(SearchBackend):
                 )
             fetched += len(hits)
             print(f"{fetched} / {total} records fetched")
-            json_obj = self._fetch_page(query_obj, cursor)
+            json_obj = self._fetch_page(query_obj.query, cursor)
 
         return pd.DataFrame(records)
