@@ -7,6 +7,7 @@ from ..parser._ir import (
     BoolOp,
     DateExpr,
     ValueExpr,
+    NearExpr,
     GroupExpr,
     Query,
     OutputTarget,
@@ -57,6 +58,20 @@ class WebOfScienceDSLAdapter(DSLAdapter):
         else:
             expr_fields = fields
             filters = {field: [val] for field in expr_fields}
+            expr = QueryObject(filters=filters)
+        return self._apply_fields(expr, expr_fields)
+
+    def emit_near(self, node: NearExpr) -> Any:
+        """Translate ``near[n](a, b)`` to the native ``NEAR/n`` operator."""
+        term = f'"{node.left.value}" NEAR/{node.distance} "{node.right.value}"'
+        fields = node.fields or self.field_ctx
+
+        if self.output_ctx == OutputTarget.QUERY:
+            expr_fields = node.fields
+            expr = QueryObject(query=term)
+        else:
+            expr_fields = fields
+            filters = {field: [term] for field in expr_fields}
             expr = QueryObject(filters=filters)
         return self._apply_fields(expr, expr_fields)
 

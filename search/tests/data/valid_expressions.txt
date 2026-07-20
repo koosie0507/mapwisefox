@@ -8,7 +8,7 @@ approx("fuzzy search")
 ---
 approx("transformers") in title
 ---
-nearest[5]("attention") in abstract
+near[5]("attention", "mechanism") in abstract
 ---
 match[strict]("attention mechanism") in abstract
 ---
@@ -34,4 +34,4 @@ approx("transformers") & match[loose]("attention") in abstract
 ---
 [->query: "transformers" in title | match[regex]("context windows") in abstract]
 ---
-nearest[3]("attention span") in abstract, keywords & "transformers"
+near[3]("attention", "span") in abstract, keywords & "transformers"

@@ -44,6 +44,40 @@ def test_springer_sanity_check(query_obj, expected_query, expected_regex):
     assert query_obj.regex == expected_regex
 
 
+@pytest.mark.parametrize(
+    "query_obj,expected_query,expected_regex",
+    [
+        (
+            'near[5]("machine", "learning") in keyword',
+            'keyword:"machine" NEAR/5 "learning"',
+            {},
+        ),
+        (
+            # title/abstract are regex-only for Springer, so `near(...)`
+            # degrades to the distance-aware regex fallback, not NEAR/n.
+            'near[5]("machine", "learning") in title',
+            "",
+            {
+                "title": r"^(?=.*(?:\bmachine\b(?:\W+\w+){0,5}\W+\blearning\b"
+                r"|\blearning\b(?:\W+\w+){0,5}\W+\bmachine\b))"
+            },
+        ),
+        (
+            'near[5]("machine", "learning") in title, keyword',
+            'keyword:"machine" NEAR/5 "learning"',
+            {
+                "title": r"^(?=.*(?:\bmachine\b(?:\W+\w+){0,5}\W+\blearning\b"
+                r"|\blearning\b(?:\W+\w+){0,5}\W+\bmachine\b))"
+            },
+        ),
+    ],
+    indirect=["query_obj"],
+)
+def test_springer_near(query_obj, expected_query, expected_regex):
+    assert query_obj.query == expected_query
+    assert query_obj.regex == expected_regex
+
+
 def test_ersa_query(parse, adapter, ersa_query_text):
     ir = parse(ersa_query_text)
     out = adapter.adapt(ir)

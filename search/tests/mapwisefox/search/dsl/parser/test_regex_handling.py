@@ -112,3 +112,32 @@ def test_regex_field_in_value_expr(query_object, stub_adapter, query, fields, re
     for f in fields:
         assert f in query_object.regex, f"{f} not in regex"
         assert query_object.regex[f] == regex, f"{f} regex is not '{regex}'"
+
+
+@pytest.mark.parametrize(
+    "query_object,stub_adapter,query,fields,regex",
+    [
+        (
+            r'near[5]("machine", "learning") in regex_field',
+            (["regex_field"],),
+            "",
+            ["regex_field"],
+            r"^(?=.*(?:\bmachine\b(?:\W+\w+){0,5}\W+\blearning\b"
+            r"|\blearning\b(?:\W+\w+){0,5}\W+\bmachine\b))",
+        ),
+        (
+            r'near[0]("a", "b") in regex_field',
+            (["regex_field"],),
+            "",
+            ["regex_field"],
+            r"^(?=.*(?:\ba\b(?:\W+\w+){0,0}\W+\bb\b" r"|\bb\b(?:\W+\w+){0,0}\W+\ba\b))",
+        ),
+    ],
+    indirect=["query_object", "stub_adapter"],
+)
+def test_near_regex_fallback(query_object, stub_adapter, query, fields, regex):
+    """`near(...)` on a regex-only field degrades to a distance-aware lookahead."""
+    assert query_object.query == query
+    for f in fields:
+        assert f in query_object.regex, f"{f} not in regex"
+        assert query_object.regex[f] == regex, f"{f} regex is not '{regex}'"

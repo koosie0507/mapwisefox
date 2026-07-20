@@ -21,22 +21,18 @@ def test_all_valid_expressions_parse(parse, valid_expressions):
             # Verify that we got a valid result
             assert result is not None, f"Parser returned None for expression #{i}"
         except LarkError as e:
-            failed_expressions.append({
-                "index": i,
-                "expression": expr,
-                "error": str(e)
-            })
+            failed_expressions.append({"index": i, "expression": expr, "error": str(e)})
         except Exception as e:
-            failed_expressions.append({
-                "index": i,
-                "expression": expr,
-                "error": f"Unexpected error: {type(e).__name__}: {str(e)}"
-            })
+            failed_expressions.append(
+                {
+                    "index": i,
+                    "expression": expr,
+                    "error": f"Unexpected error: {type(e).__name__}: {str(e)}",
+                }
+            )
 
     if failed_expressions:
-        error_lines = [
-            f"\n{len(failed_expressions)} expression(s) failed to parse:\n"
-        ]
+        error_lines = [f"\n{len(failed_expressions)} expression(s) failed to parse:\n"]
         for failure in failed_expressions:
             error_lines.append(
                 f"  Expression #{failure['index']}:\n"

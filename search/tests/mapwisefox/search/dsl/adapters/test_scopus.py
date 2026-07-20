@@ -32,6 +32,28 @@ def test_sanity_check(query_object, expected):
     assert query_object.query == expected
 
 
+@pytest.mark.parametrize(
+    "query_object,expected",
+    [
+        (
+            'near[5]("machine", "learning") in title',
+            'TITLE("machine" W/5 "learning")',
+        ),
+        (
+            'near[5]("machine", "learning") in title, abstract',
+            'TITLE-ABS("machine" W/5 "learning")',
+        ),
+        (
+            'near[5]("machine", "learning") in title & "kitten" in abstract',
+            'TITLE("machine" W/5 "learning") AND ABS("kitten")',
+        ),
+    ],
+    indirect=["query_object"],
+)
+def test_near(query_object, expected):
+    assert query_object.query == expected
+
+
 def test_ersa_query(parse, adapter, ersa_query_text):
     ir = parse(ersa_query_text)
     out = adapter.adapt(ir)

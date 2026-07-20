@@ -60,8 +60,8 @@ class AttrClause(_Ast):
 class MatchOp(_Ast):
     """Wraps a match operator and its optional argument(s)."""
 
-    kind: Literal["approx", "near", "match"]
-    arg: Optional[int | MatchType] = None
+    kind: Literal["approx", "match"]
+    arg: Optional[MatchType] = None
 
 
 @dataclass
@@ -74,6 +74,25 @@ class ValueExpr(_Ast):
 class MatchExpr(_Ast):
     op: MatchOp
     child: object
+    fields: List[str] = field(default_factory=list)
+
+
+@dataclass
+class NearExpr(_Ast):
+    """Proximity match: ``near[distance](value1, value2)``.
+
+    Proximity matching could best be expressed with the sentence "``value1`` and
+    ``value2`` are at most ``distance`` words apart". This type of matching is
+    supported only by some backends. The natural degradation path is to have
+    both words be present, without imposing a restriction on the ``distance``
+    between them. Note that unlike ``MatchExpr``, this type of expression is
+    not applied to a single arbitrary value — it always carries exactly two
+    literals plus the maximum word distance allowed between them.
+    """
+
+    distance: int
+    left: object  # ValueExpr
+    right: object  # ValueExpr
     fields: List[str] = field(default_factory=list)
 
 

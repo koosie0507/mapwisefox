@@ -12,6 +12,7 @@ from ..parser._ir import (
     BinaryExpr,
     UnaryExpr,
     MatchExpr,
+    NearExpr,
     GroupExpr,
     OutputSpecExpr,
     OutputTarget,
@@ -71,10 +72,13 @@ class DSLAdapter(metaclass=ABCMeta):
             tag = node.op.kind
             if tag == "approx":
                 return self._emit_node_with_regex_handling(node, self.emit_approx)
-            elif tag == "nearest":
-                return self._emit_node_with_regex_handling(node, self.emit_nearest)
             else:
                 return self._emit_node_with_regex_handling(node, self.emit_match)
+
+    @adapt.register(NearExpr)
+    def _(self, node: NearExpr) -> Any:
+        with self._scoped_fields(fields=node.fields):
+            return self._emit_node_with_regex_handling(node, self.emit_near)
 
     @adapt.register(GroupExpr)
     def _(self, node: GroupExpr) -> Any:
@@ -139,8 +143,17 @@ class DSLAdapter(metaclass=ABCMeta):
     def emit_approx(self, node: MatchExpr) -> QueryObject:
         return self.adapt(node.child)
 
-    def emit_nearest(self, node: MatchExpr) -> QueryObject:
-        return self.adapt(node.child)
+    def emit_near(self, node: NearExpr) -> QueryObject:
+        left = self._normalize(self.adapt(node.left))
+        right = self._normalize(self.adapt(node.right))
+
+        query = self._merge_binary_query(left.query, right.query, BoolOp.AND)
+        if query:
+            query = f"({query})"
+        filters = self._merge_dicts(
+            left.filters, right.filters, self._merge_filter_clauses
+        )
+        return QueryObject(query=query, filters=filters)
 
     def emit_match(self, node: MatchExpr) -> QueryObject:
         """Handle ``match[type]`` syntax nodes.
@@ -182,7 +195,7 @@ class DSLAdapter(metaclass=ABCMeta):
         """Emit a ``QueryObject`` for a leaf syntax node.
 
         This method is called by `emit_value`, `emit_date`, `emit_not`,
-        `emit_approx`, `emit_nearest`, `emit_match`.
+        `emit_approx`, `emit_near`, `emit_match`.
         """
         match self.output_ctx:
             case OutputTarget.QUERY:
@@ -525,6 +538,8 @@ class DSLAdapter(metaclass=ABCMeta):
                 if node.op.arg == "regex":
                     return self._extract_regex_pattern(node), []
                 return self.__create_regex_inner(node.child)
+            case NearExpr():
+                return "", [self.__near_regex_lookahead(node)]
             case BinaryExpr():
                 l_match, l_look = self.__create_regex_inner(node.left)
                 r_match, r_look = self.__create_regex_inner(node.right)
@@ -568,6 +583,21 @@ class DSLAdapter(metaclass=ABCMeta):
             .replace(r"\)", ")")
             .replace(r"\ ", "\\s")
         )
+
+    def __near_regex_lookahead(self, node: NearExpr) -> str:
+        assert isinstance(
+            node.left, ValueExpr
+        ), "proximity match requires value expressions"
+        assert isinstance(
+            node.right, ValueExpr
+        ), "proximity match requires value expressions"
+
+        left_atom = self._regex_atom(node.left.value)
+        right_atom = self._regex_atom(node.right.value)
+        gap = rf"(?:\W+\w+){{0,{node.distance}}}"
+        forward = rf"\b{left_atom}\b{gap}\W+\b{right_atom}\b"
+        backward = rf"\b{right_atom}\b{gap}\W+\b{left_atom}\b"
+        return f"(?=.*(?:{forward}|{backward}))"
 
     @classmethod
     def __merge_regex_patterns(cls, left_pat: str, right_pat: str, op: BoolOp) -> str:

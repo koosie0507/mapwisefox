@@ -7,6 +7,7 @@ from mapwisefox.search.dsl.parser._ir import (
     MatchExpr,
     MatchOp,
     MatchType,
+    NearExpr,
     OutputSpecExpr,
     OutputTarget,
     Query,
@@ -65,9 +66,21 @@ def test_adapt_match_approx(stub_adapter):
     assert stub_adapter.adapt(node).query == "VAL(E)"
 
 
-def test_adapt_match_nearest(stub_adapter):
-    node = MatchExpr(op=MatchOp(kind="nearest", arg=3), child=ValueExpr(value="F"))
-    assert stub_adapter.adapt(node).query == "VAL(F)"
+def test_adapt_near_default(stub_adapter):
+    """Default `emit_near` degrades to a grouped AND of both terms."""
+    node = NearExpr(distance=3, left=ValueExpr(value="E"), right=ValueExpr(value="F"))
+    assert stub_adapter.adapt(node).query == "(VAL(E) AND VAL(F))"
+
+
+def test_adapt_near_with_fields(stub_adapter):
+    node = NearExpr(
+        distance=3,
+        left=ValueExpr(value="E"),
+        right=ValueExpr(value="F"),
+        fields=["title"],
+    )
+    result = stub_adapter.adapt(node)
+    assert result.query == "(VAL(E in ['title']) AND VAL(F in ['title']))"
 
 
 def test_adapt_match_match(stub_adapter):

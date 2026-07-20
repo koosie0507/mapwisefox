@@ -6,7 +6,7 @@ from ..parser import (
 )
 
 from ._base import DSLAdapter
-from ..parser._ir import DateExpr, Query
+from ..parser._ir import DateExpr, NearExpr, Query
 from ...query import QueryObject
 
 
@@ -66,6 +66,15 @@ class SpringerDSLAdapter(DSLAdapter):
             val = self._VALUE_MAP.get(f, {}).get(val, val)
         val = f'"{val.strip('"')}"'
         q_obj = self._emit_leaf_targets(fields, val)
+        if fields:
+            q_obj = self._apply_fields(q_obj, fields)
+        return q_obj
+
+    def emit_near(self, node: NearExpr) -> QueryObject:
+        """Translate ``near[n](a, b)`` to the native ``NEAR/n`` operator."""
+        fields = self._get_all_node_fields(node)
+        term = f'"{node.left.value}" NEAR/{node.distance} "{node.right.value}"'
+        q_obj = self._emit_leaf_targets(fields, term)
         if fields:
             q_obj = self._apply_fields(q_obj, fields)
         return q_obj

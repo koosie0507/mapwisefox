@@ -74,10 +74,21 @@ class _ToAst(Transformer):
         return _ir.DateExpr(field=str(field_tok), op="before", date_lo=str(date_hi))
 
     def match_op(self, children):
-        """match_op: 'approx' | 'nearest' INT | 'match' match_type"""
+        """match_op: 'approx' | 'match' match_type"""
         kind = str(children[0]).lower()
         arg = children[1] if len(children) > 1 else None
         return _ir.MatchOp(kind=kind, arg=arg)
+
+    @v_args(inline=True)
+    def near_match(self, _near_kw, distance, left, right):
+        """near_expr: 'near' '[' SIGNED_NUMBER ']' '(' value_expr ',' value_expr ')'
+
+        Aliased to `near_match` (rather than the auto-derived `near_expr`) so
+        that `create_transformer` doesn't clobber this custom method with an
+        auto-generated one for the `NearExpr` AST class — mirrors the
+        `date_between`/`date_after`/`date_before` pattern used for `date_expr`.
+        """
+        return _ir.NearExpr(distance=distance, left=left, right=right)
 
     def compound_expr(self, children):
         node = children[0]

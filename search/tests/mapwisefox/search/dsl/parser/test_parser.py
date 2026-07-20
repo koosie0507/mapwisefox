@@ -121,17 +121,33 @@ def test_approx(parse):
 
 
 @pytest.mark.parametrize(
-    "text,kind,arg",
+    "text,distance,left,right,fields",
     [
-        ('nearest [5] ("a") in abstract', "nearest", 5),
-        ('nearest[5]("a") in abstract', "nearest", 5),
-        ('nearest[5]("a")', "nearest", 5),
+        ('near [5] ("a", "b") in abstract', 5, "a", "b", ("abstract",)),
+        ('near[5]("a","b") in abstract', 5, "a", "b", ("abstract",)),
+        ('near[5]("a", "b")', 5, "a", "b", ()),
+        (
+            'near[10]("machine", "learning") in title',
+            10,
+            "machine",
+            "learning",
+            ("title",),
+        ),
     ],
 )
-def test_nearest(parse, text, kind, arg):
+def test_near(parse, text, distance, left, right, fields):
     n = body(parse(text))
-    assert n.op.kind == "nearest"
-    assert n.op.arg == 5
+    assert isinstance(n, _ir.NearExpr)
+    assert n.distance == distance
+    assert_value(n.left, left)
+    assert_value(n.right, right)
+    assert tuple(n.fields) == fields
+
+
+def test_near_requires_two_values(parse):
+    """A single value is no longer valid syntax for `near`."""
+    with pytest.raises(UnexpectedInput):
+        parse('near[5]("a")')
 
 
 @pytest.mark.parametrize("match_type", list(_ir.MatchType))
@@ -175,13 +191,14 @@ def test_no_attr_clause_in_final_ast(parse):
 
 def test_all_expr_nodes_have_fields_attr(parse):
     """Every expression-bearing node exposes a `fields` list."""
-    q = parse('("a" in title & "b") | !"c" in abstract')
+    q = parse('("a" in title & "b") | !"c" in abstract | near[5]("d", "e") in keywords')
     expr_types = (
         _ir.ValueExpr,
         _ir.BinaryExpr,
         _ir.GroupExpr,
         _ir.UnaryExpr,
         _ir.MatchExpr,
+        _ir.NearExpr,
     )
     for n in walk(q):
         if isinstance(n, expr_types):

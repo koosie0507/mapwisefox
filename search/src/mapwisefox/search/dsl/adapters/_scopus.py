@@ -9,7 +9,7 @@ from ..parser import (
     Query,
 )
 from ._base import DSLAdapter
-from ..parser._ir import DateExpr, GroupExpr
+from ..parser._ir import DateExpr, GroupExpr, NearExpr
 from ...query import QueryObject
 
 
@@ -44,6 +44,17 @@ class ScopusDSLAdapter(DSLAdapter):
         fields = self._get_all_node_fields(node)
         quoted = f'"{self._map_value(fields, node.value)}"'
         expr = self._emit_leaf_targets(fields, quoted)
+        if node.fields:
+            expr = self._apply_fields(expr, node.fields)
+        return expr
+
+    def emit_near(self, node: NearExpr) -> QueryObject:
+        """Translate ``near[n](a, b)`` to the native ``W/n`` operator."""
+        fields = self._get_all_node_fields(node)
+        left_val = self._map_value(fields, node.left.value)
+        right_val = self._map_value(fields, node.right.value)
+        term = f'"{left_val}" W/{node.distance} "{right_val}"'
+        expr = self._emit_leaf_targets(fields, term)
         if node.fields:
             expr = self._apply_fields(expr, node.fields)
         return expr
@@ -92,14 +103,10 @@ class ScopusDSLAdapter(DSLAdapter):
         else:
             filters = left.filters or right.filters
 
-        # Apply SCOPUS field prefixes if necessary
+        q_obj = QueryObject(query=query_str, filters=filters)
         if node.fields:
-            prefix = self._scopus_field_prefix(node.fields)
-            if prefix:
-                if query_str:
-                    query_str = f"{prefix}({query_str})"
-
-        return QueryObject(query=query_str, filters=filters)
+            q_obj = self._apply_fields(q_obj, node.fields)
+        return q_obj
 
     def emit_group(self, node: GroupExpr) -> QueryObject:
         result = super().emit_group(node)

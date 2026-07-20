@@ -7,7 +7,7 @@ output_spec_expr: "[" "->" output_target ":" compound_expr "]"
 attr_clause: "in" field_list
 field_list: field_name ("," field_name)*
 
-compound_expr: ( group_expr | binary_expr | unary_expr | match_expr | date_expr | value_expr ) attr_clause?
+compound_expr: ( group_expr | binary_expr | unary_expr | near_expr | match_expr | date_expr | value_expr ) attr_clause?
 
 date_expr: field_name DATE_BETWEEN STRING "and" STRING   -> date_between
          | field_name DATE_AFTER  STRING                 -> date_after
@@ -20,16 +20,16 @@ DATE_BEFORE:  "before"
 group_expr: "(" expr ")"
 binary_expr: expr boolean_op expr
 match_expr: match_op "(" value_expr ")"
+near_expr: NEAR "[" SIGNED_NUMBER "]" "(" value_expr "," value_expr ")" -> near_match
 unary_expr: NOT_OP value_expr
 value_expr: STRING
 
 boolean_op: AND_OP | OR_OP
 
 match_op: APPROX
-        | NEAREST "[" SIGNED_NUMBER "]"
         | MATCH_LITERAL "[" match_type "]"
 APPROX: "approx"
-NEAREST: "nearest"
+NEAR: "near"
 MATCH_LITERAL: "match"
 !match_type: "strict" | "loose" | "regex"
 

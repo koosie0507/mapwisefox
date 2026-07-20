@@ -32,15 +32,6 @@ approx("data science") in title
 Parses to `MatchExpr(op=MatchOp(kind="approx"), child=ValueExpr(...))`.
 Intended to signal "fuzzy/approximate match" to backends that support it.
 
-### `nearest[n](...)`
-
-```
-nearest[5]("a") in abstract
-```
-
-Parses to `MatchExpr(op=MatchOp(kind="nearest", arg=5), ...)`. Intended for
-proximity search (e.g. "these terms within N words of each other").
-
 ### `match[type](...)`
 
 ```
@@ -60,14 +51,48 @@ backend can't search directly (see the [Springer backend](../backends/springer.m
 which can't query `title`/`abstract` server-side).
 
 !!! note
-    `approx`, `nearest`, `match[strict]` and `match[loose]` are parsed in the IR, but
+    `approx`, `match[strict]` and `match[loose]` are parsed in the IR, but
     their default transformation is a pure pass-through, meaning the result is simply
     the wrapped value expression without adding specific vendor fuzzy/proximity logic. 
     Only `match[regex]` has special default handling: it's treated as a client-side
     regex applied after retrieval (see [regex handling](../architecture/regex-handling.md)),
     not as part of the query term itself. When implementing a vendor backend that supports
-    these features natively, override the `emit_approx`, `emit_nearest`, or `emit_match`
-    in that adapter.
+    these features natively, override the `emit_approx` or `emit_match` in that adapter.
+
+## Proximity operator
+
+### `near[n](value1, value2)`
+
+```
+near[5]("machine", "learning") in title
+```
+
+Unlike `approx`/`match`, `near` is **not** a `match_op` wrapping a single value
+— it's its own `NearExpr` IR node that always takes exactly **two** literal
+string values plus an integer distance:
+
+```
+NearExpr(distance=5, left=ValueExpr(value="machine"), right=ValueExpr(value="learning"), fields=["title"])
+```
+
+This models real-world proximity search as implemented by vendors like Scopus
+and Springer: "`value1` is at most `n` words from `value2`", in either order
+— **not** a "k-nearest-neighbors" style search. `near` supports field scoping
+(`in field1, field2, ...`) exactly like the other operators.
+
+!!! note
+    By default, `near[n](a, b)` degrades to a plain, always-parenthesized
+    `AND` of both terms — i.e. `(a AND b)` — since most backends don't have a
+    native proximity operator. Backends that do should override `emit_near`:
+
+    - **Scopus** translates to its native `W/n` operator: `"a" W/n "b"`.
+    - **Springer** and **Web of Science** translate to their native `NEAR/n`
+      operator: `"a" NEAR/n "b"`.
+
+    On fields that are regex-only for a given backend (e.g. `title`/`abstract`
+    on Springer), `near(...)` instead degrades to a distance-aware,
+    order-insensitive regex lookahead — see
+    [regex handling](../architecture/regex-handling.md).
 
 ## Date operators
 
