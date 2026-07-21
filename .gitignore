@@ -1,4 +1,6 @@
 .zed/*
+.agents/*
+
 *.~lock*
 *.xls?
 data/
