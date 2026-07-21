@@ -84,7 +84,7 @@ container, not just `web`. Override the default command
 | ---------------- | ------------------------------ |
 | `web`            | `web/backend` (the default)    |
 | `search`         | [`search`](../search/index.md) |
-| `deduplicate`    | `deduplication`                |
+| `deduplicate`    | [`deduplication`](../deduplication/index.md) |
 | `metrics`        | `metrics`                      |
 | `assistant`      | `assistant`                    |
 | `search-judge`   | `search-judge`                 |
@@ -143,7 +143,7 @@ separately — everything is available from the repo root via
 | Package                        | What it does                                                        |
 | ------------------------------ | ------------------------------------------------------------------- |
 | [`search`](../search/index.md) | DSL + CLI for querying multiple academic search APIs from one query |
-| `deduplication`                | Deduplicates results across search backends                         |
+| [`deduplication`](../deduplication/index.md) | Merges and deduplicates results from multiple sources               |
 | `metrics`                      | Review-quality/coverage metrics                                     |
 | `assistant`                    | LLM-assisted review helpers                                         |
 | `snowballing`                  | Citation snowballing                                                |
@@ -151,11 +151,11 @@ separately — everything is available from the repo root via
 | `web/backend`                  | API backend for the web UI                                          |
 | `web/frontend`                 | React/TypeScript web UI — **not** a uv workspace member (see below) |
 
-Only `search` has dedicated documentation so far; the rest of this list will
-grow as the other packages get documented. Each documented package has its
-own "Getting Started" section covering anything specific to it (API keys,
-package-specific config, etc.) — this page only covers what's shared across
-the whole workspace.
+Only `search` and `deduplication` have dedicated documentation so far; the
+rest of this list will grow as the other packages get documented. Each
+documented package has its own "Getting Started" section covering anything
+specific to it (API keys, package-specific config, etc.) — this page only
+covers what's shared across the whole workspace.
 
 ### Environment variables and `.env`
 
