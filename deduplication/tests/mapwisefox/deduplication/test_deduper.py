@@ -178,3 +178,25 @@ def test_run_dedupe_adds_columns(mock_setup, sample_df):
 
     assert "cluster_id" in result.columns
     assert "confidence" in result.columns
+
+
+@patch("mapwisefox.deduplication._deduper._setup_deduper")
+def test_run_dedupe_defaults_threshold_to_half(mock_setup, sample_df):
+    mock_deduper = MagicMock()
+    mock_setup.return_value = mock_deduper
+    mock_deduper.partition.return_value = [([0, 1], [0.9, 0.8])]
+
+    _run_dedupe(sample_df, Path("t"), Path("s"))
+
+    assert mock_deduper.partition.call_args.args[1] == 0.5
+
+
+@patch("mapwisefox.deduplication._deduper._setup_deduper")
+def test_run_dedupe_passes_custom_threshold_to_partition(mock_setup, sample_df):
+    mock_deduper = MagicMock()
+    mock_setup.return_value = mock_deduper
+    mock_deduper.partition.return_value = [([0, 1], [0.9, 0.8])]
+
+    _run_dedupe(sample_df, Path("t"), Path("s"), threshold=0.7)
+
+    assert mock_deduper.partition.call_args.args[1] == 0.7

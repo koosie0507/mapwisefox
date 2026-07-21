@@ -63,7 +63,7 @@ def _setup_deduper(dedupe_data, settings_file, training_file):
     return deduper
 
 
-def _run_dedupe(df, training_file, settings_file):
+def _run_dedupe(df, training_file, settings_file, threshold=0.5):
     dedupe_df = df.copy()
     dedupe_df.reset_index(drop=True, inplace=True)
     print("load input...")
@@ -71,7 +71,7 @@ def _run_dedupe(df, training_file, settings_file):
     print("blocking and indexing...")
     deduper = _setup_deduper(dedupe_data, settings_file, training_file)
     print("matching & clustering...")
-    clustered_dupes = deduper.partition(dedupe_data, 0.5)
+    clustered_dupes = deduper.partition(dedupe_data, threshold)
     print("  * # duplicate sets =", len(clustered_dupes))
     clusters = {}
     for cluster_id, (records, scores) in enumerate(clustered_dupes):
