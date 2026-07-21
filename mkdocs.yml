@@ -92,3 +92,10 @@ nav:
           - search/legacy/query-builder.md
       - Reference:
           - search/reference/grammar.md
+  - Deduplication:
+      - deduplication/index.md
+      - Getting Started:
+          - deduplication/getting-started/usage.md
+          - deduplication/getting-started/cli-reference.md
+      - How it works:
+          - deduplication/how-it-works.md

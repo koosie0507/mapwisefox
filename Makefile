@@ -49,7 +49,13 @@ check: bootstrap
 
 PYTHON_EXISTING_TEST_DIRS := $(foreach d,$(PYTHON_TEST_DIRS),$(if $(wildcard $(d)),$(d),))
 test: bootstrap
-	uv run --active pytest -rA -vvs --log-level INFO $(PYTHON_EXISTING_TEST_DIRS)
+	uv run --active pytest -rA -vvs --log-level INFO \
+		--junitxml=test-reports/junit.xml \
+		--cov=mapwisefox \
+		--cov-branch \
+		--cov-report=xml:cov-reports/coverage.xml \
+		--cov-report=term-missing \
+		$(PYTHON_EXISTING_TEST_DIRS)
 
 .bump-version:
 	@$(if $(PACKAGE),$(if $(filter $(PACKAGE),$(VALID_PACKAGES)),,$(error PACKAGE='$(PACKAGE)' is not one of: $(VALID_PACKAGES))),)
