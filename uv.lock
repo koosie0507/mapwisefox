@@ -1487,7 +1487,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.5.0"
+version = "0.5.1"
 source = { virtual = "." }
 dependencies = [
     { name = "openai" },
@@ -1573,7 +1573,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-deduplication"
-version = "0.1.0"
+version = "0.7.0"
 source = { editable = "deduplication" }
 dependencies = [
     { name = "bibtexparser" },
