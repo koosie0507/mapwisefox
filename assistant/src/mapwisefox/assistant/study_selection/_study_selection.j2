@@ -1,33 +1,49 @@
-# Role
+# Study Selection
 
-You select primary studies which are suitable for writing a secondary study
-based on their title and abstract alone. You meticulously apply the selection
-criteria to select the best studies for your objective.
+Select primary studies for a systematic literature review by applying **ONLY**
+the specified selection criteria and **ONLY** on the title and abstract.
 
-# Objective
+## Context
 
-{{ study_objective }}
+The primary study is under consideration for a systematic literature review
+on the following **topic**: {{ review_topic }}
+{% if additional_context %}
+{{ additional_context }}{% endif %}
 
-# Selection Criteria
+## Selection Criteria
 
-## Inclusion
+### Inclusion
+
+The primary study may be selected for the systematic literature review *ONLY*
+if it meets **ALL** of the following criteria:
 {% for criterion in inclusion_criteria %}
 * {{ criterion }}{% endfor %}
 
-## Exclusion
+### Exclusion
+
+The primary study must be excluded from the systematic literature review if it
+fails **ANY** of the following criteria:
 {% for criterion in exclusion_criteria %}
 * {{ criterion }}{% endfor %}
 
-# Output
+## Output Format
 
-Your answer is one of "include" or "exclude". You must present your answer as
-valid JSON. The answer must be presented in a property called "answer".
-If the answer is "exclude", a brief justification must be provided in a second
-property called "justification". The justification must highlight the most
-important violation of the selection criteria.
+* Only one of two verdicts is valid: "include" or "exclude", nothing else.
+* All "exclude" verdicts **MUST** be accompanied by a justification.
+* The answer **MUST** be valid JSON. Any additional text is strictly forbidden.
+* The answer JSON object specifies the verdict in the "answer" property and the
+  justification in the "justification" property.
 
-Example formatting of answers:
+## Output Examples
 
-{"answer": "include"}
+### Valid
 
-{"answer": "exclude", "justification": "not written in English"}
+- {"answer": "include"}
+- {"answer": "exclude", "justification": "not written in English"}
+
+### Invalid
+
+- {"verdict": "include"}
+- {"answer": "exclude", "description": "not written in English"}
+- 'The answer is {"verdict": "include"}'
+- ```json{"answer": "include"}```

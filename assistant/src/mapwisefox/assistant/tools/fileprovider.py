@@ -13,7 +13,11 @@ class FileProvider:
     __FILENAME_RE = re.compile(r"filename=(.+)\b")
 
     def __init__(
-        self, cache_dir: Path, chunk_size: int = 16384, timeout: int = 60
+        self,
+        cache_dir: Path,
+        chunk_size: int = 16384,
+        timeout: int = 60,
+        verify_tls: bool = True,
     ) -> None:
         if cache_dir.exists() and not cache_dir.is_dir():
             raise ValueError(f"{cache_dir} exists and is not a directory")
@@ -22,6 +26,7 @@ class FileProvider:
         self.__cookie_jar = {}
         self.__chunk_size = chunk_size
         self.__timeout = timeout
+        self.__verify_tls = verify_tls
 
     @staticmethod
     def __local_filename(download_url: str) -> str:
@@ -48,7 +53,7 @@ class FileProvider:
 
         with self.__session.get(
             url,
-            verify=False,
+            verify=self.__verify_tls,
             cookies=self.__cookie_jar,
             timeout=self.__timeout,
             stream=True,

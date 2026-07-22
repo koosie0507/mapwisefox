@@ -1,0 +1,43 @@
+{
+  "properties": {
+    "review_topic": {
+      "title": "Review Topic",
+      "type": "string"
+    },
+    "additional_context": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Additional Context"
+    },
+    "inclusion_criteria": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Inclusion Criteria",
+      "type": "array"
+    },
+    "exclusion_criteria": {
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1,
+      "title": "Exclusion Criteria",
+      "type": "array"
+    }
+  },
+  "required": [
+    "review_topic",
+    "inclusion_criteria",
+    "exclusion_criteria"
+  ],
+  "title": "SelectionConfig",
+  "type": "object"
+}

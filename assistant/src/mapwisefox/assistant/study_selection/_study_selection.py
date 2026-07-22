@@ -1,12 +1,23 @@
-import json
+import logging
 import os
+import sys
 from functools import partial
 from itertools import islice
 from pathlib import Path
 
 import click
 
-from mapwisefox.assistant.tools import load_df, OllamaProvider, load_template
+from mapwisefox.assistant.config import ConfigValidationError, load_selection_config
+from mapwisefox.assistant.config._schemas import SelectionResponse
+from mapwisefox.assistant.tools import load_df, load_template
+from mapwisefox.assistant.tools.callbacks import (
+    make_stderr_callback,
+    make_thinking_callback,
+    write_stdout,
+)
+
+logging.basicConfig(stream=sys.stdout, level=logging.INFO)
+log = logging.getLogger(__file__)
 
 
 SYSTEM_PROMPT_TEMPLATE = Path(__file__).parent / f"{Path(__file__).stem}.j2"
@@ -24,7 +35,9 @@ DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
     "--config-file",
     type=click.Path(exists=True, dir_okay=False, file_okay=True, readable=True),
     required=True,
-    help="path to a JSON configuration containing inclusion and exclusion criteria",
+    envvar="MWF_ASSISTANT_SELECTION_CONFIG",
+    help="path to a JSON configuration containing the study objective and "
+    "inclusion/exclusion criteria (see assistant/schemas/study-selection.schema.json)",
 )
 @click.option(
     "--limit",
@@ -40,6 +53,7 @@ DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
     multiple=True,
     help="ignore these attributes from the processing of individual selection records",
     default=DEFAULT_EXCLUDED_ATTRIBUTES,
+    show_default=True,
 )
 @click.pass_context
 def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
@@ -55,16 +69,27 @@ def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
     )
     search_results_path = Path(search_results)
     results_df = load_df(search_results_path)
-    with open(config_file, "r") as f:
-        rule_config = json.load(f)
-    provider = OllamaProvider(
-        ctx.obj.model_choice, f"{ctx.obj.ollama_host}:{ctx.obj.ollama_port}"
+
+    try:
+        rule_config = load_selection_config(config_file)
+    except ConfigValidationError as err:
+        raise click.UsageError(str(err))
+
+    provider = ctx.obj.provider_factory(
+        on_error=make_stderr_callback(log),
+        on_thinking=make_thinking_callback(),
+        on_text=write_stdout,
     )
+    if not provider.ensure_model():
+        exit(1)
+
     json_generator = provider.new_json_generator()
+    expected_json_schema = SelectionResponse.model_json_schema()
     generate_json = partial(
         json_generator.generate_json,
         system_prompt_template=load_template(SYSTEM_PROMPT_TEMPLATE),
-        template_data=rule_config,
+        template_data=rule_config.model_dump(),
+        response_schema=expected_json_schema,
     )
 
     count = len(results_df) if limit is None else limit
