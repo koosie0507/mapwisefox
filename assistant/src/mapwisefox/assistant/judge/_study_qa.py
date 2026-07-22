@@ -1,5 +1,4 @@
 import io
-import json
 import logging
 import os
 import sys
@@ -15,12 +14,21 @@ from pathlib import Path
 import click
 from requests.exceptions import HTTPError
 
-from mapwisefox.assistant.config import ReaderType
+from mapwisefox.assistant.config import (
+    ConfigValidationError,
+    ReaderType,
+    load_qa_config,
+)
 from mapwisefox.assistant.instrumentation import timer
 from mapwisefox.assistant.tools import (
     load_df,
     load_template,
     FileProvider,
+)
+from mapwisefox.assistant.tools.callbacks import (
+    make_stderr_callback,
+    make_thinking_callback,
+    write_stdout,
 )
 from mapwisefox.assistant.tools.extras import try_import
 from mapwisefox.assistant.tools.pdf import (
@@ -43,28 +51,6 @@ def _extract_context(cfg: dict, crit: dict) -> dict:
         "description": crit["description"],
         "scoring": crit["scoring"],
     }
-
-
-def _write_thoughts():
-    wrote_label = False
-
-    def _(msg: str):
-        nonlocal wrote_label
-        if not wrote_label:
-            click.secho("Thinking ... ", nl=True, color=True, fg="blue", italic=True)
-        click.secho(msg, nl=False, color=True, fg="blue", italic=True)
-        wrote_label = True
-
-    return _
-
-
-def _write_stdout(msg: str, *args):
-    output_text = msg % args if len(args) > 0 else msg
-    click.echo(output_text, nl=False)
-
-
-def _write_stderr(msg: str, e: Exception):
-    log.error(msg, exc_info=e)
 
 
 def get_default_pdf_reader(dpi: int, layout_model: str) -> FileContentsExtractor:
@@ -159,6 +145,26 @@ def _extract_pdf_contents(
     return user_prompts, failed
 
 
+DEFAULT_MAX_SCORE_RETRIES = 3
+
+
+def _score_criterion(
+    eval_c: Callable[..., dict],
+    template_data: dict,
+    user_prompt: str,
+    label: str,
+    max_retries: int,
+) -> dict:
+    for _ in range(max_retries + 1):
+        obj = eval_c(template_data=template_data, user_prompt=user_prompt)
+        log.debug("LLM answer: %s", obj)
+        if obj.get("score"):
+            return obj
+
+    log.warning("criterion %r left unscored after %d attempts", label, max_retries + 1)
+    return {"score": None, "reason": "left unscored: LLM did not return a usable score"}
+
+
 @timer(callback=log.info, label="paper-evaluation")
 def _evaluate_paper(
     user_prompt: str,
@@ -166,6 +172,7 @@ def _evaluate_paper(
     generate_json: Callable[[dict, str], dict],
     qa_config: dict,
     qa_criteria: dict,
+    max_score_retries: int = DEFAULT_MAX_SCORE_RETRIES,
 ) -> dict | None:
     try:
         result = {}
@@ -176,11 +183,9 @@ def _evaluate_paper(
 
             c_timer = timer(log.info, f"{local_path.stem}: generate-json({key})")
             eval_c = c_timer(generate_json)
-            obj = None
-            while obj is None or not obj.get("score"):
-                obj = eval_c(template_data=ctx, user_prompt=user_prompt)
-                log.debug("LLM answer: %s", obj)
-            result[key] = obj
+            result[key] = _score_criterion(
+                eval_c, ctx, user_prompt, key, max_score_retries
+            )
 
         return result
     except Exception as e:
@@ -236,7 +241,16 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     return df
 
 
-@click.command("study-qa")
+@click.command(
+    "study-qa",
+    help=r"""Use an LLM to assess the quality of primary studies against criteria.
+
+    FILE is an Excel spreadsheet with a column containing an URL (https:// or
+    file:// supported) to each primary study's PDF. For each study, its text
+    is extracted from the PDF, and every criterion is scored independently by
+    the LLM. Criteria that can't be scored after repeated attempts are left
+    empty, so downstream tooling can treat them as unscored.""",
+)
 @click.argument(
     "file",
     type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True),
@@ -246,6 +260,7 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     "--url-column",
     type=click.STRING,
     default="url",
+    show_default=True,
     help="column in the Excel sheet which contains URLs to primary studies",
 )
 @click.option(
@@ -262,7 +277,9 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     "qa_config_path",
     type=click.Path(exists=True, file_okay=True, dir_okay=False, readable=True),
     required=True,
-    help="path to QA rule config file",
+    envvar="MWF_ASSISTANT_QA_CONFIG",
+    help=r"""path to a JSON configuration containing the QA topic and scoring
+    criteria (see assistant/schemas/study-qa.schema.json)""",
 )
 @click.option(
     "-e",
@@ -270,6 +287,7 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     "reader_type",
     type=click.Choice(choices=list(ReaderType)),
     default=ReaderType.custom,
+    show_default=True,
     help="the type of engine to use for reading documents",
 )
 @click.option(
@@ -279,7 +297,14 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     type=click.STRING,
     required=True,
     default="lp://PubLayNet/tf_efficientdet_d0/config",
+    show_default=True,
     help="model used to infer the layout of a PDF file; see LayoutParser for values.",
+)
+@click.option(
+    "--insecure-skip-tls-verify",
+    is_flag=True,
+    default=False,
+    help="disable TLS certificate verification when downloading primary study PDFs",
 )
 @click.pass_context
 def study_qa(
@@ -290,12 +315,18 @@ def study_qa(
     qa_config_path: Path,
     layout_config_path: str,
     reader_type: ReaderType,
+    insecure_skip_tls_verify: bool,
 ):
-    file = Path(file).resolve()
-    file_provider = FileProvider(file.parent / "downloads")
-    with open(qa_config_path, "r") as jfp:
-        qa_config = json.load(jfp)
+    try:
+        qa_config = load_qa_config(qa_config_path).model_dump()
+    except ConfigValidationError as err:
+        raise click.UsageError(str(err))
     qa_criteria = qa_config["criteria"]
+
+    file = Path(file).resolve()
+    file_provider = FileProvider(
+        file.parent / "downloads", verify_tls=not insecure_skip_tls_verify
+    )
     pdf_reader = reader_factory(reader_type, layout_config_path)
 
     df = load_df(file, index_col=index_col)
@@ -311,7 +342,9 @@ def study_qa(
         "required": ["score", "reason"],
     }
     provider = ctx.obj.provider_factory(
-        on_error=_write_stderr, on_thinking=_write_thoughts(), on_text=_write_stdout
+        on_error=make_stderr_callback(log),
+        on_thinking=make_thinking_callback(),
+        on_text=write_stdout,
     )
     if not provider.ensure_model():
         exit(1)

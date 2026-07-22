@@ -1,0 +1,26 @@
+{
+  "topic": "software architecture of entity resolution systems",
+  "criteria": [
+    {
+      "label": "re2",
+      "category": "reporting",
+      "question": "Are the research objectives clear?",
+      "description": "Look for clearly structured research questions or hypotheses and well-articulated research objectives.",
+      "scoring": "1 to 10, higher is more readable"
+    },
+    {
+      "label": "ri1",
+      "category": "rigour",
+      "question": "Is the research design appropriate?",
+      "description": "The methodology should be appropriate for attaining the research objectives. Reporting biases, limitations, and a discussion of the results supports a higher score.",
+      "scoring": "1 to 10, higher indicates a more appropriate research design"
+    },
+    {
+      "label": "r1",
+      "category": "relevance",
+      "question": "How relevant is the study for research in software architecture?",
+      "description": "A description of a system is a starting point. Describing its architecture, architectural concepts, multiple perspectives, or an architecture methodology supports a higher score.",
+      "scoring": "1 to 10, higher values mean that software architecture is covered better"
+    }
+  ]
+}

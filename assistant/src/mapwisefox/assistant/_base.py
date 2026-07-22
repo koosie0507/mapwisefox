@@ -3,6 +3,7 @@ from functools import partial
 import click
 
 from mapwisefox.assistant.config import AssistantParams, ModelChoice, ProviderChoice
+from mapwisefox.assistant.config._validate import validate_config
 from mapwisefox.assistant.judge._study_qa import study_qa
 from mapwisefox.assistant.study_selection._study_selection import study_selection
 from mapwisefox.assistant.tools.llm import (
@@ -49,7 +50,12 @@ def _validate_api_key(ctx, param, value):
     return val_str
 
 
-@click.group()
+@click.group(
+    help=r"""Use an LLM to help with systematic literature review tasks.
+
+-m/--model, -p/--provider, and the provider-specific options below are shared by
+all assistant subcommands."""
+)
 @click.option(
     "-m",
     "--model",
@@ -63,7 +69,7 @@ def _validate_api_key(ctx, param, value):
     "--provider",
     type=click.Choice(ProviderChoice),
     default=ProviderChoice.ollama,
-    help="the name of the large language model to use",
+    help="the LLM provider used by study-selection and study-qa",
     show_default=True,
 )
 @click.option(
@@ -90,7 +96,6 @@ def _validate_api_key(ctx, param, value):
 )
 @click.pass_context
 def assistant(ctx, model, provider, ollama_host, ollama_port, api_key):
-    """Spawns an LLM assistant to help with systematic literature reviews."""
     obj = ctx.ensure_object(AssistantParams)
     obj.model_choice = ModelChoice(model)
     obj.ollama_host = ollama_host
@@ -112,3 +117,4 @@ def assistant(ctx, model, provider, ollama_host, ollama_port, api_key):
 
 assistant.add_command(study_selection)
 assistant.add_command(study_qa)
+assistant.add_command(validate_config)

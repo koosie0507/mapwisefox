@@ -102,7 +102,7 @@ There's a few things that are different compared to the first, basic example:
 
 - **`backend.type` + `backend.options`**: Instead of a bare string like `ConsoleBackend`, live backends need constructor options — at minimum an `api_key`, and usually a `csv_path` to specify where results are written (see [Configuration](../configuration/config-file.md)).
 - **Execution order**: Live API backends (anything other than `ConsoleBackend` or `WebOfScienceBackend` with `use_starter_api: false`) run **concurrently** after console backends finish, bounded by `--max-workers` (default 3). See [CLI Reference](cli-reference.md#execution-model) for the full diagram.
-- **Output**: Results are written to CSV files under `<data-dir>/<results-dir-name>/<YYYYMMDD of most recent Monday>/` (see [Where results go](#where-results-go) below).
+- **Output**: Results are written to CSV files under `<data-dir>/<results-dir-name>/<YYYYMMDD of most recent Monday>/`.
 
 For other backends (ScienceDirect, Scopus, Web of Science, ACM, IEEE Xplore), see the [Backends](../backends/overview.md) section for endpoint details, constructor options, and output schemas.
 

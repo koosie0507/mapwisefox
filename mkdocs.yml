@@ -49,6 +49,7 @@ plugins:
         python:
           paths:
             - search/src # add one entry per workspace member as docs expand to it
+            - assistant/src
           options:
             docstring_style: google
             show_source: true
@@ -99,3 +100,9 @@ nav:
           - deduplication/getting-started/cli-reference.md
       - How it works:
           - deduplication/how-it-works.md
+  - Assistant:
+      - assistant/index.md
+      - Getting Started:
+          - assistant/getting-started/installation.md
+          - assistant/getting-started/usage.md
+          - assistant/getting-started/cli-reference.md
