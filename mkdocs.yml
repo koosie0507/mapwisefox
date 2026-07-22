@@ -100,6 +100,13 @@ nav:
           - deduplication/getting-started/cli-reference.md
       - How it works:
           - deduplication/how-it-works.md
+  - Snowballing:
+      - snowballing/index.md
+      - Getting Started:
+          - snowballing/getting-started/usage.md
+          - snowballing/getting-started/cli-reference.md
+      - How it works:
+          - snowballing/how-it-works.md
   - Assistant:
       - assistant/index.md
       - Getting Started:
