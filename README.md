@@ -7,8 +7,8 @@ The package provides several utilities:
 - [x] `search` - provide one search query and run it against multiple backends.
 - [x] `deduplicate` - deduplicate search results stored across multiple files.
 - [x] `split-workload` - partitions review workloads among multiple team members.
-- [x] `snowball` - performs one level of snowballing in both directions based
-  on an input set of primary studies.
+- [x] `snowball` - performs configurable-depth backward or forward snowballing
+  based on an input set of primary studies.
 - [x] `assistant` - runs include/exclude or quality assessment filters using LLMs.
 - [x] `metrics` - implements various metrics for inter-rater agreement.
 - [x] `web` - standardized web form that allows manually selecting large numbers
@@ -52,6 +52,7 @@ To run the interactive web form, you must specify a free local listening port.
 $ docker run -it -v "$MWFDIR/data:/opt/mapwisefox/data" -p "8000:8000" mwf web
 ```
 
+### Environment Variables 
 
 Some search backends (Web of Science, Elsevier, Springer) and all LLM backends
 except local ones require API keys to access their APIs. These can be provided
