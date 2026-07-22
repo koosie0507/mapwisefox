@@ -1,12 +1,4 @@
-import pytest
-from click.testing import CliRunner
-
 from mapwisefox.assistant._base import assistant
-
-
-@pytest.fixture
-def runner():
-    return CliRunner()
 
 
 def test_validate_config_is_registered_on_assistant_group(runner):

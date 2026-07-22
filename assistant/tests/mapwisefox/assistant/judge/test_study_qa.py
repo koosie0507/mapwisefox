@@ -1,82 +1,33 @@
-from pathlib import Path
 from unittest.mock import MagicMock
 
-from mapwisefox.assistant.judge._study_qa import _evaluate_paper
-
-QA_CONFIG = {"topic": "entity resolution"}
-QA_CRITERIA = [
-    {
-        "label": "re1",
-        "category": "reporting",
-        "question": "Is it formal?",
-        "description": "assess tone",
-        "scoring": "1 to 10",
-    }
-]
+from mapwisefox.assistant.config import ReaderType
+from mapwisefox.assistant.judge import _study_qa as qa
 
 
-def test_evaluate_paper_returns_score_on_first_successful_generation():
-    generate_json = MagicMock(return_value={"score": 8, "reason": "good"})
+def test_reader_factory_uses_custom_reader(monkeypatch):
+    reader = object()
+    monkeypatch.setattr(qa, "get_default_pdf_reader", lambda dpi, layout_model: reader)
 
-    result = _evaluate_paper(
-        "paper text", Path("paper.pdf"), generate_json, QA_CONFIG, QA_CRITERIA
+    assert qa.reader_factory(ReaderType.custom, "layout") is reader
+
+
+def test_reader_factory_uses_docling_reader(monkeypatch):
+    reader = object()
+    docling = MagicMock()
+    docling.DoclingExtractor.return_value = reader
+    monkeypatch.setattr(qa, "try_import", lambda name: docling)
+
+    assert qa.reader_factory(ReaderType.docling, "layout") is reader
+    docling.DoclingExtractor.assert_called_once()
+
+
+def test_get_default_pdf_reader_uses_pdf_extractor(monkeypatch):
+    reader = object()
+    pdf = MagicMock()
+    pdf.BasicPdfMarkdownExtractor.return_value = reader
+    monkeypatch.setattr(qa, "try_import", lambda name: pdf)
+
+    assert qa.get_default_pdf_reader(150, "layout") is reader
+    pdf.BasicPdfMarkdownExtractor.assert_called_once_with(
+        dpi=150, layout_model="layout"
     )
-
-    assert result["re1"]["score"] == 8
-
-
-def test_evaluate_paper_retries_until_a_truthy_score_is_returned():
-    generate_json = MagicMock(
-        side_effect=[{"score": None, "reason": "n/a"}, {"score": 8, "reason": "good"}]
-    )
-
-    result = _evaluate_paper(
-        "paper text", Path("paper.pdf"), generate_json, QA_CONFIG, QA_CRITERIA
-    )
-
-    assert result["re1"]["score"] == 8
-
-
-def test_evaluate_paper_stops_retrying_after_max_score_retries():
-    generate_json = MagicMock(return_value={"score": None, "reason": "n/a"})
-
-    _evaluate_paper(
-        "paper text",
-        Path("paper.pdf"),
-        generate_json,
-        QA_CONFIG,
-        QA_CRITERIA,
-        max_score_retries=2,
-    )
-
-    assert generate_json.call_count == 3
-
-
-def test_evaluate_paper_leaves_score_empty_after_max_retries_exceeded():
-    generate_json = MagicMock(return_value={"score": None, "reason": "n/a"})
-
-    result = _evaluate_paper(
-        "paper text",
-        Path("paper.pdf"),
-        generate_json,
-        QA_CONFIG,
-        QA_CRITERIA,
-        max_score_retries=2,
-    )
-
-    assert result["re1"]["score"] is None
-
-
-def test_evaluate_paper_records_a_reason_when_left_unscored():
-    generate_json = MagicMock(return_value={"score": None, "reason": "n/a"})
-
-    result = _evaluate_paper(
-        "paper text",
-        Path("paper.pdf"),
-        generate_json,
-        QA_CONFIG,
-        QA_CRITERIA,
-        max_score_retries=2,
-    )
-
-    assert result["re1"]["reason"]

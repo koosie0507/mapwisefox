@@ -41,7 +41,7 @@ def test_load_selection_config_returns_model(tmp_path, study_selection_config):
 
 
 def test_load_selection_config_raises_friendly_error_on_invalid_payload(tmp_path):
-    path = _write_json(tmp_path / "selection.json", {"study_objective": "x"})
+    path = _write_json(tmp_path / "selection.json", {"review_topic": "x"})
 
     with pytest.raises(ConfigValidationError):
         load_selection_config(path)

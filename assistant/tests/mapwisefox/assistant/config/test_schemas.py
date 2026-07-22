@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from mapwisefox.assistant.config import QAConfig, SelectionConfig
+from mapwisefox.assistant.config import QAConfig, SelectionConfig, SelectionResponse
 
 
 def test_selection_config_accepts_valid_payload():
@@ -14,12 +14,33 @@ def test_selection_config_accepts_valid_payload():
     assert config.review_topic == "find good papers"
 
 
+def test_selection_config_defaults_additional_context_to_none():
+    config = SelectionConfig(
+        review_topic="find good papers",
+        inclusion_criteria=["written in English"],
+        exclusion_criteria=["not a primary study"],
+    )
+
+    assert config.additional_context is None
+
+
+def test_selection_config_accepts_additional_context():
+    config = SelectionConfig(
+        review_topic="find good papers",
+        additional_context="Focus on empirical software studies.",
+        inclusion_criteria=["written in English"],
+        exclusion_criteria=["not a primary study"],
+    )
+
+    assert config.additional_context == "Focus on empirical software studies."
+
+
 @pytest.mark.parametrize(
-    "missing_field", ["study_objective", "inclusion_criteria", "exclusion_criteria"]
+    "missing_field", ["review_topic", "inclusion_criteria", "exclusion_criteria"]
 )
 def test_selection_config_rejects_missing_required_field(missing_field):
     payload = {
-        "study_objective": "find good papers",
+        "review_topic": "find good papers",
         "inclusion_criteria": ["written in English"],
         "exclusion_criteria": ["not a primary study"],
     }
@@ -32,7 +53,7 @@ def test_selection_config_rejects_missing_required_field(missing_field):
 @pytest.mark.parametrize("empty_field", ["inclusion_criteria", "exclusion_criteria"])
 def test_selection_config_rejects_empty_criteria_list(empty_field):
     payload = {
-        "study_objective": "find good papers",
+        "review_topic": "find good papers",
         "inclusion_criteria": ["written in English"],
         "exclusion_criteria": ["not a primary study"],
         empty_field: [],
@@ -75,3 +96,27 @@ def test_qa_config_rejects_duplicate_criterion_labels():
 
     with pytest.raises(ValidationError):
         QAConfig(topic="entity resolution", criteria=[criterion, criterion])
+
+
+def test_selection_response_accepts_include_without_justification():
+    response = SelectionResponse(answer="include")
+
+    assert response.answer == "include"
+    assert response.justification is None
+
+
+def test_selection_response_accepts_exclude_with_justification():
+    response = SelectionResponse(answer="exclude", justification="not relevant")
+
+    assert response.answer == "exclude"
+    assert response.justification == "not relevant"
+
+
+def test_selection_response_rejects_unknown_answer():
+    with pytest.raises(ValidationError):
+        SelectionResponse(answer="maybe")
+
+
+def test_selection_response_rejects_non_string_answer():
+    with pytest.raises(ValidationError):
+        SelectionResponse(answer=123)

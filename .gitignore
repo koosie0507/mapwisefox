@@ -6,6 +6,8 @@ test-reports/*
 *.~lock*
 *.xls?
 data/
+!assistant/tests/data/
+!assistant/tests/data/sample.pdf
 uploads/
 .env*
 .idea/

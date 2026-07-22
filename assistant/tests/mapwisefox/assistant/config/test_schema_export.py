@@ -1,4 +1,5 @@
 import json
+import runpy
 from pathlib import Path
 
 from mapwisefox.assistant.config._schema_export import SCHEMA_FILES, write_schema_files
@@ -33,3 +34,16 @@ def test_published_schemas_are_up_to_date(tmp_path):
             f"{filename} is stale; run the schema-export script to regenerate "
             f"assistant/schemas/{filename}"
         )
+
+
+def test_schema_export_module_can_run_as_a_script():
+    module_path = (
+        Path(__file__).parents[4]
+        / "src"
+        / "mapwisefox"
+        / "assistant"
+        / "config"
+        / "_schema_export.py"
+    )
+
+    runpy.run_path(str(module_path), run_name="__main__")

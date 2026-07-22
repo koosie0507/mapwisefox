@@ -3,15 +3,9 @@ from unittest.mock import MagicMock
 
 import pandas as pd
 import pytest
-from click.testing import CliRunner
 
-from mapwisefox.assistant.config import AssistantParams
+from mapwisefox.assistant.config import AssistantParams, SelectionResponse
 from mapwisefox.assistant.study_selection._study_selection import study_selection
-
-
-@pytest.fixture
-def runner():
-    return CliRunner()
 
 
 @pytest.fixture
@@ -116,6 +110,25 @@ def test_study_selection_writes_exclude_reason_to_output(
     output_path = search_results_path.parent / "results-gpt_oss.xlsx"
     written = pd.read_excel(output_path)
     assert written.loc[0, "exclude_reason"] == "not English"
+
+
+def test_study_selection_passes_response_schema_to_generator(
+    runner, valid_selection_config_path, search_results_path
+):
+    provider = _fake_provider()
+    provider_factory = MagicMock(return_value=provider)
+
+    result = runner.invoke(
+        study_selection,
+        [str(search_results_path), "--config-file", str(valid_selection_config_path)],
+        obj=_obj(provider_factory),
+    )
+
+    assert result.exit_code == 0, result.output
+    call_kwargs = (
+        provider.new_json_generator.return_value.generate_json.call_args.kwargs
+    )
+    assert call_kwargs["response_schema"] == SelectionResponse.model_json_schema()
 
 
 @pytest.mark.parametrize(

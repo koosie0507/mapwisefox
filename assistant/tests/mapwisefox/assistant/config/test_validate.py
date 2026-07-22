@@ -1,20 +1,14 @@
 import json
 
 import pytest
-from click.testing import CliRunner
 
 from mapwisefox.assistant.config._validate import validate_config
 
 
 @pytest.fixture
-def runner():
-    return CliRunner()
-
-
-@pytest.fixture
 def invalid_selection_config_path(tmp_path):
     path = tmp_path / "selection.json"
-    path.write_text(json.dumps({"study_objective": "find good papers"}))
+    path.write_text(json.dumps({"review_topic": "find good papers"}))
     return path
 
 
