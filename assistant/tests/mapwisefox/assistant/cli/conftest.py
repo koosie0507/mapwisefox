@@ -1,4 +1,3 @@
-import json
 from pathlib import Path
 from unittest.mock import MagicMock
 
@@ -20,38 +19,16 @@ def paper_url():
 
 
 @pytest.fixture
-def qa_config_path(tmp_path):
-    path = tmp_path / "qa-config.json"
-    path.write_text(
-        json.dumps(
-            {
-                "topic": "linked data entity resolution systems",
-                "criteria": [
-                    {
-                        "label": "reporting",
-                        "category": "reporting",
-                        "question": "Are the study objectives and research method clearly reported?",
-                        "description": "Assess whether the paper states its objectives and explains the research method sufficiently for a reader to understand what was done.",
-                        "scoring": "1 to 10, higher means clearer and more complete reporting",
-                    },
-                    {
-                        "label": "rigour",
-                        "category": "rigour",
-                        "question": "Is the evaluation appropriate for the stated objectives?",
-                        "description": "Assess whether the evaluation design, datasets, baselines, and reported evidence are appropriate for the study objectives.",
-                        "scoring": "1 to 10, higher means stronger methodological rigour",
-                    },
-                    {
-                        "label": "relevance",
-                        "category": "relevance",
-                        "question": "How relevant is the study to software architecture research on entity resolution systems?",
-                        "description": "Assess how directly the paper describes a reusable entity resolution system and its architecture rather than only an isolated matching technique.",
-                        "scoring": "1 to 10, higher means more directly relevant",
-                    },
-                ],
-            }
-        )
-    )
+def example_selection_config_path():
+    path = Path(__file__).parents[4] / "examples" / "study-selection-config.json"
+    assert path.exists(), f"selection example not found at {path}"
+    return path
+
+
+@pytest.fixture
+def example_qa_config_path():
+    path = Path(__file__).parents[4] / "examples" / "study-qa-config.json"
+    assert path.exists(), f"QA example not found at {path}"
     return path
 
 
@@ -91,9 +68,9 @@ def canonical_qa_input(tmp_path, sample_pdf_path, paper_url):
                 "abstract": "A system for resolving linked data entities using configuration learning.",
                 "url": paper_url,
                 "include": "include",
-                "reporting": None,
-                "rigour": None,
-                "relevance": None,
+                "re2": None,
+                "ri1": None,
+                "r1": None,
             }
         ]
     ).to_excel(path, index=False)

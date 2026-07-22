@@ -5,7 +5,7 @@ from mapwisefox.assistant.study_selection._study_selection import study_selectio
 
 
 def test_canonical_deduplicated_results_are_selected(
-    runner, canonical_selection_input, valid_selection_config_path, provider_factory
+    runner, canonical_selection_input, example_selection_config_path, provider_factory
 ):
     provider = provider_factory(
         [
@@ -18,7 +18,7 @@ def test_canonical_deduplicated_results_are_selected(
         [
             str(canonical_selection_input),
             "--config-file",
-            str(valid_selection_config_path),
+            str(example_selection_config_path),
         ],
         obj=AssistantParams(provider_factory=provider, model_choice="gpt_oss"),
     )

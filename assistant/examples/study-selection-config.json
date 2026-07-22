@@ -1,0 +1,14 @@
+{
+  "review_topic": "software architecture of entity resolution systems",
+  "additional_context": "Apply these rules only to the title, abstract, and minimal bibliographic metadata. Do not infer architecture or implementation details that are not stated.",
+  "inclusion_criteria": [
+    "published between 2010 and 2025 and written in English",
+    "the title or abstract refers to a tool, framework, system, library, or software architecture for entity resolution or entity matching",
+    "the title or abstract indicates that the paper presents or evaluates original work rather than only discussing prior work"
+  ],
+  "exclusion_criteria": [
+    "is identified as a review, survey, tutorial, position paper, or another secondary study",
+    "the title or abstract focuses only on a matching technique or subproblem such as blocking, clustering, classification, or filtering, without referring to a software artifact",
+    "the title or abstract describes only a domain-specific application or case study and does not indicate a generic entity resolution tool, system, framework, or architecture"
+  ]
+}

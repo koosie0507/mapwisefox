@@ -12,7 +12,7 @@ from mapwisefox.assistant.judge._study_qa import study_qa
 def test_canonical_qa_accepts_http_pdf_for_each_reader(
     runner,
     canonical_qa_input,
-    qa_config_path,
+    example_qa_config_path,
     sample_pdf_path,
     paper_url,
     http_responses,
@@ -43,7 +43,7 @@ def test_canonical_qa_accepts_http_pdf_for_each_reader(
         [
             str(canonical_qa_input),
             "--config",
-            str(qa_config_path),
+            str(example_qa_config_path),
             "--reader-type",
             reader_type,
         ],
@@ -52,9 +52,9 @@ def test_canonical_qa_accepts_http_pdf_for_each_reader(
 
     assert result.exit_code == 0, result.output
     output = pd.read_excel(canonical_qa_input.parent / "selected-results-gpt_oss.xlsx")
-    assert output.loc[0, "reporting"] == 8
-    assert output.loc[0, "rigour"] == 7
-    assert output.loc[0, "relevance"] == 9
+    assert output.loc[0, "re2"] == 8
+    assert output.loc[0, "ri1"] == 7
+    assert output.loc[0, "r1"] == 9
     assert "# reporting" in output.loc[0, "evaluation"]
     assert len(http_responses.calls) == 1
     reader_factory.assert_called_once_with(
@@ -66,7 +66,7 @@ def test_canonical_qa_accepts_http_pdf_for_each_reader(
 def test_canonical_qa_accepts_local_file_url_without_http(
     runner,
     canonical_qa_input,
-    qa_config_path,
+    example_qa_config_path,
     sample_pdf_path,
     provider_factory,
     superficial_reader,
@@ -77,9 +77,7 @@ def test_canonical_qa_accepts_local_file_url_without_http(
     local_input = canonical_qa_input
     workbook = openpyxl.Workbook()
     sheet = workbook.active
-    sheet.append(
-        ["title", "abstract", "url", "include", "reporting", "rigour", "relevance"]
-    )
+    sheet.append(["title", "abstract", "url", "include", "re2", "ri1", "r1"])
     sheet.append(
         [
             "Linked Data Entity Resolution System",
@@ -109,7 +107,7 @@ def test_canonical_qa_accepts_local_file_url_without_http(
         [
             str(local_input),
             "--config",
-            str(qa_config_path),
+            str(example_qa_config_path),
             "--reader-type",
             reader_type,
         ],
@@ -127,7 +125,7 @@ def test_canonical_qa_accepts_local_file_url_without_http(
 def test_canonical_qa_handles_http_failure_without_unmocked_network(
     runner,
     canonical_qa_input,
-    qa_config_path,
+    example_qa_config_path,
     paper_url,
     http_responses,
     provider_factory,
@@ -143,7 +141,7 @@ def test_canonical_qa_handles_http_failure_without_unmocked_network(
 
     result = runner.invoke(
         study_qa,
-        [str(canonical_qa_input), "--config", str(qa_config_path)],
+        [str(canonical_qa_input), "--config", str(example_qa_config_path)],
         obj=AssistantParams(provider_factory=provider, model_choice="gpt_oss"),
     )
 
