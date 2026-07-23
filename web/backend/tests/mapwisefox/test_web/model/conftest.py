@@ -47,4 +47,4 @@ def new_evidence() -> Callable[[...], Evidence]:
 
 @pytest.fixture(scope="session")
 def datadir():
-    return Path(__file__).parent / "data"
+    return Path(__file__).parents[3] / "data"

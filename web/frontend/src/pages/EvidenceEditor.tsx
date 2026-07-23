@@ -1,8 +1,8 @@
 import {type IncludeStatusArgs, SelectionCriteriaForm} from "../components/SelectionCriteriaForm";
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {ChevronLeft, ChevronRight, CircleDashed, FastForward, SkipBack, SkipForward} from "lucide-react";
 import styles from "./EvidenceEditor.module.css";
-import type {NavigationAction} from "../models/transfer.ts";
+import type {NavigationAction, ScreeningResponse} from "../models/transfer.ts";
 import type {EvidenceViewModel} from "../models/viewmodel.ts";
 
 type EvidenceProps = {
@@ -22,64 +22,86 @@ function SafeLink({url, text, label, style}: {
 }) {
     if (label !== undefined && label !== null) {
         const spanStyle = style || {fontSize: "9px", margin: "2px"}
-        return (
-            <span style={spanStyle}>
-                <b>{label}</b>&nbsp;
-                <a href={safeUrl(url)} target="_blank">{text}</a>
-            </span>
-        )
+        return <span style={spanStyle}><b>{label}</b>&nbsp;<a href={safeUrl(url)} target="_blank">{text}</a></span>
     }
     return <a href={safeUrl(url)} target="_blank">{text}</a>;
 }
 
-export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
-    const doiText = evidence.doi || "n/a"
-    const dateText = (evidence.publishedAt || "n/a").toString()
-    const navigateEndpoint = `/evidence/${fileName}/navigate`
-    const toggleStatusEndpoint = `/evidence/${fileName}/save`
-    const [model, setModel] = useState<EvidenceViewModel>(evidence)
-    const gotoInputRef = useRef<HTMLInputElement>(null);
+async function fetchScreening(resource: string, index: number): Promise<ScreeningResponse | null> {
+    const response = await fetch(`${resource}/${index}`)
+    return response.ok ? response.json() : null
+}
 
-    async function navigate(clusterId: string | number, action: NavigationAction) {
-        if (action == "firstUnfilled") {
-            action = "unfilled"
-        }
-        const res = await fetch(navigateEndpoint, {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({
-                clusterId: clusterId,
-                action: action,
-            })
+export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
+    const [model, setModel] = useState<EvidenceViewModel>(evidence)
+    const [screening, setScreening] = useState<ScreeningResponse | null>(null)
+    const [error, setError] = useState<string | null>(null)
+    const gotoInputRef = useRef<HTMLInputElement>(null);
+    const resource = `/api/v1/workbooks/${encodeURIComponent(fileName)}/screening`;
+    const doiText = model.doi || "n/a"
+    const dateText = (model.publishedAt || "n/a").toString()
+
+    useEffect(() => {
+        void fetchScreening(resource, Number(evidence.clusterId)).then(data => {
+            if (data) {
+                setScreening(data)
+                setModel(data.evidence)
+            }
         })
-        if (res.status >= 400) {
-            console.error(res.statusText)
+    }, [evidence.clusterId, resource])
+
+    async function load(index: number) {
+        const data = await fetchScreening(resource, index)
+        if (!data) {
+            setError("Could not load that screening record.")
             return;
         }
-        const data = await res.json()
+        setScreening(data)
         setModel(data.evidence)
+        setError(null)
+    }
+
+    async function navigate(value: string | number, action: NavigationAction) {
+        const current = screening?.recordIndex ?? Number(model.clusterId)
+        const count = screening?.recordCount
+        const destinations: Partial<Record<NavigationAction, number | null>> = {
+            first: 0,
+            firstUnfilled: screening?.firstUndecidedIndex,
+            prev: screening?.previousIndex ?? current - 1,
+            next: screening?.nextIndex ?? current + 1,
+            last: count === undefined ? current : count - 1,
+            unfilled: screening?.nextUndecidedIndex ?? screening?.firstUndecidedIndex,
+            goto: Number(value),
+        }
+        const destination = destinations[action]
+        if (destination !== null && destination !== undefined && Number.isInteger(destination) && destination >= 0) {
+            await load(destination)
+        }
     }
 
     async function toggleStatus({include, excludeReasons}: IncludeStatusArgs) {
-        const res = await fetch(toggleStatusEndpoint, {
+        const decision = include ? "included" : "excluded";
+        const response = await fetch(`${resource}/${model.clusterId}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({clusterId: model.clusterId, include, excludeReasons})
+            body: JSON.stringify({decision, exclusionReasons: excludeReasons})
         })
-        if (res.status >= 400) {
+        if (!response.ok) {
+            setError("Could not save the screening decision.")
             return;
         }
-        const data = await res.json()
-        if (data.changed) {
-            setModel(data.evidence)
-        }
-        const navAction = (data.complete) ? "next" : "unfilled";
-        await navigate(model.clusterId, navAction);
+        const data: ScreeningResponse = await response.json()
+        setScreening(data)
+        setModel(data.evidence)
+        setError(null)
+        const destination = data.nextUndecidedIndex ?? data.nextIndex
+        if (destination !== null) await load(destination)
     }
 
     return (
         <div className={styles.layout}>
             <main className={styles.mainContent}>
+                {error && <p role="alert">{error}</p>}
                 <h1>[{model.clusterId}]&nbsp;{model.title}</h1>
                 <div className="article-info">
                     <div className="source-container">
@@ -88,19 +110,11 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
                         <SafeLink url={model.doiLink} text={doiText} label="DOI:"/>
                         <SafeLink url={model.sciHubLink} text={doiText} label="SciHub:"/>
                     </div>
-                    <small style={{fontSize: "9px", margin: "2px"}}>
-                        <b>Date Published:</b>&nbsp;
-                        {dateText}
-                    </small>
+                    <small style={{fontSize: "9px", margin: "2px"}}><b>Date Published:</b>&nbsp;{dateText}</small>
                 </div>
                 <b className="abstract-label">Abstract</b>
-                <div className={styles.scrollbox}>
-                    {model.abstract}
-                </div>
-                <p className="keywords">
-                    <strong>Keywords:</strong>
-                    {model.keywords}
-                </p>
+                <div className={styles.scrollbox}>{model.abstract}</div>
+                <p className="keywords"><strong>Keywords:</strong>{model.keywords}</p>
             </main>
             <aside className={`${styles.rightSidebar} sidebar`}>
                 <SelectionCriteriaForm evidence={model} fileName={fileName} onFormSubmit={toggleStatus}/>
@@ -109,51 +123,28 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
                 <div className={styles.buttonBar}>
                     <form method="post" action="" onSubmit={evt => evt.preventDefault()}>
                         <div className={styles.gotoGroup}>
-                            <input
-                                type="text"
-                                ref={gotoInputRef}
-                                placeholder="Go to…"
-                                title="Enter an ID to go to"
-                                className={styles.gotoInput}
-                                onKeyDown={async (e) => {
-                                    if (e.key === 'Enter') {
-                                        e.preventDefault();
-                                        const v = gotoInputRef.current?.value?.trim();
-                                        if (v) await navigate(v, "goto");
-                                    }
-                                }}
-                            />
-                            <button
-                                type="submit"
-                                title="Go to item"
-                                className={styles.gotoBtn}
-                                onClick={async () => {
-                                    const v = gotoInputRef.current?.value?.trim();
-                                    if (v) await navigate(v, "goto");
-                                }}
-                            >
-                                <ChevronRight size={18}/>
-                            </button>
+                            <input type="number" min="0" ref={gotoInputRef} placeholder="Go to..." title="Enter an index to go to"
+                                   className={styles.gotoInput} onKeyDown={async e => {
+                                if (e.key === "Enter") {
+                                    e.preventDefault();
+                                    const value = gotoInputRef.current?.value?.trim();
+                                    if (value) await navigate(value, "goto");
+                                }
+                            }}/>
+                            <button type="submit" title="Go to item" className={styles.gotoBtn} onClick={async () => {
+                                const value = gotoInputRef.current?.value?.trim();
+                                if (value) await navigate(value, "goto");
+                            }}><ChevronRight size={18}/></button>
                         </div>
                         <div className={styles.navGroup}>
-                            <button type="submit" title="First item" onClick={async () => await navigate(0, "first")}>
-                                <SkipBack size={18}/></button>
-                            <button type="submit" title="Previous item"
-                                    onClick={async () => await navigate(model.clusterId, "prev")}><ChevronLeft
-                                size={18}/>
-                            </button>
-                            <button type="submit" title="Next item"
-                                    onClick={async () => await navigate(model.clusterId, "next")}><ChevronRight
-                                size={18}/>
-                            </button>
-                            <button type="submit" title="Last item" onClick={async () => await navigate(0, "last")}>
-                                <SkipForward size={18}/></button>
-                            <button type="submit" title="First unfilled item" className={styles.firstGap}
-                                    onClick={async () => await navigate(0, "firstUnfilled")}><CircleDashed size={18}/>
-                            </button>
-                            <button type="submit" title="Next unfilled item" className={styles.nextUndecided}
-                                    onClick={async () => await navigate(model.clusterId, "unfilled")}><FastForward
-                                size={18}/></button>
+                            <button type="submit" title="First item" onClick={() => navigate(0, "first")}><SkipBack size={18}/></button>
+                            <button type="submit" title="Previous item" onClick={() => navigate(0, "prev")}><ChevronLeft size={18}/></button>
+                            <button type="submit" title="Next item" onClick={() => navigate(0, "next")}><ChevronRight size={18}/></button>
+                            <button type="submit" title="Last item" onClick={() => navigate(0, "last")}><SkipForward size={18}/></button>
+                            <button type="submit" title="First undecided item" className={styles.firstGap}
+                                    onClick={() => navigate(0, "firstUnfilled")}><CircleDashed size={18}/></button>
+                            <button type="submit" title="Next undecided item" className={styles.nextUndecided}
+                                    onClick={() => navigate(0, "unfilled")}><FastForward size={18}/></button>
                         </div>
                     </form>
                 </div>

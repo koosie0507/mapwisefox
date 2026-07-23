@@ -1,21 +1,10 @@
 from typing import Optional
 from urllib.parse import urlencode
 
-from pydantic import BaseModel, model_validator, Field
+from pydantic import Field, model_validator
 
 from mapwisefox.web.utils import any_to_bool
-from mapwisefox.web.model import Evidence, NavigateAction
-
-
-class NavigateRequestBody(BaseModel):
-    cluster_id: int = Field(..., alias="clusterId")
-    action: NavigateAction
-
-
-class ToggleEvidenceStatusRequestBody(BaseModel):
-    cluster_id: int = Field(..., alias="clusterId")
-    include: bool
-    exclude_reasons: list[str] = Field(..., alias="excludeReasons")
+from mapwisefox.web.model import Evidence
 
 
 class EvidenceViewModel(Evidence):
@@ -67,15 +56,3 @@ class EvidenceViewModel(Evidence):
 
     def serialize_include(self, include: bool, _) -> str | bool:
         return include
-
-
-class NavigateResponseBody(BaseModel):
-    evidence: EvidenceViewModel
-    min_id: int = Field(..., alias="minId")
-    max_id: int = Field(..., alias="maxId")
-
-
-class ToggleEvidenceStatusResponseBody(BaseModel):
-    evidence: EvidenceViewModel
-    changed: bool
-    complete: bool

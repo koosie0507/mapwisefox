@@ -8,10 +8,9 @@ const registry = new Map<string, Mount>();
 for (const [path, loader] of Object.entries(modules)) {
     const name = path.match(/([^/]+)\.tsx$/)![1]; // e.g., HelloWidget
     registry.set(name, async (el, props) => {
-        const mod: any = await loader();                 // code-split chunk
+        const mod = await loader() as Record<string, React.ComponentType<Record<string, unknown>>>;
         const Cmp = mod.default ?? mod[name] ?? mod[Object.keys(mod)[0]];
-        // @ts-expect-error JSX at runtime
-        createRoot(el).render(React.createElement(Cmp, props));
+        createRoot(el).render(React.createElement(Cmp, (props ?? {}) as Record<string, unknown>));
     });
 }
 

@@ -1,7 +1,7 @@
 import json
 from pathlib import Path
 
-from fastapi import Depends, Request
+from fastapi import Depends, HTTPException, Request
 
 from mapwisefox.web.config import settings, AppSettings
 from mapwisefox.web.model import UserInfo
@@ -21,7 +21,9 @@ def current_user(request: Request) -> UserInfo | None:
 def user_upload_dir(
     config: AppSettings = Depends(settings),
     user_info: UserInfo | None = Depends(current_user),
-) -> Path | None:
+) -> Path:
+    if config.auth_enabled and user_info is None:
+        raise HTTPException(status_code=401, detail="Authentication required")
     if user_info is None:
         return config.uploads_dir
     return config.uploads_dir / user_info.dirname

@@ -7,6 +7,7 @@ import numpy as np
 import pandas as pd
 from pydantic import (
     BaseModel,
+    ConfigDict,
     model_validator,
     field_serializer,
     Field,
@@ -27,6 +28,8 @@ NON_VALUES = {
 
 
 class Evidence(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
     _LIST_VALUED_FIELDS: ClassVar[list[str]] = [
         "authors",
         "keywords",
@@ -34,9 +37,6 @@ class Evidence(BaseModel):
         "referencing_evidence",
     ]
     __DEFAULT_LIST_SEPARATOR: ClassVar[str] = ";"
-
-    class Config:
-        populate_by_name = True
 
     cluster_id: int = Field(..., alias="clusterId")
     include: bool
@@ -48,9 +48,10 @@ class Evidence(BaseModel):
     publication_date: Optional[datetime] = Field(..., alias="publicationDate")
     publication_venue: Optional[str] = Field(..., alias="publicationVenue")
     url: str
-    has_pdf: bool = Field(..., alias="hasPdf")
     exclude_reasons: list[str] = Field(..., alias="excludeReasons")
-    referencing_evidence: list[str] = Field(..., alias="referencingEvidence")
+    # optional fields
+    has_pdf: bool = Field(False, alias="hasPdf")
+    referencing_evidence: list[str] = Field(alias="referencingEvidence", default_factory=list)
     pdf_url: Optional[str] = Field(None, alias="pdfUrl")
 
     @staticmethod

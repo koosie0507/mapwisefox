@@ -6,7 +6,7 @@ from fastapi.responses import RedirectResponse
 
 from mapwisefox.web.config import AppSettings
 from mapwisefox.web.model import UserInfo
-from mapwisefox.web.controller._deps import settings
+from mapwisefox.web._deps import settings
 
 
 router = APIRouter(prefix="/auth")
