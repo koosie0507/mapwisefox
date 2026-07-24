@@ -8,8 +8,9 @@ from httpx import ASGITransport, AsyncClient
 from openpyxl import Workbook, load_workbook
 
 from mapwisefox.web.config import AppSettings
-from mapwisefox.web.api import workbooks_api_router
-from mapwisefox.web._deps import settings, user_upload_dir
+from mapwisefox.web.api import config_api_router, workbooks_api_router
+from mapwisefox.web._deps import current_user, settings, user_upload_dir
+from mapwisefox.web.model import UserInfo
 
 
 HEADERS = [
@@ -69,8 +70,10 @@ def workbook_file():
 @pytest.fixture
 def client(tmp_path):
     app = FastAPI()
+    app.include_router(config_api_router)
     app.include_router(workbooks_api_router)
     config = AppSettings(uploads_dir=tmp_path)
+    app.dependency_overrides[current_user] = lambda: None
     app.dependency_overrides[user_upload_dir] = lambda: tmp_path
     app.dependency_overrides[settings] = lambda: config
     return TestClient(app)
@@ -85,6 +88,36 @@ def imported_client(client, workbook_file):
     )
     assert response.status_code == 201
     return client
+
+
+def test_config_returns_frontend_context(client):
+    response = client.get("/api/v1/config")
+
+    assert response.json() == {
+        "authEnabled": False,
+        "user": None,
+        "worksheetName": "",
+        "expectedColumns": "",
+        "decisionColumn": "include",
+        "exclusionReasonColumn": "exclude_reason",
+    }
+
+
+def test_config_returns_current_user(client):
+    client.app.dependency_overrides[current_user] = lambda: UserInfo(
+        dirname="ada-lovelace",
+        display_name="Ada Lovelace",
+        given_name="Ada",
+        surname="Lovelace",
+        email="ada@example.com",
+    )
+
+    response = client.get("/api/v1/config")
+
+    assert response.json()["user"] == {
+        "display_name": "Ada Lovelace",
+        "email": "ada@example.com",
+    }
 
 
 def test_import_returns_resolved_resource(client, workbook_file):

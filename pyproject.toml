@@ -22,7 +22,6 @@ members = [
     "split",
     "web/backend"
 ]
-#exclude = ["web/assets", "web/frontend"]
 
 [dependency-groups]
 dev = [

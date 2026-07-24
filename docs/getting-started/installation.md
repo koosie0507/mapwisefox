@@ -8,13 +8,18 @@ plus a standalone React/TypeScript frontend.
 ## Docker
 
 If you just want to _run_ the suite rather than develop against it, use the
-published Docker image: it bundles every CLI in the suite plus the web app
-in one easy to use (but large) container.
+published backend image. It bundles every CLI in the suite. The web UI is
+published separately as `ghcr.io/koosie0507/mapwisefox-frontend`.
 
 ### Run the web app
 
 ```bash
-docker run --rm -p 8000:8000 ghcr.io/koosie0507/mapwisefox:latest
+docker network create mapwisefox
+docker run -d --rm --name backend --network mapwisefox \
+  ghcr.io/koosie0507/mapwisefox:latest
+docker run --rm --network mapwisefox -p 8000:80 \
+  -e BACKEND_URL=http://backend:8000 \
+  ghcr.io/koosie0507/mapwisefox-frontend:latest
 ```
 
 Then open <http://localhost:8000>. Images are published to GHCR on
@@ -23,8 +28,8 @@ are updated in the container registry.
 
 !!! note
     Dev/debug mode (hot-reloading the frontend via Vite) is **not** available
-    in Docker — the image builds the React frontend once at image-build time
-    and serves the static output, so there's nothing to run in "dev mode"
+    in Docker — the frontend image contains a production build, so there's
+    nothing to run in "dev mode"
     inside the container. See `web/frontend/README.md` for the (non-Docker)
     dev-mode workflow if you want to contribute to the frontend.
 
@@ -36,7 +41,8 @@ host directories in with `-v` to persist them across restarts:
 
 ```bash
 docker run --rm \
-  -p 8000:8000 \
+  --name backend \
+  --network mapwisefox \
   -v "$(pwd)/uploads:/opt/mapwisefox/uploads" \
   -v "$(pwd)/data:/opt/mapwisefox/data" \
   ghcr.io/koosie0507/mapwisefox:latest
@@ -63,15 +69,15 @@ works the same way inside the container — pass them individually with `-e`,
 or point at your existing `.env` file with `--env-file`:
 
 ```bash
-docker run --rm -p 8000:8000 \
+docker run --rm --name backend --network mapwisefox \
   --env-file .env \
   -e MWF_WEB_AUTH_ENABLED=true \
   ghcr.io/koosie0507/mapwisefox:latest
 ```
 
-The web app additionally reads `MWF_WEB_*` settings. `MWF_WEB_DEBUG=0`
-and `MWF_WEB_BASEDIR=/opt/mapwisefox` are already set inside the image
-and shouldn't need overriding in normal circumstances.
+The backend additionally reads `MWF_WEB_*` settings. The frontend container
+only requires `BACKEND_URL`, which must identify the backend inside the
+container network.
 
 ### Running other suite tools instead of the web app
 
@@ -107,12 +113,12 @@ docker run --rm \
 
 ```bash
 docker build -t mapwisefox:local .
+docker build --target frontend-runtime -t mapwisefox-frontend:local .
 ```
 
-The image builds every Python workspace package with `uv` and the frontend
-with `npm` in parallel stages, then assembles a slim final image containing
-only the built virtualenv, static frontend assets, and the model cache — no
-build toolchain.
+The default target builds every Python workspace package with `uv`. The
+`frontend-runtime` target builds the standalone React app and serves it with
+same-origin API and authentication proxying.
 
 ## Local development
 

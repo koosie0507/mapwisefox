@@ -93,6 +93,13 @@ RUN --mount=type=cache,target=/root/.npm npm install
 COPY web/frontend frontend/
 RUN cd frontend && npm run build
 
+FROM nginx:1.29-alpine AS frontend-runtime
+
+ENV BACKEND_URL="http://backend:8000"
+
+COPY --from=node-build /opt/node-build/frontend/dist /usr/share/nginx/html
+COPY web/frontend/default.conf.template /etc/nginx/templates/default.conf.template
+
 FROM python-build AS python-tests
 
 ENV VIRTUALENV="/opt/python-build/.venv"
@@ -120,7 +127,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.cache/uv \
     uv sync --all-packages --no-editable --no-dev --frozen
 
-FROM python:3.13.7-slim
+FROM python:3.13.7-slim AS backend-runtime
 LABEL authors="Andrei Olar"
 
 EXPOSE 8000
@@ -128,8 +135,6 @@ EXPOSE 8000
 WORKDIR /opt/mapwisefox
 ENV VIRTUALENV="/opt/mapwisefox/.venv"
 ENV PATH="$VIRTUALENV/bin:$PATH"
-ENV MWF_WEB_DEBUG=0
-ENV MWF_WEB_BASEDIR="/opt/mapwisefox"
 
 RUN apt update -yqq && apt install libgomp1 libstdc++6 ffmpeg libsm6 libxext6 poppler-utils -yqq && \
     useradd -u 1001 -r -s /bin/sh -d /opt/mapwisefox mapwisefox && \
@@ -145,8 +150,6 @@ COPY --from=model-fetch --chown=mapwisefox:users \
 
 
 COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/.venv .venv
-COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/web/assets assets
-COPY --from=node-build --chown=mapwisefox:mapwisefox /opt/node-build/assets assets/
 
 USER mapwisefox
 CMD ["web"]

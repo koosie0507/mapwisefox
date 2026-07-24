@@ -7,10 +7,6 @@ from mapwisefox.web.config import settings, AppSettings
 from mapwisefox.web.model import UserInfo
 
 
-def app_basedir(config: AppSettings = Depends(settings)) -> Path:
-    return config.basedir
-
-
 def current_user(request: Request) -> UserInfo | None:
     if request.session is None or "user" not in request.session:
         return None
