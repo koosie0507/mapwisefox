@@ -1,0 +1,12 @@
+:8000 {
+	@backend path /api/* /auth/* /docs* /redoc* /openapi.json
+	handle @backend {
+		reverse_proxy 127.0.0.1:8001
+	}
+
+	handle {
+		root * /srv
+		try_files {path} /index.html
+		file_server
+	}
+}

@@ -8,18 +8,13 @@ plus a standalone React/TypeScript frontend.
 ## Docker
 
 If you just want to _run_ the suite rather than develop against it, use the
-published backend image. It bundles every CLI in the suite. The web UI is
-published separately as `ghcr.io/koosie0507/mapwisefox-frontend`.
+published Docker image. It bundles every CLI in the suite, the API backend,
+and the production web UI.
 
 ### Run the web app
 
 ```bash
-docker network create mapwisefox
-docker run -d --rm --name backend --network mapwisefox \
-  ghcr.io/koosie0507/mapwisefox:latest
-docker run --rm --network mapwisefox -p 8000:80 \
-  -e BACKEND_URL=http://backend:8000 \
-  ghcr.io/koosie0507/mapwisefox-frontend:latest
+docker run --rm -p 8000:8000 ghcr.io/koosie0507/mapwisefox:latest
 ```
 
 Then open <http://localhost:8000>. Images are published to GHCR on
@@ -28,8 +23,8 @@ are updated in the container registry.
 
 !!! note
     Dev/debug mode (hot-reloading the frontend via Vite) is **not** available
-    in Docker — the frontend image contains a production build, so there's
-    nothing to run in "dev mode"
+    in Docker — Caddy serves a production frontend build, so there's nothing
+    to run in "dev mode"
     inside the container. See `web/frontend/README.md` for the (non-Docker)
     dev-mode workflow if you want to contribute to the frontend.
 
@@ -41,8 +36,7 @@ host directories in with `-v` to persist them across restarts:
 
 ```bash
 docker run --rm \
-  --name backend \
-  --network mapwisefox \
+  -p 8000:8000 \
   -v "$(pwd)/uploads:/opt/mapwisefox/uploads" \
   -v "$(pwd)/data:/opt/mapwisefox/data" \
   ghcr.io/koosie0507/mapwisefox:latest
@@ -69,26 +63,25 @@ works the same way inside the container — pass them individually with `-e`,
 or point at your existing `.env` file with `--env-file`:
 
 ```bash
-docker run --rm --name backend --network mapwisefox \
+docker run --rm -p 8000:8000 \
   --env-file .env \
   -e MWF_WEB_AUTH_ENABLED=true \
   ghcr.io/koosie0507/mapwisefox:latest
 ```
 
-The backend additionally reads `MWF_WEB_*` settings. The frontend container
-only requires `BACKEND_URL`, which must identify the backend inside the
-container network.
+The web application additionally reads `MWF_WEB_*` settings.
 
 ### Running other suite tools instead of the web app
 
 The image's Python virtualenv is built with `uv sync --all-packages`, so
 **every** workspace package's console script is on `PATH` inside the
 container, not just `web`. Override the default command
-(`CMD ["web"]`) by appending your own after the image name:
+(`CMD ["serve"]`) by appending your own after the image name:
 
 | Command          | Package                        |
 | ---------------- | ------------------------------ |
-| `web`            | `web/backend` (the default)    |
+| `serve`          | Web UI and API (the default)   |
+| `web`            | `web/backend` API only         |
 | `search`         | [`search`](../search/index.md) |
 | `deduplicate`    | [`deduplication`](../deduplication/index.md) |
 | `metrics`        | `metrics`                      |
@@ -113,12 +106,11 @@ docker run --rm \
 
 ```bash
 docker build -t mapwisefox:local .
-docker build --target frontend-runtime -t mapwisefox-frontend:local .
 ```
 
-The default target builds every Python workspace package with `uv`. The
-`frontend-runtime` target builds the standalone React app and serves it with
-same-origin API and authentication proxying.
+The image builds every Python workspace package with `uv` and the standalone
+React app with npm. Caddy serves the frontend and proxies backend routes to the
+FastAPI process in the same container.
 
 ## Local development
 

@@ -27,11 +27,9 @@ call `$MWFDIR`.
 ```shell
 $ cd $MWFDIR
 $ docker build -t mwf .
-$ docker build --target frontend-runtime -t mwf-frontend .
 ```
 
-The result is a backend image containing all CLIs in the MapwiseFox suite and
-a separate frontend image.
+The result is one image containing all CLIs and the web application.
 
 ## Running
 
@@ -48,12 +46,10 @@ here's how to run the `search` command and store data in `$MWFDIR/data`:
 $ docker run -it -v "$MWFDIR/data:/opt/mapwisefox/data" mwf search -D ./data/search-test
 ```
 
-To run the interactive web form, start both images on the same Docker network.
+To run the interactive web form, publish the Caddy listening port.
 
 ```shell
-$ docker network create mapwisefox
-$ docker run -d --rm --name backend --network mapwisefox -v "$MWFDIR/data:/opt/mapwisefox/data" mwf web
-$ docker run --rm --network mapwisefox -e BACKEND_URL=http://backend:8000 -p "8000:80" mwf-frontend
+$ docker run --rm -v "$MWFDIR/data:/opt/mapwisefox/data" -p "8000:8000" mwf
 ```
 
 ### Environment Variables 

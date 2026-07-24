@@ -93,13 +93,6 @@ RUN --mount=type=cache,target=/root/.npm npm install
 COPY web/frontend frontend/
 RUN cd frontend && npm run build
 
-FROM nginx:1.29-alpine AS frontend-runtime
-
-ENV BACKEND_URL="http://backend:8000"
-
-COPY --from=node-build /opt/node-build/frontend/dist /usr/share/nginx/html
-COPY web/frontend/default.conf.template /etc/nginx/templates/default.conf.template
-
 FROM python-build AS python-tests
 
 ENV VIRTUALENV="/opt/python-build/.venv"
@@ -136,7 +129,7 @@ WORKDIR /opt/mapwisefox
 ENV VIRTUALENV="/opt/mapwisefox/.venv"
 ENV PATH="$VIRTUALENV/bin:$PATH"
 
-RUN apt update -yqq && apt install libgomp1 libstdc++6 ffmpeg libsm6 libxext6 poppler-utils -yqq && \
+RUN apt update -yqq && apt install libgomp1 libstdc++6 ffmpeg libsm6 libxext6 poppler-utils tini -yqq && \
     useradd -u 1001 -r -s /bin/sh -d /opt/mapwisefox mapwisefox && \
     mkdir -p uploads .cache && \
     chown -R mapwisefox:users /opt/mapwisefox && \
@@ -150,6 +143,11 @@ COPY --from=model-fetch --chown=mapwisefox:users \
 
 
 COPY --from=python-runtime --chown=mapwisefox:mapwisefox /opt/mapwisefox/.venv .venv
+COPY --from=caddy:2.10.2 /usr/bin/caddy /usr/bin/caddy
+COPY --from=node-build --chown=mapwisefox:mapwisefox /opt/node-build/frontend/dist /srv
+COPY --chown=mapwisefox:mapwisefox web/Caddyfile /etc/caddy/Caddyfile
+COPY --chown=mapwisefox:mapwisefox web/docker-entrypoint.sh docker-entrypoint.sh
 
 USER mapwisefox
-CMD ["web"]
+ENTRYPOINT ["/usr/bin/tini", "-g", "--", "/opt/mapwisefox/docker-entrypoint.sh"]
+CMD ["serve"]
