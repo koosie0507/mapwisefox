@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import type {ScreeningResponse} from "../models/transfer.ts";
 import EvidenceEditor from "./EvidenceEditor.tsx";
+import {apiFetch} from "../apiClient.ts";
 
 export default function EvidencePage() {
     const filenamePart = window.location.pathname.match(/^\/evidence\/([^/]+)$/)?.[1] ?? "";
@@ -18,14 +19,14 @@ export default function EvidencePage() {
 
         void (async () => {
             const initialIndex = index ?? 0;
-            const initialResponse = await fetch(`${resource}/${initialIndex}`);
+            const initialResponse = await apiFetch(`${resource}/${initialIndex}`);
             if (!initialResponse.ok) {
                 if (active) setError(true);
                 return;
             }
             let data = await initialResponse.json() as ScreeningResponse;
             if (index === null && data.firstUndecidedIndex !== null && data.firstUndecidedIndex !== initialIndex) {
-                const undecidedResponse = await fetch(`${resource}/${data.firstUndecidedIndex}`);
+                const undecidedResponse = await apiFetch(`${resource}/${data.firstUndecidedIndex}`);
                 if (!undecidedResponse.ok) {
                     if (active) setError(true);
                     return;

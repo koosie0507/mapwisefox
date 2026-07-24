@@ -106,9 +106,9 @@ def test_config_returns_frontend_context(client):
 def test_config_returns_current_user(client):
     client.app.dependency_overrides[current_user] = lambda: UserInfo(
         dirname="ada-lovelace",
+        issuer="https://identity.example.com",
+        subject="ada",
         display_name="Ada Lovelace",
-        given_name="Ada",
-        surname="Lovelace",
         email="ada@example.com",
     )
 

@@ -4,6 +4,7 @@ import {ChevronLeft, ChevronRight, CircleDashed, FastForward, SkipBack, SkipForw
 import styles from "./EvidenceEditor.module.css";
 import type {NavigationAction, ScreeningResponse} from "../models/transfer.ts";
 import type {EvidenceViewModel} from "../models/viewmodel.ts";
+import {apiFetch} from "../apiClient.ts";
 
 type EvidenceProps = {
     evidence: EvidenceViewModel
@@ -28,7 +29,7 @@ function SafeLink({url, text, label, style}: {
 }
 
 async function fetchScreening(resource: string, index: number): Promise<ScreeningResponse | null> {
-    const response = await fetch(`${resource}/${index}`)
+    const response = await apiFetch(`${resource}/${index}`)
     return response.ok ? response.json() : null
 }
 
@@ -81,7 +82,7 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
 
     async function toggleStatus({include, excludeReasons}: IncludeStatusArgs) {
         const decision = include ? "included" : "excluded";
-        const response = await fetch(`${resource}/${model.clusterId}`, {
+        const response = await apiFetch(`${resource}/${model.clusterId}`, {
             method: "PATCH",
             headers: {"Content-Type": "application/json"},
             body: JSON.stringify({decision, exclusionReasons: excludeReasons})

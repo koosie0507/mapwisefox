@@ -145,7 +145,7 @@ small {
     box-shadow: none;
 }
 
-.microsoft-btn {
+.provider-login-btn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -162,12 +162,7 @@ small {
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
-.microsoft-btn:hover {
+.provider-login-btn:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transform: translateY(-1px);
-}
-
-.microsoft-logo {
-    width: 20px;
-    height: 20px;
 }

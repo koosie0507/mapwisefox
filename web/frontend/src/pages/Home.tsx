@@ -1,5 +1,6 @@
 import {type FormEvent, useEffect, useState} from "react";
 import type {AppConfig} from "../App.tsx";
+import {apiFetch, logout} from "../apiClient.ts";
 import "../styles/home.css";
 
 type Workbook = {
@@ -13,7 +14,7 @@ export default function Home({config}: {config: AppConfig}) {
     const [operationStatus, setOperationStatus] = useState("");
 
     async function loadWorkbooks() {
-        const response = await fetch("/api/v1/workbooks");
+        const response = await apiFetch("/api/v1/workbooks");
         if (!response.ok) {
             setOperationStatus("Could not load workbooks.");
             return;
@@ -26,7 +27,7 @@ export default function Home({config}: {config: AppConfig}) {
     }, []);
 
     async function deleteWorkbook(name: string) {
-        const response = await fetch(`/api/v1/workbooks/${encodeURIComponent(name)}`, {method: "DELETE"});
+        const response = await apiFetch(`/api/v1/workbooks/${encodeURIComponent(name)}`, {method: "DELETE"});
         setOperationStatus(response.ok ? "Workbook deleted." : "Could not delete workbook.");
         if (response.ok) await loadWorkbooks();
     }
@@ -34,7 +35,7 @@ export default function Home({config}: {config: AppConfig}) {
     async function uploadWorkbook(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setOperationStatus("Uploading...");
-        const response = await fetch("/api/v1/workbooks", {
+        const response = await apiFetch("/api/v1/workbooks", {
             method: "POST",
             body: new FormData(event.currentTarget),
         });
@@ -58,7 +59,7 @@ export default function Home({config}: {config: AppConfig}) {
                         <div className="left-toolbar"></div>
                         <div className="right-toolbar">
                             {config.authEnabled && (
-                                <button type="submit" formAction="/auth/logout">
+                                <button type="button" onClick={() => void logout()}>
                                     <span className="emoji">⏻</span>Log out
                                 </button>
                             )}
