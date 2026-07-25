@@ -21,6 +21,12 @@ $(VENV): | .check-deps
 		uv venv --python $(PYTHON_VERSION) $(VENV); \
 	fi
 
+$(NODE_MODULES): | .check-deps
+	@if [ ! -d "$(NODE_MODULES)" ]; then \
+		cd $(WEB_FRONTEND_DIR) && npm install; \
+	fi
+
+
 $(TIMESTAMP): pyproject.toml uv.lock | $(VENV)
 	uv sync --all-packages --active
 	uv run python -c "from pathlib import Path; p=Path('$(TIMESTAMP)'); p.parent.mkdir(parents=True, exist_ok=True); p.touch()"
