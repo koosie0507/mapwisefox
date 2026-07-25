@@ -3,7 +3,6 @@ import csv
 import os
 import shutil
 import tempfile
-from functools import lru_cache
 from pathlib import Path
 
 from fastapi import (
@@ -120,9 +119,17 @@ def _repository(upload_dir: Path, name: str) -> WorkbookRepository:
         assert False  # unreachable; used for typing conformity
 
 
-@lru_cache
 def _undecided_indexes(repository: WorkbookRepository) -> list[int]:
-    return repository.undecided_indexes()
+    path = repository.path.resolve()
+    if path not in _WORKBOOK_UNDECIDED:
+        _WORKBOOK_UNDECIDED[path] = repository.undecided_indexes()
+    return _WORKBOOK_UNDECIDED[path]
+
+
+def _metadata(repository: WorkbookRepository) -> WorkbookMetadata:
+    return repository.metadata.model_copy(
+        update={"unfilled_record_count": len(_undecided_indexes(repository))}
+    )
 
 
 def _response(repository: WorkbookRepository, record_index: int) -> ScreeningResponse:
@@ -157,7 +164,7 @@ async def list_workbooks(upload_dir: Path = Depends(user_upload_dir)):
         metadata = []
         for path in sorted(upload_dir.glob("*.xlsx")):
             try:
-                metadata.append(WorkbookRepository.read_metadata(path))
+                metadata.append(_metadata(WorkbookRepository(path)))
             except FileNotFoundError:
                 continue
         return metadata
@@ -201,7 +208,7 @@ async def import_workbook(
             await asyncio.to_thread(shutil.copyfileobj, file.file, stream)
         temporary_path = Path(temporary_name)
         async with _lock_for(destination):
-            metadata = await asyncio.to_thread(
+            imported = await asyncio.to_thread(
                 WorkbookRepository.import_workbook,
                 temporary_path,
                 destination,
@@ -209,6 +216,10 @@ async def import_workbook(
                 expected,
                 decision,
                 exclusion,
+            )
+            _WORKBOOK_UNDECIDED.pop(destination.resolve(), None)
+            metadata = await asyncio.to_thread(
+                _metadata, WorkbookRepository(destination, imported)
             )
         response.headers["Location"] = f"/api/v1/workbooks/{name}"
         return metadata
@@ -224,7 +235,7 @@ async def import_workbook(
     "/workbooks/{name}", response_model=WorkbookMetadata, response_model_by_alias=True
 )
 async def get_workbook(name: str, upload_dir: Path = Depends(user_upload_dir)):
-    return _repository(upload_dir, name).metadata
+    return _metadata(_repository(upload_dir, name))
 
 
 @router.delete("/workbooks/{name}", status_code=status.HTTP_204_NO_CONTENT)
@@ -235,6 +246,7 @@ async def delete_workbook(name: str, upload_dir: Path = Depends(user_upload_dir)
             await asyncio.to_thread(repository.delete)
         except FileNotFoundError as error:
             _raise_http(error)
+        _WORKBOOK_UNDECIDED.pop(repository.path.resolve(), None)
 
 
 @router.get(

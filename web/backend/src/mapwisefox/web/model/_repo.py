@@ -48,6 +48,7 @@ class WorkbookMetadata(BaseModel):
     decision_column: str = Field(alias="decisionColumn")
     exclusion_reason_column: str = Field(alias="exclusionReasonColumn")
     record_count: int = Field(alias="recordCount")
+    unfilled_record_count: int = Field(default=0, alias="unfilledRecordCount")
     evidence_columns: dict[str, str] = Field(alias="evidenceColumns")
 
 
@@ -334,9 +335,10 @@ class WorkbookRepository:
                         max_row=self.metadata.header_row + self.metadata.record_count,
                         min_col=decision_column_index,
                         max_col=decision_column_index,
-                        values_only=True
+                        values_only=True,
                     )
-                ) if _is_blank(row[0])
+                )
+                if _is_blank(row[0])
             ]
             return blank_row_indices
         finally:
@@ -356,7 +358,9 @@ class WorkbookRepository:
             decision_col_index = self._decision_col_index(worksheet)
             exclusion_reason_index = self._exclusion_reason_col_index(worksheet)
             worksheet.cell(row, decision_col_index, PERSISTED_DECISIONS[decision])
-            worksheet.cell(row, exclusion_reason_index, LIST_SEPARATOR.join(exclusion_reasons))
+            worksheet.cell(
+                row, exclusion_reason_index, LIST_SEPARATOR.join(exclusion_reasons)
+            )
             self._publish_workbook(workbook, self.path)
         finally:
             workbook.close()

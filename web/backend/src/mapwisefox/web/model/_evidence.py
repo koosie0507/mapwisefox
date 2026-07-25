@@ -51,7 +51,9 @@ class Evidence(BaseModel):
     exclude_reasons: list[str] = Field(..., alias="excludeReasons")
     # optional fields
     has_pdf: bool = Field(False, alias="hasPdf")
-    referencing_evidence: list[str] = Field(alias="referencingEvidence", default_factory=list)
+    referencing_evidence: list[str] = Field(
+        alias="referencingEvidence", default_factory=list
+    )
     pdf_url: Optional[str] = Field(None, alias="pdfUrl")
 
     @staticmethod
