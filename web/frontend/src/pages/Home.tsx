@@ -1,25 +1,19 @@
 import {type FormEvent, useEffect, useState} from "react";
-import type {AppConfig} from "../App.tsx";
-import {apiFetch, logout} from "../apiClient.ts";
+import {Link} from "react-router-dom";
+import type {AppConfig} from "../models/config.ts";
+import {deleteWorkbook as removeWorkbook, listWorkbooks, uploadWorkbook as importWorkbook, type Workbook} from "../api.ts";
 import "../styles/home.css";
-
-type Workbook = {
-    name: string;
-    worksheetName: string;
-    recordCount: number;
-};
 
 export default function Home({config}: {config: AppConfig}) {
     const [workbooks, setWorkbooks] = useState<Workbook[]>([]);
     const [operationStatus, setOperationStatus] = useState("");
 
     async function loadWorkbooks() {
-        const response = await apiFetch("/api/v1/workbooks");
-        if (!response.ok) {
+        try {
+            setWorkbooks(await listWorkbooks());
+        } catch {
             setOperationStatus("Could not load workbooks.");
-            return;
         }
-        setWorkbooks(await response.json() as Workbook[]);
     }
 
     useEffect(() => {
@@ -27,49 +21,36 @@ export default function Home({config}: {config: AppConfig}) {
     }, []);
 
     async function deleteWorkbook(name: string) {
-        const response = await apiFetch(`/api/v1/workbooks/${encodeURIComponent(name)}`, {method: "DELETE"});
-        setOperationStatus(response.ok ? "Workbook deleted." : "Could not delete workbook.");
-        if (response.ok) await loadWorkbooks();
+        try {
+            await removeWorkbook(name);
+            setOperationStatus("Workbook deleted.");
+            await loadWorkbooks();
+        } catch {
+            setOperationStatus("Could not delete workbook.");
+        }
     }
 
     async function uploadWorkbook(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
         setOperationStatus("Uploading...");
-        const response = await apiFetch("/api/v1/workbooks", {
-            method: "POST",
-            body: new FormData(event.currentTarget),
-        });
-        if (response.ok) {
+        try {
+            await importWorkbook(new FormData(event.currentTarget));
             setOperationStatus("Workbook imported.");
             await loadWorkbooks();
             return;
+        } catch (error) {
+            setOperationStatus(error instanceof Error ? error.message : "Could not import workbook.");
         }
-        const body = await response.json() as {detail?: {message?: string} | string};
-        setOperationStatus(
-            typeof body.detail === "object" ? body.detail.message || "Could not import workbook." :
-                body.detail || "Could not import workbook.",
-        );
     }
 
     return (
         <>
             <header className="header-container">
-                <form method="post">
-                    <div className="toolbar">
-                        <div className="left-toolbar"></div>
-                        <div className="right-toolbar">
-                            {config.authEnabled && (
-                                <button type="button" onClick={() => void logout()}>
-                                    <span className="emoji">⏻</span>Log out
-                                </button>
-                            )}
-                        </div>
-                    </div>
-                </form>
                 {config.user && <p>Welcome, {config.user.display_name || config.user.email}</p>}
                 <h1>Primary Study Lists</h1>
                 <form className="upload" id="upload-form" encType="multipart/form-data" onSubmit={uploadWorkbook}>
-                    <input type="file" name="file" accept=".xlsx" required/>
+                    <label htmlFor="workbook-file">Workbook file</label>
+                    <input id="workbook-file" type="file" name="file" accept=".xlsx" required/>
                     <input type="text" name="worksheetName" defaultValue={config.worksheetName}
                            placeholder="Worksheet name" required/>
                     <input type="text" name="expectedColumns" defaultValue={config.expectedColumns}
@@ -90,7 +71,7 @@ export default function Home({config}: {config: AppConfig}) {
                                 <td>{workbook.worksheetName}</td>
                                 <td>{workbook.recordCount}</td>
                                 <td>
-                                    <a href={`/evidence/${encodeURIComponent(workbook.name)}`}>Edit</a>{" "}
+                                    <Link to={`/evidence/${encodeURIComponent(workbook.name)}`}>Edit</Link>{" "}
                                     <button type="button" onClick={() => deleteWorkbook(workbook.name)}>Delete</button>
                                 </td>
                             </tr>

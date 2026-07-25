@@ -4,7 +4,7 @@ import {ChevronLeft, ChevronRight, CircleDashed, FastForward, SkipBack, SkipForw
 import styles from "./EvidenceEditor.module.css";
 import type {NavigationAction, ScreeningResponse} from "../models/transfer.ts";
 import type {EvidenceViewModel} from "../models/viewmodel.ts";
-import {apiFetch} from "../apiClient.ts";
+import {getScreening, updateScreening} from "../api.ts";
 
 type EvidenceProps = {
     evidence: EvidenceViewModel
@@ -29,8 +29,11 @@ function SafeLink({url, text, label, style}: {
 }
 
 async function fetchScreening(resource: string, index: number): Promise<ScreeningResponse | null> {
-    const response = await apiFetch(`${resource}/${index}`)
-    return response.ok ? response.json() : null
+    try {
+        return await getScreening(resource, index);
+    } catch {
+        return null;
+    }
 }
 
 export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
@@ -82,21 +85,16 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
 
     async function toggleStatus({include, excludeReasons}: IncludeStatusArgs) {
         const decision = include ? "included" : "excluded";
-        const response = await apiFetch(`${resource}/${model.clusterId}`, {
-            method: "PATCH",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({decision, exclusionReasons: excludeReasons})
-        })
-        if (!response.ok) {
+        try {
+            const data = await updateScreening(resource, model.clusterId, decision, excludeReasons);
+            setScreening(data)
+            setModel(data.evidence)
+            setError(null)
+            const destination = data.nextUndecidedIndex ?? data.nextIndex
+            if (destination !== null) await load(destination)
+        } catch {
             setError("Could not save the screening decision.")
-            return;
         }
-        const data: ScreeningResponse = await response.json()
-        setScreening(data)
-        setModel(data.evidence)
-        setError(null)
-        const destination = data.nextUndecidedIndex ?? data.nextIndex
-        if (destination !== null) await load(destination)
     }
 
     return (

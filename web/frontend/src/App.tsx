@@ -1,106 +1,85 @@
-import {useEffect, useState, useSyncExternalStore} from "react";
+import {useEffect, useState, useSyncExternalStore, type ReactElement} from "react";
+import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home.tsx";
 import EvidencePage from "./pages/EvidencePage.tsx";
-import {
-    apiFetch,
-    bootstrapAuth,
-    getAuthRequired,
-    login,
-    logout,
-    setAuthEnabled,
-    subscribeToAuth,
-} from "./apiClient.ts";
+import {bootstrapAuth, getAuthState, login, logout, subscribeToAuth} from "./apiClient.ts";
+import {getAppConfig} from "./api.ts";
+import type {AppConfig} from "./models/config.ts";
 
-export type AppConfig = {
-    authEnabled: boolean;
-    user: {
-        display_name: string | null;
-        email: string;
-    } | null;
-    worksheetName: string;
-    expectedColumns: string;
-    decisionColumn: string;
-    exclusionReasonColumn: string;
-};
+function LoginPage(): ReactElement {
+    return (
+        <main className="login-container">
+            <p>You must log in to use this app.</p>
+            <form onSubmit={event => {
+                event.preventDefault();
+                login();
+            }}>
+                <button type="submit" className="provider-login-btn">Log in</button>
+            </form>
+        </main>
+    );
+}
 
-export default function App() {
+function ErrorPage({message}: {message: string}): ReactElement {
+    return <main className="main-container"><p role="alert">{message}</p></main>;
+}
+
+function NavigationHeader({authenticated}: {authenticated: boolean}): ReactElement {
+    return (
+        <header className="header-container">
+            <nav className="toolbar">
+                <div className="left-toolbar"><Link to="/">Survey List</Link></div>
+                {authenticated && <div className="right-toolbar">
+                    <button type="button" onClick={() => void logout()}>Log out</button>
+                </div>}
+            </nav>
+        </header>
+    );
+}
+
+function AppRoutes({config, authenticated}: {config: AppConfig; authenticated: boolean}): ReactElement {
+    return (
+        <>
+            <NavigationHeader authenticated={authenticated}/>
+            <Routes>
+                <Route path="/" element={<><Home config={config}/><Footer/></>}/>
+                <Route path="/evidence/:fileName" element={<EvidencePage/>}/>
+                <Route path="*" element={<ErrorPage message="Page not found."/>}/>
+            </Routes>
+        </>
+    );
+}
+
+function Footer(): ReactElement {
+    return <footer className="footer-container"><small>Entity Resolution Software Architecture - A systematic mapping study</small></footer>;
+}
+
+export default function App(): ReactElement {
+    const auth = useSyncExternalStore(subscribeToAuth, getAuthState);
     const [config, setConfig] = useState<AppConfig | null>(null);
-    const [error, setError] = useState(false);
-    const authRequired = useSyncExternalStore(subscribeToAuth, getAuthRequired);
-    const isHome = window.location.pathname === "/";
-    const isEvidence = /^\/evidence\/[^/]+$/.test(window.location.pathname);
+    const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
-        void apiFetch("/api/v1/config").then(async response => {
-            if (!response.ok) {
-                setError(true);
-                return;
-            }
-            const appConfig = await response.json() as AppConfig;
-            setAuthEnabled(appConfig.authEnabled);
-            await bootstrapAuth();
-            if (!appConfig.authEnabled) {
-                setConfig(appConfig);
-                return;
-            }
-            const authenticatedResponse = await apiFetch("/api/v1/config");
-            setConfig(authenticatedResponse.ok ? await authenticatedResponse.json() as AppConfig : appConfig);
-        }).catch(() => setError(true));
+        let active = true;
+        void (async () => {
+            if (!await bootstrapAuth()) return;
+            if (active) setConfig(await getAppConfig());
+        })().catch(() => {
+            if (active) setError("Could not load application configuration.");
+        });
+        return () => { active = false; };
     }, []);
 
-    useEffect(() => {
-        if (isHome) document.title = "ERSA-SMS Survey - Survey List";
-    }, [isHome]);
-
-    if (error) return <p role="alert">Could not load application configuration.</p>;
-    if (!config) return null;
+    if (auth.status === "login-required") return <LoginPage/>;
+    if (auth.status === "error") return <ErrorPage message={auth.message}/>;
+    if (error) return <ErrorPage message={error}/>;
+    if (!config) return <main className="main-container"><p>Loading...</p></main>;
 
     return (
-        <div className="root-container">
-            {authRequired ? (
-                <div className="login-container">
-                    <p>You must log in to use this app.</p>
-                    <form onSubmit={event => {
-                        event.preventDefault();
-                        login();
-                    }}>
-                        <button type="submit" className="provider-login-btn">
-                            Log in
-                        </button>
-                    </form>
-                </div>
-            ) : isHome ? (
-                <>
-                    <Home config={config}/>
-                    <footer className="footer-container">
-                        <small>Entity Resolution Software Architecture - A systematic mapping study</small>
-                    </footer>
-                </>
-            ) : isEvidence ? (
-                <>
-                    <header className="header-container">
-                        <form method="post">
-                            <div className="toolbar">
-                                <div className="left-toolbar">
-                                    <button type="submit" formAction="/" formMethod="get" title="Home">
-                                        <span className="emoji">🏠</span>Survey List
-                                    </button>
-                                </div>
-                                <div className="right-toolbar">
-                                    {config.authEnabled && (
-                                        <button type="button" onClick={() => void logout()}>
-                                            <span className="emoji">⏻</span>Log out
-                                        </button>
-                                    )}
-                                </div>
-                            </div>
-                        </form>
-                    </header>
-                    <EvidencePage/>
-                </>
-            ) : (
-                <main className="main-container"><p>empty page...</p></main>
-            )}
-        </div>
+        <BrowserRouter>
+            <div className="root-container">
+                <AppRoutes config={config} authenticated={auth.status === "authenticated"}/>
+            </div>
+        </BrowserRouter>
     );
 }

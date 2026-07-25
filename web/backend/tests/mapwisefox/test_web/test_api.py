@@ -8,7 +8,7 @@ from httpx import ASGITransport, AsyncClient
 from openpyxl import Workbook, load_workbook
 
 from mapwisefox.web.config import AppSettings
-from mapwisefox.web.api import config_api_router, workbooks_api_router
+from mapwisefox.web.api import auth_api_router, config_api_router, workbooks_api_router
 from mapwisefox.web._deps import current_user, settings, user_upload_dir
 from mapwisefox.web.model import UserInfo
 
@@ -70,6 +70,7 @@ def workbook_file():
 @pytest.fixture
 def client(tmp_path):
     app = FastAPI()
+    app.include_router(auth_api_router)
     app.include_router(config_api_router)
     app.include_router(workbooks_api_router)
     config = AppSettings(uploads_dir=tmp_path)
@@ -77,6 +78,23 @@ def client(tmp_path):
     app.dependency_overrides[user_upload_dir] = lambda: tmp_path
     app.dependency_overrides[settings] = lambda: config
     return TestClient(app)
+
+
+def test_auth_required_reports_server_configuration(client):
+    response = client.get("/api/v1/auth/required")
+
+    assert response.json() == {"required": False}
+
+
+def test_auth_required_reports_enabled_configuration(client):
+    config = client.app.dependency_overrides[settings]().model_copy(
+        update={"auth_enabled": True}
+    )
+    client.app.dependency_overrides[settings] = lambda: config
+
+    response = client.get("/api/v1/auth/required")
+
+    assert response.json() == {"required": True}
 
 
 @pytest.fixture
@@ -94,7 +112,6 @@ def test_config_returns_frontend_context(client):
     response = client.get("/api/v1/config")
 
     assert response.json() == {
-        "authEnabled": False,
         "user": None,
         "worksheetName": "",
         "expectedColumns": "",

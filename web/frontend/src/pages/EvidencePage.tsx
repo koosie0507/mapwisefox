@@ -1,12 +1,14 @@
 import {useEffect, useState} from "react";
+import {useParams, useSearchParams} from "react-router-dom";
 import type {ScreeningResponse} from "../models/transfer.ts";
 import EvidenceEditor from "./EvidenceEditor.tsx";
-import {apiFetch} from "../apiClient.ts";
+import {getScreening} from "../api.ts";
 
 export default function EvidencePage() {
-    const filenamePart = window.location.pathname.match(/^\/evidence\/([^/]+)$/)?.[1] ?? "";
-    const fileName = decodeURIComponent(filenamePart);
-    const indexValue = new URLSearchParams(window.location.search).get("index");
+    const {fileName: encodedFileName = ""} = useParams();
+    const [searchParams] = useSearchParams();
+    const fileName = decodeURIComponent(encodedFileName);
+    const indexValue = searchParams.get("index");
     const index = indexValue === null ? null : Number(indexValue);
     const validIndex = indexValue === null || (/^-?\d+$/.test(indexValue) && Number.isSafeInteger(index));
     const [screening, setScreening] = useState<ScreeningResponse | null>(null);
@@ -19,19 +21,9 @@ export default function EvidencePage() {
 
         void (async () => {
             const initialIndex = index ?? 0;
-            const initialResponse = await apiFetch(`${resource}/${initialIndex}`);
-            if (!initialResponse.ok) {
-                if (active) setError(true);
-                return;
-            }
-            let data = await initialResponse.json() as ScreeningResponse;
+            let data = await getScreening(resource, initialIndex);
             if (index === null && data.firstUndecidedIndex !== null && data.firstUndecidedIndex !== initialIndex) {
-                const undecidedResponse = await apiFetch(`${resource}/${data.firstUndecidedIndex}`);
-                if (!undecidedResponse.ok) {
-                    if (active) setError(true);
-                    return;
-                }
-                data = await undecidedResponse.json() as ScreeningResponse;
+                data = await getScreening(resource, data.firstUndecidedIndex);
             }
             if (active) setScreening(data);
         })().catch(() => {

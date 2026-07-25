@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from mapwisefox.web._auth import OidcService, TokenService
 from mapwisefox.web._origin import OriginGuardMiddleware
-from mapwisefox.web.api import config_api_router, workbooks_api_router
+from mapwisefox.web.api import auth_api_router, config_api_router, workbooks_api_router
 from mapwisefox.web.config import settings
 from mapwisefox.web.controller import auth_router
 
@@ -26,6 +26,7 @@ def _init_app():
             allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
             allow_headers=["Authorization", "Content-Type"],
         )
+    app.include_router(auth_api_router)
     app.include_router(config_api_router)
     app.include_router(workbooks_api_router)
     app.include_router(auth_router)

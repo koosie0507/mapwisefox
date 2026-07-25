@@ -17,7 +17,6 @@ class FrontendUser(BaseModel):
 class FrontendConfig(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
-    auth_enabled: bool = Field(alias="authEnabled")
     user: FrontendUser | None
     worksheet_name: str = Field(alias="worksheetName")
     expected_columns: str = Field(alias="expectedColumns")
@@ -34,7 +33,6 @@ def frontend_config(
         FrontendUser(display_name=user.display_name, email=user.email) if user else None
     )
     return FrontendConfig(
-        authEnabled=config.auth_enabled,
         user=frontend_user,
         worksheetName=config.worksheet_name or "",
         expectedColumns=config.expected_columns or "",
