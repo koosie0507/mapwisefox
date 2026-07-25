@@ -1,12 +1,15 @@
-import {type FormEvent, useEffect, useState} from "react";
+import {useEffect, useState} from "react";
 import {Link} from "react-router-dom";
+import {Pencil, Trash2} from "lucide-react";
 import type {AppConfig} from "../models/config.ts";
 import {deleteWorkbook as removeWorkbook, listWorkbooks, uploadWorkbook as importWorkbook, type Workbook} from "../api.ts";
-import "../styles/home.css";
+import UploadWorkbook from "../components/UploadWorkbook.tsx";
+import styles from "./Home.module.css";
 
 export default function Home({config}: {config: AppConfig}) {
     const [workbooks, setWorkbooks] = useState<Workbook[]>([]);
     const [operationStatus, setOperationStatus] = useState("");
+    const [pendingDelete, setPendingDelete] = useState<string | null>(null);
 
     async function loadWorkbooks() {
         try {
@@ -24,18 +27,19 @@ export default function Home({config}: {config: AppConfig}) {
         try {
             await removeWorkbook(name);
             setOperationStatus("Workbook deleted.");
+            setPendingDelete(null);
             await loadWorkbooks();
         } catch {
             setOperationStatus("Could not delete workbook.");
         }
     }
 
-    async function uploadWorkbook(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
+    async function uploadWorkbook(formData: FormData, reset: () => void) {
         setOperationStatus("Uploading...");
         try {
-            await importWorkbook(new FormData(event.currentTarget));
+            await importWorkbook(formData);
             setOperationStatus("Workbook imported.");
+            reset();
             await loadWorkbooks();
             return;
         } catch (error) {
@@ -43,43 +47,67 @@ export default function Home({config}: {config: AppConfig}) {
         }
     }
 
+    const completionLabel = (workbook: Workbook): string => {
+        const complete = workbook.recordCount - workbook.unfilledRecordCount;
+        return `${complete.toLocaleString()} / ${workbook.recordCount.toLocaleString()} complete`;
+    };
+
     return (
         <>
-            <header className="header-container">
-                {config.user && <p>Welcome, {config.user.display_name || config.user.email}</p>}
-                <h1>Primary Study Lists</h1>
-                <form className="upload" id="upload-form" encType="multipart/form-data" onSubmit={uploadWorkbook}>
-                    <label htmlFor="workbook-file">Workbook file</label>
-                    <input id="workbook-file" type="file" name="file" accept=".xlsx" required/>
-                    <input type="text" name="worksheetName" defaultValue={config.worksheetName}
-                           placeholder="Worksheet name" required/>
-                    <input type="text" name="expectedColumns" defaultValue={config.expectedColumns}
-                           placeholder="Expected columns (CSV)" required/>
-                    <input type="hidden" name="decisionColumn" value={config.decisionColumn}/>
-                    <input type="hidden" name="exclusionReasonColumn" value={config.exclusionReasonColumn}/>
-                    <button type="submit">Upload</button>
-                </form>
-                <p id="operation-status" role="status">{operationStatus}</p>
+            <header className={styles.pageHeader}>
+                <div className={styles.headingRow}>
+                    <div>
+                        <p className={styles.eyebrow}>Workspace</p>
+                        <h1>Primary study lists</h1>
+                        {config.user && <p className={styles.greeting}>Welcome, {config.user.display_name || config.user.email}</p>}
+                    </div>
+                </div>
+                <UploadWorkbook config={config} onUpload={uploadWorkbook}/>
+                <p id="operation-status" className={styles.status} role="status">{operationStatus}</p>
             </header>
-            <div className="file-list">
-                <table>
-                    <thead><tr><th>File Name</th><th>Worksheet</th><th>Records</th><th>Actions</th></tr></thead>
-                    <tbody id="workbook-list">
+            <main className={styles.listSection}>
+                <div className={styles.listHeader}>
+                    <div>
+                        <p className={styles.eyebrow}>Your surveys</p>
+                        <h2>Continue where you left off</h2>
+                    </div>
+                    <span className={styles.listCount}>{workbooks.length} {workbooks.length === 1 ? "survey" : "surveys"}</span>
+                </div>
+                <div className={styles.tableShell}>
+                    <table className={styles.table}>
+                        <thead><tr><th>File name</th><th>Worksheet</th><th>Completion</th><th><span className={styles.srOnly}>Actions</span></th></tr></thead>
+                        <tbody id="workbook-list">
                         {workbooks.map(workbook => (
                             <tr key={workbook.name}>
-                                <td>{workbook.name}</td>
-                                <td>{workbook.worksheetName}</td>
-                                <td>{workbook.recordCount}</td>
+                                <td className={styles.fileName}>{workbook.name}</td>
+                                <td className={styles.worksheet}>{workbook.worksheetName}</td>
                                 <td>
-                                    <Link to={`/evidence/${encodeURIComponent(workbook.name)}`}>Edit</Link>{" "}
-                                    <button type="button" onClick={() => deleteWorkbook(workbook.name)}>Delete</button>
+                                    <div className={styles.progressLabel}>
+                                        <span>{completionLabel(workbook)}</span>
+                                        <span>{workbook.unfilledRecordCount.toLocaleString()} remaining</span>
+                                    </div>
+                                    <progress className={styles.progress} max={workbook.recordCount} value={workbook.recordCount - workbook.unfilledRecordCount}
+                                              aria-label={`Completion for ${workbook.name}`}/>
+                                </td>
+                                <td className={styles.actions}>
+                                    <Link className={styles.iconButton} to={`/evidence/${encodeURIComponent(workbook.name)}`} aria-label={`Edit ${workbook.name}`} title="Edit survey">
+                                        <Pencil aria-hidden="true" size={16}/>
+                                    </Link>
+                                    {pendingDelete === workbook.name ? <span className={styles.confirmation}>
+                                        <span>Delete?</span>
+                                        <button className={styles.confirmButton} type="button" onClick={() => void deleteWorkbook(workbook.name)}>Yes</button>
+                                        <button className={styles.cancelButton} type="button" onClick={() => setPendingDelete(null)}>No</button>
+                                    </span> : <button className={`${styles.iconButton} ${styles.deleteButton}`} type="button" onClick={() => setPendingDelete(workbook.name)} aria-label={`Delete ${workbook.name}`} title="Delete survey">
+                                        <Trash2 aria-hidden="true" size={16}/>
+                                    </button>}
                                 </td>
                             </tr>
                         ))}
-                    </tbody>
-                </table>
-                <p id="empty-list" hidden={workbooks.length > 0}>No files uploaded yet.</p>
-            </div>
+                        </tbody>
+                    </table>
+                </div>
+                <p className={styles.emptyState} id="empty-list" hidden={workbooks.length > 0}>No surveys uploaded yet.</p>
+            </main>
         </>
     );
 }

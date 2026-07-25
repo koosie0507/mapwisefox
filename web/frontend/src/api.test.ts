@@ -16,7 +16,7 @@ const config = {
     exclusionReasonColumn: "exclude_reason",
 };
 
-const workbook = {name: "study.xlsx", worksheetName: "Studies", recordCount: 1};
+const workbook = {name: "study.xlsx", worksheetName: "Studies", recordCount: 1, unfilledRecordCount: 1};
 const screening = {
     recordIndex: 0,
     recordCount: 1,

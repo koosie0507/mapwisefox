@@ -1,5 +1,6 @@
 import {useEffect, useState, useSyncExternalStore, type ReactElement} from "react";
 import {BrowserRouter, Link, Route, Routes} from "react-router-dom";
+import {LogOut} from "lucide-react";
 import Home from "./pages/Home.tsx";
 import EvidencePage from "./pages/EvidencePage.tsx";
 import {bootstrapAuth, getAuthState, login, logout, subscribeToAuth} from "./apiClient.ts";
@@ -26,11 +27,14 @@ function ErrorPage({message}: {message: string}): ReactElement {
 
 function NavigationHeader({authenticated}: {authenticated: boolean}): ReactElement {
     return (
-        <header className="header-container">
-            <nav className="toolbar">
-                <div className="left-toolbar"><Link to="/">Survey List</Link></div>
+        <header className="navigation-header">
+            <nav className="toolbar" aria-label="Primary navigation">
+                <div className="left-toolbar"><Link className="brand-link" to="/" aria-label="Mapwisefox home">
+                    <img src="/mapwisefox-logo.png" alt="Mapwisefox"/>
+                    <span>Survey List</span>
+                </Link></div>
                 {authenticated && <div className="right-toolbar">
-                    <button type="button" onClick={() => void logout()}>Log out</button>
+                    <button type="button" onClick={() => void logout()}><LogOut aria-hidden="true" size={16}/> <span>Log out</span></button>
                 </div>}
             </nav>
         </header>

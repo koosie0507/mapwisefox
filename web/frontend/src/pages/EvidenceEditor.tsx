@@ -113,7 +113,7 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
                 </div>
                 <b className="abstract-label">Abstract</b>
                 <div className={styles.scrollbox}>{model.abstract}</div>
-                <p className="keywords"><strong>Keywords:</strong>{model.keywords}</p>
+                <p className="keywords"><strong>Keywords:</strong>{model.keywords.join(", ")}</p>
             </main>
             <aside className={`${styles.rightSidebar} sidebar`}>
                 <SelectionCriteriaForm evidence={model} fileName={fileName} onFormSubmit={toggleStatus}/>

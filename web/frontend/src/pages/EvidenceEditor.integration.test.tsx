@@ -15,7 +15,7 @@ function screening(index: number, title = `Study ${index}`) {
         recordCount: 3,
         decision: "undecided" as const,
         exclusionReasons: [],
-        evidence: {clusterId: index, title, include: true, excludeReasons: [], keywords: ["ER"]},
+        evidence: {clusterId: index, title, include: true, excludeReasons: [], keywords: ["ER", "mapping"]},
         previousIndex: index === 0 ? null : index - 1,
         nextIndex: index === 2 ? null : index + 1,
         firstUndecidedIndex: 0,
@@ -35,6 +35,7 @@ describe("EvidenceEditor", () => {
         render(<EvidenceEditor evidence={screening(0).evidence} fileName="study.xlsx"/>);
 
         expect(await screen.findByRole("heading", {name: "[0] Study 0"})).toBeInTheDocument();
+        expect(screen.getByText("ER, mapping")).toBeInTheDocument();
         vi.mocked(getScreening).mockResolvedValue(screening(1));
         await user.click(screen.getByTitle("Next item"));
         expect(await screen.findByRole("heading", {name: "[1] Study 1"})).toBeInTheDocument();

@@ -6,6 +6,7 @@ export type Workbook = {
     name: string;
     worksheetName: string;
     recordCount: number;
+    unfilledRecordCount: number;
 };
 
 export class ApiError extends Error {
@@ -52,6 +53,7 @@ function parseWorkbook(value: unknown): Workbook {
         name: requiredString(value.name, "name"),
         worksheetName: requiredString(value.worksheetName, "worksheetName"),
         recordCount: requiredNumber(value.recordCount, "recordCount"),
+        unfilledRecordCount: requiredNumber(value.unfilledRecordCount, "unfilledRecordCount"),
     };
 }
 

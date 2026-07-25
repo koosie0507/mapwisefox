@@ -1,10 +1,12 @@
 VENV := .venv
+WEB_FRONTEND_DIR := web/frontend
+NODE_MODULES := $(WEB_FRONTEND_DIR)/node_modules
+NODE_TIMESTAMP := $(NODE_MODULES)/.package-lock.json
 TIMESTAMP := $(VENV)/.last_sync
 PYTHON_VERSION := 3.13
 PYTHON_PACKAGE_DIRS := assistant deduplication metrics search search-judge snowballing split web/backend
 PYTHON_TEST_DIRS := $(addsuffix /tests,$(PYTHON_PACKAGE_DIRS))
-NODE_PACKAGE_DIRS := web/frontend
-VALID_PACKAGES := $(PYTHON_PACKAGE_DIRS) $(NODE_PACKAGE_DIRS)
+VALID_PACKAGES := $(PYTHON_PACKAGE_DIRS) $(WEB_FRONTEND_DIR)
 BUMP_KIND := $(or $(VERSION_COMPONENT),pre_label)
 
 .PHONY: .check-deps bootstrap clean format check test
@@ -23,7 +25,10 @@ $(TIMESTAMP): pyproject.toml uv.lock | $(VENV)
 	uv sync --all-packages --active
 	uv run python -c "from pathlib import Path; p=Path('$(TIMESTAMP)'); p.parent.mkdir(parents=True, exist_ok=True); p.touch()"
 
-bootstrap: $(TIMESTAMP)
+$(NODE_TIMESTAMP): $(WEB_FRONTEND_DIR)/package.json | $(NODE_MODULES)
+	cd $(WEB_FRONTEND_DIR) && npm install
+
+bootstrap: $(TIMESTAMP) $(NODE_TIMESTAMP)
 
 clean:
 	@# Remove .venv cross-platform (prefer Python if available, fallback to rm)
@@ -42,10 +47,12 @@ clean:
 format: bootstrap
 	uv run --active black $(PYTHON_PACKAGE_DIRS)
 	uv run --active ruff check --fix $(PYTHON_PACKAGE_DIRS)
+	cd $(WEB_FRONTEND_DIR) && npm run lint -- --fix
 
 check: bootstrap
 	uv run --active black --check --diff $(PYTHON_PACKAGE_DIRS)
 	uv run --active ruff check $(PYTHON_PACKAGE_DIRS)
+	cd $(WEB_FRONTEND_DIR) && npm run lint
 
 PYTHON_EXISTING_TEST_DIRS := $(foreach d,$(PYTHON_TEST_DIRS),$(if $(wildcard $(d)),$(d),))
 test: bootstrap
@@ -56,6 +63,7 @@ test: bootstrap
 		--cov-report=xml:cov-reports/coverage.xml \
 		--cov-report=term-missing \
 		$(PYTHON_EXISTING_TEST_DIRS)
+	cd $(WEB_FRONTEND_DIR) && npm run test:coverage
 
 .bump-version:
 	@$(if $(PACKAGE),$(if $(filter $(PACKAGE),$(VALID_PACKAGES)),,$(error PACKAGE='$(PACKAGE)' is not one of: $(VALID_PACKAGES))),)

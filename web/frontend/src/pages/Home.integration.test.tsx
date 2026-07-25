@@ -19,10 +19,11 @@ const config = {
     exclusionReasonColumn: "exclude_reason",
 };
 
-const workbook = {name: "studies.xlsx", worksheetName: "Studies", recordCount: 2};
+const workbook = {name: "studies.xlsx", worksheetName: "Studies", recordCount: 2, unfilledRecordCount: 2};
 
 describe("Home", () => {
     beforeEach(() => {
+        vi.clearAllMocks();
         vi.mocked(listWorkbooks).mockResolvedValue([]);
         vi.mocked(uploadWorkbook).mockResolvedValue(workbook);
         vi.mocked(deleteWorkbook).mockResolvedValue();
@@ -34,7 +35,8 @@ describe("Home", () => {
 
         expect(await screen.findByText("studies.xlsx")).toBeInTheDocument();
         expect(screen.getByText("Welcome, Ada")).toBeInTheDocument();
-        expect(screen.queryByText("No files uploaded yet.")).not.toBeVisible();
+        expect(screen.getByText("0 / 2 complete")).toBeInTheDocument();
+        expect(screen.queryByText("No surveys uploaded yet.")).not.toBeVisible();
     });
 
     it("shows the empty state when loading fails", async () => {
@@ -42,7 +44,7 @@ describe("Home", () => {
         render(<MemoryRouter><Home config={config}/></MemoryRouter>);
 
         expect(await screen.findByRole("status")).toHaveTextContent("Could not load workbooks.");
-        expect(screen.getByText("No files uploaded yet.")).toBeVisible();
+        expect(screen.getByText("No surveys uploaded yet.")).toBeVisible();
     });
 
     it("uploads and deletes workbooks", async () => {
@@ -58,7 +60,8 @@ describe("Home", () => {
 
         vi.mocked(listWorkbooks).mockResolvedValue([workbook]);
         await screen.findByText("studies.xlsx");
-        await user.click(screen.getByRole("button", {name: "Delete"}));
+        await user.click(screen.getByRole("button", {name: "Delete studies.xlsx"}));
+        await user.click(screen.getByRole("button", {name: "Yes"}));
         expect(await screen.findByRole("status")).toHaveTextContent("Workbook deleted.");
     });
 
@@ -73,7 +76,27 @@ describe("Home", () => {
         await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Invalid workbook"));
 
         vi.mocked(deleteWorkbook).mockRejectedValue(new Error("failed"));
-        await user.click(screen.getByRole("button", {name: "Delete"}));
+        await user.click(screen.getByRole("button", {name: "Delete studies.xlsx"}));
+        await user.click(screen.getByRole("button", {name: "Yes"}));
         expect(screen.getByRole("status")).toHaveTextContent("Could not delete workbook.");
+    });
+
+    it("cancels an inline deletion confirmation", async () => {
+        const user = userEvent.setup();
+        vi.mocked(listWorkbooks).mockResolvedValue([workbook]);
+        render(<MemoryRouter><Home config={config}/></MemoryRouter>);
+
+        await screen.findByText("studies.xlsx");
+        await user.click(screen.getByRole("button", {name: "Delete studies.xlsx"}));
+        await user.click(screen.getByRole("button", {name: "No"}));
+
+        expect(screen.getByRole("button", {name: "Delete studies.xlsx"})).toBeInTheDocument();
+        expect(deleteWorkbook).not.toHaveBeenCalled();
+    });
+
+    it("keeps the upload form collapsed until requested", () => {
+        render(<MemoryRouter><Home config={config}/></MemoryRouter>);
+
+        expect(screen.getByText("Import a survey").closest("details")).not.toHaveAttribute("open");
     });
 });
