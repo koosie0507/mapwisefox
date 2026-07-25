@@ -1,10 +1,9 @@
 # Mapwisefox Frontend
 
-The frontend code for the Mapwisefox web app uses React and Vite. The setup is
-standard. What's relevant:
+The frontend is a standalone React and Vite SPA.
 
-- either run `npm run dev` (for development) or `npm run build` (production) __before__ starting the FastAPI BFF
-- include `MWF_WEB_DEBUG=1` in the FastAPI app env to enable development mode
-- debug/development mode is not available in Docker
+- Run `npm run dev` for development. Vite proxies `/api` and `/auth` to `http://localhost:8000`.
+- Run `npm run build` to create the production app in `dist`.
+- The production Docker image uses Caddy to serve `dist` and proxy backend routes on the same public origin.
 
 The rest is history.

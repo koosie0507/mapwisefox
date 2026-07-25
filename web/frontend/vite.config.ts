@@ -1,44 +1,38 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import { resolve } from 'node:path'
+import {defineConfig} from "vitest/config";
+import react from "@vitejs/plugin-react";
 
-// https://vite.dev/config/
 export default defineConfig({
-  appType: 'custom',
-  plugins: [react()],
-  css: {
-      modules: {
-          localsConvention: "camelCase"
-      }
-  },
-  build: {
-    outDir: resolve(__dirname, "../assets/dist"),
-    emptyOutDir: true,
-    manifest: true,
-    rollupOptions: {
-      input: resolve(__dirname, 'src/main.ts'),
-      output: {
-        entryFileNames: 'assets/[name]-[hash].js',
-        chunkFileNames: 'assets/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash][extname]',
-      },
+    plugins: [react()],
+    css: {
+        modules: {
+            localsConvention: "camelCase",
+        },
     },
-  },
-  server: {
-    port: 5173,
-    strictPort: true,
-    // Be explicit about CORS
-    cors: {
-      origin: [
-          "http://localhost:8000",
-          "http://127.0.0.1:8000",
-          "http://0.0.0.0:8000"
-      ],
-      credentials: false,
+    build: {
+        outDir: "dist",
+        emptyOutDir: true,
     },
-    // Extra safety: add ACAO on all dev responses
-    headers: {
-      "Access-Control-Allow-Origin": "*",
+    server: {
+        port: 5173,
+        strictPort: true,
+        proxy: {
+            "/api": "http://localhost:8000",
+            "/auth": "http://localhost:8000",
+        },
     },
-  },
-})
+    test: {
+        environment: "jsdom",
+        setupFiles: ["./src/test/setup.ts"],
+        reporters: process.env.GITHUB_ACTIONS === 'true'
+            ? ['default', 'github-actions']
+            : ['default'],
+        coverage: {
+            provider: "v8",
+            include: ["src/**/*.{ts,tsx}"],
+            exclude: ["src/main.ts", "src/vite-env.d.ts"],
+            thresholds: {
+                lines: 90,
+            },
+        },
+    },
+});

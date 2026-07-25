@@ -29,7 +29,7 @@ $ cd $MWFDIR
 $ docker build -t mwf .
 ```
 
-The result is a local Docker image containing all CLIs in the MapwiseFox suite.
+The result is one image containing all CLIs and the web application.
 
 ## Running
 
@@ -46,10 +46,10 @@ here's how to run the `search` command and store data in `$MWFDIR/data`:
 $ docker run -it -v "$MWFDIR/data:/opt/mapwisefox/data" mwf search -D ./data/search-test
 ```
 
-To run the interactive web form, you must specify a free local listening port.
+To run the interactive web form, publish the Caddy listening port.
 
 ```shell
-$ docker run -it -v "$MWFDIR/data:/opt/mapwisefox/data" -p "8000:8000" mwf web
+$ docker run --rm -v "$MWFDIR/data:/opt/mapwisefox/data" -p "8000:8000" mwf
 ```
 
 ### Environment Variables 

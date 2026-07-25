@@ -6,7 +6,8 @@ type InclusionStatusProps = {
 }
 
 export default function InclusionStatus({include, excludeReasons}: InclusionStatusProps) {
-    if (include) {
+    const isIncluded = include === true || include === "include";
+    if (isIncluded) {
         return (
             <div className={styles.panel}>
                 <button type="submit" className={styles.btnInclude}>Include</button>

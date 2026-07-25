@@ -13,10 +13,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install uv
         uses: astral-sh/setup-uv@v6
+
+      - name: Install node
+        uses: actions/setup-node@v6
 
       - name: Bootstrap
         run: make bootstrap

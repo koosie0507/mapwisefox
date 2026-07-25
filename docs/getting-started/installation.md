@@ -8,8 +8,8 @@ plus a standalone React/TypeScript frontend.
 ## Docker
 
 If you just want to _run_ the suite rather than develop against it, use the
-published Docker image: it bundles every CLI in the suite plus the web app
-in one easy to use (but large) container.
+published Docker image. It bundles every CLI in the suite, the API backend,
+and the production web UI.
 
 ### Run the web app
 
@@ -23,8 +23,8 @@ are updated in the container registry.
 
 !!! note
     Dev/debug mode (hot-reloading the frontend via Vite) is **not** available
-    in Docker — the image builds the React frontend once at image-build time
-    and serves the static output, so there's nothing to run in "dev mode"
+    in Docker — Caddy serves a production frontend build, so there's nothing
+    to run in "dev mode"
     inside the container. See `web/frontend/README.md` for the (non-Docker)
     dev-mode workflow if you want to contribute to the frontend.
 
@@ -69,20 +69,19 @@ docker run --rm -p 8000:8000 \
   ghcr.io/koosie0507/mapwisefox:latest
 ```
 
-The web app additionally reads `MWF_WEB_*` settings. `MWF_WEB_DEBUG=0`
-and `MWF_WEB_BASEDIR=/opt/mapwisefox` are already set inside the image
-and shouldn't need overriding in normal circumstances.
+The web application additionally reads `MWF_WEB_*` settings.
 
 ### Running other suite tools instead of the web app
 
 The image's Python virtualenv is built with `uv sync --all-packages`, so
 **every** workspace package's console script is on `PATH` inside the
 container, not just `web`. Override the default command
-(`CMD ["web"]`) by appending your own after the image name:
+(`CMD ["serve"]`) by appending your own after the image name:
 
 | Command          | Package                        |
 | ---------------- | ------------------------------ |
-| `web`            | `web/backend` (the default)    |
+| `serve`          | Web UI and API (the default)   |
+| `web`            | `web/backend` API only         |
 | `search`         | [`search`](../search/index.md) |
 | `deduplicate`    | [`deduplication`](../deduplication/index.md) |
 | `metrics`        | `metrics`                      |
@@ -109,10 +108,9 @@ docker run --rm \
 docker build -t mapwisefox:local .
 ```
 
-The image builds every Python workspace package with `uv` and the frontend
-with `npm` in parallel stages, then assembles a slim final image containing
-only the built virtualenv, static frontend assets, and the model cache — no
-build toolchain.
+The image builds every Python workspace package with `uv` and the standalone
+React app with npm. Caddy serves the frontend and proxies backend routes to the
+FastAPI process in the same container.
 
 ## Local development
 
