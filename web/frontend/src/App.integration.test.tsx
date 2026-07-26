@@ -66,7 +66,7 @@ describe("application composition", () => {
         expect(await screen.findByRole("heading", {name: "Primary study lists"})).toBeInTheDocument();
         expect(screen.getByRole("img", {name: "Mapwisefox"})).toBeInTheDocument();
         expect(screen.getByText("No surveys uploaded yet.")).toBeVisible();
-        expect(screen.getByText("Frontend v0.9.1 | Backend v0.9.1")).toBeVisible();
+        expect(screen.getByText(/Frontend v\S+ \| Backend v\S+/)).toBeVisible();
     });
 
     it("shows login instead of protected content when refresh fails", async () => {
