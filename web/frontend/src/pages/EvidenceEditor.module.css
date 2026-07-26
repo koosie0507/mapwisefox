@@ -5,18 +5,76 @@
     box-sizing: border-box;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(240px, 33%);
-    grid-template-rows: minmax(0, 1fr) auto; /* top row fills; bottom auto */
+    grid-template-rows: minmax(0, 1fr) auto;
     min-height: 0;
-    max-height: calc(100vh - 48px);
+    height: calc(100dvh - 3.5rem - 24px);
+}
+
+.smallScreenMessage {
+    display: none;
+}
+
+@media (max-width: 767px), (max-height: 599px) {
+    .layout {
+        display: none;
+    }
+
+    .smallScreenMessage {
+        min-height: calc(100dvh - 3.5rem - 24px);
+        box-sizing: border-box;
+        display: grid;
+        place-items: center;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .smallScreenMessage p {
+        max-width: 28rem;
+        margin: 0;
+        padding: 1.5rem;
+        background: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 0.5rem;
+        box-shadow: 0 0.25rem 1rem var(--color-shadow);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .layout {
+        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    }
+
+    .mainContent {
+        margin: 0 1rem;
+        padding: 12px;
+    }
+
+    .rightSidebar {
+        min-width: 0;
+        padding: 12px;
+        margin-top: 24px;
+        margin-right: 1rem;
+        margin-bottom: 12px;
+    }
 }
 
 /* Content area */
 .mainContent {
     grid-column: 1;
     grid-row: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
     overflow: hidden;
     padding: 16px;
     margin: 0 2rem;
+}
+
+.mainContent :global(.article-info) {
+    flex: 0 0 auto;
+    width: 100%;
+    margin: 0;
+    padding: 1em 0;
 }
 
 /* Right sidebar */
@@ -24,7 +82,11 @@
     grid-column: 2;
     grid-row: 1;
     overflow: auto;
+    min-height: 0;
     padding: 16px;
+    margin-top: 32px;
+    margin-right: 3rem;
+    margin-bottom: 16px;
     border-left: 1px solid #eee;
 }
 
@@ -34,8 +96,10 @@
     grid-row: 2;
     min-height: 80px;
     padding: 4px 8px;
+    background: var(--color-surface);
     border-top: 1px solid #eee;
-    overflow: auto;
+    box-shadow: 0 -0.25rem 1rem var(--color-shadow);
+    z-index: 1;
 }
 
 :root {
@@ -187,8 +251,8 @@
 }
 
 .scrollbox {
+    flex: 1 1 auto;
     min-height: 0;
-    max-height: 300px; /* adjustable */
     overflow-y: auto;
     padding: 1.2em 1.5em; /* a bit more breathing room */
     border: 1px solid #ccc;
@@ -196,7 +260,7 @@
     background: #fafafa; /* slightly softer white */
     white-space: pre-wrap;
     line-height: 1.6; /* more comfortable line spacing */
-    margin-bottom: 1em;
+    margin-bottom: 0;
 
     font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 1.1rem;

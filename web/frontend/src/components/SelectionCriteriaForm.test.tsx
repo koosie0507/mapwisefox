@@ -67,6 +67,14 @@ describe("selection criteria", () => {
         expect(submit).toHaveBeenCalledWith({include: false, excludeReasons: [""]});
     });
 
+    it("hides the fallback inclusion criterion when exclusions are already present", () => {
+        render(<SelectionCriteriaForm evidence={{...evidence, include: false, excludeReasons: ["not software"]}}
+                                      fileName="study.xlsx" criteria={null} onFormSubmit={vi.fn()}/>);
+
+        expect(screen.queryByLabelText("study meets selection criteria")).not.toBeInTheDocument();
+        expect(screen.queryByRole("heading", {name: "Inclusion Criteria"})).not.toBeInTheDocument();
+    });
+
     it("unchecking an inclusion criterion excludes the record", async () => {
         const user = userEvent.setup();
         const submit = vi.fn().mockResolvedValue(undefined);

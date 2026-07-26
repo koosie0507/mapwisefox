@@ -103,56 +103,61 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
     }
 
     return (
-        <div className={styles.layout}>
-            <main className={styles.mainContent}>
-                {error && <p role="alert">{error}</p>}
-                <h1>[{model.clusterId}]&nbsp;{model.title}</h1>
-                <div className="article-info">
-                    <div className="source-container">
-                        <SafeLink url={model.url} text={model.publicationVenue} label="Source:"
-                                  style={{fontSize: "12px", margin: "2px"}}/>
-                        <SafeLink url={model.doiLink} text={doiText} label="DOI:"/>
-                        <SafeLink url={model.sciHubLink} text={doiText} label="SciHub:"/>
+        <>
+            <div className={styles.smallScreenMessage}>
+                <p>Evidence screening needs a wider display. Rotate your tablet to landscape or use a computer.</p>
+            </div>
+            <div className={styles.layout}>
+                <main className={styles.mainContent}>
+                    {error && <p role="alert">{error}</p>}
+                    <h1>[{model.clusterId}]&nbsp;{model.title}</h1>
+                    <div className="article-info">
+                        <div className="source-container">
+                            <SafeLink url={model.url} text={model.publicationVenue} label="Source:"
+                                      style={{fontSize: "12px", margin: "2px"}}/>
+                            <SafeLink url={model.doiLink} text={doiText} label="DOI:"/>
+                            <SafeLink url={model.sciHubLink} text={doiText} label="SciHub:"/>
+                        </div>
+                        <small style={{fontSize: "9px", margin: "2px"}}><b>Date Published:</b>&nbsp;{dateText}</small>
                     </div>
-                    <small style={{fontSize: "9px", margin: "2px"}}><b>Date Published:</b>&nbsp;{dateText}</small>
-                </div>
-                <b className="abstract-label">Abstract</b>
-                <div className={styles.scrollbox}>{model.abstract}</div>
-                <p className="keywords"><strong>Keywords:</strong>{model.keywords.join(", ")}</p>
-            </main>
-            <aside className={`${styles.rightSidebar} sidebar`}>
-                <SelectionCriteriaForm evidence={model} fileName={fileName} criteria={screening?.selectionCriteria ?? null} onFormSubmit={toggleStatus}/>
-            </aside>
-            <footer className={styles.bottomPanel}>
-                <div className={styles.buttonBar}>
-                    <form method="post" action="" onSubmit={evt => evt.preventDefault()}>
-                        <div className={styles.gotoGroup}>
-                            <input type="number" min="0" ref={gotoInputRef} placeholder="Go to..." title="Enter an index to go to"
-                                   className={styles.gotoInput} onKeyDown={async e => {
-                                if (e.key === "Enter") {
-                                    e.preventDefault();
+                    <b className="abstract-label">Abstract</b>
+                    <div className={styles.scrollbox}>{model.abstract}</div>
+                    {model.keywords.length > 0 && <p className="keywords"><strong>Keywords:</strong>{model.keywords.join(", ")}</p>}
+                </main>
+                <aside className={`${styles.rightSidebar} sidebar`}>
+                    <SelectionCriteriaForm evidence={model} fileName={fileName} criteria={screening?.selectionCriteria ?? null} onFormSubmit={toggleStatus}/>
+                </aside>
+                <footer className={styles.bottomPanel}>
+                    <div className={styles.buttonBar}>
+                        <form method="post" action="" onSubmit={evt => evt.preventDefault()}>
+                            <div className={styles.gotoGroup}>
+                                <input type="number" min="0" ref={gotoInputRef} placeholder="Go to..." title="Enter an index to go to"
+                                       className={styles.gotoInput} onKeyDown={async e => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault();
+                                        const value = gotoInputRef.current?.value?.trim();
+                                        if (value) await navigate(value, "goto");
+                                    }
+                                }}/>
+                                <button type="submit" title="Go to item" className={styles.gotoBtn} onClick={async () => {
                                     const value = gotoInputRef.current?.value?.trim();
                                     if (value) await navigate(value, "goto");
-                                }
-                            }}/>
-                            <button type="submit" title="Go to item" className={styles.gotoBtn} onClick={async () => {
-                                const value = gotoInputRef.current?.value?.trim();
-                                if (value) await navigate(value, "goto");
-                            }}><ChevronRight size={18}/></button>
-                        </div>
-                        <div className={styles.navGroup}>
-                            <button type="submit" title="First item" onClick={() => navigate(0, "first")}><SkipBack size={18}/></button>
-                            <button type="submit" title="Previous item" onClick={() => navigate(0, "prev")}><ChevronLeft size={18}/></button>
-                            <button type="submit" title="Next item" onClick={() => navigate(0, "next")}><ChevronRight size={18}/></button>
-                            <button type="submit" title="Last item" onClick={() => navigate(0, "last")}><SkipForward size={18}/></button>
-                            <button type="submit" title="First undecided item" className={styles.firstGap}
-                                    onClick={() => navigate(0, "firstUnfilled")}><CircleDashed size={18}/></button>
-                            <button type="submit" title="Next undecided item" className={styles.nextUndecided}
-                                    onClick={() => navigate(0, "unfilled")}><FastForward size={18}/></button>
-                        </div>
-                    </form>
-                </div>
-            </footer>
-        </div>
+                                }}><ChevronRight size={18}/></button>
+                            </div>
+                            <div className={styles.navGroup}>
+                                <button type="submit" title="First item" onClick={() => navigate(0, "first")}><SkipBack size={18}/></button>
+                                <button type="submit" title="Previous item" onClick={() => navigate(0, "prev")}><ChevronLeft size={18}/></button>
+                                <button type="submit" title="Next item" onClick={() => navigate(0, "next")}><ChevronRight size={18}/></button>
+                                <button type="submit" title="Last item" onClick={() => navigate(0, "last")}><SkipForward size={18}/></button>
+                                <button type="submit" title="First undecided item" className={styles.firstGap}
+                                        onClick={() => navigate(0, "firstUnfilled")}><CircleDashed size={18}/></button>
+                                <button type="submit" title="Next undecided item" className={styles.nextUndecided}
+                                        onClick={() => navigate(0, "unfilled")}><FastForward size={18}/></button>
+                            </div>
+                        </form>
+                    </div>
+                </footer>
+            </div>
+        </>
     )
 }
