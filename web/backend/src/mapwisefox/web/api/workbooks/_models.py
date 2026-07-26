@@ -16,9 +16,7 @@ class ScreeningPatch(BaseModel):
 
     @model_validator(mode="after")
     def validate_excluded(self):
-        if self.decision == "excluded" and not any(
-            reason.strip() for reason in self.exclusion_reasons
-        ):
+        if self.decision == "excluded" and not self.exclusion_reasons:
             raise ValueError("Excluded records require at least one exclusion reason")
         return self
 

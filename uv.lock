@@ -1721,7 +1721,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-web-backend"
-version = "0.8.1.dev1"
+version = "0.8.2.dev1"
 source = { editable = "web/backend" }
 dependencies = [
     { name = "arrow" },

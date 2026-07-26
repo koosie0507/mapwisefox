@@ -5,6 +5,13 @@ import "../styles/form.css";
 import type {EvidenceViewModel} from "../models/viewmodel.ts";
 import type {SelectionConfig} from "../models/transfer.ts";
 
+const defaultCriteria: SelectionConfig = {
+    review_topic: "",
+    additional_context: null,
+    inclusion_criteria: [{label: "", description: "study meets selection criteria"}],
+    exclusion_criteria: [],
+};
+
 export type IncludeStatusArgs = {
     include: boolean,
     excludeReasons: string[]
@@ -18,6 +25,7 @@ type SelectionCriteriaFormProps = {
 }
 
 export function SelectionCriteriaForm({evidence, criteria, onFormSubmit}: SelectionCriteriaFormProps) {
+    const effectiveCriteria = criteria ?? defaultCriteria;
     const [include, setInclude] = useState(evidence.include)
     const [excludeReasons, setExcludeReasons] = useState<string[]>(evidence.excludeReasons)
 
@@ -54,21 +62,21 @@ export function SelectionCriteriaForm({evidence, criteria, onFormSubmit}: Select
     return (
         <form className="criteria-form" onSubmit={submitData}>
             <InclusionStatus include={include} excludeReasons={excludeReasons} />
-            {criteria && <>
-                <h3>Inclusion Criteria</h3>
-                <ul>
-                    {criteria.inclusion_criteria.map((criterion, i) =>
-                        <SelectionCriterion key={`include_${i}`} evidence={evidence} criterionId={`include_${i}`}
-                                   criterionType="include"
-                                   excludeReason={criterion.label}
-                                   onStatusChanged={handleIncludeStatusChanged}>
-                            {criterion.description}
-                        </SelectionCriterion>
-                    )}
-                </ul>
+            <h3>Inclusion Criteria</h3>
+            <ul>
+                {effectiveCriteria.inclusion_criteria.map((criterion, i) =>
+                    <SelectionCriterion key={`include_${i}`} evidence={evidence} criterionId={`include_${i}`}
+                               criterionType="include"
+                               excludeReason={criterion.label}
+                               onStatusChanged={handleIncludeStatusChanged}>
+                        {criterion.description}
+                    </SelectionCriterion>
+                )}
+            </ul>
+            {effectiveCriteria.exclusion_criteria.length > 0 && <>
                 <h3>Exclusion Criteria</h3>
                 <ul>
-                    {criteria.exclusion_criteria.map((criterion, i) =>
+                    {effectiveCriteria.exclusion_criteria.map((criterion, i) =>
                         <SelectionCriterion key={`exclude_${i}`} evidence={evidence} criterionId={`exclude_${i}`}
                                    criterionType="exclude"
                                    excludeReason={criterion.label}

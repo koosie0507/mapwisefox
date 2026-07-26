@@ -77,9 +77,14 @@ async def import_workbook(
             config.exclusion_reason_column,
             "exclusionReasonColumn",
         )
-        selection_criteria = (
-            _validate_selection_criteria(selection_criteria_file)
+        selection_criteria_file_content = (
+            await selection_criteria_file.read()
             if selection_criteria_file is not None
+            else None
+        )
+        selection_criteria = (
+            _validate_selection_criteria(selection_criteria_file_content)
+            if selection_criteria_file_content
             else None
         )
         upload_dir.mkdir(parents=True, exist_ok=True)

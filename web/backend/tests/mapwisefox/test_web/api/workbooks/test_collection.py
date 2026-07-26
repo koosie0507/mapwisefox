@@ -62,6 +62,21 @@ def test_import_accepts_upload_without_selection_criteria(client, workbook_file)
     assert screening["selectionCriteria"] is None
 
 
+def test_import_accepts_empty_selection_criteria_file(client, workbook_file):
+    response = client.post(
+        "/api/v1/workbooks",
+        files={
+            "file": ("studies.xlsx", workbook_file),
+            "selectionCriteria": ("", b""),
+        },
+        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+    )
+
+    assert response.status_code == 201
+    screening = client.get("/api/v1/workbooks/studies.xlsx/screening/0").json()
+    assert screening["selectionCriteria"] is None
+
+
 def test_import_rejects_malformed_selection_criteria_json(client, workbook_file):
     response = client.post(
         "/api/v1/workbooks",

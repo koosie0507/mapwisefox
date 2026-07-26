@@ -98,12 +98,12 @@ describe("EvidenceEditor", () => {
         expect(await screen.findByRole("heading", {name: /\[1\].*Study 1/})).toBeInTheDocument();
     });
 
-    it("omits the criteria lists when the workbook has none", async () => {
+    it("shows a default inclusion criterion when the workbook has none", async () => {
         vi.mocked(getScreening).mockResolvedValue(screening(0, "Study 0", false));
         render(<EvidenceEditor evidence={screening(0, "Study 0", false).evidence} fileName="study.xlsx"/>);
 
         await screen.findByRole("heading", {name: /\[0\].*Study 0/});
-        expect(screen.queryByText("Inclusion Criteria")).not.toBeInTheDocument();
+        expect(screen.getByLabelText("study meets selection criteria")).toBeInTheDocument();
     });
 
     it("saves a decision and reports persistence errors", async () => {
