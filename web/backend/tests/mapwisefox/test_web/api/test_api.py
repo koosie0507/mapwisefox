@@ -13,7 +13,7 @@ def client(tmp_path):
     app = FastAPI()
     app.include_router(auth_api_router)
     app.include_router(config_api_router)
-    config = AppSettings(uploads_dir=tmp_path)
+    config = AppSettings(uploads_dir=tmp_path, auth_enabled=False)
     app.dependency_overrides[current_user] = lambda: None
     app.dependency_overrides[user_upload_dir] = lambda: tmp_path
     app.dependency_overrides[settings] = lambda: config

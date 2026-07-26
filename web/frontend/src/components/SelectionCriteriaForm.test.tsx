@@ -54,11 +54,17 @@ describe("selection criteria", () => {
         expect(screen.getByRole("button", {name: "Include"})).toBeInTheDocument();
     });
 
-    it("renders no criteria lists when criteria is null", () => {
-        render(<SelectionCriteriaForm evidence={evidence} fileName="study.xlsx" criteria={null} onFormSubmit={vi.fn()}/>);
+    it("uses a default inclusion criterion when criteria is null", async () => {
+        const user = userEvent.setup();
+        const submit = vi.fn().mockResolvedValue(undefined);
+        render(<SelectionCriteriaForm evidence={evidence} fileName="study.xlsx" criteria={null} onFormSubmit={submit}/>);
 
-        expect(screen.queryByText("Inclusion Criteria")).not.toBeInTheDocument();
-        expect(screen.queryByText("Exclusion Criteria")).not.toBeInTheDocument();
+        expect(screen.getByLabelText("study meets selection criteria")).toBeInTheDocument();
+        await user.click(screen.getByLabelText("study meets selection criteria"));
+        expect(screen.getByRole("button", {name: "Exclude"})).toBeInTheDocument();
+        await user.click(screen.getByRole("button", {name: "Exclude"}));
+
+        expect(submit).toHaveBeenCalledWith({include: false, excludeReasons: [""]});
     });
 
     it("unchecking an inclusion criterion excludes the record", async () => {

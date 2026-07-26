@@ -2,7 +2,7 @@ import csv
 import json
 from pathlib import Path
 
-from fastapi import HTTPException, UploadFile
+from fastapi import HTTPException
 from pydantic import ValidationError
 
 from mapwisefox.common.config import SelectionConfig
@@ -58,9 +58,9 @@ def _raise_http(error: Exception) -> None:
     raise error
 
 
-def _validate_selection_criteria(file: UploadFile) -> SelectionConfig | None:
+def _validate_selection_criteria(content: bytes) -> SelectionConfig | None:
     try:
-        payload = json.loads(file.file.read())
+        payload = json.loads(content)
     except (json.JSONDecodeError, UnicodeDecodeError) as error:
         raise HTTPException(
             status_code=422,
