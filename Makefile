@@ -4,7 +4,7 @@ NODE_MODULES := $(WEB_FRONTEND_DIR)/node_modules
 NODE_TIMESTAMP := $(NODE_MODULES)/.package-lock.json
 TIMESTAMP := $(VENV)/.last_sync
 PYTHON_VERSION := 3.13
-PYTHON_PACKAGE_DIRS := assistant deduplication metrics search search-judge snowballing split web/backend
+PYTHON_PACKAGE_DIRS := assistant common-config deduplication metrics search search-judge snowballing split web/backend
 PYTHON_TEST_DIRS := $(addsuffix /tests,$(PYTHON_PACKAGE_DIRS))
 VALID_PACKAGES := $(PYTHON_PACKAGE_DIRS) $(WEB_FRONTEND_DIR)
 BUMP_KIND := $(or $(VERSION_COMPONENT),pre_label)
@@ -63,10 +63,10 @@ check: bootstrap
 PYTHON_EXISTING_TEST_DIRS := $(foreach d,$(PYTHON_TEST_DIRS),$(if $(wildcard $(d)),$(d),))
 test: bootstrap
 	uv run --active pytest -rA -vvs --log-level INFO \
-		--junitxml=test-reports/junit.xml \
+		--junitxml=.test-reports/backend/results.xml \
 		--cov=mapwisefox \
 		--cov-branch \
-		--cov-report=xml:cov-reports/coverage.xml \
+		--cov-report=xml:.test-reports/backend/coverage.xml \
 		--cov-report=term-missing \
 		$(PYTHON_EXISTING_TEST_DIRS)
 	cd $(WEB_FRONTEND_DIR) && npm run test:coverage

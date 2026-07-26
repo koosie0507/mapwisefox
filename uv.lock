@@ -10,6 +10,7 @@ resolution-markers = [
 members = [
     "mapwisefox",
     "mapwisefox-assistant",
+    "mapwisefox-common-config",
     "mapwisefox-deduplication",
     "mapwisefox-metrics",
     "mapwisefox-search",
@@ -1487,7 +1488,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.6.0.dev1"
+version = "0.6.1.dev1"
 source = { virtual = "." }
 dependencies = [
     { name = "openai" },
@@ -1540,6 +1541,7 @@ dependencies = [
     { name = "google-genai" },
     { name = "jinja2" },
     { name = "layoutparser", extra = ["effdet"] },
+    { name = "mapwisefox-common-config" },
     { name = "ollama" },
     { name = "openpyxl" },
     { name = "pandas" },
@@ -1560,6 +1562,7 @@ requires-dist = [
     { name = "google-genai", specifier = ">=1.57.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "layoutparser", extras = ["effdet"], specifier = ">=0.3.4" },
+    { name = "mapwisefox-common-config", editable = "common-config" },
     { name = "ollama", specifier = ">=0.6" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.1" },
@@ -1570,6 +1573,17 @@ requires-dist = [
     { name = "stopwords", specifier = ">=1.0.2" },
     { name = "tenacity", specifier = ">=9.1.2" },
 ]
+
+[[package]]
+name = "mapwisefox-common-config"
+version = "0.1.0"
+source = { editable = "common-config" }
+dependencies = [
+    { name = "pydantic" },
+]
+
+[package.metadata]
+requires-dist = [{ name = "pydantic", specifier = ">=2.11.7" }]
 
 [[package]]
 name = "mapwisefox-deduplication"
@@ -1707,13 +1721,14 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-web-backend"
-version = "0.7.0.dev1"
+version = "0.7.0"
 source = { editable = "web/backend" }
 dependencies = [
     { name = "arrow" },
     { name = "authlib" },
     { name = "cachetools" },
     { name = "fastapi", extra = ["all"] },
+    { name = "mapwisefox-common-config" },
     { name = "numpy" },
     { name = "openpyxl" },
     { name = "pandas" },
@@ -1727,6 +1742,7 @@ requires-dist = [
     { name = "authlib", specifier = ">=1.6.0" },
     { name = "cachetools", specifier = ">=6.1.0" },
     { name = "fastapi", extras = ["all"], specifier = ">=0.115.14" },
+    { name = "mapwisefox-common-config", editable = "common-config" },
     { name = "numpy", specifier = ">=2.3.1" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.0" },

@@ -1,5 +1,5 @@
 coverage.md
-test-reports/*
+.test-reports/*
 .zed/*
 .agents/*
 
