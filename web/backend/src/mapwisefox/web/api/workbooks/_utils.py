@@ -1,4 +1,3 @@
-import csv
 import json
 from pathlib import Path
 
@@ -16,34 +15,29 @@ from ._models import EvidenceResponse, ScreeningResponse
 from ._cache import _undecided_indexes
 
 
-def _parse_expected_columns(value: str) -> list[str]:
+def _parse_field_mappings(value: str | None) -> dict[str, str]:
+    if value is None or not value.strip():
+        return {}
     try:
-        rows = list(csv.reader([value], strict=True))
-    except csv.Error as error:
+        mappings = json.loads(value)
+    except json.JSONDecodeError as error:
         raise WorkbookValidationError(
-            "invalid_expected_columns", f"Invalid CSV: {error}"
+            "invalid_field_mappings", f"Invalid JSON: {error}"
         ) from error
-    columns = [column.strip() for column in rows[0]] if rows else []
-    if not columns or any(not column for column in columns):
+    if not isinstance(mappings, dict) or not all(
+        isinstance(field, str) and isinstance(column, str)
+        for field, column in mappings.items()
+    ):
         raise WorkbookValidationError(
-            "invalid_expected_columns", "Expected columns must be non-empty"
+            "invalid_field_mappings", "Field mappings must be an object of strings"
         )
-    duplicates = sorted({column for column in columns if columns.count(column) > 1})
-    if duplicates:
+    if any(
+        not field.strip() or not column.strip() for field, column in mappings.items()
+    ):
         raise WorkbookValidationError(
-            "duplicate_expected_columns",
-            f"Duplicate expected columns: {', '.join(duplicates)}",
+            "invalid_field_mappings", "Field mappings must not contain blank names"
         )
-    return columns
-
-
-def _resolved(value: str | None, fallback: str | None, field: str) -> str:
-    result = value.strip() if value and value.strip() else fallback
-    if not result:
-        raise WorkbookValidationError(
-            "missing_import_configuration", f"Missing import field: {field}"
-        )
-    return result
+    return {field.strip(): column.strip() for field, column in mappings.items()}
 
 
 def _raise_http(error: Exception) -> None:

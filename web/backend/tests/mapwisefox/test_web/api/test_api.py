@@ -42,8 +42,19 @@ def test_config_returns_frontend_context(client):
 
     assert response.json() == {
         "user": None,
-        "worksheetName": "",
-        "expectedColumns": "",
+        "supportedFields": [
+            {"name": "title", "mandatory": True},
+            {"name": "authors", "mandatory": True},
+            {"name": "doi", "mandatory": False},
+            {"name": "abstract", "mandatory": False},
+            {"name": "keywords", "mandatory": False},
+            {"name": "publicationDate", "mandatory": False},
+            {"name": "publicationVenue", "mandatory": False},
+            {"name": "url", "mandatory": False},
+            {"name": "hasPdf", "mandatory": False},
+            {"name": "pdfUrl", "mandatory": False},
+            {"name": "referencingEvidence", "mandatory": False},
+        ],
         "decisionColumn": "include",
         "exclusionReasonColumn": "exclude_reason",
     }

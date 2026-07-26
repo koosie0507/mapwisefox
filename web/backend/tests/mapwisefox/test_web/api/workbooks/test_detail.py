@@ -61,7 +61,7 @@ async def test_concurrent_patches_preserve_both_updates(
     imported = await async_client.post(
         "/api/v1/workbooks",
         files={"file": ("studies.xlsx", workbook_file)},
-        data={"worksheetName": "Studies", "expectedColumns": "title"},
+        data={"worksheetName": "Studies"},
     )
     assert imported.status_code == 201
     responses = await asyncio.gather(

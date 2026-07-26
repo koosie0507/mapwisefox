@@ -40,21 +40,21 @@ class Evidence(BaseModel):
 
     cluster_id: int = Field(..., alias="clusterId")
     include: bool
-    doi: str
+    doi: str = ""
     title: str
     abstract: Optional[str]
     authors: list[str]
-    keywords: list[str]
+    keywords: list[str] = Field(default_factory=list)
     publication_date: Optional[datetime] = Field(..., alias="publicationDate")
     publication_venue: Optional[str] = Field(..., alias="publicationVenue")
-    url: str
+    url: str = ""
     exclude_reasons: list[str] = Field(..., alias="excludeReasons")
     # optional fields
     has_pdf: bool = Field(False, alias="hasPdf")
+    pdf_url: Optional[str] = Field(None, alias="pdfUrl")
     referencing_evidence: list[str] = Field(
         alias="referencingEvidence", default_factory=list
     )
-    pdf_url: Optional[str] = Field(None, alias="pdfUrl")
 
     @staticmethod
     def _parse_list(

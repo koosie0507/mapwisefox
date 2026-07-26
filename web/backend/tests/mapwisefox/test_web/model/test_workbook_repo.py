@@ -86,7 +86,7 @@ def imported_workbook(tmp_path, source_workbook):
         source_workbook,
         destination,
         "Studies",
-        ["title", "abstract"],
+        {},
         "decision",
         "reason",
     )
@@ -111,18 +111,52 @@ def test_import_appends_missing_screening_columns(imported_workbook):
     assert headers[-2:] == ["decision", "reason"]
 
 
-def test_import_rejects_missing_expected_column(source_workbook, tmp_path):
-    with pytest.raises(WorkbookValidationError, match="missing") as error:
+def test_import_rejects_missing_mandatory_mapped_field(source_workbook, tmp_path):
+    with pytest.raises(WorkbookValidationError, match="Missing") as error:
         WorkbookRepository.import_workbook(
             source_workbook,
             tmp_path / "output.xlsx",
             "Studies",
-            ["missing"],
+            {"title": "missing"},
             "decision",
             "reason",
         )
 
-    assert error.value.code == "missing_expected_columns"
+    assert error.value.code == "missing_mandatory_fields"
+
+
+def test_import_rejects_screening_column_mapped_to_evidence(source_workbook, tmp_path):
+    with pytest.raises(WorkbookValidationError) as error:
+        WorkbookRepository.import_workbook(
+            source_workbook,
+            tmp_path / "output.xlsx",
+            "Studies",
+            {"title": "title"},
+            "title",
+            "reason",
+        )
+
+    assert error.value.code == "screening_evidence_column_collision"
+
+
+def test_import_uses_aliased_field_mapping(source_workbook, tmp_path):
+    workbook = load_workbook(source_workbook)
+    worksheet = workbook["Studies"]
+    worksheet["I1"] = "full_text"
+    worksheet["I2"] = "yes"
+    workbook.save(source_workbook)
+    workbook.close()
+    destination = tmp_path / "output.xlsx"
+    metadata = WorkbookRepository.import_workbook(
+        source_workbook,
+        destination,
+        "Studies",
+        {"hasPdf": "full_text"},
+        "decision",
+        "reason",
+    )
+
+    assert WorkbookRepository(destination, metadata).get(0).evidence.has_pdf is True
 
 
 def test_import_rejects_internal_blank_row(source_workbook, tmp_path):
@@ -137,7 +171,7 @@ def test_import_rejects_internal_blank_row(source_workbook, tmp_path):
             source_workbook,
             tmp_path / "output.xlsx",
             "Studies",
-            ["title"],
+            {},
             "decision",
             "reason",
         )
@@ -189,7 +223,7 @@ def test_import_persists_selection_criteria(
         source_workbook,
         destination,
         "Studies",
-        ["title"],
+        {},
         "decision",
         "reason",
         selection_criteria,
@@ -217,7 +251,7 @@ def test_import_round_trips_selection_criteria_in_sidecar(
         source_workbook,
         destination,
         "Studies",
-        ["title"],
+        {},
         "decision",
         "reason",
         selection_criteria,

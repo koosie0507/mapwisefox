@@ -27,16 +27,6 @@ PERSISTED_DECISIONS: dict[Decision, str] = {
     "included": "include",
     "excluded": "exclude",
 }
-EVIDENCE_HEADERS: dict[str, tuple[str, ...]] = {
-    "doi": ("doi",),
-    "title": ("title",),
-    "abstract": ("abstract",),
-    "authors": ("authors",),
-    "keywords": ("keywords",),
-    "publication_date": ("publication_date", "year"),
-    "publication_venue": ("publication_venue", "source"),
-    "url": ("url",),
-}
 
 
 class WorkbookMetadata(BaseModel):
@@ -45,12 +35,11 @@ class WorkbookMetadata(BaseModel):
     name: str
     worksheet_name: str = Field(alias="worksheetName")
     header_row: int = Field(alias="headerRow")
-    expected_columns: list[str] = Field(alias="expectedColumns")
+    field_mappings: dict[str, str] = Field(default_factory=dict, alias="fieldMappings")
     decision_column: str = Field(alias="decisionColumn")
     exclusion_reason_column: str = Field(alias="exclusionReasonColumn")
     record_count: int = Field(alias="recordCount")
     unfilled_record_count: int = Field(default=0, alias="unfilledRecordCount")
-    evidence_columns: dict[str, str] = Field(alias="evidenceColumns")
     selection_criteria: SelectionConfig | None = Field(
         default=None, alias="selectionCriteria"
     )
@@ -126,20 +115,6 @@ def _validate_headers(values: list[Any], row: int) -> list[str]:
     return headers
 
 
-def _resolve_evidence_columns(headers: list[str]) -> dict[str, str]:
-    resolved = {
-        field: next((candidate for candidate in candidates if candidate in headers), "")
-        for field, candidates in EVIDENCE_HEADERS.items()
-    }
-    missing = [field for field, header in resolved.items() if not header]
-    if missing:
-        raise WorkbookValidationError(
-            "missing_application_columns",
-            f"Missing screening columns: {', '.join(missing)}",
-        )
-    return resolved
-
-
 def _record_count(worksheet, header_row: int, width: int) -> int:
     rows = range(header_row + 1, worksheet.max_row + 1)
     populated = [
@@ -205,8 +180,8 @@ class WorkbookRepository:
         cls,
         source: Path,
         destination: Path,
-        worksheet_name: str,
-        expected_columns: list[str],
+        worksheet_name: str | None,
+        field_mappings: dict[str, str],
         decision_column: str,
         exclusion_reason_column: str,
         selection_criteria: SelectionConfig | None = None,
@@ -224,16 +199,16 @@ class WorkbookRepository:
                 "invalid_workbook", "Uploaded file is not a valid XLSX workbook"
             ) from error
         try:
-            if worksheet_name not in workbook.sheetnames:
+            selected_worksheet = worksheet_name or workbook.sheetnames[0]
+            if selected_worksheet not in workbook.sheetnames:
                 raise WorkbookValidationError(
-                    "missing_worksheet", f"Worksheet not found: {worksheet_name}"
+                    "missing_worksheet", f"Worksheet not found: {selected_worksheet}"
                 )
-            worksheet = workbook[worksheet_name]
+            worksheet = workbook[selected_worksheet]
             header_row, headers = _headers(worksheet)
             cls._validate_import_columns(
-                headers, expected_columns, decision_column, exclusion_reason_column
+                headers, field_mappings, decision_column, exclusion_reason_column
             )
-            evidence_columns = _resolve_evidence_columns(headers)
             record_count = _record_count(worksheet, header_row, len(headers))
             for column in (decision_column, exclusion_reason_column):
                 if column not in headers:
@@ -241,13 +216,12 @@ class WorkbookRepository:
                     worksheet.cell(header_row, len(headers), column)
             metadata = WorkbookMetadata(
                 name=destination.name,
-                worksheetName=worksheet_name,
+                worksheetName=selected_worksheet,
                 headerRow=header_row,
-                expectedColumns=expected_columns,
+                fieldMappings=field_mappings,
                 decisionColumn=decision_column,
                 exclusionReasonColumn=exclusion_reason_column,
                 recordCount=record_count,
-                evidenceColumns=evidence_columns,
                 selectionCriteria=selection_criteria,
             )
             cls._validate_decisions(worksheet, metadata, headers)
@@ -263,20 +237,25 @@ class WorkbookRepository:
     @staticmethod
     def _validate_import_columns(
         headers: list[str],
-        expected: list[str],
+        field_mappings: dict[str, str],
         decision_column: str,
         exclusion_reason_column: str,
     ) -> None:
-        missing = [column for column in expected if column not in headers]
-        if missing:
-            raise WorkbookValidationError(
-                "missing_expected_columns",
-                f"Missing expected columns: {', '.join(missing)}",
-            )
+        from mapwisefox.web.api.workbooks._cache import (
+            _mapped_columns,
+            _validate_field_mappings,
+        )
+
+        _validate_field_mappings(headers, field_mappings)
         if decision_column == exclusion_reason_column:
             raise WorkbookValidationError(
                 "duplicate_screening_columns",
                 "Screening columns must have different names",
+            )
+        if {decision_column, exclusion_reason_column} & _mapped_columns(field_mappings):
+            raise WorkbookValidationError(
+                "screening_evidence_column_collision",
+                "Screening columns must not replace mapped evidence fields",
             )
 
     @staticmethod
@@ -393,6 +372,12 @@ class WorkbookRepository:
         return headers.index(self.metadata.exclusion_reason_column) + 1
 
     def _to_record(self, record_index: int, values: dict[str, Any]) -> ScreeningRecord:
+        from mapwisefox.web.api.workbooks._cache import (
+            SUPPORTED_FIELDS,
+            _evidence_field,
+            _mapped_value,
+        )
+
         decision_value = values[self.metadata.decision_column]
         decision_key = (
             "" if _is_blank(decision_value) else str(decision_value).strip().lower()
@@ -401,8 +386,10 @@ class WorkbookRepository:
             {"reasons": values[self.metadata.exclusion_reason_column]}, "reasons"
         )
         evidence_values = {
-            field: values.get(header)
-            for field, header in self.metadata.evidence_columns.items()
+            _evidence_field(field): _mapped_value(
+                values, field, self.metadata.field_mappings
+            )
+            for field in SUPPORTED_FIELDS
         }
         for field in ("doi", "title", "url"):
             evidence_values[field] = evidence_values[field] or ""
@@ -410,7 +397,6 @@ class WorkbookRepository:
             cluster_id=record_index,
             include=decision_key == "include",
             exclude_reasons=reasons,
-            pdf_url=values.get("pdf_url"),
         )
         return ScreeningRecord(
             Evidence(**evidence_values), DECISION_VALUES[decision_key], reasons

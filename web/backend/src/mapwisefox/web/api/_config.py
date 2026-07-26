@@ -4,6 +4,7 @@ from pydantic import BaseModel, ConfigDict, Field
 from mapwisefox.web._deps import current_user, settings
 from mapwisefox.web.config import AppSettings
 from mapwisefox.web.model import UserInfo
+from .workbooks._cache import SUPPORTED_FIELDS
 
 
 router = APIRouter(prefix="/api/v1", tags=["configuration"])
@@ -14,12 +15,16 @@ class FrontendUser(BaseModel):
     email: str
 
 
+class SupportedField(BaseModel):
+    name: str
+    mandatory: bool
+
+
 class FrontendConfig(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
     user: FrontendUser | None
-    worksheet_name: str = Field(alias="worksheetName")
-    expected_columns: str = Field(alias="expectedColumns")
+    supported_fields: list[SupportedField] = Field(alias="supportedFields")
     decision_column: str = Field(alias="decisionColumn")
     exclusion_reason_column: str = Field(alias="exclusionReasonColumn")
 
@@ -34,8 +39,10 @@ def frontend_config(
     )
     return FrontendConfig(
         user=frontend_user,
-        worksheetName=config.worksheet_name or "",
-        expectedColumns=config.expected_columns or "",
+        supportedFields=[
+            SupportedField(name=name, mandatory=mandatory)
+            for name, mandatory in SUPPORTED_FIELDS.items()
+        ],
         decisionColumn=config.decision_column,
         exclusionReasonColumn=config.exclusion_reason_column,
     )

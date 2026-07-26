@@ -82,7 +82,7 @@ def basic_upload(client, workbook_file):
         return client.post(
             "/api/v1/workbooks",
             files={"file": ("studies.xlsx", workbook_file)},
-            data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+            data={"worksheetName": "Studies"},
         )
 
     return _

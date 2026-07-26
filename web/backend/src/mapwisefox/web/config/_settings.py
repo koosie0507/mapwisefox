@@ -10,8 +10,6 @@ class AppSettings(BaseSettings):
 
     auth_enabled: bool = False
     uploads_dir: DirectoryPath = Field(Path.cwd() / "uploads")
-    worksheet_name: str | None = None
-    expected_columns: str | None = None
     decision_column: str = "include"
     exclusion_reason_column: str = "exclude_reason"
     oidc_discovery_url: str | None = None

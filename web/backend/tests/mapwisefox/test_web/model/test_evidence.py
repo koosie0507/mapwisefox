@@ -11,6 +11,16 @@ LIST_PARSER_TEST_DATA = [
     (None, []),
     ("", []),
 ]
+
+
+def test_optional_fields_have_safe_defaults():
+    from mapwisefox.web.model import Evidence
+
+    assert Evidence.model_fields["doi"].is_required() is False
+    assert Evidence.model_fields["keywords"].is_required() is False
+    assert Evidence.model_fields["url"].is_required() is False
+
+
 BOOL_PARSER_TEST_DATA = [
     (True, True),
     (False, False),

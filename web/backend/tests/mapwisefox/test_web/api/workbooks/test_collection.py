@@ -2,7 +2,7 @@ def test_import_returns_resolved_resource(client, workbook_file):
     response = client.post(
         "/api/v1/workbooks",
         files={"file": ("studies.xlsx", workbook_file)},
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 201
@@ -11,21 +11,32 @@ def test_import_returns_resolved_resource(client, workbook_file):
     assert response.headers["location"] == "/api/v1/workbooks/studies.xlsx"
 
 
-def test_import_rejects_unresolved_configuration(client, workbook_file):
+def test_import_uses_first_sheet_without_optional_configuration(client, workbook_file):
     response = client.post(
         "/api/v1/workbooks",
         files={"file": ("studies.xlsx", workbook_file)},
     )
 
-    assert response.status_code == 422
-    assert response.json()["detail"]["code"] == "missing_import_configuration"
+    assert response.status_code == 201
+    assert response.json()["worksheetName"] == "Studies"
+
+
+def test_import_accepts_partial_field_mappings(client, workbook_file):
+    response = client.post(
+        "/api/v1/workbooks",
+        files={"file": ("studies.xlsx", workbook_file)},
+        data={"fieldMappings": '{"title":"title","authors":"authors"}'},
+    )
+
+    assert response.status_code == 201
+    assert response.json()["fieldMappings"] == {"title": "title", "authors": "authors"}
 
 
 def test_import_rejects_invalid_xlsx_content(client):
     response = client.post(
         "/api/v1/workbooks",
         files={"file": ("broken.xlsx", b"not an xlsx workbook")},
-        data={"worksheetName": "Studies", "expectedColumns": "title"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 422
@@ -41,7 +52,7 @@ def test_import_persists_selection_criteria(
             "file": ("studies.xlsx", workbook_file),
             "selectionCriteria": ("criteria.json", selection_criteria_json),
         },
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 201
@@ -54,7 +65,7 @@ def test_import_accepts_upload_without_selection_criteria(client, workbook_file)
     response = client.post(
         "/api/v1/workbooks",
         files={"file": ("studies.xlsx", workbook_file)},
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 201
@@ -69,7 +80,7 @@ def test_import_accepts_empty_selection_criteria_file(client, workbook_file):
             "file": ("studies.xlsx", workbook_file),
             "selectionCriteria": ("", b""),
         },
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 201
@@ -84,7 +95,7 @@ def test_import_rejects_malformed_selection_criteria_json(client, workbook_file)
             "file": ("studies.xlsx", workbook_file),
             "selectionCriteria": ("criteria.json", b"{not valid json"),
         },
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 422
@@ -98,7 +109,7 @@ def test_import_rejects_invalid_selection_criteria_payload(client, workbook_file
             "file": ("studies.xlsx", workbook_file),
             "selectionCriteria": ("criteria.json", b'{"review_topic":"x"}'),
         },
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 422
@@ -112,7 +123,7 @@ def test_import_rejects_non_utf8_selection_criteria(client, workbook_file):
             "file": ("studies.xlsx", workbook_file),
             "selectionCriteria": ("criteria.json", b"\xff\xfe\x00binary"),
         },
-        data={"worksheetName": "Studies", "expectedColumns": "title,abstract"},
+        data={"worksheetName": "Studies"},
     )
 
     assert response.status_code == 422

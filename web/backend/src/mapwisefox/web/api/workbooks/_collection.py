@@ -19,9 +19,8 @@ from ._async import _lock_for
 from ._cache import _clear_undecided_cache_entry
 from ._utils import (
     _metadata,
-    _parse_expected_columns,
+    _parse_field_mappings,
     _raise_http,
-    _resolved,
     _validate_selection_criteria,
 )
 
@@ -56,7 +55,7 @@ async def import_workbook(
     response: Response,
     file: UploadFile = File(...),
     worksheet_name: str | None = Form(None, alias="worksheetName"),
-    expected_columns: str | None = Form(None, alias="expectedColumns"),
+    field_mappings: str | None = Form(None, alias="fieldMappings"),
     decision_column: str | None = Form(None, alias="decisionColumn"),
     exclusion_reason_column: str | None = Form(None, alias="exclusionReasonColumn"),
     selection_criteria_file: UploadFile | None = File(None, alias="selectionCriteria"),
@@ -67,16 +66,14 @@ async def import_workbook(
     try:
         name = file.filename or ""
         destination = workbook_path(upload_dir, name)
-        worksheet = _resolved(worksheet_name, config.worksheet_name, "worksheetName")
-        expected = _parse_expected_columns(
-            _resolved(expected_columns, config.expected_columns, "expectedColumns")
+        worksheet = (
+            worksheet_name.strip()
+            if worksheet_name and worksheet_name.strip()
+            else None
         )
-        decision = _resolved(decision_column, config.decision_column, "decisionColumn")
-        exclusion = _resolved(
-            exclusion_reason_column,
-            config.exclusion_reason_column,
-            "exclusionReasonColumn",
-        )
+        mappings = _parse_field_mappings(field_mappings)
+        decision = decision_column or config.decision_column
+        exclusion = exclusion_reason_column or config.exclusion_reason_column
         selection_criteria_file_content = (
             await selection_criteria_file.read()
             if selection_criteria_file is not None
@@ -98,7 +95,7 @@ async def import_workbook(
                 temporary_path,
                 destination,
                 worksheet,
-                expected,
+                mappings,
                 decision,
                 exclusion,
                 selection_criteria,
