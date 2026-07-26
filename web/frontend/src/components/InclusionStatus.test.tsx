@@ -8,10 +8,18 @@ describe("InclusionStatus", () => {
         expect(screen.getByRole("button", {name: "Include"})).toBeInTheDocument();
     });
 
-    it("renders exclusion reasons and empty reason state", () => {
-        const {rerender} = render(<InclusionStatus include={false} excludeReasons={["not software"]}/>);
+    it("renders exclusion reasons when present", () => {
+        render(<InclusionStatus include={false} excludeReasons={["not software"]}/>);
         expect(screen.getByText("not software")).toBeInTheDocument();
-        rerender(<InclusionStatus include="exclude" excludeReasons={[]}/>);
-        expect(screen.getByText("-")).toBeInTheDocument();
+    });
+
+    it("hides reasons section when only blank reasons are present", () => {
+        render(<InclusionStatus include="exclude" excludeReasons={[""]}/>);
+        expect(screen.queryByText("Reasons:")).not.toBeInTheDocument();
+    });
+
+    it("renders empty reason placeholder when no reasons are provided", () => {
+        render(<InclusionStatus include="exclude" excludeReasons={[]}/>);
+        expect(screen.queryByText("Reasons:")).not.toBeInTheDocument();
     });
 });
