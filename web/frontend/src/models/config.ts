@@ -3,8 +3,10 @@ export type AppConfig = {
         display_name: string | null;
         email: string;
     } | null;
-    worksheetName: string;
-    expectedColumns: string;
+    supportedFields: Array<{
+        name: string;
+        mandatory: boolean;
+    }>;
     decisionColumn: string;
     exclusionReasonColumn: string;
 };

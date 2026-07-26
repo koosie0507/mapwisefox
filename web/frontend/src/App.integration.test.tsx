@@ -3,8 +3,7 @@ import {afterEach, beforeEach, describe, expect, it, vi} from "vitest";
 
 const config = {
     user: null,
-    worksheetName: "Studies",
-    expectedColumns: "title,abstract",
+    supportedFields: [{name: "title", mandatory: true}, {name: "authors", mandatory: true}],
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
 };

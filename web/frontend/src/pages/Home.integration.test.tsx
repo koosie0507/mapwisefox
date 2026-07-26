@@ -13,8 +13,7 @@ vi.mock("../api.ts", () => ({
 
 const config = {
     user: {display_name: "Ada", email: "ada@example.com"},
-    worksheetName: "Studies",
-    expectedColumns: "title,abstract",
+    supportedFields: [{name: "title", mandatory: true}, {name: "authors", mandatory: true}],
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
 };
@@ -62,6 +61,8 @@ describe("Home", () => {
         const sent = vi.mocked(uploadWorkbook).mock.calls[0][0] as FormData;
         expect(sent.get("file")).toBeInstanceOf(File);
         expect(sent.get("selectionCriteria")).toBeInstanceOf(File);
+        expect(sent.get("worksheetName")).toBeNull();
+        expect(sent.get("fieldMappings")).toBeNull();
         expect(screen.getByRole("status")).toHaveTextContent("Workbook imported.");
 
         vi.mocked(listWorkbooks).mockResolvedValue([workbook]);
@@ -84,6 +85,23 @@ describe("Home", () => {
         expect(sent.get("file")).toBeInstanceOf(File);
         const criteria = sent.get("selectionCriteria");
         expect(criteria === null || (criteria instanceof File && criteria.size === 0)).toBe(true);
+    });
+
+    it("submits an explicit field mapping", async () => {
+        const user = userEvent.setup();
+        render(<MemoryRouter><Home config={config}/></MemoryRouter>);
+        await user.type(screen.getByLabelText("Mapwisefox field"), "title");
+        await user.type(screen.getByLabelText("Workbook column"), "article");
+        await user.click(screen.getByRole("button", {name: "Add mapping"}));
+        expect(screen.getByText(/title=article/)).toBeInTheDocument();
+        const file = new File(["xlsx"], "studies.xlsx");
+
+        await user.upload(screen.getByLabelText("Workbook file"), file);
+        fireEvent.submit(screen.getByRole("button", {name: "Upload"}).closest("form")!);
+        await waitFor(() => expect(uploadWorkbook).toHaveBeenCalled());
+
+        const sent = vi.mocked(uploadWorkbook).mock.calls[0][0] as FormData;
+        expect(sent.get("fieldMappings")).toBe('{"title":"article"}');
     });
 
     it("reports upload and delete failures", async () => {

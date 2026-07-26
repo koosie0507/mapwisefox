@@ -28,12 +28,20 @@ function requiredString(value: unknown, field: string): string {
     return value;
 }
 
+function parseSupportedFields(value: unknown): AppConfig["supportedFields"] {
+    if (!Array.isArray(value)) throw new Error("Invalid API field: supportedFields");
+    return value.map((field) => {
+        if (!isRecord(field)) throw new Error("Invalid supported field.");
+        if (typeof field.mandatory !== "boolean") throw new Error("Invalid supported field.");
+        return {name: requiredString(field.name, "supportedFields.name"), mandatory: field.mandatory};
+    });
+}
+
 function parseConfig(value: unknown): AppConfig {
     if (!isRecord(value)) throw new Error("Invalid application configuration.");
     return {
         user: value.user === null ? null : parseUser(value.user),
-        worksheetName: requiredString(value.worksheetName, "worksheetName"),
-        expectedColumns: requiredString(value.expectedColumns, "expectedColumns"),
+        supportedFields: parseSupportedFields(value.supportedFields),
         decisionColumn: requiredString(value.decisionColumn, "decisionColumn"),
         exclusionReasonColumn: requiredString(value.exclusionReasonColumn, "exclusionReasonColumn"),
     };

@@ -10,8 +10,7 @@ function jsonResponse(body: unknown, status = 200): Response {
 
 const config = {
     user: {display_name: "Ada", email: "ada@example.com"},
-    worksheetName: "Studies",
-    expectedColumns: "title",
+    supportedFields: [{name: "title", mandatory: true}, {name: "authors", mandatory: true}],
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
 };
@@ -53,7 +52,7 @@ describe("API facade", () => {
 
     it("reports malformed successful responses", async () => {
         vi.mocked(apiFetch).mockResolvedValueOnce(jsonResponse({user: null}));
-        await expect(getAppConfig()).rejects.toThrow("Invalid API field: worksheetName");
+        await expect(getAppConfig()).rejects.toThrow("Invalid API field: supportedFields");
         vi.mocked(apiFetch).mockResolvedValueOnce(jsonResponse({}));
         await expect(listWorkbooks()).rejects.toThrow("Invalid workbook response.");
         vi.mocked(apiFetch).mockResolvedValueOnce(jsonResponse([{name: "x"}]));
