@@ -5,7 +5,7 @@ import openpyxl
 from unittest.mock import MagicMock
 
 from mapwisefox.assistant.config import AssistantParams
-from mapwisefox.assistant.judge._study_qa import study_qa
+from mapwisefox.assistant.quality_assessment._study_qa import study_qa
 
 
 @pytest.mark.parametrize("reader_type", ["custom", "docling"])
@@ -36,7 +36,7 @@ def test_canonical_qa_accepts_http_pdf_for_each_reader(
     )
     reader_factory = MagicMock(return_value=superficial_reader)
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory", reader_factory
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory", reader_factory
     )
     result = runner.invoke(
         study_qa,
@@ -99,7 +99,7 @@ def test_canonical_qa_accepts_local_file_url_without_http(
     )
     reader_factory = MagicMock(return_value=superficial_reader)
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory", reader_factory
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory", reader_factory
     )
 
     result = runner.invoke(
@@ -135,7 +135,7 @@ def test_canonical_qa_handles_http_failure_without_unmocked_network(
     http_responses.add(responses.GET, paper_url, status=503)
     provider = provider_factory([])
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory",
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
         MagicMock(return_value=superficial_reader),
     )
 

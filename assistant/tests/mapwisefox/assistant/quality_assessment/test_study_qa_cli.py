@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 from mapwisefox.assistant.config import AssistantParams
-from mapwisefox.assistant.judge._study_qa import study_qa
+from mapwisefox.assistant.quality_assessment._study_qa import study_qa
 from mapwisefox.assistant.tools.pdf import (
     ExtractionFailureReason,
     FileContentsExtractionError,
@@ -56,9 +56,9 @@ def _obj_that_stops_after_ensure_model():
     )
 
 
-@patch("mapwisefox.assistant.judge._study_qa.reader_factory")
-@patch("mapwisefox.assistant.judge._study_qa.load_df")
-@patch("mapwisefox.assistant.judge._study_qa.FileProvider")
+@patch("mapwisefox.assistant.quality_assessment._study_qa.reader_factory")
+@patch("mapwisefox.assistant.quality_assessment._study_qa.load_df")
+@patch("mapwisefox.assistant.quality_assessment._study_qa.FileProvider")
 def test_study_qa_verifies_tls_by_default(
     mock_file_provider,
     mock_load_df,
@@ -80,9 +80,9 @@ def test_study_qa_verifies_tls_by_default(
     assert mock_file_provider.call_args.kwargs["verify_tls"] is True
 
 
-@patch("mapwisefox.assistant.judge._study_qa.reader_factory")
-@patch("mapwisefox.assistant.judge._study_qa.load_df")
-@patch("mapwisefox.assistant.judge._study_qa.FileProvider")
+@patch("mapwisefox.assistant.quality_assessment._study_qa.reader_factory")
+@patch("mapwisefox.assistant.quality_assessment._study_qa.load_df")
+@patch("mapwisefox.assistant.quality_assessment._study_qa.FileProvider")
 def test_study_qa_can_disable_tls_verification(
     mock_file_provider,
     mock_load_df,
@@ -140,14 +140,14 @@ def test_study_qa_public_command_writes_scores_and_evaluation(
     provider_factory = MagicMock(return_value=provider)
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.FileProvider",
+        "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
         MagicMock(return_value=MagicMock(return_value=paper)),
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory",
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
         MagicMock(return_value=reader),
     )
 
@@ -179,14 +179,14 @@ def test_study_qa_public_command_leaves_unscored_criterion_empty(
     reader.read_file.return_value = "paper text"
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.FileProvider",
+        "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
         MagicMock(return_value=MagicMock(return_value=paper)),
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory",
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
         MagicMock(return_value=reader),
     )
 
@@ -224,18 +224,18 @@ def test_study_qa_public_command_uses_failsafe_reader_after_reader_failure(
     }
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.FileProvider",
+        "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
         MagicMock(return_value=MagicMock(return_value=paper)),
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory",
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
         MagicMock(return_value=failing_reader),
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.get_default_pdf_reader",
+        "mapwisefox.assistant.quality_assessment._study_qa.get_default_pdf_reader",
         MagicMock(return_value=fallback_reader),
     )
 
@@ -259,14 +259,14 @@ def test_study_qa_public_command_records_download_failure(
     provider.ensure_model.return_value = True
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.FileProvider",
+        "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
         MagicMock(return_value=MagicMock(side_effect=ValueError("bad download"))),
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory", MagicMock()
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory", MagicMock()
     )
 
     result = runner.invoke(
@@ -295,14 +295,14 @@ def test_study_qa_public_command_skips_evaluation_failure(
     )
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.FileProvider",
+        "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
         MagicMock(return_value=MagicMock(return_value=paper)),
     )
     monkeypatch.setattr(
-        "mapwisefox.assistant.judge._study_qa.reader_factory",
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
         MagicMock(return_value=reader),
     )
 
