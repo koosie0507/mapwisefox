@@ -3,7 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from mapwisefox.web._auth import OidcService, TokenService
 from mapwisefox.web._origin import OriginGuardMiddleware
-from mapwisefox.web.api import auth_api_router, config_api_router, workbooks_api_router
+from mapwisefox.web.api import (
+    auth_api_router,
+    config_api_router,
+    health_api_router,
+    workbooks_api_router,
+)
 from mapwisefox.web.config import settings
 from mapwisefox.web.hooks import auth_hooks
 
@@ -28,6 +33,7 @@ def _init_app():
         )
     app.include_router(auth_api_router)
     app.include_router(config_api_router)
+    app.include_router(health_api_router)
     app.include_router(workbooks_api_router)
     app.include_router(auth_hooks)
 

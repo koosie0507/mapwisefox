@@ -1,8 +1,10 @@
+from importlib.metadata import version
+
 import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
-from mapwisefox.web.api import auth_api_router, config_api_router
+from mapwisefox.web.api import auth_api_router, config_api_router, health_api_router
 from mapwisefox.web._deps import current_user, settings, user_upload_dir
 from mapwisefox.web.config import AppSettings
 from mapwisefox.web.model import UserInfo
@@ -13,6 +15,7 @@ def client(tmp_path):
     app = FastAPI()
     app.include_router(auth_api_router)
     app.include_router(config_api_router)
+    app.include_router(health_api_router)
     config = AppSettings(uploads_dir=tmp_path, auth_enabled=False)
     app.dependency_overrides[current_user] = lambda: None
     app.dependency_overrides[user_upload_dir] = lambda: tmp_path
@@ -37,6 +40,12 @@ def test_auth_required_reports_enabled_configuration(client):
     assert response.json() == {"required": True}
 
 
+def test_health_reports_ok(client):
+    response = client.get("/health")
+
+    assert response.json() == {"status": "ok"}
+
+
 def test_config_returns_frontend_context(client):
     response = client.get("/api/v1/config")
 
@@ -57,6 +66,7 @@ def test_config_returns_frontend_context(client):
         ],
         "decisionColumn": "include",
         "exclusionReasonColumn": "exclude_reason",
+        "backendVersion": version("mapwisefox-web-backend"),
     }
 
 
