@@ -106,6 +106,34 @@ describe("EvidenceEditor", () => {
         expect(screen.getByLabelText("study meets selection criteria")).toBeInTheDocument();
     });
 
+    it("shows an imported exclusion decision and its reasons", async () => {
+        const imported = {
+            ...screening(0),
+            decision: "excluded" as const,
+            exclusionReasons: ["not software"],
+            evidence: {...screening(0).evidence, include: true, excludeReasons: []},
+        };
+        vi.mocked(getScreening).mockResolvedValue(imported);
+        render(<EvidenceEditor evidence={imported.evidence} fileName="study.xlsx"/>);
+
+        expect(await screen.findByRole("button", {name: "Exclude"})).toBeInTheDocument();
+        expect(screen.getByText("not software")).toBeInTheDocument();
+    });
+
+    it("shows imported exclusion reasons without selection criteria", async () => {
+        const imported = {
+            ...screening(0, "Study 0", false),
+            decision: "included" as const,
+            exclusionReasons: ["not software"],
+            evidence: {...screening(0).evidence, include: false, excludeReasons: ["not software"]},
+        };
+        vi.mocked(getScreening).mockResolvedValue(imported);
+        render(<EvidenceEditor evidence={imported.evidence} fileName="study.xlsx"/>);
+
+        expect(await screen.findByRole("button", {name: "Exclude"})).toBeInTheDocument();
+        expect(screen.getByText("not software")).toBeInTheDocument();
+    });
+
     it("saves a decision and reports persistence errors", async () => {
         const user = userEvent.setup();
         render(<EvidenceEditor evidence={screening(0).evidence} fileName="study.xlsx"/>);
