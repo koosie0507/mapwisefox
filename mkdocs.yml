@@ -113,3 +113,9 @@ nav:
           - assistant/getting-started/installation.md
           - assistant/getting-started/usage.md
           - assistant/getting-started/cli-reference.md
+  - Web:
+      - web/index.md
+      - Getting Started:
+          - web/getting-started/usage.md
+      - Operations:
+          - web/operations.md
