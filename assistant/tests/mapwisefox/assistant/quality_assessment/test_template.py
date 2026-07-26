@@ -8,7 +8,7 @@ TEMPLATE_PATH = (
     / "src"
     / "mapwisefox"
     / "assistant"
-    / "judge"
+    / "quality_assessment"
     / "_study_qa.j2"
 )
 

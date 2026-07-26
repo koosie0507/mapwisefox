@@ -4,8 +4,8 @@ import click
 
 from mapwisefox.assistant.config import AssistantParams, ModelChoice, ProviderChoice
 from mapwisefox.assistant.config._validate import validate_config
-from mapwisefox.assistant.judge._study_qa import study_qa
-from mapwisefox.assistant.study_selection._study_selection import study_selection
+from mapwisefox.assistant.quality_assessment import cli as study_qa
+from mapwisefox.assistant.study_selection import cli as study_selection
 from mapwisefox.assistant.tools.llm import (
     OllamaProvider,
     OpenAIProvider,

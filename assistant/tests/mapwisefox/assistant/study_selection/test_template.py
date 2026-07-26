@@ -17,14 +17,18 @@ TEMPLATE_PATH = (
 def test_selection_template_renders_without_additional_context():
     config = SelectionConfig(
         review_topic="entity resolution",
-        inclusion_criteria=["written in English"],
-        exclusion_criteria=["not a primary study"],
+        inclusion_criteria=[{"label": "english", "description": "written in English"}],
+        exclusion_criteria=[
+            {"label": "not primary", "description": "not a primary study"}
+        ],
     )
 
     rendered = load_template(TEMPLATE_PATH).render(**config.model_dump())
 
     assert "entity resolution" in rendered
+    assert "english" in rendered
     assert "written in English" in rendered
+    assert "not primary" in rendered
     assert "not a primary study" in rendered
 
 
@@ -32,8 +36,10 @@ def test_selection_template_renders_additional_context():
     config = SelectionConfig(
         review_topic="entity resolution",
         additional_context="Prioritize architecture descriptions.",
-        inclusion_criteria=["written in English"],
-        exclusion_criteria=["not a primary study"],
+        inclusion_criteria=[{"label": "english", "description": "written in English"}],
+        exclusion_criteria=[
+            {"label": "not primary", "description": "not a primary study"}
+        ],
     )
 
     rendered = load_template(TEMPLATE_PATH).render(**config.model_dump())

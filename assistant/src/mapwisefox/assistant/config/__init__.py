@@ -1,6 +1,17 @@
+from mapwisefox.common.config import (
+    ConfigValidationError,
+    QAConfig,
+    QACriterion,
+    SCHEMA_FILES,
+    SelectionConfig,
+    SelectionCriterion,
+    SelectionResponse,
+    load_qa_config,
+    load_selection_config,
+    write_schema_files,
+)
+
 from ._types import ModelChoice, ProviderChoice, ReaderType, AssistantParams
-from ._schemas import QACriterion, QAConfig, SelectionConfig, SelectionResponse
-from ._loaders import ConfigValidationError, load_selection_config, load_qa_config
 
 
 __all__ = [
@@ -8,6 +19,7 @@ __all__ = [
     "ProviderChoice",
     "AssistantParams",
     "ReaderType",
+    "SelectionCriterion",
     "SelectionConfig",
     "SelectionResponse",
     "QACriterion",
@@ -15,4 +27,6 @@ __all__ = [
     "ConfigValidationError",
     "load_selection_config",
     "load_qa_config",
+    "SCHEMA_FILES",
+    "write_schema_files",
 ]

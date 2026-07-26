@@ -15,14 +15,32 @@ def study_selection_config():
         "review_topic": "software architecture of entity resolution systems",
         "additional_context": "Focus on reusable software systems, frameworks, or tools rather than isolated matching algorithms.",
         "inclusion_criteria": [
-            "published between 2010 and 2025",
-            "written in English and is a primary study",
-            "the title or abstract refers to a tool, framework, system, library, or software architecture for entity resolution",
+            {
+                "label": "published 2010-2025",
+                "description": "published between 2010 and 2025",
+            },
+            {
+                "label": "english primary",
+                "description": "written in English and is a primary study",
+            },
+            {
+                "label": "er software",
+                "description": "the title or abstract refers to a tool, framework, system, library, or software architecture for entity resolution",
+            },
         ],
         "exclusion_criteria": [
-            "is a review, survey, tutorial, position paper, or another secondary study",
-            "the title or abstract focuses only on a matching subproblem such as blocking, clustering, classification, or filtering",
-            "the title or abstract describes only a domain-specific application without referring to a generic entity resolution software artifact",
+            {
+                "label": "secondary study",
+                "description": "is a review, survey, tutorial, position paper, or another secondary study",
+            },
+            {
+                "label": "matching subproblem",
+                "description": "the title or abstract focuses only on a matching subproblem such as blocking, clustering, classification, or filtering",
+            },
+            {
+                "label": "domain-specific only",
+                "description": "the title or abstract describes only a domain-specific application without referring to a generic entity resolution software artifact",
+            },
         ],
     }
 

@@ -12,24 +12,29 @@ on the following **topic**: {{ review_topic }}
 
 ## Selection Criteria
 
+A set of selection criteria are provided below, each formatted as
+"{label}: {description}".
+
 ### Inclusion
 
 The primary study may be selected for the systematic literature review *ONLY*
 if it meets **ALL** of the following criteria:
 {% for criterion in inclusion_criteria %}
-* {{ criterion }}{% endfor %}
+* **{{ criterion.label }}**: {{ criterion.description }}{% endfor %}
 
 ### Exclusion
 
 The primary study must be excluded from the systematic literature review if it
 fails **ANY** of the following criteria:
 {% for criterion in exclusion_criteria %}
-* {{ criterion }}{% endfor %}
+* **{{ criterion.label }}**: {{ criterion.description }}{% endfor %}
 
 ## Output Format
 
 * Only one of two verdicts is valid: "include" or "exclude", nothing else.
 * All "exclude" verdicts **MUST** be accompanied by a justification.
+* The justification is a comma separated list of the _labels_ of the violated
+  inclusion criteria, _together with_ the fulfilled exclusion criteria.
 * The answer **MUST** be valid JSON. Any additional text is strictly forbidden.
 * The answer JSON object specifies the verdict in the "answer" property and the
   justification in the "justification" property.
