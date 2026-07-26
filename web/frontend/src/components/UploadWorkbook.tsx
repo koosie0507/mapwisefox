@@ -1,4 +1,4 @@
-import {useRef, useState, type FormEvent} from "react";
+import {useEffect, useRef, useState, type FormEvent} from "react";
 import type {AppConfig} from "../models/config.ts";
 import styles from "../pages/Home.module.css";
 
@@ -9,11 +9,16 @@ type UploadWorkbookProps = {
 
 export default function UploadWorkbook({config, onUpload}: UploadWorkbookProps) {
     const formRef = useRef<HTMLFormElement>(null);
+    const columnRef = useRef<HTMLInputElement>(null);
     const [mappings, setMappings] = useState<Array<{field: string; column: string}>>([]);
     const [field, setField] = useState("");
     const [column, setColumn] = useState("");
     const allowedFields = config.supportedFields.filter(({name}) => !mappings.some((mapping) => mapping.field === name));
     const selectedField = allowedFields.some(({name}) => name === field);
+
+    useEffect(() => {
+        if (selectedField) columnRef.current?.focus();
+    }, [selectedField]);
 
     function submit(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
@@ -58,7 +63,11 @@ export default function UploadWorkbook({config, onUpload}: UploadWorkbookProps) 
                         <datalist id="supported-fields">
                             {allowedFields.map(({name, mandatory}) => <option key={name} value={name}>{mandatory ? "mandatory" : "optional"}</option>)}
                         </datalist></>}
-                    {selectedField && <><span aria-hidden="true">=</span><input aria-label="Workbook column" value={column} onChange={(event) => setColumn(event.target.value)} placeholder="Workbook column"/></>}
+                    {selectedField && <><span aria-hidden="true">=</span><input ref={columnRef} aria-label="Workbook column" value={column} onChange={(event) => setColumn(event.target.value)} onKeyDown={(event) => {
+                        if (event.key !== "Enter") return;
+                        event.preventDefault();
+                        addMapping();
+                    }} placeholder="Workbook column"/></>}
                     <button type="button" onClick={addMapping} disabled={!selectedField || !column.trim()}>Add mapping</button>
                 </div>
             </fieldset>

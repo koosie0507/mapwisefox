@@ -28,6 +28,8 @@ BOOL_PARSER_TEST_DATA = [
     ("no", False),
     ("True", True),
     ("False", False),
+    ("=TRUE()", True),
+    ("=FALSE()", False),
     ("true", True),
     ("false", False),
     ("include", True),

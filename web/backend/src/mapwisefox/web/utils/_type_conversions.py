@@ -1,8 +1,19 @@
 from typing import Any
 
 
-__STR_TRUE = {"yes", "y", "true", "t", "on", "1", "include"}
-__STR_FALSE = {"no", "n", "false", "f", "off", "0", "exclude", ""}
+__STR_TRUE = {"yes", "y", "true", "=true", "=true()", "t", "on", "1", "include"}
+__STR_FALSE = {
+    "no",
+    "n",
+    "false",
+    "=false",
+    "=false()",
+    "f",
+    "off",
+    "0",
+    "exclude",
+    "",
+}
 
 
 def any_to_bool(value: Any) -> bool:

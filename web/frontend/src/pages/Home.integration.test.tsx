@@ -91,9 +91,12 @@ describe("Home", () => {
         const user = userEvent.setup();
         render(<MemoryRouter><Home config={config}/></MemoryRouter>);
         await user.type(screen.getByLabelText("Mapwisefox field"), "title");
-        await user.type(screen.getByLabelText("Workbook column"), "article");
-        await user.click(screen.getByRole("button", {name: "Add mapping"}));
+        const workbookColumn = screen.getByLabelText("Workbook column");
+        expect(workbookColumn).toHaveFocus();
+        await user.type(workbookColumn, "article");
+        await user.keyboard("{Enter}");
         expect(screen.getByText(/title=article/)).toBeInTheDocument();
+        expect(uploadWorkbook).not.toHaveBeenCalled();
         const file = new File(["xlsx"], "studies.xlsx");
 
         await user.upload(screen.getByLabelText("Workbook file"), file);
