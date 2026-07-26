@@ -56,7 +56,7 @@ function AppRoutes({config, authenticated}: {config: AppConfig; authenticated: b
 }
 
 function Footer({backendVersion}: {backendVersion: string}): ReactElement {
-    return <footer className="footer-container"><small>Entity Resolution Software Architecture - A systematic mapping study <span>Frontend v{__FRONTEND_VERSION__} | Backend v{backendVersion}</span></small></footer>;
+    return <footer className="footer-container"><small><span>MapwiseFox | Frontend v{__FRONTEND_VERSION__} | Backend v{backendVersion}</span></small></footer>;
 }
 
 export default function App(): ReactElement {
