@@ -17,6 +17,7 @@ from mapwisefox.web.model._evidence import Evidence
 type Decision = Literal["undecided", "included", "excluded"]
 
 LIST_SEPARATOR = ";"
+EXCLUSION_REASON_COLUMN_ALIASES = ("exclude_reason", "exclude_reasons")
 DECISION_VALUES: dict[str, Decision] = {
     "": "undecided",
     "include": "included",
@@ -115,6 +116,25 @@ def _validate_headers(values: list[Any], row: int) -> list[str]:
     return headers
 
 
+def _resolve_exclusion_reason_column(headers: list[str], column: str) -> str:
+    if column not in EXCLUSION_REASON_COLUMN_ALIASES or column in headers:
+        return column
+    return next(
+        (alias for alias in EXCLUSION_REASON_COLUMN_ALIASES if alias in headers), column
+    )
+
+
+def _exclusion_reason_value(values: dict[str, Any], column: str) -> Any:
+    columns = (
+        (column, *EXCLUSION_REASON_COLUMN_ALIASES)
+        if column in EXCLUSION_REASON_COLUMN_ALIASES
+        else (column,)
+    )
+    return next(
+        (values.get(name) for name in columns if not _is_blank(values.get(name))), None
+    )
+
+
 def _record_count(worksheet, header_row: int, width: int) -> int:
     rows = range(header_row + 1, worksheet.max_row + 1)
     populated = [
@@ -206,6 +226,9 @@ class WorkbookRepository:
                 )
             worksheet = workbook[selected_worksheet]
             header_row, headers = _headers(worksheet)
+            exclusion_reason_column = _resolve_exclusion_reason_column(
+                headers, exclusion_reason_column
+            )
             cls._validate_import_columns(
                 headers, field_mappings, decision_column, exclusion_reason_column
             )
@@ -369,7 +392,10 @@ class WorkbookRepository:
 
     def _exclusion_reason_col_index(self, worksheet) -> int:
         headers = self._current_headers(worksheet)
-        return headers.index(self.metadata.exclusion_reason_column) + 1
+        column = _resolve_exclusion_reason_column(
+            headers, self.metadata.exclusion_reason_column
+        )
+        return headers.index(column) + 1
 
     def _to_record(self, record_index: int, values: dict[str, Any]) -> ScreeningRecord:
         from mapwisefox.web.api.workbooks._cache import (
@@ -383,7 +409,12 @@ class WorkbookRepository:
             "" if _is_blank(decision_value) else str(decision_value).strip().lower()
         )
         reasons = Evidence._parse_list(
-            {"reasons": values[self.metadata.exclusion_reason_column]}, "reasons"
+            {
+                "reasons": _exclusion_reason_value(
+                    values, self.metadata.exclusion_reason_column
+                )
+            },
+            "reasons",
         )
         evidence_values = {
             _evidence_field(field): _mapped_value(

@@ -111,6 +111,56 @@ def test_import_appends_missing_screening_columns(imported_workbook):
     assert headers[-2:] == ["decision", "reason"]
 
 
+def test_import_reads_plural_exclusion_reason_column(source_workbook, tmp_path):
+    workbook = load_workbook(source_workbook)
+    worksheet = workbook["Studies"]
+    worksheet["L1"] = "exclude_reasons"
+    worksheet["L2"] = "not software;not english"
+    workbook.save(source_workbook)
+    workbook.close()
+
+    destination = tmp_path / "output.xlsx"
+    metadata = WorkbookRepository.import_workbook(
+        source_workbook, destination, "Studies", {}, "decision", "exclude_reason"
+    )
+
+    assert WorkbookRepository(destination, metadata).get(0).exclusion_reasons == [
+        "not software",
+        "not english",
+    ]
+
+
+def test_get_reads_plural_reasons_with_legacy_singular_metadata(
+    source_workbook, tmp_path
+):
+    workbook = load_workbook(source_workbook)
+    worksheet = workbook["Studies"]
+    worksheet["L1"] = "exclude_reasons"
+    worksheet["L2"] = "not software;not english"
+    workbook.save(source_workbook)
+    workbook.close()
+
+    destination = tmp_path / "output.xlsx"
+    metadata = WorkbookRepository.import_workbook(
+        source_workbook, destination, "Studies", {}, "decision", "exclude_reason"
+    )
+    workbook = load_workbook(destination)
+    workbook["Studies"]["N1"] = "exclude_reason"
+    workbook.save(destination)
+    workbook.close()
+
+    legacy_metadata = metadata.model_copy(
+        update={"exclusion_reason_column": "exclude_reason"}
+    )
+
+    assert WorkbookRepository(destination, legacy_metadata).get(
+        0
+    ).exclusion_reasons == [
+        "not software",
+        "not english",
+    ]
+
+
 def test_import_rejects_missing_mandatory_mapped_field(source_workbook, tmp_path):
     with pytest.raises(WorkbookValidationError, match="Missing") as error:
         WorkbookRepository.import_workbook(
