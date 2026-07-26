@@ -33,8 +33,8 @@ fails **ANY** of the following criteria:
 
 * Only one of two verdicts is valid: "include" or "exclude", nothing else.
 * All "exclude" verdicts **MUST** be accompanied by a justification.
-* The justification is a comma separated list of the _labels_ of the violated
-  inclusion criteria, _together with_ the fulfilled exclusion criteria.
+* Justification lists violated inclusion labels and matched exclusion labels,
+  comma-separated.
 * The answer **MUST** be valid JSON. Any additional text is strictly forbidden.
 * The answer JSON object specifies the verdict in the "answer" property and the
   justification in the "justification" property.

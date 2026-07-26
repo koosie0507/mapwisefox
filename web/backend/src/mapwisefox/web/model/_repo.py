@@ -10,6 +10,7 @@ from openpyxl import load_workbook
 from openpyxl.utils.exceptions import InvalidFileException
 from pydantic import BaseModel, ConfigDict, Field
 
+from mapwisefox.common.config import SelectionConfig
 from mapwisefox.web.model._evidence import Evidence
 
 
@@ -50,6 +51,9 @@ class WorkbookMetadata(BaseModel):
     record_count: int = Field(alias="recordCount")
     unfilled_record_count: int = Field(default=0, alias="unfilledRecordCount")
     evidence_columns: dict[str, str] = Field(alias="evidenceColumns")
+    selection_criteria: SelectionConfig | None = Field(
+        default=None, alias="selectionCriteria"
+    )
 
 
 @dataclass(frozen=True)
@@ -205,6 +209,7 @@ class WorkbookRepository:
         expected_columns: list[str],
         decision_column: str,
         exclusion_reason_column: str,
+        selection_criteria: SelectionConfig | None = None,
     ) -> WorkbookMetadata:
         try:
             workbook = load_workbook(source)
@@ -243,6 +248,7 @@ class WorkbookRepository:
                 exclusionReasonColumn=exclusion_reason_column,
                 recordCount=record_count,
                 evidenceColumns=evidence_columns,
+                selectionCriteria=selection_criteria,
             )
             cls._validate_decisions(worksheet, metadata, headers)
             destination.parent.mkdir(parents=True, exist_ok=True)

@@ -28,6 +28,7 @@ const screening = {
     firstUndecidedIndex: 0,
     nextUndecidedIndex: null,
     complete: false,
+    selectionCriteria: null,
 };
 
 describe("API facade", () => {

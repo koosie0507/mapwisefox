@@ -3,6 +3,7 @@ import InclusionStatus from "./InclusionStatus.tsx";
 import {type StatusChangedArgs, SelectionCriterion} from "./SelectionCriterion.tsx";
 import "../styles/form.css";
 import type {EvidenceViewModel} from "../models/viewmodel.ts";
+import type {SelectionConfig} from "../models/transfer.ts";
 
 export type IncludeStatusArgs = {
     include: boolean,
@@ -12,10 +13,11 @@ export type IncludeStatusArgs = {
 type SelectionCriteriaFormProps = {
     evidence: EvidenceViewModel
     fileName: string
+    criteria: SelectionConfig | null
     onFormSubmit: (args: IncludeStatusArgs) => Promise<void>;
 }
 
-export function SelectionCriteriaForm({evidence, onFormSubmit}: SelectionCriteriaFormProps) {
+export function SelectionCriteriaForm({evidence, criteria, onFormSubmit}: SelectionCriteriaFormProps) {
     const [include, setInclude] = useState(evidence.include)
     const [excludeReasons, setExcludeReasons] = useState<string[]>(evidence.excludeReasons)
 
@@ -52,84 +54,30 @@ export function SelectionCriteriaForm({evidence, onFormSubmit}: SelectionCriteri
     return (
         <form className="criteria-form" onSubmit={submitData}>
             <InclusionStatus include={include} excludeReasons={excludeReasons} />
-            <h3>Inclusion Criteria</h3>
-            <ul>
-                <SelectionCriterion evidence={evidence} criterionId="include_0"
-                           criterionType="include"
-                           excludeReason="not er"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    is about entity resolution (or a derivative)
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="include_1"
-                           criterionType="include"
-                           excludeReason="not published 2010-2025"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    01.01.2010 &dash; 15.06.2025
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="include_2"
-                           criterionType="include"
-                           excludeReason="not english"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Written in English
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="include_3"
-                           criterionType="include"
-                           excludeReason="not accessible"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Access to full text available
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="include_4"
-                           criterionType="include"
-                           excludeReason="not most comprehensive system description"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Most comprehensive description of system according to authors
-                </SelectionCriterion>
-            </ul>
-            <h3>Exclusion Criteria</h3>
-            <ul>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_1"
-                           criterionType="exclude"
-                           excludeReason="not peer reviewed"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Does not have peer-reviewed paper
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_2"
-                           criterionType="exclude"
-                           excludeReason="not software"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Does not describe software
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_3"
-                           criterionType="exclude"
-                           excludeReason="not e2e"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Focused on a component of ER without mentioning the end-to-end ER process
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_4"
-                           criterionType="exclude"
-                           excludeReason="not generic er"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Does not describe ER, but an application of ER
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_5"
-                           criterionType="exclude"
-                           excludeReason="not system"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Describes a technique, method or experiment instead of a full-blown system
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_6"
-                           criterionType="exclude"
-                           excludeReason="secondary study"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Is a secondary study (review, mapping study, etc.)
-                </SelectionCriterion>
-                <SelectionCriterion evidence={evidence} criterionId="exclude_7"
-                           criterionType="exclude"
-                           excludeReason="low quality"
-                           onStatusChanged={handleIncludeStatusChanged}>
-                    Is low quality(<i>only after QA</i>)
-                </SelectionCriterion>
-            </ul>
+            {criteria && <>
+                <h3>Inclusion Criteria</h3>
+                <ul>
+                    {criteria.inclusion_criteria.map((criterion, i) =>
+                        <SelectionCriterion key={`include_${i}`} evidence={evidence} criterionId={`include_${i}`}
+                                   criterionType="include"
+                                   excludeReason={criterion.label}
+                                   onStatusChanged={handleIncludeStatusChanged}>
+                            {criterion.description}
+                        </SelectionCriterion>
+                    )}
+                </ul>
+                <h3>Exclusion Criteria</h3>
+                <ul>
+                    {criteria.exclusion_criteria.map((criterion, i) =>
+                        <SelectionCriterion key={`exclude_${i}`} evidence={evidence} criterionId={`exclude_${i}`}
+                                   criterionType="exclude"
+                                   excludeReason={criterion.label}
+                                   onStatusChanged={handleIncludeStatusChanged}>
+                            {criterion.description}
+                        </SelectionCriterion>
+                    )}
+                </ul>
+            </>}
         </form>
     )
 }

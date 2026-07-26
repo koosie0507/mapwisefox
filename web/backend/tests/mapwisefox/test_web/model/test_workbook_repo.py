@@ -1,9 +1,11 @@
 from copy import copy
+from pathlib import Path
 
 import pytest
 from openpyxl import Workbook, load_workbook
 from openpyxl.styles import PatternFill
 
+from mapwisefox.common.config import SelectionConfig
 from mapwisefox.web.model import (
     WorkbookRepository,
     WorkbookValidationError,
@@ -37,6 +39,26 @@ ROW = [
     "",
     "preserve me",
 ]
+
+
+@pytest.fixture
+def selection_criteria() -> SelectionConfig:
+    return SelectionConfig(
+        review_topic="entity resolution",
+        inclusion_criteria=[{"label": "english", "description": "written in English"}],
+        exclusion_criteria=[{"label": "not software", "description": "no software"}],
+    )
+
+
+@pytest.fixture
+def selection_config_path(tmp_path: Path) -> Path:
+    path = tmp_path / "study-selection-config.json"
+    path.write_text(
+        '{"review_topic":"entity resolution",'
+        '"inclusion_criteria":[{"label":"english","description":"written in English"}],'
+        '"exclusion_criteria":[{"label":"not software","description":"no software"}]}'
+    )
+    return path
 
 
 @pytest.fixture
@@ -156,3 +178,52 @@ def test_delete_removes_workbook_metadata(imported_workbook):
 
     assert not destination.exists()
     assert not metadata_path(destination).exists()
+
+
+def test_import_persists_selection_criteria(
+    tmp_path, source_workbook, selection_criteria
+):
+    destination = tmp_path / "with-criteria.xlsx"
+
+    metadata = WorkbookRepository.import_workbook(
+        source_workbook,
+        destination,
+        "Studies",
+        ["title"],
+        "decision",
+        "reason",
+        selection_criteria,
+    )
+
+    assert metadata.selection_criteria == selection_criteria
+    persisted = WorkbookRepository.read_metadata(destination)
+    assert persisted.selection_criteria == selection_criteria
+
+
+def test_import_omits_selection_criteria_by_default(imported_workbook):
+    destination, metadata = imported_workbook
+
+    assert metadata.selection_criteria is None
+    persisted = WorkbookRepository.read_metadata(destination)
+    assert persisted.selection_criteria is None
+
+
+def test_import_round_trips_selection_criteria_in_sidecar(
+    tmp_path, source_workbook, selection_criteria
+):
+    destination = tmp_path / "round-trip.xlsx"
+
+    WorkbookRepository.import_workbook(
+        source_workbook,
+        destination,
+        "Studies",
+        ["title"],
+        "decision",
+        "reason",
+        selection_criteria,
+    )
+
+    sidecar = metadata_path(destination).read_text(encoding="utf-8")
+
+    assert "selectionCriteria" in sidecar
+    assert "not software" in sidecar

@@ -116,7 +116,7 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
                 <p className="keywords"><strong>Keywords:</strong>{model.keywords.join(", ")}</p>
             </main>
             <aside className={`${styles.rightSidebar} sidebar`}>
-                <SelectionCriteriaForm evidence={model} fileName={fileName} onFormSubmit={toggleStatus}/>
+                <SelectionCriteriaForm evidence={model} fileName={fileName} criteria={screening?.selectionCriteria ?? null} onFormSubmit={toggleStatus}/>
             </aside>
             <footer className={styles.bottomPanel}>
                 <div className={styles.buttonBar}>

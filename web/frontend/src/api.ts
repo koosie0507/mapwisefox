@@ -68,7 +68,8 @@ function isScreeningResponse(value: unknown): value is ScreeningResponse {
         && typeof value.recordCount === "number"
         && typeof value.decision === "string"
         && Array.isArray(value.exclusionReasons)
-        && typeof value.complete === "boolean";
+        && typeof value.complete === "boolean"
+        && (value.selectionCriteria === null || isRecord(value.selectionCriteria));
 }
 
 function parseScreening(value: unknown): ScreeningResponse {

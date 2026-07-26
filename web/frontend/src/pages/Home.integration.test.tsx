@@ -52,10 +52,16 @@ describe("Home", () => {
         vi.mocked(listWorkbooks).mockResolvedValueOnce([]).mockResolvedValue([workbook]);
         render(<MemoryRouter><Home config={config}/></MemoryRouter>);
         const file = new File(["xlsx"], "studies.xlsx", {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+        const criteria = new File(["{}"], "criteria.json", {type: "application/json"});
 
         await user.upload(screen.getByLabelText("Workbook file"), file);
+        await user.upload(screen.getByLabelText("Selection criteria (optional, .json)"), criteria);
         fireEvent.submit(screen.getByRole("button", {name: "Upload"}).closest("form")!);
         await waitFor(() => expect(uploadWorkbook).toHaveBeenCalled());
+        expect(uploadWorkbook).toHaveBeenCalledWith(expect.any(FormData));
+        const sent = vi.mocked(uploadWorkbook).mock.calls[0][0] as FormData;
+        expect(sent.get("file")).toBeInstanceOf(File);
+        expect(sent.get("selectionCriteria")).toBeInstanceOf(File);
         expect(screen.getByRole("status")).toHaveTextContent("Workbook imported.");
 
         vi.mocked(listWorkbooks).mockResolvedValue([workbook]);
@@ -63,6 +69,21 @@ describe("Home", () => {
         await user.click(screen.getByRole("button", {name: "Delete studies.xlsx"}));
         await user.click(screen.getByRole("button", {name: "Yes"}));
         expect(await screen.findByRole("status")).toHaveTextContent("Workbook deleted.");
+    });
+
+    it("uploads a workbook without selection criteria", async () => {
+        const user = userEvent.setup();
+        vi.mocked(listWorkbooks).mockResolvedValueOnce([]).mockResolvedValue([workbook]);
+        render(<MemoryRouter><Home config={config}/></MemoryRouter>);
+        const file = new File(["xlsx"], "studies.xlsx", {type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"});
+
+        await user.upload(screen.getByLabelText("Workbook file"), file);
+        fireEvent.submit(screen.getByRole("button", {name: "Upload"}).closest("form")!);
+        await waitFor(() => expect(uploadWorkbook).toHaveBeenCalled());
+        const sent = vi.mocked(uploadWorkbook).mock.calls[0][0] as FormData;
+        expect(sent.get("file")).toBeInstanceOf(File);
+        const criteria = sent.get("selectionCriteria");
+        expect(criteria === null || (criteria instanceof File && criteria.size === 0)).toBe(true);
     });
 
     it("reports upload and delete failures", async () => {

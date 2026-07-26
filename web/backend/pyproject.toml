@@ -10,6 +10,7 @@ dependencies = [
     "authlib>=1.6.0",
     "cachetools>=6.1.0",
     "fastapi[all]>=0.115.14",
+    "mapwisefox-common-config",
     "numpy>=2.3.1",
     "openpyxl>=3.1.5",
     "pandas>=2.3.0",
@@ -22,6 +23,9 @@ web = "mapwisefox.web:run_command"
 
 [tool.uv]
 package = true
+
+[tool.uv.sources]
+mapwisefox-common-config = { workspace = true }
 
 [tool.uv.build-backend]
 module-name = "mapwisefox.web"
