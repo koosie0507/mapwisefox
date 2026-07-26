@@ -1,0 +1,58 @@
+[build-system]
+requires = ["uv_build>=0.8.14,<0.9.0"]
+build-backend = "uv_build"
+
+[project]
+name = "mapwisefox-common-config"
+version = "0.1.0"
+dependencies = [
+    "pydantic>=2.11.7",
+]
+
+[tool.uv]
+package = true
+
+[tool.uv.build-backend]
+module-name = "mapwisefox.common.config"
+namespace = true
+
+[tool.setuptools.package-data]
+"*" = ["*.schema.json"]
+
+[tool.bumpversion]
+current_version = "0.1.0"
+parse = """(?x)
+    (?P<major>0|[1-9]\\d*)\\.
+    (?P<minor>0|[1-9]\\d*)\\.
+    (?P<patch>0|[1-9]\\d*)
+    (?:-(?P<pre_label>[a-zA-Z-]+)(?P<pre_number>:0|[1-9]\\d*))?
+"""
+serialize = [
+    "{major}.{minor}.{patch}-{pre_label}{pre_number}",
+    "{major}.{minor}.{patch}",
+]
+
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = false
+sign_tags = false
+tag_name = "common-config-v{new_version}"
+tag_message = "Bump common-config version: {current_version} → {new_version}"
+allow_dirty = true
+commit = true
+message = "Bump common-config version: {current_version} → {new_version}"
+moveable_tags = []
+commit_args = ""
+setup_hooks = []
+pre_commit_hooks = []
+post_commit_hooks = []
+
+[tool.bumpversion.parts.pre_label]
+values = ["dev", "final"]
+optional_value= "final"
+
+[tool.bumpversion.parts.pre_number]
+first_value = 1

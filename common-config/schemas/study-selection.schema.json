@@ -1,0 +1,63 @@
+{
+  "$defs": {
+    "SelectionCriterion": {
+      "properties": {
+        "label": {
+          "title": "Label",
+          "type": "string"
+        },
+        "description": {
+          "title": "Description",
+          "type": "string"
+        }
+      },
+      "required": [
+        "label",
+        "description"
+      ],
+      "title": "SelectionCriterion",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "review_topic": {
+      "title": "Review Topic",
+      "type": "string"
+    },
+    "additional_context": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Additional Context"
+    },
+    "inclusion_criteria": {
+      "items": {
+        "$ref": "#/$defs/SelectionCriterion"
+      },
+      "minItems": 1,
+      "title": "Inclusion Criteria",
+      "type": "array"
+    },
+    "exclusion_criteria": {
+      "items": {
+        "$ref": "#/$defs/SelectionCriterion"
+      },
+      "minItems": 1,
+      "title": "Exclusion Criteria",
+      "type": "array"
+    }
+  },
+  "required": [
+    "review_topic",
+    "inclusion_criteria",
+    "exclusion_criteria"
+  ],
+  "title": "SelectionConfig",
+  "type": "object"
+}
