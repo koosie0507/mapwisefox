@@ -36,7 +36,8 @@ def test_canonical_qa_accepts_http_pdf_for_each_reader(
     )
     reader_factory = MagicMock(return_value=superficial_reader)
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory", reader_factory
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
+        reader_factory,
     )
     result = runner.invoke(
         study_qa,
@@ -99,7 +100,8 @@ def test_canonical_qa_accepts_local_file_url_without_http(
     )
     reader_factory = MagicMock(return_value=superficial_reader)
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory", reader_factory
+        "mapwisefox.assistant.quality_assessment._study_qa.reader_factory",
+        reader_factory,
     )
 
     result = runner.invoke(

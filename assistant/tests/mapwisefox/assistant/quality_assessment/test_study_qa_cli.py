@@ -140,7 +140,8 @@ def test_study_qa_public_command_writes_scores_and_evaluation(
     provider_factory = MagicMock(return_value=provider)
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df",
+        MagicMock(return_value=data),
     )
     monkeypatch.setattr(
         "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
@@ -179,7 +180,8 @@ def test_study_qa_public_command_leaves_unscored_criterion_empty(
     reader.read_file.return_value = "paper text"
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df",
+        MagicMock(return_value=data),
     )
     monkeypatch.setattr(
         "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
@@ -224,7 +226,8 @@ def test_study_qa_public_command_uses_failsafe_reader_after_reader_failure(
     }
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df",
+        MagicMock(return_value=data),
     )
     monkeypatch.setattr(
         "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
@@ -259,7 +262,8 @@ def test_study_qa_public_command_records_download_failure(
     provider.ensure_model.return_value = True
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df",
+        MagicMock(return_value=data),
     )
     monkeypatch.setattr(
         "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
@@ -295,7 +299,8 @@ def test_study_qa_public_command_skips_evaluation_failure(
     )
 
     monkeypatch.setattr(
-        "mapwisefox.assistant.quality_assessment._study_qa.load_df", MagicMock(return_value=data)
+        "mapwisefox.assistant.quality_assessment._study_qa.load_df",
+        MagicMock(return_value=data),
     )
     monkeypatch.setattr(
         "mapwisefox.assistant.quality_assessment._study_qa.FileProvider",
