@@ -1,7 +1,7 @@
 {
   "name": "mapwisefox-web-frontend",
   "private": true,
-  "version": "0.7.0",
+  "version": "0.8.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "vitest",
     "test:run": "vitest run",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --outputFile.junit=../../.test-reports/frontend/results.xml  --coverage --coverage.reportsDirectory=../../.test-reports/frontend"
   },
   "dependencies": {
     "lucide-react": "^0.542.0",

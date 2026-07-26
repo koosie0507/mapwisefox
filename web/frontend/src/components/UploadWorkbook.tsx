@@ -20,6 +20,8 @@ export default function UploadWorkbook({config, onUpload}: UploadWorkbookProps) 
         <form ref={formRef} className={styles.uploadForm} encType="multipart/form-data" onSubmit={submit}>
             <label htmlFor="workbook-file">Workbook file</label>
             <input id="workbook-file" type="file" name="file" accept=".xlsx" required/>
+            <label htmlFor="criteria-file">Selection criteria (optional, .json)</label>
+            <input id="criteria-file" type="file" name="selectionCriteria" accept=".json,application/json"/>
             <input type="text" name="worksheetName" defaultValue={config.worksheetName} placeholder="Worksheet name" required/>
             <input type="text" name="expectedColumns" defaultValue={config.expectedColumns} placeholder="Expected columns (CSV)" required/>
             <input type="hidden" name="decisionColumn" value={config.decisionColumn}/>

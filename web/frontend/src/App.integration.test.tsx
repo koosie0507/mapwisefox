@@ -34,6 +34,7 @@ function screeningResponse() {
         firstUndecidedIndex: 0,
         nextUndecidedIndex: null,
         complete: false,
+        selectionCriteria: null,
     };
 }
 

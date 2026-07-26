@@ -24,14 +24,17 @@ export default defineConfig({
         environment: "jsdom",
         setupFiles: ["./src/test/setup.ts"],
         reporters: process.env.GITHUB_ACTIONS === 'true'
-            ? ['default', 'github-actions']
-            : ['default'],
+            ? ['default', 'github-actions', 'junit']
+            : ['default', 'junit'],
         coverage: {
             provider: "v8",
+            reporter: ['text', 'json-summary', 'json'],
+            reportOnFailure: true,
             include: ["src/**/*.{ts,tsx}"],
             exclude: ["src/main.ts", "src/vite-env.d.ts"],
             thresholds: {
                 lines: 90,
+                branches: 80,
             },
         },
     },

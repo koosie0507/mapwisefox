@@ -4,12 +4,13 @@ build-backend = "uv_build"
 
 [project]
 name = "mapwisefox-web-backend"
-version = "0.7.0"
+version = "0.8.0"
 dependencies = [
     "arrow>=1.3.0",
     "authlib>=1.6.0",
     "cachetools>=6.1.0",
     "fastapi[all]>=0.115.14",
+    "mapwisefox-common-config",
     "numpy>=2.3.1",
     "openpyxl>=3.1.5",
     "pandas>=2.3.0",
@@ -23,12 +24,15 @@ web = "mapwisefox.web:run_command"
 [tool.uv]
 package = true
 
+[tool.uv.sources]
+mapwisefox-common-config = { workspace = true }
+
 [tool.uv.build-backend]
 module-name = "mapwisefox.web"
 namespace = true
 
 [tool.bumpversion]
-current_version = "0.7.0"
+current_version = "0.8.0"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.

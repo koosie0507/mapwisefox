@@ -1,0 +1,19 @@
+{
+  "review_topic": "software architecture of entity resolution systems",
+  "additional_context": "Apply these rules only to the title, abstract, and minimal bibliographic metadata.",
+  "inclusion_criteria": [
+    {"label": "is er", "description": "Is about entity resolution (or a derivative)"},
+    {"label": "2010-2025", "description": "01.01.2010 - 15.06.2025"},
+    {"label": "english", "description": "Written in English"},
+    {"label": "accessible", "description": "Access to full text available"},
+    {"label": "most comprehensive", "description": "Most comprehensive description of system according to authors"}
+  ],
+  "exclusion_criteria": [
+    {"label": "not peer reviewed", "description": "Does not have peer-reviewed paper"},
+    {"label": "not software", "description": "Does not describe software"},
+    {"label": "not e2e", "description": "Focused on a component of ER without mentioning the end-to-end ER process"},
+    {"label": "not generic er", "description": "Does not describe ER, but an application of ER"},
+    {"label": "not system", "description": "Describes a technique, method or experiment instead of a full-blown system"},
+    {"label": "secondary study", "description": "Is a secondary study (review, mapping study, etc.)"}
+  ]
+}

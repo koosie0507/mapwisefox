@@ -11,7 +11,7 @@ from fastapi.testclient import TestClient
 from mapwisefox.web._auth import FileOidcCache, TokenService, user_from_claims
 from mapwisefox.web._origin import OriginGuardMiddleware
 from mapwisefox.web.config import AppSettings
-from mapwisefox.web.controller import auth_router
+from mapwisefox.web.hooks import auth_hooks
 
 
 def test_user_from_claims_uses_issuer_and_subject():
@@ -86,7 +86,7 @@ def auth_client(tmp_path):
     app.state.oidc = object()
     app.state.tokens = TokenService(config.token_secret, config.public_url)
     app.add_middleware(OriginGuardMiddleware, config=config)
-    app.include_router(auth_router)
+    app.include_router(auth_hooks)
     return TestClient(app)
 
 
