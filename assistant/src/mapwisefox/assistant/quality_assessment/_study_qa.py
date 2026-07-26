@@ -279,7 +279,7 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     required=True,
     envvar="MWF_ASSISTANT_QA_CONFIG",
     help=r"""path to a JSON configuration containing the QA topic and scoring
-    criteria (see assistant/schemas/study-qa.schema.json)""",
+    criteria (see common-config/schemas/study-qa.schema.json)""",
 )
 @click.option(
     "-e",

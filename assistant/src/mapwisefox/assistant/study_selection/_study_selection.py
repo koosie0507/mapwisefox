@@ -8,7 +8,7 @@ from pathlib import Path
 import click
 
 from mapwisefox.assistant.config import ConfigValidationError, load_selection_config
-from mapwisefox.assistant.config._schemas import SelectionResponse
+from mapwisefox.common.config import SelectionResponse
 from mapwisefox.assistant.tools import load_df, load_template
 from mapwisefox.assistant.tools.callbacks import (
     make_stderr_callback,
@@ -37,7 +37,7 @@ DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
     required=True,
     envvar="MWF_ASSISTANT_SELECTION_CONFIG",
     help="path to a JSON configuration containing the study objective and "
-    "inclusion/exclusion criteria (see assistant/schemas/study-selection.schema.json)",
+    "inclusion/exclusion criteria (see common-config/schemas/study-selection.schema.json)",
 )
 @click.option(
     "--limit",

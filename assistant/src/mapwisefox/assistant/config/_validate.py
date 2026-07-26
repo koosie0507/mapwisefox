@@ -1,6 +1,6 @@
 import click
 
-from mapwisefox.assistant.config._loaders import (
+from mapwisefox.common.config import (
     ConfigValidationError,
     load_qa_config,
     load_selection_config,
@@ -19,7 +19,7 @@ _LOADERS = {
 
 The configuration file is checked against the same schema used by the
 corresponding command locally, without contacting any LLM provider.
-The JSON Schema files are publicly available under assistant/schemas for
+The JSON Schema files are publicly available under common-config/schemas for
 editor/IDE integration.""",
 )
 @click.option(

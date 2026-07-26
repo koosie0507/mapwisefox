@@ -135,28 +135,42 @@ def test_study_selection_passes_response_schema_to_generator(
     "invalid_config",
     [
         {"review_topic": "x"},
-        {"review_topic": "x", "inclusion_criteria": ["abc"]},
-        {"inclusion_criteria": ["abc"], "exclusion_criteria": ["def"]},
+        {
+            "review_topic": "x",
+            "inclusion_criteria": [{"label": "a", "description": "b"}],
+        },
+        {
+            "inclusion_criteria": [{"label": "a", "description": "b"}],
+            "exclusion_criteria": [{"label": "c", "description": "d"}],
+        },
         {
             "review_topic": 123,
-            "inclusion_criteria": ["abc"],
-            "exclusion_criteria": ["def"],
+            "inclusion_criteria": [{"label": "a", "description": "b"}],
+            "exclusion_criteria": [{"label": "c", "description": "d"}],
         },
         {
             "review_topic": "x",
             "inclusion_criteria": "abc",
-            "exclusion_criteria": ["def"],
+            "exclusion_criteria": [{"label": "c", "description": "d"}],
         },
         {
             "review_topic": "x",
-            "inclusion_criteria": ["abc"],
+            "inclusion_criteria": [{"label": "a", "description": "b"}],
             "exclusion_criteria": "def",
         },
         {
             "review_topic": "x",
             "additional_context": 123,
-            "inclusion_criteria": ["abc"],
-            "exclusion_criteria": "def",
+            "inclusion_criteria": [{"label": "a", "description": "b"}],
+            "exclusion_criteria": [{"label": "c", "description": "d"}],
+        },
+        {
+            "review_topic": "x",
+            "inclusion_criteria": [
+                {"label": "a", "description": "b"},
+                {"label": "a", "description": "dup"},
+            ],
+            "exclusion_criteria": [{"label": "c", "description": "d"}],
         },
     ],
 )
