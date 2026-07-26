@@ -1,3 +1,5 @@
+from importlib.metadata import version
+
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -27,6 +29,7 @@ class FrontendConfig(BaseModel):
     supported_fields: list[SupportedField] = Field(alias="supportedFields")
     decision_column: str = Field(alias="decisionColumn")
     exclusion_reason_column: str = Field(alias="exclusionReasonColumn")
+    backend_version: str = Field(alias="backendVersion")
 
 
 @router.get("/config", response_model=FrontendConfig, response_model_by_alias=True)
@@ -45,4 +48,5 @@ def frontend_config(
         ],
         decisionColumn=config.decision_column,
         exclusionReasonColumn=config.exclusion_reason_column,
+        backendVersion=version("mapwisefox-web-backend"),
     )

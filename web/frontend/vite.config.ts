@@ -1,8 +1,20 @@
 import {defineConfig} from "vitest/config";
 import react from "@vitejs/plugin-react";
+import {readFileSync} from "node:fs";
+
+function frontendVersion(): string {
+    const packageJson: unknown = JSON.parse(readFileSync(new URL("./package.json", import.meta.url), "utf8"));
+    if (typeof packageJson !== "object" || packageJson === null || !("version" in packageJson) || typeof packageJson.version !== "string") {
+        throw new Error("package.json must define a version.");
+    }
+    return packageJson.version;
+}
 
 export default defineConfig({
     plugins: [react()],
+    define: {
+        __FRONTEND_VERSION__: JSON.stringify(frontendVersion()),
+    },
     css: {
         modules: {
             localsConvention: "camelCase",

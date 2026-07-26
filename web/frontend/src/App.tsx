@@ -46,16 +46,17 @@ function AppRoutes({config, authenticated}: {config: AppConfig; authenticated: b
         <>
             <NavigationHeader authenticated={authenticated}/>
             <Routes>
-                <Route path="/" element={<><Home config={config}/><Footer/></>}/>
+                <Route path="/" element={<Home config={config}/>}/>
                 <Route path="/evidence/:fileName" element={<EvidencePage/>}/>
                 <Route path="*" element={<ErrorPage message="Page not found."/>}/>
             </Routes>
+            <Footer backendVersion={config.backendVersion}/>
         </>
     );
 }
 
-function Footer(): ReactElement {
-    return <footer className="footer-container"><small>Entity Resolution Software Architecture - A systematic mapping study</small></footer>;
+function Footer({backendVersion}: {backendVersion: string}): ReactElement {
+    return <footer className="footer-container"><small><span>MapwiseFox | Frontend v{__FRONTEND_VERSION__} | Backend v{backendVersion}</span></small></footer>;
 }
 
 export default function App(): ReactElement {

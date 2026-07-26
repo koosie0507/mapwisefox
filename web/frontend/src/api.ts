@@ -44,6 +44,7 @@ function parseConfig(value: unknown): AppConfig {
         supportedFields: parseSupportedFields(value.supportedFields),
         decisionColumn: requiredString(value.decisionColumn, "decisionColumn"),
         exclusionReasonColumn: requiredString(value.exclusionReasonColumn, "exclusionReasonColumn"),
+        backendVersion: requiredString(value.backendVersion, "backendVersion"),
     };
 }
 

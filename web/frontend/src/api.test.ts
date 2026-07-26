@@ -13,6 +13,7 @@ const config = {
     supportedFields: [{name: "title", mandatory: true}, {name: "authors", mandatory: true}],
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
+    backendVersion: "0.9.1",
 };
 
 const workbook = {name: "study.xlsx", worksheetName: "Studies", recordCount: 1, unfilledRecordCount: 1};
