@@ -1488,7 +1488,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.6.3"
+version = "0.7.0"
 source = { virtual = "." }
 dependencies = [
     { name = "openai" },
@@ -1721,7 +1721,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-web-backend"
-version = "0.9.2.dev1"
+version = "0.9.2"
 source = { editable = "web/backend" }
 dependencies = [
     { name = "arrow" },
