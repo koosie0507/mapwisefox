@@ -1,7 +1,7 @@
 from unittest.mock import MagicMock
 
 from mapwisefox.assistant.config import ReaderType
-from mapwisefox.assistant.judge import _study_qa as qa
+from mapwisefox.assistant.quality_assessment import _study_qa as qa
 
 
 def test_reader_factory_uses_custom_reader(monkeypatch):
