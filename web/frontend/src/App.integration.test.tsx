@@ -6,6 +6,7 @@ const config = {
     supportedFields: [{name: "title", mandatory: true}, {name: "authors", mandatory: true}],
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
+    backendVersion: "0.9.1",
 };
 
 function jsonResponse(body: unknown, status = 200): Response {
@@ -65,6 +66,7 @@ describe("application composition", () => {
         expect(await screen.findByRole("heading", {name: "Primary study lists"})).toBeInTheDocument();
         expect(screen.getByRole("img", {name: "Mapwisefox"})).toBeInTheDocument();
         expect(screen.getByText("No surveys uploaded yet.")).toBeVisible();
+        expect(screen.getByText("Frontend v0.9.1 | Backend v0.9.1")).toBeVisible();
     });
 
     it("shows login instead of protected content when refresh fails", async () => {
