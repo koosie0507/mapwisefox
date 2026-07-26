@@ -28,6 +28,8 @@ export function SelectionCriteriaForm({evidence, criteria, onFormSubmit}: Select
     const effectiveCriteria = criteria ?? defaultCriteria;
     const [include, setInclude] = useState(evidence.include)
     const [excludeReasons, setExcludeReasons] = useState<string[]>(evidence.excludeReasons)
+    const showFallbackCriterion = criteria === null && !excludeReasons.some(Boolean);
+    const showInclusionCriteria = criteria !== null || showFallbackCriterion;
 
     useEffect(() => {
         setInclude(evidence.include);
@@ -62,17 +64,19 @@ export function SelectionCriteriaForm({evidence, criteria, onFormSubmit}: Select
     return (
         <form className="criteria-form" onSubmit={submitData}>
             <InclusionStatus include={include} excludeReasons={excludeReasons} />
-            <h3>Inclusion Criteria</h3>
-            <ul>
-                {effectiveCriteria.inclusion_criteria.map((criterion, i) =>
-                    <SelectionCriterion key={`include_${i}`} evidence={evidence} criterionId={`include_${i}`}
-                               criterionType="include"
-                               excludeReason={criterion.label}
-                               onStatusChanged={handleIncludeStatusChanged}>
-                        {criterion.description}
-                    </SelectionCriterion>
-                )}
-            </ul>
+            {showInclusionCriteria && <>
+                <h3>Inclusion Criteria</h3>
+                <ul>
+                    {effectiveCriteria.inclusion_criteria.map((criterion, i) =>
+                        <SelectionCriterion key={`include_${i}`} evidence={evidence} criterionId={`include_${i}`}
+                                   criterionType="include"
+                                   excludeReason={criterion.label}
+                                   onStatusChanged={handleIncludeStatusChanged}>
+                            {criterion.description}
+                        </SelectionCriterion>
+                    )}
+                </ul>
+            </>}
             {effectiveCriteria.exclusion_criteria.length > 0 && <>
                 <h3>Exclusion Criteria</h3>
                 <ul>

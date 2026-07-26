@@ -132,6 +132,19 @@ describe("EvidenceEditor", () => {
 
         expect(await screen.findByRole("button", {name: "Exclude"})).toBeInTheDocument();
         expect(screen.getByText("not software")).toBeInTheDocument();
+        expect(screen.queryByLabelText("study meets selection criteria")).not.toBeInTheDocument();
+    });
+
+    it("hides keywords when the record has none", async () => {
+        const withoutKeywords = {
+            ...screening(0),
+            evidence: {...screening(0).evidence, keywords: []},
+        };
+        vi.mocked(getScreening).mockResolvedValue(withoutKeywords);
+        render(<EvidenceEditor evidence={withoutKeywords.evidence} fileName="study.xlsx"/>);
+
+        await screen.findByRole("heading", {name: /\[0\].*Study 0/});
+        expect(screen.queryByText(/^Keywords:/)).not.toBeInTheDocument();
     });
 
     it("saves a decision and reports persistence errors", async () => {
