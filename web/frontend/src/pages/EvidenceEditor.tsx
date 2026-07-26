@@ -36,6 +36,11 @@ async function fetchScreening(resource: string, index: number): Promise<Screenin
     }
 }
 
+function evidenceFromScreening({decision, exclusionReasons, evidence}: ScreeningResponse): EvidenceViewModel {
+    if (decision !== "excluded") return evidence;
+    return {...evidence, include: false, excludeReasons: exclusionReasons};
+}
+
 export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
     const [model, setModel] = useState<EvidenceViewModel>(evidence)
     const [screening, setScreening] = useState<ScreeningResponse | null>(null)
@@ -49,7 +54,7 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
         void fetchScreening(resource, Number(evidence.clusterId)).then(data => {
             if (data) {
                 setScreening(data)
-                setModel(data.evidence)
+                setModel(evidenceFromScreening(data))
             }
         })
     }, [evidence.clusterId, resource])
@@ -61,7 +66,7 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
             return;
         }
         setScreening(data)
-        setModel(data.evidence)
+        setModel(evidenceFromScreening(data))
         setError(null)
     }
 
@@ -88,7 +93,7 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
         try {
             const data = await updateScreening(resource, model.clusterId, decision, excludeReasons);
             setScreening(data)
-            setModel(data.evidence)
+            setModel(evidenceFromScreening(data))
             setError(null)
             const destination = data.nextUndecidedIndex ?? data.nextIndex
             if (destination !== null) await load(destination)

@@ -1,4 +1,5 @@
 import asyncio
+from io import BytesIO
 
 import pytest
 from openpyxl import load_workbook
@@ -21,6 +22,29 @@ def test_screening_get_uses_zero_based_index(imported_client):
     assert response.status_code == 200
     assert response.json()["recordIndex"] == 0
     assert response.json()["decision"] == "undecided"
+
+
+def test_screening_get_returns_imported_reasons_without_selection_criteria(
+    client, workbook_file
+):
+    workbook = load_workbook(BytesIO(workbook_file))
+    worksheet = workbook["Studies"]
+    worksheet["K1"] = "include"
+    worksheet["L1"] = "exclude_reason"
+    worksheet["K2"] = "exclude"
+    worksheet["L2"] = "not software"
+    stream = BytesIO()
+    workbook.save(stream)
+    workbook.close()
+
+    client.post(
+        "/api/v1/workbooks",
+        files={"file": ("studies.xlsx", stream.getvalue())},
+        data={"worksheetName": "Studies"},
+    )
+    response = client.get("/api/v1/workbooks/studies.xlsx/screening/0")
+
+    assert response.json()["exclusionReasons"] == ["not software"]
 
 
 def test_screening_patch_persists_decision(imported_client, tmp_path):
