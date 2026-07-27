@@ -26,4 +26,6 @@ def validate_input_file_type(ctx, param, value):
 
 
 def validate_output_file_type(_, param, value):
+    if value is None:
+        return None
     return _check_path_supported(param.name, value, {".xls", ".xlsx"})

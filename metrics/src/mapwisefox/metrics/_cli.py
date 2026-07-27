@@ -1,3 +1,5 @@
+"""Top-level Click group for the metrics package."""
+
 from pathlib import Path
 
 import click
@@ -5,6 +7,7 @@ import pandas as pd
 
 import mapwisefox.metrics._utils as util
 from mapwisefox.metrics._types import CommonArgs
+from mapwisefox.metrics.information_retrieval._search_quality import search_quality
 from mapwisefox.metrics.categorical import kappa_score
 
 from mapwisefox.metrics._validators import (
@@ -25,7 +28,10 @@ def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.Data
     return result
 
 
-@click.group("metrics")
+@click.group(
+    "metrics",
+    help="Computes agreement metrics among raters and information-retrieval metrics to analyse search quality.",
+)
 @click.option(
     "-i",
     "--input-file",
@@ -42,7 +48,6 @@ def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.Data
     type=str,
     multiple=True,
     help="columns/attributes existing in *all* input files which contain the target values",
-    required=True,
 )
 @click.option(
     "-k",
@@ -75,14 +80,14 @@ def metrics(
     output_file: Path,
     extra_columns: list[str],
 ) -> None:
+    """Collect shared options and load input files before running a subcommand."""
     obj = ctx.ensure_object(CommonArgs)
     obj.input_files = input_files
+    obj.input_dfs = _load_dataframes(ctx, input_files, key_attr)
     obj.target_attrs = target_attrs
     obj.id_attr = key_attr
     obj.output_file = output_file
     obj.extra_cols = extra_columns
-
-    obj.input_dfs = _load_dataframes(ctx, input_files, key_attr)
 
 
 metrics.add_command(kappa_score, "kappa-score")
@@ -90,3 +95,4 @@ metrics.add_command(mae, "mae")
 metrics.add_command(rmse, "rmse")
 metrics.add_command(ccc, "lin-ccc")
 metrics.add_command(icc_cli, "icc")
+metrics.add_command(search_quality)

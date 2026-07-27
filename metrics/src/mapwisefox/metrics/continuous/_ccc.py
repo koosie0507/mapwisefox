@@ -3,18 +3,6 @@ import numpy as np
 
 
 def lin_ccc(x: np.ndarray, y: np.ndarray) -> float:
-    """Compute Lin's concordance correlation coefficient for two paired vectors.
-
-    The shapes of ``x`` and ``y`` must be identical. Both parameters must be
-    vectors.
-
-    :param x: a 1D array with at least two elements
-    :param y: a 1D array with at least two elements
-
-    :return float: the value will be in the :math:[-1, 1] interval or
-        ``float("nan")`` if the coefficient can't be computed
-    :raises ValueError: ``x`` and ``y`` don't have the same shape.
-    """
     x = np.asarray(x, dtype=float)
     y = np.asarray(y, dtype=float)
     if x.shape != y.shape:

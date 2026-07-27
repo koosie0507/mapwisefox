@@ -122,9 +122,22 @@ def _print_kappa_score(decision_col, my_kappa, left_file_path, right_file_path):
     click.echo("]")
 
 
-@click.command("kappa-score")
+@click.command(
+    "kappa-score",
+    help="Compute Cohen's Kappa agreement between exactly two rater files.",
+)
+@click.option(
+    "--agreement-labels",
+    default=",".join(DEFAULT_LABELS),
+    show_default=True,
+    help="Comma-separated list of labels used by both raters.",
+)
 @click.pass_context
-def kappa_score(ctx: click.Context):
+def kappa_score(ctx: click.Context, agreement_labels: str):
+    """Compare two input files and report per-attribute Cohen Kappa scores and disagreements."""
+    labels = [
+        stripped for label in agreement_labels.split(",") if (stripped := label.strip())
+    ]
     group_args = ctx.obj
     if len(group_args.input_files) != 2:
         raise click.BadOptionUsage(
@@ -163,7 +176,9 @@ def kappa_score(ctx: click.Context):
             group_args.extra_cols,
         )
 
-        my_kappa, disagreements_df = _kappa_score(left, right, group_args.id_attr)
+        my_kappa, disagreements_df = _kappa_score(
+            left, right, group_args.id_attr, labels=labels
+        )
 
         disagreements[sheet_name] = disagreements_df
         stats.append(
@@ -178,6 +193,9 @@ def kappa_score(ctx: click.Context):
         )
 
         _print_kappa_score(decision_col, my_kappa, left_file_path, right_file_path)
+
+    if not group_args.output_file:
+        return
 
     with pd.ExcelWriter(group_args.output_file, engine="openpyxl") as writer:
         pd.DataFrame(stats).to_excel(writer, sheet_name="stats", index=False)

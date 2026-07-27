@@ -70,7 +70,6 @@ COPY assistant/pyproject.toml assistant/pyproject.toml
 COPY deduplication/pyproject.toml deduplication/pyproject.toml
 COPY metrics/pyproject.toml metrics/pyproject.toml
 COPY search/pyproject.toml search/pyproject.toml
-COPY search-judge/pyproject.toml search-judge/pyproject.toml
 COPY snowballing/pyproject.toml snowballing/pyproject.toml
 COPY split/pyproject.toml split/pyproject.toml
 RUN mkdir -p web/backend

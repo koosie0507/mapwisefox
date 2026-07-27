@@ -1,3 +1,5 @@
+"""Continuous/agreement metrics."""
+
 from mapwisefox.metrics.continuous._cli import mae, rmse, ccc, icc_cli
 
 

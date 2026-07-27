@@ -58,7 +58,7 @@ def icc(data: np.ndarray, icc_type: ICCType = ICCType.FixedK) -> float:
             denominator = msr + (k - 1) * mse + (k * (msc - mse) / n)
         case ICCType.FixedK:
             denominator = msr + (k - 1) * mse
-        case _:
+        case _:  # pragma: no cover - ICCType is exhaustive
             raise ValueError(f"icc_type must be one of {', '.join(ICCType)}")
 
     if denominator == 0:

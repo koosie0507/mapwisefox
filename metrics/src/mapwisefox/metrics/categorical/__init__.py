@@ -1,3 +1,5 @@
+"""Categorical/agreement metrics."""
+
 from mapwisefox.metrics.categorical._cli import kappa_score
 
 
