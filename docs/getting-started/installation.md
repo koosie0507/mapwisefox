@@ -1,3 +1,11 @@
+---
+title: Installation
+description: Set up MapwiseFox locally or run its tools from the published Docker image.
+tags:
+- installation
+- workspace
+---
+
 # Installation
 
 If you want to contribute to Mapwisefox, you should know that it is a
@@ -141,17 +149,15 @@ separately — everything is available from the repo root via
 | ------------------------------ | ------------------------------------------------------------------- |
 | [`search`](../search/index.md) | DSL + CLI for querying multiple academic search APIs from one query |
 | [`deduplication`](../deduplication/index.md) | Merges and deduplicates results from multiple sources               |
-| `metrics`                      | Review-quality/coverage metrics                                     |
-| `assistant`                    | LLM-assisted review helpers                                         |
-| `snowballing`                  | Citation snowballing                                                |
-| `web/backend`                  | API backend for the web UI                                          |
+| [`split`](../split/index.md) | Divides review workbooks among reviewers                              |
+| [`metrics`](../metrics/index.md) | Review-quality and coverage metrics                                |
+| [`assistant`](../assistant/index.md) | LLM-assisted review helpers                                     |
+| [`snowballing`](../snowballing/index.md) | Citation snowballing                                        |
+| [`web/backend`](../web/index.md) | API backend for the web UI                                         |
 | `web/frontend`                 | React/TypeScript web UI — **not** a uv workspace member (see below) |
 
-Only `search` and `deduplication` have dedicated documentation so far; the
-rest of this list will grow as the other packages get documented. Each
-documented package has its own "Getting Started" section covering anything
-specific to it (API keys, package-specific config, etc.) — this page only
-covers what's shared across the whole workspace.
+Each documented tool has its own section with tool-specific setup and usage.
+This page covers the workspace setup they share.
 
 ### Environment variables and `.env`
 

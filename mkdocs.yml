@@ -100,6 +100,20 @@ nav:
           - deduplication/getting-started/cli-reference.md
       - How it works:
           - deduplication/how-it-works.md
+  - Split:
+      - split/index.md
+      - Getting Started:
+          - split/getting-started/usage.md
+          - split/getting-started/cli-reference.md
+  - Metrics:
+      - metrics/index.md
+      - Getting Started:
+          - metrics/getting-started/information-retrieval.md
+          - metrics/getting-started/inter-rater-agreement.md
+          - metrics/getting-started/cli-reference.md
+      - How It Works:
+          - metrics/how-it-works/information-retrieval.md
+          - metrics/how-it-works/inter-rater-agreement.md
   - Snowballing:
       - snowballing/index.md
       - Getting Started:
