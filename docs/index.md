@@ -1,3 +1,10 @@
+---
+title: MapwiseFox
+description: Tools for systematic literature reviews and systematic mapping studies.
+tags:
+- systematic-review
+---
+
 # MapwiseFox
 
 MapwiseFox is a suite of tools for building and running systematic literature
@@ -15,6 +22,8 @@ Each tool in the suite is documented here:
 - **[Snowballing](snowballing/index.md)** — expand a set of known papers by following
  their references or citations through Semantic Scholar, with Excel workbooks as
  input and output.
+- **[Metrics](metrics/index.md)** — measure search retrieval quality and agreement
+  between screening or quality-assessment raters.
 - **[Web](web/index.md)** — import an Excel primary-study list, screen evidence in
   a browser, and track include or exclude decisions.
 

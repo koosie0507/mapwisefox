@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import pandas as pd
 import pytest
 from click.testing import CliRunner
@@ -6,6 +8,10 @@ from mapwisefox.metrics._cli import metrics
 from mapwisefox.metrics.information_retrieval._search_quality import (
     compute_search_quality,
 )
+
+
+_REPOSITORY_ROOT = Path(__file__).parents[5]
+_EXAMPLE_DIRECTORY = _REPOSITORY_ROOT / "docs/metrics/examples/information-retrieval"
 
 
 @pytest.mark.parametrize(
@@ -92,6 +98,27 @@ def test_search_quality_command_prints_all_metrics(tmp_path, csv_file):
     assert "F1:" in result.output and "66.67%" in result.output
     assert "Jaccard:" in result.output and "50.00%" in result.output
     assert "Dice:" in result.output and "66.67%" in result.output
+
+
+def test_search_quality_command_matches_documented_example():
+    result = CliRunner().invoke(
+        metrics,
+        [
+            "-i",
+            str(_EXAMPLE_DIRECTORY / "known-good.csv"),
+            "search-quality",
+            str(_EXAMPLE_DIRECTORY / "search-results.csv"),
+        ],
+    )
+
+    assert result.output == (
+        "known-good (columns: doi):\n"
+        "  Precision: 50.00%\n"
+        "  Recall:    66.67%\n"
+        "  F1:        57.14%\n"
+        "  Jaccard:   40.00%\n"
+        "  Dice:      57.14%\n"
+    )
 
 
 def test_search_quality_command_handles_multiple_judgment_files(tmp_path, csv_file):
