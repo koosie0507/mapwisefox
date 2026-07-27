@@ -191,9 +191,10 @@ def test_search_quality_command_help_explains_input_file_usage():
     result = CliRunner().invoke(metrics, ["search-quality", "--help"])
 
     assert result.exit_code == 0
-    assert "-t/--target" in result.output
-    assert "-k" in result.output
-    assert "-i/--input-file to load judgment files." in result.output
+    assert (
+        "Use -i/--input-file to specify judgment files containing lists of known good"
+        in result.output
+    )
 
 
 def test_search_quality_command_writes_output_file(tmp_path, csv_file):

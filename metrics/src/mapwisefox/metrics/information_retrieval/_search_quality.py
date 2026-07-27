@@ -89,13 +89,12 @@ def compute_search_quality(
     Allows checking how well a search query retrieves papers that should be a
     part of the systematic literature review.
     
-    Use the -i/--input-file to load judgment files containing the lists of known
-    good papers. More than one such judgments may be used. The judgment files
-    must define a column that acts as a primary key. This column must not
-    coincide with the column(s) used to compare known-good records with the
-    records retrieved via search. The default comparison column is "doi". The
-    comparison columns must be present in both the judgment file and the search
-    results.""",
+    Use -i/--input-file to specify judgment files containing lists of known good
+    papers. More than one such judgments may be used. The judgment files must
+    define a column that acts as a primary key. This column must not coincide
+    with the column(s) used to compare known-good records with the records
+    retrieved via search. The default comparison column is "doi". The comparison
+    columns must be present in both the judgment file and the search results.""",
 )
 @click.argument(
     "search_results_file",
