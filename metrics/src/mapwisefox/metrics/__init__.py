@@ -1,3 +1,5 @@
+"""MapwiseFox metrics package."""
+
 from mapwisefox.metrics._cli import metrics as run_command
 from mapwisefox.metrics.information_retrieval._search_quality import (
     SearchQuality,

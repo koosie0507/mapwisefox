@@ -6,9 +6,11 @@ import pandas as pd
 
 @dataclass
 class CommonArgs:
+    """Shared options collected by the ``metrics`` command group."""
+
     input_files: list[Path] = field(default_factory=list)
     target_attrs: list[str] = field(default_factory=list)
     id_attr: str = "id"
-    output_file: Path = ""
+    output_file: Path | None = None
     extra_cols: list[str] = field(default_factory=list)
     input_dfs: list[pd.DataFrame] = field(default_factory=list)

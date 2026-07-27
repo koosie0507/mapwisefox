@@ -1,3 +1,5 @@
+"""Top-level Click group for the metrics package."""
+
 from pathlib import Path
 
 import click
@@ -26,7 +28,10 @@ def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.Data
     return result
 
 
-@click.group("metrics")
+@click.group(
+    "metrics",
+    help="Computes agreement metrics among raters and information-retrieval metrics to analyse search quality.",
+)
 @click.option(
     "-i",
     "--input-file",
@@ -75,6 +80,7 @@ def metrics(
     output_file: Path,
     extra_columns: list[str],
 ) -> None:
+    """Collect shared options and load input files before running a subcommand."""
     obj = ctx.ensure_object(CommonArgs)
     obj.input_files = input_files
     obj.input_dfs = _load_dataframes(ctx, input_files, key_attr)

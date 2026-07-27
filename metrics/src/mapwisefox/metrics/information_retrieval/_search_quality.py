@@ -1,5 +1,3 @@
-"""Order-independent quality metrics for search results using human judgment files."""
-
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Literal
@@ -10,6 +8,7 @@ import pandas as pd
 from mapwisefox.metrics._types import CommonArgs
 from mapwisefox.metrics._utils import load_df
 from mapwisefox.metrics._validators import validate_input_file_type
+from mapwisefox.metrics.continuous._cli_util import save_xls
 
 _DEFAULT_COMPARISON_COLUMNS: tuple[str, ...] = ("doi",)
 _MetricName = Literal["precision", "recall", "f1", "jaccard", "dice"]
@@ -103,12 +102,15 @@ def compute_search_quality(
 )
 @click.pass_context
 def search_quality(ctx: click.Context, search_results_file: Path) -> None:
-    obj = ctx.ensure_object(CommonArgs)
-    columns = tuple(obj.target_attrs) or _DEFAULT_COMPARISON_COLUMNS
+    """Print order-independent quality metrics and optionally write them to Excel."""
+    common_args = ctx.ensure_object(CommonArgs)
+    columns = tuple(common_args.target_attrs) or _DEFAULT_COMPARISON_COLUMNS
     columns_label = "; ".join(columns)
     results_df = load_df(search_results_file)
     rows = []
-    for judgment_path, judgment_df in zip(obj.input_files, obj.input_dfs):
+    for judgment_path, judgment_df in zip(
+        common_args.input_files, common_args.input_dfs
+    ):
         quality = compute_search_quality(judgment_df, results_df, columns=columns)
         click.echo(f"{judgment_path.stem} (columns: {columns_label}):")
         click.echo(f"  Precision: {quality.precision:.2%}")
@@ -116,7 +118,7 @@ def search_quality(ctx: click.Context, search_results_file: Path) -> None:
         click.echo(f"  F1:        {quality.f1:.2%}")
         click.echo(f"  Jaccard:   {quality.jaccard:.2%}")
         click.echo(f"  Dice:      {quality.dice:.2%}")
-        if not obj.output_file:
+        if not common_args.output_file:
             continue
         rows.append(
             {
@@ -129,14 +131,7 @@ def search_quality(ctx: click.Context, search_results_file: Path) -> None:
                 "dice": quality.dice,
             }
         )
-    if not obj.output_file:
+    if not common_args.output_file:
         return
 
-    output_metrics_df = pd.DataFrame(rows)
-    with pd.ExcelWriter(
-        obj.output_file,
-        if_sheet_exists="replace" if obj.output_file.exists() else None,
-        mode="a" if obj.output_file.exists() else "w",
-        engine="openpyxl",
-    ) as writer:
-        output_metrics_df.to_excel(writer, sheet_name="Search Quality", index=False)
+    save_xls(pd.DataFrame(rows), common_args, "Search Quality")

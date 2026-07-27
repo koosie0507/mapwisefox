@@ -99,3 +99,8 @@ def test_one_constant():
     y = np.asarray([2, 2, 2])
 
     assert lin_ccc(x, y) == 0.0
+
+
+def test_shape_mismatch_raises():
+    with pytest.raises(ValueError, match="same shape"):
+        lin_ccc(np.asarray([1, 2, 3]), np.asarray([1, 2]))

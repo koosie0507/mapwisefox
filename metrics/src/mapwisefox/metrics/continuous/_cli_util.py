@@ -4,6 +4,8 @@ from mapwisefox.metrics._types import CommonArgs
 
 
 def save_xls(df: pd.DataFrame, common_args: CommonArgs, sheet_name: str):
+    if not common_args.output_file:
+        return
     with pd.ExcelWriter(
         common_args.output_file,
         if_sheet_exists="replace" if common_args.output_file.exists() else None,
