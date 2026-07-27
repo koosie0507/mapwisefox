@@ -1,3 +1,5 @@
+"""Commands for distributing systematic-review workloads."""
+
 from .__main__ import split as run_command
 
 

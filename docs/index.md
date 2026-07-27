@@ -19,11 +19,17 @@ Each tool in the suite is documented here:
 - **[Search](search/index.md)** — search multiple databases at once with a CLI backed
   by a single DSL that compiles down to vendor-specific query syntax for ACM, IEEE
   Xplore, ScienceDirect, Scopus, Springer, and Web of Science.
+- **[Deduplication](deduplication/index.md)** — merge records from several sources
+  and group duplicate papers into one reviewable workbook.
+- **[Split](split/index.md)** — divide study workbooks into screening bundles or
+  independent evaluation assignments for your reviewers.
 - **[Snowballing](snowballing/index.md)** — expand a set of known papers by following
- their references or citations through Semantic Scholar, with Excel workbooks as
- input and output.
+  their references or citations through Semantic Scholar, with Excel workbooks as
+  input and output.
 - **[Metrics](metrics/index.md)** — measure search retrieval quality and agreement
   between screening or quality-assessment raters.
+- **[Assistant](assistant/index.md)** — use large language models to support study
+  selection and quality assessment against your criteria.
 - **[Web](web/index.md)** — import an Excel primary-study list, screen evidence in
   a browser, and track include or exclude decisions.
 
