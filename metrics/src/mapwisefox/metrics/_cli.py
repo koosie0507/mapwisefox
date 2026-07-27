@@ -5,7 +5,7 @@ import pandas as pd
 
 import mapwisefox.metrics._utils as util
 from mapwisefox.metrics._types import CommonArgs
-from mapwisefox.metrics.search_quality import search_quality
+from mapwisefox.metrics.information_retrieval._search_quality import search_quality
 from mapwisefox.metrics.categorical import kappa_score
 
 from mapwisefox.metrics._validators import (
@@ -75,21 +75,13 @@ def metrics(
     output_file: Path,
     extra_columns: list[str],
 ) -> None:
-    if ctx.invoked_subcommand == "search-quality":
-        obj = ctx.ensure_object(CommonArgs)
-        obj.output_file = output_file
-        return
-    if not target_attrs:
-        raise click.UsageError("Missing option '--target-value'.", ctx)
-
     obj = ctx.ensure_object(CommonArgs)
     obj.input_files = input_files
+    obj.input_dfs = _load_dataframes(ctx, input_files, key_attr)
     obj.target_attrs = target_attrs
     obj.id_attr = key_attr
     obj.output_file = output_file
     obj.extra_cols = extra_columns
-
-    obj.input_dfs = _load_dataframes(ctx, input_files, key_attr)
 
 
 metrics.add_command(kappa_score, "kappa-score")
