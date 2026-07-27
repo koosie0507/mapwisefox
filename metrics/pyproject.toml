@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox-metrics"
-version = "0.9.0-dev1"
+version = "0.9.0"
 
 dependencies = [
     "dedupe>=3.0.3",
@@ -16,7 +16,7 @@ package = true
 metrics = "mapwisefox.metrics:run_command"
 
 [tool.bumpversion]
-current_version = "0.9.0-dev1"
+current_version = "0.9.0"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.
