@@ -86,7 +86,6 @@ container, not just `web`. Override the default command
 | `deduplicate`    | [`deduplication`](../deduplication/index.md) |
 | `metrics`        | `metrics`                      |
 | `assistant`      | `assistant`                    |
-| `search-judge`   | `search-judge`                 |
 | `snowball`       | `snowballing`                  |
 | `split-workload` | `split`                        |
 
@@ -145,7 +144,6 @@ separately — everything is available from the repo root via
 | `metrics`                      | Review-quality/coverage metrics                                     |
 | `assistant`                    | LLM-assisted review helpers                                         |
 | `snowballing`                  | Citation snowballing                                                |
-| `search-judge`                 | Result relevance judging                                            |
 | `web/backend`                  | API backend for the web UI                                          |
 | `web/frontend`                 | React/TypeScript web UI — **not** a uv workspace member (see below) |
 

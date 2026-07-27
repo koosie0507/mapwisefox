@@ -14,7 +14,6 @@ members = [
     "mapwisefox-deduplication",
     "mapwisefox-metrics",
     "mapwisefox-search",
-    "mapwisefox-search-judge",
     "mapwisefox-snowballing",
     "mapwisefox-split",
     "mapwisefox-web-backend",
@@ -1607,14 +1606,18 @@ name = "mapwisefox-metrics"
 version = "0.8.0"
 source = { editable = "metrics" }
 dependencies = [
+    { name = "bibtexparser" },
     { name = "dedupe" },
+    { name = "openpyxl" },
     { name = "pandas" },
     { name = "scikit-learn" },
 ]
 
 [package.metadata]
 requires-dist = [
+    { name = "bibtexparser", specifier = ">=1.4.3" },
     { name = "dedupe", specifier = ">=3.0.3" },
+    { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.0" },
     { name = "scikit-learn", specifier = ">=1.7.0" },
 ]
@@ -1646,27 +1649,6 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.12.5" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "requests", specifier = ">=2.32.4" },
-]
-
-[[package]]
-name = "mapwisefox-search-judge"
-version = "0.7.0"
-source = { editable = "search-judge" }
-dependencies = [
-    { name = "bibtexparser" },
-    { name = "jinja2" },
-    { name = "ollama" },
-    { name = "openpyxl" },
-    { name = "pandas" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "bibtexparser", specifier = ">=1.4.3" },
-    { name = "jinja2", specifier = ">=3.1.6" },
-    { name = "ollama", specifier = ">=0.5.1" },
-    { name = "openpyxl", specifier = ">=3.1.5" },
-    { name = "pandas", specifier = ">=2.3.1" },
 ]
 
 [[package]]

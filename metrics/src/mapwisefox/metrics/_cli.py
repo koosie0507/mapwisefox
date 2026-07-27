@@ -5,6 +5,7 @@ import pandas as pd
 
 import mapwisefox.metrics._utils as util
 from mapwisefox.metrics._types import CommonArgs
+from mapwisefox.metrics.search_quality import search_quality
 from mapwisefox.metrics.categorical import kappa_score
 
 from mapwisefox.metrics._validators import (
@@ -42,7 +43,6 @@ def _load_dataframes(ctx, input_files: list[Path], id_attr: str) -> list[pd.Data
     type=str,
     multiple=True,
     help="columns/attributes existing in *all* input files which contain the target values",
-    required=True,
 )
 @click.option(
     "-k",
@@ -75,6 +75,13 @@ def metrics(
     output_file: Path,
     extra_columns: list[str],
 ) -> None:
+    if ctx.invoked_subcommand == "search-quality":
+        obj = ctx.ensure_object(CommonArgs)
+        obj.output_file = output_file
+        return
+    if not target_attrs:
+        raise click.UsageError("Missing option '--target-value'.", ctx)
+
     obj = ctx.ensure_object(CommonArgs)
     obj.input_files = input_files
     obj.target_attrs = target_attrs
@@ -90,3 +97,4 @@ metrics.add_command(mae, "mae")
 metrics.add_command(rmse, "rmse")
 metrics.add_command(ccc, "lin-ccc")
 metrics.add_command(icc_cli, "icc")
+metrics.add_command(search_quality)
