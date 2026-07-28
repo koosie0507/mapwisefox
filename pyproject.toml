@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox"
-version = "0.8.0"
+version = "0.8.1-dev1"
 description = "Utilities for creating systematic literature reviews"
 readme = "README.md"
 requires-python = ">=3.13"
@@ -40,7 +40,7 @@ docs = [
 ]
 
 [tool.bumpversion]
-current_version = "0.8.0"
+current_version = "0.8.1-dev1"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.
@@ -69,6 +69,11 @@ commit_args = ""
 setup_hooks = []
 pre_commit_hooks = []
 post_commit_hooks = []
+
+[[tool.bumpversion.files]]
+filename = "CITATION.cff"
+search = "version: {current_version}"
+replace = "version: {new_version}"
 
 [tool.bumpversion.parts.pre_label]
 values = ["dev", "final"]
