@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: MapwiseFox
+abstract: "A suite of tools for performing systematic literature reviews and systematic mapping studies."
+authors:
+  - family-names: Olar
+    given-names: Andrei
+version: 0.8.1
+date-released: "2026-07-27"
+repository-code: "https://github.com/koosie0507/mapwisefox"
+license: MIT
+keywords:
+  - systematic literature review
+  - systematic mapping study
+  - research synthesis
+  - information retrieval
+  - deduplication
+  - snowballing
+  - bibliography
+  - large language model tools
