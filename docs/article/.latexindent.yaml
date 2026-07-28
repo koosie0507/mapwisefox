@@ -1,0 +1,28 @@
+# Use spaces (4) for indentation
+defaultIndent: '    '
+
+# Hard-wrap paragraphs
+modifyLineBreaks:
+  textWrapOptions:
+    columns: 88
+    removeParagraphLineBreaks: 1
+    removeBlockLineBreaks: 1
+    when: after
+    blocksFollow:
+      other: |-
+             (?x)
+                \\\]
+                |
+                \\item(?:\h|\[)
+                |
+                \\begin\{abstract|defn\}
+                |
+                \\end\{abstract|defn\}
+                |
+                \\item
+
+
+# Allow wrapping inside the abstract environment
+environments:
+  abstract:
+    wrap: 1
