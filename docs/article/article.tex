@@ -1,0 +1,439 @@
+%%
+%% MapwiseFox -- SoftwareX Original Software Publication
+%% Based on the official SoftwareX LaTeX template (elsarticle, numbered style).
+%%
+
+\documentclass[preprint,12pt, a4paper]{elsarticle}
+
+%% Use the option review to obtain double line spacing
+%% \documentclass[preprint,review,12pt]{elsarticle}
+
+\usepackage{amssymb}
+\usepackage{hyperref}
+\setlength{\parindent}{0pt}
+
+%% The lineno package adds line numbers; uncomment for review.
+%\usepackage{lineno}
+
+\journal{SoftwareX}
+
+\begin{document}
+\renewcommand{\labelenumii}{\arabic{enumi}.\arabic{enumii}}
+
+\begin{frontmatter}
+
+%% ---------------------------------------------------------------------
+%% Title: "SoftwareName: Then a short title" per the template convention.
+\title{MapwiseFox: A Modular Toolkit for Systematic Literature Reviews}
+
+%% AUTHORS: given name(s) and family name(s), order matching the submission
+%% system. Use \corref for the corresponding author.
+%% MISSING: confirm the full author list and order before submission.
+\author{Andrei Olar}
+
+%% AFFILIATIONS: full name and postal address, including country.
+%% MISSING: confirm the affiliation address.
+\address{[Affiliation, Department, Street, City, Postal code, Country]}
+
+%% CORRESPONDING AUTHOR: keep the email address current through publication.
+%% MISSING: add the corresponding author email.
+\ead{[corresponding.author@example.org]}
+
+%% ---------------------------------------------------------------------
+%% ABSTRACT: ca. 100 words, concise and factual, no references.
+%% Must state purpose, principal results, and major conclusions.
+\begin{abstract}
+MapwiseFox is an open-source toolkit that supports the main stages of
+systematic literature reviews and systematic mapping studies. It runs a
+single search query across six bibliographic databases, deduplicates the
+results, performs backward and forward snowballing, splits workloads
+among reviewers, computes inter-rater agreement metrics, and offers
+large-language-model-assisted study selection and quality assessment. A
+web application lets reviewers manually select primary studies against
+customisable inclusion and exclusion criteria. The toolkit is
+self-hostable, ships as a single Docker image, and is released under the
+MIT licence.
+\end{abstract}
+
+%% KEYWORDS: 1 to 7, English, avoid multi-word phrases with "and"/"of".
+\begin{keyword}
+Systematic literature review \sep
+Systematic mapping study \sep
+Research synthesis \sep
+Information retrieval \sep
+Snowballing \sep
+Large language model tools
+\end{keyword}
+
+\end{frontmatter}
+
+%\linenumbers
+
+%% =====================================================================
+%% Required Metadata
+%% =====================================================================
+
+\section*{Current code version}
+
+%% Ancillary data table. Replace the right column with the correct
+%% information; leave the left column as in the template.
+
+\begin{table}[!h]
+\begin{tabular}{|l|p{6.5cm}|p{6.5cm}|}
+\hline
+\textbf{Nr.} & \textbf{Code metadata description} & \textbf{Please fill in this column} \\
+\hline
+C1 & Current code version & v0.8.1 \\
+\hline
+C2 & Permanent GitHub link to code/repository used for this code version & \url{https://github.com/koosie0507/mapwisefox} \\
+\hline
+C3 & Legal Code License & MIT \\
+\hline
+C4 & Code versioning system used & git \\
+\hline
+C5 & Software code languages, tools, and services used & Python, TypeScript, React, FastAPI \\
+\hline
+C6 & Compilation requirements, operating environments \& dependencies & Python 3.13, uv, Node.js, Docker \\
+\hline
+C7 & If available Link to developer documentation/manual & %% MISSING: add docs URL if hosted
+\\
+\hline
+C8 & Support email for questions & %% MISSING: add support email
+\\
+\hline
+\end{tabular}
+\caption{Code metadata (mandatory)}
+\label{tab:metadata}
+\end{table}
+
+%% =====================================================================
+%% Main text
+%% =====================================================================
+%% Maximum 6 pages (excluding metadata, tables, figures, references)
+%% with a 4000-word limit. Five mandatory sections follow.
+
+%% ---------------------------------------------------------------------
+%% 1. Motivation and significance
+%% ---------------------------------------------------------------------
+%% Explain why the software is important, what problem(s) it solves,
+%% how it contributes to scientific discovery, how a user runs it, and
+%% what related work exists.
+
+\section{Motivation and significance}
+
+Systematic literature reviews (SLRs) and systematic mapping studies
+(SMSs) are evidence-synthesis methods used across many disciplines,
+from software engineering to medicine. They follow a defined protocol:
+search multiple databases, remove duplicates, expand the seed set
+through snowballing, screen studies against inclusion and exclusion
+criteria, assess quality, and extract data \cite{kitchenham2007,petersen2008,page2021}.
+Each stage is labour-intensive, and the volume of records can reach
+thousands.
+
+%% [Problem] The exact problem MapwiseFox solves.
+Practitioners typically rely on a mix of commercial platforms and
+ad-hoc scripts, moving data between formats manually. This is
+error-prone, hard to reproduce, and limits the portability of review
+protocols across teams and institutions.
+
+%% [Contribution] How the software contributes to scientific discovery.
+%% MISSING: cite a research paper that uses MapwiseFox once available.
+MapwiseFox addresses this gap by providing an integrated, open-source
+toolkit that covers the main stages of an SLR or SMS up to data
+extraction. It unifies the pipeline under a single data model and ships
+as a self-contained Docker image, making review protocols portable and
+reproducible.
+
+%% [Experimental setting] How a user uses the software.
+Users interact with MapwiseFox through command-line tools for search,
+deduplication, snowballing, workload splitting, and metrics, and
+through a web application for manual study selection. A typical
+workflow starts with a search across all configured backends, followed
+by deduplication, optional snowballing, workload splitting among
+reviewers, and finally selection via the web interface or the
+LLM-assisted assistant.
+
+%% [Related work] Introduce related work in literature.
+%% MISSING: add citations to comparable tools and methodological
+%% guidelines (e.g., ASReview [1], Rayyan, Covidence, Publish or Perish,
+%% PRISMA [2], Kitchenham [3], Petersen [4]).
+Related work includes both commercial platforms (Covidence,
+Rayyan~\cite{rayyan}) and open-source tools
+(ASReview~\cite{van2021}). MapwiseFox differs by covering the full
+pipeline from search to selection in a single self-hostable package,
+and by integrating large-language-model-assisted selection alongside
+traditional manual review.
+
+%% ---------------------------------------------------------------------
+%% 2. Software description
+%% ---------------------------------------------------------------------
+%% Describe the software with enough detail for the reader to understand
+%% its impact.
+
+\section{Software description}
+
+%% 2.1 Software architecture
+\subsection{Software architecture}
+
+MapwiseFox is organised as a Python 3.13 monorepo managed by a single
+\texttt{uv}~\cite{uv} workspace. Eight packages share the \texttt{mapwisefox}
+namespace: \texttt{search}, \texttt{deduplication}, \texttt{snowballing},
+\texttt{split}, \texttt{metrics}, \texttt{assistant},
+\texttt{common-config}, and \texttt{web/backend}. The web frontend is a
+standalone React and Vite application outside the Python workspace.
+
+All packages operate on Microsoft Excel files as the interchange format,
+except \texttt{search} and \texttt{web}, which support additional
+formats. A shared configuration package keeps behaviour consistent
+across tools. A Dockerfile builds a single image containing every CLI
+and the web application. In production, Caddy serves the
+React~\cite{react} single-page application and reverse-proxies API
+and authentication routes to the FastAPI~\cite{fastapi} backend.
+
+%% Architecture overview (Mermaid source; to be rendered as Fig. 1).
+%% The diagram shows the top-level packages, the shared data model,
+%% external services, and the flow of records through the pipeline.
+%%
+%% %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e6f2ff', 'primaryTextColor': '#0d1b2a', 'primaryBorderColor': '#1b4965', 'lineColor': '#1b4965', 'secondaryColor': '#fff4e6', 'tertiaryColor': '#e8f5e9'}}}%%
+%% flowchart TB
+%%     subgraph External["External systems"]
+%%         WOS[Web of Science]
+%%         Scopus[Scopus]
+%%         SD[ScienceDirect]
+%%         Springer[Springer]
+%%         ACM[ACM Digital Library]
+%%         IEEE[IEEE Xplore]
+%%         S2[Semantic Scholar API]
+%%         LLM[OpenAI-compatible LLM endpoints]
+%%     end
+%%
+%%     subgraph CLI["CLI packages (uv workspace)"]
+%%         SearchPkg[search]
+%%         DedupPkg[deduplication]
+%%         SnowPkg[snowballing]
+%%         SplitPkg[split]
+%%         MetricsPkg[metrics]
+%%         AssistPkg[assistant]
+%%         ConfigPkg[common-config]
+%%     end
+%%
+%%     subgraph WebStack["Web application"]
+%%         Caddy[Caddy reverse proxy]
+%%         React[React / Vite frontend]
+%%         FastAPI[FastAPI backend<br/>web/backend]
+%%         DB[(Persistent store)]
+%%     end
+%%
+%%     subgraph Data["Shared data model"]
+%%         Excel[(Microsoft Excel workbooks)]
+%%         Common[Common record schema]
+%%     end
+%%
+%%     Query([Review protocol / query DSL]) --> SearchPkg
+%%     SearchPkg -->|translates to native syntax| WOS & Scopus & SD & Springer & ACM & IEEE
+%%     WOS & Scopus & SD & Springer & ACM & IEEE -->|raw exports| SearchPkg
+%%     SearchPkg -->|normalised records| Excel
+%%     Excel --> DedupPkg
+%%     DedupPkg -->|deduplicated seed set| Excel
+%%     Excel --> SnowPkg
+%%     SnowPkg -->|DOI lookup| S2
+%%     S2 -->|citations / references| SnowPkg
+%%     SnowPkg -->|snowball candidates| Excel
+%%     Excel --> SplitPkg
+%%     SplitPkg -->|reviewer partitions| Excel
+%%     Excel --> MetricsPkg
+%%     MetricsPkg -->|agreement / IR metrics| Reports([Report files])
+%%     Excel --> AssistPkg
+%%     AssistPkg -->|rendered Jinja2 prompts| LLM
+%%     LLM -->|include/exclude / quality scores| AssistPkg
+%%     AssistPkg -->|annotated records| Excel
+%%     Excel --> FastAPI
+%%     FastAPI -->|REST API| React
+%%     React -->|manual selection UI| Reviewer([Human reviewer])
+%%     Reviewer -->|inclusion / exclusion decisions| React
+%%     ConfigPkg -.->|shared settings| SearchPkg & DedupPkg & SnowPkg & SplitPkg & MetricsPkg & AssistPkg & FastAPI
+%%     Caddy -->|static SPA| React
+%%     Caddy -->|/api /auth| FastAPI
+%%     FastAPI --> DB
+%%
+%% Figure 1: Top-level architecture of MapwiseFox. CLI packages (left)
+%% operate on a shared Excel-based data model and are driven by a common
+%% configuration package. The web application (right) exposes the same
+%% data model through a FastAPI backend and React frontend. External
+%% bibliographic databases feed the search and snowballing stages, while
+%% OpenAI-compatible LLM endpoints power the assistant.
+
+%% 2.2 Software functionalities
+\subsection{Software functionalities}
+
+%% [search] One query, six backends.
+\textbf{Search.} Accepts a single query expressed in a small
+domain-specific language and translates it into the native query syntax
+of six backends: Web of Science, Scopus, ScienceDirect, Springer, ACM
+Digital Library, and IEEE Xplore. Results are normalised into a common
+record format and persisted via pluggable adapters.
+
+%% [deduplication]
+\textbf{Deduplication.} Clusters paper metadata coming from multiple
+sources so that the same record appearing in several search exports is
+collapsed into a single entry.
+
+%% [snowballing]
+\textbf{Snowballing.} Performs configurable-depth backward or forward
+snowballing starting from a set of primary studies identified by DOI.
+It resolves citations and references through the Semantic Scholar API
+and writes unique new candidates to Excel workbooks.
+
+%% [split]
+\textbf{Split.} Partitions a review workload across multiple
+participants using several schemes, so that each reviewer receives a
+disjoint subset of the studies.
+
+%% [metrics]
+\textbf{Metrics.} Computes agreement and relevance metrics used
+throughout the review process: Cohen's Kappa for categorical ratings,
+intraclass correlation coefficient (ICC) and concordance correlation
+coefficient (CCC) for continuous ratings, and information-retrieval
+measures for search quality.
+
+%% [assistant]
+\textbf{Assistant.} Uses large language models to perform study
+selection (include or exclude) or quality assessment based on
+user-defined criteria. It supports any OpenAI-compatible provider
+(OpenAI, Anthropic, Google, AWS Bedrock, and local endpoints) and
+renders prompts from Jinja2 templates.
+
+%% [web]
+\textbf{Web.} A FastAPI backend and React frontend that let reviewers
+manually select primary studies against customisable inclusion and
+exclusion criteria. Authentication is optional and uses OpenID Connect
+when enabled.
+
+%% MISSING: the assistant currently supports only one LLM provider at a
+%% time. Multi-provider routing is not yet implemented.
+%% MISSING: there is no built-in data-extraction stage; the pipeline
+%% ends at study selection and quality assessment.
+%% MISSING: the web application does not yet support multi-reviewer
+%% concurrency controls or conflict-resolution workflows.
+
+%% 2.3 Sample code snippets analysis (optional)
+\subsection{Sample code snippets}
+
+%% A typical end-to-end run, citing the exact commands.
+A review starts with a search across all configured backends, after
+which the exported results are deduplicated, optionally snowballed, and
+split among reviewers:
+
+\begin{verbatim}
+uv run search -D ./data/run-1
+uv run deduplicate -i ./data/run-1 -o ./data/dedup.xlsx
+uv run snowball -i ./data/dedup.xlsx -d backward --depth 2
+uv run split-workload -i ./data/dedup.xlsx -n 3
+uv run web --host 127.0.0.1 --port 8000
+\end{verbatim}
+
+%% MISSING: verify the exact CLI invocations against the current code
+%% before submission, as flags may have changed.
+
+%% ---------------------------------------------------------------------
+%% 3. Illustrative examples
+%% ---------------------------------------------------------------------
+%% Provide at least one illustrative example to demonstrate the major
+%% functions. OPTIONAL: an explanatory video or screencast (MP4, max
+%% 150 MB, 640x480, 30 fps) may be submitted as supplementary material.
+
+\section{Illustrative examples}
+
+%% MISSING: provide a concrete walk-through using a real or sample
+%% dataset. Show the input, the command, and the output for at least
+%% the search and deduplication stages. Consider including a screenshot
+%% of the web application.
+
+%% ---------------------------------------------------------------------
+%% 4. Impact
+%% ---------------------------------------------------------------------
+%% This is the main section; reviewers weight it appropriately.
+%% Indicate new research questions enabled, improvements to existing
+%% ones, changes to daily practice, adoption, and commercial use.
+%% Points 1 and 2 are best demonstrated by citable publications.
+
+\section{Impact}
+
+%% [New research questions]
+By integrating LLM-assisted selection with traditional manual review,
+MapwiseFox enables research into human--AI collaboration in
+evidence-synthesis workflows, including questions about agreement,
+bias, and throughput when large language models assist with study
+screening.
+
+%% [Improving existing research questions]
+The toolkit reduces the manual effort required at each stage of an
+SLR or SMS. The search DSL lets a researcher write one query and run
+it against six databases, eliminating the need to translate syntax
+manually. The deduplication and snowballing stages further reduce
+redundant work.
+
+%% [Daily practice]
+MapwiseFox changes the daily practice of its users by replacing a
+chain of disconnected tools and manual data transfers with a single,
+scriptable pipeline. The Docker image makes the toolkit available to
+researchers who cannot install each dependency individually.
+
+%% [Adoption]
+%% MISSING: report download counts, user numbers, or citable
+%% publications once the software has been publicly released.
+
+%% [Commercial use]
+%% MISSING: report any commercial use or spin-off companies if
+%% applicable.
+
+%% ---------------------------------------------------------------------
+%% 5. Conclusions
+%% ---------------------------------------------------------------------
+%% Mandatory section summarising the software.
+
+\section{Conclusions}
+
+MapwiseFox provides an integrated, open-source toolkit that covers the
+main stages of a systematic literature review or systematic mapping
+study up to data extraction. It runs a single query across six
+bibliographic databases, deduplicates results, performs
+configurable-depth snowballing, splits workloads among reviewers,
+computes agreement metrics, and offers both LLM-assisted and
+web-based study selection. The toolkit is self-hostable, ships as a
+single Docker image, and is released under the MIT licence.
+
+%% MISSING: finalise the future-work outlook (data-extraction stage,
+%% multi-provider LLM routing, conflict-resolution workflows, additional
+%% search backends).
+
+%% =====================================================================
+%% Acknowledgements
+%% =====================================================================
+%% Optionally thank people and institutes. Place directly before the
+%% reference list, not on the title page.
+%% MISSING: add acknowledgements if applicable.
+
+\section*{Acknowledgements}
+[Acknowledgements text, if any.]
+
+%% =====================================================================
+%% References
+%% =====================================================================
+%% Numbered (Vancouver-style) references via BibTeX.
+%% Compile with: pdflatex -> bibtex -> pdflatex -> pdflatex.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+%% =====================================================================
+%% Current executable software version
+%% =====================================================================
+%% This section is required by the SoftwareX template.
+%% MISSING: add a Zenodo DOI for the archived executable version once
+%% the release is minted.
+
+\section*{Current executable software version}
+[To be completed with the Zenodo DOI and archival details upon release.]
+
+\end{document}
