@@ -1,0 +1,4 @@
+wrap = true
+wraplen = 88
+#wrapmin = 78
+tabsize = 2
