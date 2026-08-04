@@ -22,48 +22,48 @@
 
 \begin{frontmatter}
 
-%% ---------------------------------------------------------------------
-%% Title: "SoftwareName: Then a short title" per the template convention.
-\title{MapwiseFox: A Modular Toolkit for Systematic Literature Reviews}
+  %% ---------------------------------------------------------------------
+  %% Title: "SoftwareName: Then a short title" per the template convention.
+  \title{MapwiseFox: A Modular Toolkit for Systematic Literature Reviews}
 
-%% AUTHORS: given name(s) and family name(s), order matching the submission
-%% system. Use \corref for the corresponding author.
-%% MISSING: confirm the full author list and order before submission.
-\author{Andrei Olar}
+  %% AUTHORS: given name(s) and family name(s), order matching the submission
+  %% system. Use \corref for the corresponding author.
+  %% MISSING: confirm the full author list and order before submission.
+  \author{Andrei Olar}
 
-%% AFFILIATIONS: full name and postal address, including country.
-%% MISSING: confirm the affiliation address.
-\address{[Affiliation, Department, Street, City, Postal code, Country]}
+  %% AFFILIATIONS: full name and postal address, including country.
+  %% MISSING: confirm the affiliation address.
+  \address{[Affiliation, Department, Street, City, Postal code, Country]}
 
-%% CORRESPONDING AUTHOR: keep the email address current through publication.
-%% MISSING: add the corresponding author email.
-\ead{[corresponding.author@example.org]}
+  %% CORRESPONDING AUTHOR: keep the email address current through publication.
+  %% MISSING: add the corresponding author email.
+  \ead{[corresponding.author@example.org]}
 
-%% ---------------------------------------------------------------------
-%% ABSTRACT: ca. 100 words, concise and factual, no references.
-%% Must state purpose, principal results, and major conclusions.
-\begin{abstract}
-MapwiseFox is an open-source toolkit that supports the main stages of
-systematic literature reviews and systematic mapping studies. It runs a
-single search query across six bibliographic databases, deduplicates the
-results, performs backward and forward snowballing, splits workloads
-among reviewers, computes inter-rater agreement metrics, and offers
-large-language-model-assisted study selection and quality assessment. A
-web application lets reviewers manually select primary studies against
-customisable inclusion and exclusion criteria. The toolkit is
-self-hostable, ships as a single Docker image, and is released under the
-MIT licence.
-\end{abstract}
+  %% ---------------------------------------------------------------------
+  %% ABSTRACT: ca. 100 words, concise and factual, no references.
+  %% Must state purpose, principal results, and major conclusions.
+  \begin{abstract}
+    MapwiseFox is an open-source toolkit that supports the main stages of
+    systematic literature reviews and systematic mapping studies. It runs a
+    single search query across multiple bibliographic databases, deduplicates the
+    results, performs backward and forward snowballing, splits workloads
+    among reviewers, computes inter-rater agreement metrics, and offers
+    large-language-model-assisted study selection and quality assessment. A
+    web application lets reviewers manually select primary studies against
+    customisable inclusion and exclusion criteria. The toolkit is
+    self-hostable, ships as a single Docker image, and is released under the
+    MIT licence.
+  \end{abstract}
 
-%% KEYWORDS: 1 to 7, English, avoid multi-word phrases with "and"/"of".
-\begin{keyword}
-Systematic literature review \sep
-Systematic mapping study \sep
-Research synthesis \sep
-Information retrieval \sep
-Snowballing \sep
-Large language model tools
-\end{keyword}
+  %% KEYWORDS: 1 to 7, English, avoid multi-word phrases with "and"/"of".
+  \begin{keyword}
+    Systematic literature review \sep
+    Systematic mapping study \sep
+    Research synthesis \sep
+    Information retrieval \sep
+    Snowballing \sep
+    Large language model tools
+  \end{keyword}
 
 \end{frontmatter}
 
@@ -79,31 +79,36 @@ Large language model tools
 %% information; leave the left column as in the template.
 
 \begin{table}[!h]
-\begin{tabular}{|l|p{6.5cm}|p{6.5cm}|}
-\hline
-\textbf{Nr.} & \textbf{Code metadata description} & \textbf{Please fill in this column} \\
-\hline
-C1 & Current code version & v0.8.1 \\
-\hline
-C2 & Permanent GitHub link to code/repository used for this code version & \url{https://github.com/koosie0507/mapwisefox} \\
-\hline
-C3 & Legal Code License & MIT \\
-\hline
-C4 & Code versioning system used & git \\
-\hline
-C5 & Software code languages, tools, and services used & Python, TypeScript, React, FastAPI \\
-\hline
-C6 & Compilation requirements, operating environments \& dependencies & Python 3.13, uv, Node.js, Docker \\
-\hline
-C7 & If available Link to developer documentation/manual & %% MISSING: add docs URL if hosted
-\\
-\hline
-C8 & Support email for questions & %% MISSING: add support email
-\\
-\hline
-\end{tabular}
-\caption{Code metadata (mandatory)}
-\label{tab:metadata}
+  \begin{tabular}{|l|p{6.5cm}|p{6.5cm}|}
+    \hline
+    \textbf{Nr.} & \textbf{Code metadata description} & \textbf{Please fill
+    in this column} \\
+    \hline
+    C1 & Current code version & v0.8.1 \\
+    \hline
+    C2 & Permanent GitHub link to code/repository used for this code version
+    & \url{https://github.com/koosie0507/mapwisefox} \\
+    \hline
+    C3 & Legal Code License & MIT \\
+    \hline
+    C4 & Code versioning system used & git \\
+    \hline
+    C5 & Software code languages, tools, and services used & Python,
+    TypeScript, React, FastAPI \\
+    \hline
+    C6 & Compilation requirements, operating environments \& dependencies &
+    Python 3.13, uv, Node.js, Docker \\
+    \hline
+    C7 & If available Link to developer documentation/manual & %% MISSING:
+    % add docs URL if hosted
+    \\
+    \hline
+    C8 & Support email for questions & %% MISSING: add support email
+    \\
+    \hline
+  \end{tabular}
+  \caption{Code metadata (mandatory)}
+  \label{tab:metadata}
 \end{table}
 
 %% =====================================================================
@@ -194,7 +199,9 @@ and authentication routes to the FastAPI~\cite{fastapi} backend.
 %% The diagram shows the top-level packages, the shared data model,
 %% external services, and the flow of records through the pipeline.
 %%
-%% %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e6f2ff', 'primaryTextColor': '#0d1b2a', 'primaryBorderColor': '#1b4965', 'lineColor': '#1b4965', 'secondaryColor': '#fff4e6', 'tertiaryColor': '#e8f5e9'}}}%%
+%% %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e6f2ff',
+% 'primaryTextColor': '#0d1b2a', 'primaryBorderColor': '#1b4965',
+% 'lineColor': '#1b4965', 'secondaryColor': '#fff4e6', 'tertiaryColor': '#e8f5e9'}}}%%
 %% flowchart TB
 %%     subgraph External["External systems"]
 %%         WOS[Web of Science]
@@ -230,7 +237,8 @@ and authentication routes to the FastAPI~\cite{fastapi} backend.
 %%     end
 %%
 %%     Query([Review protocol / query DSL]) --> SearchPkg
-%%     SearchPkg -->|translates to native syntax| WOS & Scopus & SD & Springer & ACM & IEEE
+%%     SearchPkg -->|translates to native syntax| WOS & Scopus & SD &
+% Springer & ACM & IEEE
 %%     WOS & Scopus & SD & Springer & ACM & IEEE -->|raw exports| SearchPkg
 %%     SearchPkg -->|normalised records| Excel
 %%     Excel --> DedupPkg
@@ -251,7 +259,8 @@ and authentication routes to the FastAPI~\cite{fastapi} backend.
 %%     FastAPI -->|REST API| React
 %%     React -->|manual selection UI| Reviewer([Human reviewer])
 %%     Reviewer -->|inclusion / exclusion decisions| React
-%%     ConfigPkg -.->|shared settings| SearchPkg & DedupPkg & SnowPkg & SplitPkg & MetricsPkg & AssistPkg & FastAPI
+%%     ConfigPkg -.->|shared settings| SearchPkg & DedupPkg & SnowPkg &
+% SplitPkg & MetricsPkg & AssistPkg & FastAPI
 %%     Caddy -->|static SPA| React
 %%     Caddy -->|/api /auth| FastAPI
 %%     FastAPI --> DB
