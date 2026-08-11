@@ -123,7 +123,7 @@ class Parser:
         self._transform = create_transformer(_ir, _ToAst()).transform
 
     def __call__(self, text: str) -> _ir.Query:
-        tree = self._lark.parse(text)
+        tree = self.parse_tree(text)
         return self._transform(tree)
 
     def parse_tree(self, text: str):
