@@ -33,20 +33,19 @@
 
   %% AFFILIATIONS: full name and postal address, including country.
   %% MISSING: confirm the affiliation address.
-  \address{[Affiliation, Department, Street, City, Postal code, Country]}
+  \address{[Universitatea Babe\c{s}-Bolyai, Facultatea de Matematic\u{a}
+  \c{s}i Informatic\u{a}, Str. M. Kog\u{a}lniceanu 1, Cluj-Napoca, Rom\^{a}nia]}
 
-  %% CORRESPONDING AUTHOR: keep the email address current through publication.
-  %% MISSING: add the corresponding author email.
-  \ead{[corresponding.author@example.org]}
+  \ead{[andrei.olar@ubbcluj.ro]}
 
   %% ---------------------------------------------------------------------
   %% ABSTRACT: ca. 100 words, concise and factual, no references.
   %% Must state purpose, principal results, and major conclusions.
   \begin{abstract}
     MapwiseFox is an open-source toolkit that supports the main stages of
-    systematic literature reviews and systematic mapping studies. It runs a
-    single search query across multiple bibliographic databases, deduplicates the
-    results, performs backward and forward snowballing, splits workloads
+    systematic literature reviews (SLR) and systematic mapping studies (SMS). It runs a
+    single search query across multiple bibliographic databases, deduplicates
+    the results, performs backward and forward snowballing, splits workloads
     among reviewers, computes inter-rater agreement metrics, and offers
     large-language-model-assisted study selection and quality assessment. A
     web application lets reviewers manually select primary studies against
@@ -131,7 +130,8 @@ Systematic literature reviews (SLRs) and systematic mapping studies
 from software engineering to medicine. They follow a defined protocol:
 search multiple databases, remove duplicates, expand the seed set
 through snowballing, screen studies against inclusion and exclusion
-criteria, assess quality, and extract data \cite{kitchenham2007,petersen2008,page2021}.
+criteria, assess quality, and extract data
+\cite{kitchenham2007,petersen2008,page2021}.
 Each stage is labour-intensive, and the volume of records can reach
 thousands.
 
@@ -139,15 +139,23 @@ thousands.
 Practitioners typically rely on a mix of commercial platforms and
 ad-hoc scripts, moving data between formats manually. This is
 error-prone, hard to reproduce, and limits the portability of review
-protocols across teams and institutions.
+protocols across teams and institutions. Add to this defficiencies in
+distributing the workload among reviewers or scaling from tens of studies
+to thousands and you have a complete picture why systematic reviews are
+some of the hardest things to pull off. So: multiple tools, interoperability
+challenges between the tools, poor workload distribution for human reviewers and
+no AI help to scale things up.
 
 %% [Contribution] How the software contributes to scientific discovery.
 %% MISSING: cite a research paper that uses MapwiseFox once available.
-MapwiseFox addresses this gap by providing an integrated, open-source
-toolkit that covers the main stages of an SLR or SMS up to data
-extraction. It unifies the pipeline under a single data model and ships
-as a self-contained Docker image, making review protocols portable and
-reproducible.
+MapwiseFox addresses this gap by providing an integrated, open-source toolkit that
+covers the main stages of an SLR or SMS up to data extraction. It unifies the pipeline
+under a single data model and ships as a self-contained Docker image, making review
+protocols portable and reproducible. It also eliminates interoperability issues by using
+the Office Open XML format (Microsoft Excel) as the only data-exchange format for all
+toolkit operations. The assistant provided in the toolkit and the web application share
+configurations, ensuring that large language models (LLMs) follow the same rules as
+human reviewers.
 
 %% [Experimental setting] How a user uses the software.
 Users interact with MapwiseFox through command-line tools for search,
@@ -158,16 +166,237 @@ by deduplication, optional snowballing, workload splitting among
 reviewers, and finally selection via the web interface or the
 LLM-assisted assistant.
 
-%% [Related work] Introduce related work in literature.
-%% MISSING: add citations to comparable tools and methodological
-%% guidelines (e.g., ASReview [1], Rayyan, Covidence, Publish or Perish,
-%% PRISMA [2], Kitchenham [3], Petersen [4]).
-Related work includes both commercial platforms (Covidence,
-Rayyan~\cite{rayyan}) and open-source tools
-(ASReview~\cite{van2021}). MapwiseFox differs by covering the full
-pipeline from search to selection in a single self-hostable package,
-and by integrating large-language-model-assisted selection alongside
-traditional manual review.
+%% [Related work]
+\subsection{Related work}
+
+Table~\ref{tab:comparison} compares MapwiseFox with representative
+open-source SLR/SMS tools across the phases defined by
+Kitchenham~\cite{kitchenham2007} and Petersen et al.~\cite{petersen2008}.
+All tools in the comparison have a recent, peer-reviewed publication
+describing their features, which allows for a reliable characterisation at the
+level of granularity required by the table.
+
+Several widely used commercial platforms also support multiple stages of
+the systematic review process. Rayyan~\cite{rayyan} offers a polished
+cloud-based screening experience with mobile support and has recently
+introduced an AI-assisted screening add-on (ResearchPilot).
+Covidence~\cite{covidence} provides a refined dual-reviewer workflow
+with PRISMA output. EPPI-Reviewer~\cite{thomas2010} is a
+Cochrane-endorsed platform with text-mining capabilities for screening
+prioritisation. DistillerSR~\cite{distillersr} offers AI-assisted
+deduplication and screening in a commercial package. These tools are
+excluded from Table~\ref{tab:comparison} because they are closed-source
+and their published descriptions either do not exist (Covidence,
+DistillerSR), are limited to software manuals (EPPI-Reviewer), or
+predate substantial feature additions (Rayyan's 2016 paper describes a
+  tool that has since gained AI-assisted screening, mobile apps, and
+PRISMA automation). Without access to source code or a current,
+peer-reviewed feature description, we cannot overview these tools reliably
+at the granularity required by the comparison table.
+
+Two additional open-access tools with published papers are not listed
+separately in the table because their feature sets overlap substantially
+with tools already included. CADIMA~\cite{kohl2018} covers protocol
+development, web-based screening with automated Cohen's $\kappa$, data
+extraction, critical appraisal, and PRISMA diagram generation; its
+capabilities are comparable to those of Buhos and ReviQ.
+Abstrackr~\cite{wallace2012} is a pioneering open-source tool for
+ML-assisted title and abstract screening via active learning; its
+AI-assisted selection capability is represented in the table by
+ASReview~\cite{van2021}, which uses a comparable active-learning
+approach, and additionally offers a more complete feature set.
+
+\paragraph{Planning}
+The planning phase of an SLR or SMS involves defining the search
+strategy: selecting databases, crafting query strings, and validating
+that those strings retrieve a known set of relevant studies.
+SMS-Builder~\cite{smsbuilder2022} provides a dedicated planning stage
+where users define goals, research questions, and quality metrics
+using the Goal/Question/Metric model. ReviQ~\cite{reviq2026} maps
+a project-setup phase to Kitchenham's planning phase, and
+CADIMA~\cite{kohl2018} guides users through protocol development with
+a structured input format. However, none of
+these tools supports validating search query recall against a known
+set of primary studies. This technique, borrowed from information
+retrieval evaluation, lets reviewers calibrate search strings before
+committing to a full database sweep. MapwiseFox addresses this gap:
+when a pool of known primary studies already exists, the \texttt{metrics}
+command can evaluate how many of those studies each candidate query
+retrieves, while simultaneously translating a single query expressed in
+a domain-specific language into the native syntax of each configured backend.
+
+\paragraph{Search}
+Several tools import search results from bibliographic databases, but
+few query them directly. litstudy~\cite{litstudy2022} queries four
+online sources (Scopus, Semantic Scholar, CrossRef, dblp) and accepts
+CSV exports from IEEE Xplore and SpringerLink.
+pybliometrics~\cite{pybliometrics2019} wraps the Scopus API for
+programmatic access. Buhos~\cite{buhos2018} imports from WoS, Scopus,
+Ebscohost, and Scielo but does not query them directly.
+ReviQ~\cite{reviq2026} accepts BibTeX exports from any source.
+SMS-Builder~\cite{smsbuilder2022} imports RIS files from externally
+conducted searches. ASReview~\cite{van2021} and the commercial
+platforms discussed above all require pre-exported search results.
+MapwiseFox is the only tool that translates a single query domain specific language
+(DSL) into the native syntax of six database backends (WoS, Scopus,
+ScienceDirect, Springer, ACM DL, IEEE Xplore) and federates the results.
+
+\paragraph{Deduplication}
+Cross-database deduplication is supported by all tools in the
+comparison except ASReview, but the approaches differ in automation
+and method. Buhos performs automated deduplication via DOI and PMID
+matching through Crossref and PubMed APIs. ReviQ uses a two-stage
+automated process: DOI matching first, followed by a composite key of
+normalised title and venue for entries lacking a DOI. litstudy
+deduplicates automatically using unique identifiers (DOI, PubMed ID,
+Scopus ID) with fuzzy title matching as a fallback. SMS-Builder
+identifies duplicates for manual removal through its web interface.
+BibexPy~\cite{bibexpy2025} provides a dedicated merge and
+harmonisation pipeline for Scopus and Web of Science exports but does
+not offer a general-purpose deduplication workflow. MapwiseFox's
+\texttt{deduplication} module uses the \texttt{dedupe}
+library\footnote{\url{https://docs.dedupe.io/}} with active
+learning: on first use, the system interactively trains a model on title,
+authors, source, and keywords, then clusters records into duplicate sets.
+The trained model is saved and reused on subsequent runs, eliminating the
+need for repeated labelling.
+
+\paragraph{Snowballing}
+Forward and backward snowballing via DOI-based citation chasing is
+implemented by ReviQ and MapwiseFox; Buhos supports backward
+snowballing only, and the remaining tools offer no snowballing
+capability. ReviQ tracks snowballing as iterative BibTeX imports
+labelled by iteration number, with a saturation indicator that signals
+when an iteration yields zero new inclusions. Buhos performs backward
+snowballing by fetching references through Crossref and identifying
+documents cited two or more times across the selected set.
+MapwiseFox's \texttt{snowballing} module queries the Semantic Scholar
+API and supports both forward and backward traversal to a
+configurable depth (\texttt{--max-depth}). It maintains a visited set
+across iterations to prevent duplicate candidates and accepts an
+exclusion worksheet (\texttt{--exclude}) to suppress known-irrelevant
+DOIs, so that the output contains only novel candidates not already
+present in the seed or exclusion sets.
+
+\paragraph{Study selection}
+Web-based study selection is offered by Buhos, ReviQ, and
+SMS-Builder. Buhos provides a multi-stage screening workflow with
+per-user document allocation and an online PDF viewer for full-text
+assessment. ReviQ supports dual-reviewer screening with inclusion,
+exclusion, and uncertain decisions, automatic conflict detection, and
+JSON-based decision exchange for asynchronous collaboration.
+SMS-Builder offers a GUI for refining search results with notes and
+relevance scoring. The commercial platforms discussed above also
+provide web-based screening interfaces with varying degrees of
+automation.
+
+\paragraph{Work splitting}
+Formal work splitting---distributing a review workload across multiple
+participants using defined allocation schemes---is a straightforward
+but often-omitted step. Buhos allows an administrator to manually
+assign documents to individual reviewers at each stage and tracks
+progress through a dashboard. ReviQ supports dual-reviewer screening
+with JSON-based decision exchange, but both reviewers screen the
+entire set; there is no workload partitioning. SMS-Builder provides
+role-based access control but no workload distribution mechanism.
+MapwiseFox's \texttt{split} module offers two schemes: a
+\texttt{simple} random split that partitions studies into
+non-overlapping, roughly equal-sized bundles (one per reviewer), and a
+\texttt{for-evaluation} N-by-K assignment that uses round-robin
+allocation to ensure each study is seen by exactly $K$ distinct
+reviewers, enabling inter-rater agreement computation on the full set
+without requiring every reviewer to screen every study.
+
+\paragraph{Quality assessment and inter-rater agreement}
+Quality assessment of primary studies is supported by Buhos, ReviQ,
+SMS-Builder, and MapwiseFox. Buhos allows customisable quality
+criteria with an online assessment form. ReviQ scores each criterion
+as 0, 0.5, or 1 and normalises results to a percentage with
+configurable low/medium/high thresholds. SMS-Builder computes three
+built-in quality indices (CVI, SCI, and IRRQ) and supports
+user-defined custom indices. For inter-rater agreement, ReviQ computes
+Cohen's $\kappa$~\cite{cohen1960} and PABAK on categorical
+(include/exclude) decisions with 95\% confidence intervals. No other
+tool in this comparison computes agreement metrics for
+\emph{continuous} quality scores. MapwiseFox's \texttt{metrics} module
+computes the intra-class correlation coefficient (ICC) in all three
+variants~\cite{shrout1979}, the concordance correlation
+coefficient~\cite{lin1989}, and the mean absolute error between
+reviewers on a continuous grading scale (e.g., 1--10), enabling
+real-time flagging of deviations and the assessment of systematic biases
+at all times during the quality assessment phase.
+
+\paragraph{Data extraction}
+Data extraction represents the structured collection of information from
+primary studies into standardised forms. This activity is supported by
+Buhos, ReviQ, and SMS-Builder. Buhos provides a standardised extraction
+form at the full-text review stage with an integrated PDF viewer, so
+reviewers can complete the entire process within the browser. ReviQ offers
+a configurable extraction schema with four field types (free text,
+numeric, boolean, and dropdown) plus taxonomy categories, with card and
+table views and CSV export. SMS-Builder supports designing and filling
+data-collection forms for study metadata, though the authors note this
+feature is limited and a generic reporter is planned as future
+work~\cite{smsbuilder2022}. MapwiseFox does not currently include a
+data-extraction stage; the pipeline ends at study selection and quality
+assessment.
+
+\paragraph{Reporting}
+The PRISMA 2020 statement~\cite{page2021} requires reviewers to report
+the flow of studies through each stage of the review. Buhos generates a
+PRISMA flow diagram that tracks the number of records at each stage.
+ReviQ produces publication-ready PRISMA 2020 diagrams as SVG files, with
+two parallel screening streams and per-criterion exclusion breakdowns.
+The remaining tools in this comparison, including MapwiseFox, do not
+generate PRISMA diagrams. Reviewers using MapwiseFox must create the
+flow diagram manually or with external tools.
+
+\paragraph{AI-assistance}
+ASReview~\cite{van2021} uses active learning to prioritise screening
+decisions but does not perform quality assessment. None of the other
+existing tools present in the comparison table integrate AI for study
+selection or quality assessment. MapwiseFox's \texttt{assistant} module
+is designed explicitly with this goal in mind. It provides native backends
+for five LLM providers (OpenAI, Anthropic, Google, AWS Bedrock, and Ollama
+for local inference) for both tasks, runs on infrastructure the reviewer
+controls, and enables research into human--AI agreement, bias, and
+throughput.
+
+\begin{table}[!ht]
+  \centering
+  \caption{Comparison of SLR/SMS tools across review phases.
+    Symbols: \checkmark~supported, $\circ$~partial, ---~not supported.
+  MF = MapwiseFox, ASR = ASReview, lit = litstudy, SMS = SMS-Builder.}
+  \label{tab:comparison}
+  \small
+  \begin{tabular}{lcccccc}
+    \hline
+    & MF & Buhos & ReviQ & SMS & ASR & lit \\
+    \hline
+    \multicolumn{7}{l}{\textit{Building a Selection}} \\
+    Multi-DB Search & \checkmark & --- & --- & --- & --- & \checkmark \\
+    Cross-DB deduplication & \checkmark & \checkmark & \checkmark &
+    \checkmark & --- & \checkmark \\
+    Snowballing & \checkmark & $\circ$ & \checkmark & --- & --- & --- \\
+    Selection & \checkmark & \checkmark & \checkmark & \checkmark & \checkmark & --- \\
+    Splitting Work & \checkmark & $\circ$ & --- & --- & --- & --- \\
+    Quality Assessment & \checkmark & \checkmark & \checkmark & \checkmark & --- &
+    --- \\
+    \multicolumn{7}{l}{\textit{Agreement Metrics}} \\
+    Cohen's $\kappa$ & \checkmark & --- & \checkmark & --- & --- & --- \\
+    ICC & \checkmark & --- & --- & --- & --- & --- \\
+    CCC & \checkmark & --- & --- & --- & --- & --- \\
+    MAE & \checkmark & --- & --- & --- & --- & --- \\
+    \multicolumn{7}{l}{\textit{Data Extraction and Reporting}} \\
+    Data extraction & --- & \checkmark & \checkmark & $\circ$ & --- & --- \\
+    PRISMA flow diagram & --- & \checkmark & \checkmark & --- & --- & --- \\
+    \multicolumn{7}{l}{\textit{AI Assistance}} \\
+    AI-assisted selection & \checkmark & --- & --- & --- & \checkmark
+    & --- \\
+    AI-assisted quality assessment & \checkmark & --- & --- & --- & --- & --- \\
+    \hline
+  \end{tabular}
+\end{table}
 
 %% ---------------------------------------------------------------------
 %% 2. Software description
@@ -180,158 +409,272 @@ traditional manual review.
 %% 2.1 Software architecture
 \subsection{Software architecture}
 
-MapwiseFox is organised as a Python 3.13 monorepo managed by a single
-\texttt{uv}~\cite{uv} workspace. Eight packages share the \texttt{mapwisefox}
-namespace: \texttt{search}, \texttt{deduplication}, \texttt{snowballing},
-\texttt{split}, \texttt{metrics}, \texttt{assistant},
-\texttt{common-config}, and \texttt{web/backend}. The web frontend is a
-standalone React and Vite application outside the Python workspace.
+This section describes the architecture from four complementary
+viewpoints: the end-to-end review process, the key logical abstractions,
+the codebase organisation, and the deployment model.
 
-All packages operate on Microsoft Excel files as the interchange format,
-except \texttt{search} and \texttt{web}, which support additional
-formats. A shared configuration package keeps behaviour consistent
-across tools. A Dockerfile builds a single image containing every CLI
-and the web application. In production, Caddy serves the
-React~\cite{react} single-page application and reverse-proxies API
-and authentication routes to the FastAPI~\cite{fastapi} backend.
+\subsubsection{The MapwiseFox Review Process}
 
-%% Architecture overview (Mermaid source; to be rendered as Fig. 1).
-%% The diagram shows the top-level packages, the shared data model,
-%% external services, and the flow of records through the pipeline.
-%%
-%% %%{init: {'theme': 'base', 'themeVariables': { 'primaryColor': '#e6f2ff',
-% 'primaryTextColor': '#0d1b2a', 'primaryBorderColor': '#1b4965',
-% 'lineColor': '#1b4965', 'secondaryColor': '#fff4e6', 'tertiaryColor': '#e8f5e9'}}}%%
-%% flowchart TB
-%%     subgraph External["External systems"]
-%%         WOS[Web of Science]
-%%         Scopus[Scopus]
-%%         SD[ScienceDirect]
-%%         Springer[Springer]
-%%         ACM[ACM Digital Library]
-%%         IEEE[IEEE Xplore]
-%%         S2[Semantic Scholar API]
-%%         LLM[OpenAI-compatible LLM endpoints]
-%%     end
-%%
-%%     subgraph CLI["CLI packages (uv workspace)"]
-%%         SearchPkg[search]
-%%         DedupPkg[deduplication]
-%%         SnowPkg[snowballing]
-%%         SplitPkg[split]
-%%         MetricsPkg[metrics]
-%%         AssistPkg[assistant]
-%%         ConfigPkg[common-config]
-%%     end
-%%
-%%     subgraph WebStack["Web application"]
-%%         Caddy[Caddy reverse proxy]
-%%         React[React / Vite frontend]
-%%         FastAPI[FastAPI backend<br/>web/backend]
-%%         DB[(Persistent store)]
-%%     end
-%%
-%%     subgraph Data["Shared data model"]
-%%         Excel[(Microsoft Excel workbooks)]
-%%         Common[Common record schema]
-%%     end
-%%
-%%     Query([Review protocol / query DSL]) --> SearchPkg
-%%     SearchPkg -->|translates to native syntax| WOS & Scopus & SD &
-% Springer & ACM & IEEE
-%%     WOS & Scopus & SD & Springer & ACM & IEEE -->|raw exports| SearchPkg
-%%     SearchPkg -->|normalised records| Excel
-%%     Excel --> DedupPkg
-%%     DedupPkg -->|deduplicated seed set| Excel
-%%     Excel --> SnowPkg
-%%     SnowPkg -->|DOI lookup| S2
-%%     S2 -->|citations / references| SnowPkg
-%%     SnowPkg -->|snowball candidates| Excel
-%%     Excel --> SplitPkg
-%%     SplitPkg -->|reviewer partitions| Excel
-%%     Excel --> MetricsPkg
-%%     MetricsPkg -->|agreement / IR metrics| Reports([Report files])
-%%     Excel --> AssistPkg
-%%     AssistPkg -->|rendered Jinja2 prompts| LLM
-%%     LLM -->|include/exclude / quality scores| AssistPkg
-%%     AssistPkg -->|annotated records| Excel
-%%     Excel --> FastAPI
-%%     FastAPI -->|REST API| React
-%%     React -->|manual selection UI| Reviewer([Human reviewer])
-%%     Reviewer -->|inclusion / exclusion decisions| React
-%%     ConfigPkg -.->|shared settings| SearchPkg & DedupPkg & SnowPkg &
-% SplitPkg & MetricsPkg & AssistPkg & FastAPI
-%%     Caddy -->|static SPA| React
-%%     Caddy -->|/api /auth| FastAPI
-%%     FastAPI --> DB
-%%
-%% Figure 1: Top-level architecture of MapwiseFox. CLI packages (left)
-%% operate on a shared Excel-based data model and are driven by a common
-%% configuration package. The web application (right) exposes the same
-%% data model through a FastAPI backend and React frontend. External
-%% bibliographic databases feed the search and snowballing stages, while
-%% OpenAI-compatible LLM endpoints power the assistant.
+Figure~\ref{fig:process} shows the complete MapwiseFox pipeline. A
+reviewer writes a single query in a domain-specific language (DSL). The
+\texttt{search} module translates this query into the native syntax of
+six bibliographic databases and collects the results. The
+\texttt{deduplication} module clusters records from multiple sources into
+unique entries. From this point onward, every tool in the pipeline reads
+and writes Microsoft Excel workbooks. This design choice ensures
+interoperability: reviewers can inspect, edit, or supplement the data
+with any spreadsheet application between stages.
 
-%% 2.2 Software functionalities
+Workload splitting and study selection follow after deduplication.
+Once complete, snowballing may be performed before another round of splitting
+and selection. Both forward and backward snowballing are supported at a
+configurable depth, and are performed using the Semantic Scholar API. Study
+selection itself supports two modes: manual screening through the web application
+and automated screening through the LLM-powered \texttt{assistant}. Both
+modes use the same configuration format, so human reviewers and language
+models apply identical inclusion and exclusion criteria.
+
+Selected studies proceed to quality assessment, where reviewers score
+each study against customisable criteria. The \texttt{metrics} module
+computes inter-rater agreement statistics---Cohen's $\kappa$ for
+categorical decisions, intraclass correlation coefficient (ICC),
+concordance correlation coefficient (CCC), mean absolute error (MAE),
+and root mean square error (RMSE) for continuous scores---at any point
+during the review.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/mapwisefox-process.png}
+  \caption{End-to-end MapwiseFox pipeline. A single query DSL is
+    translated to six database backends. Results flow through
+    deduplication, optional snowballing, workload splitting, dual-mode
+    study selection (web-based and LLM-assisted), quality assessment,
+  and agreement metrics.}
+  \label{fig:process}
+\end{figure}
+
+\subsubsection{Logical Abstractions}
+
+Two design patterns recur throughout the toolkit and deserve closer
+examination: the adapter pattern in the search module and the abstract
+factory pattern in the assistant module. Other important logical abstractions
+include a configuration layer shared between the \texttt{assistant} and
+\texttt{web} packages and the ubiquitous use of Office Open XML~\cite{iso29500} for
+persistence operations throughout all MapwiseFox components.
+
+\paragraph{Search: one query, many backends}
+Figure~\ref{fig:search-dsl} illustrates the search architecture. A
+Lark\footnote{\url{https://lark-parser.readthedocs.io/en/stable/}}
+LALR parser reads the DSL query and produces an abstract syntax tree
+(AST). The AST is then visited by an adapter (one per
+target database). The adapter base class handles the full tree-walking logic;
+each concrete subclass only needs to override field-name mappings, value
+translations, and syntax formatting. Client-side regular expressions are automatically
+generated while building the query object when there are fields that are not
+searchable via a backend or when the user explicitly requests it using the
+query DSL. The result of adaptation is a \texttt{QueryObject} carrying a native query
+string, optional filter clauses, and any fallback regex patterns. A
+corresponding backend class executes the query against the database API and
+normalises the returned records into a common schema with columns for title,
+abstract, keywords, authors, source, DOI, URL, and year. A
+\texttt{ConsoleBackend} may be used when the target database does not allow
+API access or during query debugging. This built-in backend will output the
+query in the target database's native DSL.
+
+\begin{figure*}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/mapwisefox-search-dsl-class-diagram.png}
+  \caption{
+    Search architecture. A single DSL query is parsed into an AST
+    and adapted to each backend's native syntax through the Visitor
+    pattern. Results are normalised into a common record schema and are optionally
+    persisted by backends e.g. in a CSV file.
+  }
+  \label{fig:search-dsl}
+\end{figure*}
+
+\paragraph{Assistant: one interface, many providers}
+Figure~\ref{fig:assistant-providers} shows the LLM provider abstraction.
+The \texttt{mapwisefox.assistant.tools.llm} module defines an abstract factory,
+\texttt{LLMProviderBase}, that produces \texttt{JSONGenerator} objects via
+\texttt{new\_json\_generator()}. Five concrete implementations support
+structured data generation using well known LLM providers: OpenAI, Anthropic,
+Google, AWS Bedrock, and Ollama (for local models). Each provider has a
+dedicated \texttt{JSONGenerator} implementation that handles streaming,
+structured output, and automatic retry on malformed responses in the manner
+required by that provider. This logic is important for retrieving well-formed
+verdicts on selection or quality assessment from LLMs. The bridge that decouples
+the JSON generation code from the provider code allows the behaviour of the
+JSON generators to evolve separately from that of the providers. At runtime,
+the \texttt{assistant} CLI selects the provider type by matching a command
+line option to a factory method; the resulting concrete provider is injected
+into the study selection or quality assessment command via a shared context object.
+
+\begin{figure*}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/mapwisefox-assistant-bridge-af-class-diagram.png}
+  \caption{Assistant architecture. An abstract factory
+    (\texttt{LLMProviderBase}) supports five LLM backends. The
+    \texttt{common\_config} package supplies identical selection and
+    quality assessment schemas to both the assistant and the web
+  application.}
+  \label{fig:assistant-providers}
+\end{figure*}
+
+\paragraph{Shared Configuration}
+The \texttt{mapwisefox.common\_config} package defines Pydantic models for
+study selection criteria (\texttt{SelectionConfig}) and quality assessment
+rubrics (\texttt{QAConfig}). Both the \texttt{assistant} CLI and the web
+application import these models, shown in Figure~\ref{fig:common-config}. When
+a reviewer uploads a workbook to the web interface, they may attach a
+selection criteria file; the same file can be passed to the \texttt{assistant} with the
+\texttt{--config-file} flag. The assistant renders the criteria into a
+Jinja2 system prompt and instructs the LLM to output structured JSON
+matching the \texttt{SelectionResponse} schema via the mechanism described before.
+MapwiseFox uses a zero-shot prompting strategy at this point. Incorporating
+more prompting strategies is a planned extension. The current approach guarantees
+that human and machine reviewers can operate using identical configurations.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/mapwisefox-common-config-package-diagram.png}
+  \caption{Common configurations. The \texttt{common-config} library contains
+  shared Pydantic models that are shared by the Assistant CLI and Web application.}
+  \label{fig:common-config}
+\end{figure}
+
+\paragraph{Office Open XML as Universal Interchange}
+After the search and deduplication stages, every tool reads from and
+writes to Office Open XML (Microsoft Excel) workbooks. The \texttt{split} module
+partitions studies into reviewer-specific sheets. The \texttt{metrics} module reads
+decisions and scores from the same columns that the web application and
+assistant write to. This convention eliminates format conversions
+between stages and lets reviewers use external tools for any part of the
+pipeline that MapwiseFox does not yet cover.
+
+\subsubsection{Development view}
+
+MapwiseFox is a Python monorepo managed by a single
+\texttt{uv}~\cite{uv} workspace. Eight packages share the
+\texttt{mapwisefox} namespace: \texttt{search}, \texttt{deduplication},
+\texttt{snowballing}, \texttt{split}, \texttt{metrics},
+\texttt{assistant}, \texttt{common\_config}, and
+\texttt{web}. The web frontend is a standalone React~\cite{react} and
+Vite application managed outside the Python workspace. Each package, except
+\texttt{common\_config} and the two web packages, builds a command-line
+interface (CLI) that users invoke directly. The web backend is a
+FastAPI~\cite{fastapi} application that serves a REST API. The frontend consumes
+this API through a typed client layer with optional automatic authentication
+token refresh.
+
+All Python workspace packages share a single lockfile, which guarantees
+reproducible builds across environments. Adding a new search backend or LLM
+provider requires implementing one adapter or provider class and registering
+it in the package's module index. While this is not a truly pluggable setup,
+implementing search adapters or LLM providers does not require any changes
+to the core pipeline.
+
+\subsubsection{Deployment view}
+
+Figure~\ref{fig:deployment} shows the deployment model. A single
+multi-stage \texttt{Dockerfile} builds one image containing every CLI,
+the FastAPI backend, the pre-built React frontend, and the Caddy web
+server. The default entry point launches Caddy on port~8000. Caddy
+serves the React single-page application as static files and
+reverse-proxies \texttt{/api/*}, \texttt{/auth/*}, and
+\texttt{/docs*} requests to the FastAPI backend on an internal port.
+This same-origin architecture eliminates cross-origin configuration and
+lets cookie-based authentication work without additional setup.
+
+\begin{figure*}[!ht]
+  \centering
+  \includegraphics[width=\textwidth]{images/mapwisefox-deployment-diagram.png}
+  \caption{Deployment model. A single Docker image runs Caddy as a
+    reverse proxy and static file server. Caddy routes API and
+    authentication requests to the FastAPI backend and serves the React
+    frontend for all other paths. Optional OpenID Connect authentication
+  supports multi-user setups.}
+  \label{fig:deployment}
+\end{figure*}
+
+For a single reviewer, the image runs on a local machine with no
+configuration beyond exposing port~8000. For teams, the same image
+may be deployed to Docker Swarm or Kubernetes. Multi-user setups benefit from
+optional OpenID Connect authentication, which integrates with Google,
+Microsoft, or any standards-compliant identity provider. When
+authentication is enabled, each user's uploads are isolated in a
+per-user subdirectory derived from a hash of their identity provider
+and subject identifier. A shared volume is the only additional requirement
+for persisting user data across container runtime sessions or in multi-user
+setups.
+
+The single-image design keeps deployment simple: one
+\texttt{docker run} command gives a reviewer the full toolkit without
+installing Python, Node.js, or any database. This portability, combined with
+the Excel-based data model and standards-based authentication, makes
+MapwiseFox suitable for environments ranging from a student's laptop to an institutional
+server.
+
 \subsection{Software functionalities}
 
-%% [search] One query, six backends.
-\textbf{Search.} Accepts a single query expressed in a small
+\paragraph{Search} Accepts a single query expressed in a small
 domain-specific language and translates it into the native query syntax
 of six backends: Web of Science, Scopus, ScienceDirect, Springer, ACM
-Digital Library, and IEEE Xplore. Results are normalised into a common
-record format and persisted via pluggable adapters.
+Digital Library, and IEEE Xplore. The native queries may be executed against
+a target database's API or provided to the user on the standard output. The
+results of API queries are normalised into a common record format and
+persisted via pluggable adapters.
 
 %% [deduplication]
-\textbf{Deduplication.} Clusters paper metadata coming from multiple
+\paragraph{Deduplication} Clusters paper metadata coming from multiple
 sources so that the same record appearing in several search exports is
-collapsed into a single entry.
+collapsed into a single entry. Supports input formatted as CSV, BibTeX or
+Microsoft Excel files.
 
 %% [snowballing]
-\textbf{Snowballing.} Performs configurable-depth backward or forward
+\paragraph{Snowballing} Performs configurable-depth backward or forward
 snowballing starting from a set of primary studies identified by DOI.
 It resolves citations and references through the Semantic Scholar API
 and writes unique new candidates to Excel workbooks.
 
 %% [split]
-\textbf{Split.} Partitions a review workload across multiple
+\paragraph{Split} Partitions a review workload across multiple
 participants using several schemes, so that each reviewer receives a
-disjoint subset of the studies.
+disjoint subset of the studies. The review workload must be provided
+in a single Microsoft Excel worksheet.
 
 %% [metrics]
-\textbf{Metrics.} Computes agreement and relevance metrics used
-throughout the review process: Cohen's Kappa for categorical ratings,
-intraclass correlation coefficient (ICC) and concordance correlation
-coefficient (CCC) for continuous ratings, and information-retrieval
-measures for search quality.
+\paragraph{Metrics} Computes agreement and relevance metrics used
+throughout the review process. The metrics supported by MapwiseFox
+target three objectives. First, information-retrieval measures allow
+judging the quality of each search query against a set of known good
+results. Then, during selection Cohen's Kappa may be computed on pairs
+of input Microsoft Excel workbooks. The implementation allows measuring
+agreement between pairs of reviewers using Cohen's Kappa on other types
+of categorical ratings, too. Lastly, the mean absolute error (MAE), root
+mean squared error (RMSE), intraclass correlation coefficient (ICC) and
+concordance correlation coefficient (CCC) allow measuring the agreement
+between multiple raters when they provide continuous-valued scores (e.g.
+scores in the interval [1-10]). This is particularly useful during
+quality assessment. All metrics are provided both on the standard output
+and in Microsoft Excel workbooks.
 
 %% [assistant]
-\textbf{Assistant.} Uses large language models to perform study
-selection (include or exclude) or quality assessment based on
-user-defined criteria. It supports any OpenAI-compatible provider
-(OpenAI, Anthropic, Google, AWS Bedrock, and local endpoints) and
-renders prompts from Jinja2 templates.
+\paragraph{Assistant} Uses large language models to perform study selection
+(include or exclude) or quality assessment based on user-defined criteria. It
+provides native backends for five LLM providers: OpenAI, Anthropic, Google,
+AWS Bedrock, and Ollama (local endpoints) and renders prompts from Jinja2 templates.
 
 %% [web]
-\textbf{Web.} A FastAPI backend and React frontend that let reviewers
-manually select primary studies against customisable inclusion and
-exclusion criteria. Authentication is optional and uses OpenID Connect
-when enabled.
-
-%% MISSING: the assistant currently supports only one LLM provider at a
-%% time. Multi-provider routing is not yet implemented.
-%% MISSING: there is no built-in data-extraction stage; the pipeline
-%% ends at study selection and quality assessment.
-%% MISSING: the web application does not yet support multi-reviewer
-%% concurrency controls or conflict-resolution workflows.
+\paragraph{Web} The MapwiseFox web application is a simple web form that lets reviewers
+manually select primary studies against customisable inclusion and exclusion criteria.
+Authentication is optional and uses OpenID Connect when enabled.
 
 %% 2.3 Sample code snippets analysis (optional)
 \subsection{Sample code snippets}
 
-%% A typical end-to-end run, citing the exact commands.
-A review starts with a search across all configured backends, after
-which the exported results are deduplicated, optionally snowballed, and
-split among reviewers:
+In a local \texttt{uv} environment, a review starts with a search across
+all configured backends, after which the exported results are deduplicated,
+optionally snowballed, and split among reviewers:
 
 \begin{verbatim}
 uv run search -D ./data/run-1
@@ -340,6 +683,9 @@ uv run snowball -i ./data/dedup.xlsx -d backward --depth 2
 uv run split-workload -i ./data/dedup.xlsx -n 3
 uv run web --host 127.0.0.1 --port 8000
 \end{verbatim}
+
+These same commands may be run using Docker by simply substituting `\texttt{uv run}'
+with `\texttt{docker run -it <image tag>}'.
 
 %% MISSING: verify the exact CLI invocations against the current code
 %% before submission, as flags may have changed.
@@ -379,8 +725,9 @@ screening.
 The toolkit reduces the manual effort required at each stage of an
 SLR or SMS. The search DSL lets a researcher write one query and run
 it against six databases, eliminating the need to translate syntax
-manually. The deduplication and snowballing stages further reduce
-redundant work.
+manually. It also allows iterating queries against a known-good
+set to quickly reach the optimum query across all six databases.
+The deduplication and snowballing stages further reduce redundant work.
 
 %% [Daily practice]
 MapwiseFox changes the daily practice of its users by replacing a
@@ -388,9 +735,12 @@ chain of disconnected tools and manual data transfers with a single,
 scriptable pipeline. The Docker image makes the toolkit available to
 researchers who cannot install each dependency individually.
 
-%% [Adoption]
-%% MISSING: report download counts, user numbers, or citable
-%% publications once the software has been publicly released.
+This software is at the beginning of its journey. So far, it was used to
+create a systematic mapping study on entity resolution software architecture
+by a team of five reviewers with various degrees of expertise. Both human
+and LLM-assisted selection and quality assessment were used.
+
+%% Would be nice to cite the MethodsX article here.
 
 %% [Commercial use]
 %% MISSING: report any commercial use or spin-off companies if
@@ -409,8 +759,8 @@ study up to data extraction. It runs a single query across six
 bibliographic databases, deduplicates results, performs
 configurable-depth snowballing, splits workloads among reviewers,
 computes agreement metrics, and offers both LLM-assisted and
-web-based study selection. The toolkit is self-hostable, ships as a
-single Docker image, and is released under the MIT licence.
+web-based study selection and quality assessment. The toolkit is
+self-hostable, ships as a single Docker image, and is released under the MIT licence.
 
 %% MISSING: finalise the future-work outlook (data-extraction stage,
 %% multi-provider LLM routing, conflict-resolution workflows, additional
