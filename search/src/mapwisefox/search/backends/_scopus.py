@@ -44,7 +44,7 @@ class ScopusBackend(SearchBackend):
         return "; ".join(
             {
                 f"{author['given-name']}, {author['surname']}"
-                for author in entry["author"]
+                for author in entry.get("author", [])
             }
         )
 
@@ -81,8 +81,8 @@ class ScopusBackend(SearchBackend):
                 records.append(
                     {
                         "title": entry["dc:title"],
-                        "abstract": entry["dc:description"],
-                        "keywords": entry["authkeywords"].replace(" |", ";"),
+                        "abstract": entry.get("dc:description", ""),
+                        "keywords": entry.get("authkeywords", "").replace(" |", ";"),
                         "authors": self._get_authors(entry),
                         "source": entry["prism:publicationName"],
                         "doi": entry.get("prism:doi", "N/A"),
