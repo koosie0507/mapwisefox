@@ -44,32 +44,6 @@
 }
 
 %% ---------------------------------------------------------------------
-%% Related tools and software
-%% ---------------------------------------------------------------------
-%% MISSING: add citations for the comparable tools mentioned in the
-%% Motivation section (ASReview, Rayyan, Covidence, Publish or Perish,
-%% VOSviewer, etc.).
-
-@article{van2021,
-  author    = {van de Schoot, Rens and de Bruin, Jonathan and Schalkx, Raoul and others},
-  title     = {{ASReview}: a tool to support the automation of systematic reviews},
-  journal   = {Psychological Methods},
-  year      = {2021},
-  doi       = {10.1037/met0000509},
-}
-
-@article{rayyan,
-  author    = {Ouzzani, Moussalam and Hammady, Hossam and Lyons, James and Hammady, Amr},
-  title     = {{Rayyan}---a web and mobile app for systematic reviews},
-  journal   = {Systematic Reviews},
-  year      = {2016},
-  volume    = {5},
-  number    = {1},
-  pages     = {210},
-  doi       = {10.1186/s13643-016-0384-4},
-}
-
-%% ---------------------------------------------------------------------
 %% Agreement metrics
 %% ---------------------------------------------------------------------
 
@@ -157,8 +131,6 @@
 %% ---------------------------------------------------------------------
 %% MapwiseFox itself (self-citation for the released version)
 %% ---------------------------------------------------------------------
-%% MISSING: replace with the Zenodo DOI once the reviewed version is
-%% archived.
 
 @software{olar2026,
   author    = {Olar, Andrei},
@@ -169,11 +141,46 @@
   url       = {https://github.com/koosie0507/mapwisefox},
 }
 
-%% =====================================================================
-%% Additional references for related work
-%% =====================================================================
+@misc{olar2026-config-examples,
+  author       = {Olar, Andrei},
+  title        = {{MapwiseFox}: A Modular Toolkit for Systematic Literature Reviews - Example Configuration Files},
+  month        = aug,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {1.0.0},
+}
 
-%% --- SoftwareX-published SLR/SMS tools ---
+%% ---------------------------------------------------------------------
+%% Related tools and software
+%% ---------------------------------------------------------------------
+
+@article{van2021,
+	title = {An open source machine learning framework for efficient and transparent systematic reviews},
+	volume = {3},
+	issn = {2522-5839},
+	url = {https://doi.org/10.1038/s42256-020-00287-7},
+	doi = {10.1038/s42256-020-00287-7},
+	number = {2},
+	journal = {Nature Machine Intelligence},
+	author = {van de Schoot, Rens and de Bruin, Jonathan and Schram, Raoul and Zahedi, Parisa and de Boer, Jan and Weijdema, Felix and Kramer, Bianca and Huijts, Martijn and Hoogerwerf, Maarten and Ferdinands, Gerbrich and Harkema, Albert and Willemsen, Joukje and Ma, Yongchao and Fang, Qixiang and Hindriks, Sybren and Tummers, Lars and Oberski, Daniel L.},
+	month = feb,
+	year = {2021},
+	pages = {125--133},
+}
+
+@article{rayyan,
+	title = {Rayyan—a web and mobile app for systematic reviews},
+	volume = {5},
+	issn = {2046-4053},
+	url = {https://doi.org/10.1186/s13643-016-0384-4},
+	doi = {10.1186/s13643-016-0384-4},
+	number = {1},
+	journal = {Systematic Reviews},
+	author = {Ouzzani, Mourad and Hammady, Hossam and Fedorowicz, Zbys and Elmagarmid, Ahmed},
+	month = dec,
+	year = {2016},
+	pages = {210},
+}
 
 @article{buhos2018,
   author    = {Bustos Navarrete, Claudio and Morales Malverde, Mar\'ia Gabriela and Salcedo Lagos, Pedro and D\'iaz Mujica, Alejandro},
@@ -186,13 +193,16 @@
 }
 
 @article{smsbuilder2022,
-  author    = {Candela-Uribe, Christian A. and Sep\'ulveda-Rodr\'iguez, Luis E. and Chavarro-Porras, Julio C. and Sanabria-Ordo\~nez, John A. and Garrido, Jos\'e Luis and Rodr\'iguez-Dom\'inguez, Carlos and Guerrero-Contreras, Gabriel},
-  title     = {{SMS-Builder}: An adaptive software tool for building systematic mapping studies},
-  journal   = {SoftwareX},
-  year      = {2022},
-  volume    = {17},
-  pages     = {100935},
-  doi       = {10.1016/j.softx.2021.100935},
+title = {SMS-Builder: An adaptive software tool for building systematic mapping studies},
+journal = {SoftwareX},
+volume = {17},
+pages = {100935},
+year = {2022},
+issn = {2352-7110},
+doi = {https://doi.org/10.1016/j.softx.2021.100935},
+url = {https://www.sciencedirect.com/science/article/pii/S2352711021001710},
+author = {Christian A. Candela-Uribe and Luis E. Sepúlveda-Rodríguez and Julio C. Chavarro-Porras and John A. Sanabria-Ordoñez and José Luis Garrido and Carlos Rodríguez-Domínguez and Gabriel Guerrero-Contreras},
+keywords = {Systematic literature review, Systematic mapping study, Empirical software engineering},
 }
 
 @article{reviq2026,
@@ -206,13 +216,16 @@
 }
 
 @article{litstudy2022,
-  author    = {Heldens, Stijn and Sclocco, Alessio and Dreuning, Henk and van Werkhoven, Ben and Hijma, Pieter and Maassen, Jason and van Nieuwpoort, Rob V.},
-  title     = {{litstudy}: A {Python} package for literature reviews},
-  journal   = {SoftwareX},
-  year      = {2022},
-  volume    = {20},
-  pages     = {101207},
-  doi       = {10.1016/j.softx.2022.101207},
+title = {litstudy: A Python package for literature reviews},
+journal = {SoftwareX},
+volume = {20},
+pages = {101207},
+year = {2022},
+issn = {2352-7110},
+doi = {https://doi.org/10.1016/j.softx.2022.101207},
+url = {https://www.sciencedirect.com/science/article/pii/S235271102200125X},
+author = {Stijn Heldens and Alessio Sclocco and Henk Dreuning and Ben {van Werkhoven} and Pieter Hijma and Jason Maassen and Rob V. {van Nieuwpoort}},
+keywords = {Literature review, Python, Jupyter, Bibliometrics},
 }
 
 @article{bibexpy2025,
