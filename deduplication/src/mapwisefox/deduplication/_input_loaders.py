@@ -41,8 +41,19 @@ def load_csv(csv_path, mappings=None, use_tabs=False):
     df["year"] = df["year"].astype(int)
     df["doi"] = df["doi"].fillna("N/A")
     df["url"] = df["url"].fillna("N/A")
+    df["filename"] = csv_path.stem
     return df[
-        ["title", "abstract", "authors", "keywords", "source", "year", "doi", "url"]
+        [
+            "title",
+            "abstract",
+            "authors",
+            "keywords",
+            "source",
+            "year",
+            "doi",
+            "url",
+            "filename",
+        ]
     ]
 
 
@@ -63,6 +74,7 @@ def load_bib(bib_path):
                     "url",
                     f"https://doi.org/{entry['doi']}" if "doi" in entry else "N/A",
                 ),
+                "filename": bib_path.stem,
             }
             for entry in bib_database.entries
         ]
