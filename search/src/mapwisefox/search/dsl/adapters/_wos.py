@@ -63,7 +63,7 @@ class WebOfScienceDSLAdapter(DSLAdapter):
 
     def emit_near(self, node: NearExpr) -> Any:
         """Translate ``near[n](a, b)`` to the native ``NEAR/n`` operator."""
-        term = f'"{node.left.value}" NEAR/{node.distance} "{node.right.value}"'
+        term = f'("{node.left.value}" NEAR/{node.distance} "{node.right.value}")'
         fields = node.fields or self.field_ctx
 
         if self.output_ctx == OutputTarget.QUERY:
@@ -101,9 +101,13 @@ class WebOfScienceDSLAdapter(DSLAdapter):
         right = self._normalize(self.adapt(node.right))
 
         op = "AND" if node.op == BoolOp.AND else "OR"
-
         if left.query and right.query:
-            query_str = f"{left.query} {op} {right.query}"
+            if op == "AND" and right.query.startswith("NOT"):
+                query_str = f"{left.query} {right.query}"
+            elif op == "AND" and left.query.startswith("NOT"):
+                query_str = f"{right.query} {left.query}"
+            else:
+                query_str = f"{left.query} {op} {right.query}"
         else:
             query_str = left.query or right.query
 

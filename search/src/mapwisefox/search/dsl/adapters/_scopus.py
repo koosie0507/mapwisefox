@@ -53,7 +53,7 @@ class ScopusDSLAdapter(DSLAdapter):
         fields = self._get_all_node_fields(node)
         left_val = self._map_value(fields, node.left.value)
         right_val = self._map_value(fields, node.right.value)
-        term = f'"{left_val}" W/{node.distance} "{right_val}"'
+        term = f'("{left_val}" W/{node.distance} "{right_val}")'
         expr = self._emit_leaf_targets(fields, term)
         if node.fields:
             expr = self._apply_fields(expr, node.fields)
