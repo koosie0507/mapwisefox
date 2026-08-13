@@ -26,6 +26,7 @@ def sample_df():
                 "doi": "10.1",
                 "url": "url1",
                 "year": 2020,
+                "filename": "A",
             },
             {
                 "title": "Title 2",
@@ -36,6 +37,7 @@ def sample_df():
                 "doi": "10.2",
                 "url": "url2",
                 "year": 2021,
+                "filename": "B",
             },
         ]
     )
@@ -87,6 +89,7 @@ def test_merge_cluster_representative_selection():
                 "url": "u1",
                 "year": 2020,
                 "confidence": 0.5,
+                "filename": "A",
             },
             {
                 "title": "T2",
@@ -98,6 +101,7 @@ def test_merge_cluster_representative_selection():
                 "url": "u2",
                 "year": 2021,
                 "confidence": 0.9,
+                "filename": "B",
             },
         ]
     )
@@ -118,6 +122,7 @@ def test_merge_cluster_keyword_aggregation():
                 "url": "u1",
                 "year": 2020,
                 "confidence": 0.5,
+                "filename": "A",
             },
             {
                 "title": "T2",
@@ -129,6 +134,7 @@ def test_merge_cluster_keyword_aggregation():
                 "url": "u2",
                 "year": 2021,
                 "confidence": 0.9,
+                "filename": "B",
             },
         ]
     )
@@ -147,12 +153,21 @@ def test_merge_clusters_aggregates_multiple_groups(sample_df):
     assert len(result) == 2
 
 
+def test_merge_clusters_aggregates_sources(sample_df):
+    sample_df["cluster_id"] = [1, 1]
+    sample_df["confidence"] = [0.8, 1.0]
+    result = _merge_clusters(sample_df)
+
+    assert len(result) == 1
+    assert result["sources"].tolist() == ["(A,0); (B,1)"]
+
+
 @patch("mapwisefox.deduplication._deduper._load_pretrained")
 def test_setup_deduper_uses_pretrained(mock_load, tmp_path):
     mock_dedupe = MagicMock()
     mock_load.return_value = mock_dedupe
 
-    result = _setup_deduper({}, tmp_path / "settings", tmp_path / "training")
+    result = _setup_deduper({}, tmp_path / "settings", tmp_path / "training", None)
 
     assert result == mock_dedupe
 
@@ -163,7 +178,7 @@ def test_setup_deduper_uses_pretrained(mock_load, tmp_path):
 def test_setup_deduper_trains_new(mock_load, mock_label, mock_dedupe_cls, tmp_path):
     mock_dedupe = mock_dedupe_cls.return_value
 
-    _setup_deduper({}, tmp_path / "settings", tmp_path / "training")
+    _setup_deduper({}, tmp_path / "settings", tmp_path / "training", None)
 
     mock_dedupe.train.assert_called_once()
 
