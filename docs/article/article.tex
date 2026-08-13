@@ -139,12 +139,13 @@ thousands.
 Practitioners typically rely on a mix of commercial platforms and
 ad-hoc scripts, moving data between formats manually. This is
 error-prone, hard to reproduce, and limits the portability of review
-protocols across teams and institutions. Add to this defficiencies in
+protocols across teams and institutions. Add to this deficiencies in
 distributing the workload among reviewers or scaling from tens of studies
 to thousands and you have a complete picture why systematic reviews are
-some of the hardest things to pull off. So: multiple tools, interoperability
-challenges between the tools, poor workload distribution for human reviewers and
-no AI help to scale things up.
+some of the more difficult tasks to complete in research today. To sum up,
+difficulties arise from the use of multiple disconnected tools,
+interoperability challenges between them, poor workload distribution among
+human reviewers, and limited AI assistance to scale the process.
 
 %% [Contribution] How the software contributes to scientific discovery.
 %% MISSING: cite a research paper that uses MapwiseFox once available.
@@ -176,30 +177,13 @@ Cohen's $\kappa$ and snowballing. SMS-Builder~\cite{smsbuilder2022} covers
 planning through data extraction with built-in quality indices.
 litstudy~\cite{litstudy2022} queries multiple academic sources and
 deduplicates results. ASReview~\cite{van2021} uses active learning for
-screening prioritisation. Commercial platforms such as Rayyan~\cite{rayyan},
+screening prioritisation. Commercial platforms such as Rayyan~\cite{rayyan2016},
 Covidence~\cite{covidence}, and EPPI-Reviewer~\cite{thomas2010} offer
 polished screening experiences, but their closed-source nature and the
 lack of recent peer-reviewed publications describing their current
-functionality make it difficult to assess them in detail.
-
-\paragraph{Planning}
-The planning phase of an SLR or SMS involves defining the search
-strategy: selecting databases, crafting query strings, and validating
-that those strings retrieve a known set of relevant studies.
-SMS-Builder~\cite{smsbuilder2022} provides a dedicated planning stage
-where users define goals, research questions, and quality metrics
-using the Goal/Question/Metric model. ReviQ~\cite{reviq2026} maps
-a project-setup phase to Kitchenham's planning phase, and
-CADIMA~\cite{kohl2018} guides users through protocol development with
-a structured input format. However, none of
-these tools supports validating search query recall against a known
-set of primary studies. This technique, borrowed from information
-retrieval evaluation, lets reviewers calibrate search strings before
-committing to a full database sweep. MapwiseFox addresses this gap:
-when a pool of known primary studies already exists, the \texttt{metrics}
-command can evaluate how many of those studies each candidate query
-retrieves, while simultaneously translating a single query expressed in
-a domain-specific language into the native syntax of each configured backend.
+functionality make it difficult to assess them in detail. A detailed
+feature-by-feature comparison of these tools, produced using
+MapwiseFox itself, is presented in Section~\ref{sec:example}.
 
 %% ---------------------------------------------------------------------
 %% 2. Software description
@@ -480,17 +464,19 @@ all configured backends, after which the exported results are deduplicated,
 optionally snowballed, and split among reviewers:
 
 \begin{verbatim}
-uv run search -D ./data/run-1
-uv run deduplicate -i ./data/run-1 -o ./data/dedup.xlsx
-uv run snowball -i ./data/dedup.xlsx -d backward --depth 2
-uv run split-workload -i ./data/dedup.xlsx -n 3
+uv run search --config search-config.yaml --data-dir ./data
+uv run deduplicate -I ./data -o ./unique.xlsx
+uv run split-workload simple -D ./data -n 3
 uv run web --host 127.0.0.1 --port 8000
+uv run snowball ./data/unique.xlsx -s back
+uv run snowball ./data/unique.xlsx -s fwd --direction forward
+
 \end{verbatim}
 
-These same commands may be run using Docker by simply substituting `\texttt{uv run}'
-with `\texttt{docker run -it <image tag>}'.
+These same commands may be run using Docker by replacing `\texttt{uv run <command>}'
+with `\texttt{docker run -v ./data:/opt/mapwisefox/data <image> <command>}'.
 
-Section~\ref{sec:examples} walks through a complete review workflow that exercises these
+Section~\ref{sec:example} walks through a complete review workflow that exercises these
 functionalities on a concrete comparison of SLR tools.
 
 %% ---------------------------------------------------------------------
@@ -500,7 +486,7 @@ functionalities on a concrete comparison of SLR tools.
 %% functions. OPTIONAL: an explanatory video or screencast (MP4, max
 %% 150 MB, 640x480, 30 fps) may be submitted as supplementary material.
 
-\section{Illustrative examples}\label{sec:examples}
+\section{Illustrative examples}\label{sec:example}
 
 To validate MapwiseFox and produce the feature comparison in
 Table~\ref{tab:comparison}, we conducted an example survey of open-source
@@ -512,11 +498,21 @@ of the process. All configuration files and intermediate data are available
 as supplementary material and archived on Zenodo~\cite{olar2026-config-examples}.
 
 \paragraph{Preparation}
-Before commencing our example survey, we used a couple of articles to construct
-our query: ASReview~\cite{van2021}, litstudy~\cite{litstudy2022}, Rayyan~\cite{rayyan
-} and SMS-Builder~\cite{smsbuilder2022}. We ran a couple of search queries against the
-Web of Science collection and retained the first query that would retain all four
-without returning too many results.
+To construct the query for our example survey, we began with a set of known tools for
+conducting systematic reviews: ASReview~\cite{van2021},
+litstudy~\cite{litstudy2022}, Rayyan~\cite{rayyan2016},
+SMS-Builder~\cite{smsbuilder2022}, Buhos~\cite{buhos2018}, and
+ReviQ~\cite{reviq2026}. These tools were recorded in the \texttt{known-good.csv}
+file within our data package. We then iteratively refined the search query
+against the Scopus index, retaining the first query that successfully
+retrieved all known-good tools. Subsequent iterations focused on narrowing
+the query to reduce the working set. At the end of each iteration, we assessed
+the quality of the results by running \texttt{metrics search-quality} against
+the known-good CSV. Because MapwiseFox exposes its own query DSL, this calibration step
+can be performed either manually by a human reviewer inspecting the retrieved
+set, or with the aid of AI agents that automatically compare the retrieved
+records against the known-good set, flag missing items, and suggest query
+refinements to improve retrieval quality metrics.
 
 \paragraph{Search}
 Several tools import search results from bibliographic databases, but
@@ -530,7 +526,7 @@ ReviQ~\cite{reviq2026} accepts BibTeX exports from any source.
 SMS-Builder~\cite{smsbuilder2022} imports RIS files from externally
 conducted searches. ASReview~\cite{van2021} and the commercial
 platforms discussed above all require pre-exported search results.
-MapwiseFox is the only tool that translates a single query domain specific language
+MapwiseFox is the only tool that translates a single query domain-specific language
 (DSL) into the native syntax of six database backends (WoS, Scopus,
 ScienceDirect, Springer, ACM DL, IEEE Xplore) and federates the results.
 
@@ -761,19 +757,37 @@ computes agreement metrics, and offers both LLM-assisted and
 web-based study selection and quality assessment. The toolkit is
 self-hostable, ships as a single Docker image, and is released under the MIT licence.
 
-%% MISSING: finalise the future-work outlook (data-extraction stage,
-%% multi-provider LLM routing, conflict-resolution workflows, additional
-%% search backends).
+\section*{CRediT authorship contribution statement}
+\textbf{Andrei Olar}: Conceptualization, Methodology, Software,
+Validation, Writing -- original draft, Writing -- review and editing.
 
-%% =====================================================================
-%% Acknowledgements
-%% =====================================================================
-%% Optionally thank people and institutes. Place directly before the
-%% reference list, not on the title page.
-%% MISSING: add acknowledgements if applicable.
+\section*{Data statement}
+The search configuration files, known-good set, and intermediate
+data used in the illustrative example are archived on Zenodo
+\cite{olar2026-config-examples}. The MapwiseFox source code is
+available at \url{https://github.com/koosie0507/mapwisefox} under
+the MIT licence.
 
-\section*{Acknowledgements}
-[Acknowledgements text, if any.]
+\section*{Declaration of generative AI and AI-assisted technologies
+in the manuscript preparation process}
+During the preparation of this work the author used
+opencode~\footnote{\url{https://opencode.ai/}} and
+Ollama~\footnote{\url{https://ollama.com/}} to assist
+with drafting the MapwiseFox documentation and portions of this manuscript. After
+using these tools, the author reviewed and edited the content as needed and takes
+full responsibility for the content of the  published article.
+
+\section*{Acknowledgements}\label{sec:acknowledgements}
+
+This research is supported by the project ``Romanian Hub for Artificial Intelligence -
+HRIA'', Smart Growth, Digitization and Financial Instruments Program, 2021-2027, MySMIS
+no. 351416. The funder had no role in study design, data collection and analysis,
+decision to publish, or preparation of the manuscript.
+
+\section*{Declaration of Competing Interests}\label{sec:conflicts}
+
+The authors declare that they have no known competing financial interests or personal
+relationships that could have appeared to influence the work reported in this paper.
 
 %% =====================================================================
 %% References
@@ -792,6 +806,14 @@ self-hostable, ships as a single Docker image, and is released under the MIT lic
 %% the release is minted.
 
 \section*{Current executable software version}
-[To be completed with the Zenodo DOI and archival details upon release.]
+\begin{table}[!h]
+  \begin{tabular}{|l|p{10cm}|}
+    \hline
+    \textbf{Nr.} & \textbf{Executable software version} \\
+    \hline
+    S1 & Zenodo DOI / archival reference for version 0.8.1 \\
+    \hline
+  \end{tabular}
+\end{table}
 
 \end{document}
