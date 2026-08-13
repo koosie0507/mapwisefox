@@ -50,7 +50,16 @@ def _default_output_file():
     type=click.FloatRange(0.0, 1.0),
     help="Similarity score threshold (0-1) for treating two records as duplicates.",
 )
-def main(input_dir, output_file, dd_config_dir, threshold):
+@click.option(
+    "--field",
+    "-f",
+    "fields",
+    default=None,
+    type=click.STRING,
+    multiple=True,
+    help="One or more string fields to deduplicate on",
+)
+def main(input_dir, output_file, dd_config_dir, threshold, fields):
     # input, blocking & filtering
     input_dir = Path(input_dir)
     output_file = Path(output_file) if output_file else _default_output_file()
@@ -67,7 +76,7 @@ def main(input_dir, output_file, dd_config_dir, threshold):
 
     # matching & clustering
     deduped_df = _run_dedupe(
-        full_df, dd_training_file, dd_settings_file, threshold=threshold
+        full_df, dd_training_file, dd_settings_file, threshold=threshold, fields=fields
     )
     assert len(full_df) == len(deduped_df)
 

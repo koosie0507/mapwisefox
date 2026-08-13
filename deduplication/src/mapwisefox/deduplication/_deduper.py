@@ -1,9 +1,18 @@
-from os import access, R_OK
+from os import R_OK, access
 from pathlib import Path
 
 import dedupe
 import pandas as pd
 from dedupe import variables as v
+
+
+_DEFAULT_FIELDS = [
+    "title",
+    "authors",
+    "keywords",
+    "doi",
+    "source",
+]
 
 
 def _clean_value(value):
@@ -38,13 +47,8 @@ def _load_dedupe_data(df):
     return dedupe_data
 
 
-def _setup_deduper(dedupe_data, settings_file, training_file):
-    fields = [
-        v.String("title"),
-        v.String("authors"),
-        v.String("source"),
-        v.String("keywords"),
-    ]
+def _setup_deduper(dedupe_data, settings_file, training_file, fields=None):
+    fields = list(map(v.String, fields or _DEFAULT_FIELDS))
     if (deduper := _load_pretrained(settings_file)) is not None:
         return deduper
 
@@ -63,13 +67,13 @@ def _setup_deduper(dedupe_data, settings_file, training_file):
     return deduper
 
 
-def _run_dedupe(df, training_file, settings_file, threshold=0.5):
+def _run_dedupe(df, training_file, settings_file, threshold=0.5, fields=None):
     dedupe_df = df.copy()
     dedupe_df.reset_index(drop=True, inplace=True)
     print("load input...")
     dedupe_data = _load_dedupe_data(dedupe_df)
     print("blocking and indexing...")
-    deduper = _setup_deduper(dedupe_data, settings_file, training_file)
+    deduper = _setup_deduper(dedupe_data, settings_file, training_file, fields)
     print("matching & clustering...")
     clustered_dupes = deduper.partition(dedupe_data, threshold)
     print("  * # duplicate sets =", len(clustered_dupes))
@@ -97,8 +101,12 @@ def _url_relevance(url):
 
 def _merge_cluster(group):
     representative = group.loc[group["confidence"].idxmax()]
+    keywords = group["keywords"].astype(str)
     all_keys = set(
-        key.lower().strip() for keys in group["keywords"] for key in keys.split(";")
+        key.lower().strip() for keys in keywords for key in str(keys).split(";")
+    )
+    duplicate_ids = "; ".join(
+        f"({item.filename},{item.Index})" for item in group.itertuples(name="Paper")
     )
     return pd.Series(
         {
@@ -111,6 +119,7 @@ def _merge_cluster(group):
             "url": max((x for x in group["url"]), key=_url_relevance),
             "year": representative["year"],
             "include": None,
+            "sources": duplicate_ids,
         }
     )
 

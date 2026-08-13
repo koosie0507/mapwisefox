@@ -35,6 +35,7 @@ class ScopusDSLAdapter(DSLAdapter):
         "evidence_type": {
             "article": "ar",
             "conference": "cp",
+            "review": "re",
             # "book" is intentionally absent → treated as None (dropped)
         },
         "subject": {"computer science": "COMP"},
