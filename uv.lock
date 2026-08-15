@@ -1488,7 +1488,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.9.3.dev1"
+version = "0.9.4"
 source = { virtual = "." }
 dependencies = [
     { name = "openai" },
@@ -1652,7 +1652,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-snowballing"
-version = "0.1.0"
+version = "0.8.0"
 source = { editable = "snowballing" }
 dependencies = [
     { name = "asyncclick" },
@@ -1674,7 +1674,7 @@ requires-dist = [
     { name = "asyncclick", specifier = ">=8.2.2.2" },
     { name = "dotenv", specifier = ">=0.9.9" },
     { name = "httpx", specifier = ">=0.28.1" },
-    { name = "meta-paper", specifier = ">=0.4.0" },
+    { name = "meta-paper", specifier = ">=0.7.0" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.0" },
     { name = "requests", specifier = ">=2.32.4" },
@@ -1881,15 +1881,16 @@ wheels = [
 
 [[package]]
 name = "meta-paper"
-version = "0.5.1"
+version = "0.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
+    { name = "httpcore" },
     { name = "httpx" },
     { name = "tenacity" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/5b/a6/52407960115a66188eb89065b2ef6092dee7a68ed6e4c32c2253fd00dbca/meta_paper-0.5.1.tar.gz", hash = "sha256:623af5357aa38a51ae51d635e37a6f63bee5da6b7bd7f29e12ec3b3f9b1b17dc", size = 6605, upload-time = "2025-08-27T13:53:51.758Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/d5/1e/094ace9d518f425e0cd189bf00b2acc7656eca20bd3f3bede1272468ac6c/meta_paper-0.7.0.tar.gz", hash = "sha256:8cf4e4dfdb3e0534c48422380ed9e8d2dbdbf58008ea86fa70733e8c6c82699b", size = 7515, upload-time = "2026-08-14T21:05:46.567Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/d3/b0/1d4b7e513ddaed89587a41644f737076a0f2194edc02104827382960a077/meta_paper-0.5.1-py3-none-any.whl", hash = "sha256:a5db5ee05e8254dce0edf358ca6582600ddba83b0ad2b07662baf1718c4b5cbb", size = 10386, upload-time = "2025-08-27T13:53:50.736Z" },
+    { url = "https://files.pythonhosted.org/packages/19/b4/90846e0214787f45ea4dc8abeb6f3f41731fbac050c2c7bde1c234a29756/meta_paper-0.7.0-py3-none-any.whl", hash = "sha256:78d4f060889e26293b8be8a7e7ac582095b8a47b2a4fb37b31ace6d00c67f978", size = 11358, upload-time = "2026-08-14T21:05:45.608Z" },
 ]
 
 [[package]]
