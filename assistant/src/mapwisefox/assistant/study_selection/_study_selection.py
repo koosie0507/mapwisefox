@@ -4,6 +4,7 @@ from itertools import islice
 from pathlib import Path
 
 import click
+import pandas as pd
 from tenacity import (
     Retrying,
     stop_after_attempt,
@@ -22,6 +23,7 @@ from mapwisefox.assistant.tools.callbacks import (
 )
 from mapwisefox.assistant.tools.logging import get_logger
 
+_COMMAND_NAME = "study-selection"
 
 SYSTEM_PROMPT_TEMPLATE = Path(__file__).parent / f"{Path(__file__).stem}.j2"
 INCLUDE_COL_NAME = "include"
@@ -30,7 +32,7 @@ DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", INCLUDE_COL_NAME, EXCLUDE_REASON_CO
 _MAX_RETRIES = 3
 
 
-@click.command("study-selection")
+@click.command(_COMMAND_NAME)
 @click.argument(
     "search_results",
     required=True,
@@ -80,13 +82,16 @@ def study_selection(
     decides based whether each record meets a set of criteria (which are also
     provided by the user).
     """
-    logger = get_logger()
+    logger = get_logger(_COMMAND_NAME)
     ignored_attrs = set(
         ignore_attributes if len(ignore_attributes) > 0 else DEFAULT_EXCLUDED_ATTRIBUTES
     )
     search_results_path = Path(search_results)
     results_df = load_df(search_results_path, sheet_name=sheet_name)
-    results_df[INCLUDE_COL_NAME] = results_df[INCLUDE_COL_NAME].astype("string")
+    if INCLUDE_COL_NAME in results_df.columns:
+        results_df[INCLUDE_COL_NAME] = results_df[INCLUDE_COL_NAME].astype("string")
+    else:
+        results_df[INCLUDE_COL_NAME] = pd.Series(dtype="string", index=results_df.index)
 
     try:
         rule_config = load_selection_config(config_file)

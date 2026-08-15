@@ -10,7 +10,7 @@ import responses
 def sample_pdf_path():
     path = Path(__file__).parents[3] / "data" / "sample.pdf"
     assert path.exists(), f"sample PDF not found at {path}"
-    return path
+    yield path
 
 
 @pytest.fixture

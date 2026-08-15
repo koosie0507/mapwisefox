@@ -1,5 +1,4 @@
 import io
-import logging
 import os
 from collections import defaultdict
 
@@ -333,9 +332,7 @@ def study_qa(
 
     download_dir = Path(download_dir).resolve()
     file = Path(file).resolve()
-    file_provider = FileProvider(
-        download_dir, verify_tls=not insecure_skip_tls_verify
-    )
+    file_provider = FileProvider(download_dir, verify_tls=not insecure_skip_tls_verify)
     pdf_reader = reader_factory(reader_type, layout_config_path)
 
     df = load_df(file, index_col=index_col)
