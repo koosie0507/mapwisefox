@@ -5,7 +5,7 @@ abstract: "A suite of tools for performing systematic literature reviews and sys
 authors:
   - family-names: Olar
     given-names: Andrei
-version: 0.9.2-dev1
+version: 0.9.2
 date-released: "2026-07-27"
 repository-code: "https://github.com/koosie0507/mapwisefox"
 license: MIT
