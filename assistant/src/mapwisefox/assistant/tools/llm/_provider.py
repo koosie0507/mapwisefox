@@ -47,7 +47,9 @@ class JSONGenerator(ABC):
         while not answered and attempts > 0:
             try:
                 system_prompt = system_prompt_template.render(**template_data)
-                llm_text = self._generate_text(system_prompt, user_prompt, response_schema or "json")
+                llm_text = self._generate_text(
+                    system_prompt, user_prompt, response_schema or "json"
+                )
                 answer_text = self.__regex.sub(r"\1", llm_text)
                 answer_obj = json.loads(answer_text)
                 answered = True
