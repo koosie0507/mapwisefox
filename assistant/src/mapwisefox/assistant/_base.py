@@ -2,7 +2,7 @@ from functools import partial
 
 import click
 
-from mapwisefox.assistant.config import AssistantParams, ModelChoice, ProviderChoice
+from mapwisefox.assistant.config import AssistantParams, ProviderChoice
 from mapwisefox.assistant.config._validate import validate_config
 from mapwisefox.assistant.quality_assessment import cli as study_qa
 from mapwisefox.assistant.study_selection import cli as study_selection
@@ -15,9 +15,9 @@ from mapwisefox.assistant.tools.llm import (
 )
 
 
-def _ollama_provider(model_choice: str, ollama_host: str, ollama_port: int):
+def _ollama_provider(model_choice: str, ollama_endpoint: str, api_key: str):
     return partial(
-        OllamaProvider, model=model_choice, ollama_host=f"{ollama_host}:{ollama_port}"
+        OllamaProvider, model=model_choice, ollama_host=ollama_endpoint, api_key=api_key
     )
 
 
@@ -59,8 +59,8 @@ all assistant subcommands."""
 @click.option(
     "-m",
     "--model",
-    type=click.Choice(ModelChoice),
-    default=ModelChoice.gpt_oss,
+    type=click.STRING,
+    default="gpt-oss:20b",
     help="the name of the large language model to use",
     show_default=True,
 )
@@ -73,17 +73,10 @@ all assistant subcommands."""
     show_default=True,
 )
 @click.option(
-    "--ollama-host",
+    "--ollama-endpoint",
     type=click.STRING,
-    default="localhost",
-    help="host running Ollama",
-    show_default=True,
-)
-@click.option(
-    "--ollama-port",
-    type=click.IntRange(1024, 65535, clamp=True),
-    default=11434,
-    help="port on which Ollama is listening",
+    default="http://localhost:11434",
+    help="address where Ollama is listening",
     show_default=True,
 )
 @click.option(
@@ -95,11 +88,10 @@ all assistant subcommands."""
     default="",
 )
 @click.pass_context
-def assistant(ctx, model, provider, ollama_host, ollama_port, api_key):
+def assistant(ctx, model, provider, ollama_endpoint, api_key):
     obj = ctx.ensure_object(AssistantParams)
-    obj.model_choice = ModelChoice(model)
-    obj.ollama_host = ollama_host
-    obj.ollama_port = int(ollama_port)
+    obj.model_choice = model
+    obj.ollama_endpoint = ollama_endpoint
     obj.api_key = api_key
 
     match provider:
@@ -112,7 +104,7 @@ def assistant(ctx, model, provider, ollama_host, ollama_port, api_key):
         case ProviderChoice.bedrock:
             obj.provider_factory = _bedrock_provider(model, api_key)
         case _:
-            obj.provider_factory = _ollama_provider(model, ollama_host, ollama_port)
+            obj.provider_factory = _ollama_provider(model, ollama_endpoint, api_key)
 
 
 assistant.add_command(study_selection)
