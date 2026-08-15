@@ -468,8 +468,8 @@ uv run search --config search-config.yaml --data-dir ./data
 uv run deduplicate -I ./data -o ./unique.xlsx
 uv run split-workload simple -D ./data -n 3
 uv run web --host 127.0.0.1 --port 8000
-uv run snowball ./data/unique.xlsx -s back
-uv run snowball ./data/unique.xlsx -s fwd --direction forward
+uv run snowball ./data/unique.xlsx -o backward
+uv run snowball ./data/unique.xlsx -o forward --direction forward
 
 \end{verbatim}
 
@@ -491,177 +491,167 @@ functionalities on a concrete comparison of SLR tools.
 To validate MapwiseFox and produce the feature comparison in
 Table~\ref{tab:comparison}, we conducted an example survey of open-source
 SLR/SMS tools using the toolkit itself. The study followed the pipeline shown in
-Figure~\ref{fig:process}: search, deduplication, selection, and agreement computation to
-arrive at the selection of tools presented in Table~\ref{tab:comparison}.
-The rest of the section is an account of how MapwiseFox was used at each step
-of the process. All configuration files and intermediate data are available
-as supplementary material and archived on Zenodo~\cite{olar2026-config-examples}.
+Figure~\ref{fig:process}: we prepared a search query against a known-good set,
+searched Scopus and Web of Science, deduplicated the results, performed
+dual-mode study selection (manual via the web application and automated via
+multiple LLM providers), computed inter-rater agreement to select the best
+performing LLM, ran backward and forward snowballing, conducted a second round
+of LLM-assisted selection, and performed LLM-assisted quality assessment to
+arrive at the final set of tools presented in Table~\ref{tab:comparison}.
+All configuration files and intermediate data are available as supplementary
+material and archived on Zenodo~\cite{olar2026-config-examples}.
 
-\paragraph{Preparation}
-To construct the query for our example survey, we began with a set of known tools for
-conducting systematic reviews: ASReview~\cite{van2021},
-litstudy~\cite{litstudy2022}, Rayyan~\cite{rayyan2016},
-SMS-Builder~\cite{smsbuilder2022}, Buhos~\cite{buhos2018}, and
-ReviQ~\cite{reviq2026}. These tools were recorded in the \texttt{known-good.csv}
-file within our data package. We then iteratively refined the search query
-against the Scopus index, retaining the first query that successfully
-retrieved all known-good tools. Subsequent iterations focused on narrowing
-the query to reduce the working set. At the end of each iteration, we assessed
-the quality of the results by running \texttt{metrics search-quality} against
-the known-good CSV. Because MapwiseFox exposes its own query DSL, this calibration step
-can be performed either manually by a human reviewer inspecting the retrieved
-set, or with the aid of AI agents that automatically compare the retrieved
-records against the known-good set, flag missing items, and suggest query
-refinements to improve retrieval quality metrics.
+\subsection{Preparation, Search, and Deduplication}
 
-\paragraph{Search}
-Several tools import search results from bibliographic databases, but
-few query them directly. litstudy~\cite{litstudy2022} queries four
-online sources (Scopus, Semantic Scholar, CrossRef, dblp) and accepts
-CSV exports from IEEE Xplore and SpringerLink.
-pybliometrics~\cite{pybliometrics2019} wraps the Scopus API for
-programmatic access. Buhos~\cite{buhos2018} imports from WoS, Scopus,
-Ebscohost, and Scielo but does not query them directly.
-ReviQ~\cite{reviq2026} accepts BibTeX exports from any source.
-SMS-Builder~\cite{smsbuilder2022} imports RIS files from externally
-conducted searches. ASReview~\cite{van2021} and the commercial
-platforms discussed above all require pre-exported search results.
-MapwiseFox is the only tool that translates a single query domain-specific language
-(DSL) into the native syntax of six database backends (WoS, Scopus,
-ScienceDirect, Springer, ACM DL, IEEE Xplore) and federates the results.
+We began with a set of six known tools for conducting systematic reviews:
+ASReview~\cite{van2021}, litstudy~\cite{litstudy2022},
+Rayyan~\cite{rayyan2016}, SMS-Builder~\cite{smsbuilder2022},
+Buhos~\cite{buhos2018}, and ReviQ~\cite{reviq2026}. These were recorded in a
+\texttt{known-good.csv} file. We then iteratively refined a search query in
+MapwiseFox's domain-specific language against the Scopus index, using
+\texttt{metrics search-quality} after each iteration to check recall and
+precision against the known-good set. After eight iterations we arrived at a
+query that retrieved all six known-good tools (100\% recall) while narrowing
+the result set to 157 records (3.82\% precision).
+The design of MapwiseFox, which includes both a query DSL and a metrics package,
+allows this calibration step to be performed with the aid of AI agents that compare
+retrieved records against the known-good set, flag missing items, and suggest query
+refinements. An example prompt for such an agent is included in the accompanying
+dataset.
 
-\paragraph{Deduplication}
-Cross-database deduplication is supported by all tools in the
-comparison except ASReview, but the approaches differ in automation
-and method. Buhos performs automated deduplication via DOI and PMID
-matching through Crossref and PubMed APIs. ReviQ uses a two-stage
-automated process: DOI matching first, followed by a composite key of
-normalised title and venue for entries lacking a DOI. litstudy
-deduplicates automatically using unique identifiers (DOI, PubMed ID,
-Scopus ID) with fuzzy title matching as a fallback. SMS-Builder
-identifies duplicates for manual removal through its web interface.
-BibexPy~\cite{bibexpy2025} provides a dedicated merge and
-harmonisation pipeline for Scopus and Web of Science exports but does
-not offer a general-purpose deduplication workflow. MapwiseFox's
-\texttt{deduplication} module uses the \texttt{dedupe}
-library\footnote{\url{https://docs.dedupe.io/}} with active
-learning: on first use, the system interactively trains a model on title,
-authors, source, and keywords, then clusters records into duplicate sets.
-The trained model is saved and reused on subsequent runs, eliminating the
-need for repeated labelling.
+The final query was run against both Scopus and Web of Science backends. The search
+results were deduplicated and combined using the \texttt{deduplicate} CLI, yielding
+a total a 171 records. The deduplicated set formed the working corpus for study
+selection.
 
-\paragraph{Snowballing}
-Forward and backward snowballing via DOI-based citation chasing is
-implemented by ReviQ and MapwiseFox; Buhos supports backward
-snowballing only, and the remaining tools offer no snowballing
-capability. ReviQ tracks snowballing as iterative BibTeX imports
-labelled by iteration number, with a saturation indicator that signals
-when an iteration yields zero new inclusions. Buhos performs backward
-snowballing by fetching references through Crossref and identifying
-documents cited two or more times across the selected set.
-MapwiseFox's \texttt{snowballing} module queries the Semantic Scholar
-API and supports both forward and backward traversal to a
-configurable depth (\texttt{--max-depth}). It maintains a visited set
-across iterations to prevent duplicate candidates and accepts an
-exclusion worksheet (\texttt{--exclude}) to suppress known-irrelevant
-DOIs, so that the output contains only novel candidates not already
-present in the seed or exclusion sets.
+\subsection{Study Selection}
 
-\paragraph{Study selection}
-Web-based study selection is offered by Buhos, ReviQ, and
-SMS-Builder. Buhos provides a multi-stage screening workflow with
-per-user document allocation and an online PDF viewer for full-text
-assessment. ReviQ supports dual-reviewer screening with inclusion,
-exclusion, and uncertain decisions, automatic conflict detection, and
-JSON-based decision exchange for asynchronous collaboration.
-SMS-Builder offers a GUI for refining search results with notes and
-relevance scoring. The commercial platforms discussed above also
-provide web-based screening interfaces with varying degrees of
-automation.
+\paragraph{Manual Selection via the Web Application}
 
-\paragraph{Work splitting}
-Formal work splitting---distributing a review workload across multiple
-participants using defined allocation schemes---is a straightforward
-but often-omitted step. Buhos allows an administrator to manually
-assign documents to individual reviewers at each stage and tracks
-progress through a dashboard. ReviQ supports dual-reviewer screening
-with JSON-based decision exchange, but both reviewers screen the
-entire set; there is no workload partitioning. SMS-Builder provides
-role-based access control but no workload distribution mechanism.
-MapwiseFox's \texttt{split} module offers two schemes: a
-\texttt{simple} random split that partitions studies into
-non-overlapping, roughly equal-sized bundles (one per reviewer), and a
-\texttt{for-evaluation} N-by-K assignment that uses round-robin
-allocation to ensure each study is seen by exactly $K$ distinct
-reviewers, enabling inter-rater agreement computation on the full set
-without requiring every reviewer to screen every study.
+We uploaded the deduplicated working corpus to the MapwiseFox web application
+and defined inclusion and exclusion criteria through the shared configuration
+format (see Figure~\ref{fig:common-config}), saving it under the name
+\texttt{study-selection.json} in the accompanying data
+package~\cite{olar2026-config-examples}. All 171 records were screened by a
+single human reviewer for this example, relinquishing the need to use the
+\texttt{split-workload} command. The human selection exercise ended with 9
+included papers out of the initial 171.
 
-\paragraph{Quality assessment and inter-rater agreement}
-Quality assessment of primary studies is supported by Buhos, ReviQ,
-SMS-Builder, and MapwiseFox. Buhos allows customisable quality
-criteria with an online assessment form. ReviQ scores each criterion
-as 0, 0.5, or 1 and normalises results to a percentage with
-configurable low/medium/high thresholds. SMS-Builder computes three
-built-in quality indices (CVI, SCI, and IRRQ) and supports
-user-defined custom indices. For inter-rater agreement, ReviQ computes
-Cohen's $\kappa$~\cite{cohen1960} and PABAK on categorical
-(include/exclude) decisions with 95\% confidence intervals. No other
-tool in this comparison computes agreement metrics for
-\emph{continuous} quality scores. MapwiseFox's \texttt{metrics} module
-computes the intra-class correlation coefficient (ICC) in all three
-variants~\cite{shrout1979}, the concordance correlation
-coefficient~\cite{lin1989}, and the mean absolute error between
-reviewers on a continuous grading scale (e.g., 1--10), enabling
-real-time flagging of deviations and the assessment of systematic biases
-at all times during the quality assessment phase.
+\begin{figure}[!ht]
+  \centering
+  \IfFileExists{images/mapwisefox-web-selection.png}{%
+    \includegraphics[width=\textwidth]{images/mapwisefox-web-selection.png}%
+  }{%
+    \fbox{\parbox{0.8\textwidth}{\centering\vspace{3cm}%
+    [Screenshot placeholder: mapwisefox-web-selection.png]\vspace{3cm}}}%
+  }
+  \caption{Manual study selection in the MapwiseFox web application.
+    Reviewers screen records against customisable inclusion and exclusion
+  criteria defined through the shared \texttt{SelectionConfig} schema.}
+  \label{fig:web-selection}
+\end{figure}
 
-\paragraph{Data extraction}
-Data extraction represents the structured collection of information from
-primary studies into standardised forms. This activity is supported by
-Buhos, ReviQ, and SMS-Builder. Buhos provides a standardised extraction
-form at the full-text review stage with an integrated PDF viewer, so
-reviewers can complete the entire process within the browser. ReviQ offers
-a configurable extraction schema with four field types (free text,
-numeric, boolean, and dropdown) plus taxonomy categories, with card and
-table views and CSV export. SMS-Builder supports designing and filling
-data-collection forms for study metadata, though the authors note this
-feature is limited and a generic reporter is planned as future
-work~\cite{smsbuilder2022}. MapwiseFox does not currently include a
-data-extraction stage; the pipeline ends at study selection and quality
-assessment.
+\paragraph{LLM-Assisted Selection}
+Exactly the same \texttt{study-selection.json} file was used to assess the same
+171 records using three open weights LLMs running on
+Ollama~\footnote{\url{https://ollama.com/}}. Each model received the same system
+prompt and was instructed to output structured JSON verdicts. Detailed per-provider
+results are available in the accompanying data package~\cite{olar2026-config-examples}.
 
-\paragraph{Reporting}
-The PRISMA 2020 statement~\cite{page2021} requires reviewers to report
-the flow of studies through each stage of the review. Buhos generates a
-PRISMA flow diagram that tracks the number of records at each stage.
-ReviQ produces publication-ready PRISMA 2020 diagrams as SVG files, with
-two parallel screening streams and per-criterion exclusion breakdowns.
-The remaining tools in this comparison, including MapwiseFox, do not
-generate PRISMA diagrams. Reviewers using MapwiseFox must create the
-flow diagram manually or with external tools.
+\paragraph{Agreement Computation and Provider Selection}\label{sec:agreement}
+At this stage \texttt{mapwisefox metrics} can be used to compute Cohen's
+$\kappa$ between each LLM provider's inclusion decisions and the manual
+reference standard. The highest agreement with the human rater
+($\kappa=0.85$) was observed when using Gemma4, followed by GPT-OSS
+($\kappa=0.83$) and Qwen3.6 ($\kappa=0.61$). Detailed results are available
+in the accompanying data package~\cite{olar2026-config-examples}. The
+intersection of the human-curated selection and the highest-scoring model's
+selection was carried forward to the next stage.
 
-\paragraph{AI-assistance}
-ASReview~\cite{van2021} uses active learning to prioritise screening
-decisions but does not perform quality assessment. None of the other
-existing tools present in the comparison table integrate AI for study
-selection or quality assessment. MapwiseFox's \texttt{assistant} module
-is designed explicitly with this goal in mind. It provides native backends
-for five LLM providers (OpenAI, Anthropic, Google, AWS Bedrock, and Ollama
-for local inference) for both tasks, runs on infrastructure the reviewer
-controls, and enables research into human--AI agreement, bias, and
-throughput.
+\subsection{Snowballing}
 
-Additional open-access tools with published papers are not listed
-separately in the table because their feature sets overlap substantially
-with tools already included. CADIMA~\cite{kohl2018} covers protocol
-development, web-based screening with automated Cohen's $\kappa$, data
-extraction, critical appraisal, and PRISMA diagram generation; its
-capabilities are comparable to those of Buhos and ReviQ.
-Abstrackr~\cite{wallace2012} is a pioneering open-source tool for
-ML-assisted title and abstract screening via active learning; its
-AI-assisted selection capability is represented in the table by
-ASReview~\cite{van2021}, which uses a comparable active-learning
-approach, and additionally offers a more complete feature set.
+We ran backward and forward snowballing on the set of studies included after
+the first selection round, using the \texttt{snowball} CLI to query the
+Semantic Scholar API. Both directions were configured with
+\texttt{--max-depth 1}. The 9 papers resulting from the previous step yielded
+178 papers through backward snowballing. The scale of this example survey
+changed significantly because Rayyan is a paper cited over 25{,}000 times,
+and even though the Semantic Scholar API limits the number of retrievable
+citations to 9{,}999 the expanded corpus grew from hundreds of papers to
+10{,}884 forward citations plus 178 backward citations, yielding 11{,}062
+new candidates for the second round of selection.
+
+\subsection{Second-Round Selection}
+
+We ran the \texttt{assistant} module a second time using only the
+best-performing LLM provider identified in Section~\ref{sec:agreement} on the
+expanded corpus that included the snowballed candidates.
+%% TODO: fill in — how many new papers were included in this round?
+The same selection criteria configuration was used, ensuring consistency across
+both selection rounds.
+
+\subsection{Quality Assessment and Final Selection}
+
+We defined a quality assessment rubric using MapwiseFox's \texttt{QAConfig}
+schema and ran \texttt{mapwisefox assistant qa} with all LLM providers on the
+studies included after the second selection round.
+%% TODO: fill in — how many studies entered QA?
+%% TODO: fill in — the QA criteria used (e.g., 1--10 scale on clarity,
+% reproducibility, etc.)
+Each provider scored every study, and we averaged the scores across providers
+to produce a final ranking. The top 10 studies were retained as the final
+selection.
+%% TODO: fill in — list the top 10 studies (or at minimum the 6 that appear
+% in the table).
+%% If any of the original 6 known-good tools dropped out, explain why.
+These studies form the basis of the feature comparison presented next.
+
+\subsection{Feature Comparison}
+
+Table~\ref{tab:comparison} summarises the capabilities of the final set of
+tools across the main stages of an SLR/SMS pipeline. The comparison was
+produced from the data collected during the workflow described above. Each row
+reflects a specific capability; the symbols indicate full support
+(\checkmark), partial support ($\circ$), or no support (---).
+
+MapwiseFox is the only tool in the comparison that translates a single
+domain-specific query into the native syntax of multiple database backends.
+litstudy~\cite{litstudy2022} also queries multiple sources directly but uses
+separate APIs rather than a unified DSL. For deduplication, all tools except
+ASReview offer some form of cross-database merging, though the methods differ:
+Buhos uses DOI and PMID matching via Crossref and PubMed, ReviQ uses a
+two-stage DOI-then-title approach, and MapwiseFox uses active learning with
+the \texttt{dedupe} library.
+
+Forward and backward snowballing via DOI-based citation chasing is implemented
+by ReviQ and MapwiseFox; Buhos supports backward snowballing only, and the
+remaining tools offer no snowballing capability. For work splitting, Buhos
+allows per-user document assignment and ReviQ supports dual-reviewer screening
+with JSON-based decision exchange, but only MapwiseFox provides formal
+workload partitioning schemes (\texttt{simple} random split and
+\texttt{for-evaluation} N-by-K assignment).
+
+For inter-rater agreement, ReviQ computes Cohen's $\kappa$ and PABAK on
+categorical decisions. MapwiseFox extends this with intraclass correlation
+coefficient (ICC) in all three variants~\cite{shrout1979}, concordance
+correlation coefficient~\cite{lin1989}, and mean absolute error for continuous
+quality scores. Data extraction is supported by Buhos, ReviQ, and SMS-Builder
+but not yet by MapwiseFox. PRISMA flow diagrams are generated by Buhos and
+ReviQ; MapwiseFox does not currently produce them. For AI assistance,
+ASReview~\cite{van2021} uses active learning for screening prioritisation,
+while MapwiseFox is the only tool that offers LLM-assisted quality assessment
+alongside selection, with native backends for five providers.
+
+Additional open-access tools with published papers are not listed separately
+in the table because their feature sets overlap substantially with tools
+already included. CADIMA~\cite{kohl2018} covers protocol development,
+web-based screening with automated Cohen's $\kappa$, data extraction, critical
+appraisal, and PRISMA diagram generation; its capabilities are comparable to
+those of Buhos and ReviQ. Abstrackr~\cite{wallace2012} is a pioneering
+open-source tool for ML-assisted title and abstract screening via active
+learning; its AI-assisted selection capability is represented in the table by
+ASReview~\cite{van2021}, which uses a comparable active-learning approach, and
+additionally offers a more complete feature set.
 
 \begin{table}[!ht]
   \centering
