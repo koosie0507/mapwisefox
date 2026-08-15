@@ -84,7 +84,10 @@ class OllamaProvider(LLMProviderBase):
             kwargs.pop("on_thinking", None),
             kwargs.pop("on_text", None),
         )
-        self.__client = self.Client(host=ollama_host)
+        headers = {}
+        if api_key := kwargs.pop("api_key", None):
+            headers["Authorization"] = f"Bearer {api_key}"
+        self.__client = self.Client(host=ollama_host, headers=headers)
 
     def _download_model(self) -> bool:
         try:
