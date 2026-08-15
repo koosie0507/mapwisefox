@@ -1,7 +1,5 @@
 import io
-import logging
 import os
-import sys
 from collections import defaultdict
 
 import pandas as pd
@@ -31,6 +29,7 @@ from mapwisefox.assistant.tools.callbacks import (
     write_stdout,
 )
 from mapwisefox.assistant.tools.extras import try_import
+from mapwisefox.assistant.tools.logging import get_logger
 from mapwisefox.assistant.tools.pdf import (
     FileContentsExtractor,
     CachingFileContentsExtractor,
@@ -38,9 +37,8 @@ from mapwisefox.assistant.tools.pdf import (
     ExtractionFailureReason,
 )
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-log = logging.getLogger(__file__)
-
+_COMMAND_NAME = "study-qa"
+log = get_logger(_COMMAND_NAME)
 urllib3.disable_warnings()
 
 
@@ -242,7 +240,7 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
 
 
 @click.command(
-    "study-qa",
+    _COMMAND_NAME,
     help=r"""Use an LLM to assess the quality of primary studies against criteria.
 
     FILE is an Excel spreadsheet with a column containing an URL (https:// or
@@ -306,6 +304,14 @@ def _fill_results(df: pd.DataFrame, qa_criteria: dict, results: dict) -> pd.Data
     default=False,
     help="disable TLS certificate verification when downloading primary study PDFs",
 )
+@click.option(
+    "-D",
+    "--download-dir",
+    "download_dir",
+    default=Path.cwd() / "downloads",
+    help="download directory where papers will be stored.",
+    show_default=True,
+)
 @click.pass_context
 def study_qa(
     ctx,
@@ -316,6 +322,7 @@ def study_qa(
     layout_config_path: str,
     reader_type: ReaderType,
     insecure_skip_tls_verify: bool,
+    download_dir: Path,
 ):
     try:
         qa_config = load_qa_config(qa_config_path).model_dump()
@@ -323,15 +330,18 @@ def study_qa(
         raise click.UsageError(str(err))
     qa_criteria = qa_config["criteria"]
 
+    download_dir = Path(download_dir).resolve()
     file = Path(file).resolve()
-    file_provider = FileProvider(
-        file.parent / "downloads", verify_tls=not insecure_skip_tls_verify
-    )
+    file_provider = FileProvider(download_dir, verify_tls=not insecure_skip_tls_verify)
     pdf_reader = reader_factory(reader_type, layout_config_path)
 
     df = load_df(file, index_col=index_col)
     for c in qa_criteria:
-        df[c["label"]] = df[c["label"]].astype("Float64")
+        column = c["label"]
+        if column in df.columns:
+            df[column] = pd.to_numeric(df[column], errors="coerce").astype("Float64")
+        else:
+            df[column] = pd.Series(dtype="Float64", index=df.index)
     expected_json_schema = {
         "title": "evaluation",
         "description": "primary study evaluation",
@@ -364,6 +374,10 @@ def study_qa(
     markdown_texts, failed = _extract_pdf_contents(
         df, url_column, file_provider, pdf_reader, default_reader, 1
     )
+    if failed:
+        log.warning("failed to download %d files", len(failed))
+        for f in failed:
+            log.warning(f)
     results = _evaluate_papers(markdown_texts, generate_json, qa_config, qa_criteria)
     df = _fill_results(df, qa_criteria, results)
     output_path = file.parent / f"{file.stem}-{ctx.obj.model_choice}{file.suffix}"

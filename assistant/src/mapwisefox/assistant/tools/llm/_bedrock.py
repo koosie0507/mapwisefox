@@ -12,7 +12,6 @@ from tenacity import (
     stop_after_delay,
 )
 
-from mapwisefox.assistant.config import ModelChoice
 from mapwisefox.assistant.tools.extras import try_import
 from mapwisefox.assistant.tools.llm._provider import LLMProviderBase, JSONGenerator
 
@@ -243,14 +242,6 @@ class BedrockJSONGenerator(JSONGenerator):
 
 
 class BedrockProvider(LLMProviderBase):
-    MODEL_MAPPING = {
-        ModelChoice.haiku_4_5.value: "anthropic.claude-3-haiku-20240307-v1:0",
-        ModelChoice.sonnet_4_5.value: "anthropic.claude-sonnet-4-5-20250929-v1:0",
-        ModelChoice.opus_4_5.value: "anthropic.claude-opus-4-5-20251101-v1:0",
-        ModelChoice.gpt_oss: "openai.gpt-oss-20b-1:0",
-        ModelChoice.gpt_oss_120b: "openai.gpt-oss-120b-1:0",
-    }
-
     def __new__(cls, *args, **kwargs):
         obj = object.__new__(cls)
         if not hasattr(cls, "_guard") or not getattr(cls, "_guard"):
@@ -260,17 +251,15 @@ class BedrockProvider(LLMProviderBase):
             exceptions_module = try_import("botocore.exceptions")
             obj.ClientError = exceptions_module.ClientError
             obj.BotoCoreError = exceptions_module.BotoCoreError
-            obj.needs_region_prefix = kwargs.get("model") in {
-                ModelChoice.haiku_4_5,
-                ModelChoice.sonnet_4_5,
-                ModelChoice.opus_4_5,
-            }
+            obj.needs_region_prefix = str(kwargs.get("model") or "").startswith(
+                "anthropic."
+            )
             cls._guard = True
         return obj
 
     def __init__(self, model: str, api_key: str, **kwargs):
         super().__init__(
-            self.MODEL_MAPPING.get(model, model),
+            model,
             kwargs.pop("on_error", None),
             kwargs.pop("on_thinking", None),
             kwargs.pop("on_text", None),
