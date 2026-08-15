@@ -155,6 +155,7 @@ def test_empty_output_keeps_schema(runner, workbook, adapter):
         "has_pdf",
         "pdf_url",
         "referencing_paper_ids",
+        "include",
     ]
 
 
