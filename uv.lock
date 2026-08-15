@@ -1488,7 +1488,7 @@ wheels = [
 
 [[package]]
 name = "mapwisefox"
-version = "0.9.4.dev1"
+version = "0.9.4"
 source = { virtual = "." }
 dependencies = [
     { name = "openai" },
@@ -1652,7 +1652,7 @@ requires-dist = [
 
 [[package]]
 name = "mapwisefox-snowballing"
-version = "0.1.0"
+version = "0.8.0"
 source = { editable = "snowballing" }
 dependencies = [
     { name = "asyncclick" },

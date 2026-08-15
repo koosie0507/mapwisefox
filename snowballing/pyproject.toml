@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox-snowballing"
-version = "0.1.0"
+version = "0.8.0"
 dependencies = [
     "asyncclick>=8.2.2.2",
     "dotenv>=0.9.9",
@@ -18,7 +18,7 @@ snowball = "mapwisefox.snowballing:run_command"
 package = true
 
 [tool.bumpversion]
-current_version = "0.7.1"
+current_version = "0.8.0"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.
