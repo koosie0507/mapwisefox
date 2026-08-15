@@ -18,7 +18,7 @@ snowball = "mapwisefox.snowballing:run_command"
 package = true
 
 [tool.bumpversion]
-current_version = "0.7.1-dev1"
+current_version = "0.7.1"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.
