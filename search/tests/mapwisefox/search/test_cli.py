@@ -134,3 +134,49 @@ def test_main_data_dir_override(tmp_path, adapter, backend):
         assert result.exit_code == 0
         args, _ = mock_ensure_dir.call_args
         assert args[0] == str(custom_data_dir)
+
+
+@pytest.mark.parametrize(
+    ("extra_args", "expected_use_weekly_buckets"),
+    [
+        ([], True),
+        (["--disable-weekly-bucket"], False),
+    ],
+    ids=["default-uses-weekly-bucket", "flag-disables-weekly-bucket"],
+)
+def test_main_weekly_bucket_wiring(tmp_path, extra_args, expected_use_weekly_buckets):
+    runner = CliRunner()
+
+    from mapwisefox.search._config import SearchConfig, BackendSpec, BackendRef
+
+    mock_config = SearchConfig(
+        query="test query",
+        backends=[
+            BackendSpec(
+                name="test-backend",
+                adapter="AcmDSLAdapter",
+                backend=BackendRef(type="ConsoleBackend"),
+            )
+        ],
+    )
+
+    with (
+        patch("mapwisefox.search.__main__._load_config", return_value=mock_config),
+        patch("mapwisefox.search.__main__._execute"),
+        patch("mapwisefox.search.__main__.Parser") as mock_parser_cls,
+        patch("mapwisefox.search.__main__._ensure_results_dir") as mock_ensure_dir,
+    ):
+
+        mock_parser = mock_parser_cls.return_value
+        mock_parser.return_value = MagicMock()
+
+        config_path = tmp_path / "config.yaml"
+        config_path.write_text("dummy")
+
+        result = runner.invoke(main, ["--config", str(config_path), *extra_args])
+
+        assert result.exit_code == 0
+        assert mock_ensure_dir.called
+        # The third positional argument is `use_weekly_buckets`.
+        args, _ = mock_ensure_dir.call_args
+        assert args[2] is expected_use_weekly_buckets
