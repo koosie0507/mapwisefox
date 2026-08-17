@@ -132,13 +132,14 @@
 %% ---------------------------------------------------------------------
 
 @software{olar2026,
-  author    = {Olar, Andrei},
-  title     = {{MapwiseFox}: a suite of tools for performing systematic
-  literature reviews and systematic mapping studies},
-  year      = {2026},
-  version   = {0.9.1},
-  license   = {MIT},
-  url       = {https://github.com/koosie0507/mapwisefox},
+  author       = {Olar, Andrei},
+  title        = {MapwiseFox},
+  month        = aug,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v0.10.0},
+  doi          = {10.5281/zenodo.21979737},
+  url          = {https://doi.org/10.5281/zenodo.21979737},
 }
 
 @misc{olar2026-config-examples,
@@ -412,8 +413,7 @@
 }
 
 @ARTICLE{llm-as-a-judge2025,
-  AUTHOR={Baysan, Mehmet Selman  and Uysal, Serkan  and İşlek, İrem  and Çığ
-  Karaman, Çağla  and Güngör, Tunga },
+  AUTHOR={Baysan,Mehmet Selman and Uysal,Serkan and \.{I}\c{s}lek,\.{I}rem and {\c{C}i\v{g} Karaman},\c{C}a\v{g}la and G\"{u}ng\"{o}r,Tunga},
   TITLE={LLM-as-a-Judge: automated evaluation of search query parsing using
   large language models},
   JOURNAL={Frontiers in Big Data},
@@ -430,41 +430,6 @@
   issn = {1573-7462},
   url = {https://doi.org/10.1007/s10462-026-11599-2},
   doi = {10.1007/s10462-026-11599-2},
-  abstract = {Full-text screening is the major bottleneck of systematic
-    reviews (SRs), particularly in domains such as population health modelling
-    of noncommunicable diseases (NCDs), where decisive eligibility information
-    is scattered across long and heterogeneous full texts. In this
-    methodological study, we introduce a scalable and auditable pipeline that
-    reframes inclusion and exclusion as a fuzzy decision process. We evaluate
-    the approach within the Population Health Modelling Consensus Reporting
-    Network (POPCORN) and benchmark it against statistical and crisp baselines.
-    Articles are parsed into overlapping chunks and embedded with a
-    domain-adapted model; for each criterion (Population, Intervention,
-    Outcome, Study Approach), we compute contrastive similarity
-    (inclusion–exclusion cosine) and a vagueness margin, which a Mamdani fuzzy
-    controller maps into graded inclusion degrees with dynamic thresholds in a
-    multi-label classification setting. A large language model (LLM) judge
-    adjudicates highlighted spans with tertiary labels, confidence scores, and
-    criterion-referenced rationales; when evidence is insufficient, fuzzy
-    membership is attenuated rather than hard-excluded. In a pilot on an
-    all-positive gold set (\$\$N\{=\}16\$\$ full texts; \$\$M\{=\}3\{,\}208\$\$
-    chunks), the fuzzy system achieved document-level recall of 81.25\%
-    (Population), 87.50\% (Intervention), 87.50\% (Outcome), and 75.00\% (Study
-    Approach) with 95\% Wilson confidence intervals, exceeding statistical
-    baselines (recall 56.25–75.00\%) and crisp baselines (recall
-    43.75–81.25\%). Strict “All Criteria” inclusion was reached for 50.00\% of
-    articles, compared to 25.00\% and 12.50\% under the baselines. Cross-model
-    agreement on justifications was 98.27\%, and human–machine agreement was
-    96.07\%. A pilot review showed 91\% inter-rater agreement
-    (\$\${\textbackslash}kappa \{=\}0.82\$\$) with screening time reduced from
-    \$\${\textbackslash}sim\$\$20 minutes to under 1 minute per article at a
-    significantly lower cost. These results suggest that fuzzy logic, combined
-    with contrastive highlighting and explainable LLM adjudication, delivers
-    high recall, stable rationales, and end-to-end traceability. We emphasize
-    that the reported recall figures were computed on an all-positive gold set
-    (no excluded documents), so specificity, ROC/PR curves, and AUC are not
-    defined here; the complete operating-characteristic analysis on a
-  mixed-label corpus will be reported in a forthcoming study.},
   journal = {Artificial Intelligence Review},
   author = {Mortezaagha, Pouria and Rahgozar, Arya},
   month = may,
