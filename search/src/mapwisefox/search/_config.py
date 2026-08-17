@@ -93,7 +93,7 @@ class BackendSpec(BaseModel):
     def is_console_backend(self) -> bool:
         return issubclass(self.backend_cls, ConsoleBackend) or (
             issubclass(self.backend_cls, WebOfScienceBackend)
-            and self.backend.options.get("use_starter_api", False)
+            and not self.backend.options.get("use_starter_api", False)
         )
 
 

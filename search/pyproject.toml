@@ -1,6 +1,6 @@
 [project]
 name = "mapwisefox-search"
-version = "0.8.1-dev1"
+version = "0.8.1"
 dependencies = [
     "arrow>=1.4.0",
     "clarivate-wos-starter-python-client",
@@ -23,7 +23,7 @@ package = true
 clarivate-wos-starter-python-client = { git = "https://github.com/clarivate/wosstarter_python_client.git" }
 
 [tool.bumpversion]
-current_version = "0.8.1-dev1"
+current_version = "0.8.1"
 parse = """(?x)
     (?P<major>0|[1-9]\\d*)\\.
     (?P<minor>0|[1-9]\\d*)\\.
