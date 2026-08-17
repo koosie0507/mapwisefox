@@ -37,7 +37,7 @@ server-side query with a **client-side regex post-filter**.
 | Option      | Default      | Notes                                                                                           |
 | ----------- | ------------ | ----------------------------------------------------------------------------------------------- |
 | `api_key`   | — (required) | `MWF_SEARCH_SPRINGER_API_KEY`                                                                   |
-| `csv_path`  | `None`       | If set, `save_result` is automatically `True`; resolved relative to the dated results directory |
+| `csv_path`  | `None`       | If set, `save_result` is automatically `True`; resolved relative to the results directory |
 | `fetch_all` | `True`       | Set `False` to fetch only the first page                                                        |
 
 ## Output columns

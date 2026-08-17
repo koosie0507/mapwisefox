@@ -94,11 +94,11 @@ def _execute(spec: BackendSpec, ir: QueryIR, input_dir: Path) -> None:
     help=r"""
 Runs configured search backends against the specified query and saves results.
 
-The results are written under <data-dir>/<results-dir-name>/<week start date>.
-The week start date is the date the most recent Monday falls on. Running search
-multiple times during the same week overwrites previous results by default. This
-enables rapid iteration. This behaviour can be turned off using the
---disable-weekly-bucket flag.
+The results are written under <data-dir>/<results-dir-name>/. Pass
+--enable-weekly-bucket to add a <week start date> subdirectory, where the week
+start date is the date the most recent Monday falls on. Running search multiple
+times during the same week with --enable-weekly-bucket overwrites previous
+results, which enables rapid iteration.
 """,
 )
 @click.option(
@@ -131,11 +131,11 @@ enables rapid iteration. This behaviour can be turned off using the
     help="If set, detailed errors from all backends will be printed.",
 )
 @click.option(
-    "--disable-weekly-bucket",
-    "disable_weekly",
+    "--enable-weekly-bucket",
+    "enable_weekly",
     is_flag=True,
     default=False,
-    help="If set, results will be written to the --results-dir-name subdirectory.",
+    help="If set, results are written under a <YYYYMMDD of most recent Monday> subdirectory of --results-dir-name.",
 )
 @click.option(
     "--results-dir-name",
@@ -147,7 +147,7 @@ def main(
     data_dir: str | Path,
     max_workers: int,
     debug: bool,
-    disable_weekly: bool,
+    enable_weekly: bool,
     results_dir_name: str,
 ):
     logging.basicConfig(
@@ -156,9 +156,7 @@ def main(
     )
 
     config = _load_config(config_path)
-    search_results_dir = _ensure_results_dir(
-        data_dir, results_dir_name, not disable_weekly
-    )
+    search_results_dir = _ensure_results_dir(data_dir, results_dir_name, enable_weekly)
 
     assert config.query is not None  # guaranteed by SearchConfig validation
     parser = Parser()

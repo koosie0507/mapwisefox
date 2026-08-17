@@ -102,19 +102,19 @@ There's a few things that are different compared to the first, basic example:
 
 - **`backend.type` + `backend.options`**: Instead of a bare string like `ConsoleBackend`, live backends need constructor options — at minimum an `api_key`, and usually a `csv_path` to specify where results are written (see [Configuration](../configuration/config-file.md)).
 - **Execution order**: Live API backends (anything other than `ConsoleBackend` or `WebOfScienceBackend` with `use_starter_api: false`) run **concurrently** after console backends finish, bounded by `--max-workers` (default 3). See [CLI Reference](cli-reference.md#execution-model) for the full diagram.
-- **Output**: Results are written to CSV files under `<data-dir>/<results-dir-name>/<YYYYMMDD of most recent Monday>/`.
+- **Output**: Results are written to CSV files under `<data-dir>/<results-dir-name>/` (or `<data-dir>/<results-dir-name>/<YYYYMMDD of most recent Monday>/` when `--enable-weekly-bucket` is passed).
 
 For other backends (ScienceDirect, Scopus, Web of Science, ACM, IEEE Xplore), see the [Backends](../backends/overview.md) section for endpoint details, constructor options, and output schemas.
 
 If the query is successful, you'll see the search results in the following directory:
 
 ```
-<data-dir>/<results-dir-name>/<YYYYMMDD of the most recent Monday>/
+<data-dir>/<results-dir-name>/
 ```
 
 - `--data-dir` defaults to `./data` (env: `DATA_DIR`)
 - `--results-dir-name` defaults to `search-results`
-- The weekly-Monday bucket means re-running `search` multiple times in the same week overwrites the same output directory — handy for iterating on a query without accumulating stale CSVs. Pass `--disable-weekly-bucket` to turn this off and write straight into `<data-dir>/<results-dir-name>/`.
+- Pass `--enable-weekly-bucket` to add a `<YYYYMMDD of most recent Monday>` subdirectory under `--results-dir-name`. This makes re-running `search` multiple times in the same week overwrite the same dated output directory — handy for iterating on a query without accumulating stale CSVs.
 
 Relative `csv_path`s or `persistence_adapter` paths in a backend's options are resolved **relative to the results directory**.
 
