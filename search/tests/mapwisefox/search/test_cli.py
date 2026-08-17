@@ -139,10 +139,10 @@ def test_main_data_dir_override(tmp_path, adapter, backend):
 @pytest.mark.parametrize(
     ("extra_args", "expected_use_weekly_buckets"),
     [
-        ([], True),
-        (["--disable-weekly-bucket"], False),
+        ([], False),
+        (["--enable-weekly-bucket"], True),
     ],
-    ids=["default-uses-weekly-bucket", "flag-disables-weekly-bucket"],
+    ids=["default-no-weekly-bucket", "flag-enables-weekly-bucket"],
 )
 def test_main_weekly_bucket_wiring(tmp_path, extra_args, expected_use_weekly_buckets):
     runner = CliRunner()
