@@ -159,7 +159,7 @@ def test_merge_clusters_aggregates_sources(sample_df):
     result = _merge_clusters(sample_df)
 
     assert len(result) == 1
-    assert result["sources"].tolist() == ["(A,0); (B,1)"]
+    assert result["source_database_indices"].tolist() == ["(A,0); (B,1)"]
 
 
 @patch("mapwisefox.deduplication._deduper._load_pretrained")

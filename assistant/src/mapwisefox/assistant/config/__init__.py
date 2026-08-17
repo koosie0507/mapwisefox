@@ -11,11 +11,10 @@ from mapwisefox.common.config import (
     write_schema_files,
 )
 
-from ._types import ModelChoice, ProviderChoice, ReaderType, AssistantParams
+from ._types import ProviderChoice, ReaderType, AssistantParams
 
 
 __all__ = [
-    "ModelChoice",
     "ProviderChoice",
     "AssistantParams",
     "ReaderType",

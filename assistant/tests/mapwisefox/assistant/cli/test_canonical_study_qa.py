@@ -1,11 +1,21 @@
+from pathlib import Path
+
 import pandas as pd
 import pytest
 import responses
 import openpyxl
+import shutil
 from unittest.mock import MagicMock
 
 from mapwisefox.assistant.config import AssistantParams
 from mapwisefox.assistant.quality_assessment._study_qa import study_qa
+
+
+@pytest.fixture(autouse=True)
+def cleanup_downloads_dir():
+    yield
+    downloads_dir = Path.cwd() / "downloads"
+    shutil.rmtree(downloads_dir, ignore_errors=True)
 
 
 @pytest.mark.parametrize("reader_type", ["custom", "docling"])

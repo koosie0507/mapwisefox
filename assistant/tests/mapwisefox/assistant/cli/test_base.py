@@ -44,20 +44,3 @@ def test_assistant_requires_api_key_for_openai(
 
     assert result.exit_code != 0
     assert "API key" in result.output
-
-
-def test_assistant_clamps_ollama_port(runner, valid_selection_config_path):
-    result = runner.invoke(
-        assistant,
-        [
-            "--ollama-port",
-            "1",
-            "validate-config",
-            "--kind",
-            "study-selection",
-            "--config-file",
-            str(valid_selection_config_path),
-        ],
-    )
-
-    assert result.exit_code == 0

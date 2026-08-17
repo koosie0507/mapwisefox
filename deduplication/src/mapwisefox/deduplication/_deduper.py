@@ -1,3 +1,5 @@
+import os
+from functools import partial
 from os import R_OK, access
 from pathlib import Path
 
@@ -99,27 +101,72 @@ def _url_relevance(url):
     return 2
 
 
+def _is_usable_value(val):
+    if pd.isna(val) or val is None:
+        return False
+    if isinstance(val, str):
+        return len(val.strip()) > 0
+    return True
+
+
+def _extract_single_value(item_value):
+    yield item_value
+
+
+def _keywords(item_value, separator):
+    for x in str(item_value).split(separator):
+        yield x.strip().lower()
+
+
+def _get_repr_property_with_fallback(
+    group,
+    prop,
+    use_repr=True,
+    value_handler=_extract_single_value,
+    separator=os.linesep,
+):
+    if use_repr:
+        repr_val = group.loc[group["confidence"].idxmax(), prop]
+        if _is_usable_value(repr_val):
+            return repr_val
+
+    seen = set()
+    usable_values = []
+    for value in filter(_is_usable_value, group[prop]):
+        for atom in value_handler(value):
+            if atom in seen:
+                continue
+            usable_values.append(atom)
+            seen.add(atom)
+
+    return separator.join(usable_values)
+
+
 def _merge_cluster(group):
-    representative = group.loc[group["confidence"].idxmax()]
-    keywords = group["keywords"].astype(str)
-    all_keys = set(
-        key.lower().strip() for keys in keywords for key in str(keys).split(";")
+    repr_idx = group["confidence"].idxmax()
+    abstract = _get_repr_property_with_fallback(group, "abstract")
+    keywords = _get_repr_property_with_fallback(
+        group,
+        "keywords",
+        use_repr=False,
+        value_handler=partial(_keywords, separator=";"),
+        separator="; ",
     )
     duplicate_ids = "; ".join(
         f"({item.filename},{item.Index})" for item in group.itertuples(name="Paper")
     )
     return pd.Series(
         {
-            "title": representative["title"],
-            "authors": representative["authors"],
-            "keywords": ";".join(all_keys),
-            "source": representative["source"],
-            "abstract": representative["abstract"],
+            "source_database_indices": duplicate_ids,
+            "title": group.loc[repr_idx, "title"],
+            "authors": group.loc[repr_idx, "authors"],
+            "keywords": keywords,
+            "source": group.loc[repr_idx, "source"],
+            "abstract": abstract,
             "doi": max((x for x in group["doi"]), key=len),
             "url": max((x for x in group["url"]), key=_url_relevance),
-            "year": representative["year"],
+            "year": group.loc[repr_idx, "year"],
             "include": None,
-            "sources": duplicate_ids,
         }
     )
 

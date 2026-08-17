@@ -24,6 +24,7 @@ class JSONGenerator(ABC):
         self._thinking_callback = on_thinking or self._no_op
         self._text_callback = on_text or self._no_op
         self.__max_retries = max_retries
+        self.__regex = re.compile(r"`+\w*\s*([{].+[}])\s*`+", re.M | re.S | re.U)
 
     @abstractmethod
     def _generate_text(
@@ -46,13 +47,10 @@ class JSONGenerator(ABC):
         while not answered and attempts > 0:
             try:
                 system_prompt = system_prompt_template.render(**template_data)
-                answer_text = re.sub(
-                    r"`+\w*[\s$]*(\{.+\})[$\s]*`+",
-                    r"\1",
-                    self._generate_text(
-                        system_prompt, user_prompt, response_schema or "json"
-                    ),
+                llm_text = self._generate_text(
+                    system_prompt, user_prompt, response_schema or "json"
                 )
+                answer_text = self.__regex.sub(r"\1", llm_text)
                 answer_obj = json.loads(answer_text)
                 answered = True
             except json.JSONDecodeError as err:

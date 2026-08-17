@@ -1,11 +1,17 @@
-import logging
 import os
-import sys
 from functools import partial
 from itertools import islice
 from pathlib import Path
 
 import click
+import pandas as pd
+from tenacity import (
+    Retrying,
+    stop_after_attempt,
+    retry_if_exception_type,
+    wait_exponential,
+    sleep,
+)
 
 from mapwisefox.assistant.config import ConfigValidationError, load_selection_config
 from mapwisefox.common.config import SelectionResponse
@@ -15,16 +21,18 @@ from mapwisefox.assistant.tools.callbacks import (
     make_thinking_callback,
     write_stdout,
 )
+from mapwisefox.assistant.tools.logging import get_logger
 
-logging.basicConfig(stream=sys.stdout, level=logging.INFO)
-log = logging.getLogger(__file__)
-
+_COMMAND_NAME = "study-selection"
 
 SYSTEM_PROMPT_TEMPLATE = Path(__file__).parent / f"{Path(__file__).stem}.j2"
-DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
+INCLUDE_COL_NAME = "include"
+EXCLUDE_REASON_COL_NAME = "exclude_reason"
+DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", INCLUDE_COL_NAME, EXCLUDE_REASON_COL_NAME]
+_MAX_RETRIES = 3
 
 
-@click.command("study-selection")
+@click.command(_COMMAND_NAME)
 @click.argument(
     "search_results",
     required=True,
@@ -55,8 +63,18 @@ DEFAULT_EXCLUDED_ATTRIBUTES = ["cluster_id", "include", "exclude_reason"]
     default=DEFAULT_EXCLUDED_ATTRIBUTES,
     show_default=True,
 )
+@click.option(
+    "-s",
+    "--sheet-name",
+    type=click.STRING,
+    help="name of the worksheet containing the input records",
+    default=None,
+    show_default=False,
+)
 @click.pass_context
-def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
+def study_selection(
+    ctx, search_results, config_file, limit, ignore_attributes, sheet_name
+):
     """Use an LLM to select primary studies according to criteria.
 
     A file containing a table of primary studies containing at least the title,
@@ -64,11 +82,16 @@ def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
     decides based whether each record meets a set of criteria (which are also
     provided by the user).
     """
+    logger = get_logger(_COMMAND_NAME)
     ignored_attrs = set(
         ignore_attributes if len(ignore_attributes) > 0 else DEFAULT_EXCLUDED_ATTRIBUTES
     )
     search_results_path = Path(search_results)
-    results_df = load_df(search_results_path)
+    results_df = load_df(search_results_path, sheet_name=sheet_name)
+    if INCLUDE_COL_NAME in results_df.columns:
+        results_df[INCLUDE_COL_NAME] = results_df[INCLUDE_COL_NAME].astype("string")
+    else:
+        results_df[INCLUDE_COL_NAME] = pd.Series(dtype="string", index=results_df.index)
 
     try:
         rule_config = load_selection_config(config_file)
@@ -76,7 +99,7 @@ def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
         raise click.UsageError(str(err))
 
     provider = ctx.obj.provider_factory(
-        on_error=make_stderr_callback(log),
+        on_error=make_stderr_callback(logger),
         on_thinking=make_thinking_callback(),
         on_text=write_stdout,
     )
@@ -93,7 +116,8 @@ def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
     )
 
     count = len(results_df) if limit is None else limit
-    items = islice(results_df.iterrows(), 0, count)
+    non_evaluated_records = results_df[results_df["include"].isna()]
+    items = islice(non_evaluated_records.iterrows(), 0, count)
 
     with click.progressbar(
         items,
@@ -103,19 +127,31 @@ def study_selection(ctx, search_results, config_file, limit, ignore_attributes):
         empty_char=click.style("-", fg="white", dim=True),
     ) as df_rows:
         for ix, row in df_rows:
-            row_str = os.linesep.join(
-                f"{key}: {value}"
-                for key, value in row.items()
-                if key not in ignored_attrs
-            )
-            answer_obj = generate_json(row_str)
-            status = answer_obj["answer"]
-            results_df.at[ix, "include"] = status
+            for retry_attempt in Retrying(
+                wait=wait_exponential(multiplier=2, max=4),
+                stop=stop_after_attempt(_MAX_RETRIES),
+                retry=retry_if_exception_type(Exception),
+            ):
+                with retry_attempt:
+                    row_str = os.linesep.join(
+                        f"{key}: {value}"
+                        for key, value in row.items()
+                        if key not in ignored_attrs
+                    )
+                    logger.info(
+                        "evaluating record %d /%d", ix + 1, len(non_evaluated_records)
+                    )
+                    answer_obj = generate_json(user_prompt=row_str)
+                    status = answer_obj["answer"]
+                    results_df.at[ix, "include"] = status
 
-            if status == "exclude":
-                results_df.at[ix, "exclude_reason"] = answer_obj["justification"]
-            elif status == "include":
-                results_df.at[ix, "exclude_reason"] = ""
+                    if status == "exclude":
+                        results_df.at[ix, "exclude_reason"] = answer_obj[
+                            "justification"
+                        ]
+                    elif status == "include":
+                        results_df.at[ix, "exclude_reason"] = ""
+                    sleep(1)
 
     model_stem = ctx.obj.model_choice.replace(":", "_")
     output_path = (

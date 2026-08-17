@@ -35,7 +35,7 @@ class FakeAdapter:
         self.papers = papers
         self.calls = calls
 
-    async def get_many(self, identifiers):
+    async def get_many(self, identifiers, refetch_missing=True):
         identifiers = list(identifiers)
         self.calls.append(identifiers)
         return [
@@ -76,7 +76,7 @@ def adapter(monkeypatch):
     monkeypatch.setattr(
         __cli,
         "SemanticScholarAdapter",
-        lambda client: FakeAdapter(client, papers, calls),
+        lambda client, logger: FakeAdapter(client, papers, calls),
     )
     return papers, calls, clients
 

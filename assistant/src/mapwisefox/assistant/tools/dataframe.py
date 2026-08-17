@@ -1,3 +1,5 @@
+from functools import partial
+
 import pandas as pd
 from bibtexparser import load as load_bibtex
 from bibtexparser.bparser import BibTexParser
@@ -26,7 +28,7 @@ def _read_bibliography(path, index_col=None):
         return pd.DataFrame(records, index=index_col)
 
 
-def load_df(path, index_col=None):
+def load_df(path, index_col=None, sheet_name=None):
     """Load a ``.bib``, ``.csv`` or ``.xlsx`` file into a pandas DataFrame.
 
     Args:
@@ -40,7 +42,11 @@ def load_df(path, index_col=None):
     """
     fh = {
         ".bib": _read_bibliography,
-        ".xlsx": pd.read_excel,
+        ".xlsx": (
+            pd.read_excel
+            if sheet_name is None
+            else partial(pd.read_excel, sheet_name=sheet_name)
+        ),
         ".csv": pd.read_csv,
     }
     file_loader = fh.get(path.suffix)
