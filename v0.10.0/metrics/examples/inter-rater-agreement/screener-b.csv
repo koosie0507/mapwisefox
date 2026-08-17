@@ -1,0 +1,9 @@
+id,decision,title
+study-1,include,Alpha study
+study-2,exclude,Beta study
+study-3,include,Gamma study
+study-4,exclude,Delta study
+study-5,exclude,Epsilon study
+study-6,exclude,Zeta study
+study-7,include,Eta study
+study-8,include,Theta study
