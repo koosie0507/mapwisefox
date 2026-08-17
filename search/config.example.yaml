@@ -27,8 +27,9 @@
 # String option values are passed through os.path.expandvars, so
 # `${MY_ENV_VAR}` (or a .env file, loaded automatically) can be used to avoid
 # committing secrets such as API keys. The backend options `csv_path` and
-# `persistence_adapter` are resolved relative to this run's dated input
-# directory (<data-dir>/input/<YYYYMMDD of the most recent Monday>); for
+# `persistence_adapter` are resolved relative to this run's results directory
+# (<data-dir>/<results-dir-name>/, or <data-dir>/<results-dir-name>/<YYYYMMDD of
+# the most recent Monday>/ when --enable-weekly-bucket is set); for
 # `persistence_adapter`, the path is wrapped in a PandasCsvAdapter.
 #
 # Backends using ConsoleBackend always run first, sequentially (so their

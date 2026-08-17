@@ -16,6 +16,7 @@ uv run deduplicate --help
 | `--output-file`, `-o` | `./data/output/<timestamp>-deduplicated-records.xlsx` | Path the merged `.xlsx` is written to (parent directory created if missing). The default timestamp is computed at run time, so it's different on every invocation. |
 | `--dd-config-dir` | `./dedupe` | Directory holding the reusable dedupe config (`training.json` + `settings.dedupe`) — loaded if present, generated via interactive labeling and saved there otherwise. |
 | `--threshold` | `0.5` | Similarity score (0–1) above which two records are treated as duplicates. See [How it works](../how-it-works.md#threshold-and-clustering). |
+| `--field`, `-f` | `title`, `authors`, `keywords`, `doi`, `source` | One or more string fields to deduplicate on. Repeat the flag to select specific fields; when omitted, the built-in default field set is used. |
 
 If `--input-dir` doesn't exist, or exists but contains no `.csv`/`.bib`
 files, `deduplicate` exits with a clear error instead of failing deep inside

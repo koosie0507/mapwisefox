@@ -19,7 +19,7 @@ The CLI supports these providers:
 
 | Provider | Configuration |
 |---|---|
-| Ollama | `--ollama-host`, `--ollama-port`; no API key required |
+| Ollama | `--ollama-endpoint` (default `http://localhost:11434`); no API key required |
 | OpenAI | `MWF_ASSISTANT_API_KEY` or `--api-key` |
 | Anthropic | `MWF_ASSISTANT_API_KEY` or `--api-key` |
 | Google | `MWF_ASSISTANT_API_KEY` or `--api-key` |
@@ -29,7 +29,7 @@ The provider and model are global options and must appear before the
 subcommand:
 
 ```bash
-uv run assistant --provider openai --model gpt_5_mini study-selection --help
+uv run assistant --provider openai --model gpt-oss:20b study-selection --help
 ```
 
 Never put API keys in a committed configuration file.

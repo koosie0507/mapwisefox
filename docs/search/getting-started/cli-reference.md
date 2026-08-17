@@ -16,7 +16,7 @@ uv run search --help
 | `--data-dir`, `-D` | `DATA_DIR` | `./data` | Root directory results are written under. |
 | `--max-workers` | — | `3` | Maximum number of backends to run concurrently (applies only to non-console backends). |
 | `--debug`, `-d` | — | `False` | Print detailed errors from all backends, and log per-backend error tracebacks after a run. |
-| `--disable-weekly-bucket` | — | `False` | Skip the `<YYYYMMDD of most recent Monday>` subdirectory and write straight into `<data-dir>/<results-dir-name>/`. |
+| `--enable-weekly-bucket` | — | `False` | Add a `<YYYYMMDD of most recent Monday>` subdirectory under `--results-dir-name` where results are written. |
 | `--results-dir-name` | — | `search-results` | Subdirectory name within `--data-dir` where results are written. |
 
 ## Execution model

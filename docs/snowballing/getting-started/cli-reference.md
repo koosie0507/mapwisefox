@@ -74,6 +74,28 @@ The first command creates `papers-snowball.xlsx` with a `Back` worksheet. The
 second preserves that worksheet and adds a `Forward` worksheet. Repeating a
 direction replaces its existing result worksheet without prompting.
 
+## Real-world: both directions in place with exclusions
+
+When the seed worksheet already lives inside a workbook you want to keep
+extending, run both directions `--in-place` and use `-e` to exclude the DOIs
+discovered by the opposite direction so the two result sets stay disjoint:
+
+```bash
+uv run snowball review.xlsx --in-place \
+  --direction backward \
+  --sheet-name primary-selection
+
+uv run snowball review.xlsx --in-place \
+  -e Back \
+  --direction forward \
+  --sheet-name primary-selection
+```
+
+The first run writes a `Back` worksheet into `review.xlsx`. The second run
+writes a `Forward` worksheet into the same workbook while skipping any DOI that
+already appears in the `Back` worksheet. This mirrors the workflow used in the
+`data/slr-oss` example.
+
 ## Execution model
 
 ```mermaid

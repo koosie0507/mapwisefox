@@ -27,7 +27,7 @@
 | ----------- | ------------ | ------------------------------------------------ |
 | `api_key`   | — (required) | `MWF_SEARCH_ELSEVIER_API_KEY`                    |
 | `save`      | `True`       | Whether to persist results                       |
-| `csv_path`  | `None`       | Resolved relative to the dated results directory |
+| `csv_path`  | `None`       | Resolved relative to the results directory |
 | `fetch_all` | `True`       | Set `False` to fetch only the first page         |
 
 ## Output columns

@@ -22,7 +22,7 @@ Run it against the deduplicated workbook:
 ```bash
 uv run assistant \
   --provider ollama \
-  --model gpt_oss \
+  --model gpt-oss:20b \
   study-selection data/output/<deduplicated-workbook>.xlsx \
   --config-file assistant/examples/study-selection-config.json
 ```
@@ -58,7 +58,7 @@ Run quality assessment on the reviewed selection:
 ```bash
 uv run assistant \
   --provider ollama \
-  --model gpt_oss \
+  --model gpt-oss:20b \
   study-qa data/output/<selected-workbook>.xlsx \
   --config assistant/examples/study-qa-config.json
 ```
@@ -91,4 +91,4 @@ uv run assistant validate-config \
 ```
 
 The corresponding JSON Schemas are available in
-`assistant/schemas/` for editor and external validation support.
+`common-config/schemas/` for editor and external validation support.

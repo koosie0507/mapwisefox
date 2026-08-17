@@ -54,8 +54,8 @@ version control.
 ## Path resolution for backend options
 
 Two specific option keys get special treatment, resolved relative to the
-run's dated results directory (`<data-dir>/<results-dir-name>/<Monday's date>`,
-or just `<data-dir>/<results-dir-name>` with `--disable-weekly-bucket`):
+run's results directory (`<data-dir>/<results-dir-name>/`, or
+`<data-dir>/<results-dir-name>/<Monday's date>` with `--enable-weekly-bucket`):
 
 - `csv_path`: wrapped as-is, resolved relative to that directory.
 - `persistence_adapter`: if given as a string/path, it's wrapped in a
@@ -64,7 +64,7 @@ or just `<data-dir>/<results-dir-name>` with `--disable-weekly-bucket`):
 
 This happens in `_resolve_backend_options` in `__main__.py`, _after_ env var
 expansion — so `csv_path: ${OUT_DIR}/scopus.csv` would expand the env var
-first, then still be joined onto the dated results directory (this
+first, then still be joined onto the results directory (this
 combination is unusual and likely not what you want — prefer a bare relative
 filename for `csv_path` in normal use).
 

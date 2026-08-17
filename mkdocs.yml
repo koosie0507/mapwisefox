@@ -1,5 +1,6 @@
 site_name: MapwiseFox
 site_description: Systematic literature review tooling
+site_url: https://koosie0507.github.io/mapwisefox/
 repo_url: https://github.com/koosie0507/mapwisefox
 edit_uri: edit/main/docs/
 
@@ -23,6 +24,10 @@ theme:
 
 extra_css:
   - stylesheets/extra.css
+
+extra:
+  version:
+    provider: mike
 
 markdown_extensions:
   - admonition
@@ -54,6 +59,9 @@ plugins:
             docstring_style: google
             show_source: true
             show_root_heading: true
+  - mike:
+      version_selector: true
+      canonical_version: latest
 
 nav:
   - Home: index.md
