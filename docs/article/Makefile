@@ -11,6 +11,17 @@ doc: $(DOC:.tex=.pdf)
 %.pdf: %.tex
 	-latexmk -pv -pdf $<
 
+format:
+	tex-fmt $(DOC) references.bib
+
+check:
+	@chktex -q $(DOC); rc=$$?; \
+	if [ $$rc -eq 1 ] || [ $$rc -eq 3 ]; then \
+		echo "chktex reported errors (exit $$rc)"; exit 1; \
+	else \
+		echo "chktex: no errors (exit $$rc)"; \
+	fi
+
 purge:
 	for name in $(INTERMEDIARY_OUT); do \
 		find . -name "$$name" -type f | xargs rm -fv ;\
