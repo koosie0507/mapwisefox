@@ -42,7 +42,7 @@ Compares `SEARCH_RESULTS_FILE` with every file supplied through `-i`. It prints 
 metrics -i RATER_A -i RATER_B -t DECISION [global options] kappa-score [--agreement-labels LABELS]
 ```
 
-Computes Cohen's kappa for exactly two input raters and each target column. The default labels are `include,exclude`; use `--agreement-labels` with a comma-separated replacement list when needed. With `-o`, it writes `stats` plus disagreement worksheets. `-x` selects extra columns for those disagreement worksheets.
+Computes Cohen's kappa for **exactly two** input raters and each target column; supplying fewer or more than two `-i` files is rejected. The default labels are `include,exclude`; use `--agreement-labels` with a comma-separated replacement list when needed. With `-o`, it writes a `stats` worksheet plus one `disagreements on {target}` worksheet per target column. `-x` selects extra columns for those disagreement worksheets.
 
 ### `mae`
 

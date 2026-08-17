@@ -12,11 +12,10 @@ If used, the following options must be provided before the subcommand.
 
 | Option | Default | Description |
 |---|---|---|
-| `--model`, `-m` | `gpt_oss` | Model choice exposed by the selected provider. |
-| `--provider`, `-p` | `ollama` | LLM provider to use. |
-| `--ollama-host` | `localhost` | Ollama host. |
-| `--ollama-port` | `11434` | Ollama port. |
-| `--api-key` | — | Provider API key; also available through `MWF_ASSISTANT_API_KEY`. |
+| `--model`, `-m` | `gpt-oss:20b` | Model choice exposed by the selected provider. |
+| `--provider`, `-p` | `ollama` | LLM provider to use. One of `ollama`, `openai`, `anthropic`, `google`, `aws-bedrock`. |
+| `--ollama-endpoint` | `http://localhost:11434` | Address where Ollama is listening. Used only with `-p ollama`. |
+| `--api-key` | — | Provider API key; also available through `MWF_ASSISTANT_API_KEY`. Required for `openai` and `anthropic`. |
 
 ## `study-selection`
 
@@ -29,9 +28,11 @@ uv run assistant study-selection --help
 | `SEARCH_RESULTS` | required | Input `.xlsx`, `.csv`, or `.bib` study records. |
 | `--config-file`, `-c` | required | Selection JSON config; also `MWF_ASSISTANT_SELECTION_CONFIG`. |
 | `--limit` | all rows | Maximum number of records to process. |
-| `--ignore-attributes`, `-i` | `cluster_id`, `include`, `exclude_reason` | Columns omitted from the per-record prompt. |
+| `--ignore-attributes`, `-i` | `cluster_id`, `include`, `exclude_reason` | Columns omitted from the per-record prompt. Repeat to add more. |
+| `--sheet-name`, `-s` | first worksheet | Name of the worksheet containing the input records. |
 
-The output is an `.xlsx` file beside the input with the model name appended.
+The output is an `.xlsx` file beside the input with the model name appended
+(`{input-stem}-{model}.xlsx`, with `:` in the model name replaced by `_`).
 
 ## `study-qa`
 
@@ -46,11 +47,13 @@ uv run assistant study-qa --help
 | `--url-column`, `-u` | `url` | PDF URL/path column. |
 | `--index-column` | — | Existing column to use as the row identifier. |
 | `--reader-type`, `-e` | `custom` | `custom` or `docling` PDF reader. |
-| `--layout-model`, `-l` | LayoutParser default | Layout model used by the custom reader. |
+| `--layout-model`, `-l` | `lp://PubLayNet/tf_efficientdet_d0/config` | LayoutParser model used by the `custom` reader. |
 | `--insecure-skip-tls-verify` | disabled | Disable TLS verification for HTTP PDF downloads. |
+| `--download-dir`, `-D` | `./downloads` | Directory where downloaded primary-study PDFs are stored. |
 
 The output workbook contains one criterion score column per QA criterion and
-an `evaluation` column.
+an `evaluation` column. It is written beside the input as
+`{file-stem}-{model}{file-suffix}`.
 
 ## `validate-config`
 
