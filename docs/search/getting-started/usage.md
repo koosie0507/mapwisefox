@@ -124,7 +124,7 @@ Console backends (`ConsoleBackend` and `WebOfScienceBackend` with `use_starter_a
 
 Edit the `query:` block (or your `query_file:`), rerun `search`, and repeat. The DSL supports:
 
-- Boolean operators (`&`, `|`, `~`)
+- Boolean operators (`&`, `|`, `!`)
 - Field scopes (`in title,abstract,keywords`)
 - Wildcards (`tool*`)
 - Phrase search (`"entity resolution"`)

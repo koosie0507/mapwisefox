@@ -156,7 +156,9 @@ def main(
     )
 
     config = _load_config(config_path)
-    search_results_dir = _ensure_results_dir(data_dir, results_dir_name, disable_weekly)
+    search_results_dir = _ensure_results_dir(
+        data_dir, results_dir_name, not disable_weekly
+    )
 
     assert config.query is not None  # guaranteed by SearchConfig validation
     parser = Parser()
