@@ -9,7 +9,8 @@ PYTHON_TEST_DIRS := $(addsuffix /tests,$(PYTHON_PACKAGE_DIRS))
 VALID_PACKAGES := $(PYTHON_PACKAGE_DIRS) $(WEB_FRONTEND_DIR)
 BUMP_KIND := $(or $(VERSION_COMPONENT),pre_label)
 
-.PHONY: .check-deps bootstrap clean format check test
+.PHONY: .check-deps bootstrap clean format check test \
+       build-docs serve-docs prepare-pages clean-docs
 
 .check-deps:
 	@command -v git >/dev/null 2>&1 || { echo "Error: 'git' is not installed or not in PATH." >&2; exit 1; }
@@ -106,3 +107,32 @@ re-tag: .check-deps
 	git tag --delete $(TAG) && \
 	git tag $(TAG) && \
 	git push --tags
+
+# ---------------------------------------------------------------------------
+# Documentation
+# ---------------------------------------------------------------------------
+# build-docs: strict local build for verification (output in ./_site).
+# serve-docs: local dev server with live reload (single version).
+# prepare-pages: deploy current checkout to gh-pages as VERSION + 'latest' alias.
+#   Requires VERSION, e.g. `make prepare-pages VERSION=v0.9.6`. Pushes to origin.
+# clean-docs: remove local build output.
+#
+# Docs targets sync only the `docs` dependency group (mkdocs-material,
+# mkdocstrings, include-markdown, mike) rather than the full workspace.
+
+build-docs:
+	uv sync --only-group docs --active
+	uv run --active mkdocs build --strict --site-dir _site
+
+serve-docs:
+	uv sync --only-group docs --active
+	uv run --active mkdocs serve --strict
+
+prepare-pages:
+	@test -n "$(VERSION)" || { echo "VERSION required (e.g. make prepare-pages VERSION=v0.9.6)"; exit 1; }
+	uv sync --only-group docs --active
+	uv run --active mike deploy --update-aliases --push "$(VERSION)" latest
+	uv run --active mike set-default latest --push
+
+clean-docs:
+	rm -rf _site
