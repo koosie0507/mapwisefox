@@ -4,6 +4,12 @@ on:
   push:
     tags:
       - 'v*'   # built only for version tags
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to rebuild/push image for (e.g. v0.9.6)'
+        required: true
+        type: string
 
 permissions:
   contents: read
@@ -13,29 +19,54 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Resolve tag and detect prereleases
+        id: tag
+        shell: bash
+        run: |
+          if [ -n "${{ inputs.tag }}" ]; then
+            ref="refs/tags/${{ inputs.tag }}"
+          else
+            ref="${{ github.ref }}"
+          fi
+          tag="${ref#refs/tags/}"
+          echo "tag=$tag" >> "$GITHUB_OUTPUT"
+          if [[ "$tag" == *-* ]]; then
+            echo "Prerelease detected ($tag); skipping image push."
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - if: steps.tag.outputs.skip != 'true'
+        uses: actions/checkout@v7
+        with:
+          ref: ${{ steps.tag.outputs.tag }}
 
-      - name: Log in to GHCR
-        uses: docker/login-action@v3
+      - if: steps.tag.outputs.skip != 'true'
+        name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - if: steps.tag.outputs.skip != 'true'
+        name: Log in to GHCR
+        uses: docker/login-action@v4
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Extract metadata (tags, labels)
+      - if: steps.tag.outputs.skip != 'true'
+        name: Extract metadata (tags, labels)
         id: meta
-        uses: docker/metadata-action@v5
+        uses: docker/metadata-action@v6
         with:
           images: ghcr.io/${{ github.repository }}
           tags: |
             type=ref,event=tag
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build and push
-        uses: docker/build-push-action@v6
+      - if: steps.tag.outputs.skip != 'true'
+        name: Build and push
+        uses: docker/build-push-action@v7
         with:
           context: .
           target: backend-runtime
