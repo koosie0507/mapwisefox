@@ -70,7 +70,7 @@ while Scopus results come straight from a live API call.
 
    See [Search → Installation](../../search/getting-started/installation.md#api-keys)
    for how to set `MWF_SEARCH_ELSEVIER_API_KEY`. `scopus.csv` lands in
-   `search`'s dated results directory (e.g. `data/search-results/20260720/`).
+   `search`'s results directory (e.g. `data/search-results/`).
 
 2. Paste the ACM query printed to your terminal into the ACM Digital
    Library's search UI, run it there, and use its **Export Citations →

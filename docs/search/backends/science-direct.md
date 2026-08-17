@@ -28,7 +28,7 @@
 | ---------- | ------------ | ------------------------------------------------------------------------------------------------------- |
 | `api_key`  | — (required) | `MWF_SEARCH_ELSEVIER_API_KEY`                                                                           |
 | `save`     | `True`       | Whether to persist results                                                                              |
-| `csv_path` | `None`       | Resolved relative to the dated results directory (see [Configuration](../configuration/config-file.md)) |
+| `csv_path` | `None`       | Resolved relative to the results directory (see [Configuration](../configuration/config-file.md)) |
 
 ## Output columns
 

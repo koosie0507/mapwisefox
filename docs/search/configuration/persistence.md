@@ -18,7 +18,7 @@ with.
 Most API backends build their own `PandasCsvAdapter` internally from a
 `csv_path` constructor option (see each backend's page in
 [Backends](../backends/overview.md)) — `csv_path` is resolved relative to
-the dated results directory by `__main__.py` before being passed to the
+the results directory by `__main__.py` before being passed to the
 backend's constructor.
 
 `WebOfScienceBackend` is the exception: it takes a `persistence_adapter`
