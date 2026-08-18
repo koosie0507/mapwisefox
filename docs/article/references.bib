@@ -17,19 +17,19 @@
 %% Methodological references for SLR / SMS
 %% ---------------------------------------------------------------------
 
-@article{kitchenham2007,
+@techreport{kitchenham2007,
   author    = {Kitchenham, Barbara},
   title     = {Guidelines for performing systematic literature reviews in
   software engineering},
-  journal   = {Technical Report, Keele University and Durham University Joint Report},
+  institution = {Keele University and Durham University Joint Report},
   year      = {2007},
 }
 
-@article{petersen2008,
+@inproceedings{petersen2008,
   author    = {Petersen, Kai and Feldt, Robert and Mujtaba, Shahid and
   Mattsson, Michael},
   title     = {Systematic mapping studies in software engineering},
-  journal   = {Proceedings of the 12th International Conference on Evaluation
+  booktitle = {Proceedings of the 12th International Conference on Evaluation
   and Assessment in Software Engineering},
   year      = {2008},
   pages     = {1--10},
@@ -93,6 +93,7 @@
   title     = {{FastAPI}},
   year      = {2024},
   howpublished = {\url{https://fastapi.tiangolo.com}},
+  note="Accessed: 2026-07-24; Version=0.127.1"
 }
 
 @misc{react,
@@ -109,11 +110,86 @@
   howpublished = {\url{https://docs.astral.sh/uv}},
 }
 
+@misc{jinja,
+  author       = {Armin Ronacher and {Pallets Projects}},
+  title        = {Jinja: A Very Fast and Expressive Template Engine},
+  year         = {2008},
+  howpublished          = {\url{https://jinja.palletsprojects.com/}},
+  note         = {Accessed: 2026-08-18, Version=3.1.2},
+}
+
+@misc{lark,
+  author       = {Erez Shinan},
+  title        = {Lark: A Parsing Toolkit for Python},
+  year         = {2017},
+  howpublished = {\url{https://github.com/lark-parser/lark}},
+  note         = {Version 1.3.x, MIT License. Accessed: 2026-08-18},
+}
+
+@software{pydantic,
+  author       = {Colvin, Samuel and
+    Jolibois, Eric and
+    Ramezani, Hasan and
+    Garcia Badaracco, Adrian and
+    Dorsey, Terrence and
+    Montague, David and
+    Matveenko, Serge and
+    Trylesinski, Marcelo and
+    Runkle, Sydney and
+    Hewitt, David and
+    Hall, Alex and
+  Plot, Victorien},
+  title        = {Pydantic Validation},
+  month        = nov,
+  year         = 2025,
+  publisher    = {Zenodo},
+  version      = {v2.12.5},
+  doi          = {10.5281/zenodo.17725101},
+  url          = {https://doi.org/10.5281/zenodo.17725101},
+  swhid        = {swh:1:dir:5b6478aa5e0cad35eef8a870ba438b80e2ba2632
+    ;origin=https://doi.org/10.5281/zenodo.8180180;vis
+    it=swh:1:snp:9a83db2e6565acc5b6b4e33c11d48fddaae44
+    370;anchor=swh:1:rel:2089ec16fcb5e3bd11852ab991bf2
+    1d0a112d65e;path=pydantic-pydantic-b4fa0a1
+  },
+}
+
 @misc{semanticscholar,
-  author    = {{Allen Institute for AI}},
-  title     = {{Semantic Scholar} {API}},
-  year      = {2024},
-  howpublished = {\url{https://www.semanticscholar.org/product/api}},
+  title={The Semantic Scholar Open Data Platform},
+  author={Rodney Kinney and Chloe Anastasiades and Russell Authur and Iz
+    Beltagy and Jonathan Bragg and Alexandra Buraczynski and Isabel Cachola and
+    Stefan Candra and Yoganand Chandrasekhar and Arman Cohan and Miles Crawford
+    and Doug Downey and Jason Dunkelberger and Oren Etzioni and Rob Evans and
+    Sergey Feldman and Joseph Gorney and David Graham and Fangzhou Hu and Regan
+    Huff and Daniel King and Sebastian Kohlmeier and Bailey Kuehl and Michael
+    Langan and Daniel Lin and Haokun Liu and Kyle Lo and Jaron Lochner and
+    Kelsey MacMillan and Tyler Murray and Chris Newell and Smita Rao and
+    Shaurya Rohatgi and Paul Sayre and Zejiang Shen and Amanpreet Singh and
+    Luca Soldaini and Shivashankar Subramanian and Amber Tanaka and Alex D.
+    Wade and Linda Wagner and Lucy Lu Wang and Chris Wilhelm and Caroline Wu
+  and Jiangjiang Yang and Angele Zamarron and Madeleine Van Zuylen and Daniel S. Weld},
+  year={2025},
+  eprint={2301.10140},
+  archivePrefix={arXiv},
+  primaryClass={cs.DL},
+  doi={10.48550/arXiv.2301.10140},
+  url={https://arxiv.org/abs/2301.10140},
+}
+
+@misc{mermaid,
+  author       = {Knut Sveidqvist and {Contributors to Mermaid}},
+  title        = {Mermaid: Generate diagrams from markdown-like text},
+  year         = {2014},
+  howpublished = {\url{https://mermaid.js.org/}},
+  note         = {Version 11.x, MIT License. Accessed: 2026-08-18},
+}
+
+@misc{plantuml,
+  author       = {Arnaud Roques and {PlantUML Contributors}},
+  title        = {PlantUML: Generate diagrams from textual description},
+  year         = {2009},
+  howpublished = {\url{https://plantuml.com/}},
+  note         = {Version 1.2026.x, GPL License. Accessed: 2026-08-18},
 }
 
 @techreport{iso29500,
@@ -125,6 +201,157 @@
   year        = {2016},
   number      = {ISO/IEC 29500-1:2016},
   address     = {Geneva, Switzerland}
+}
+
+@misc{gemma,
+  title={Gemma 4 Technical Report},
+  author={Gemma Team and Sherif El Abd and Vaibhav Aggarwal and Robin
+    Algayres and Alek Andreev and Olivier Bachem and Ian Ballantyne and Cormac
+    Brick and Victor Cărbune and Michelle Casbon and Mayank Chaturvedi and
+    Aditya Chawla and Victor Cotruta and Alice Coucke and Phil Culliton and
+    Robert Dadashi and Lucas Dixon and Mohamed Elhawaty and Utku Evci and
+    Clément Farabet and Johan Ferret and Filippo Galgani and Sertan Girgin and
+    Jean-Bastien Grill and Maarten Grootendorst and Jiaxian Guo and Cassidy
+    Hardin and Yanzhang He and Steven M. Hernandez and Omri Homburger and
+    Léonard Hussenot and Juyeong Ji and Armand Joulin and Aishwarya Kamath and
+    Parnian Kassraie and Olivier Lacombe and Preethi Lahoti and Gaël Liu and
+    Gus Martins and Luciano Martins and Tatiana Matejovicova and Ramona Merhej
+    and Nikola Momchev and Sneha Mondal and Ryan Mullins and Sindhu Raghuram
+    Panyam and Shreya Pathak and Sarah Perrin and André Susano Pinto and
+    Etienne Pot and Angéline Pouget and Alexandre Ramé and Sabela Ramos and
+    Douglas Reid and David Rim and Morgane Rivière and Karsten Roth and Louis
+    Rouillard and Omar Sanseviero and Pier Giuseppe Sessa and Shane Settle and
+    Danila Sinopalnikov and Sara Smoot and Piotr Stanczyk and Andreas Steiner
+    and Lawrence Stewart and Ilya Tolstikhin and Michael Tschannen and Anton
+    Tsitsulin and Nino Vieillard and Renjie Wu and Pingmei Xu and Haichuan Yang
+    and Edouard Yvinec and Biao Zhang and Li Zhang and Joe Zou and Nicolas
+    Aagnes and Abdelrahman Abdelhamed and Jakub Adamek and Shivani Agrawal and
+    Shubham Agrawal and Ibrahim Alabdulmohsin and Jean Baptiste Alayrac and Uri
+    Alon and Chandramouli Amarnath and Ankesh Anand and Chrysovalantis
+    Anastasiou and Setareh Ariafar and François-Xavier Aubet and Kyriakos
+    Axiotis and Federico Barbero and Joelle Barral and Alexei Bendebury and Urs
+    Bergmann and Stanley Bileschi and Kat Black and Mathieu Blondel and
+    Sebastian Borgeaud and Arthur Bražinskas and Ryan Burnell and Robert
+    Busa-Fekete and Mu Cai and Daniele Calandriello and Glenn Cameron and
+    Charlotte Caucheteux and Rahma Chaabouni and Garima Chadha and Jetha Chan
+    and Blake Jianhang Chen and Jesse Chen and Lin Chen and Xu Chen and Derek
+    Cheng and Tzu-hsiang Chien and Nikolai Chinaev and Yi Chou and Zhaohui Chu
+    and Benjamin Coleman and Pooja Consul and Sam Conway-Rahman and Scott
+    Crowell and Dylan Cutler and Vivek Dani and Samira Daruki and Anil Das and
+    Daniel Deutsch and Nishanth Dikkala and Li Ding and Qiuhan Ding and Shenil
+    Dodhia and Konstantin Donhauser and Tulsee Doshi and Anca Dragan and Alex
+    Druinsky and Sahil Dua and Zoltan Egyed and Danielle Eisenbud and Daniel
+    Eppens and Cindy Fan and Bahare Fatemi and Yassir Fathullah and Vlad
+    Feinberg and Milen Ferev and Sebastian Flennerhag and Takumi Fujimoto and
+    João Gabriel Oliveira and Isaac Galatzer-Levy and João Gante and Simon
+    Geisler and Soham Ghosal and Antonious M. Girgis and Tamara von Glehn and
+    Alec Go and Alhaad Gokhale and Alex Grills and Yiming Gu and Mayank Gupta
+    and Pramod Gupta and Guru Guruganesh and Raia Hadsell and Hamza Harkous and
+    Jitendra Harlalka and Demis Hassabis and Anja Hauth and Joe Heyward and
+    Arian Hosseini and Chih-Yang Hsia and I-Hung Hsu and Xiaopeng Huang and
+    Yangsibo Huang and Kevin Hui and Adrian Hutter and Te I and Fotis
+    Iliopoulos and Advait Jain and Ganesh Jawahar and Ziwei Ji and Qilin Jin
+    and Melvin Johnson and Kandarp Joshi and Arun Kandoor and Wang-Cheng Kang
+    and Koray Kavukcuoglu and Mehran Kazemi and Kathleen Kenealy and Amr
+    Khalifa and Phoebe Kirk and Ivan Korotkov and Suraj Kothawade and Vitaly
+    Kovalev and Neel Kovelamudi and Adam Kraft and Ravin Kumar and Vivek Kumar
+    and Harish Kuppam and Justin Lannin and Chen-Yu Lee and Seungji Lee and
+    Dmitry Lepikhin and Alon Levkovitch and Dongdong Li and Qiujia Li and
+    Valentin Liévin and Ethan Lin and Ziqian Lin and Casper Liu and Tianlin Liu
+    and Tianqi Liu and Xin Liu and Ivan Lobov and Mayank Lunayach and Min Ma
+    and Gagan Madan and Andrii Maksai and Eric Malmi and Michal Matuszak and
+    Daniel McDuff and Gaurav Menghani and Maciej Mikuła and Daniil Mirylenka
+    and Karolis Misiunas and Vedant Misra and Andreea Mitran and Kareem Mohamed
+    and Maksim Mukha and Eric Noland and James O'Donnell and Brendan O'Donoghue
+    and Kate Olszewska and Bernett Orlando and Wanqiong Pan and Rina Panigrahy
+    and Unnati Parekh and Nicolas Perez-Nieves and Chunjong Park and Eric
+    Paskie and Liqian Peng and Bryce Petrini and Slav Petrov and Jonas Pfeiffer
+    and Bilal Piot and Martyna Plomecka and Siim Poder and Octavio Ponce and
+    Arijit Pramanik and David Racz and Anish Rajan and Michelle Ramanovich and
+    Anand Rao and Marvin Ritter and Vitor Rodrigues and Evan Rosen and Mikołaj
+    Rybiński and Noveen Sachdeva and Michaël E. Sander and Rohit Sathyanarayana
+    and Sagar Savla and Samuel Schmidgall and Tal Schuster and George Scrivener
+    and Benoit Seguin and Andrew Sellergren and Aliaksei Severyn and Izhak
+    Shafran and Dhruv Shah and Bobak Shahriari and Yuan Shangguan and Ashish
+    Shenoy and Pradeep Shenoy and Rakesh Shivanna and Pauline Sho and Lucas
+    Spangher and Wojciech Stokowiec and Tim Strother and Yao Su and Yinghao Sun
+    and Mukund Sundararajan and Andrea Tacchetti and Mor Hazan Taege and Pouya
+    Tafti and Jean Tarbouriech and Chetan Tekur and Shantanu Thakoor and Rahul
+    Thapa and Madeleine Traverse and Lenart Treven and Tao Tu and Chien Te Tung
+    and Çağlar Ünlü and Petar Veličković and Malini Pooni Venkat and Sagar
+    Gubbi Venkatesh and Vidya Venkiteswaran and Francesco Visin and Alex
+    Vitvitskyi and Kiran Vodrahalli and Weiyi Wang and Xin Wang and Tris
+    Warkentin and Jan Wassenberg and John Wieting and Cindy Wu and Lechao Xiao
+    and Hao Xu and Yuhui Xu and Fuzhao Xue and Arun Yadav and Jun Yan and
+    Antoine Yang and Lin Yang and Ming-Hsuan Yang and Ziyu Ying and Jae Hyeon
+    Yoo and Morteza Zadimoghaddam and Sajjad Zafar and Fred Zhang and Jiageng
+  Zhang and Jianyi Zhang and Xiaofan Zhang and Chao Zhao and David Zhou and Chen Zou},
+  year={2026},
+  eprint={2607.02770},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2607.02770},
+}
+
+@misc{gptoss,
+  title={gpt-oss-120b & gpt-oss-20b Model Card},
+  author={OpenAI and Sandhini Agarwal and Lama Ahmad and Jason Ai and
+    Sam Altman and Andy Applebaum and Edwin Arbus and Rahul K. Arora and Yu Bai
+    and Bowen Baker and Haiming Bao and Boaz Barak and Ally Bennett and Tyler
+    Bertao and Nivedita Brett and Eugene Brevdo and Greg Brockman and Sebastien
+    Bubeck and Che Chang and Kai Chen and Mark Chen and Enoch Cheung and Aidan
+    Clark and Dan Cook and Marat Dukhan and Casey Dvorak and Kevin Fives and
+    Vlad Fomenko and Timur Garipov and Kristian Georgiev and Mia Glaese and
+    Tarun Gogineni and Adam Goucher and Lukas Gross and Katia Gil Guzman and
+    John Hallman and Jackie Hehir and Johannes Heidecke and Alec Helyar and
+    Haitang Hu and Romain Huet and Jacob Huh and Saachi Jain and Zach Johnson
+    and Chris Koch and Irina Kofman and Dominik Kundel and Jason Kwon and
+    Volodymyr Kyrylov and Elaine Ya Le and Guillaume Leclerc and James Park
+    Lennon and Scott Lessans and Mario Lezcano-Casado and Yuanzhi Li and
+    Zhuohan Li and Ji Lin and Jordan Liss and Lily and Liu and Jiancheng Liu
+    and Kevin Lu and Chris Lu and Zoran Martinovic and Lindsay McCallum and
+    Josh McGrath and Scott McKinney and Aidan McLaughlin and Song Mei and Steve
+    Mostovoy and Tong Mu and Gideon Myles and Alexander Neitz and Alex Nichol
+    and Jakub Pachocki and Alex Paino and Dana Palmie and Ashley Pantuliano and
+    Giambattista Parascandolo and Jongsoo Park and Leher Pathak and Carolina
+    Paz and Ludovic Peran and Dmitry Pimenov and Michelle Pokrass and Elizabeth
+    Proehl and Huida Qiu and Gaby Raila and Filippo Raso and Hongyu Ren and
+    Kimmy Richardson and David Robinson and Bob Rotsted and Hadi Salman and
+    Suvansh Sanjeev and Max Schwarzer and D. Sculley and Harshit Sikchi and
+    Kendal Simon and Karan Singhal and Yang Song and Dane Stuckey and Zhiqing
+    Sun and Philippe Tillet and Sam Toizer and Foivos Tsimpourlas and Nikhil
+    Vyas and Eric Wallace and Xin Wang and Miles Wang and Olivia Watkins and
+    Kevin Weil and Amy Wendling and Kevin Whinnery and Cedric Whitney and
+    Hannah Wong and Lin Yang and Yu Yang and Michihiro Yasunaga and Kristen
+    Ying and Wojciech Zaremba and Wenting Zhan and Cyril Zhang and Brian Zhang
+  and Eddie Zhang and Shengjia Zhao},
+  year={2025},
+  eprint={2508.10925},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2508.10925},
+}
+
+@misc{qwen3,
+  title={Qwen3 Technical Report},
+  author={An Yang and Anfeng Li and Baosong Yang and Beichen Zhang and
+    Binyuan Hui and Bo Zheng and Bowen Yu and Chang Gao and Chengen Huang and
+    Chenxu Lv and Chujie Zheng and Dayiheng Liu and Fan Zhou and Fei Huang and
+    Feng Hu and Hao Ge and Haoran Wei and Huan Lin and Jialong Tang and Jian
+    Yang and Jianhong Tu and Jianwei Zhang and Jianxin Yang and Jiaxi Yang and
+    Jing Zhou and Jingren Zhou and Junyang Lin and Kai Dang and Keqin Bao and
+    Kexin Yang and Le Yu and Lianghao Deng and Mei Li and Mingfeng Xue and
+    Mingze Li and Pei Zhang and Peng Wang and Qin Zhu and Rui Men and Ruize Gao
+    and Shixuan Liu and Shuang Luo and Tianhao Li and Tianyi Tang and Wenbiao
+    Yin and Xingzhang Ren and Xinyu Wang and Xinyu Zhang and Xuancheng Ren and
+    Yang Fan and Yang Su and Yichang Zhang and Yinger Zhang and Yu Wan and
+    Yuqiong Liu and Zekun Wang and Zeyu Cui and Zhenru Zhang and Zhipeng Zhou
+  and Zihan Qiu},
+  year={2025},
+  eprint={2505.09388},
+  archivePrefix={arXiv},
+  primaryClass={cs.CL},
+  url={https://arxiv.org/abs/2505.09388},
 }
 
 %% ---------------------------------------------------------------------
@@ -211,7 +438,7 @@
   pages = {100935},
   year = {2022},
   issn = {2352-7110},
-  doi = {https://doi.org/10.1016/j.softx.2021.100935},
+  doi = {10.1016/j.softx.2021.100935},
   url = {https://www.sciencedirect.com/science/article/pii/S2352711021001710},
   author = {Christian A. Candela-Uribe and Luis E. Sepúlveda-Rodríguez and
     Julio C. Chavarro-Porras and John A. Sanabria-Ordoñez and José Luis Garrido
@@ -227,7 +454,7 @@
   pages = {102814},
   year = {2026},
   issn = {2352-7110},
-  doi = {https://doi.org/10.1016/j.softx.2026.102814},
+  doi = {10.1016/j.softx.2026.102814},
   url = {https://www.sciencedirect.com/science/article/pii/S2352711026003067},
   author = {Philipp Haindl},
   keywords = {Evidence-based software engineering, PRISMA, Reproducibility,
@@ -241,33 +468,11 @@
   pages = {101207},
   year = {2022},
   issn = {2352-7110},
-  doi = {https://doi.org/10.1016/j.softx.2022.101207},
+  doi = {10.1016/j.softx.2022.101207},
   url = {https://www.sciencedirect.com/science/article/pii/S235271102200125X},
   author = {Stijn Heldens and Alessio Sclocco and Henk Dreuning and Ben {van
   Werkhoven} and Pieter Hijma and Jason Maassen and Rob V. {van Nieuwpoort}},
   keywords = {Literature review, Python, Jupyter, Bibliometrics},
-}
-
-@article{bibexpy2025,
-  author    = {Kara, Burak Can and \c{S}ahin, Alperen and Dirsehan, Ta\c{s}k\"in},
-  title     = {{BibexPy}: Harmonizing the bibliometric symphony of {Scopus}
-  and {Web of Science}},
-  journal   = {SoftwareX},
-  year      = {2025},
-  volume    = {30},
-  pages     = {102098},
-  doi       = {10.1016/j.softx.2025.102098},
-}
-
-@article{pybliometrics2019,
-  author    = {Rose, Michael E. and Kitchin, John R.},
-  title     = {{pybliometrics}: Scriptable bibliometrics using a {Python}
-  interface to {Scopus}},
-  journal   = {SoftwareX},
-  year      = {2019},
-  volume    = {10},
-  pages     = {100263},
-  doi       = {10.1016/j.softx.2019.100263},
 }
 
 %% --- Commercial and open-source SLR platforms ---
@@ -279,13 +484,6 @@
   howpublished = {\url{https://www.covidence.org}},
 }
 
-@misc{distillersr,
-  author    = {{Evidence Partners}},
-  title     = {{DistillerSR}: systematic review software},
-  year      = {2024},
-  howpublished = {\url{https://www.distillercsr.com}},
-}
-
 @misc{thomas2010,
   author    = {Thomas, James and Brunton, Jeff and Graziosi, Sergio},
   title     = {{EPPI-Reviewer} 4: software for research synthesis},
@@ -294,61 +492,7 @@
   Institute of Education, London},
 }
 
-@misc{harzing2007pop,
-  author    = {Harzing, Anne-Wil},
-  title     = {{Publish or Perish}},
-  year      = {2007},
-  howpublished = {\url{https://harzing.com/resources/publish-or-perish}},
-}
-
 %% --- Additional SLR tools with published papers ---
-
-@article{kohl2018,
-  author    = {Kohl, Christian and McIntosh, Emma J. and Unger, Stefan and
-  Haddaway, Neal R. and Kecke, Steffen and Schiemann, Joachim and Wilhelm, Ralf},
-  title     = {Online tools supporting the conduct and reporting of
-    systematic reviews and systematic maps: a case study on {CADIMA} and review
-  of existing tools},
-  journal   = {Environmental Evidence},
-  year      = {2018},
-  volume    = {7},
-  pages     = {8},
-  doi       = {10.1186/s13750-018-0115-5},
-}
-
-@inproceedings{wallace2012,
-  author    = {Wallace, Byron C. and Small, Kevin and Brodley, Carla E. and
-  Lau, Joseph and Trikalinos, Thomas A.},
-  title     = {Deploying an interactive machine learning system in an
-  evidence-based practice center: {abstrackr}},
-  booktitle = {Proceedings of the 2nd ACM SIGHIT International Health
-  Informatics Symposium (IHI '12)},
-  year      = {2012},
-  pages     = {819--824},
-  doi       = {10.1145/2110363.2110464},
-}
-
-%% --- Snowballing and SLR methodology ---
-
-@inproceedings{wohlin2014,
-  author    = {Wohlin, Claes},
-  title     = {Guidelines for snowballing in systematic literature reviews
-  and a replication in software engineering},
-  booktitle = {Proceedings of the 18th International Conference on Evaluation
-  and Assessment in Software Engineering},
-  year      = {2014},
-  doi       = {10.1145/2601248.2601268},
-}
-
-@inproceedings{marshall2014,
-  author    = {Marshall, Christopher and Brereton, Pearl},
-  title     = {Tools to support systematic literature reviews in software
-  engineering: A mapping study},
-  booktitle = {Proceedings of the 18th International Conference on Evaluation
-  and Assessment in Software Engineering},
-  year      = {2014},
-  doi       = {10.1145/2601248.2601264},
-}
 
 %% --- AI in systematic reviews ---
 
@@ -387,17 +531,6 @@
   eprint = {https://doi.org/10.1177/14034948261423410}
 }
 
-@article{vandijk2023,
-  author    = {van Dijk, S.H.B. and Brusse, J. and van der Velde, N. and et al.},
-  title     = {Artificial intelligence in systematic reviews: promising when
-  appropriately used},
-  journal   = {BMJ Open},
-  year      = {2023},
-  volume    = {13},
-  pages     = {e075227},
-  doi       = {10.1136/bmjopen-2023-072254},
-}
-
 @misc{docling2024,
   title={Docling Technical Report},
   author={Christoph Auer and Maksym Lysak and Ahmed Nassar and Michele Dolfi
@@ -413,11 +546,12 @@
 }
 
 @ARTICLE{llm-as-a-judge2025,
-  AUTHOR={Baysan,Mehmet Selman and Uysal,Serkan and \.{I}\c{s}lek,\.{I}rem and {\c{C}i\v{g} Karaman},\c{C}a\v{g}la and G\"{u}ng\"{o}r,Tunga},
+  AUTHOR={Baysan,Mehmet Selman and Uysal,Serkan and \.{I}\c{s}lek,\.{I}rem
+  and {\c{C}i\v{g} Karaman},\c{C}a\v{g}la and G\"{u}ng\"{o}r,Tunga},
   TITLE={LLM-as-a-Judge: automated evaluation of search query parsing using
   large language models},
   JOURNAL={Frontiers in Big Data},
-  VOLUME={Volume 8 - 2025},
+  VOLUME={8},
   YEAR={2025},
   URL={https://www.frontiersin.org/journals/big-data/articles/10.3389/fdata.2025.1611389},
   DOI={10.3389/fdata.2025.1611389},
@@ -524,11 +658,12 @@
 }
 
 @article{olar2026methodsx,
-  author  = {Olar, Andrei and Dio\c{s}an, Laura and Picus, Oskar
-  and Cern\u{a}u, Laura and Motogna, Simona},
-  title   = {A Systematic Mapping Study Protocol for Software Architecture
-    Research: Search, Selection, {LLM}-Assisted Quality Assessment,
-  and Data Extraction},
+  author  = {Olar, Andrei and Dio\c{s}an, Laura and Picus, Oskar and
+  Cern\u{a}u, Laura and Motogna, Simona},
+  title   = {A Systematic Mapping Study Method for Software Architecture
+  Research with LLM-Assisted Quality Assessment},
+  doi     = {10.2139/ssrn.6967784},
+  url     = {https://ssrn.com/abstract=6967784},
   journal = {MethodsX (under review)},
   year    = {2026},
 }
@@ -549,4 +684,34 @@
   year    = {2026},
   volume  = {194},
   doi     = {10.1016/j.jclinepi.2026.112221},
+}
+
+@article{khalil2022,
+  title = {Tools to support the automation of systematic reviews: a scoping review},
+  journal = {Journal of Clinical Epidemiology},
+  volume = {144},
+  pages = {22-42},
+  year = {2022},
+  issn = {0895-4356},
+  doi = {https://doi.org/10.1016/j.jclinepi.2021.12.005},
+  url = {https://www.sciencedirect.com/science/article/pii/S0895435621004029},
+  author = {Hanan Khalil and Daniel Ameen and Armita Zarnegar},
+  keywords = {Abstract screening, Artificial intelligence, Automation,
+  Machine learning, Reliability, Systematic review}
+}
+
+@article{futterer2026,
+  title = {AI tools for systematic literature reviews and meta-analyses in
+  educational psychology: An overview and a practical guide},
+  journal = {Learning and Individual Differences},
+  volume = {126},
+  pages = {102849},
+  year = {2026},
+  issn = {1041-6080},
+  doi = {https://doi.org/10.1016/j.lindif.2025.102849},
+  url = {https://www.sciencedirect.com/science/article/pii/S1041608025002250},
+  author = {Tim Fütterer and Diego G. Campos and Thomas Gfrörer and Rosa
+  Lavelle-Hill and Kou Murayama and Ronny Scherer},
+  keywords = {Artificial intelligence, Machine learning, Research syntheses,
+  Systematic reviews, meta-analyses}
 }
