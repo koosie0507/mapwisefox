@@ -9,7 +9,10 @@ all: doc
 doc: $(DOC:.tex=.pdf)
 
 %.pdf: %.tex
-	-latexmk -pv -pdf $<
+	pdflatex $<
+	bibtex $(basename $<)
+	pdflatex $<
+	pdflatex $<
 
 format:
 	tex-fmt $(DOC) references.bib
