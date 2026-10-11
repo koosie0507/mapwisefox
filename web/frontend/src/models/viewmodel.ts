@@ -6,7 +6,6 @@ export type EvidenceViewModel = {
     publicationVenue?: string;
     doi?: string;
     doiLink?: string;
-    sciHubLink?: string;
     url?: string;
     abstract?: string;
     publishedAt?: string;

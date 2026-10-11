@@ -116,7 +116,6 @@ export default function EvidenceEditor({evidence, fileName}: EvidenceProps) {
                             <SafeLink url={model.url} text={model.publicationVenue} label="Source:"
                                       style={{fontSize: "12px", margin: "2px"}}/>
                             <SafeLink url={model.doiLink} text={doiText} label="DOI:"/>
-                            <SafeLink url={model.sciHubLink} text={doiText} label="SciHub:"/>
                         </div>
                         <small style={{fontSize: "9px", margin: "2px"}}><b>Date Published:</b>&nbsp;{dateText}</small>
                     </div>

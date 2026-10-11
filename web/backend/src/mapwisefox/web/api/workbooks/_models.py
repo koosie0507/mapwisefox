@@ -25,7 +25,6 @@ class EvidenceResponse(Evidence):
     selection_status: Optional[str] = None
     published_at: Optional[str] = Field(None, alias="publishedAt")
     doi_link: Optional[str] = Field(None, alias="doiLink")
-    scihub_link: Optional[str] = Field(None, alias="sciHubLink")
 
     def __init__(self, evidence: Evidence):
         super().__init__(**evidence.model_dump())
@@ -57,9 +56,7 @@ class EvidenceResponse(Evidence):
         if not data.get("publication_venue"):
             data["publication_venue"] = "<not specified>"
         if data.get("doi"):
-            data_doi = data["doi"]
-            data["doi_link"] = f"https://dx.doi.org/{data_doi}"
-            data["scihub_link"] = f"https://sci-hub.se/{data_doi}"
+            data["doi_link"] = f"https://dx.doi.org/{data['doi']}"
         data["selection_status"] = (
             "include" if any_to_bool(data["include"]) else "exclude"
         )
