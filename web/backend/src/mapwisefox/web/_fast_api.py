@@ -15,7 +15,7 @@ from mapwisefox.web.hooks import auth_hooks
 
 def _init_app():
     config = settings()
-    app = FastAPI(title="ERSA SMS - Primary Study Selection")
+    app = FastAPI(title="MapwiseFox - Primary Study Selection")
     app.state.config = config
     if config.auth_enabled:
         app.state.tokens = TokenService(config.token_secret, config.public_url)
