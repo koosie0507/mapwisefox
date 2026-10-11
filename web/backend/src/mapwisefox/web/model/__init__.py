@@ -1,3 +1,4 @@
+from ._csv_import import convert_csv_to_workbook
 from ._evidence import Evidence
 from ._repo import (
     Decision,
@@ -19,6 +20,7 @@ __all__ = [
     "WorkbookMetadata",
     "WorkbookRepository",
     "WorkbookValidationError",
+    "convert_csv_to_workbook",
     "metadata_path",
     "workbook_path",
 ]

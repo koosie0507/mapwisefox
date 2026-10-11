@@ -11,6 +11,7 @@ from mapwisefox.web.model import (
     WorkbookMetadata,
     WorkbookRepository,
     WorkbookValidationError,
+    convert_csv_to_workbook,
     workbook_path,
 )
 
@@ -65,12 +66,12 @@ async def import_workbook(
     temporary_path: Path | None = None
     try:
         name = file.filename or ""
+        is_csv = Path(name).suffix.lower() == ".csv"
+        if is_csv:
+            name = str(Path(name).with_suffix(".xlsx"))
         destination = workbook_path(upload_dir, name)
-        worksheet = (
-            worksheet_name.strip()
-            if worksheet_name and worksheet_name.strip()
-            else None
-        )
+        worksheet_name = worksheet_name.strip() if worksheet_name is not None else None
+        worksheet = None if is_csv else worksheet_name
         mappings = _parse_field_mappings(field_mappings)
         decision = decision_column or config.decision_column
         exclusion = exclusion_reason_column or config.exclusion_reason_column
@@ -85,10 +86,18 @@ async def import_workbook(
             else None
         )
         upload_dir.mkdir(parents=True, exist_ok=True)
-        descriptor, temporary_name = tempfile.mkstemp(dir=upload_dir, suffix=".xlsx")
-        with os.fdopen(descriptor, "wb") as stream:
-            await asyncio.to_thread(shutil.copyfileobj, file.file, stream)
-        temporary_path = Path(temporary_name)
+        if is_csv:
+            csv_content = await file.read()
+            temporary_path, mappings = await asyncio.to_thread(
+                convert_csv_to_workbook, csv_content, upload_dir, mappings
+            )
+        else:
+            descriptor, temporary_name = tempfile.mkstemp(
+                dir=upload_dir, suffix=".xlsx"
+            )
+            with os.fdopen(descriptor, "wb") as stream:
+                await asyncio.to_thread(shutil.copyfileobj, file.file, stream)
+            temporary_path = Path(temporary_name)
         async with _lock_for(destination):
             imported = await asyncio.to_thread(
                 WorkbookRepository.import_workbook,
