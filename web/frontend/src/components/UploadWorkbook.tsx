@@ -44,7 +44,7 @@ export default function UploadWorkbook({config, onUpload}: UploadWorkbookProps) 
         <summary>Import a survey</summary>
         <form ref={formRef} className={styles.uploadForm} encType="multipart/form-data" onSubmit={submit}>
             <label htmlFor="workbook-file">Workbook file</label>
-            <input id="workbook-file" type="file" name="file" accept=".xlsx" required/>
+            <input id="workbook-file" type="file" name="file" accept=".xlsx,.csv" required/>
             <label htmlFor="criteria-file">Selection criteria (optional, .json)</label>
             <input id="criteria-file" type="file" name="selectionCriteria" accept=".json,application/json"/>
             <label htmlFor="worksheet-name">Worksheet name (optional, first sheet by default)</label>

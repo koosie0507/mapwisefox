@@ -88,6 +88,25 @@ describe("Home", () => {
         expect(criteria === null || (criteria instanceof File && criteria.size === 0)).toBe(true);
     });
 
+    it("accepts csv uploads in the file input", async () => {
+        const user = userEvent.setup();
+        vi.mocked(listWorkbooks).mockResolvedValueOnce([]).mockResolvedValue([{...workbook, name: "studies.csv"}]);
+        render(<MemoryRouter><Home config={config}/></MemoryRouter>);
+
+        const fileInput = screen.getByLabelText("Workbook file") as HTMLInputElement;
+        expect(fileInput.accept.split(",")).toEqual([".xlsx", ".csv"]);
+
+        const file = new File(["csv"], "studies.csv", {type: "text/csv"});
+        await user.upload(fileInput, file);
+        expect(fileInput.files?.[0]?.name).toBe("studies.csv");
+        fireEvent.submit(screen.getByRole("button", {name: "Upload"}).closest("form")!);
+        await waitFor(() => expect(uploadWorkbook).toHaveBeenCalled());
+        const sent = vi.mocked(uploadWorkbook).mock.calls[0][0] as FormData;
+        expect(sent.get("file")).toBeInstanceOf(File);
+        expect(screen.getByRole("status")).toHaveTextContent("Workbook imported.");
+        await screen.findByText("studies.csv");
+    });
+
     it("submits an explicit field mapping", async () => {
         const user = userEvent.setup();
         render(<MemoryRouter><Home config={config}/></MemoryRouter>);
