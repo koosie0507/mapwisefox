@@ -31,7 +31,7 @@ function NavigationHeader({authenticated}: {authenticated: boolean}): ReactEleme
             <nav className="toolbar" aria-label="Primary navigation">
                 <div className="left-toolbar"><Link className="brand-link" to="/" aria-label="Mapwisefox home">
                     <img src="/mapwisefox-logo.png" alt="Mapwisefox"/>
-                    <span>Survey List</span>
+                    <span>MapwiseFox</span>
                 </Link></div>
                 {authenticated && <div className="right-toolbar">
                     <button type="button" onClick={() => void logout()}><LogOut aria-hidden="true" size={16}/> <span>Log out</span></button>

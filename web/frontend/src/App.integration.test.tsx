@@ -90,7 +90,7 @@ describe("application composition", () => {
         await renderApp("/evidence/studies.xlsx");
 
         expect(await screen.findByRole("heading", {name: "[0] A study"})).toBeInTheDocument();
-        await waitFor(() => expect(document.title).toBe("ERSA-SMS Survey - studies.xlsx"));
+        await waitFor(() => expect(document.title).toBe("MapwiseFox - studies.xlsx"));
     });
 
     it("renders the not-found route", async () => {
