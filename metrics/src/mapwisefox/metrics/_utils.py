@@ -1,11 +1,11 @@
 from pathlib import Path
 
-import pandas as pd
+from mapwisefox.shared.input import load_csv, load_xlsx
 
 
 SUPPORTED_FILE_HANDLERS = {
-    ".xlsx": pd.read_excel,
-    ".csv": pd.read_csv,
+    ".xlsx": load_xlsx,
+    ".csv": load_csv,
 }
 
 
@@ -25,10 +25,10 @@ def load_df(path, index_col=None):
     Returns:
         ``pandas.DataFrame`` containing file data
     """
-    file_loader = SUPPORTED_FILE_HANDLERS.get(path.suffix)
-    if not file_loader:
+    file_handler = SUPPORTED_FILE_HANDLERS.get(path.suffix)
+    if not file_handler:
         raise ValueError("unsupported file type", path.suffix)
     try:
-        return file_loader(path, index_col=index_col)
+        return file_handler(path, index_col=index_col)
     except Exception as e:
         raise ValueError(f"error loading file {path}") from e
