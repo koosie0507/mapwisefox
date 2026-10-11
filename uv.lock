@@ -1534,7 +1534,7 @@ docs = [
 
 [[package]]
 name = "mapwisefox-assistant"
-version = "0.10.0.dev1"
+version = "0.10.1"
 source = { editable = "assistant" }
 dependencies = [
     { name = "anthropic" },
