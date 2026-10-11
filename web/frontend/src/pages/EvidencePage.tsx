@@ -36,7 +36,7 @@ export default function EvidencePage() {
     }, [fileName, index, validIndex]);
 
     useEffect(() => {
-        document.title = `ERSA-SMS Survey - ${fileName}`;
+        document.title = `MapwiseFox - ${fileName}`;
     }, [fileName]);
 
     if (error) return <p role="alert">Could not load that screening record.</p>;
