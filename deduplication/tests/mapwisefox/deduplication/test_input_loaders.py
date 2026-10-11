@@ -3,8 +3,6 @@ from mapwisefox.deduplication._input_loaders import (
     load_csv,
     load_bib,
     _load_input_files,
-    WOS_MAPPINGS,
-    XPLORE_MAPPINGS,
 )
 
 
@@ -31,26 +29,78 @@ def sample_bib_content():
     )
 
 
-def test_load_csv_with_wos_mappings(tmp_path, sample_csv_content):
-    csv_file = tmp_path / "test.csv"
-    csv_file.write_text(sample_csv_content)
+def test_load_input_files_resolves_wos_columns(tmp_path, sample_csv_content):
+    input_dir = tmp_path / "input"
+    input_dir.mkdir()
+    (input_dir / "export.csv").write_text(sample_csv_content)
 
-    df = load_csv(csv_file, mappings=WOS_MAPPINGS)
+    df = _load_input_files(input_dir)
 
     assert df.iloc[0]["title"] == "Test Title"
+    assert df.iloc[0]["authors"] == "John Doe"
 
 
-def test_load_csv_with_xplore_mappings(tmp_path):
-    csv_file = tmp_path / "test.csv"
-    content = (
+def test_load_input_files_resolves_xplore_columns(tmp_path):
+    input_dir = tmp_path / "input"
+    input_dir.mkdir()
+    (input_dir / "export.csv").write_text(
         "Document Title,Abstract,Author Keywords,Authors,Publication Title,Publication Year,DOI,PDF Link\n"
         "Xplore Title,X Abstract,X Key,X Author,X Source,2022,10.1000/2,http://xplore.org/2"
     )
-    csv_file.write_text(content)
 
-    df = load_csv(csv_file, mappings=XPLORE_MAPPINGS)
+    df = _load_input_files(input_dir)
 
     assert df.iloc[0]["title"] == "Xplore Title"
+    assert df.iloc[0]["url"] == "http://xplore.org/2"
+
+
+def test_load_input_files_accepts_custom_aliases(tmp_path):
+    input_dir = tmp_path / "input"
+    input_dir.mkdir()
+    (input_dir / "export.csv").write_text(
+        "cTitle,cAbstract,cAuthors,cKeywords,cSource,cYear,cDoi,cUrl\n"
+        "T,A,Au,K,S,2020,10.1/d,U\n"
+    )
+
+    df = _load_input_files(
+        input_dir,
+        {
+            f"c{field}": field
+            for field in (
+                "title",
+                "abstract",
+                "authors",
+                "keywords",
+                "source",
+                "year",
+                "doi",
+                "url",
+            )
+        },
+    )
+
+    assert df.iloc[0]["title"] == "T"
+
+
+def test_load_csv_renames_with_explicit_mappings(tmp_path, sample_csv_content):
+    csv_file = tmp_path / "test.csv"
+    csv_file.write_text(sample_csv_content)
+    mappings = {
+        "Author Full Names": "authors",
+        "Article Title": "title",
+        "Source Title": "source",
+        "Abstract": "abstract",
+        "Author Keywords": "keywords",
+        "Publication Year": "year",
+        "DOI": "doi",
+        "DOI Link": "url",
+    }
+
+    df = load_csv(csv_file, mappings)
+
+    assert df.iloc[0]["title"] == "Test Title"
+    assert df.iloc[0]["doi"] == "10.1000/1"
+    assert df.iloc[0]["filename"] == "test"
 
 
 def test_load_csv_fills_na_values(tmp_path):
