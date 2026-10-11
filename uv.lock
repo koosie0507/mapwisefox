@@ -15,6 +15,7 @@ members = [
     "mapwisefox-deduplication",
     "mapwisefox-metrics",
     "mapwisefox-search",
+    "mapwisefox-shared",
     "mapwisefox-snowballing",
     "mapwisefox-split",
     "mapwisefox-web-backend",
@@ -1537,13 +1538,13 @@ version = "0.10.0.dev1"
 source = { editable = "assistant" }
 dependencies = [
     { name = "anthropic" },
-    { name = "bibtexparser" },
     { name = "boto3" },
     { name = "docling" },
     { name = "google-genai" },
     { name = "jinja2" },
     { name = "layoutparser", extra = ["effdet"] },
     { name = "mapwisefox-common-config" },
+    { name = "mapwisefox-shared" },
     { name = "ollama" },
     { name = "openpyxl" },
     { name = "pandas" },
@@ -1558,13 +1559,13 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "anthropic", specifier = ">=0.75.0" },
-    { name = "bibtexparser", specifier = ">=1.4.3" },
     { name = "boto3", specifier = ">=1.42.25" },
     { name = "docling", specifier = ">=2.66.0" },
     { name = "google-genai", specifier = ">=1.57.0" },
     { name = "jinja2", specifier = ">=3.1.6" },
     { name = "layoutparser", extras = ["effdet"], specifier = ">=0.3.4" },
     { name = "mapwisefox-common-config", editable = "common-config" },
+    { name = "mapwisefox-shared", editable = "shared" },
     { name = "ollama", specifier = ">=0.6" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.1" },
@@ -1592,15 +1593,15 @@ name = "mapwisefox-deduplication"
 version = "0.9.0.dev1"
 source = { editable = "deduplication" }
 dependencies = [
-    { name = "bibtexparser" },
     { name = "dedupe" },
+    { name = "mapwisefox-shared" },
     { name = "pandas" },
 ]
 
 [package.metadata]
 requires-dist = [
-    { name = "bibtexparser", specifier = ">=1.4.3" },
     { name = "dedupe", specifier = ">=3.0.3" },
+    { name = "mapwisefox-shared", editable = "shared" },
     { name = "pandas", specifier = ">=2.3.0" },
 ]
 
@@ -1610,6 +1611,7 @@ version = "0.9.0"
 source = { editable = "metrics" }
 dependencies = [
     { name = "dedupe" },
+    { name = "mapwisefox-shared" },
     { name = "openpyxl" },
     { name = "pandas" },
     { name = "scikit-learn" },
@@ -1618,6 +1620,7 @@ dependencies = [
 [package.metadata]
 requires-dist = [
     { name = "dedupe", specifier = ">=3.0.3" },
+    { name = "mapwisefox-shared", editable = "shared" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.0" },
     { name = "scikit-learn", specifier = ">=1.7.0" },
@@ -1650,6 +1653,23 @@ requires-dist = [
     { name = "pydantic", specifier = ">=2.12.5" },
     { name = "pyyaml", specifier = ">=6.0.3" },
     { name = "requests", specifier = ">=2.32.4" },
+]
+
+[[package]]
+name = "mapwisefox-shared"
+version = "0.1.0"
+source = { editable = "shared" }
+dependencies = [
+    { name = "bibtexparser" },
+    { name = "openpyxl" },
+    { name = "pandas" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "bibtexparser", specifier = ">=1.4.3" },
+    { name = "openpyxl", specifier = ">=3.1.5" },
+    { name = "pandas", specifier = ">=2.3.0" },
 ]
 
 [[package]]
@@ -1712,6 +1732,7 @@ dependencies = [
     { name = "cachetools" },
     { name = "fastapi", extra = ["all"] },
     { name = "mapwisefox-common-config" },
+    { name = "mapwisefox-shared" },
     { name = "numpy" },
     { name = "openpyxl" },
     { name = "pandas" },
@@ -1726,6 +1747,7 @@ requires-dist = [
     { name = "cachetools", specifier = ">=6.1.0" },
     { name = "fastapi", extras = ["all"], specifier = ">=0.115.14" },
     { name = "mapwisefox-common-config", editable = "common-config" },
+    { name = "mapwisefox-shared", editable = "shared" },
     { name = "numpy", specifier = ">=2.3.1" },
     { name = "openpyxl", specifier = ">=3.1.5" },
     { name = "pandas", specifier = ">=2.3.0" },
