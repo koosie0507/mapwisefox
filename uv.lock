@@ -1590,7 +1590,7 @@ requires-dist = [{ name = "pydantic", specifier = ">=2.11.7" }]
 
 [[package]]
 name = "mapwisefox-deduplication"
-version = "0.9.0.dev1"
+version = "0.9.1"
 source = { editable = "deduplication" }
 dependencies = [
     { name = "dedupe" },
