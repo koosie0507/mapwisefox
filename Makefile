@@ -119,20 +119,23 @@ re-tag: .check-deps
 #
 # Docs targets sync only the `docs` dependency group (mkdocs-material,
 # mkdocstrings, include-markdown, mike) rather than the full workspace.
+# `--frozen` never re-locks (use `uv lock` if the lockfile needs updating).
+# `--no-sync` keeps `uv run` from re-syncing outside the docs group
+# (an implicit `uv run` sync would pull the dev group -> mypy -> librt).
 
 build-docs:
-	uv sync --only-group docs --active
-	uv run --active mkdocs build --strict --site-dir _site
+	uv sync --only-group docs --frozen --active
+	uv run --no-sync --active mkdocs build --strict --site-dir _site
 
 serve-docs:
-	uv sync --only-group docs --active
-	uv run --active mkdocs serve --strict
+	uv sync --only-group docs --frozen --active
+	uv run --no-sync --active mkdocs serve --strict
 
 prepare-pages:
 	@test -n "$(VERSION)" || { echo "VERSION required (e.g. make prepare-pages VERSION=v0.9.6)"; exit 1; }
-	uv sync --only-group docs --active
-	uv run --active mike deploy --update-aliases --push "$(VERSION)" latest
-	uv run --active mike set-default latest --push
+	uv sync --only-group docs --frozen --active
+	uv run --no-sync --active mike deploy --update-aliases --push "$(VERSION)" latest
+	uv run --no-sync --active mike set-default latest --push
 
 clean-docs:
 	rm -rf _site
