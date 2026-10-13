@@ -93,8 +93,7 @@ uv run snowball review.xlsx --in-place \
 
 The first run writes a `Back` worksheet into `review.xlsx`. The second run
 writes a `Forward` worksheet into the same workbook while skipping any DOI that
-already appears in the `Back` worksheet. This mirrors the workflow used in the
-`data/slr-oss` example.
+already appears in the `Back` worksheet.
 
 ## Execution model
 

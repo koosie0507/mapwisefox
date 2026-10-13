@@ -66,9 +66,8 @@ def test_is_console_backend_wos_use_starter_api_wiring(use_starter_api, expected
     routes WoS-without-starter-api into the sequential console phase.
 
     A previous bug returned `True` when `use_starter_api` was truthy (inverted),
-    which routed the default `use_starter_api: false` WoS backend (as shipped in
-    `data/slr-oss/config/search.yaml`) into the parallel phase, interleaving its
-    stdout output with concurrent backends.
+    which routed the default `use_starter_api: false` WoS backend into the parallel
+    phase, interleaving its stdout output with concurrent backends.
     """
     options = {}
     if use_starter_api is not None:
