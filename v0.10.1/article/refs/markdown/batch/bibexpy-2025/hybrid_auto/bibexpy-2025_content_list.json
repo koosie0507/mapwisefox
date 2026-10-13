@@ -1,0 +1,1840 @@
+[
+    {
+        "type": "text",
+        "text": "BibexPy: Harmonizing the bibliometric symphony of Scopus and Web of Science",
+        "text_level": 1,
+        "bbox": [
+            58,
+            205,
+            768,
+            248
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/64bd578a55aca20aa98d7bb5a616828d85277a38ec4dd923bf16db0c9a0baa64.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            838,
+            184,
+            887,
+            221
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Burak Can Kara <sup>a</sup>, Alperen S¸ ahin <sup>b</sup>, Tas¸kın Dirsehan <sup>c,d,e,\\*</sup>",
+        "bbox": [
+            58,
+            262,
+            529,
+            279
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>a</sup> Department of Construction, Merzifon Vocational School, Amasya University, Amasya, Türkiye",
+        "bbox": [
+            58,
+            287,
+            502,
+            298
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>b</sup> Institute of Social Sciences, Marmara University, ˙Istanbul 34722 Türkiye",
+        "bbox": [
+            58,
+            298,
+            403,
+            310
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>c</sup> Faculty of Business Administration, Marmara University, Istanbul 34854 Türkiye",
+        "bbox": [
+            58,
+            308,
+            440,
+            320
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>d</sup> School of Social and Behavioral Sciences, Erasmus University, Rotterdam, the Netherlands",
+        "bbox": [
+            58,
+            320,
+            480,
+            331
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>e</sup> LDE Centre for BOLD Cities, Rotterdam, the Netherlands",
+        "bbox": [
+            58,
+            330,
+            329,
+            341
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A R T I C L E I N F O",
+        "text_level": 2,
+        "bbox": [
+            58,
+            372,
+            194,
+            384
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Keywords: Bibliometric analysis tool Automated data integration Metadata enrichment software Scikit-learn Machine learning API-Based metadata processing",
+        "bbox": [
+            58,
+            395,
+            213,
+            472
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A B S T R A C T",
+        "text_level": 2,
+        "bbox": [
+            334,
+            372,
+            436,
+            384
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Bibliometric analyses frequently encounter issues such as duplicate records, missing metadata, and inconsistent formats, reducing reliability and efficiency. Existing solutions offer minimal assistance for automated data integration and enrichment, requiring researchers to rely on manual efforts. This paper presents a Python-based software solution that addresses these challenges by merging datasets from Scopus and Web of Science, performing DOI-based deduplication, and enhancing metadata using APIs such as Unpaywall and Semantic Scholar. BibexPy provides analysis-ready formats that work with VosViewer and Biblioshiny, minimizing human labor and enhancing data quality. It enables advanced analysis like as co-citation mapping and trend identification, promoting innovation in bibliometric research approaches.",
+        "bbox": [
+            332,
+            395,
+            939,
+            494
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "1. Metadata",
+        "text_level": 2,
+        "bbox": [
+            58,
+            530,
+            144,
+            542
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/b9fc614fb31a36cb4c7bb54320b52dee1e4e0307d57f4d40fbf6db40a12c3152.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>BibexPy Hydrogen v1.0.0 - Initial Release</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/bcankara/BibexPy</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td>None</td></tr><tr><td>C4</td><td>Legal code license</td><td>GNU General Public License (GPL)</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>git</td></tr><tr><td>C6</td><td>Software code languages, tools and services used</td><td>python</td></tr><tr><td>C7</td><td>Compilation requirements, operating environments, and dependencies</td><td>python-dotenv (v1.0.0), pandas (v2.0.0), openpyxl (v3.1.2), numpy (v1.24.0), requests (v2.31.0), scikit-learn (v1.3.0), scipy (v1.11.0), tqdm (v4.65.0), xlrd (v2.0.1), xlsxwriter (v3.1.0), python (v3.9 or +)</td></tr><tr><td>C8</td><td>If available, link to developer documentation/manual</td><td>http://bibexpy.com/doc</td></tr><tr><td>C9</td><td>Support email for questions</td><td>info@bibexpy.com</td></tr></table>",
+        "bbox": [
+            58,
+            554,
+            482,
+            776
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "2. Motivation and significance",
+        "text_level": 2,
+        "bbox": [
+            510,
+            530,
+            715,
+            543
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Bibliometric analysis is increasingly being used in scientific research to identify trends, collaborations, and future disciplines [1–7]. Numerous software tools have been developed to facilitate bibliometric mapping and analysis, including widely recognized solutions such as Bibliometrix (Biblioshiny) [8], VOSviewer [9], CitNetExplorer [10], CiteSpace [11], CITation Analysis [12], BibExcel [13], SciMAT [14] ScientoPy [15], and pyBibX [16]. Although these systems have a wide range of capabilities, many fail to handle the essential difficulty of comprehensively integrating bibliometric data from numerous databases.",
+        "bbox": [
+            507,
+            556,
+            939,
+            687
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The Web of Science (WoS) and Scopus databases are among of the most extensively utilized for bibliometric studies [17]. However, when attempting to integrate and analyze data from multiple sources in this manner, numerous challenges arise, including data format discrepancies, missing metadata, and duplicate records. Such issues necessitate manual effort, which might result in inconsistencies and mistakes [18]. Furthermore, differences in database structures make merging problematic. Scopus, for example, employs the \"Cited-By\" tag field to show author citations, whereas WoS does the same with \"Cited-Reference\"",
+        "bbox": [
+            507,
+            687,
+            939,
+            807
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "2352-7110/© 2025 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).",
+        "bbox": [
+            57,
+            912,
+            939,
+            926
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "Received 29 December 2024; Received in revised form 9 February 2025; Accepted 12 February 2025 Available online 15 February 2025",
+        "bbox": [
+            55,
+            887,
+            613,
+            912
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            416,
+            42,
+            579,
+            56
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            58,
+            75,
+            161,
+            143
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "Contents lists available at ScienceDirect",
+        "bbox": [
+            379,
+            75,
+            621,
+            89
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "ELSEVIER",
+        "bbox": [
+            60,
+            146,
+            161,
+            162
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX",
+        "bbox": [
+            445,
+            105,
+            557,
+            124
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "journal homepage: www.elsevier.com/locate/softx",
+        "bbox": [
+            337,
+            145,
+            663,
+            160
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "国SoftwareXmon",
+        "bbox": [
+            838,
+            66,
+            937,
+            160
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "\\* Corresponding author.",
+        "bbox": [
+            65,
+            831,
+            206,
+            844
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "E-mail addresses: burakcan.kara@amasya.edu.tr (B.C. Kara), alperen.sahin@marun.edu.tr (A. S¸ ahin), taskin.dirsehan@marmara.edu.tr, dirsehan@essb.eur.n (T. Dirsehan).",
+        "bbox": [
+            58,
+            843,
+            939,
+            868
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "https://doi.org/10.1016/j.softx.2025.102098",
+        "bbox": [
+            58,
+            876,
+            309,
+            889
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "[19]. As a result, for these and other reasons, scholars frequently investigate databases independently, which limits the breadth of their research [20].",
+        "bbox": [
+            55,
+            65,
+            487,
+            105
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Using a single citation database for bibliometric analysis can reduce the comprehensiveness and reliability of conclusions. Integrating information from several citation databases, such as Scopus and Web of Science, is critical for obtaining more reliable findings. However, this procedure can be time-consuming, particularly for large datasets, as it frequently necessitates extensive manual work to tackle issues like duplication and standardization [21,22]. Automated procedures for combining data from Scopus and Web of Science provide a streamlined and efficient way to improve bibliometric analysis.",
+        "bbox": [
+            55,
+            105,
+            487,
+            224
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "BibexPy is a comprehensive solution designed to address critical challenges in bibliometric data preparation, including dataset integration, deduplication, metadata enrichment, and format conversion. The software seamlessly merges records from Web of Science and Scopus, ensuring consistency across data sources. DOI-based deduplication not only enhances reliability by removing redundant entries but also enriches the dataset during the process by merging complementary information from duplicates. For instance, if one record is missing an author name or contains partial keywords, these gaps are filled by leveraging corresponding data from the duplicate entry. As a result, the deduplication process ensures both the removal of redundancy and the creation of a completer and more enriched dataset. Outputs are generated in formats compatible with tools like VosViewer and Biblioshiny, simplifying downstream analysis. For instance, the relevant information from the deduplicated item is used to fill in the blanks in a record that lacks an author name or has partial keywords. Consequently, the data deduplication process produces a more comprehensive and enhanced dataset in addition to eliminating inaccurate and missing data. In order to facilitate analysis with the preferred tool, outputs are generated in formats that are compatible with analysis programs like VosViewer and Biblioshiny.",
+        "bbox": [
+            55,
+            224,
+            489,
+            501
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This study aims to explain in detail the contributions of BibexPy to bibliometric data preparation processes. First, the architecture and basic functions of the software are examined; then, these functions are discussed in detail. The operation of the software is demonstrated on a sample dataset and the state of the data before analysis is evaluated using the biblioshiny tool. The study also discusses the potential impact of BibexPy on future research and highlights its value for bibliometric",
+        "bbox": [
+            55,
+            501,
+            489,
+            593
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "analysis.",
+        "bbox": [
+            509,
+            66,
+            566,
+            79
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "3. Software description",
+        "text_level": 2,
+        "bbox": [
+            509,
+            92,
+            670,
+            105
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "BibexPy is a Python-based command-line tool designed to automate the preprocessing of bibliometric information obtained from Web of Science (WoS) and Scopus. The software efficiently performs critical activities such as data integration, deduplication, metadata enrichment, and format conversion, resulting in high-quality datasets suitable for complex bibliometric analysis. Fig. 1 depicts BibExPy’s file system layout, showing how the software organizes data inputs, processed files, and outputs within the workspace.",
+        "bbox": [
+            507,
+            118,
+            939,
+            224
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Table 1 provides a comprehensive, step-by-step guide to installing and running BibexPy, making the installation process simple for users of",
+        "bbox": [
+            507,
+            224,
+            939,
+            252
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Table 1",
+        "text_level": 2,
+        "bbox": [
+            509,
+            272,
+            559,
+            283
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "table",
+        "img_path": "images/7637de248adc0715b076870a821fc9230d52d92da9fc496355f4cb6fb9560274.jpg",
+        "table_caption": [
+            "Comprehensive installation and usage instructions for BibexPy."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td></td><td>Step</td><td>Description</td><td>Command</td></tr><tr><td>1</td><td>Prerequisites</td><td>Ensure Python 3.9+ and Git are installed on your system.</td><td></td></tr><tr><td>2</td><td>Clone the Repository</td><td>Download the BibexPy project from GitHub using Git.</td><td>git clone https://github.com/bcankara/BibexPy.git</td></tr><tr><td>3</td><td>Navigate to the Directory</td><td>Move into the BibexPy project folder.</td><td>cd BibexPy</td></tr><tr><td>4</td><td>Install Dependencies</td><td>Install the required Python packages.</td><td>pip install -r requirements. txt</td></tr><tr><td colspan=\"4\">For users who prefer a virtual environment (Optional):</td></tr><tr><td></td><td>Create</td><td>Create a Python virtual environment for isolated dependency management.</td><td>python -m venv</td></tr><tr><td></td><td>Activate</td><td>Activate virtual environment</td><td>Windows: venv\\Scripts\\activate Mac/Linux: source venv/bin/activate</td></tr><tr><td>5</td><td>Run the Software</td><td>Start BibexPy for bibliometric data processing.</td><td>python DataProcessor.py</td></tr><tr><td>6</td><td>Guided Workflow</td><td>Follow on-screen prompts for project selection, file processing, and optional metadata enrichment.</td><td></td></tr></table>",
+        "bbox": [
+            512,
+            296,
+            937,
+            586
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/5e1c28d54926eb3950317808ac60a166333ca634acf6b6d19ce0871875f9f111.jpg",
+        "image_caption": [
+            "Fig. 1. File system structure of BibexPy."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            78,
+            612,
+            915,
+            915
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "B.C. Kara et al.",
+        "bbox": [
+            58,
+            42,
+            136,
+            54
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2",
+        "bbox": [
+            494,
+            950,
+            505,
+            960
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "all technical levels. The combination of a clear file system (Fig. 1) and a detailed installation guide (Table 1) ensures that users can quickly and effectively use BibExPy for their bibliometric research needs.",
+        "bbox": [
+            55,
+            65,
+            487,
+            105
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.1. Software architecture",
+        "text_level": 2,
+        "bbox": [
+            58,
+            123,
+            216,
+            136
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "BibexPy, developed with Python 3.9, uses a number of powerful li braries for processing bibliometric data. The core features of the software are built on libraries such as \"Pandas, NumPy, Scikit-learn and Scipy\". For environmental variable management and API integration, \"requests\" and \"dotenv\" libraries are used. The current version of BibexPy can be run via a command line interface that provides interoperability across multiple platforms without requiring a graphical interface.",
+        "bbox": [
+            55,
+            150,
+            487,
+            255
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Fig. 1 illustrates the software architecture of BibexPy. The software processes bibliometric datasets from Web of Science (\".txt\") and Scopus (\".csv\") files by performing various transformations and computations, thereby enriching and improving the datasets. The outputs include a consolidated dataset (\"Prefix\\_Bib.xlsx\"), files compatible with VosViewer (\"Prefix\\_Vos.txt\"), and statistical summaries. The VosViewer-compatible output format aligns with the original export format of Web of Science, making it suitable for use in other bibliometric analysis software as well (Fig. 2).",
+        "bbox": [
+            55,
+            255,
+            487,
+            374
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The software architecture is made up of several, independent modules for data preprocessing and analysis. The data preprocessing modules perform data augmentation, metadata enrichment, and file format conversion to provide a high-quality dataset, while the analysis modules employ these processed datasets to generate auxiliary files and reports suited for advanced bibliometric tools. This modular approach assures scalability, maintainability, and flexibility, making BibexPy a depend able solution for bibliometric data preparation. The functions of BibexPy are further explored in the sections that follow.",
+        "bbox": [
+            55,
+            374,
+            487,
+            494
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.2. Data loading and preprocessing",
+        "text_level": 2,
+        "bbox": [
+            58,
+            511,
+            273,
+            525
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The data loading process begins when the user saves Scopus (.csv) and WoS (.txt) files to the Workspace/Data directory. Before beginning the integration and enrichment procedures, the application consolidates these raw datasets. When multiple.csv or.txt files are provided, they are combined into unified files called wos.txt and scopus.csv, which are stored in the merged\\_raw directory. Upon successive executions with the same data, the user is offered the option of re-merging the raw files or using the previously merged dataset. This methodology not only assures a more efficient preparation workflow, but it also makes the combined raw datasets compatible with other bibliometric analysis tools.",
+        "bbox": [
+            55,
+            535,
+            487,
+            578
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            507,
+            65,
+            939,
+            158
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.3. Pipelines",
+        "text_level": 2,
+        "bbox": [
+            510,
+            174,
+            596,
+            187
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The BibexPy pipeline automates sequential operations for bibliometric data preparation and includes modular components for different processing processes. Each stage in the pipeline improves data quality and makes it compatible with subsequent bibliometric technologies.",
+        "bbox": [
+            507,
+            200,
+            939,
+            254
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.4. Deduplication and metadata enhanced",
+        "text_level": 2,
+        "bbox": [
+            509,
+            268,
+            766,
+            282
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "DOI-based matching is used to identify and delete duplicate entries, together with a procedure known as intelligent merging. This method integrates and consolidates overlapping data from both databases. For example, if the keywords in one database are keyword-1, keyword-2 and in the other keyword-1, keyword-3, the merged output will be keyword-1, keyword-2, and keyword-3. Additionally, for records without DOIs, duplication is eliminated by generating a unique key based on the title and year, with special characters deleted.",
+        "bbox": [
+            507,
+            295,
+            939,
+            402
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.5. API based metadata enrichment",
+        "text_level": 2,
+        "bbox": [
+            509,
+            416,
+            727,
+            428
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Missing metadata fields such as abstracts, citation counts, and author affiliations are filled in by API connection with sources such as Scopus, Unpaywall, and Semantic Scholar. This component guarantees that datasets are complete and ready for further studies like co-citation mapping and trend analysis.",
+        "bbox": [
+            507,
+            442,
+            939,
+            510
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.6. Format conversion",
+        "text_level": 2,
+        "bbox": [
+            509,
+            524,
+            652,
+            537
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "BibexPy has powerful format conversion tools that generate outputs compatible with popular bibliometric analysis programs like as",
+        "bbox": [
+            507,
+            549,
+            939,
+            578
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/384bf9d75ba4d3b2792e7e54682b199b69e707f3346493a52dcb6d9fdcc9688b.jpg",
+        "image_caption": [
+            "Fig. 2. An overview of the software architecture of BibexPy."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            73,
+            596,
+            922,
+            916
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "B.C. Kara et al.",
+        "bbox": [
+            58,
+            42,
+            136,
+            54
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3",
+        "bbox": [
+            494,
+            952,
+            505,
+            960
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "VosViewer and Biblioshiny. The software creates files in Excel (\"Prefix\\_Bib.xlsx\") and text (\"Prefix\\_Vos.txt\") formats, allowing for smooth connection with visualization and analysis tools.",
+        "bbox": [
+            57,
+            65,
+            487,
+            105
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "3.7. Performance metrics",
+        "text_level": 2,
+        "bbox": [
+            58,
+            119,
+            211,
+            132
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "To evaluate the accuracy and completeness of enriched metadata, we define two key metric categories: completeness metrics and quality status levels. These metrics help assess data coverage, track improvements through enrichment processes, and classify metadata quality based on missing information.",
+        "bbox": [
+            57,
+            145,
+            487,
+            211
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "a) Completeness Metrics: Completeness metrics measure how well metadata fields are populated and improved after enrichment. Field Coverage calculates the percentage of non-empty fields, indicating overall metadata completeness. API Enrichment Rate assesses how much the metadata quality improves after integration with external data sources. Merge Success Rate measures the percentage of re cords successfully combined without data loss or duplication. These indicators ensure that metadata enrichment processes effectively enhance data integrity.",
+        "bbox": [
+            60,
+            224,
+            487,
+            341
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "b) Quality Status Levels: To classify metadata quality, we define six levels based on the percentage of missing data. Excellent (0% missing data) indicates fully complete records, while Very Good (<1%) represents minor gaps. Good (<5%) is considered acceptable for most analyses, whereas Acceptable (<20%) denotes moderate gaps. Poor (<50%) suggests significant missing information, and Critical (≥50%) indicates unreliable metadata that requires substantial improvement. These quality status levels provide a standardized framework for evaluating the reliability of enriched metadata.",
+        "bbox": [
+            58,
+            343,
+            487,
+            462
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "3.8. Statistical reporting",
+        "text_level": 2,
+        "bbox": [
+            58,
+            475,
+            205,
+            488
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The software generates detailed statistical summaries, including:",
+        "bbox": [
+            78,
+            501,
+            468,
+            515
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "a) Duplication rates.",
+        "bbox": [
+            60,
+            528,
+            189,
+            540
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "b) Metadata completeness ratios.",
+        "bbox": [
+            58,
+            540,
+            263,
+            553
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "c) Quality metrics for enriched datasets.",
+        "bbox": [
+            60,
+            554,
+            307,
+            566
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "d) API Based Enrichment field, source, value logs.",
+        "bbox": [
+            58,
+            567,
+            364,
+            580
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "These reports help users assess the quality and reliability of their processed datasets.",
+        "bbox": [
+            58,
+            593,
+            487,
+            620
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "3.9. Automation and workflow",
+        "text_level": 2,
+        "bbox": [
+            58,
+            633,
+            243,
+            646
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The \"DataProcessor\" class is the primary access point for users, as it defines the pipeline phases and performs the automatic processing of bibliometric datasets. Users start the workflow with a single command:",
+        "bbox": [
+            58,
+            659,
+            487,
+            698
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "\"python DataProcessor.py\".",
+        "bbox": [
+            78,
+            699,
+            243,
+            712
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The pipeline assists users with project selection, optional API enrichment, and data processing. When finished, the outputs are saved in the specified project directory. Users can utilize these results for bibliometric analysis or further processing in programs such as Vos-Viewer and Biblioshiny.",
+        "bbox": [
+            57,
+            712,
+            487,
+            779
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "3.10. Time complexity of the framework",
+        "text_level": 2,
+        "bbox": [
+            58,
+            791,
+            297,
+            805
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The time complexity of BibexPy’s framework is influenced by the size of the input datasets and the operations performed, such as dedu plication and metadata enrichment. Key factors affecting time complexity include:",
+        "bbox": [
+            57,
+            818,
+            487,
+            871
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "a) Scalability: The pipeline efficiently processes both small and large datasets.",
+        "bbox": [
+            58,
+            883,
+            485,
+            910
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "b) API Integration: Metadata enrichment through API calls depends on the response times of external services.",
+        "bbox": [
+            58,
+            911,
+            485,
+            936
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "c) Computational Efficiency: BibexPy is optimized for performance using efficient algorithms for deduplication and data transformation.",
+        "bbox": [
+            510,
+            65,
+            939,
+            93
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Overall, BibexPy balances computational efficiency with data quality, providing researchers with a scalable solution for bibliometric data preparation.",
+        "bbox": [
+            507,
+            105,
+            939,
+            145
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "4. Illustrative examples",
+        "text_level": 2,
+        "bbox": [
+            509,
+            158,
+            672,
+            171
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The BibexPy framework offers multiple ways for users to interact with it, ensuring flexibility and ease of use. These options include:",
+        "bbox": [
+            509,
+            184,
+            939,
+            211
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "a) Command-Line Interface (CLI): The command-line interface is the principal interaction technique, allowing users to run the software with minimal effort. Listing 1 shows an example of using the CLI to process bibliometric datasets. Users launch the main script (python DataProcessor.py) and follow the prompts to choose a project, set up metadata enrichment, and generate output.",
+        "bbox": [
+            510,
+            224,
+            939,
+            303
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "b) Python API: Advanced users can use BibexPy’s modular architecture to directly access its classes and methods from Python programs. This enables greater flexibility and integration with other workflows.",
+        "bbox": [
+            510,
+            303,
+            939,
+            343
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "c) Script-Based Customization: The most flexible method to use BibexPy is to create short Python scripts that make use of its modular components. This technique enables greater customization and experimentation with other workflows.",
+        "bbox": [
+            512,
+            343,
+            939,
+            395
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Listing 2 is an example of a Python script that shows how to use BibexPy to process bibliometric datasets. The script begins by loading the essential modules from BibexPy, which prepares the environment for data processing. The first stage is loading and merging datasets from Web of Science and Scopus into a single format using the DataImporter class.",
+        "bbox": [
+            507,
+            409,
+            939,
+            486
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The next step is deduplication, which uses the Deduplicator module to remove redundant items based on DOI matches. The script then uses the MetadataEnricher class to add missing properties like abstracts, author affiliations, and citation counts via API.",
+        "bbox": [
+            507,
+            488,
+            939,
+            540
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Finally, the FormatConverter module changes the data to a format that VosViewer and Biblioshiny can understand. The script automates every stage of bibliometric data preparation, resulting in a clean, enhanced dataset that is ready for analysis. This programmatic method allows researchers to construct custom workflows, adjust parameters, and expand the pipeline to meet specific bibliometric study objectives.",
+        "bbox": [
+            507,
+            540,
+            939,
+            621
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "5. Impact",
+        "text_level": 2,
+        "bbox": [
+            510,
+            633,
+            581,
+            646
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "BibexPy has cleared the path for comprehensive bibliometric research by enabling the rapid integration and processing of datasets from many sources, including Web of Science and Scopus. This capacity enables academics to investigate problems that were previously restricted by the limitations of manual data preparation, such as mapping research patterns across disciplines, assessing worldwide citation networks, and finding emergent study areas across domains [23,24]. By automating data integration, deduplication, and metadata enrichment, BibexPy facilitates the pursuit of current research issues [25–27]. It improves the reliability and comprehensiveness of bibliometric datasets, ensuring that analyses are based on high-quality data, and decreases preprocessing time dramatically, allowing researchers to focus on interpretation and insight generation.",
+        "bbox": [
+            507,
+            660,
+            939,
+            831
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Although BibexPy is in its early stages of development, significan efficiency gains have been observed in initial tests with sample datasets. The results obtained in these tests clearly demonstrate the software’s impact and potential in bibliometric data preparation processes. As the software becomes more widely known and adopted, download statistics, citations in academic publications, and feedback from the user community will provide more comprehensive evidence of BibexPy’s impact.",
+        "bbox": [
+            507,
+            831,
+            939,
+            923
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Fig. 3 illustrates the dataset quality improvements achieved through",
+        "bbox": [
+            529,
+            924,
+            939,
+            936
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "B.C. Kara et al.",
+        "bbox": [
+            58,
+            42,
+            134,
+            54
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [
+            "Listing 1. An example of using the command-line interface (CLI)."
+        ],
+        "code_body": "```txt\nProject Folders:\n    1. Project Sample 1\n    2. Project Sample 2\n    3. Project Sample 3\nSelect project number: 2\nSelected Project: Project Sample 2\nPreviously merged raw files found. What would you like to do?\n    1. Use previously merged files\n    2. Perform new merge\nYour choice (1/2): 1\nUsing existing merged files...\nProcessing WoS data...\nData successfully saved to Workspace\\Project Sample 2\\Analysis_20241228_010119\\Cell_Files\\WoS.xlsx\nWoS data processing completed.\nProcessing Scopus data...\nData successfully saved to Workspace\\Project Sample 2\\Analysis_20241228_010119\\Cell_Files\\Scopus.xlsx\nScopus data processing completed.\nMerging process in progress...\nMerge Summary:\n4119 records merged from 2 databases\nTotal 6635 records, 2516 duplicates merged\nCompleting category fields...\nSaving enhanced merge results...\nSave completed: Workspace\\Project Sample 2\\Analysis_20241228_010119\\Cell_Files\\Merged_Bib.xlsx\n```",
+        "bbox": [
+            114,
+            66,
+            863,
+            508
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "code",
+        "sub_type": "code",
+        "code_caption": [],
+        "code_body": "```python\nimport requests\nimport pandas as pd\nimport os\nfrom dotenv import load_dotenv\n\n# Load .env file\nload_dotenv()\n\ndef extract_metadata_from_crossref(doi: str) -> dict:\n    \"\"\"Extract metadata from CrossRef API (Free, no key required)\"\"\"\n    try:\n        url = f\"https://api.crossref.org/works/{doi}\"\n        headers = {\n            'User-Agent': 'keyFINDER/1.0 (mailto:your-email@example.com)'\n        }\n        response = requests.get(url, headers=headers)\n\n        if response.status_code == 200:\n            data = response.json()\n            work = data['message']\n```",
+        "bbox": [
+            112,
+            553,
+            816,
+            872
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "three stages of data processing: initial merging using Biblioshiny (Stage 1), intelligent merging with BibexPy (Stage 2), and API-based metadata enrichment with BibexPy (Stage 3). The figure highlights the progression in metadata completeness and reliability across key fields, demonstrating the impact of each stage on dataset quality. The data shown in the figure is derived from the information screen of Biblioshiny [1,28], regarding the quality of the data uploaded prior to analysis. The images visually support the outputs provided by BibexPy and its contributions to making bibliometric workflows more streamlined and efficient.",
+        "bbox": [
+            55,
+            892,
+            487,
+            935
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            507,
+            892,
+            939,
+            935
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "B.C. Kara et al.",
+        "bbox": [
+            58,
+            42,
+            134,
+            54
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5",
+        "bbox": [
+            492,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "table",
+        "img_path": "images/184d65ccf29d18e2e8875751e36378449b4926d378ac13aeed406111009464f4.jpg",
+        "table_caption": [
+            "Fig. 3. Dataset quality progression across merging and enrichment stages Source: Compiled using the results of Biblioshiny analysis."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td rowspan=\"2\">ID</td><td rowspan=\"2\">Description</td><td colspan=\"3\">Missing Counts</td><td colspan=\"3\">Missing %</td><td colspan=\"3\">Status</td></tr><tr><td>S-1</td><td>S-2</td><td>S-3</td><td>S-1</td><td>S-2</td><td>S-3</td><td>S-1</td><td>S-2</td><td>S-3</td></tr><tr><td>AU</td><td>Author</td><td>0</td><td>4</td><td>4</td><td>0</td><td>0.10</td><td>0.10</td><td>Excellent</td><td>Good</td><td>Good</td></tr><tr><td>DT</td><td>Document Type</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>SO</td><td>Journal</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>LA</td><td>Language</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>PY</td><td>Publication Year</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>TI</td><td>Title</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>TC</td><td>Total Citation</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>AB</td><td>Abstract</td><td>46</td><td>14</td><td>13</td><td>1.12</td><td>0.34</td><td>0.32</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>C1</td><td>Affiliation</td><td>67</td><td>60</td><td>60</td><td>1.63</td><td>1.46</td><td>1.46</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>DI</td><td>DOI</td><td>178</td><td>150</td><td>150</td><td>4.32</td><td>3.64</td><td>3.64</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>RP</td><td>Corresponding Author</td><td>365</td><td>359</td><td>359</td><td>8.86</td><td>8.72</td><td>8.72</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>DE</td><td>Keywords</td><td>600</td><td>587</td><td>81</td><td>14.57</td><td>14.25</td><td>1.97</td><td>Acceptable</td><td>Acceptable</td><td>Good</td></tr><tr><td>WC</td><td>Science Categories</td><td>1152</td><td>1152</td><td>113</td><td>27.97</td><td>27.97</td><td>2.74</td><td>Poor</td><td>Poor</td><td>Good</td></tr><tr><td>ID</td><td>Keywords Plus</td><td>2055</td><td>1536</td><td>214</td><td>49.89</td><td>37.29</td><td>5.20</td><td>Poor</td><td>Poor</td><td>Good</td></tr><tr><td>CR</td><td>Cited References</td><td>4119</td><td>1196</td><td>1196</td><td>100</td><td>29.04</td><td>29.04</td><td>Completely Missing</td><td>Poor</td><td>Poor</td></tr></table>",
+        "bbox": [
+            95,
+            70,
+            902,
+            530
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            58,
+            568,
+            487,
+            620
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In Stage 1, Biblioshiny was used as a foundational tool for dataset merging. While this stage resulted in high-quality integration for fields such as Author Information, Document Type, and DOI, several critical fields, including Abstracts, Affiliations, and Keywords, exhibited minor gaps, reflected by their \"Good\" ratings. This step provided a preliminary dataset for further enhancement but left some metadata incomplete.",
+        "bbox": [
+            57,
+            621,
+            487,
+            699
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "In Stage 2, BibexPy’s intelligent merging capabilities significantly improved the structural consistency and reliability of the dataset. While most fields maintained their quality levels from Stage 1, the merging process standardized metadata fields and reduced inconsistencies across sources. However, fields like Abstracts and Affiliations still required additional enrichment to reach full completeness.",
+        "bbox": [
+            57,
+            701,
+            487,
+            779
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The most substantial improvement occurred in Stage 3, where BibexPy’s API-based metadata enrichment addressed missing fields and enhanced the dataset’s overall quality. Key fields such as Abstracts, Keywords, and Affiliations, which previously showed gaps, achieved an Excellent rating, reflecting their completeness. This stage ensured that all critical metadata fields were enriched and standardized, producing a comprehensive dataset suitable for advanced bibliometric analysis.",
+        "bbox": [
+            57,
+            779,
+            487,
+            872
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Overall, Fig. 3 demonstrates that while merging processes (Stages 1 and 2) establish a reliable foundation, API-based enrichment (Stage 3) is essential for achieving complete and high-quality metadata integration.",
+        "bbox": [
+            58,
+            872,
+            485,
+            911
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "These numbers show the gradual improvement in dataset quality at each stage of processing, highlighting BibexPy s efficiency and the value it brings to bibliometric research workflows. Although BibexPy is primarily designed for academic use, its potential extends to commercial applications. Organizations in fields such as competitive intelligence, research impact analysis, and data-driven decision-making can utilize BibexPy to streamline bibliometric workflows and generate actionable insights. These capabilities could pave the way for collaborations, the development of specialized tools, or the creation of spin-off companies focused on tailored bibliometric solutions for industry needs. By democratizing access to advanced bibliometric tools, BibexPy is fostering a more inclusive, efficient, and innovative research ecosystem.",
+        "bbox": [
+            78,
+            911,
+            487,
+            925
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            507,
+            568,
+            939,
+            715
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "6. Conclusions",
+        "text_level": 2,
+        "bbox": [
+            510,
+            726,
+            613,
+            740
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "BibexPy facilitates the preprocessing of bibliometric data by enabling the creation of comprehensive and integrated datasets. It aims to enhance the reliability and accuracy of bibliometric research by merging data from multiple sources. In this process, critical tasks such as duplicate record removal and missing data completion have been optimized to minimize manual effort. Consequently, researchers can conduct bibliometric analyses more efficiently and systematically.",
+        "bbox": [
+            507,
+            752,
+            939,
+            844
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The flexible structure of BibexPy allows for continuous updates, ensuring that the software adapts to evolving research needs. It enhances the accessibility of bibliometric research and supports the development of new data-driven methodologies. Currently, BibexPy operates with full efficiency using Web of Science (WoS) and Scopus, while also supporting PubMed, Dimensions, Cochrane, Lens, and",
+        "bbox": [
+            507,
+            844,
+            939,
+            926
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "B.C. Kara et al.",
+        "bbox": [
+            58,
+            42,
+            136,
+            54
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "OpenAlex. However, these additional databases are still in the experi mental phase, and their performance will be further optimized in future updates to ensure seamless integration and usability. Future updates to BibexPy may expand its supported data sources and provide more customized solutions tailored to user needs. The integration of advanced data processing techniques and machine learning applications could facilitate a wide range of analyses, from citation network studies to text mining.",
+        "bbox": [
+            57,
+            66,
+            487,
+            170
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Furthermore, incorporating big data analytics, natural language processing (NLP), and AI-based predictive algorithms into BibexPy could introduce significant innovations in bibliometric analysis. Interactive visualization tools and an optional graphical user interface may further enhance the user experience and improve accessibility. In this trajectory, BibexPy has the potential to evolve beyond a mere preprocessing tool for bibliometric analysis and become a comprehensive data analytics platform that shapes the broader landscape of scientific research.",
+        "bbox": [
+            57,
+            171,
+            487,
+            290
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "CRediT authorship contribution statement",
+        "text_level": 2,
+        "bbox": [
+            58,
+            306,
+            337,
+            317
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Burak Can Kara: Writing – review & editing, Writing – original draft, Software, Methodology, Formal analysis, Data curation, Concep tualization. Alperen S¸ ahin: Writing – review & editing, Writing – original draft, Software, Methodology, Conceptualization. Tas¸kın Dir sehan: Writing – review & editing, Supervision, Conceptualization.",
+        "bbox": [
+            58,
+            332,
+            487,
+            399
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Declaration of competing interest",
+        "text_level": 2,
+        "bbox": [
+            58,
+            423,
+            280,
+            436
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The authors declare the following financial interests/personal re lationships which may be considered as potential competing interests:",
+        "bbox": [
+            58,
+            448,
+            485,
+            476
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Tas¸kın Dirsehan reports article publishing charges was provided by Erasmus University Rotterdam. The authors declare that they are the developers of BibexPy, the Python-based software presented in this paper. This relationship does not influence the integrity of the research findings, as the study adheres to standard scientific methodologies and objective analysis. If there are other authors, they declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.",
+        "bbox": [
+            57,
+            476,
+            487,
+            582
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Acknowledgements",
+        "text_level": 2,
+        "bbox": [
+            58,
+            597,
+            188,
+            610
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Tas¸kın Dirsehan is grateful to Erasmus University Rotterdam for covering theopen-access article publishing charge.",
+        "bbox": [
+            58,
+            622,
+            485,
+            651
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "References",
+        "text_level": 2,
+        "bbox": [
+            58,
+            665,
+            134,
+            678
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[1] Donthu N, et al. How to conduct a bibliometric analysis: an overview and guidelines. J Bus Res 2021;133:285 96. https://doi.org/10.1016/j. ibusres 2021.04 070",
+        "bbox": [
+            65,
+            691,
+            445,
+            720
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[2] Subramanyam K. Bibliometric studies of research collaboration: a review. J Inf Sci 1983;6(1):33–8. https://doi.org/10.1177/016555158300600105",
+        "bbox": [
+            67,
+            721,
+            482,
+            741
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[3] Zupic I, Cater ˇ T. Bibliometric methods in management and organization. Organ Res Methods 2015;18(3):429–72. https://doi.org/10.1177/1094428114562629",
+        "bbox": [
+            67,
+            741,
+            480,
+            760
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[4] Wallin JA. Bibliometric methods: pitfalls and possibilities. Basic Clin Pharmaco Toxicol 2005;97(5):261 75. https://doi.org/10.1111/j.1742-7843.2005.pto\\_139. x.",
+        "bbox": [
+            67,
+            761,
+            475,
+            789
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[5] Khaleel YL, Habeeb MA, Benotsmane R. Emerging trends in applying artificia intelligence to Monkeypox disease: a bibliometric analysis. Appl Data Sci Anal 2024;2024:148–64.",
+        "bbox": [
+            517,
+            66,
+            919,
+            95
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[6] Demir S, Yomralioglu T. Bridging geo-data and natural gas pipeline design standards: a systematic review of BIM-GIS integration for natural gas pipeline asset management. Energies (Basel) 2024;17(10):2306. https://doi.org/10.3390 en17102306.",
+        "bbox": [
+            517,
+            97,
+            934,
+            136
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[7] Chamorro K, et al. Comprehensive bibliometric analysis of advancements in artificial intelligence applications in medicine using Scopus database. Franklin Open 2025:100212.",
+        "bbox": [
+            517,
+            137,
+            919,
+            166
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[8] Aria M, Cuccurullo C. bibliometrix: an R-tool for comprehensive science mapping analysis. J Informetr 2017;11(4):959–75. https://doi.org/10.1016/j. joi.2017.08.007.",
+        "bbox": [
+            517,
+            167,
+            934,
+            196
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[9] Van Eck N, Waltman L. Software survey: VOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38.",
+        "bbox": [
+            517,
+            197,
+            917,
+            216
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[10] Van Eck NJ, Waltman L. CitNetExplorer: a new software tool for analyzing and visualizing citation networks. J Informetr 2014;8(4):802–23. https://doi.org 10.1016/j.joi.2014.07.006",
+        "bbox": [
+            512,
+            216,
+            922,
+            245
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[11] Chen C. CiteSpaceII: detecting and visualizing emerging trends and transient patterns in scientific literature. J Am Soc Inf Sci Technol 2006;57(3):359–77. https://doi.org/10.1002/asi.20317.",
+        "bbox": [
+            512,
+            248,
+            914,
+            277
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[12] Gagolewski M. Bibliometric impact assessment with R and the CITAN package J Informetr 2011;5(4):678–92. https://doi.org/10.1016/j.joi.2011.06.006.",
+        "bbox": [
+            512,
+            277,
+            922,
+            297
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[13] Persson O, Danell R, Schneider JW. How to use Bibexcel for various types of bibliometric analysis. Celebrating Scholarly Commun Stud: Festschrift Olle Persson 60th Birthday 2009;5(2009):9–24.",
+        "bbox": [
+            512,
+            298,
+            934,
+            326
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[14] Cobo MJ, et al. SciMAT: a new science mapping analysis software tool. J Am Soc Inf Sci Technol 2012;63(8):1609–30. https://doi.org/10.1002/asi.22688.",
+        "bbox": [
+            512,
+            327,
+            932,
+            346
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[15] Ruiz-Rosero J, Ramírez-Gonzalez ´ G, Viveros-Delgado J. Software survey: ScientoPy, a scientometric tool for topics trend analysis in scientific publications Scientometrics 2019;121(2):1165 88. https://doi.org/10.1007/s11192-019- 03213-w.",
+        "bbox": [
+            512,
+            348,
+            932,
+            385
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[16] Pereira V, Basilio MP, Santos CHT. arXiv preprint. 2023. https://doi.org 10.48550/arXiv.2304.14516.",
+        "bbox": [
+            512,
+            388,
+            895,
+            407
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[17] Zhu J, Liu W. A tale of two databases: the use of web of science and Scopus in academic papers. Scientometrics 2020;123(1):321–35. https://doi.org/10.1007/ s11192-020-03387-8.",
+        "bbox": [
+            512,
+            408,
+            927,
+            437
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[18] Ferrara A, Salini S. Ten challenges in modeling bibliographic data for bibliometric analysis. Scientometrics 2012;93(3):765–85. https://doi.org/10.1007/s11192- 012-0810-x.",
+        "bbox": [
+            512,
+            438,
+            932,
+            467
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[19] Echchakoui S. Why and how to merge Scopus and web of science during bibliometric analysis: the case of sales force literature from 1912 to 2019. J Market Anal 2020;8:165 84. https://doi.org/10.1057/s41270-020-00081-9.",
+        "bbox": [
+            512,
+            467,
+            934,
+            498
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[20] Caputo A, Kargina M. A user-friendly method to merge Scopus and web of science data during bibliometric analysis. J Market Anal 2022;10(1):82 8. https://doi.org 10.1057/s41270-021-00142-7",
+        "bbox": [
+            512,
+            499,
+            934,
+            528
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[21] Nikoli´c D, Ivanovi´c D, Ivanovi´c L. An open-source tool for merging data from multiple citation databases. Scientometrics 2024:1–23. https://doi.org/10.1007/ s11192-024-05076-2.",
+        "bbox": [
+            512,
+            529,
+            929,
+            558
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[22] Kasaraneni H, Rosaline S. Automatic merging of Scopus and Web of Science data for simplified and effective bibliometric analysis. Ann Data Sci 2024;11(3): 785–802. https://doi.org/10.1007/s40745-022-00438-0",
+        "bbox": [
+            512,
+            559,
+            932,
+            588
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[23] Ingwersen P, Christensen FH. Data set isolation for bibliometric online analyses of research publications: fundamental methodological issues. J Am society Inf Sc 1997;48(3):205–17. https://doi.org/10.1002/(SICI)1097-4571(199703)48: 3<205::AID-ASI3>3.0.CO;2-0.",
+        "bbox": [
+            512,
+            588,
+            934,
+            627
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[24] Ullah R, Asghar I, Griffiths MG. An integrated methodology for bibliometric analysis: a case study of internet of things in healthcare applications. Sensors 2022; 23(1):67. https://doi.org/10.3390/s23010067.",
+        "bbox": [
+            512,
+            629,
+            934,
+            658
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[25] Salamkar MA. Data integration: AI-driven approaches to streamline data integration from various sources. J AI-Assisted Sci Discovery 2023;3(1):668–94 https://doi.org/10.21275/SR230311115337",
+        "bbox": [
+            512,
+            659,
+            924,
+            689
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[26] Bartol T, Stopar K, Budimir G. Visualization and knowledge discovery in metadata enriched aggregated data repositories harvesting from scopus and web of science information management in the big data era: for a better world: selected IMCW2015 papers. Sun Yat-sen Univ North: Hacettepe Univ 2015:1–5. https://doi. org/10.1002/asi.22688.",
+        "bbox": [
+            512,
+            689,
+            931,
+            738
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[27] Ulrich H, et al. Understanding the nature of metadata: systematic review. J Med Internet Res 2022;24(1):e25440. https://doi.org/10.2196/25440.",
+        "bbox": [
+            512,
+            738,
+            929,
+            759
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[28] Lim WM, Kumar S, Donthu N. How to combine and clean bibliometric data and us bibliometric tools synergistically: guidelines using metaverse research. J Bus Res 2024;182:114760. https://doi.org/10.1016/j.jbusres.2024.114760.",
+        "bbox": [
+            512,
+            760,
+            932,
+            789
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "B.C. Kara et al.",
+        "bbox": [
+            58,
+            42,
+            134,
+            52
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 30 (2025) 102098",
+        "bbox": [
+            798,
+            42,
+            939,
+            52
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "7",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 6
+    }
+]

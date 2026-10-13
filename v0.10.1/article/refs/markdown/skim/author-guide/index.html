@@ -1,0 +1,5264 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Systematic literature review tooling">
+      
+      
+      
+        <link rel="canonical" href="https://koosie0507.github.io/mapwisefox/latest/article/refs/markdown/skim/author-guide/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Author guide - MapwiseFox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#softwarex" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="MapwiseFox" class="md-header__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MapwiseFox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Author guide
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="MapwiseFox" class="md-nav__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MapwiseFox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../search/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Search
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/dates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/output-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/ir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intermediate representation (IR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/field-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/regex-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/query-object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QueryObject
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backends
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/acm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/ieee-xplore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IEEE Xplore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/science-direct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceDirect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/scopus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/springer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Springer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/web-of-science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web of Science
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/configuration/config-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/configuration/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legacy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legacy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/legacy/query-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query builder (deprecated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../deduplication/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deduplication
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deduplication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../deduplication/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../deduplication/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../deduplication/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../split/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Split
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../split/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../split/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../metrics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metrics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/getting-started/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Information Retrieval Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/getting-started/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-Rater Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How It Works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How It Works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/how-it-works/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Information Retrieval Metrics Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/how-it-works/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Inter-Rater Agreement Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../snowballing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowballing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowballing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../snowballing/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../snowballing/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../snowballing/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../assistant/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assistant
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assistant
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../assistant/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../assistant/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../assistant/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../web/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../web/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screen a primary-study list
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../web/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web operations and configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#guide-for-authors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Guide for authors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Guide for authors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#about-the-journal" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About the journal
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ethics-and-policies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ethics and policies
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#writing-and-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing and formatting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submitting-your-manuscript" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submitting your manuscript
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#after-receiving-a-final-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After receiving a final decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#resources-for-authors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources for authors
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#getting-help-and-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting help and support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#about-the-journal_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        About the journal
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="About the journal">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aims-and-scope" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aims and scope
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Aims and scope">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submissions-are-accepted-only-if-they-follow-the-journal-specific-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submissions are accepted only if they follow the journal-specific templates:
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#peer-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Peer review
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#special-issues-and-article-collections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Special issues and article collections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open access
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ethics-and-policies_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ethics and policies
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Ethics and policies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ethics-in-publishing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ethics in publishing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submission-declaration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission declaration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#authorship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Authorship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-authorship" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Changes to authorship
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-of-competing-interests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration of competing interests
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#funding-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Funding sources
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#declaration-of-generative-ai-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration of generative AI use
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprints" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprints
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Preprints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preprint-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprint sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-of-inclusive-language" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use of inclusive language
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reporting-sex-and-gender-based-analyses" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reporting sex- and gender-based analyses
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reporting sex- and gender-based analyses">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions-of-sex-andor-gender" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Definitions of sex and/or gender
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jurisdictional-claims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Jurisdictional claims
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#studies-in-humans" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Studies in humans
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#human-biological-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Human biological material
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delayed-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Delayed publication
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#withdrawal-correction-or-retraction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Withdrawal, correction or retraction
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#writing-and-formatting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Writing and formatting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Writing and formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#file-format" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        File format
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#title-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Title page
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Abstract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#keywords" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Keywords
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#highlights" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Highlights
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#graphical-abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Graphical abstract
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#math-formulae" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Math formulae
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tables
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#figures-images-and-artwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Figures, images and artwork
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#captions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Captions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#formats" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Formats
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#color-artwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Color artwork
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#generative-ai-and-figures-images-and-other-artwork" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Generative AI and Figures, images and other artwork
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#supplementary-material" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Supplementary material
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Video
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#research-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research data
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Research data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#research-data-deposit-citation-and-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Research data deposit, citation and linking
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data statement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-linking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data linking
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#co-submission-of-related-data-methods-or-protocols" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Co-submission of related data, methods or protocols
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Co-submission of related data, methods or protocols">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#methodsx" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MethodsX
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-in-brief" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data in Brief
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#journal-specific-information-writing-and-formatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Journal specific information: Writing and formatting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Journal specific information: Writing and formatting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-of-word-processing-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Use of word processing software
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#latex" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        LaTeX
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#article-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Article structure
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Article structure">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#article-sections" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Article sections
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#footnotes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Footnotes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#author-contributions-credit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author contributions: CRediT
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#appendices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Appendices
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="References">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#references-within-text" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References within text
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-style" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference style
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-a-journal-publication" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to a journal publication:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-a-journal-publication-with-an-article-number" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to a journal publication with an article number:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-a-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to a book:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-a-chapter-in-a-book" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to a chapter in a book:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-a-website" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to a website:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-a-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to a dataset:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-to-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference to software:
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#web-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Web references
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Data references
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Software references
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#preprint-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preprint references
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reference-management-software" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reference management software
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#submitting-your-manuscript_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submitting your manuscript
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Submitting your manuscript">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#submission-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submission checklist
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#submit-online" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Submit online
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#after-receiving-a-final-decision_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        After receiving a final decision
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="After receiving a final decision">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#article-transfer-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Article Transfer Service
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#publishing-agreement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Publishing agreement
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#license-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        License options
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#open-access_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Open access
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-for-copyrighted-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Permission for copyrighted works
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proof-correction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof correction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#doi-link" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        DOI link
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#responsible-sharing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Responsible sharing
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#resources-for-authors_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Resources for authors
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Resources for authors">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#elsevier-researcher-academy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elsevier Researcher Academy
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#language-and-editing-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Language and editing services
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-help-and-support_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting help and support
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting help and support">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#author-support" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Author support
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/koosie0507/mapwisefox/edit/main/docs/article/refs/markdown/skim/author-guide.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<p>=== Document parser messages ===
+Using Tesseract for OCR processing.</p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<h1 id="softwarex">SoftwareX<a class="headerlink" href="#softwarex" title="Permanent link">&para;</a></h1>
+<p>Open access </p>
+<h2 id="guide-for-authors">Guide for authors<a class="headerlink" href="#guide-for-authors" title="Permanent link">&para;</a></h2>
+<h4 id="about-the-journal"><strong>About the journal</strong><a class="headerlink" href="#about-the-journal" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Aims and scope Peer review Open access </li>
+</ul>
+<h4 id="ethics-and-policies"><strong>Ethics and policies</strong><a class="headerlink" href="#ethics-and-policies" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>Ethics in publishing </p>
+</li>
+<li>
+<p>Submission declaration </p>
+</li>
+<li>
+<p>Authorship </p>
+</li>
+<li>
+<p>Changes to authorship </p>
+</li>
+<li>
+<p>Declaration of competing interests </p>
+</li>
+<li>
+<p>Funding sources Declaration of generative AI use Preprints </p>
+</li>
+<li>
+<p>Use of inclusive language </p>
+</li>
+<li>
+<p>Reporting sex- and gender-based analyses </p>
+</li>
+<li>
+<p>Jurisdictional claims </p>
+</li>
+<li>
+<p>Studies in humans </p>
+</li>
+<li>
+<p>Delayed publication Withdrawal, correction or retraction </p>
+</li>
+</ul>
+<h4 id="writing-and-formatting"><strong>Writing and formatting</strong><a class="headerlink" href="#writing-and-formatting" title="Permanent link">&para;</a></h4>
+<p>File format </p>
+<ul>
+<li>
+<p>Title page Abstract Keywords Highlights Graphical abstract Math formulae </p>
+</li>
+<li>
+<p>Tables </p>
+</li>
+<li>
+<p>Figures, images and artwork </p>
+</li>
+<li>
+<p>Generative AI and Figures, images and other artwork </p>
+</li>
+<li>
+<p>Supplementary material Video </p>
+</li>
+<li>
+<p>Research data </p>
+</li>
+</ul>
+<p>Data statement Data linking Co-submission of related data, methods or protocols Journal specific information: Writing and formatting Article structure References </p>
+<h4 id="submitting-your-manuscript"><strong>Submitting your manuscript</strong><a class="headerlink" href="#submitting-your-manuscript" title="Permanent link">&para;</a></h4>
+<p>Submission checklist Submit online </p>
+<h4 id="after-receiving-a-final-decision"><strong>After receiving a final decision</strong><a class="headerlink" href="#after-receiving-a-final-decision" title="Permanent link">&para;</a></h4>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>1/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Article Transfer Service </p>
+<ul>
+<li>Publishing agreement License options Open access Permission for copyrighted works Proof correction DOI link Responsible sharing </li>
+</ul>
+<h4 id="resources-for-authors"><strong>Resources for authors</strong><a class="headerlink" href="#resources-for-authors" title="Permanent link">&para;</a></h4>
+<p>Elsevier Researcher Academy Language and editing services </p>
+<h4 id="getting-help-and-support"><strong>Getting help and support</strong><a class="headerlink" href="#getting-help-and-support" title="Permanent link">&para;</a></h4>
+<p>Author support </p>
+<h2 id="about-the-journal_1"><strong>About the journal</strong><a class="headerlink" href="#about-the-journal_1" title="Permanent link">&para;</a></h2>
+<h3 id="aims-and-scope"><strong>Aims and scope</strong><a class="headerlink" href="#aims-and-scope" title="Permanent link">&para;</a></h3>
+<p><em>SoftwareX</em> aims to acknowledge the impact of software on today's research practice, and on new scientific discoveries in almost all research domains. <em>SoftwareX</em> also aims to stress the importance of the software developers who are, in part, responsible for this impact. </p>
+<p>To this end, <em>SoftwareX</em> aims to support publication of research software in such a way that: </p>
+<p>The software is given a stamp of scientific relevance, and provided with a peer-reviewed recognition of scientific impact; </p>
+<p>The software developers are given the credits they deserve; </p>
+<p>The software is citable, allowing traditional metrics of scientific excellence to apply; </p>
+<p>The academic career paths of software developers are supported rather than hindered; </p>
+<p>The software is publicly available for inspection, validation, and re-use. </p>
+<p>Above all, <em>SoftwareX</em> aims to inform researchers about software applications, tools and libraries with a (proven) potential to impact the process of scientific discovery in various domains. The journal is multidisciplinary and accepts submissions from within and across subject domains such as those represented within the broad thematic areas below: </p>
+<p>Mathematical and Physical Sciences; </p>
+<p>Environmental Sciences; </p>
+<p>Medical and Biological Sciences; </p>
+<p>Humanities, Arts and Social Sciences. </p>
+<p>Originating from these broad thematic areas, the journal also welcomes submissions of software that works in cross cutting thematic areas, such as citizen science, cybersecurity, digital economy, energy, global resource stewardship, health and wellbeing, etcetera. </p>
+<p><em>SoftwareX</em> specifically aims to accept submissions representing domain-independent software that may impact more than one research domain. </p>
+<p>Domain independent underpinning software tools and technologies have for too long been underrepresented in academic literature. We wish to ensure that these software items get academic recognition and welcome submissions of software tools and services that </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>2/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>may otherwise not have a publication home. Examples include mathematical or image processing libraries or methodologies, visualization tools, data management, etcetera. </p>
+<p>Through the quality of the description and of the (potential) impact of the software deposited we aim that significant reuse will occur both within and without the original developing domain and therefore encourage consideration of this reuse factor when submitting and in the language used within the description. </p>
+<p>Submissions to SoftwareX consist of two major parts: </p>
+<p>A short descriptive paper of 4000-word limit; </p>
+<p>An open-source software distribution with support material. </p>
+<p>The manuscript you submit must be regarded as an accompanying note for the benefit of readers and potential users of your software. </p>
+<h4 id="submissions-are-accepted-only-if-they-follow-the-journal-specific-templates"><strong>Submissions are accepted only if they follow the journal-specific templates:</strong><a class="headerlink" href="#submissions-are-accepted-only-if-they-follow-the-journal-specific-templates" title="Permanent link">&para;</a></h4>
+<p><strong>Word templates</strong> (please note that figures must be directly embedded in the .docx file): </p>
+<p>Original software publication </p>
+<p>Software update </p>
+<p>LaTeX templates: </p>
+<p>Original software publication </p>
+<p>Software update. </p>
+<p>For any questions contact us at: softwarex@elsevier.com </p>
+<p>All software publications published in SoftwareX are hosted on a repository on GitHub. A copy of the 'accepted for publication' version of software/code will be copied to the journal's GitHub repository for archiving purposes. Go to the SoftwareX GitHub repository </p>
+<h3 id="peer-review"><strong>Peer review</strong><a class="headerlink" href="#peer-review" title="Permanent link">&para;</a></h3>
+<p>This journal follows a single anonymized review process. Your submission will initially be assessed by our editors to determine suitability for publication in this journal. If your submission is deemed suitable, it will typically be sent to be reviewed by a minimum of two reviewers for an independent expert assessment of the scientific quality. The decision as to whether your article is accepted or rejected will be made by our editors. </p>
+<p>Read more about peer review. </p>
+<p>Our editors are not involved in making decisions about papers which: </p>
+<p>they have written themselves. </p>
+<p>have been written by family members or colleagues. </p>
+<p>relate to products or services in which they have an interest. </p>
+<p>Any such submissions will be subject to the journal's usual procedures and peer review will be handled independently of the editor involved and their research group. Read more about editor duties. </p>
+<p>Authors may submit a formal appeal request to the editorial decision, provided it meets all the requirements and follows the procedure outlined in Elsevier’s Appeal Policy. Only one appeal per submission will be considered and the appeal decision will be </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>3/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>final. </p>
+<h3 id="special-issues-and-article-collections"><strong>Special issues and article collections</strong><a class="headerlink" href="#special-issues-and-article-collections" title="Permanent link">&para;</a></h3>
+<p>The peer review process for special issues and article collections follows the same process as outlined above for regular submissions, except, a guest editor may send the submissions out to the reviewers and may recommend a decision to the journal editor. The journal editor oversees the peer review process of all special issues and article collections to ensure the high standards of publishing ethics and responsiveness are respected and is responsible for the final decision regarding acceptance or rejection of articles. </p>
+<h3 id="open-access"><strong>Open access</strong><a class="headerlink" href="#open-access" title="Permanent link">&para;</a></h3>
+<p>We refer you to our open access information page to learn about open access options for this journal. </p>
+<h2 id="ethics-and-policies_1"><strong>Ethics and policies</strong><a class="headerlink" href="#ethics-and-policies_1" title="Permanent link">&para;</a></h2>
+<h3 id="ethics-in-publishing"><strong>Ethics in publishing</strong><a class="headerlink" href="#ethics-in-publishing" title="Permanent link">&para;</a></h3>
+<p>Authors must follow ethical guidelines stated in Elsevier's Publishing Ethics Policy. </p>
+<h3 id="submission-declaration"><strong>Submission declaration</strong><a class="headerlink" href="#submission-declaration" title="Permanent link">&para;</a></h3>
+<p>When authors submit an article to an Elsevier journal it is implied that: </p>
+<p>The work described has not been published previously except in the form of a preprint, an abstract, a published lecture, academic thesis or registered report. See our policy on multiple, redundant or concurrent publication. </p>
+<p>The article is not under consideration for publication elsewhere. </p>
+<p>The article's publication is approved by all authors and tacitly or explicitly by the responsible authorities where the work was carried out. </p>
+<p>If accepted, the article will not be published elsewhere in the same form, in English or in any other language, including electronically, without the written consent of the copyright-holder. </p>
+<p>To verify compliance with our journal publishing policies, we may check your manuscript with our screening tools. </p>
+<h3 id="authorship"><strong>Authorship</strong><a class="headerlink" href="#authorship" title="Permanent link">&para;</a></h3>
+<p>All authors should have made substantial contributions to all of the following: </p>
+<ol>
+<li>
+<p>The conception and design of the study, or acquisition of data, or analysis and interpretation of data </p>
+</li>
+<li>
+<p>Drafting the article or revising it critically for important intellectual content. </p>
+</li>
+<li>
+<p>Final approval of the version to be submitted. </p>
+</li>
+</ol>
+<p>All authors are accountable for all aspects of the work, to ensure that questions related to the accuracy or integrity of any part of the work are appropriately investigated and resolved. </p>
+<p>Authors should appoint a single corresponding author to communicate with the journal during the editorial process. This individual submits the manuscript and all required documentation to the journal, and serves as the primary contact between the journal and the co-authors. Only the corresponding author’s affiliation will be used to determine eligibility for a publishing agreement, and possible discounts related to it. Affiliations of other co-authors are not relevant for eligibility. </p>
+<h3 id="changes-to-authorship"><strong>Changes to authorship</strong><a class="headerlink" href="#changes-to-authorship" title="Permanent link">&para;</a></h3>
+<p>The editors of this journal generally will not consider changes to authorship once a manuscript has been submitted. It is important that authors carefully consider the authorship list and order of authors and provide a definitive author list at submission. </p>
+<p>The policy of this journal around authorship changes: </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>4/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<ul>
+<li>
+<p>All authors must be listed in the manuscript and their details entered into the submission system. Changes can only be made prior to acceptance, and only if approved by the journal editor. This includes additions, deletion, or rearrangement of author names. </p>
+</li>
+<li>
+<p>Requests to change authorship must be made by the corresponding author using the Authorship Change Request form. The corresponding author must provide the reason for the request to the journal editor with written confirmation from all authors, including any authors being added or removed, that they agree with the changes. Requests which do not comply with the instructions outlined in the form will not be considered. </p>
+</li>
+<li>
+<p>This journal does not allow authorship changes after acceptance. This includes additions, deletions, or the rearrangement of author names, including changes to the corresponding author. </p>
+</li>
+</ul>
+<p>The review process may be paused while a change in authorship request is being considered. </p>
+<ul>
+<li>Change requests made by the authors without the Authorship Change Request form or editor approval may result in the rejection of the manuscript, or retraction if the article has already been published. </li>
+</ul>
+<h3 id="declaration-of-competing-interests"><strong>Declaration of competing interests</strong><a class="headerlink" href="#declaration-of-competing-interests" title="Permanent link">&para;</a></h3>
+<p>All authors must disclose any financial and personal relationships with other people or organizations that could inappropriately influence or bias their work. Examples of potential competing interests include: </p>
+<p>Employment </p>
+<ul>
+<li>Consultancies </li>
+</ul>
+<p>Stock ownership </p>
+<ul>
+<li>Honoraria </li>
+</ul>
+<p>Paid expert testimony </p>
+<ul>
+<li>Patent applications or registrations </li>
+</ul>
+<p>Grants or any other funding </p>
+<p>Affiliation with the journal as an Editor or Advisory Board Member </p>
+<p>The declarations tool should always be completed. </p>
+<p>Authors with a journal affiliation to declare should enter the following text under “Other Activities” within the  declarations tool and should inform the journal and publisher prior to completing the submission process: </p>
+<p><em>Given their role as [AUTHOR JOURNAL ROLE TITLE], [AUTHOR NAME] had no involvement in the peer-review of this article and has no access to information regarding its peer-review. Full responsibility for the editorial process for this article was delegated to another journal editor.</em> </p>
+<p>Editorial disclosure statements will be included as a footnote and/or in the declaration of competing interest section of the article. </p>
+<p>Authors with no competing interests to declare should select the option "I have nothing to declare". </p>
+<p>The resulting Word document containing your declaration should be uploaded at the "attach/upload files" step in the submission process. It is important that the Word document is saved in the .doc/.docx file format. Author signatures are not required. </p>
+<h3 id="funding-sources"><strong>Funding sources</strong><a class="headerlink" href="#funding-sources" title="Permanent link">&para;</a></h3>
+<p>Authors must disclose any funding sources who provided financial support for the conduct of the research and/or preparation of the article. The role of sponsors, if any, should be declared in relation to the study design, collection, analysis and interpretation of data, writing of the report and decision to submit the article for publication. If funding sources had no such involvement this should be stated in your submission. </p>
+<p>5/23 </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>List funding sources in this standard way to facilitate compliance to funder's requirements: </p>
+<p><em>Funding: This work was supported by the National Institutes of Health [grant numbers xxxx, yyyy]; the Bill &amp; Melinda Gates Foundation, Seattle, WA [grant number zzzz]; and the United States Institutes of Peace [grant number aaaa].</em> </p>
+<p>It is not necessary to include detailed descriptions on the program or type of grants, scholarships and awards. When funding is from a block grant or other resources available to a university, college, or other research institution, submit the name of the institute or organization that provided the funding. </p>
+<p>If no funding has been provided for the research, it is recommended to include the following sentence: </p>
+<p><em>This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.</em> </p>
+<h3 id="declaration-of-generative-ai-use"><strong>Declaration of generative AI use</strong><a class="headerlink" href="#declaration-of-generative-ai-use" title="Permanent link">&para;</a></h3>
+<p>Authors must declare the use of generative AI tools in the manuscript preparation process upon submission of the paper. </p>
+<p>Generative AI and AI-assisted technologies (“AI tools”) have been rapidly adopted in research and scholarly publishing, offering significant benefits while requiring clear standards for responsible and transparent use. </p>
+<p>Authors preparing a manuscript for this journal may use AI tools to support them. However, these tools must never be used as a substitute for human critical thinking, expertise and evaluation. AI tools may only be applied with human oversight and control. </p>
+<p>Please read Elsevier’s detailed author policy on the use of AI tools, as stated in Elsevier’s generative AI policies for journals. </p>
+<p>Ultimately, authors are responsible and accountable for the contents of their work. This includes accountability for: </p>
+<ul>
+<li>
+<p>Carefully reviewing and verifying the accuracy, comprehensiveness, and impartiality of all AI-generated output (including checking the sources, as AI-generated references can be incorrect or fabricated). </p>
+</li>
+<li>
+<p>Editing and adapting all material thoroughly to ensure the manuscript represents the author’s authentic and original contribution and reflects their own analysis, interpretation, insights and ideas. </p>
+</li>
+</ul>
+<p>Ensuring accuracy and originality of any AI generated images and provide appropriate attribution where relevant. </p>
+<ul>
+<li>
+<p>Ensuring the use of any tools or sources, AI-based or otherwise, is made clear and transparent to readers. If AI tools have been used, we require a disclosure statement upon submission; please see example below. </p>
+</li>
+<li>
+<p>Ensuring the manuscript is developed in a way that safeguards data privacy, intellectual property and other rights, by checking the terms and conditions of any AI tool that is used. </p>
+</li>
+</ul>
+<p>Finally, authors must not list or cite AI tools as an author or co-author on the manuscript since authorship implies responsibilities and tasks that can only be attributed to, and performed by, humans. </p>
+<p>The use of AI tools in the manuscript preparation process must be declared by adding a statement at the end of the manuscript when the paper is first submitted. The statement will appear in the published work and should be placed in a new section before the references list. An example: </p>
+<p>Title of new section: <em>Declaration of generative AI and AI-assisted technologies in the manuscript preparation process.</em> Statement: <em>During the preparation of this work the author(s) used [NAME OF TOOL / SERVICE] in order to [REASON]. After using this tool/service, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content of the published article.</em> </p>
+<p>The declaration does not apply to the use of basic tools, such as tools used to check grammar, spelling and references. In addition, authors are not required to disclose the use of AI tools or features within specialist disability-related assistive technology, provided these are used solely for accessibility purposes. </p>
+<p>If you have nothing to disclose, you do not need to add a statement. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>6/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Please note: to protect authors’ rights and the confidentiality of their research, this journal does not currently allow academic editors and reviewers to upload an unpublished manuscript into a generative AI tool, as is stated in Elsevier’s generative AI policies for journals. However, AI tools may be used in a supportive capacity by editors and reviewers to improve structure and language of the review report or editorial decision letter or to conduct a background literature search. Elsevier is actively evaluating compliant AI tools and may revise this policy in the future. </p>
+<h3 id="preprints"><strong>Preprints</strong><a class="headerlink" href="#preprints" title="Permanent link">&para;</a></h3>
+<h4 id="preprint-sharing"><strong>Preprint sharing</strong><a class="headerlink" href="#preprint-sharing" title="Permanent link">&para;</a></h4>
+<p>Authors may share preprints in line with Elsevier's article sharing policy. Sharing preprints, such as on a preprint server, will not count as prior publication. </p>
+<p>We advise you to read our policy on multiple, redundant or concurrent publication. </p>
+<p>In support of Open Science, this journal offers its authors a free preprint posting service on SSRN, Elsevier’s preprint and early research repository. </p>
+<p>During submission to this journal, you can choose to post your manuscript on SSRN, and it will be made publicly available as soon as it passes the journal's initial desk review. </p>
+<p>As a preprint on SSRN, your manuscript will benefit from: </p>
+<p>Early registration with a preprint DOI (Digital Object Identifier) </p>
+<p>A link from the preprint to the version of record if published in this journal </p>
+<p>Preprint posting, sharing, and download availability that facilitates collaboration and early citations </p>
+<p>Your decision to post or not post your preprint will have no effect on the editorial process or publication outcome with the journal. For additional information, please consult the SSRN Terms of Use and FAQs. </p>
+<p>It is expected that the corresponding author will seek approval from all co-authors before agreeing to post the manuscript publicly, prior to peer review, on SSRN. </p>
+<h3 id="use-of-inclusive-language"><strong>Use of inclusive language</strong><a class="headerlink" href="#use-of-inclusive-language" title="Permanent link">&para;</a></h3>
+<p>Inclusive language acknowledges diversity, conveys respect to all people, is sensitive to differences, and promotes equal opportunities. Authors should ensure their work uses inclusive language throughout and contains nothing which might imply one individual is superior to another on the grounds of: </p>
+<p>age </p>
+<p>gender </p>
+<p>race </p>
+<p>ethnicity </p>
+<p>culture </p>
+<p>sexual orientation </p>
+<p>disability or health condition </p>
+<p>We recommend avoiding the use of descriptors about personal attributes unless they are relevant and valid. Write for gender neutrality with the use of plural nouns ("clinicians, patients/clients") as default. Wherever possible, avoid using "he, she," or "he/she." </p>
+<p>No assumptions should be made about the beliefs of readers and writing should be free from bias, stereotypes, slang, reference to dominant culture and/or cultural assumptions. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>7/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>These guidelines are meant as a point of reference to help you identify appropriate language but are by no means exhaustive or definitive. </p>
+<h3 id="reporting-sex-and-gender-based-analyses"><strong>Reporting sex- and gender-based analyses</strong><a class="headerlink" href="#reporting-sex-and-gender-based-analyses" title="Permanent link">&para;</a></h3>
+<p>There is no single, universally agreed-upon set of guidelines for defining sex and gender. We offer the following guidance: </p>
+<p>Sex and gender-based analyses (SGBA) should be integrated into research design when research involves or pertains to humans, animals or eukaryotic cells. This should be done in accordance with any requirements set by funders or sponsors and best practices within a field. </p>
+<ul>
+<li>
+<p>Sex and/or gender dimensions of the research should be addressed within the article or declared as a limitation to the generalizability of the research. </p>
+</li>
+<li>
+<p>Definitions of sex and/or gender applied should be explicitly stated to enhance the precision, rigor and reproducibility of the research and to avoid ambiguity or conflation of terms and the constructs to which they refer. </p>
+</li>
+</ul>
+<p>We advise you to read the Sex and Gender Equity in Research (SAGER) guidelines and the SAGER checklist (PDF) on the EASE website, which offer systematic approaches to the use of sex and gender information in study design, data analysis, outcome reporting and research interpretation. </p>
+<p>For further information we suggest reading the rationale behind and recommended use of the SAGER guidelines. </p>
+<h4 id="definitions-of-sex-andor-gender"><strong>Definitions of sex and/or gender</strong><a class="headerlink" href="#definitions-of-sex-andor-gender" title="Permanent link">&para;</a></h4>
+<p>We ask authors to define how sex and gender have been used in their research and publication. Some guidance: </p>
+<p>Sex generally refers to a set of biological attributes that are associated with physical and physiological features such as chromosomal genotype, hormonal levels, internal and external anatomy. A binary sex categorization (male/female) is usually designated at birth ("sex assigned at birth") and is in most cases based solely on the visible external anatomy of a newborn. In reality, sex categorizations include people who are intersex/have differences of sex development (DSD). </p>
+<p>Gender generally refers to socially constructed roles, behaviors and identities of women, men and gender-diverse people that occur in a historical and cultural context and may vary across societies and over time. Gender influences how people view themselves and each other, how they behave and interact and how power is distributed in society. </p>
+<p>Depending on the focus of a paper, sex and/or gender may or may not be relevant to the content of the paper. We recognize that beliefs, attitudes, and laws relating to sex and gender may vary. These articles do not attempt to dictate author beliefs but rather require that, where relevant to an author’s research or paper, the author must provide clear explanations of how the paper and research define and use sex and gender. </p>
+<h3 id="jurisdictional-claims"><strong>Jurisdictional claims</strong><a class="headerlink" href="#jurisdictional-claims" title="Permanent link">&para;</a></h3>
+<p>Elsevier respects the decisions taken by its authors as to how they choose to designate territories and identify their affiliations in their published content. Elsevier’s policy is to take a neutral position with respect to territorial disputes or jurisdictional claims, including, but not limited to, maps and institutional affiliations. For journals that Elsevier publishes on behalf of a third party owner, the owner may set its own policy on these issues. </p>
+<p>Maps: Readers should be able to locate any study areas shown within maps using common mapping platforms. Maps should only show the area actually studied and authors should not include a location map which displays a larger area than the bounding box of the study area. Authors should add a note clearly stating that " <em>map lines delineate study areas and do not necessarily depict accepted national boundaries</em> ”.  During the review process, Elsevier’s editors may request authors to change maps if these guidelines are not followed. </p>
+<p>Institutional affiliations: Authors should use either the full, standard title of their institution or the standard abbreviation of the institutional name so that the institutional name can be independently verified for research integrity purposes. </p>
+<h3 id="studies-in-humans"><strong>Studies in humans</strong><a class="headerlink" href="#studies-in-humans" title="Permanent link">&para;</a></h3>
+<p>Authors must follow ethical guidelines for research involving humans, their data, and/or their biological materials (e.g. organs, tissues). Authors should ensure that they adhere to the following: </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>8/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<ul>
+<li>
+<p>All studies must be performed in compliance with relevant laws, regulations, and institutional guidelines and that the appropriate institutional committee(s) has/have approved them. For instance, medical research involving humans should be carried out in accordance with the World Medical Association Declaration of Helsinki: Ethical principles for medical research involving human participants and should follow the International Committee of Medical Journal Editors (ICMJE) recommendations for the conduct, reporting, editing and publication of scholarly work in medical journals and aim to be representative of human populations in terms of sex, age and ethnicity. Sex and gender terms should be used correctly, as outlined in the “Reporting Sex- and Gender-based analyses” section of this journal’s Guide for Authors. </p>
+</li>
+<li>
+<p>Informed consent must be obtained for research with human participants, including their data or biological materials. Consent must be given without coercion, and the privacy rights of human participants must always be observed. If your study contains human participants, please read Elsevier’s full human research policy for further information. </p>
+</li>
+</ul>
+<p>Authors should be aware that written (or electronic) consent is required for certain studies under national laws. In studies where only verbal informed consent was obtained, authors should include justification for the absence of written consent, the name of the approving ethics committee, and a statement on how verbal consent was recorded. </p>
+<p>Consent for publication should also be obtained. </p>
+<ul>
+<li>
+<p>Authors must obtain and retain explicit written consent for any identifiable participant materials (e.g. case details, videos, recordings, images, photographs, and illustrations). All participant information must be de-identified: do not include names or personal identifiers (e.g., initials, ID numbers, DOB) </p>
+</li>
+<li>
+<p>Images should be used only when scientifically necessary and with explicit consent, and nonessential identifying details must be removed. If identifiers are altered to ensure anonymity, authors must confirm that scientific meaning is not affected. Fully anonymized images (e.g., x-rays, scans) that contain no identifying marks and are not accompanied by identifying text do not require formal consent, though informing the patient is good practice. Case reports always require consent. Simply obscuring identity (e.g., eye bars or blurring) is not sufficient without consent. </p>
+</li>
+<li>
+<p>Written consents must be retained by the authors. They should not be provided to this journal unless this is specifically requested in exceptional circumstances, for example, when a legal issue arises. Only then should you provide copies of the consents, or evidence that all relevant consents were obtained. </p>
+</li>
+<li>
+<p>Appropriate consents and safeguards should be in place for research with vulnerable populations, as described in Elsevier’s human research policy. In many countries, additional ethical approval may be needed for research with those who lack the capacity to consent (e.g. children or those with mental health or neurological conditions including dementia). </p>
+</li>
+</ul>
+<p>For the full policy, see “Consent requirements for case reports, personal information, and images.” </p>
+<p>All studies involving human participants require a statement that details any ethical approval(s), guidelines followed, confirmation of informed consent, and any other necessary information in line with Elsevier’s human research policy. The statement should contain the date and reference number of any ethical approval(s) obtained </p>
+<p>If ethical approval is not required by national laws or where a study has been granted an exemption from an ethics committee, the statement must explain why the study is exempt and confirm that the appropriate protocols for protecting the rights and privacy of all participants were utilized during the execution of the research (e.g. no coercion to participate, full disclosure of study requirements and risks, consent of participants (or their Legal Representatives), no release of participant data without their knowledge, etc.). </p>
+<h3 id="human-biological-material"><strong>Human biological material</strong><a class="headerlink" href="#human-biological-material" title="Permanent link">&para;</a></h3>
+<p>For all studies that use human organs or tissues, sufficient evidence must be provided that these were procured in line with WHO Guiding Principles on Human Cell, Tissue and Organ Transplantation. The source of the organs or tissues used in clinical research must be transparent and traceable and must not be sourced from executed prisoners or prisoners of conscience, consistent with recommendations by Global Rights Compliance on Mitigating Human Rights Risks in Transplantation Medicine. </p>
+<p>For clinical studies, a statement of informed consent having been obtained from a patient or their legal representative, paired with ethical approval for the study from a suitable institution, as required by the policies of the journal, may be considered sufficient evidence, but the journal reserves the right to request additional evidence in cases where it feels this is not sufficient. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>9/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>If the manuscript describes organ transplantation authors must additionally declare within the manuscript that: </p>
+<p>Autonomous consent, free from coercion, was obtained from the donor(s) or their next of kin. </p>
+<p>Organs and/or tissues were not sourced from executed prisoners or prisoners of conscience. </p>
+<h3 id="delayed-publication"><strong>Delayed publication</strong><a class="headerlink" href="#delayed-publication" title="Permanent link">&para;</a></h3>
+<p>If you need to delay the publication of your article for any reason, please contact the editorial office of the journal or our Journal Article Publishing Support Center at the earliest possible opportunity. While we will try to ensure that your article is not published before a certain date if you make your request on a timely basis, we cannot guarantee this. Please also note that once the agreed period of delay has expired the article may be published at any time thereafter. </p>
+<h3 id="withdrawal-correction-or-retraction"><strong>Withdrawal, correction or retraction</strong><a class="headerlink" href="#withdrawal-correction-or-retraction" title="Permanent link">&para;</a></h3>
+<p>For questions about article withdrawal, correction, or retraction, please consult Elsevier’s Article Correction, Retraction and Removal Policy. </p>
+<h2 id="writing-and-formatting_1"><strong>Writing and formatting</strong><a class="headerlink" href="#writing-and-formatting_1" title="Permanent link">&para;</a></h2>
+<h3 id="file-format"><strong>File format</strong><a class="headerlink" href="#file-format" title="Permanent link">&para;</a></h3>
+<p>We ask you to provide editable source files for your entire submission (including figures, tables and text graphics). Some guidelines: </p>
+<ul>
+<li>Save files in an editable format, using the extension .doc/.docx for Word files and .tex for LaTeX files. A PDF is not an acceptable source file. </li>
+</ul>
+<p>Format Word files in a single-column layout. Double-column formatting is only permitted for LaTeX submissions. </p>
+<p>Remove any strikethrough and underlined text from your manuscript, unless it has scientific significance related to your article. </p>
+<p>Use spell-check and grammar-check functions to avoid errors. </p>
+<p>We advise you to read our Step-by-step guide to publishing with Elsevier. </p>
+<h3 id="title-page"><strong>Title page</strong><a class="headerlink" href="#title-page" title="Permanent link">&para;</a></h3>
+<p>You are required to include the following details in the title page information: </p>
+<ul>
+<li>
+<p>Article title. Article titles should be concise and informative. Please avoid abbreviations and formulae, where possible, unless they are established and widely understood, e.g. DNA. </p>
+</li>
+<li>
+<p>Author names. Provide the given name(s) and family name(s) of each author. The order of authors should match the order in the submission system. Carefully check that all names are accurately spelled. If needed, you can add your name between parentheses in your own script after the English transliteration. </p>
+</li>
+<li>
+<p>Affiliations, referring to where the work was carried out, below the author names. Indicate affiliations using a lower-case superscript letter immediately after the author's name and in front of the corresponding address. Ensure that you provide the full name and postal address of each affiliation, including the country name and, if available, the email address of each author. </p>
+</li>
+<li>
+<p>Corresponding author. Clearly indicate who will handle correspondence for your article at all stages of the refereeing and publication process and also post-publication. This responsibility includes answering any future queries about your results, data, methodology and materials. It is important that the email address and contact details of your corresponding author are kept up to date during the submission and publication process. </p>
+</li>
+<li>
+<p>Present/permanent address. If an author has moved since the work described in your article was carried out, or the author was visiting during that time, a "present address" (or "permanent address") can be indicated by a footnote to the author's name. The address where the author carried out the work must be retained as their main affiliation address. Use superscript Arabic numerals for such footnotes. </p>
+</li>
+</ul>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>10/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<h3 id="abstract"><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Permanent link">&para;</a></h3>
+<p>You are required to provide a concise and factual abstract which does not exceed 250 words. The abstract should briefly state the purpose of your research, principal results and major conclusions. Some guidelines: </p>
+<p>Abstracts must be able to stand alone as abstracts are often presented separately from the article. </p>
+<p>Avoid references. If any are essential to include, ensure that you cite the author(s) and year(s). </p>
+<p>Avoid non-standard or uncommon abbreviations. If any are essential to include, ensure they are defined within your abstract at first mention. </p>
+<h3 id="keywords"><strong>Keywords</strong><a class="headerlink" href="#keywords" title="Permanent link">&para;</a></h3>
+<p>You are required to provide 1 to 7 keywords for indexing purposes. Keywords should be written in English. Please try to avoid keywords consisting of multiple words (using "and" or "of"). </p>
+<p>We recommend that you only use abbreviations in keywords if they are firmly established in the field. </p>
+<h3 id="highlights"><strong>Highlights</strong><a class="headerlink" href="#highlights" title="Permanent link">&para;</a></h3>
+<p>You are encouraged to provide article highlights at submission. </p>
+<p>Highlights are a short collection of bullet points that should capture the novel results of your research as well as any new methods used during your study. Highlights will help increase the discoverability of your article via search engines. Some guidelines: </p>
+<p>Submit highlights as a separate editable file in the online submission system with the word "highlights" included in the file name. </p>
+<p>Highlights should consist of 3 to 5 bullet points, each a maximum of 85 characters, including spaces. </p>
+<p>We encourage you to view example article highlights and read about the benefits of their inclusion. </p>
+<h3 id="graphical-abstract"><strong>Graphical abstract</strong><a class="headerlink" href="#graphical-abstract" title="Permanent link">&para;</a></h3>
+<p>You are encouraged to provide a graphical abstract at submission. </p>
+<p>The graphical abstract summarizes the contents of your article in a concise, pictorial, professional form, highlighting important aspects of the research. It is designed to appeal to an interdisciplinary audience, and draw more attention to your online article. Some guidelines: </p>
+<p>Ensure you have obtained the necessary permission to include any third party owned material in a graphical abstract. </p>
+<p>Use of generative AI or AI-assisted tools in the production of graphical abstracts must align with Elsevier’s GenAI Policies for <u>Journals.</u> </p>
+<p>Submit your graphical abstract as a separate file in the online submission system. </p>
+<p>Ensure the image is 531 x 1328 pixels (h x w) or proportionally more, and is readable at a size of 5 x 13 cm. </p>
+<p>Preferred file types for graphical abstracts are TIFF, EPS, PDF or MS Office files. </p>
+<p>More information, examples and a template can be found in the graphical abstract guidelines. </p>
+<h3 id="math-formulae"><strong>Math formulae</strong><a class="headerlink" href="#math-formulae" title="Permanent link">&para;</a></h3>
+<p>Submit math equations as editable text, not as images. </p>
+<p>Present simple formulae in line with normal text, where possible. </p>
+<p>Use the solidus (/) instead of a horizontal line for small fractional terms such as X/Y. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>11/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Present variables in italics. </p>
+<p>Denote powers of e by exp. </p>
+<p>Display equations separately from your text, numbering them consecutively in the order they are referred to within your text. </p>
+<h3 id="tables"><strong>Tables</strong><a class="headerlink" href="#tables" title="Permanent link">&para;</a></h3>
+<p>Tables must be submitted as editable text, not as images. Some guidelines: </p>
+<p>Place tables next to the relevant text or on a separate page(s) at the end of your article. </p>
+<p>Cite all tables in the manuscript text. </p>
+<p>Number tables consecutively according to their appearance in the text. </p>
+<ul>
+<li>
+<p>Please provide captions along with the tables. </p>
+</li>
+<li>
+<p>Place any table notes below the table body. </p>
+</li>
+</ul>
+<p>Avoid vertical rules and shading within table cells. </p>
+<p>We recommend that you use tables sparingly, ensuring that any data presented in tables is not duplicating results described elsewhere in the article. </p>
+<h3 id="figures-images-and-artwork"><strong>Figures, images and artwork</strong><a class="headerlink" href="#figures-images-and-artwork" title="Permanent link">&para;</a></h3>
+<p>Figures, images, diagrams and other graphical media (artwork) must be supplied as separate files along with the manuscript, in line with these artwork and media instructions. Some excerpts: </p>
+<p>When submitting artwork: </p>
+<p>Cite all images in the manuscript text. </p>
+<p>Number images according to the order they appear within your article. </p>
+<p>Submit each image as a separate file using a logical naming convention for your files (for example, Figure_1, Figure_2 etc). </p>
+<ul>
+<li>Text graphics may be embedded in the text at the appropriate position. If you are working with LaTeX, text graphics may also be embedded in the file. </li>
+</ul>
+<h3 id="captions"><strong>Captions</strong><a class="headerlink" href="#captions" title="Permanent link">&para;</a></h3>
+<p>All artwork must have a caption. A caption should consist of a brief title (not displayed on the figure itself) and a description of the image. Keep the amount of text in any image to a minimum, though any symbol or abbreviation should be explained. </p>
+<p>Read how to add captions to your submission here. </p>
+<h3 id="formats"><strong>Formats</strong><a class="headerlink" href="#formats" title="Permanent link">&para;</a></h3>
+<p>When your artwork is finalized, "save as" or convert your electronic artwork to the formats listed below taking into account the given resolution requirements for line drawings, halftones, and line/halftone combinations: </p>
+<p>Vector drawings: Save as EPS or PDF files embedding the font or saving the text as "graphics." </p>
+<ul>
+<li>Color or grayscale photographs (halftones): Save as TIFF, JPG or PNG files using a minimum of 300 dpi (for single column width: min. 1063 pixels, full page width: 2244 pixels). </li>
+</ul>
+<p>Bitmapped line drawings: Save as TIFF, JPG or PNG files, using a minimum of 1000 dpi (for single column width: min. 3543 pixels, full page width: 7480 pixels). </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>12/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Combinations bitmapped line/halftones (color or grayscale): Save as TIFF, JPG or PNG files using a minimum of 500 dpi (for single column: min. 1772 pixels, full page width: 3740 pixels). </p>
+<p>Please do not submit: </p>
+<p>Files that are too low in resolution. </p>
+<p>Artwork where text is disproportionately small compared to the image size, as text may become unreadable. </p>
+<p>Different images or graphs combined into one, as this affects accessibility </p>
+<h3 id="color-artwork"><strong>Color artwork</strong><a class="headerlink" href="#color-artwork" title="Permanent link">&para;</a></h3>
+<p>If you submit usable color figures with your accepted article, we will ensure that they appear in color online. </p>
+<p>Please ensure that color images are accessible to all, including those with impaired color vision. Learn more about color and web accessibility. </p>
+<h3 id="generative-ai-and-figures-images-and-other-artwork"><strong>Generative AI and Figures, images and other artwork</strong><a class="headerlink" href="#generative-ai-and-figures-images-and-other-artwork" title="Permanent link">&para;</a></h3>
+<p>Please read our policy on the use of generative AI and AI-assisted tools in figures, images and artwork, which can be found in Elsevier’s GenAI Policies for Journals. This policy states: </p>
+<ul>
+<li>
+<p>AI tools may be used to support the creation of explanatory images (such as flow charts, conceptual diagrams, or schematic illustrations) </p>
+</li>
+<li>
+<p>AI tools may be used to create data visualizations (such as plots, charts, graphs, or heatmaps) when the output is directly derived from underlying data using reproducible analytical, computational, or statistical methods. </p>
+</li>
+</ul>
+<p>AI tools must not be used to create or alter images that represent primary observed or experimental data (such as western blots, microscopy images, histology images, or patient images) that were not directly obtained in the research. This includes adjustments to brightness, contrast, or color balance, which should only be done using established image processing software. </p>
+<p>This policy does not prevent the use of AI tools in formal research design or research methods (such as in AI-assisted imaging approaches used for collection and/or interpretation of the underlying research data or predictive modelling of clinical outcomes based on patient data). </p>
+<p>Authors are responsible for ensuring the accuracy and originality of all images submitted for publication. If you used generative AI tools to create images in your manuscript, you should disclose this in each image caption as well as in the general Generative AI disclosure statement. </p>
+<h3 id="supplementary-material"><strong>Supplementary material</strong><a class="headerlink" href="#supplementary-material" title="Permanent link">&para;</a></h3>
+<p>We encourage the use of supplementary materials such as applications, images and sound clips to enhance research. Some guidelines: </p>
+<p>Supplementary material should be accurate and relevant to the research. </p>
+<p>Cite all supplementary files in the manuscript text. </p>
+<p>Submit all supplementary materials at the same time as your manuscript. </p>
+<p>Include a concise, descriptive caption for each supplementary file, describing its content. </p>
+<p>After submission supplementary files can only be added or replaced in the revision stage of the editorial process. </p>
+<p>Be aware that all supplementary materials provided will appear online in the exact same way as received. These files will not be checked, formatted or typeset by the production team. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>13/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<h3 id="video"><strong>Video</strong><a class="headerlink" href="#video" title="Permanent link">&para;</a></h3>
+<p>This journal accepts video material and animation sequences to support and enhance your scientific research. We encourage you to include links to video or animation files within articles. Some guidelines: </p>
+<p>When including video or animation file links within your article, refer to the video or animation content by adding a note in your text where the file should be placed. </p>
+<p>Clearly label files ensuring the given file name is directly related to the file content. </p>
+<p>Provide files in one of our recommended file formats. Files should be within our preferred maximum file size of 150 MB per file, 1 GB in total. </p>
+<p>Provide "stills" for each of your files. These will be used as standard icons to personalize the link to your video data. You can choose any frame from your video or animation or make a separate image. </p>
+<p>Provide descriptive text in your manuscript to refer to the video content. This text helps ensure accessibility for visually impaired readers who rely on descriptive information. For journals publishing in print this is also essential, as video and animation files cannot be embedded in the print version. </p>
+<p>We publish all video and animation files supplied in the electronic version of your article. </p>
+<p>For more detailed instructions, we recommend that you read our guidelines on submitting video content to be included in the body of an article. </p>
+<h3 id="research-data"><strong>Research data</strong><a class="headerlink" href="#research-data" title="Permanent link">&para;</a></h3>
+<p>We are committed to supporting the storage of, access to and discovery of research data, and our research data policy sets out the principles guiding how we work with the research community to support a more efficient and transparent research process. </p>
+<p>Research data refers to the results of observations or experimentation that validate research findings, which may also include software, code, models, algorithms, protocols, methods and other useful materials related to the project. </p>
+<p>Please read our guidelines on sharing research data for more information on depositing, sharing and using research data and other relevant research materials. </p>
+<h4 id="research-data-deposit-citation-and-linking"><strong>Research data deposit, citation and linking</strong><a class="headerlink" href="#research-data-deposit-citation-and-linking" title="Permanent link">&para;</a></h4>
+<p>For this journal, <strong>Option C</strong> instructions from our research data guidelines apply. This means that you are <strong>required</strong> to: </p>
+<p>Deposit your research data in a relevant data repository. </p>
+<p>Cite and link to this dataset in your article. </p>
+<p>If this is not possible, make a statement explaining why research data cannot be shared. </p>
+<h3 id="data-statement"><strong>Data statement</strong><a class="headerlink" href="#data-statement" title="Permanent link">&para;</a></h3>
+<p>To foster transparency, you are required to state the availability of any data at submission. </p>
+<p>Ensuring data is available may be a requirement of your funding body or institution. If your data is unavailable to access or unsuitable to post, you can state the reason why (e.g., your research data includes sensitive or confidential information such as patient data) during the submission process. This statement will appear with your published article on ScienceDirect. </p>
+<p>Read more about the importance and benefits of providing a data statement. </p>
+<h3 id="data-linking"><strong>Data linking</strong><a class="headerlink" href="#data-linking" title="Permanent link">&para;</a></h3>
+<p>Linking to the data underlying your work increases your exposure and may lead to new collaborations. It also provides readers with a better understanding of the described research. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>14/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>If your research data has been made available in a data repository there are a number of ways your article can be linked directly to the dataset: </p>
+<p>Provide a link to your dataset when prompted during the online submission process. </p>
+<p>For some data repositories, a repository banner will automatically appear next to your published article on ScienceDirect. </p>
+<p>You can also link relevant data or entities within the text of your article through the use of identifiers. Use the following format: Database: 12345 (e.g. TAIR: AT1G01020; CCDC: 734053; PDB: 1XFN). </p>
+<p>Learn more about linking research data and research articles in ScienceDirect. </p>
+<h3 id="co-submission-of-related-data-methods-or-protocols"><strong>Co-submission of related data, methods or protocols</strong><a class="headerlink" href="#co-submission-of-related-data-methods-or-protocols" title="Permanent link">&para;</a></h3>
+<p>You are encouraged to publish a description of your research data, methods, or protocols related to your regular article as a cosubmission article in <em><u>Data in Brief</u></em> or <em><u>MethodsX</u></em> <u>.</u> </p>
+<p>This co-submission can be submitted at the same time as your regular manuscript submission to this journal. If both your regular and co-submitted manuscripts are accepted for publication, they will be linked together on ScienceDirect, thereby promoting research reproducibility, interoperability, and open science. </p>
+<ul>
+<li>
+<p>Prepare a separate manuscript describing your research data, methods, or protocols using the <strong>mandatory templates</strong> from <em><u>Data in Brief</u></em> or in <em><u>MethodsX</u></em> <u>.</u> </p>
+</li>
+<li>
+<p>Submit this co-submission alongside your regular manuscript as a separate submission item; on the <strong>‘Attach files’</strong> page in Editorial Manager, after which it will be automatically forwarded to the <em>Data in Brief</em> or <em>MethodsX</em> and assigned an editor. </p>
+</li>
+</ul>
+<p>For associated Article Processing Charge (APC) details, please visit: </p>
+<h4 id="methodsx"><u>MethodsX</u><a class="headerlink" href="#methodsx" title="Permanent link">&para;</a></h4>
+<h4 id="data-in-brief"><u>Data in Brief</u><a class="headerlink" href="#data-in-brief" title="Permanent link">&para;</a></h4>
+<p>Please note: Due to the automated process of submitting to <em>Data in Brief</em> or <em>MethodsX</em> , only after acceptance will you be presented with a personalized OA Article Publishing Charge based on your individual context (your country, institutional affiliation, and any society membership for example). </p>
+<p>Please visit <strong><u>co-submission Researcher Support page</u></strong> for more information on how to submit a co-submission. </p>
+<h3 id="journal-specific-information-writing-and-formatting"><strong>Journal specific information: Writing and formatting</strong><a class="headerlink" href="#journal-specific-information-writing-and-formatting" title="Permanent link">&para;</a></h3>
+<h4 id="use-of-word-processing-software"><strong>Use of word processing software</strong><a class="headerlink" href="#use-of-word-processing-software" title="Permanent link">&para;</a></h4>
+<p>It is important that the file be saved in the native format of the word processor used. The text should be in single-column format. Keep the layout of the text as simple as possible. Most formatting codes will be removed and replaced on processing the article. In particular, do not use the word processor's options to justify text or to hyphenate words. However, do use bold face, italics, subscripts, superscripts etc. When preparing tables, if you are using a table grid, use only one grid for each individual table and not a grid for each row. If no grid is used, use tabs, not spaces, to align columns. The electronic text should be prepared in a way very similar to that of conventional manuscripts (see also the Guide to Publishing with Elsevier). Note that source files of figures, tables and text graphics will be required whether or not you embed your figures in the text. See also the section on Electronic artwork. </p>
+<p>To avoid unnecessary errors you are strongly advised to use the 'spell-check' and 'grammar-check' functions of your word processor. When preparing your manuscript, please make sure that you strictly adhere to the Template for Original Software Publications. </p>
+<h4 id="latex"><strong>LaTeX</strong><a class="headerlink" href="#latex" title="Permanent link">&para;</a></h4>
+<p>The format of a software article is very different to a traditional research article. We will only consider software articles that are submitted using SoftwareX's template. You will find both a Word and a LaTeX template immediately below. Choose the one you prefer and fill in each section, without altering any format settings. </p>
+<p>Word templates (please note that figures must be directly embedded in the .docx file): </p>
+<p>15/23 </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Original software publication </p>
+<p>Software update </p>
+<p>LaTeX templates: </p>
+<p>Original software publication </p>
+<p>Software update </p>
+<p>Additional support for your LaTeX submission: </p>
+<p>Journal Article Publishing Support Center LaTeX FAQs and support. </p>
+<p>Researcher Academy’s “Beginners’ guide to writing a manuscript in LaTeX”. </p>
+<h3 id="article-structure"><strong>Article structure</strong><a class="headerlink" href="#article-structure" title="Permanent link">&para;</a></h3>
+<h4 id="article-sections"><strong>Article sections</strong><a class="headerlink" href="#article-sections" title="Permanent link">&para;</a></h4>
+<p>Divide your manuscript into clearly defined and numbered sections. Number subsections 1.1 (then 1.1.1, 1.1.2, ...), then 1.2, etc. </p>
+<p>Use the numbering format when cross-referencing within your article. Do not just refer to "the text." </p>
+<p>You may give subsections a brief heading. Headings should appear on a separate line. </p>
+<p>Do not include the article abstract within section numbering. </p>
+<h4 id="footnotes"><strong>Footnotes</strong><a class="headerlink" href="#footnotes" title="Permanent link">&para;</a></h4>
+<p>We advise you to use footnotes sparingly. If you include footnotes in your article, ensure that they are numbered consecutively. </p>
+<p>You may use system features that automatically build footnotes into text. Alternatively, you can indicate the position of footnotes within the text and present them in a separate section at the end of your article. </p>
+<h4 id="acknowledgements"><strong>Acknowledgements</strong><a class="headerlink" href="#acknowledgements" title="Permanent link">&para;</a></h4>
+<p>Include any individuals who provided you with help during your research, such as help with language, writing or proof reading, in the acknowledgements section. </p>
+<p>Acknowledgements should be placed in a separate section which appears directly before the reference list. Do not include acknowledgements on your title page, as a footnote to your title, or anywhere else in your article other than in the separate acknowledgements section. </p>
+<h4 id="author-contributions-credit"><strong>Author contributions: CRediT</strong><a class="headerlink" href="#author-contributions-credit" title="Permanent link">&para;</a></h4>
+<p>Corresponding authors are required to acknowledge co-author contributions using CRediT (Contributor Roles Taxonomy) roles: </p>
+<p>Conceptualization </p>
+<p>Data curation </p>
+<p>Formal analysis </p>
+<p>Funding acquisition </p>
+<p>Investigation </p>
+<p>Methodology </p>
+<p>Project administration </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>16/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Resources </p>
+<p>Software </p>
+<p>Supervision </p>
+<p>Validation </p>
+<p>Visualization </p>
+<p>Writing – original draft </p>
+<p>Writing – review and editing </p>
+<p>Not all CRediT roles will apply to every manuscript and some authors may contribute through multiple roles. </p>
+<p>We advise you to read more about CRediT and view an example of a CRediT author statement. </p>
+<h4 id="appendices"><strong>Appendices</strong><a class="headerlink" href="#appendices" title="Permanent link">&para;</a></h4>
+<p>We ask you to use the following format for appendices: </p>
+<p>Identify individual appendices within your article using the format: A, B, etc. </p>
+<p>Give separate numbering to formulae and equations within appendices using formats such as Eq. (A.1), Eq. (A.2), etc. and in subsequent appendices, Eq. (B.1), Eq. (B. 2) etc. In a similar way, give separate numbering to tables and figures using formats such as Table A.1; Fig. A.1, etc. </p>
+<h3 id="references"><strong>References</strong><a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
+<h4 id="references-within-text"><strong>References within text</strong><a class="headerlink" href="#references-within-text" title="Permanent link">&para;</a></h4>
+<p>Any references cited within your article should also be present in your reference list and vice versa. Some guidelines: </p>
+<p>References cited in your abstract must be given in full. </p>
+<p>We recommend that you do not include unpublished results and personal communications in your reference list, though you may mention them in the text of your article. </p>
+<p>Any unpublished results and personal communications included in your reference list must follow the standard reference style of the journal. In substitution of the publication date add "unpublished results" or "personal communication." </p>
+<p>References cited as "in press" imply that the item has been accepted for publication. </p>
+<p>Linking to cited sources will increase the discoverability of your research. We encourage the use of Digital Object Identifiers (DOIs) as reference links, as they provide a permanent link to the electronic article referenced. </p>
+<p>Before submission, check that all data provided in your reference list are correct, including any references which have been copied. Providing correct reference data allows us to link to abstracting and indexing services such as Scopus, Crossref and PubMed. Any incorrect surnames, journal or book titles, publication years or pagination within your references may prevent link creation. </p>
+<h4 id="reference-style"><strong>Reference style</strong><a class="headerlink" href="#reference-style" title="Permanent link">&para;</a></h4>
+<p>Indicate references by number(s) in square brackets in line in the text. You can refer to author names within your text, but you must always give the reference number, e.g., "as demonstrated [3,6]. Barnaby and Jones [8] obtained a different result ....". </p>
+<p>Number the references in the reference list in the order in which they appear in the text. </p>
+<p>Please note the shortened form for last page number. e.g., 51-9, and that for more than 6 authors the first 6 should be listed followed by 'et al.'. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>17/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>For further details you are referred to Recommendations for the Conduct, Reporting, Editing and Publication of Scholarly Work in Medical Journals and more samples of formatted references. </p>
+<p>Abbreviate journal names according to the List of Title Word Abbreviations (LTWA). </p>
+<p>Examples: </p>
+<h4 id="reference-to-a-journal-publication"><strong>Reference to a journal publication:</strong><a class="headerlink" href="#reference-to-a-journal-publication" title="Permanent link">&para;</a></h4>
+<p>[1] Van der Geer J, Hanraads JAJ, Lupton RA. The art of writing a scientific article. J Sci Commun 2020;163:51-9. https://doi.org/10.1016/j.sc.2020.00372. </p>
+<h4 id="reference-to-a-journal-publication-with-an-article-number"><strong>Reference to a journal publication with an article number:</strong><a class="headerlink" href="#reference-to-a-journal-publication-with-an-article-number" title="Permanent link">&para;</a></h4>
+<p>[2] Van der Geer J, Hanraads JAJ, Lupton RA. The art of writing a scientific article. Heliyon. 2022;19:e00205. https://doi.org/10.1016/j.heliyon.2022.e00205. </p>
+<h4 id="reference-to-a-book"><strong>Reference to a book:</strong><a class="headerlink" href="#reference-to-a-book" title="Permanent link">&para;</a></h4>
+<p>[3] Strunk Jr W, White EB. The elements of style. 4th ed. New York: Longman; 2000. </p>
+<h4 id="reference-to-a-chapter-in-a-book"><strong>Reference to a chapter in a book:</strong><a class="headerlink" href="#reference-to-a-chapter-in-a-book" title="Permanent link">&para;</a></h4>
+<p>[4] Mettam GR, Adams LB. How to prepare an electronic version of your article. In: Jones BS, Smith RZ, editors. Introduction to the electronic age, New York: E-Publishing Inc; 2023, p. 281-304. </p>
+<h4 id="reference-to-a-website"><strong>Reference to a website:</strong><a class="headerlink" href="#reference-to-a-website" title="Permanent link">&para;</a></h4>
+<p>[5] Cancer Research UK. Cancer statistics reports for the UK, </p>
+<p>http://www.cancerresearchuk.org/aboutcancer/statistics/cancerstatsreport/; 2023 [accessed 13 March 2023]. </p>
+<h4 id="reference-to-a-dataset"><strong>Reference to a dataset:</strong><a class="headerlink" href="#reference-to-a-dataset" title="Permanent link">&para;</a></h4>
+<p>[6] Oguro M, Imahiro S, Saito S, Nakashizuka T. Mortality data for Japanese oak wilt disease and surrounding forest compositions [dataset]. Mendeley Data. 2015. https://doi.org/10.17632/xwj98nb39r.1. </p>
+<h4 id="reference-to-software"><strong>Reference to software:</strong><a class="headerlink" href="#reference-to-software" title="Permanent link">&para;</a></h4>
+<p>[7] Coon E, Berndt M, Jan A, Svyatsky D, Atchley A, Kikinzon E, et al. Advanced Terrestrial Simulator (ATS). Version 0.88 [software]. Zenodo; 2020 Mar 25. https://doi.org/10.5281/zenodo.3727209. </p>
+<h4 id="web-references"><strong>Web references</strong><a class="headerlink" href="#web-references" title="Permanent link">&para;</a></h4>
+<p>When listing web references, as a minimum you should provide the full URL and the date when the reference was last accessed. Additional information (e.g. DOI, author names, dates or reference to a source publication) should also be provided, if known. </p>
+<p>You can list web references separately under a new heading directly after your reference list or include them in your reference list. </p>
+<h4 id="data-references"><strong>Data references</strong><a class="headerlink" href="#data-references" title="Permanent link">&para;</a></h4>
+<p>We encourage you to cite underlying or relevant datasets within article text and to list data references in the reference list. </p>
+<p>When citing data references, you should include: </p>
+<p>author name(s) </p>
+<p>dataset title </p>
+<p>data repository </p>
+<p>version (where available) </p>
+<p>year </p>
+<p>global persistent identifier </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>18/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Add [dataset] immediately before your reference. This will help us to properly identify the dataset. The [dataset] identifier will not appear in your published article. </p>
+<h4 id="software-references"><strong>Software references</strong><a class="headerlink" href="#software-references" title="Permanent link">&para;</a></h4>
+<p>Cite software (including computational code, scripts, models, notebooks and libraries) in the same way as other sources of information to support proper attribution and credit, reproducibility, collaboration and reuse, and encourage building on the work of others to further research. To facilitate this, useful information is provided in this article on the essentials of software citation by FORCE 11, of which Elsevier is a member. </p>
+<p>A reference to software should include the following elements: </p>
+<ul>
+<li>
+<p><em>Creator(s):</em> the authors or project that developed the software. </p>
+</li>
+<li>
+<p><em>Title:</em> the name of the software. </p>
+</li>
+<li>
+<p><em>Publication venue:</em> the publication venue of the software, preferably, an archive or repository that provides permanent identifiers. </p>
+</li>
+<li>
+<p><em>Date:</em> the date the software was published. This is the date associated with a release or version of the software, or “n.d.” if the date is unknown. </p>
+</li>
+<li>
+<p><em>Identifier:</em> a resolvable pointer to the software, preferably, a PID that resolves to a landing page containing descriptive metadata about the software, similar to how a Digital Object Identifier (DOI) for a paper that points to a page about the paper rather than directly to a representation of the paper, such as the PDF. DOIs are preferable, and other examples of PIDs include Handles, RRIDs, ASCL IDs, swMath IDs, Software Heritage IDs, ARK Alliance, etc. If there is no PID for the software, a URL to where the software exists may be the best identifier available. </p>
+</li>
+<li>
+<p><em>Version:</em> the identifier for the version of the software being referenced. If the version is unidentified or unknown, the date of access should be used. </p>
+</li>
+</ul>
+<p><em>Type:</em> some reference styles (e.g., APA), require a bracketed description of the citation (e.g., [Computer software]) to be included. </p>
+<p>If an article exists that describes the software, it should be cited as an additional reference, as well as citing the software itself. Do not cite the article instead of the software. </p>
+<h4 id="preprint-references"><strong>Preprint references</strong><a class="headerlink" href="#preprint-references" title="Permanent link">&para;</a></h4>
+<p>We ask you to mark preprints clearly. You should include the word "preprint" or the name of the preprint server as part of your reference and provide the preprint DOI. </p>
+<p>Where a preprint has subsequently become available as a peer-reviewed publication, use the formal publication as your reference. </p>
+<p>If there are preprints that are central to your work or that cover crucial developments in the topic, but they are not yet formally published, you may reference the preprint. </p>
+<h4 id="reference-management-software"><strong>Reference management software</strong><a class="headerlink" href="#reference-management-software" title="Permanent link">&para;</a></h4>
+<p>Most journals have their reference template available in popular reference management software products. These include products that support Citation Style Language (CSL) such as Mendeley Reference Manager. </p>
+<p>If you use a citation plug-in from these products, select the relevant journal template and all your citations and bibliographies will automatically be formatted in the journal style. We advise you to remove all field codes before submitting your manuscript to any reference management software product. </p>
+<p>If a template is not available for this journal, follow the format given in examples in the reference style section of this Guide for Authors. </p>
+<h2 id="submitting-your-manuscript_1"><strong>Submitting your manuscript</strong><a class="headerlink" href="#submitting-your-manuscript_1" title="Permanent link">&para;</a></h2>
+<h3 id="submission-checklist"><strong>Submission checklist</strong><a class="headerlink" href="#submission-checklist" title="Permanent link">&para;</a></h3>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>19/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Before completing the submission of your manuscript, we advise you to read our submission checklist: </p>
+<p>One author has been designated as the corresponding author and their full contact details (email address, full postal address, and phone numbers) have been provided. Only the corresponding author’s affiliation will be used to determine eligibility for the publishing agreement. </p>
+<ul>
+<li>All files have been uploaded, including artwork, videos, and supplementary materials. Don’t forget to include tables and footnotes in the files, and to submit captions. </li>
+</ul>
+<p>Spelling and grammar checks have been carried out. </p>
+<p>All references in the article text are cited in the reference list, and vice versa. </p>
+<p>Permission has been obtained for the use of any copyrighted material from other sources, including the Web. </p>
+<p>For open access articles, all authors understand that they are responsible for payment of the article publishing charge (APC) if the manuscript is accepted. Payment of the APC may be covered by the corresponding author's institution, or the research funder. </p>
+<p>The format of a software article is very different to a traditional research article. We will only consider software articles that are submitted using SoftwareX's template. You will find both a Word and a LaTeX template immediately below. Choose the one you prefer and fill in each section, without altering any format settings. </p>
+<p>Word templates (please note that figures must be directly embedded in the .docx file): </p>
+<p>Original software publication </p>
+<p>Software update </p>
+<p>LaTeX templates: </p>
+<p>Original software publication </p>
+<p>Software update </p>
+<p>Please note that the following constraints apply: </p>
+<p>Maximum word count: 4000 excluding: title, authors, affiliations, references, metadata tables and including: abstract, running text, captions, footnotes. Maximum six (6) figures. </p>
+<p>To submit your code/software you can: </p>
+<p>Store your code/software in an open-access GitHub repository where it is publicly available. Record the URL needed to retrieve the code in the metadata table found in the required article templates. Please avoid using GitLab or other hosting platforms as this will slow the editorial process of your submission. </p>
+<p>Please make sure that the permanent link to the GitHub repository includes the following requirements: </p>
+<p>a. README.md and LICENSE.txt files. Your README.md file should be well-written, explaining the use, installation, and purpose of your proposed software. Please see other notable and well-cited GitHub repositories (including official GitHub guidance) for a better understanding of code documentation. </p>
+<p>b. Source code in a repo/src directory. </p>
+<p>All software and code must be open source and released under a recognized legal license such as those listed below and by the Open Source Initiative. Any licenses which are not listed below need to be approved by the Journal's Editorial Office. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>20/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>Any additional material that you consider relevant to your submission can be uploaded and submitted either as "Supplementary Material" or "Supplementary data". </p>
+<p>The submission website for SoftwareX is located at: https://www.editorialmanager.com/softx. You may need to establish a new user account, and later can consolidate it with any prior Elsevier user accounts. </p>
+<p>If you are submitting an unpublished code/software for the first time, it is important that you select "Original Software Publication" when you reach the "Article Type" step in the submission process. If you are submitting an update to a code or software previously published on SoftwareX, please choose "Software Update" as "Article Type". </p>
+<p>Uploading your manuscript in EM </p>
+<p>Microsoft Word submission: </p>
+<p>a. Use the template to create your manuscript. </p>
+<p>b. Upload directly the .docx file of your manuscript on Editorial Manager in the field "*Manuscript (Word or PDF file)". </p>
+<p>LaTeX submission: </p>
+<p>a. Use the template to create your manuscript. </p>
+<p>b. Upload the PDF file of your manuscript in the field "*Manuscript (Word or PDF file)" and provide the complete set of source files (.tex, figures, bibliography) as a .zip archive in the field "Zip file containing LaTeX source files". </p>
+<p>c. Should you need any additional style file for compilation, please visit our LaTeX instructions page or contact us via email. </p>
+<p>For any questions or comments, please contact us at: softwarex@elsevier.com. </p>
+<p>We look forward to receiving your submission and thank you for your contribution. </p>
+<h3 id="submit-online"><strong>Submit online</strong><a class="headerlink" href="#submit-online" title="Permanent link">&para;</a></h3>
+<p>Our online submission system guides you through the process steps of entering your manuscript details and uploading your files. The system converts your article files to a single PDF file used in the peer-review process. </p>
+<p>Editable files (e.g., Word, LaTeX) are required to typeset your article for final publication. All correspondence, including notification of the editor's decision and requests for revision, is sent by email. </p>
+<p>Please follow this link to submit your paper. </p>
+<h2 id="after-receiving-a-final-decision_1"><strong>After receiving a final decision</strong><a class="headerlink" href="#after-receiving-a-final-decision_1" title="Permanent link">&para;</a></h2>
+<h3 id="article-transfer-service"><strong>Article Transfer Service</strong><a class="headerlink" href="#article-transfer-service" title="Permanent link">&para;</a></h3>
+<p>If your manuscript is more suitable for an alternative journal published by Elsevier, you may receive an email asking you to consider transferring your manuscript via Elsevier's Article Transfer Service. </p>
+<p>The recommendation could come from the journal editor, a dedicated in-house scientific managing editor, a tool-assisted recommendation or a combination. </p>
+<p>If you agree with the recommendation, your manuscript will be transferred and independently reviewed by the editors of the new journal. You will have the opportunity to make revisions, if necessary, before the submission is complete at the destination journal. </p>
+<h3 id="publishing-agreement"><strong>Publishing agreement</strong><a class="headerlink" href="#publishing-agreement" title="Permanent link">&para;</a></h3>
+<p>Authors will be asked to complete a publishing agreement after acceptance. The corresponding author will receive a link to the online agreement by email. We advise you to read Elsevier's policies related to copyright to learn more about our copyright policies and your, and your employer’s/institution’s, additional rights for subscription and open access articles. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>21/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<h3 id="license-options"><strong>License options</strong><a class="headerlink" href="#license-options" title="Permanent link">&para;</a></h3>
+<p>Authors will be offered open access user license options which will determine how you, and third parties, can reuse your open access article. We advise that you review these options and any funding body license requirements before selecting a license option. </p>
+<h3 id="open-access_1"><strong>Open access</strong><a class="headerlink" href="#open-access_1" title="Permanent link">&para;</a></h3>
+<p>We refer you to our open access information page to learn about open access options for this journal. </p>
+<h3 id="permission-for-copyrighted-works"><strong>Permission for copyrighted works</strong><a class="headerlink" href="#permission-for-copyrighted-works" title="Permanent link">&para;</a></h3>
+<p>If excerpts from other copyrighted works are included in your article, you must obtain written permission from the copyright owners and credit the source(s) within your article using Elsevier's permission request and license form. </p>
+<h3 id="proof-correction"><strong>Proof correction</strong><a class="headerlink" href="#proof-correction" title="Permanent link">&para;</a></h3>
+<p>To ensure a fast publication process we will ask you to provide proof corrections within two days. </p>
+<p>Corresponding authors will be sent an email which includes a link to our online proofing system, allowing annotation and correction of proofs online. The environment is similar to Word. You can edit text, comment on figures and tables and answer questions raised by our copy editor. Our web-based proofing service ensures a faster and less error-prone process. </p>
+<p>You can choose to annotate and upload your edits on the PDF version of your article, if preferred. We will provide you with proofing instructions and available alternative proofing methods in our email. </p>
+<p>Alt text for images and captions or audio descriptions for videos may have been added to improve accessibility. These have been independently provided by Elsevier and generated with the aid of AI, please check these in your proofs. You can find more information in this alt text guide and Elsevier's page about improving accessibility. </p>
+<p>The purpose of the proof is to check the typesetting, editing, completeness and correctness of your article text, tables and figures. Significant changes to your article at the proofing stage will only be considered with approval of the journal editor. </p>
+<h3 id="doi-link"><strong>DOI link</strong><a class="headerlink" href="#doi-link" title="Permanent link">&para;</a></h3>
+<p>A Digital Object Identifier (DOI) link to the published version of your open access article on ScienceDirect will be sent by email to the corresponding author. You can share the DOI link via email and within your social networks. </p>
+<h3 id="responsible-sharing"><strong>Responsible sharing</strong><a class="headerlink" href="#responsible-sharing" title="Permanent link">&para;</a></h3>
+<p>We encourage you to share and promote your article to give additional visibility to your work, enabling your paper to contribute to scientific progress and foster the exchange of scientific developments within your field. Read more about how to responsibly share and promote your article. </p>
+<h2 id="resources-for-authors_1"><strong>Resources for authors</strong><a class="headerlink" href="#resources-for-authors_1" title="Permanent link">&para;</a></h2>
+<h3 id="elsevier-researcher-academy"><strong>Elsevier Researcher Academy</strong><a class="headerlink" href="#elsevier-researcher-academy" title="Permanent link">&para;</a></h3>
+<p>If you would like help to improve your submission or navigate the publication process, support is available via Elsevier Researcher Academy. </p>
+<p>Elsevier Researcher Academy offers free e-learning modules, webinars, downloadable guides and research writing and peer review process resources. </p>
+<h3 id="language-and-editing-services"><strong>Language and editing services</strong><a class="headerlink" href="#language-and-editing-services" title="Permanent link">&para;</a></h3>
+<p>We recommend that you write in American or British English but not a combination of both. </p>
+<p>If you feel the English language in your manuscript requires editing to eliminate possible grammatical or spelling errors and to conform to correct scientific English, you may wish to use the English Language Editing service provided by Elsevier’s Author Services. </p>
+<h2 id="getting-help-and-support_1"><strong>Getting help and support</strong><a class="headerlink" href="#getting-help-and-support_1" title="Permanent link">&para;</a></h2>
+<h3 id="author-support"><strong>Author support</strong><a class="headerlink" href="#author-support" title="Permanent link">&para;</a></h3>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>22/23 </p>
+<p>28/07/2026, 11:15 </p>
+<p>Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier </p>
+<p>We recommend that you visit our Journal Article Publishing Support Center if you have questions about the editorial process or require technical support for your submission. Some useful links: </p>
+<p>Five pre-submission tips </p>
+<p>How can I track the status of my submitted article? </p>
+<p>When will my article be published? </p>
+<p>All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply. </p>
+<p>https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors </p>
+<p>23/23 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

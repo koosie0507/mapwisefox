@@ -1,0 +1,2422 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "PyblioNet – Software for the creation, visualization and analysis of bibliometric networks"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                58,
+                206,
+                742,
+                248
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/2dd87ae1ff9942b13090d029860bf5248872f7bbe1ad61be466e8f4247ec2a92.jpg"
+                },
+                "content": "",
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                838,
+                184,
+                889,
+                221
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Matthias Müller"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                263,
+                191,
+                278
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "University of Hohenheim, Stuttgart, Germany"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                287,
+                268,
+                300
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A R T I C L E I N F O"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                327,
+                194,
+                340
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Network Bibliometrics Science mapping Scopus Python"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                351,
+                146,
+                419
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A B S T R A C T"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                334,
+                327,
+                436,
+                341
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "PyblioNet is a software tool for the creation, visualization and analysis of bibliometric networks. It combines a Python-based data collection tool that accesses the Scopus database with a browser-based visualization and analysis tool. It allows users to create networks of publication data based on joint authorship, citations, cocitations, bibliographic coupling, and shared keywords. The overall goal of PyblioNet is to provide valuable insight and context when conducting research, to help users identify areas for further investigation, and to support the development of a robust research framework."
+                    }
+                ]
+            },
+            "bbox": [
+                332,
+                351,
+                939,
+                427
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Metadata"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                78,
+                462,
+                139,
+                475
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/e1a88bbaf5215aec190d20b4396a503ec52d540a55517f9dc73154a387222e9d.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td>Nr</td><td>Code metadata description</td><td>Please fill in this column</td></tr><tr><td>C1</td><td>Current code version</td><td>V0.8</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/Mat-Mueller/PyblioNet</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td></td></tr><tr><td>C4</td><td>Legal code license</td><td>MIT license</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>git</td></tr><tr><td>C6</td><td>Software code languages, tools and services used</td><td>python, html, javascript</td></tr><tr><td>C7</td><td>Compilation requirements, operating environments and dependencies</td><td>Pybliometrics 3.4.0, NetworkX 2.7.1, VisJs 9.1.6, Python 3.10</td></tr><tr><td>C8</td><td>If available, link to developer documentation/manual</td><td></td></tr><tr><td>C9</td><td>Support email for questions</td><td>m_mueller@uni-hohenheim.de</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                476,
+                484,
+                633
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                675,
+                263,
+                689
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In recent years, the field of bibliometrics has gained considerable momentum in the research community [1]. Within the field of bibliometrics, scientific mapping is a method of visualizing and analyzing scientific research to identify the structure and dynamics of a field of study [2,3]. It uses the information in bibliometric data to determine the relatedness between publications based on for example shared authors, direct citation, bibliographic coupling, co-citation, or shared keywords."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                702,
+                487,
+                795
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The general process of scientific mapping includes the two main steps of (1) data-collection (and pre-processing) and (2) visualization and analysis [4,5]. The goal of PyblioNet is to support researchers when performing bibliometric analyses, scoping reviews or in their daily literature searches etc. by combining a Scopus data collection and pre-processing tool with a user-friendly and intuitive analysis and visualization tool. PyblioNet builds on the Python libraries Pybliometrics [6] and NetworkX [7], as well as the Javascript library vis.js [8], and can download publication data directly from the Scopus database via Scopus APIs and visualize/analyze the resulting network using a browser-based tool."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                795,
+                487,
+                836
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                462,
+                939,
+                568
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The three main advantages of PyblioNet in contrast to existing software capable of using Scopus data (e.g. Bibliometrix [9] Bibexcel [10], VOSviewer [11], Litstudy [12], CiteSpace [13], or SciMAT [14], see also [4,15] for detailed overviews of bibliometric software) are: (i) the ability to work with unique Scopus identifiers for authors and documents, which avoids the need for complex data cleaning and manual assignment [16,17], (ii) the possibility to collect further information on citing documents, e.g. to determine co-citation relationships, and (iii) the ability to include references and citing documents in the analysis and visualization, e.g. to scope for relevant literature."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                568,
+                939,
+                699
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "More specifically, the main functions of PyblioNet include:"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                699,
+                887,
+                713
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- literature searches based on Scopus advanced query strings"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                726,
+                890,
+                738
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- calculation of publication networks based on shared authors, citation, bibliographic coupling, co-citation and shared keywords"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                740,
+                937,
+                766
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- network manipulation and export of network data"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                766,
+                836,
+                778
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- filtering of network nodes and links (by node type, publication date, degree centrality, network level or link weight)"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                779,
+                937,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- visualization and analysis tools (e.g. searching for specific nodes, resizing or recoloring nodes, force-directed or hierarchical layout)"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                805,
+                937,
+                832
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "2352-7110/© 2023 The Author. Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                911,
+                932,
+                924
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Received 31 July 2023; Received in revised form 11 October 2023; Accepted 15 October 2023"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                887,
+                578,
+                901
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 24 (2023) 101565"
+                    }
+                ]
+            },
+            "bbox": [
+                416,
+                42,
+                579,
+                56
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                58,
+                75,
+                161,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                445,
+                105,
+                557,
+                124
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                379,
+                75,
+                621,
+                89
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ELSEVIER"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                145,
+                161,
+                162
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                337,
+                145,
+                663,
+                160
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "国SoftwareXmon"
+                    }
+                ]
+            },
+            "bbox": [
+                838,
+                66,
+                937,
+                160
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "E-mail address: m_mueller@uni-hohenheim.de."
+                    }
+                ]
+            },
+            "bbox": [
+                77,
+                854,
+                332,
+                868
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2023.101565"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                877,
+                309,
+                889
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/ce545311d5388b8cc56f3c200a98c63cf46334e74b2fd714cb5c647c9b71ff74.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. UML Activity diagram of the Python data collection too"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                72,
+                69,
+                470,
+                627
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- direct user interaction (e.g. manual repositioning of nodes, node popups with publication’s abstract, access to the full text of a publication via its DOI)"
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                667,
+                485,
+                706
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to use PyblioNet, users need access to the Scopus database and a valid Scopus API key which needs to be entered upon first usage. After that, the user can start entering Scopus advanced search query strings. After downloading publication data, an HTML file is generated that can be opened in a browser and contains all necessary data and visualization/analysis tools."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                718,
+                487,
+                798
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Software description"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                810,
+                216,
+                825
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. CLI data collection"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                838,
+                201,
+                851
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "PyblioNet consists of two main components. The first component is a Python-based data collection script which is built around the Pybliometrics library [6] to download publication data from the Scopus database via using Scopus Abstract Retrieval API and Search API (Fig. 1)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                863,
+                487,
+                930
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Users can use PyblioNet by executing a Python script, which requires the installation of the libraries such as Pybliometrics [6], NetworkX [7], etc. Alternatively, users can run the exe file, which includes all necessary libraries. For the first use, users need to enter a valid Scopus API key in order to access the database via Pybliometrics.<sup>1</sup> After that, users can start by entering Scopus advanced search query strings.<sup>2</sup> PyblioNet will display how many publications were found using the search query and ask the user if they want to continue. If so, the user can continue with a standard setting, or with an advanced mode where the user can decide on the following settings:"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                66,
+                939,
+                199
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Minimum citation count: exclude search results based on their cita tions. (default: 0)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                211,
+                937,
+                237
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Use cached data if possible: download publication data even if it is data cached on your computer. (default: yes)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                238,
+                939,
+                263
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Download information about citing papers: downloading informa tion on publications citing the search results is necessary for co citation analysis but takes additional time. (default: yes)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                264,
+                939,
+                303
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Create extra nodes for references and citing papers: creating extra nodes for references and citing papers can result in huge networks that may be too large to visualize. If the user chooses “later”, PiblioNet will ask for a minimum occurrence of extra nodes for references and citing papers. (default: yes)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                303,
+                939,
+                369
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Download abstracts: downloading abstracts for search results increases the size of the html file and takes additional time. (default: yes)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                369,
+                939,
+                408
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Minimum weight for bibliographic coupling: include bibliographic coupling links between publications only if there are at least x shared references (reduces network size). (default: 1)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                409,
+                939,
+                448
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Minimum weight for co-citation: include co-citation links between publications only if there are at least x shared citing publications (reduces network size). (default: 1)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                448,
+                939,
+                486
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Minimum weight for shared keywords: include shared keyword link between publications only if there are at least x shared keywords (reduces network size). (default: 1)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                488,
+                939,
+                527
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Create Gephi file: Creates an additional .gexf file of the network [18] which can be opened in Gephi. (default: no)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                527,
+                937,
+                554
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "More specifically, PyblioNet first downloads information on the initial set of publications via Pybliometrics [6], which accesses the Scopus search API using Scopus advanced search query strings. In a second step, further information on references of the main search results are collected using the Abstract Retrieval API (“FULL” and “REF” view). Finally, citing publications are collected for each main search result via the Scopus Search API again. The publication data is then used to create network data using NetworkX [7] where each publication is represented as a node and relationships between nodes are visualized via links connecting nodes. PyblioNet covers five methods to determine network relationships:"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                566,
+                939,
+                712
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Shared authorship: nodes are connected if they share one or more authors (using Scopus author IDs)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                725,
+                939,
+                751
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Citation: nodes are connected (via a directed link) if one cites the other (using Scopus EIDs)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                751,
+                939,
+                776
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Bibliographic Coupling: nodes are connected if they share one or more references (using Scopus EIDs; only for Scopus main results)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                778,
+                939,
+                804
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Co-citation: nodes are connected if they share one or more citing papers (using Scopus EIDs; only for Scopus main results)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                804,
+                939,
+                829
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "- Shared keywords: nodes are connected if they share one or more keywords (using author keywords; only for Scopus main results)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                831,
+                939,
+                858
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M. Müller"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 24 (2023) 101565"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>1</sup> See also https://pybliometrics.readthedocs.io/en/stable/access.html on how to access the Scopus database."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                899,
+                939,
+                924
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>2</sup> See also https://www.scopus.com/search/form.uri?display=advanced."
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                924,
+                915,
+                936
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                950,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/7289705228ad9aba5ecd158b8e3add6475338f441b9529e31b7657f637bc20f6.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Example of a citation network of 173 main search results."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                105,
+                68,
+                890,
+                336
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Finally, a HTML file is created that contains both the network data and the analysis and visualization tools."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                375,
+                487,
+                402
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. Browser analysis and visualization tool"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                422,
+                315,
+                435
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The second component is a HTML / JavaScript analysis and visualization tool building on the VisJs [8] package. The visualization and analysis tool is designed as a browser-based graphical interface that provides a user-friendly and intuitive way to navigate through complex publication data."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                448,
+                487,
+                515
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "PyblioNet also allows for different filtering and visualization methods. First, users can choose to display only publication data from the main search results or also citing and cited publications. Further filtering of nodes can be done based on publication date, or the current degree centrality. Link filtering allows users to easily switch between the five network levels authorship, citation, bibliographic coupling, cocitation or shared keywords [5,19–21]. In the case of bibliographic coupling, co-citation and keyword relationships, links can additionally be filtered by their weight (representing the number of commonly cited or citing literature or keywords)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                515,
+                487,
+                646
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "For visualization, users can enter search queries to highlight nodes where e.g. the search query “agent based and network” will highlight nodes that mention “agent based” and “network” in their keywords, title or abstract. Resizing nodes can be done based on nodes` current degree centrality (and in case of citation networks also based on their in-degree or out-degree) or number of citations. Recoloring of nodes can be done to identify cluster structures within large and dense networks using a Louvain community detection algorithm [21] as implemented by [22], or based on common journals (node colors are also used to identify clusters that are analyzed in more detail using the “Show information” button). The default visualization of nodes is based on a force-directed layout algorithm placing well-connected nodes in the center of the network and less well-connected nodes at the periphery [23]. Users can also choose to use a hierarchical layout where the y-coordinate of nodes in the canvas is based on the publication year, hereby positioning older publications at the top and newer ones at the bottom (in case of a citation network, for example, the hierarchical layout shows the cumulative nature of a research field). By changing the spring length users can define the distance between nodes and the nodes size defines the size of the nodes visualized."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                646,
+                487,
+                910
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Finally, the “Show information” button opens a new window showing the number of nodes and edges as well as the most frequent keywords and journals. If users have previously colored nodes (based on the Louvain algorithm or common journals), additional information for the communities is displayed. Additionally, users can delete selected nodes (for selecting multiple nodes, press and hold Ctrl), export the current set of nodes in a Gephi compatible format [18], or display additional navigation buttons."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                910,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                375,
+                939,
+                453
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "PyblioNet also allows for direct user interaction such as repositioning nodes manually via drag-and-drop, hovering over nodes to get more information such as abstract, keywords etc. as well as highlighting nodes and their direct peers by clicking on a node e.g. to identify related literature. To quickly access the publication directly from the publisher, double-clicking on a node opens a new tab using the publication’s DOI or, if not available, opens google scholar with the publication’s title as a search query."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                453,
+                939,
+                559
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Illustrative examples"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                573,
+                672,
+                586
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.1. Literature search"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                598,
+                642,
+                612
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, we illustrate how users can use PyblioNet. A first use case of PyblioNet consists of performing literature searches in order to find, scan and evaluate relevant academic and scholarly articles or books to gather information on a specific topic. To illustrate this, we use the following example search query:"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                625,
+                939,
+                691
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "TITLE-ABS-KEY((\"innovation diffusion\" OR \"diffusion of innovation\") AND (agent-based OR multi-agent)) AND DOCTYPE(ar) aiming at finding relevant published articles within the field of innovation diffusion and applying the method of agent-based modelling. The search query results in 173 search results and in sum, these articles use 6342 references and are being cited by 1179 publications. After removing duplicates (e.g. two or more documents use the same reference) a network of 173 main documents, 4751 references and 967 citing papers is created (see also Fig. 2)."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                691,
+                939,
+                810
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "After opening the network in a browser, users can scan for relevant literature for example, by starting with well-connected or highly cited nodes. After identifying an interesting publication, the five different network levels allow for scanning nodes’ peers (so called snowballing [24]) to identify additional relevant publications. As PyblioNet downloads and visualizes also cited and citing literature, the snowballing, however, is not limited to the initial list of results but may contain further relevant publications not included in the initial search results."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                810,
+                939,
+                916
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M. Müller"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 24 (2023) 101565"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "citation network"
+                    }
+                ]
+            },
+            "bbox": [
+                112,
+                76,
+                455,
+                337
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/a3cfb5ac5a18744d6d76664bfb4bcbc050e593a3657b7509d16ec7995e387402.jpg"
+                },
+                "content": "",
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                110,
+                63,
+                882,
+                617
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                114,
+                365,
+                453,
+                612
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. Example of articles published in SoftwareX."
+                    }
+                ]
+            },
+            "bbox": [
+                356,
+                624,
+                640,
+                638
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2. Science mapping"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                653,
+                189,
+                665
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A second use case addresses research questions within the broad field of bibliographic analysis and science mapping. For this we chose the example of published articles within the journal ‘SoftwareX’, obtained via the search query “ISSN(23527110)” which resulted in 984 articles using 24.422 references and 17.961 citing papers. Fig. 3 presents the resulting networks for the citation, co-citation and keyword analysis a well as bibliographic coupling."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                678,
+                487,
+                771
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The citation and co-citation analysis of articles published in SoftwareX show only sparsely connected networks where the majority of nodes remain isolated. This indicates that articles published in the journal neither recognize related articles nor are considered together by articles outside the journal. The bibliographic coupling and keyword analysis, however, indicate a strong common basis and a (perceived) thematical relatedness. A further analysis of the corresponding keywords of the communities in the bibliographic coupling network shows the following information for the two biggest communities."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                771,
+                487,
+                891
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cluster: 1. with 177 nodes. Keywords: ‘python’:39, ’machine learning’:19, ’deep learning’:11, ’image processing’:7, ’gravitational waves’:6, ’time series’:5, ’optimization’:5, ’computer vision’:5, ’image analysis’:4, ’data analysis’:4, ’software’:4, ’open-source software’:3, ’tensorflow’:3, ’pytorch’:3, ’feature extraction’:3"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                896,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                509,
+                651,
+                937,
+                679
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cluster: 3. with 138 nodes. Keywords: ‘python’:12, ’openfoam’:7, ’c++’:5, ’visualization’:5, ’computational fluid dynamics’:4, ’data analysis’:4, ’high performance computing’:4, ’high-performance computing’:4, ’simulation’:4, ’finite element method’:4, ’cfd’:4, ’permeability’:3, ’finite volume method’:3, ’finite elements’:3, ’gpu’:3, ’multiphysics’:3, ’android’:3, ’numerical simulations’:3, ’library’:3, ’turbulence’:3, ’parallel’:3"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                691,
+                939,
+                785
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Finally, analyzing common references connecting articles at the bibliographic coupling level can be done by switching to a citation perspective and including references made by the articles. In Fig. 4 we see the resulting network where important references are highlighted via scaling the node size based on the in-degree of nodes."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                790,
+                939,
+                858
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                871,
+                583,
+                883
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "PyblioNet complements the existing set of software designed to help researchers to perform bibliometric analysis and literature search. It offers a range of useful features that can change how researchers, educators, or institutions engage with bibliometric analysis, literature reviews, and knowledge exploration. By combining data collection and preprocessing with user-friendly visualization and analysis tools, PyblioNet provides a comprehensive platform for gaining deeper insights into the intricate web of scientific knowledge."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                897,
+                939,
+                938
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M. Müller"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 24 (2023) 101565"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/bb1731136961693f1acae22ba6ca4f9c0bedc882559b7b8c6bb885d430bc94b6.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. citation network including information on referenced publications."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                159,
+                69,
+                840,
+                569
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                607,
+                487,
+                674
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "One of PyblioNet s standout features is its seamless integration with unique Scopus identifiers for authors and documents. This eliminates the need for time-consuming and error-prone manual data cleaning and assignment, resulting in more accurate and reliable bibliometric analyses and allows accessing and incorporating information on citing documents, and thus, co-citation relationships. The potential use cases are widespread and range from identifying gaps in existing research, developing research frameworks, identification of key authors and works, or synthesizing information."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                674,
+                487,
+                793
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Requirements for using PyblioNet is a valid Scopus API key as well as access to the Scopus API. The Python module exists also as standalone exe file and the visualization and analysis requires only a browser. A main disadvantage of PyblioNet against other software which uses data obtained directly from the Scopus homepage is speed and downloading all information for set of 100 main search results takes up to 15 minutes and more depending on the internet connections."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                793,
+                487,
+                886
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                607,
+                613,
+                621
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this paper, we presented PyblioNet, a software suite designed to support researchers in bibliometric analysis, scoping reviews, and daily literature searches. PyblioNet is a valuable addition to the bibliometrics field, providing researchers with an efficient and versatile tool for bibliometric analysis, literature searches, and science mapping. By streamlining data collection and offering extensive analysis and visualization capabilities, PyblioNet contributes to a deeper understanding of scholarly interactions and knowledge dissemination, fostering informed decision-making and advancing research in diverse domains."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                634,
+                939,
+                754
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of Competing Interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                776,
+                734,
+                789
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                802,
+                939,
+                843
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgments"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                857,
+                633,
+                871
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "I gratefully acknowledge the support by the members of the computational science hub (CSH) of the university of Hohenheim. In particular, I want to thank Konstantin Kuck, Daniela Bendel and Martin Müller for their help."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                883,
+                939,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M. Müller"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 24 (2023) 101565"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                953,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                66,
+                134,
+                78
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Donthu N, Kumar S, Mukherjee D, Pandey N, Lim WM. How to conduct a bibliometric analysis: an overview and guidelines. J Bus Res 2021;133:285–96. https://doi.org/10.1016/j.jbusres.2021.04.070."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                90,
+                470,
+                121
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Small H. Visualizing science by citation mapping. J Am Soc Inf Sci 1999;50(9): 799–813. 10.1002/(SICI)1097-4571(1999)50:9<799AID-ASI9>3.0.CO;2-G."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                121,
+                470,
+                141
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] Chen C. Science mapping: a systematic review of the literature. J Data Inf Sci 2017; 2(2):1–40. https://doi.org/10.1515/jdis-2017-0006."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                141,
+                482,
+                161
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Moral-Munoz ˜ JA, Herrera-Viedma E, Santisteban-Espejo A, Cobo MJ. Software tools for conducting bibliometric analysis in science: an up-to-date review. EPI 2020;29(1). https://doi.org/10.3145/epi.2020.ene.03."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                161,
+                470,
+                191
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Zupic I, Cater ˇ T. Bibliometric methods in management and organization. Organ Res Methods 2015;18(3):429–72. https://doi.org/10.1177/1094428114562629"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                191,
+                480,
+                211
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] Rose ME, pybliometrics KJR. Scriptable bibliometrics using a python interface to Scopus. SoftwareX 2019;10:100263. https://doi.org/10.1016/j. softx.2019.100263."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                211,
+                478,
+                240
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Hagberg AA, Schult DA, Swart PJ, Varoquaux G, Vaught T, Millman J. Exploring network structure, dynamics, and function using NetworkX. editors. In: Proceedings of the 7th Python in Science Conference; 2008. p. 11 5."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                242,
+                480,
+                269
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] vis.js community. vis.js, 2023. URL: https://visjs.org."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                272,
+                347,
+                282
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Aria M, Cuccurullo C. bibliometrix An R-tool for comprehensive science mapping analysis. J Informetr 2017;11(4):959–75. https://doi.org/10.1016/j. joi.2017.08.007."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                282,
+                480,
+                311
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Persson O, Danell R, Wiborg-Schneider J. How to use Bibexcel for various types of bibliometric analysis. Celebrating scholarly communications studies: A festschrift for Olle Persson at his 60th birthday 2009:9 24. https://portal.research.lu.se/ws files/5902071/1458992.pdf."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                312,
+                482,
+                351
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] van Eck NJ, Waltman L. Software survey: VOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38. https://doi.org/ 10.1007/s11192-009-0146-3."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                351,
+                468,
+                380
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] Heldens S, Sclocco A, Dreuning H, van Werkhoven B, Hijma P, Maassen J, et al. litstudy: a Python package for literature reviews. SoftwareX 2022;20:101207. https://doi.org/10.1016/j.softx.2022.101207."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                382,
+                475,
+                411
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Chen C, CiteSpace II. Detecting and visualizing emerging trends and transient patterns in scientific literature. J Am Soc Inf Sci Technol 2006;57(3):359–77. https://doi.org/10.1002/asi.20317."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                66,
+                915,
+                95
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Cobo MJ, Lopez-Herrera ´ AG, Herrera-Viedma E, Herrera F. SciMAT: A new science mapping analysis software tool. J Am Soc Inf Sci Tec 2012;63(8):1609–30. https:/ doi.org/10.1002/asi.22688."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                97,
+                934,
+                126
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] Cobo MJ, Lopez-Herrera ´ AG, Herrera-Viedma E, Herrera F. Science mapping software tools: Review, analysis, and cooperative study among tools. J Am Soc Inf Sci Tec 2011;62(7):1382–402. https://doi.org/10.1002/asi.21525."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                127,
+                934,
+                156
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Strotmann A, Zhao D. Author name disambiguation: What difference does it make in author-based citation analysis? J Am Soc Inf Sci Tec 2012;63(9):1820 33 https://doi.org/10.1002/asi.22695."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                157,
+                934,
+                186
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Baas J, Schotten M, Plume A, Cot ˆ ´e G, Karimi R. Scopus as a curated, high-quality bibliometric data source for academic research in quantitative science studies. Quant Sci Stud 2020;1(1):377–86. https://doi.org/10.1162/qss_a_00019."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                187,
+                932,
+                216
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] Bastian M, Heymann S, Jacomy M. Gephi: an open source software for exploring and manipulating networks. ICWSM 2009;3(1):361–2. https://doi.org/10.1609/ icwsm.v3i1.13937."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                216,
+                931,
+                245
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Chang YW, Huang MH, Lin CW. Evolution of research subjects in library and information science based on keyword, bibliographical coupling, and co-citation analyses. Scientometrics 2015;105(3):2071–87. https://doi.org/10.1007/s11192- 015-1762-8."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                248,
+                931,
+                287
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[20] Boyack KW, Klavans R. Co-citation analysis, bibliographic coupling, and direct citation: Which citation approach represents the research front most accurately? J Am Soc Inf Sci Tec 2010;61(12):2389–404. https://doi.org/10.1002/asi.21419."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                287,
+                931,
+                317
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[21] Blondel VD, Guillaume JL, Lambiotte R, Lefebvre E. Fast unfolding of communities in large networks. J Stat Mech 2008;(10):P10008. https://doi.org/10.1088/1742- 5468/2008/10/P10008. 2008"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                317,
+                934,
+                346
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[22] Corneliu S., Louvain community detection for Javascript, 2020, [online] Available: https://github.com/upphiminn/jLouvain."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                348,
+                932,
+                368
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[23] Jacomy M, Venturini T, Heymann S, Bastian M. ForceAtlas2, a continuous graph layout algorithm for handy network visualization designed for the Gephi software. PLoS One 2014;9(6):e98679. https://doi.org/10.1371/journal.pone.0098679."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                368,
+                932,
+                398
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[24] Wohlin C, Runeson P, Neto PMS, Engstrom ¨ E, I CM, de Almeida ES. On the reliability of mapping studies in software engineering. J Syst Softw 2013;86(10): 2594–610. https://doi.org/10.1016/j.jss.2013.04.076."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                399,
+                931,
+                428
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M. Müller"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 24 (2023) 101565"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                52
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ]
+]

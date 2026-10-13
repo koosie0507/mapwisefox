@@ -1,0 +1,2103 @@
+[
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Original software publication"
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                181,
+                297,
+                197
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "pybliometrics: Scriptable bibliometrics using a Python interface to Scopus"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                65,
+                204,
+                816,
+                248
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/cca3f5daf7f811aa33b45f03e1b6bde778984944523651f6e736350a24cf11c4.jpg"
+                },
+                "content": "",
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                840,
+                206,
+                892,
+                244
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Michael E. Rose <sup>a,∗</sup>, John R. Kitchin <sup>b</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                255,
+                369,
+                273
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>a</sup> Max Planck Institute for Innovation and Competition, Germany"
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                276,
+                401,
+                288
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>b</sup> Carnegie Mellon University, Department of Chemical Engineering, United States"
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                287,
+                482,
+                300
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "a r t i c l e i n f o"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                65,
+                322,
+                231,
+                336
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Article history: Received 19 March 2019 Received in revised form 19 June 2019 Accepted 19 June 2019"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                350,
+                275,
+                395
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Scopus Software Python Bibliometrics Scientometrics"
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                402,
+                149,
+                469
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "a b s t r a c t"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                339,
+                322,
+                458,
+                337
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We present a wrapper for the Scopus RESTful API written for Python 3. The wrapper allows users to access the Scopus database via user-friendly interfaces and can be used without prior knowledge of RESTful APIs. The package provides classes to interact with different Scopus APIs to retrieve information as diverse as citation counts, author information or document abstracts. Files are cached to speed up subsequent analysis. The package addresses all users of Scopus data, such as researchers working in Science of Science or evaluators. It facilitates reproducibility of research projects and enhances data integrity for researchers using Scopus data."
+                    }
+                ]
+            },
+            "bbox": [
+                337,
+                349,
+                947,
+                435
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "© 2019 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                376,
+                433,
+                947,
+                461
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Code metadata"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                67,
+                532,
+                169,
+                546
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/7de45ff374d373c229193156594cee95ac6f1a11c094632d328b96a101357664.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td>Current code version</td><td>2.1</td></tr><tr><td>Permanent link to code/repository used for this code version</td><td>https://github.com/ElsevierSoftwareX/SOFTX_2019_55</td></tr><tr><td>Legal Code License</td><td>MIT License</td></tr><tr><td>Code versioning system used</td><td>git</td></tr><tr><td>Software code languages, tools, and services used</td><td>python</td></tr><tr><td>Compilation requirements, operating environments &amp; dependencies</td><td>requests, pbr</td></tr><tr><td>If available Link to developer documentation/manual</td><td>https://pybliometrics.readthedocs.io/en/stable/</td></tr><tr><td>Support email for questions</td><td>Michael.Rose@ip.mpg.de</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                78,
+                554,
+                934,
+                646
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                67,
+                679,
+                280,
+                694
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Scopus is one of the citations, bibliometrics and abstracts databases that have become standard in the field of scientometrics and bibliometrics [1–4]. A search on Google Scholar in January 2019 for ‘‘Scopus’’ returned about 1,990,000 results, about 24,200 of which date from 2018 alone. For example, a number of recent studies in the field of Economics of Science exemplify the importance of Scopus [5–11]."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                704,
+                495,
+                798
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To ease the use of the Scopus data, we develop pybliometrics, a Python package to access the RESTful APIs that Scopus provides. The alternative to our solution is either to download information from Scopus manually, or to use one of the few solutions in languages less prominent than Python. The latter includes solutions in PHP and bash [12], DSpace [13] or JavaScript on Apache [14]. The functionality in Python however puts pybliometrics in the hands of scientists who already use Python (e.g. for data analysis, visualization, etc.). The manual download on the other hand has its own limitations. For example, only 2000 records can be downloaded from a search. Manual work is also error prone while an automated process avoids idiosyncratic errors, is more efficient, allows reproducibility and acts as ‘‘authoritative definition’’ of the final dataset [15]."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                798,
+                495,
+                853
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                515,
+                679,
+                947,
+                832
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "pybliometrics comes with a consistent, simple interface, does not require a server, and can easily be integrated with everything in the data science ecosystem of Python, including visualization tools and Machine Learning."
+                    }
+                ]
+            },
+            "bbox": [
+                515,
+                833,
+                947,
+                894
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 10 (2019) 100263"
+                    }
+                ]
+            },
+            "bbox": [
+                426,
+                41,
+                586,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                68,
+                74,
+                171,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                376,
+                74,
+                638,
+                89
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                70,
+                145,
+                171,
+                161
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                448,
+                107,
+                566,
+                127
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                344,
+                145,
+                670,
+                158
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                842,
+                66,
+                942,
+                158
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2019.100263 2352-7110/© 2019 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                906,
+                922,
+                928
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "∗ Corresponding author. E-mail address: Michael.Rose@ip.mpg.de (M.E. Rose)."
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                867,
+                379,
+                892
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/c760173475ea4d7b5dbdf84cf1a90184d1a7783ab56939348f00ad6cb77b1a89.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Overview of classes in pybliometrics."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Notes: Table lists currently (January 2019) available RESTful APIs of the Scopus database. ‘‘Rest.’’ indicates that the subscriber either needs additional permission from Elsevier for this API (i.e. the used key needs more privileges) or all views of the API are restricted."
+                    }
+                ],
+                "html": "<table><tr><td>API</td><td>Type</td><td>Rest.</td><td>Class in pybliometrics</td><td>Purpose</td></tr><tr><td>Affiliation Search</td><td>Search</td><td></td><td>AffiliationSearch</td><td>Search for affiliation entities</td></tr><tr><td>Author Search</td><td>Search</td><td></td><td>AuthorSearch</td><td>Search for authors</td></tr><tr><td>Scopus Search</td><td>Search</td><td></td><td>ScopusSearch</td><td>Search for documents</td></tr><tr><td>Abstract Retrieval</td><td>Retrieval</td><td></td><td>AbstractRetrieval</td><td>Retrieve information on documents</td></tr><tr><td>Affiliation Retrieval</td><td>Retrieval</td><td></td><td>ContentAffiliation-Retrieval</td><td>Retrieve information on affiliations</td></tr><tr><td>Author Retrieval</td><td>Retrieval</td><td></td><td>AuthorRetrieval</td><td>Retrieve information on authors</td></tr><tr><td>Citations Count Metadata</td><td>Metadata</td><td>x</td><td></td><td>Retrieve document citation counts</td></tr><tr><td>Citations Overview</td><td>Metadata</td><td>x</td><td>CitationsOverview</td><td>Retrieve document citation counts by year</td></tr><tr><td>PlumX Metrics</td><td>Metadata</td><td></td><td></td><td>PlumX metrics (social media mentions) for documents</td></tr><tr><td>Serial Title Metadata</td><td>Metadata</td><td>x</td><td>SerialTitle</td><td>Retrieve information on serial titles</td></tr><tr><td>Subject Classifications</td><td>Metadata</td><td></td><td></td><td>Search for and retrieve Subject Classifications</td></tr><tr><td>Author Feedback</td><td>Other</td><td>x</td><td></td><td>Provide author feedback (i.e. corrections)</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                52,
+                87,
+                927,
+                237
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Software description"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                50,
+                279,
+                216,
+                292
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "pybliometrics builds on the requests package [16] and is available from the Python Project Inventory (PyPI). It can be used cross-platform inside a Python interpreter or in script mode."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                310,
+                478,
+                353
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. Software architecture"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                50,
+                373,
+                218,
+                387
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "pybliometrics implements eight RESTful APIs of the Scopus database (Table 1). These cover the three search APIs (Abstract Search, Author Search, Affiliation Search), the three retrieval APIs (Abstract Retrieval, Affiliation Retrieval, Author Retrieval) and two out of five metadata APIs (Citation Overview API, Serial Title API)."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                404,
+                478,
+                486
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Each class is designed in a consistent way. The required parameter is a search query string (for search classes) or the identifier for Scopus entities (for retrieval and metadata classes) such as authors, documents or affiliations. Only the Citation Overview class requires an additional parameter, namely the start year. Query and retrieval results are cached for subsequent analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                486,
+                480,
+                573
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. pybliometrics.scopus exceptions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                50,
+                592,
+                280,
+                607
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "pybliometrics defines a number of exceptions depending on the type of error received. Though they all inherit from exceptions provided by the requests package, they allow error-specific handling."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                622,
+                478,
+                680
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.3. Configuration"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                50,
+                699,
+                169,
+                715
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A configuration file stores two important pieces of information: the authentication credentials and the paths to cache files. Upon first usage, and if the configuration file does not exist, pybliometrics guides through the process of creating it. The file is stored in a hidden folder named ‘‘.scopus’’ in the user’s home directory (∼/)."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                731,
+                480,
+                817
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4. Software functionality"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                50,
+                836,
+                223,
+                851
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In general, information the user is interested in is stored in properties. Most properties are of object type string or list of namedtuples (e.g. in case multiple results with multiple fields of information are returned). The names of properties are aligned to the field names in the Scopus documentation."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                867,
+                480,
+                938
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/8ee97cec0a353dc365381df30c9146990c9f8a653d58dc8e3b18847808a76756.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. Collaboration network for the SoftwareX journal. Notes: Figure shows a co-author network using publications in the journal SoftwareX until 2019. Each blue dot represents an author. Two authors are connected by an undi rected and unweighted black link. Graph layout according to an adopted Fruchtermann–Reingold algorithm using NetworkX."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                510,
+                278,
+                922,
+                484
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Illustrative examples"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                502,
+                578,
+                668,
+                593
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.1. Automated download of information"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                502,
+                607,
+                764,
+                622
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Often one is only interested in getting a list of publications and the information Scopus provides on them. The following code provides the time necessary to download all publications in the journal Science in 2010."
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                636,
+                931,
+                689
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The total number of results (i.e. the number of publications) equals 2260, which is already more then a manual download allows. Depending on download speed, the time to download the information takes less than 5 min. However, since pybliometrics caches the information, reusing it takes less than second only."
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                689,
+                931,
+                771
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2. Creating a collaboration network"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                500,
+                786,
+                742,
+                802
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A common task in bibliometric analysis is to create a social network of co-authors. The following example uses NetworkX [17] (Version 2.3) to create the co-author network for the SoftwareX journal:"
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                815,
+                931,
+                870
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The resulting graph is depicted in Fig. 1. The network consists of 734 unique authors that appear on 228 papers. The nodes in the graph are connected through 1636 edges. Because we use author profile IDs provided by Scopus, we do not need to disambiguate author names."
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                868,
+                931,
+                938
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                50,
+                42,
+                62,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M.E. Rose and J.R. Kitchin / SoftwareX 10 (2019) 100263"
+                    }
+                ]
+            },
+            "bbox": [
+                342,
+                42,
+                638,
+                55
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Source Code 1: Example code to time the download of retrieving an article list."
+                    }
+                ]
+            },
+            "bbox": [
+                238,
+                81,
+                830,
+                97
+            ]
+        },
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "from datetime import datetime\n\nimport pandas as pd\nfrom pybliometrics.scopus import ScopusSearch\n\n# Download\nstart = datetime.now().replace(microsecond=0)\ns = ScopusSearch(\"ISSN(0036-8075) AND PUBYEAR IS 2010\")\nend = datetime.now().replace(microsecond=0)\nprint(end-start)\n# 0:04:29\nprint(len(s.results))  # Number of papers\n# 2260\n\n# Reusing\nstart = datetime.now().replace(microsecond=0)\ns = ScopusSearch(\"ISSN(0036-8075) AND PUBYEAR IS 2010\")\nend = datetime.now().replace(microsecond=0)\nprint(end-start)\n# 0:00:00"
+                    }
+                ],
+                "code_language": "python"
+            },
+            "bbox": [
+                179,
+                118,
+                831,
+                374
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Source Code 2: Example code to produce a co-author network using scopus."
+                    }
+                ]
+            },
+            "bbox": [
+                236,
+                418,
+                803,
+                433
+            ]
+        },
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "from itertools import combinations\n\nimport networkx as nx  # Version 2.3\nimport matplotlib.pyplot as plt  # Version 3.0.3\nfrom pybliometrics.scopus import ScopusSearch\n\n# Obtain authors\ns = ScopusSearch('SOURCE-ID(21100422153)')\nprint(len(s.results))  # Number of papers\n# 228\nauthors = [i.author_ids.split(';') for i in s.results]\n# Create list of pairwise combinations\ncombs = [list(combinations(i, 2)) for i in authors]\nedges = [i for j in combs for i in j]\n# Create network\nG = nx.Graph()\nG.add_edges_from(edges)\nprint(nx.info(G))\n# Name:\n# Type: Graph\n# Number of nodes: 734\n# Number of edges: 1636\n# Average degree:  4.4578\n# Draw and save network\nnx.draw(G, node_size=2)\nplt.savefig('network.pdf', bbox_inches='tight', figsize=(50, 50))"
+                    }
+                ],
+                "code_language": "python"
+            },
+            "bbox": [
+                198,
+                455,
+                808,
+                781
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.3. Analyzing citation distributions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                65,
+                833,
+                295,
+                848
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Citations to papers are the foundation of many evaluation exercises. The class () provides access to the (restricted) Citation Overview API. The following exercise gathers yearly citation counts for three publications until early 2018 cited in the Nobel decision of Economist Richard H. Thaler. We use pandas [18] (Version 0.24.2) and seaborn [19] (Version 0.9.0)."
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                858,
+                495,
+                939
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Additionally, we perform a two-sided Kolmogorov–Smirnov test for the similarity of citation distributions using scipy [20] (Version 1.2.1)."
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                833,
+                947,
+                877
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The resulting citation distribution for the three papers is shown in Fig. 2. With a p-value "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "< 2 . 9 \\times 1 0 ^ { - 1 6 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", the test rejects the null hypothesis that the citation distributions for the first and the second paper are the same."
+                    }
+                ]
+            },
+            "bbox": [
+                515,
+                878,
+                947,
+                939
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M.E. Rose and J.R. Kitchin / SoftwareX 10 (2019) 100263"
+                    }
+                ]
+            },
+            "bbox": [
+                357,
+                42,
+                655,
+                55
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                934,
+                42,
+                947,
+                52
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Source Code 3: Example code to analyze citation distributions using scopus."
+                    }
+                ]
+            },
+            "bbox": [
+                198,
+                81,
+                766,
+                97
+            ]
+        },
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "import matplotlib.pyplot as plt  # Version 3.0.3\nimport pandas as pd  # Version 0.24.2\nimport scipy  # Version 1.2.1\nimport seaborn as sns  # Version 0.9.0\nfrom pybliometrics.scopus import AbstractRetrieval, CitationOverview\n\n# Save yearly citation counts in DataFrame\ndata = pd.DataFrame()\nfor eid in (\"2-s2.0-84900013243\", \"2-s2.0-84977703147\", \"2-s2.0-84977736029\"):\n    ab = AbstractRetrieval(eid)\n    year = ab.coverDate[:4]  # Year from format YYYY-MM-DD\n    co = CitationOverview(eid, start=year)\n    data = data.append(pd.Series(dict(co.cc), name=ab.title))\n# Prepare data for plotting\ndata = data.T.astype(float)\ndata.index.name = \"year\"\ndata = data.reset_index()\n# Plot and save\nfig, ax = plt.subplots(figsize=(15, 7))\nmelted = data.melt(id_vars=\"year\", var_name=\"paper\", value_name=\"citations\")\nsns.barplot(data=melted, x=\"year\", y=\"citations\", hue=\"paper\", ax=ax)\nplt.savefig(\"citations.pdf\", bbox_inches=\"tight\")\n# KL-similarity of distributions\nscipy.stats.ks_2samp(data.iloc[:,0], data.iloc[:,1])\n# Ks_2sampResult(statistic=1.0, pvalue=2.922351375337816e-16)"
+                    }
+                ],
+                "code_language": "python"
+            },
+            "bbox": [
+                178,
+                123,
+                794,
+                433
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/7b3417885a13edf834caf9d8c9138de321b2dcc69f4b9d81693129afb913d9ad.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Citation distribution for three selected papers. Notes: Figure shows the yearly citation count of three selected papers until early 2018."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                188,
+                467,
+                794,
+                692
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.4. Topic modeling using abstracts"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                50,
+                728,
+                278,
+                742
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A final exercise connects to the emerging field of machine learning and natural language processing. Researchers interested in understanding research topics can use pybliometrics, for instance, to obtain large amounts of scientific abstracts quickly and analyze them with specialized software. In source code 4 we find topics among a corpus of scientific articles using Latent Dirichlet Allocation. We use nltk [21] (Version 3.4.3) and sklearn [22] (Version 0.20.2). We use abstracts of 226 papers published in SoftwareX until June 2019 and assume 3 topics."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                759,
+                480,
+                882
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The first topic covers technical terms used to describe the presented software, the second topic includes terms that present the software while the third topic seems to be about terms authors use to describe what the software can be used for."
+                    }
+                ]
+            },
+            "bbox": [
+                48,
+                883,
+                480,
+                938
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                500,
+                728,
+                574,
+                742
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "pybliometrics has several features that make it optimal for scientists interested in using Scopus data. It is not necessary to understand RESTful APIs or to know how to parse XML or json. The pybliometrics code is open-source. The only requirement is to have some understanding of Python. Due to its availability on PyPI, pybliometrics is widely available."
+                    }
+                ]
+            },
+            "bbox": [
+                500,
+                764,
+                931,
+                851
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Using pybliometrics, scientists working in the field of Science of Science [23] (alternative names include Economics of Science [24] and Sociology of Science) can increase both the reproducibility and exactness of their projects. Reproducibility increases because users obtain data in the same way from the same source and it becomes transparent where the data originates from"
+                    }
+                ]
+            },
+            "bbox": [
+                499,
+                851,
+                932,
+                939
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                50,
+                42,
+                63,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M.E. Rose and J.R. Kitchin / SoftwareX 10 (2019) 100263"
+                    }
+                ]
+            },
+            "bbox": [
+                342,
+                42,
+                638,
+                55
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Source Code 4: Example code for topic modelling with LDA where scopus provides abstracts of published papers."
+                    }
+                ]
+            },
+            "bbox": [
+                176,
+                81,
+                838,
+                112
+            ]
+        },
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "from string import digits, punctuation\n\nimport nltk  # Version 3.4.3\nimport pandas as pd  # Version 0.24.2\nfrom pybliometrics.scopus import ScopusSearch\nfrom sklearn.feature_extraction.text import CountVectorizer as CV\nfrom sklearn.decomposition import LatentDirichletAllocation as LDA\n\n# Obtain abstracts\ns = ScopusSearch('SOURCE-ID(21100422153)')  # Retrieve and cache query results\nabstracts = [i.description for i in s.results if i.description]\nprint(len(abstracts))  # Number of abstracts\n# 226\n# Stem words\nstemmer = nltk.snowball.SnowballStemmer('english')\ndef tokenize_and_stem(text):\n    text = text.translate(str.maketrans({p: \"\" for p in punctuation + digits + \"©atal))\n    return [stemmer.stem(t) for t in nltk.word_tokenize(text.lower())]\n# Vectorize abstracts\nparams = {\"stop_words\": \"english\", \"tokenizer\": tokenize_and_stem, \"ngram_range\": (1, 2),\n        \"max_df\": 0.6}\nvectorizer = CV(**params)\nmatrix = vectorizer.fit_transform(abstracts)\nterms = vectorizer.get_feature_names()\nprint(len(terms))  # Number of terms\n# 17536\n# Perform LDA\nlda = LDA(n_components=3).fit(matrix)\n# Print ten most important terms per topic\nfor topic in lda.components_:\n    text = \", \".join(terms[i] for i in topic.argsort()[:-10:-1])\n    print(text)\n# model, provid, function, simul, calcul, comput, librari, implement, user\n# data, softwar, model, tool, develop, applic, method, user, provid\n# softwar, data, develop, model, provid, analysi, simul, process, code"
+                    }
+                ],
+                "code_language": "python"
+            },
+            "bbox": [
+                163,
+                136,
+                838,
+                561
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "and how it was obtained "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "[ 2 5 ] . ^ { 1 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Exactness increases because it becomes very easy to integrate updated data into the analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                592,
+                495,
+                622
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                65,
+                646,
+                173,
+                660
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The capability of pybliometrics to help researchers in bibliometric studies is based on the consistent, simple interface automating all the data retrieval, json serialization, caching and error handling. It allows researchers to speed up their analyses in reproducible ways and science evaluators to automate the retrieval of evaluation data."
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                680,
+                495,
+                767
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgments"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                65,
+                793,
+                200,
+                807
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We thank the various contributors listed at https://github. com/pybliometrics-dev/pybliometrics/graphs/contributors. For help preparing this paper we thank the editor, two anonymous referees, Stefano Baruffaldi, Felix Pöge and Nurzhan Sapargali."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                827,
+                495,
+                885
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of competing interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                517,
+                593,
+                756,
+                607
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We wish to confirm that there are no known conflicts of interest associated with this publication and there has been no significant financial support for this work that could have influenced its outcome."
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                622,
+                947,
+                677
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                519,
+                694,
+                600,
+                708
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Falagas ME, Pitsouni EI, Malietzis GA, Pappas G. Comparison of PubMed, Scopus, Web of Science, and Google Scholar: strengths and weaknesses. FASEB J 2007;22(2):338–42. http://dx.doi.org/10.1007/978-94-007-7618- 0_310."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                723,
+                944,
+                766
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Harzing A-W, Alakangas S. Google Scholar, Scopus and the Web of Science: a longitudinal and cross-disciplinary comparison. Scientometrics 2016;106(2):787–804. http://dx.doi.org/10.1007/s11192-015-1798-9."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                767,
+                946,
+                800
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] Mongeon P, Paul-Hus A. The journal coverage of Web of Science and Scopus: a comparative analysis. Scientometrics 2016;106(1):213–28. http: //dx.doi.org/10.1007/s11192-015-1765-5."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                802,
+                944,
+                834
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Zeng A, Shen Z, Zhou J, Wu J, Fan Y, Wang Y, Stanley HE. The science of science: From the perspective of complex systems. Phys Rep 2017;714–715:1–73. http://dx.doi.org/10.1016/j.physrep.2017.10.001."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                836,
+                944,
+                868
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Andrikopoulos A, Samitas A, Kostaris K. Four decades of the Journal of Econometrics: Coauthorship patterns and networks. J Econometric 2016;195(1):23–32. http://dx.doi.org/10.1016/j.jeconom.2016.04.018."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                870,
+                944,
+                902
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] Thursby JG, Haeussler C, Thursby MC, Jiang L. Prepublication disclosure of scientific results: Norms, competition, and commercial orientation. Sci Adv 2018;4(5). eaar2133. http://dx.doi.org/10.1126/sciadv.aar2133."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                904,
+                946,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M.E. Rose and J.R. Kitchin / SoftwareX 10 (2019) 100263"
+                    }
+                ]
+            },
+            "bbox": [
+                357,
+                42,
+                655,
+                55
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                934,
+                42,
+                946,
+                52
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>1</sup> It should be noted though that using data from a database where additions, deletions and corrections are frequent, limit reproducibility per se."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                912,
+                494,
+                936
+            ]
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Catalini C, Fons-Fosen C, Gaulé P, Shape Collaboration. How do travel costs?. NBER working paper series, vol. 24780, 2018, http://dx.doi.org/10. 3386/w24780."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                68,
+                477,
+                100
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Baruffaldi SH, Visentin F, Conti A. The productivity of science & engineering PhD students hired from supervisors’ networks. Res Policy ( ) h //d d i / /j l"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                100,
+                477,
+                132
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Sauermann H, Haeussler C. Authorship and contribution disclosures. Sci Adv 2017;3(11). e1700404. http://dx.doi.org/10.1126/sciadv.1700404."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                133,
+                477,
+                155
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Gush J, Jaffe A, Larsen V, Laws A. The effect of public funding on research output: the new zealand marsden fund. New Zealand Econ Papers 2018;52(2):227–48. http://dx.doi.org/10.1080/00779954.2017.1325921."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                155,
+                477,
+                186
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Heckman J, Moktan S. Publishing and promotion in economics: the tyranny of the top five. NBER working paper series, vol. 25093, 2018, http://dx.doi. org/10.3386/w25093."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                187,
+                477,
+                219
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] Montoya FG, Alcayde A, Baños R, Manzano-Agugliaro F. A fast method for identifying worldwide scientific collaborations using the Scopus database. Telemat Inform 2018;35(1):168–85. http://dx.doi.org/10.1016/j.tele.2017. 10.010."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                219,
+                477,
+                262
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Atmire. DSpace developers, DSpace Elsevier patch. Tech. rep., 2017, URL https://atmire.github.io/Elsevier/#/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                262,
+                477,
+                284
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Berry R. Eprints Scopus Screen plugin developers, Eprints Scopus Screen plugin. Tech. rep., 2012."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                284,
+                477,
+                306
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] Gentzkow M, Shapiro JM. Code and data for the social sciences: a practitioner’s guide. 2014, URL https://web.stanford.edu/~gentzkow/research CodeAndData.pdf."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                306,
+                477,
+                337
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Reitz K, Requests Developers. Requests: HTTP for humans. Tech. rep. Cary, NC, 2019, URL https://2python-requests.org/en/master/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                337,
+                477,
+                360
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Hagberg A, Schult D, Swart P, Networkx developers. NetworkX. Tech. rep., 2004, URL https://networkx.github.io/documentation/stable/index.html."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                68,
+                927,
+                90
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] McKinney W. Data structures for statistical computing in python. In: S. van der Walt, J. Millman (Eds.), Proceedings of the 9th python in science conference; 2010. p. 51–6."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                90,
+                929,
+                122
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Waskom M, Botvinnik O, O’Kane D, Hobson P, Ostblom J, Lukauskas S, Gemperline DC, Augspurger T, Halchenko Y, Cole JB, Warmenhoven J, d. Ruiter J, Pye C, Hoyer S, Vanderplas J, Villalba S, Kunter G, Quintero E, Bachant P, Martin M, Meyer K, Miles A, Ram Y, Brunner T, Yarkoni T, Williams ML, Evans C, Fitzgerald C, Brian, Qalieh A. Mwaskom/seaborn: v090. 2018, URL https://zenodo.org/record/1313201."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                122,
+                929,
+                186
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[20] Jones E, Oliphant T, Peterson P, SciPy developers. SciPy: open source scientific tools for python. Tech. rep., 2001, URL http://www.scipy.org/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                187,
+                929,
+                209
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[21] Bird S, Loper E, Klein E. Natural language processing with python. O’Reilly Media Inc; 2009."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                209,
+                927,
+                230
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[22] Pedregosa F, Michel V, Grisel O, Blondel M, Prettenhofer P, Weiss R, Vanderplas J, Cournapeau D, Varoquaux G, Gramfort A, Thirion B, Grisel O, Dubourg V, Passos A, Brucher M, Perrot, Duchesnay E. Scikit-learn: machine learning in python. J Mach Learn Res 2011;12:2825–30, URL http://scikitlearn.sourceforge.net."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                230,
+                929,
+                283
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[23] Fortunato S, Bergstrom CT, Börner K, Evans JA, Helbing D, Milojević S, Petersen AM, Radicchi F, Sinatra R, Uzzi B, Vespignani A, Waltman L, Wang D, Barabási A-L. Science of science. Science 2018;359(6379). eaao0185. http: //dx.doi.org/10.1126/science.aao0185."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                284,
+                929,
+                327
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[24] Stephan PE. The economics of science. J Econ Lit 2010;34:217–73. http: //dx.doi.org/10.1016/S0169-7218(10)01005-1."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                327,
+                929,
+                348
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[25] Sandve GK, Nekrutenko A, Taylor J, Hovig E. Ten simple rules for reproducible computational research. PLoS Comput Biol 2013;9(10). e1003285. http://dx.doi.org/10.1371/journal.pcbi.1003285."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                349,
+                929,
+                380
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                50,
+                44,
+                62,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "M.E. Rose and J.R. Kitchin / SoftwareX 10 (2019) 100263"
+                    }
+                ]
+            },
+            "bbox": [
+                342,
+                42,
+                638,
+                54
+            ]
+        }
+    ]
+]

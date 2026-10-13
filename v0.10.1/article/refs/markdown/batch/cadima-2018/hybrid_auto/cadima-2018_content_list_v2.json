@@ -1,0 +1,4166 @@
+[
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "METHODOLOGY"
+                    }
+                ]
+            },
+            "bbox": [
+                97,
+                112,
+                278,
+                131
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Open Access"
+                    }
+                ]
+            },
+            "bbox": [
+                773,
+                112,
+                902,
+                131
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Online tools supporting the conduct Crc and reporting of systematic reviews and systematic maps: a case study on CADIMA and review of existing tools"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                87,
+                146,
+                872,
+                278
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/3c1c1391839f0bd59c054c1ec768860181cd61fd53e9496d0e47abd9811e6cb1.jpg"
+                },
+                "content": "",
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                815,
+                136,
+                907,
+                164
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Christian Kohl<sup>1*†</sup> , Emma J. McIntosh<sup>2†</sup>, Stefan Unger<sup>1†</sup>, Neal R. Haddaway<sup>3</sup>, Stefen Kecke<sup>1</sup>, Joachim Schiemann<sup>1</sup> and Ralf Wilhelm<sup>1</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                288,
+                763,
+                325
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Abstract"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                100,
+                362,
+                174,
+                378
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Systematic reviews and systematic maps represent powerful tools to identify, collect, evaluate and summarise primary research pertinent to a specific research question or topic in a highly standardised and reproducible manner. Even though they are seen as the “gold standard” when synthesising primary research, systematic reviews and maps are typically resource-intensive and complex activities. Thus, managing the conduct and reporting of such reviews can become a time consuming and challenging task. This paper introduces the open access online tool CADIMA, which was developed through a collaboration between the Julius Kühn-Institut and the Collaboration for Environmental Evidence, in order to increase the eficiency of the evidence synthesis process and facilitate reporting of all activities to maximise methodological rigour. Furthermore, we analyse how CADIMA compares with other available tools by providing a comprehensive summary of existing software designed for the purposes of systematic review management We show that CADIMA is the only available open access tool that is designed to: (1) assist throughout the systematic review/map process; (2) be suited to reviews broader than medical sciences; (3) allow for ofline data extraction; and, (4) support working as a review team."
+                    }
+                ]
+            },
+            "bbox": [
+                97,
+                381,
+                895,
+                565
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Review management, Managing systems, Systematic review software, Evidence synthesis, Time management, Rapid review, Text mining"
+                    }
+                ]
+            },
+            "bbox": [
+                99,
+                568,
+                826,
+                600
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Background"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                627,
+                191,
+                643
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Systematic reviews were first established in the field of healthcare to support evidence-based decision making [1]. Their use is continuously expanding into other disciplines, including social welfare, international development, education, crime and justice,<sup>1</sup> environmental management<sup>2</sup> (including the impact assessment of crop genetic improvement technologies [2–4]), software engineering [5] and food/feed safety assessment [6]."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                644,
+                490,
+                768
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Systematic reviews and related systematic maps follow standardised and rigorous methodologies aiming to ensure comprehensiveness, minimise bias, and increase transparency [7, 8]. Although seen as a “gold standard” when synthesising primary research, the central tenets of systematic review and map methodologies necessarily increase the complexity of the review processes and their resource requirements (i.e. time, money and personnel)."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                627,
+                907,
+                750
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to support reviewers throughout the conduct of their syntheses, and to increase eficiency and maximise methodological rigour, software tools have been developed by a diverse set of providers to support review teams during the evidence synthesis process (the term evidence synthesis is used herein to cover both systematic reviews and systematic maps, which aim to characterise the available evidence-base rather than providing quantitative or qualitative answers to an impact or efectiveness question [8, 9])."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                750,
+                907,
+                811
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8 https://doi.org/10.1186/s13750-018-0115-5"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                37,
+                339,
+                65
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Environmental Evidence"
+                    }
+                ]
+            },
+            "bbox": [
+                623,
+                39,
+                907,
+                62
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "*Correspondence: christian.kohl@julius‑kuehn.de"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                800,
+                347,
+                813
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>†</sup>Christian Kohl, Emma J. McIntosh and Stefan Unger contributed equally to this work"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                812,
+                458,
+                835
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>1</sup> Julius Kühn-Institut (JKI), Federal Research Centre for Cultivated Plants,"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                834,
+                455,
+                846
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Erwin‑Baur‑Strasse 27, 06484 Quedlinburg, Germany"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                846,
+                361,
+                859
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Full list of author information is available at the end of the article"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                856,
+                421,
+                870
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "http://www.campbellcollaboration.org/."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                843,
+                731,
+                858
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>2</sup> http://www.environmentalevidence.org/."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                856,
+                734,
+                870
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "BioMed Central"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                886,
+                282,
+                917
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "© The Author(s) 2018. This article is distributed under the terms of the Creative Commons Attribution 4.0 International License (http://creativecommons.org/licenses/by/4.0/), which permits unrestricted use, distribution, and reproduction in any medium, provided you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The Creative Commons Public Domain Dedication waiver (http://creativecommons.org/ publicdomain/zero/1.0/) applies to the data made available in this article, unless otherwise stated"
+                    }
+                ]
+            },
+            "bbox": [
+                295,
+                884,
+                892,
+                940
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                108,
+                490,
+                200
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Potential drawbacks associated with these tools include that: (1) they may not be open access (i.e. free to use, an important consideration for non-profit organisations in particular); (2) they may be targeted to a particular research discipline, meaning that their applicability in other disciplines may be restricted; (3) they may not support the entire evidence synthesis process; and, (4) they may have been developed solely for systematic reviews and may not support the conduct of systematic maps."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                200,
+                490,
+                337
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Here, we present the open access online tool CADIMA that was established by Julius Kühn-Institut (JKI) during a recently completed EU-funded project called GMO Risk Assessment and Communication of Evidence (GRACE). The project’s working agenda included: (1) the conduct of a number of systematic reviews and maps for the purposes of increasing the transparency and traceability of information on potential risks and benefits associated with the deliberate release of genetically modified crops [10–17]; and, (2) the development of an open access online tool (CADIMA) to facilitate the conduct of systematic reviews and maps on agricultural and environmental questions. Due to the expertise available at the Collaboration for Environmental Evidence (CEE) and the overlap of topics covered by both institutions, a close collaboration between JKI and CEE was established to develop CADIMA."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                336,
+                490,
+                594
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Herein, we discuss how CADIMA compares with other available tools by providing a comprehensive summary of existing review management software, and also discuss possible future development of CADIMA. Existing reviews of available software and tools (e.g. [18]), have quickly become out of date since many new software packages have been recently released or are in development. In order to ensure the independence of the review reported in this manuscript and the assessment of how CADIMA compares to existing tools, the review part of this paper was solely conducted by EJM as she was/is not involved in the development of CADIMA."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                594,
+                492,
+                778
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Methods"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                791,
+                166,
+                806
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Review of existing online tools"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                807,
+                302,
+                821
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A series of searches was conducted for the purposes of comparing CADIMA with other available online tools to identify software packages designed to facilitate evidence synthesis. We excluded software that only supported isolated aspects of, rather than the majority of, the systematic review process (e.g. reference management in endnote, duplicate checking using the systematic review accelerator [19, 20], screening in Abstrackr [21], metaanalysis in comprehensive meta-analysis (CMA), or data extraction and quantitative synthesis in RobotReviewer [22]). For more details on these and other tools, see the SR toolbox: http://systematicreviewtools.com/."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                821,
+                492,
+                915
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                108,
+                909,
+                200
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The search strategy involved four approaches: (1) conducting online bibliographic database searches; (2) snowballing via general web searches (tracking backwards and forwards for studies via links in relevant websites); (3) screening targeted websites; and, (4) backwards and forwards citation searches of relevant publications (search methods are outlined in Additional file 1). Following the completion of the searches, 24 systematic review software packages were identified from across a wide range of disciplines (Table 1). Of these, two were excluded from the analysis; one has been discontinued (Slrtool [23]), and the developers of another product currently in development, DRAGON ONLINE (https://www.icf.com/solutions-and-apps/dragon-online-tool-systematic-review), did not respond to our request for further information."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                200,
+                909,
+                427
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The 22 remaining software packages were researched and trialed by EJM (where free access or free trials were available) and characterised according to a suite of features, including; the stages of the systematic review process supported, whether they are suitable for a team of reviewers, and their cost (Table  1). These features were chosen in part based on previous studies on user preferences for systematic review software functionality [24, 25]. Developers were contacted when insuficient information was available online or in publications about a software package. Where no further information was available, the characteristic was marked as ‘Unavailable’."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                427,
+                910,
+                611
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Introduction to CADIMA"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                504,
+                622,
+                700,
+                639
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA is a client–server software application and was developed by using the interactive management framework Scrum (http://www.scrumguides.org/) and the project management tool Redmine (http://www.redmine. org/). The user interface of the CADIMA web application requires a web browser, such as Mozilla Firefox or Google Chrome. CADIMA is coded with the programming language PHP V5.5 using the Yii V1.1 framework with the Bootstrap CSS extension (http://yiibooster.clevertech. biz/). The application runs on an Apache 2.4 web server and a Linux Ubuntu Server V14.04, and data are stored in a MySQL 5.5 database management system with a daily data backup stored for 6 months. CADIMA is permanently hosted and maintained by JKI and uses a SSL encrypted connection between the client and server."
+                    }
+                ]
+            },
+            "bbox": [
+                502,
+                639,
+                910,
+                868
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The support provided by CADIMA mirrors the key steps of systematic reviews or systematic maps. CADIMA supports the following: (1) development of the review"
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                867,
+                910,
+                913
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                278,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 2 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/33f2b4eaa915290ff72bef6553990a76e1b245ece3e119ea7d1da4f9802eca72.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table1Comparison ofthe functionality ofcurrently available systematic review management software packages"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Software name</td><td>Ownership</td><td>Website</td><td> $Description^a$ </td><td>Intended field(s) of research</td><td>Available support</td><td>Stages of the SR process  $supported^b$ </td><td>Web- online</td><td>Download- able</td><td>Supports offline working</td><td>Supports team of reviewers</td><td>Text mining features (for screening, data extraction or synthesis)</td><td>Open source</td><td> $Cost^c$ </td></tr><tr><td>CADIMA [32]</td><td>JKI—Julius Kühn-Institut</td><td>https://www.cadima.info/index.php/area/evidenceSynthesisDatabase</td><td>“CADIMA supports the conduct of systematic reviews and evidence/systematic maps by the provision of a freely available online tool.”</td><td>Any, particularly suitable for Environmental Evidence systematic maps and reviews</td><td>Development team is available to provide support or software modifications</td><td>Qu, Pi, Du, Sc, Co, Cr, Do</td><td>Yes</td><td>No</td><td>Yes (at data coding stage)</td><td>Yes</td><td>Text mining capabilities in development</td><td>No</td><td>Free</td></tr><tr><td>Colandr</td><td>Conservation International</td><td>www.colandrapp.com</td><td>“computer-assisted systematic mapping software for evidence synthesis”</td><td>Any, particularly suitable for environment and development sectors</td><td>Colandr Community website, videos, documentation</td><td>Pi, Se, Du, Sc, Co, Sy, Do</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>Machine learning approaches to assist with article screening and data extraction</td><td>Yes</td><td>Free</td></tr><tr><td>Covidence [33]</td><td>Covidence is a non-profit organisation</td><td>https://www.covidence.org/</td><td>“Covidence is a not-for-profit service working in partnership with Cochrane to improve the production and use of systematic reviews for health and wellbeing.”</td><td>Healthcare and medical science, designed for Cochrane reviews</td><td>Detailed help documentation and demonstration videos. Contact support available</td><td>Du, Sc, Co, Cr</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>Range of packages e.g. ‘Single’: $240 USD per year, one review, unlimited reviewers</td></tr><tr><td>DistillerSR [34]</td><td>Privately held, Evidence Partners</td><td>https://www.evidencepartners.com/products/distillersr-systematic-review-software/</td><td>“DistillerSR is the world’s most used systematic review software. It was designed from the ground up to give you a better review experience, faster project completion and transparent, audit-ready results.”</td><td>Any</td><td>8X5 live technical support and detailed user manual with explanatory videos. Support for international character sets</td><td>Se (PubMed), Du, Sc, Co, Sy, Do</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>In development. Currently supports keyword  $highlighting^d$ </td><td>No</td><td>Range of packages e.g. Student FREE: USD$0 and‘Faculty’: USD$75 per month</td></tr><tr><td>Software name</td><td>Ownership</td><td>Website</td><td> $Description^a$ </td><td>Intended field(s) of research</td><td>Available support</td><td>Stages of the SR process  $supported^b$ </td><td>Web- online</td><td>Download- able</td><td>Supports offline working</td><td>Supports team of review- ers</td><td>Text mining features (for screening, data extraction or synthesis)</td><td>Open source</td><td> $Cost^c$ </td></tr><tr><td>Early review organizing software (EROS) [35]</td><td>Institute of Clinical Effectiveness and Health Policy</td><td>http://eros-system-atic-review.org/ rev-login.php</td><td>“EROS is a new web- based software designed spe- cifically to perform the first stages of a systematic review.”</td><td>Healthcare and medi- cal science</td><td>Email support and a user guide</td><td>Sc, Co, Cr</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>A donation for development (USD 600 per year for a team of up to four reviewers) is requested for non-Cochrane reviews (Cochrane reviews can use Covidence for free)</td></tr><tr><td>EPPI- Reviewer 4 [36]</td><td>EPPI-Centre</td><td>http://eppi.ioe.ac.uk/ CMS/Default. aspx?alias=eppi. ioe.ac.uk/cms/ er4&amp;</td><td>“EPPI-Reviewer 4 is a multi-user web- based application for managing and analyzing data for use in research synthesis.”</td><td>Any</td><td>Detailed user manual and developers are avail- able with advice and to make modifica- tion where possible</td><td>Se, Du, Sc, Co, Cr, Sy, Do</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>Text mining to assist with identifying rel- evant studies</td><td>No</td><td>User fee £10 per user per month, plus shareable review fee £35 per month</td></tr><tr><td>Health Assess- ment Workspace Col- laborative (HAWC) [37, 38]</td><td>Collabora- tive initia- tive</td><td>https://hawcproject. org/</td><td>“HAWC is a modular, content manage- ment system designed to store, display, and syn- theize multiple data sources for the purpose of producing human health assessments of chemicals.”</td><td>Healthcare and medi- cal science</td><td>Online docu- mentation http:// hawc. readthe- docs.io/ en/latest/ and Github repository. Requires knowledge of Python to run and to interpret help docu- mentation</td><td>Se, Sc, Co, Cr, Sy, Do</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>Unavailable</td><td>Yes</td><td>Free</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                161,
+                105,
+                853,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                278,
+                53
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 3 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                171,
+                106,
+                840,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 4 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                907,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table1continued"
+                    }
+                ]
+            },
+            "bbox": [
+                105,
+                818,
+                126,
+                918
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/44946e9b530aca7cb3432f625523de570730039aa25c9563f823156973e85ae1.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td>Software name</td><td>Ownership</td><td>Website</td><td> $Description^a$ </td><td>Intended field(s) of research</td><td>Available support</td><td>Stages of the SR process  $supported^b$ </td><td>Web- online</td><td>Download- able</td><td>Supports offline working</td><td>Supports team of reviewers</td><td>Text mining features (for screening, data extraction or synthesis)</td><td>Open source</td><td> $Cost^c$ </td></tr><tr><td>METAGEAR package for R [39]</td><td>Marc J. Lajeu- nesse</td><td>http://lajeunesse.myweb.usf.edu/metagear/metagear_ basic_vignette. html#introduction</td><td>&quot;The metagear pack- age for R con- tains tools for facilitating sys- tematic reviews, data extraction, and meta-anal- yses.&quot;</td><td>Any</td><td>Online docu- mentation and the developer is avail- able for questions. Requires knowledge of R in order to run the software although there is a GUI interface for abstract screening</td><td>Sc, Co, Sy</td><td>No</td><td>Yes</td><td>Yes, pack- age operates offline</td><td>Yes</td><td>&quot;PDF downloader to automate the retrieval of journal articles from online data bases; automated data extrac- tions from scatter-plots, box-plots and bar-plots&quot;</td><td>Yes</td><td>Free</td></tr><tr><td>PARSIFAL</td><td>Parsifal is a non-profit organisa- tion</td><td>https://parsifal/</td><td>&quot;Parsifal is an online tool designed to support research- ers to perform systematic literature reviews within the context of Software Engi- neering.&quot;</td><td>Software engineer- ing</td><td>FAQs, online videos, Github repository (https:// github. com/ vitorfs/ parsifal) and email support available</td><td>Pi, Se, Du, Sc, Co, Sy</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>Yes</td><td>Free</td></tr><tr><td>Rayyan [40]</td><td>Qatar Com- puting Research Institute</td><td>https://rayyan.qcri. org</td><td>&quot;Authors create sys- tematic reviews, collaborate on them, maintain them over time and get sugges- tions for article inclusion.&quot;</td><td>Any, close align- ment with Cochrane reviews</td><td>Online forum</td><td>Pi, Se, Du, Sc</td><td>Yes</td><td>No</td><td>Yes, using a mobile app</td><td>Yes</td><td>The support vector machine classifier learns from users&#x27; decisions about includ- ing and exclud- ing studies and scores unclassi- fied studies for likely relevance. Similarity graph function for exploring cita- tion networks</td><td>No</td><td>Free</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                122,
+                105,
+                890,
+                921
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 5 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/f46a077f4196a297d222c8a12a6fd41baea84cf5821f29b4afff6aedacb2b232.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td>Software name</td><td>Ownership</td><td>Website</td><td> $Description^a$ </td><td>Intended field(s) of research</td><td>Available support</td><td>Stages of the SR process  $supported^b$ </td><td>Web- online</td><td>Download- able</td><td>Supports offline working</td><td>Supports team of review- ers</td><td>Text mining features (for screening, data extraction or synthesis)</td><td>Open source</td><td> $Cost^c$ </td></tr><tr><td>REviewER</td><td>Empirical Software Engineering Group</td><td>https://sites.google.com/site/eseportal/tools/reviewer</td><td>\"REviewER aims at assisting researchers in the laborious process of conduction of systematic reviews.\"</td><td>Any, particularly software engineer-ing.</td><td>GitHub repository (https://github.com/bfsc/reviewer). No user guide. Advanced coding skills required</td><td>Qu, Pi, Se, Du, Sc</td><td>No</td><td>Yes</td><td>Yes, package operates offline</td><td>Yes</td><td>No</td><td>Yes</td><td>Free</td></tr><tr><td>RevMan 5 [41] (this software is no longer being developed)</td><td>Cochrane Community</td><td>http://community.cochrane.org/tools/review-production-tools/revman-5</td><td>\"Review Manager 5 (RevMan 5) is the software used for preparing and maintaining Cochrane Reviews.\"</td><td>Healthcare and medi- cal science, designed for Cochrane reviews</td><td>Online docu- mentation. RevMan 5 support accounts are only available to registered Cochrane authors</td><td>Pi, Sc, Co, Cr, Sy, Do d</td><td>No</td><td>Yes</td><td>Yes, package operates offline</td><td>Yes (cannot edit simulta- neously)</td><td>No</td><td>No</td><td>RevMan 5 is free for Cochrane Reviewers or purely academic use. Commercial users require a license</td></tr><tr><td>RevMan Web (will be available for beta- testing in 2017, building on Rev- Man 5)</td><td>Cochrane Community</td><td>http://community.cochrane.org/tools/review-production-tools/revman-web</td><td>\"RevMan Web is a new, web-based platform for pre- paring and main- taining Cochrane Reviews.\"</td><td>Healthcare and medi- cal science, designed for Cochrane reviews</td><td>RevMan Web will integrate with several other Cochrane software packages</td><td>Unavailable</td><td>Yes</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td><td>Unavailable</td></tr><tr><td>SESRA (supporting systematic literature reviews in software engineer-ing) [29]</td><td>UNIVALI—Universi- dade do Vale do Itajaí</td><td>http://sesra.net/</td><td>\"Collaborative research, auto- mated searches, online reference management, support to all the process phases and activities.\"</td><td>Any, par- ticularly designed for software engineer-ing</td><td>User guide and introduc- tory videos available in Portuguese only</td><td>Qu, Pi, Sc, Co, Sy, Do</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>Proposed in future</td><td>Free</td></tr><tr><td>SLR-tool [42]</td><td>ALARCOS Research Group</td><td>http://alarcos.esi.uclm.es/slrtool/</td><td>\"...a free tool... to be used by researchers from any discipline, and not only Software Engineering.\"</td><td>Any, par- ticularly designed for software engineer-ing</td><td>Unavailable</td><td>Qu, Pi, Du, Sc, Co, Cr, Do</td><td>No</td><td>Yes</td><td>Yes, pack- age operates offline</td><td>No</td><td>Yes, for example \"...to cluster the documents by using the similarities among them, highlighting key words that identify each group of docu- ments.\"</td><td>No</td><td>Free</td></tr><tr><td>SLuRp (systematic literature unified Review program) [43]</td><td>See authors</td><td>https://codefeed-back.cs.herts.ac.uk/SLuRp/</td><td>\"...to support the complex task of managing large numbers of papers, sharing tasks amongst a research team and following the arduous and rigorous SLR methodology recommended by Kitchenham and Charters.\"</td><td>Software engineer-ing</td><td>No user guide, minimal support information on product website. Requires use of MySQL and Tomcat to run</td><td>Se, Sc, Co, Cr, Sy, Do</td><td>Partially</td><td>Unavailable</td><td>Unavailable</td><td>Yes</td><td>No</td><td>Yes</td><td>Free</td></tr><tr><td>SRDB.PRO— systematic review intel- ligence Platform</td><td>Privately held</td><td>https://www.srdb.pro/default</td><td>\"...the first, enter- prise level Busi- ness Intelligence platform designed specifically to improve the way in which the pharmaceutical industry and healthcare consul- tancies conduct systematic reviews and data analysis.\"</td><td>Healthcare and medi- cal science, targeting the phar- maceutical industry and healthcare consultan- cies</td><td>User guide. Phone and email sup- port</td><td>Se (PubMed), Du, Sc, Co, Cr, Sy, Do</td><td>No</td><td>Yes</td><td>Yes, pack- age operates offline</td><td>Yes</td><td>No</td><td>No</td><td>SRDB.PRO Hosted is free for non-com- merial use and starts at £70/USD$119 per month for 1 active user. SRDB.PRO Enterprise is more expensive</td></tr><tr><td>SRDR (systematic review data repository)</td><td>Brown Evidence- based Practice Center</td><td>http://srdr.ahrq.gov/</td><td>\"...a Web-based tool for data extraction and storage of systematic review data.\"</td><td>Healthcare and medi- cal science</td><td>User manual, FAQs and training videos</td><td>Se, Co, Sy</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>Free</td></tr><tr><td>StArt (state of the art through systematic review) [44]</td><td>Labora- tory of Research on Soft- ware Engi- neering (LaPES)</td><td>http://lapes. dc.ufscar.br/tools/ start_tool</td><td>\"...aims to help the researcher, giving support to the application of this technique [sys- tematic review]\"</td><td>Software engineer- ing</td><td>The online StArt community provides a forum, tutorials and videos</td><td>Pi, Du, Sc, Co, Cr, Sy, Do</td><td>No</td><td>Yes</td><td>Yes, pack- age operates offline</td><td>No</td><td>Yes, calculates scores of likely relevance of articles and similarity between articles</td><td>No</td><td>Free</td></tr><tr><td>SUMARI (system for the unified manage- ment, assess- ment and review of informa- tion). (designed to replace JBI CReMS software)</td><td>Joanna Briggs Institute (JBI)</td><td>https://www.jbisu- mari.org/</td><td>\"SUMARI supports 10 review types, including reviews of effective- ness, qualitative research, eco- nomic evaluations, prevalence/inci- dence, aetiology/ risk, mixed meth- ods, umbrella/ overviews, text/ opinion, diagnos- tic test accuracy and scoping reviews.\"</td><td>Healthcare and medi- cal science, also social sciences and humanities</td><td>FAQs and video tutorials</td><td>Se, Sc (full text only), Co, Cr, Sy, Do</td><td>Yes</td><td>No</td><td>No</td><td>Yes</td><td>No</td><td>No</td><td>Limited access beyond JBI special users initially. Subscriptions will be made available via Wolters Kluwer</td></tr><tr><td>SWIFT-review (Sciome work- bench for interactive computer- facilitated text-min- ing) [45]</td><td>Privately held, Sciome</td><td>https://www.sciome. com/swift-review/</td><td>\"a freely available interactive work- bench which pro- vides numerous tools to assist with problem formula- tion and literature prioritization.\"</td><td>Healthcare and medi- cal science</td><td>Tutorial and user guide</td><td>Se (PubMed), Sc (works in concert with SWIFT- ACTIVE Screener), Co, Sy, Do</td><td>No</td><td>Yes</td><td>Yes, pack- age operates offline</td><td>Yes</td><td>Yes, the \"software utilizes recently developed statistical modeling and machine learning methods that allow users to identify over- represented topics within the literature corpus and to rank-order titles and abstracts for manual screening\"</td><td>No</td><td>Free</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                168,
+                105,
+                842,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 6 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                905,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                134,
+                105,
+                873,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 7 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                905,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                157,
+                106,
+                853,
+                918
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 8 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/ea869d319e2173f3e7ffab77c131d4de16d609f0e10afccd630496fcccc06f1a.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "<sub>ct</sub>i<sub>ve</sub> <sub>webs</sub>i<sub>tes,</sub> <sub>correct</sub> <sub>as</sub> <sub>of</sub> <sub>02/11/2017</sub>. <sub>EROS</sub> <sub>cost</sub> <sub>est</sub>i<sub>mat</sub><sup>es</sup> <sup>were</sup> <sup>prov</sup>i<sup>ded</sup> <sup>by</sup> <sup>ema</sup>il <sup>(Gabr</sup>i<sup>e</sup>l <sub>of</sub> <sub>resu</sub>l<sub>ts,</sub> <sub>Do</sub> <sub>generat</sub>i<sub>on</sub> <sub>of</sub> <sub>docu</sub>m<sup>entat</sup>i<sup>on/output</sup> <sup>of</sup> <sup>text,</sup> <sup>figures</sup> <sup>or</sup> <sup>tab</sup>l<sup>es</sup> <sup>to</sup> <sup>ass</sup>i<sup>st</sup> <sub>rt</sub>i<sub>c</sub>l<sub>e</sub> <sub>screen</sub>i<sub>ng/study</sub> <sub>se</sub>l<sub>ect</sub>i<sub>on,</sub> <sub>Co</sub> <sub>fac</sub>ili<sub>tates</sub> <sub>data</sub> <sub>cod</sub>i<sub>ng/tagg</sub>i<sub>ng</sub> <sub>and</sub> <sub>extract</sub>i<sub>on</sub> <sub>to</sub> <sub>support</sub> m<sup>eta-ana</sup>l<sup>yses,</sup> <sup>Cr</sup> <sup>cr</sup>i<sup>t</sup>i<sup>ca</sup>l <sup>appra</sup>i<sup>sa</sup>l<sup>/r</sup>i<sup>sk</sup> <sup>of</sup> <sup>b</sup>i<sup>as</sup> <sup>ass</sup> <sub>databases)</sub>. <sub>Exc</sub>l<sub>udes</sub> <sub>those</sub> <sub>wh</sub>i<sub>ch</sub> <sub>requ</sub>i<sub>re</sub> <sub>search</sub> <sub>resu</sub>l<sub>ts</sub> <sub>to</sub> <sub>be</sub> <sub>manua</sub>ll<sub>y</sub> <sub>up</sub>l<sub>oaded,</sub> <sub>Du</sub> <sub>du</sub>pli<sup>cate</sup> <sup>check</sup>i<sup>ng</sup> <sup>(e</sup>.<sup>g</sup>. <sup>automated</sup> <sup>mark</sup>i<sup>ng</sup> <sup>of</sup> <sup>dup</sup>li<sup>c</sup> <sub>ett</sub>i<sub>ng</sub> <sub>up</sub> <sub>the</sub> <sub>rev</sub>i<sub>ew,</sub> <sub>w</sub>i<sub>th</sub> <sub>quest</sub>i<sub>on</sub> <sub>formu</sub>l<sub>at</sub>i<sub>on</sub> <sub>and/or</sub> <sub>st</sub>a<sup>keho</sup>l<sup>der</sup> <sup>engagement,</sup> <sup>Pi</sup> <sup>scop</sup>i<sup>ng/p</sup>il<sup>ot</sup> <sup>study,</sup> <sup>protoco</sup>l <sup>deve</sup>l<sup>opment</sup> <sup>(e</sup>.<sup>g</sup>. <sup>P</sup>I<sup>CO</sup> <sup>e</sup>l<sup>emen</sup> <sub>m</sub> <sub>product</sub> <sub>webs</sub>i<sub>tes,</sub> <sub>referenced</sub> <sub>docu</sub>m<sup>entat</sup>i<sup>on</sup> <sup>or</sup> <sup>through</sup> <sup>d</sup>i<sup>rect</sup> <sup>ema</sup>il <sup>contact</sup> <sup>w</sup>i<sup>th</sup> <sup>deve</sup>l<sup>op</sup>"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Software name</td><td>Ownership</td><td>Website</td><td> $Description^a$ </td><td>Intended field(s) of research</td><td>Available support</td><td>Stages of the SR process  $supported^b$ </td><td>Web- online</td><td>Download- able</td><td>Supports offline working</td><td>Supports team of review- ers</td><td>Text mining features (for screening, data extraction or synthesis)</td><td>Open source</td><td> $Cost^c$ </td></tr><tr><td>SyRF (systematic review and meta-analysis facility) [46]</td><td>CAMA- RADES and NC3Rs</td><td>http://syrf.org.uk/</td><td>“SyRF is a fully integrated online platform for performing systematic reviews of preclinical studies.”</td><td>Preclinical studies e.g. experimen- tal animal studies</td><td>Online con- tact form, online tutorials available on request. User guide, video tutorial and in app tutorials in develop- ment</td><td>Qu, Pi, Se (PubMed), Sc, Co, Cr, Sy</td><td>Yes</td><td>No (under develop- ment)</td><td>No (offline app under develop- ment)</td><td>Yes</td><td>Risk of bias items can be automatically extracted and machine learning is available to aid the screening process for English articles</td><td>No</td><td>Free</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                317,
+                105,
+                601,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                53
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 9 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                831,
+                39,
+                905,
+                54
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "protocol; (2) management of search results (including the identification of duplicates); (3) management and conduct of the study selection process (including the performance of a consistency check); (4) management and conduct of on- and of-line data extraction; and, (5) management and conduct of the critical appraisal process. In addition, CADIMA ensures thorough documentation of the entire evidence synthesis process and allows for review results to be made publicly available: i.e. documents can be made accessible to third parties if agreed by the review team. The permanent maintenance and further development of CADIMA is guaranteed by JKI and user support is provided to review teams via email. Furthermore, users can participate in online workshops or experiment using a test website before creating a full review."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                108,
+                492,
+                351
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In the following pages, we briefly describe CADIMA’s main features, starting from the registration and customisation of a review and its team, to the conduct and documentation of the evidence synthesis process. In addition, we describe and summarise the diferent tasks within the review team and the information formats that are currently supported during the evidence synthesis process (see Table 2)."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                351,
+                492,
+                474
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Registering with CADIMA and user roles"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                487,
+                405,
+                502
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Users must register with the program in order to access the full functionality of CADIMA, which is free of charge.<sup>3</sup> By accepting CADIMA’s terms of service that regulate, besides others, the use of CADIMA and the handling of data (see Additional file  2), any registered user can initiate a new systematic review or map and can customise the review team. There are two diferent roles in a review team implemented in CADIMA. The ‘review coordinator’ manages the review and its team, and also performs more general tasks when compared to the one or more ‘review team members’ (see Table  2). Only the nominated members of the respective review team and the review coordinator can access the new evidence synthesis."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                503,
+                492,
+                716
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Structure of CADIMA"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                87,
+                730,
+                258,
+                745
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The menu structure of CADIMA mirrors the core steps and workflow of systematic reviews and systematic maps. This begins with the development of the review protocol (including the development of the review question), followed by the conduct of the literature search, study selection, data extraction, critical appraisal, data synthesis and the presentation of results. For each menu item, explanatory notes and submenus are provided. We now go on to explain the functionality of the diferent menu items in more detail."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                746,
+                492,
+                870
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                108,
+                907,
+                139
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Review protocol"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                154,
+                625,
+                169
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "At this stage, review authors are requested to detail information regarding the planned methods for the review, ensuring scientific rigour, transparency and repeatability. The input to CADIMA is provided by uploading remotely prepared blocks of text that correspond to key sections of a protocol. The overall format implemented in CADIMA resembles the draft of a protocol and has two major benefits: (1) it prevents important information from being unintentionally omitted; and (2) it facilitates peer-review of the protocol by ensuring that relevant information is included in the most appropriate section. Furthermore, CADIMA combines the respective text and generates one single document, which can then be formatted by the review team and submitted for peer-review."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                169,
+                910,
+                384
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Literature search"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                504,
+                396,
+                628,
+                411
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA is not a meta-search engine, such as PubMed or Scopus. Instead, CADIMA helps to structure and document the literature search by associating a search string with a search engine or further information source it was applied to, whilst the respective search results can be uploaded to CADIMA as RIS files. Following this, search results can be combined, duplicates removed and records screened (see below). In addition, to facilitate the study selection process at title/abstract stage, CADIMA highlights those reports where an abstract is missing."
+                    }
+                ]
+            },
+            "bbox": [
+                502,
+                412,
+                910,
+                565
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Study selection"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                579,
+                618,
+                593
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The study selection step includes the following key aspects: (1) definition of selection criteria; (2) automated calculation of a kappa-statistic to test inter-reviewer agreement<sup>4</sup> when applying the defined criteria; (3) screening of the records from the literature list according to the selection criteria at title, abstract and full text stage; and, (4) extraction of studies from eligible records (an important step that recognises the diference between a study [i.e. an independent unit of research] and an article [i.e. an independent unit of publication]). During the screening process, title, abstract and full text are displayed together with the selection criteria during each respective stage. Where records are independently assessed by more than one reviewer and inconsistencies between reviewers occur, they will be automatically identified by CADIMA and the respective reviewers asked to solve those conflicts."
+                    }
+                ]
+            },
+            "bbox": [
+                502,
+                594,
+                910,
+                854
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                278,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 10 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                907,
+                53
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "3 Accessible via https://www.cadima.info/index.php/area/evidenceSynthesisDatabase."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                893,
+                489,
+                918
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "http://handbook.cochrane.org/ (part 2, chapter 7.2.6)."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                905,
+                800,
+                920
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/8376ce7312adc94a73a1091cdf1e66e35e42b5f0149c28321939da5eb8f79c3c.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 2 Key features of CADIMA, diferent user roles and associated tasks and supported information formats used dur ing the synthesis process"
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "This table illustrates the key features of CADIMA for each step within the evidence synthesis process, describes the diferent user roles and associated tasks (RC review coordinator, All the entire review team), and specifies the information formats supported for each step. For more detail see text"
+                    }
+                ],
+                "html": "<table><tr><td>Step</td><td>Key features of CADIMA</td><td>Roles and tasks</td><td>Information format</td></tr><tr><td>Set up the review</td><td>Predefined input structure</td><td>RCInvite registered users to become part of the review teamDefine the title of the reviewDefine the question type (PICO, PIT, PO)Define if a systematic review or a systematic map will be performed</td><td>Manual entry</td></tr><tr><td>Protocol</td><td>Predefined input structure referring to the key chapters of a protocolCompile a drafted protocol document with potential annexes</td><td>RCMark those document blocks that should be compiled by CADIMAMake final protocol publicly availableAllEnter/upload the requested information</td><td>Manual entryUpload/download formats:- Docx-Xlsx-Pdf</td></tr><tr><td>Literature search</td><td>Documentation of the literature searchIndication of reports with missing abstractIdentification of duplicates</td><td>AllAllocate a search string to a search engine or a further information source it was appliedUpload of search results and duplicate removal</td><td>Manual entryUpload/download formats:- RIS</td></tr><tr><td>Study selection</td><td>Support for the:Definition of selection criteriaPerformance of a kappa-test- Takes a random sample of the identified reports to be rated by RC and/or further review team members- Kappa value will be providedOnline application of selection criteria- Title/abstract/full text will be co-displayed- Identification of discrepancies in the rating by RC and/or RMSelection of studies that should be included in the review</td><td>RCSet the criteria list as “final”Define those team members that should be involved in the kappa testDecide about the suitability of the criteria based on the provided kappa valueNominate team members to be involved during study selection- Decide about the application mode- Allocate identified reportsAllEnter selection criteriaIf nominated, apply criteriaExtract relevant studies</td><td>Manual entry</td></tr><tr><td>Data extraction</td><td>On- and offline data extraction</td><td>AllDefine critical appraisal criteriaDefine data extraction columnsMark those columns relevant for the critical appraisalPerform data extraction</td><td>Manual entryOnline data extraction- Manual entryOffline data extraction- Download/upload of the data extraction sheet as excel file</td></tr><tr><td>Critical appraisal</td><td>Co-display of extracted (meta-) data during the rating processOnline application of appraisal criteriaIdentification of inconsistencies in reviewer judgments</td><td>RCNominate team members to be involved during critical appraisalAllocate relevant studiesAllIf nominated, critically appraise included studies</td><td>Manual entry</td></tr><tr><td>Data synthesis</td><td>Compilation of the data extraction sheet and the results from the critical appraisal</td><td>AllPerform the statistical analysis by using the software package of their choiceUpload of synthesis results</td><td>Download format- XlsxUpload formats:- Xlsx- Docx-Pdf</td></tr><tr><td>Presenting data and results</td><td>Thorough documentation (including any decision made during) of- Literature search- Study selection- Critical appraisalCompilation of data extraction sheetOpt for publication on the web site</td><td>AllWrite up the reviewDecide about and upload information to be made publicly available</td><td>Download formats:- Xlsx- Docx-RISUpload formats:- Xlsx- Docx-Pdf</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                87,
+                140,
+                905,
+                879
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 11 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Data extraction and critical appraisal"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                108,
+                342,
+                122
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA is designed to encourage best practice in systematic reviewing, such as the requirement that reviewers specify their critical appraisal criteria prior to data extraction. Critical appraisal criteria can refer to a specific bias under assessment (i.e. the internal validity of a study) and/or the generalisability of a study (i.e. its external validity). In addition, the critical appraisal judgement system (i.e. whether a distinction will be made between low, medium, high and unclear risk, or only between low, high and unclear risk etc.) and items for data extraction (i.e. which data should be extracted) must be defined. The data extraction sheet will automatically be generated by CADIMA and the reviewer can mark those data that are needed to inform critical appraisal."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                124,
+                492,
+                336
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA allows users to conduct either on- or of-line extraction of data and meta-data,<sup>5</sup> by either directly entering information into CADIMA or by providing a download of the data extraction sheet as a spreadsheet file that can be uploaded once extraction is complete."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                336,
+                490,
+                412
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "During critical appraisal, the appraisal criteria are used to assess the validity of included studies. CADIMA allows users to undertake critical appraisal online, while the extracted data relevant to the critical appraisal are shown together with the appraisal criteria. Where inconsistencies in coding decisions occur between two independent reviewers for one record, these will be automatically identified by CADIMA, and the respective reviewers are asked to resolve those conflicts."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                412,
+                492,
+                550
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Flexibility provided by CADIMA"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                563,
+                307,
+                578
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA allows review steps to be modified and/ or updated during the conduct of the review, with the exception of the selection criteria, since a change in the selection criteria would require the de novo performance of the consistency check and all previously extracted information would be lost. The core steps do not need to be undertaken in order: for example search results can still be entered once the selection process has started, and the selection process does not need to be completed in order to start the data extraction or critical appraisal steps."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                578,
+                492,
+                746
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To support data synthesis activities, CADIMA provides the completed data extraction sheet and the results from the critical appraisal, as spreadsheets that facilitate data transfer and preparation for quantitative synthesis. These files can then be used by the review team to perform statistical analyses within the software package of their choice, such as R (https://cran.r-project.org/)."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                745,
+                492,
+                854
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Presenting data and results"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                108,
+                697,
+                122
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA facilitates thorough documentation of the review process, providing, besides others, the following information and data formats:"
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                122,
+                909,
+                170
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "i. a flow diagram summarising the study selection process, satisfying PRISMA standards<sup>6</sup> (docx),"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                184,
+                907,
+                215
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ii. reference lists for each database (xlsx) and the final reference list after duplicate removal (xlsx and RIS),"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                215,
+                907,
+                245
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "iii. the outcomes of the consistency check and study selection across the diferent stages (title, abstract and full text) including the reasons for exclusion (xlsx),"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                246,
+                907,
+                306
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "iv. the results of the critical appraisal (xlsx),"
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                306,
+                818,
+                321
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "v. the filled data extraction sheet (xlsx)."
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                322,
+                796,
+                337
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Furthermore, CADIMA ofers the possibility of uploading results generated by the review team, to make synthesis results available to third parties, i.e. displaying the documents on the web site and enable external users to download them. These features encourage a higher level of transparency than is common in publish systematic reviews."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                351,
+                909,
+                459
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA and other types of evidence synthesis"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                473,
+                872,
+                488
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA is also suitable for assisting in the process of conducting other forms of evidence synthesis, including systematic maps [8, 9] and rapid reviews [26] since not all steps of a systematic review have to be completed within the program. Consequently, the data extraction sheet can be designed to house meta-data only, and the critical appraisal step can be skipped completely if deemed necessary by the review authors."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                489,
+                910,
+                612
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Review of existing tools"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                624,
+                697,
+                640
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Of the 22 software packages identified as being suitable to support the systematic review or systematic map process, nine were advertised as suitable for users from any field of research, nine were designed for the health care and medical science sectors, three were designed primarily for software engineering and one for experimental animal studies (Fig.  1). The programs vary in terms of available support, and most ofered graphical user interfaces (GUI), although four required prior knowledge of coding or software development to use. Web-based functions were available for 15 of the packages and seven involved downloadable applications. Most packages were designed for a team of reviewers, an important consideration given many guidelines require more than one reviewer to be involved with screening (e.g. [7]). However, two packages did not provide this functionality. Of the primary stages of the systematic review process we identified, most software packages had the capacity to address article screening (most enabling title and/or title and abstract screening in addition to full text screening) (Table 3)."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                640,
+                910,
+                856
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                278,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 12 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                905,
+                53
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "5 Meta-data are descriptive information relating to where and how a study was performed."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                893,
+                490,
+                918
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "http://www.prisma-statement.org/PRISMAStatement/FlowDiagram.aspx."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                905,
+                904,
+                920
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/c237a294b578b6ceacc89e6e763ce20b7b1581467f47618c0630ee80364f7040.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1 Breakdown of the intended fields of research each of the 22 software packages were primarily designed fo"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                94,
+                108,
+                890,
+                597
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                646,
+                490,
+                751
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Machine learning and text mining features for use during screening, data extraction or synthesis stages are in their infancy, with only 10 software packages currently supporting or planning to support their use. To date these approaches have been incorporated into these tools in various ways, for example by assisting with article screening (e.g. Rayyan and EPPI-Reviewer), data extraction (e.g. METAGEAR package for R), and risk of bias assessments (e.g. SyRF). For further information about how text mining approaches have been efectively applied to systematic reviews, and more information about their potential future applications, see [27, 28]. Encouragingly, 16 software packages are freely available for non-commercial uses, and six are also open source. All of the software we assessed are available to use in English, although several lacked help documentation in English as they were designed primarily for use in another language (e.g. [29]). Furthermore, some programs have advanced capabilities to manage articles in other languages and other character sets (e.g. DistillerSR)."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                751,
+                490,
+                906
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                505,
+                646,
+                907,
+                798
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "During trialing of the software packages (summarised in Table 1), several general issues were noted. Most software packages lacked customisability; this was often to ensure compliance with specific existing guidelines or protocols within a particular discipline area (e.g. the Kitchenham guidelines for systematic reviews in software engineering [5]). This limits the degree to which many of the software packages can be used between disciplines. Most of the software packages difer in the types of input files they accept, and many only accept one type of input file (e.g. PubMed output files). The most common file type is RIS. This is problematic in interdisciplinary studies when importing studies from a wide range of sources and grey literature databases, many of which do not provide standardised export features (e.g. Google Scholar https://scholar.google.co.uk/, EU Joint Research Centre— Publications Repository http://publications.jrc.ec.europa. eu/repository, OECD iLibrary http://www.oecd-ilibrary. org/). To help address this, EPPI-Reviewer developers have designed a RIS converter to convert other file formats such as CSV files to RIS format (http://eppi.ioe. ac.uk/cms/Default.aspx?tabid 2934)."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                797,
+                907,
+                906
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 13 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                108,
+                490,
+                336
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Duplicate checking is an increasingly common feature (Table 3) that can provide valuable time savings, particularly if duplicate detection can be partially automated (e.g. EPPI-Reviewer). Automated import of abstracts and full-text PDFs is also an important time-saving feature in larger studies, but is not yet widely available (and is difficult when many studies are not open access, as in the field of conservation biology)."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                336,
+                490,
+                459
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Discussion and outlook"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                89,
+                472,
+                278,
+                487
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "There is increasing demand for information management systems which assist with the centralisation and management of the systematic review process, to improve eficiency and to facilitate teams of reviewers to collaborate. We have identified 22 software packages which provide this functionality, designed for users from a wide range of disciplines. There is a large degree of overlap between many of these software packages, however most have been developed with particular disciplines in mind and lack the customisability suitable for access and use by reviewers across disciplines. As a general observation, many developers appear to have developed these tools without an awareness of the full range of similar tools available (a point also noted in a recent systematic review [27])."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                488,
+                490,
+                716
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "EJM (who was not part of the development team) trialled CADIMA and found it intuitive to use and noted it performed smoothly even with large datasets. A major benefit of CADIMA is the fact it is suitable for teams (vital for reviewers following certain guidelines e.g. [7]) and is free and well supported—an important consideration for students, small organisations and notfor-profits (even low monthly fees are barriers, as the typical review process can take over a year). CADIMA also ofers greater security than traditional approaches to review management, such as Microsoft Excel, when it comes to sorting records and tracing included articles between diferent stages of the screening and data extraction process. The ability to export files and work ofline easily with CADIMA was considered a great asset, although the linear structure of the application has so far precluded adjustments to review team membership between screening stages. The developers have taken this into consideration for future developments of the programme. As CADIMA combines many diferent stages of the review process in a single piece of software, it also has the advantage of enhancing transparency and replicability."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                715,
+                492,
+                915
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                504,
+                108,
+                909,
+                260
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA is designed to provide important information to users in the form of prompts, which make the diference between a rigorous systematic review and a standard literature review, considerably reducing the barrier to entry for first time reviewers. These include protocol development prompts which mirror Collaboration for Environmental Evidence guidelines, and stages such as consistency checking. The structure and layout of CADIMA encourages users to document their methodology and screening criteria clearly, and also provides a location for record and methods to be hosted online, so that subsequent revisions can be undertaken easily."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                260,
+                910,
+                443
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Like CADIMA, the majority of software packages support teams of reviewers, require no prior coding knowledge and ofer a range of help and support, facilitating rapid learning and working with a team of individuals with difering degrees of experience. A handful of tools are particularly designed to lead the user in a stepwise manner through the review process, including CADIMA with its inbuilt guidance and clear layout, and SESRA [29], which mirrors the stages in the Kitchenham and Charters guidelines [5]. Others, such as EPPI-Reviewer, do not follow this structured approach, and users design the stages according to their needs, meaning they must be familiar with both the software and systematic review methodology."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                441,
+                909,
+                640
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "No single software package guides the reviewer through all stages of a systematic review or map project (from question formation to the exporting of project documentation), meaning stages such as literature searches or analysis and writing up of results are often expected to be managed separately. This is also true for CADIMA, which provides support for the majority of the stages we assessed (Table 3), excluding built-in searching and quantitative synthesis. Just over half of the software packages are integrated with one or more publication databases to allow for built-in searching, however this inevitably limited them to certain databases and their associated disciplines, such as PubMed (medical and healthcare evidence, https://www.ncbi.nlm.nih.gov/pubmed/) in the case of DistillerSR, SRDB.PRO, SWIFT-Review and SyRF."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                640,
+                910,
+                868
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The principal advantage of using software to assist in managing the review process is to increase eficiency of time consuming tasks, to allow for eforts to be concentrated on the most important tasks—namely synthesis and analysis. CADIMA facilitates the importing and exporting of the results of searching and synthesis to allow literature searches and statistical analysis to be conducted flexibly, using alternative software, and focuses on simplifying the tracking large numbers of review articles throughout the process."
+                    }
+                ]
+            },
+            "bbox": [
+                504,
+                867,
+                909,
+                913
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                37,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 14 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/3ed079117e9192df287a27b03e625d69008a22544e3b3425e01323fb3a49d90d.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 3 Breakdown of the 22 software packages designed to support evidence syntheses, with the functionality to support diferent stages of the systematic review process"
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "PICO population (P), intervention (I), comparator (C) and outcome (O)"
+                    }
+                ],
+                "html": "<table><tr><td>Software name</td><td>Setting up the review</td><td>Scoping/pilot study</td><td>Literature searching</td><td>Duplicate checking</td><td>Article screening</td><td>Data coding</td><td>Critical appraisal</td><td>Synthesis</td><td>Documentation</td></tr><tr><td>E.g.</td><td>Facilitation of question formulation and/or stakeholder engagement</td><td>Protocol development, PICO* elements specified</td><td>Software integrated with publication databases</td><td>Automated marking of duplicates</td><td>For study selection</td><td>Tagging and extraction to support meta-analyses</td><td>Risk of bias assessments</td><td>Facilitates quantitative/qualitative syntheses of results</td><td>Output of text, figures or tables to assist with report writing</td></tr><tr><td>CADIMA</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Colandr</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Covidence</td><td></td><td></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td></td><td></td><td></td></tr><tr><td>DistillerSR</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>EROS</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>EPPI-Reviewer 4</td><td></td><td></td><td rowspan=\"2\"></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td></tr><tr><td>HAWC</td><td></td><td></td><td></td></tr><tr><td>METAGEAR package for R</td><td></td><td></td><td></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td></td><td rowspan=\"2\"></td><td></td></tr><tr><td>PARSIFAL</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>Rayyan</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>REviewER</td><td></td><td rowspan=\"2\"></td><td></td><td></td><td rowspan=\"2\"></td><td></td><td></td><td></td><td></td></tr><tr><td>RevMan 5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td colspan=\"5\">RevMan Web</td><td colspan=\"5\">Data unavailable</td></tr><tr><td>SESRA</td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td></td><td></td><td rowspan=\"2\"></td></tr><tr><td>SLR-Tool</td><td></td><td></td><td></td><td></td></tr><tr><td>SLuRp</td><td></td><td></td><td rowspan=\"2\"></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td></tr><tr><td>SRDB.PRO</td><td></td><td></td><td></td></tr><tr><td>SRDR</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>StArt</td><td></td><td></td><td></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td></tr><tr><td>SUMARI</td><td></td><td></td><td></td><td></td></tr><tr><td>SWIFT-Review</td><td></td><td></td><td rowspan=\"2\"></td><td></td><td rowspan=\"2\"></td><td rowspan=\"2\"></td><td></td><td rowspan=\"2\"></td><td></td></tr><tr><td>SyRF</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td>TOTAL</td><td>5</td><td>10</td><td>13</td><td>11</td><td>20</td><td>19</td><td>12</td><td>15</td><td>13</td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                90,
+                137,
+                887,
+                568
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                87,
+                613,
+                490,
+                722
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Future developments of CADIMA"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                735,
+                349,
+                750
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Based on the results of the conducted review and received user feedback, the following issues will be considered during the next round of development for CADIMA:"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                751,
+                490,
+                812
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To facilitate the exchange between CADIMA and different reference sources, additional input formats will be catered for, rather than RIS files only;"
+                    }
+                ]
+            },
+            "bbox": [
+                89,
+                827,
+                490,
+                873
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "– Duplicates are detectable within CADIMA, but cannot be automatically removed in the current version. This can be quite time consuming in cases where many duplicates are identified. In such cases, review teams can automatically delete duplicates, for example by using EndNote and import the cleared list to CADIMA. In the future, an automated removal process will be implemented to CADIMA;"
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                873,
+                490,
+                920
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                526,
+                613,
+                907,
+                689
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In order to speed up the study selection process at title/abstract stage, text mining approaches will be tested and potentially implemented in the event a demonstrably robust method is developed (currently the software RapidMiner<sup>7</sup> is used to trial the use of text mining during the selection process);"
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                691,
+                907,
+                781
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To increase the time savings ofered by CADIMA, an automated upload of PDFs at full-text screening stage is planned;"
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                781,
+                907,
+                826
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Currently, the same reviewers have to participate during the study selection process at title, abstract and ful text stage. In the future, the possibility will be provided that diferent reviewers can be involved during the respective stages; and"
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                827,
+                907,
+                874
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                39,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 15 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                905,
+                53
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "https://rapidminer.com/."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                905,
+                650,
+                918
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                110,
+                108,
+                489,
+                139
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Due to the limitations associated with the conduct of a full systematic review, further evidence synthesis approaches, such as rapid reviews, are evolving in order to save resources and to provide a timely answer to a posed question [26, 30]. This is especially important in the political context where time is a major consideration. A future goal for CADIMA is to allow people to customise their review, depending on the purpose of the synthesis and available resources."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                139,
+                490,
+                277
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CADIMA will continue to be developed to join several other software packages which make use of machine learning approaches to increase eficiency at the article screening stages of the systematic review process. This is an area that we believe will be of increasing interest to users, particularly for updating existing reviews (algorithms can be trained to identify relevant studies based on similarity to previously included studies) [31] and dealing with very large bodies of literature."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                291,
+                490,
+                427
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The use of new technology to assist the systematic review process is a rapidly developing area, demonstrated by the inclusion of three new or upgraded software packages expected to become live in 2017 in our review (plus another we were unable to find further information on; DRAGON ONLINE). Several other packages which came up in our search have been discontinued, suggesting security of funding, ongoing maintenance and continual improvement are essential considerations for the developers of these types of software packages to prevent them quickly becoming obsolete."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                427,
+                492,
+                597
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                610,
+                191,
+                624
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "From a user perspective, we believe that CADIMA stands out in terms of ease of use, support for multiple users, support for on- or of-line data extraction, commitment to ongoing maintenance and financing, therefore meeting the criteria rated as most important by users of systematic review software in a recent study [25]. Many other free software packages require prior experience of software development and computer coding, or have limited capacity for ongoing maintenance. Aside from CADIMA, those that are continually updated and provide userfriendly graphical user interfaces, tend to be expensive for team reviews, making them less feasible options for small research teams or non-profit organisations."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                625,
+                492,
+                824
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Additional files"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                90,
+                831,
+                213,
+                846
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "Additional file 1. Search strategy for identifying software programs listed in Table 1."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                99,
+                865,
+                478,
+                889
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "Additional file 2. CADIMA terms of service"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                100,
+                894,
+                327,
+                907
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Authors’ contributions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                507,
+                108,
+                636,
+                121
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "CK drafted the CADIMA part of the manuscript, EJM performed the review of software tools and drafted the associated parts of the manuscript, SU is responsible for the programming of CADIMA and all authors contributed to the final manuscript. All authors read and approved the final manuscript."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                120,
+                892,
+                168
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Author detail"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                177,
+                591,
+                189
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>1</sup> Julius Kühn-Institut (JKI), Federal Research Centre for Cultivated Plants, Erwin‑Baur‑Strasse 27, 06484 Quedlinburg, Germany. <sup>2</sup> School of Geography and the Environment, University of Oxford, South Parks Road, Oxford OX 3QY, UK. <sup>3</sup> Mistra EviEM, Stockholm Environment Institute, 10451 Stockholm, Sweden."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                188,
+                895,
+                246
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgements"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                507,
+                256,
+                623,
+                269
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors wish to thank Simone Frenzel for her help during the development of CADIMA, GRACE team members for their input and Andrew Pullin for his support when establishing the collaboration between JKI and CEE."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                268,
+                902,
+                303
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Competing interests"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                313,
+                625,
+                326
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no competing interests. The review of software packages was not conducted by the authors responsible for developing CADIMA to ensure the independence of this analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                325,
+                904,
+                360
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Availability of data and materials"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                507,
+                370,
+                692,
+                383
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Not applicable."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                383,
+                589,
+                394
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Consent for publication"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                507,
+                405,
+                640,
+                416
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Not applicable."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                417,
+                588,
+                429
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Ethics approval and consent to participate"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                439,
+                741,
+                451
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Not applicable."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                451,
+                589,
+                463
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Funding"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                473,
+                559,
+                484
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This work received funding by the EU-FP7 project: GMO Risk Assessment and Communication of Evidence (GRACE); Grant Agreement KBBE-2011-6-311957."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                484,
+                902,
+                508
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Publisher’s Note"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                505,
+                524,
+                638,
+                537
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional afiliations."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                537,
+                885,
+                560
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Received: 25 November 2016 Accepted: 5 January 2018 Published online: 01 February 2018"
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                570,
+                808,
+                598
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                507,
+                637,
+                574,
+                649
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "1. Guyatt G. Evidence-based medicine. A new approach to teaching the practice of medicine. JAMA. 1992;268:2420–5."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                649,
+                885,
+                670
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "2. (EU) IR. Commission Implementing Regulation (EU) No. 503/2013 on applications for authorisation of genetically modified food and feed in accordance with Regulation (EC) No. 1829/2003 of the European Parlia ment and of the Council and amending Commission Regulations (EC) No. 641/2004 and (EC) No. 1981/2006. 2013, OJ L 157; 2013. p. 1–48."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                672,
+                895,
+                727
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "3. Kohl C, Craig W, Frampton G, Garcia-Yi J, van Herck K, Kleter GA, Krogh PH, Meissle M, Romeis J, Spök A. Developing a good practice for the review of evidence relevant to GMO risk assessment. GMOs Integr Plant Prod. 2013;97:55–62."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                730,
+                902,
+                773
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "4. Kohl C, Frampton G, Sweet J, Spök A, Haddaway NR, Wilhelm R, Unger S, Schiemann J. Can systematic reviews inform GMo risk assessment and risk management? Front Bioeng Biotechnol. 2015;3:113."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                774,
+                897,
+                808
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "5. Kitchenham B, Charters S. Guidelines for performing systematic literature reviews in software engineering version 2.3. EBSE Tech Rep. 2007;1–65."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                808,
+                900,
+                831
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "6. EFSA. Application of systematic review methodology to food and feed safety assessments to support decision making. EFSA J. 2010;8(6):1637."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                832,
+                892,
+                854
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "7. CEE. Guidelines for systematic review and evidence synthesis in environmental management. Version 4.2; 2013. p. 1–80."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                855,
+                897,
+                875
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "8. James KL, Randall NP, Haddaway NR. A methodology for systematic mapping in environmental sciences. Environ Evid. 2016;5:7."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                877,
+                902,
+                900
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                90,
+                39,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 16 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                826,
+                40,
+                905,
+                53
+            ]
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "9. Bragge P, Clavisi O, Turner T, Tavender E, Collie A, Gruen RL. The global evidence mapping initiative: scoping research in broad topic areas. BMC Med Res Methodol. 2011;11:92"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                108,
+                482,
+                144
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "10. Gathmann A, Priesnitz KU. What is the evidence on the inheritance of resistance alleles in populations of lepidopteran/coleopteran maize pest species: a systematic map protocol. Environ Evid. 2014;3:13."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                144,
+                482,
+                177
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "11. Gathmann A, Priesnitz KU. How susceptible are diferent lepidopteran/ coleopteran maize pests to Bt-proteins: a systematic review protocol. Environ Evid. 2014;3:12."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                178,
+                472,
+                211
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "12. Priesnitz KU, Vaasen A, Gathmann A. Baseline susceptibility of diferent European lepidopteran and coleopteran pests to Bt proteins expressed in Bt maize: a systematic review. Environ Evid. 2016;5:27."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                212,
+                487,
+                246
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "13. Meissle M, Naranjo SE, Kohl C, Riedel J, Romeis J. Does the growing of Bt maize change abundance or ecological function of non-target animals compared to the growing of non-GM maize? A systematic review protocol. Environ Evid. 2014;3:7."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                246,
+                480,
+                291
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "14. Kostov K, Damgaard CF, Hendriksen NB, Sweet JB, Krogh PH. Are population abundances and biomasses of soil invertebrates changed by Bt crops compared with conventional crops? A systematic review protocol. Environ Evid. 2014;3:10."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                95,
+                292,
+                480,
+                336
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "15. Kostov K, Krogh PH, Damgaard CF, Sweet JB, Hendriksen NB. Are soil microbial endpoints changed by Bt crops compared with conventional crops? A systematic review protocol. Environ Evid. 2014;3:11."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                337,
+                478,
+                370
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "16. Sweet J, Kostov K. What are the efects of the cultivation of GM herbicide tolerant crops on botanical diversity? A systematic review protocol. A systematic review protocol. Environ Evid. 2014;3:8."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                370,
+                482,
+                405
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "17. Garcia-Yi J, Lapikanonth T, Vionita H, Vu H, Yang S, Zhong Y, Li Y, Nagelsch neider V, Schlindwein B, Wesseler J. What are the socio-economic impacts of genetically modified crops worldwide? A systematic map protocol. Environ Evid. 2014;3:24."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                95,
+                405,
+                485,
+                450
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "18. Marshall C, Brereton P. Tools to support systematic literature reviews in software engineering: a feature analysis. In: International Symposium on Empirical Software Engineering and Measurement; 2014. p. 296–9."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                451,
+                480,
+                484
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "19. Practice CfRiEB. The systematic review accelerator. Centre for Research in Evidence Based Practice; 2017."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                484,
+                482,
+                507
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "20. Rathbone J, Carter M, Hofmann T, Glasziou P. Better duplicate detection for systematic reviewers: evaluation of systematic review assistant-deduplication module. Syst Rev. 2015;4(1):6."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                508,
+                480,
+                541
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "21. Wallace BC, Small K, Brodley CE, Lau J, Trikalinos TA. Deploying an interac tive machine learning system in an evidence-based practice center: abstrackr. In: Proceedings of the ACM International Health Informatics Symposium (IHI); 2012. p. 819–24."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                541,
+                482,
+                588
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "22. Marshall IJ, Kuiper J, Wallace BC. RobotReviewer: evaluation of a system for automatically assessing bias in clinical trials. J Am Med Inform Assoc. 2016;23:193–201."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                588,
+                478,
+                621
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "23. Barn BS, Raimondi F, Athappian L, Clark T. Slrtool: a tool to support collaborative systematic literature reviews. In: Proceedings of the 16th International Conference on Enterprise Information Systems (ICEIS-2014) Science and Technology Publications, Lda.; 2014. p. 440–7."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                622,
+                484,
+                667
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "24. Hassler E, Carver JC, Hale D, Al-Zubidy A. Identification of SLR tool needs—results of a community workshop. Inf Softw Technol. 2016;70:122–9."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                667,
+                447,
+                701
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "25. Marshall C, Brereton P, Kitchenham B. Tools to support systematic reviews in software engineering: a cross-domain survey using semi-structured interviews. In: Proceedings of the 19th International Conference on Evaluation and Assessment in Software Engineering—EASE ‘15; 2015. p. 1–6."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                94,
+                701,
+                484,
+                756
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "26. Collins A, Coughlin D, Miller J, Kirk S. The production of quick scoping reviews and rapid evidence assessments: a how to guide. London: Joint Water Evidence Group; 2015."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                758,
+                480,
+                792
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "27. O’Mara-Eves A, Thomas J, McNaught J, Miwa M, Ananiadou S. Using text mining for study identification in systematic reviews: a systematic review of current approaches. Syst Rev. 2015;4:5."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                792,
+                482,
+                826
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "28. Thomas J, McNaught J, Ananiadou S. Applications of text mining within systematic reviews. Res Synth Methods. 2011;2:1–14."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                826,
+                478,
+                849
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "29. Molléri JS, Benitti FBV. ARS—Uma abordagem para automatização de revisões sistemáticas da literatura em engenharia de software: Relatório Técnico. Itajaí, Brazil; 2013."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                108,
+                895,
+                144
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "30. Khangura S, Konnyu K, Cushman R, Grimshaw J, Moher D. Evidence sum maries: the evolution of a rapid review approach. Syst Rev. 2012;1:10."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                144,
+                900,
+                167
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "31. Roll U, Correia RA, Berger-Tal O. Using machine learning to disentangle homonyms in large text corpora. Conserv Biol. 2017. https://doi. org/10.1111/cobi.13044"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                167,
+                875,
+                200
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "32. CADIMA. Quedlinburg, Germany: Julius Kühn-Institut; 2017."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                200,
+                833,
+                212
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "33. Covidence systematic review software. Melbourne, Australia: Veritas Health Innovation."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                212,
+                875,
+                232
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "34. DistillerSR. Ottawa, Canada: Evidence Partners."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                234,
+                769,
+                246
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "35. Glujovsky D, Bardach A, García Martí S, Comandé D, Ciapponi A. EROS: a new software for early stage of systematic reviews. Value Health. 2011;14:A564."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                246,
+                885,
+                279
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "36. Thomas J, Brunton J, Graziosi S. EPPI-reviewer 4: software for research synthesis. EPPI-Centre Software. London: Social Science Research Unit, Institute of Education; 2010"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                279,
+                887,
+                313
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "37. HAWC. Health Assessment Workplace Collaborative. 2013"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                313,
+                825,
+                325
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "38. Shapiro A, Rusyn I. Health assessment workspace collaborative (HAWC) project overview; 2014."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                326,
+                890,
+                348
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "39. Lajeunesse MJ. Facilitating systematic reviews, data extraction, and meta-analysis with the METAGEAR package for R. Methods Ecol Evol. 2015;7:323–30."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                349,
+                878,
+                382
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "40. Ouzzani M, Hammady H, Fedorowicz Z, Elmagarmid A, Chalmers T, Smith H, Blackburn B, Silverman B, Schroeder B, Reitman D, et al. Rayyan—a web and mobile app for systematic reviews. Syst Rev. 2016;5:210."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                383,
+                900,
+                416
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "41. Review Manager (RevMan) Version 5.3. Copenhagen: The Nordic Cochrane Centre, The Cochrane Collaboration; 2014."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                416,
+                858,
+                439
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "42. Fernández-Sáez AM, Genero Bocco M, Romero FP. SLR-Tool a tool for performing systematic literature reviews. In: ICSOFT 2010—Proceedings of the 5th International Conference on Software and Data Technologies. 2010; 2:157–66."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                440,
+                897,
+                484
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "43. Bowes D, Hall T, Beecham S. SLuRp: a tool to help large complex systematic literature reviews deliver valid and rigorous results. In: Proceedings of the 2nd international workshop on Evidential assessment of software technologies—EAST ‘12; 2012. p. 33–6."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                484,
+                897,
+                530
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "44. Fabbri S, Silva C, Hernandes E, Octaviano F, Di Thommazo A, Belgamo A. Improvements in the StArt tool to better support the systematic review process. In: Proceedings of the 20th International Conference on Evalua tion and Assessment in Software Engineering—EASE ‘16 2016. p. 1–5."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                531,
+                897,
+                575
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "45. Howard BE, Phillips J, Miller K, Tandon A, Mav D, Shah MR, Holmgren S, Pelch KE, Walker V, Rooney AA, et al. SWIFT-Review: a text-mining work bench for systematic review. Syst Rev. 2016;5:87."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                575,
+                892,
+                610
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "46. Systematic Review and Meta-Analysis Facility (Syrf). Edinburgh, UK: CAMARADES-NC3Rs; 2017."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                610,
+                872,
+                632
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Submit your next manuscript to BioMed Central and we will help you at every step:"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                529,
+                711,
+                887,
+                746
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• We accept pre-submission inquiries"
+                    }
+                ]
+            },
+            "bbox": [
+                537,
+                751,
+                744,
+                763
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Our selector tool helps you to find the most relevant journal"
+                    }
+                ]
+            },
+            "bbox": [
+                537,
+                765,
+                872,
+                778
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• We provide round the clock customer support"
+                    }
+                ]
+            },
+            "bbox": [
+                537,
+                781,
+                801,
+                793
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Convenient online submission"
+                    }
+                ]
+            },
+            "bbox": [
+                539,
+                796,
+                715,
+                808
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Thorough peer review"
+                    }
+                ]
+            },
+            "bbox": [
+                539,
+                811,
+                673,
+                822
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Inclusion in PubMed and all major indexing services"
+                    }
+                ]
+            },
+            "bbox": [
+                539,
+                826,
+                828,
+                837
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Maximum visibility for your research"
+                    }
+                ]
+            },
+            "bbox": [
+                539,
+                841,
+                747,
+                854
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Submit your manuscript at www.biomedcentral.com/submit"
+                    }
+                ]
+            },
+            "bbox": [
+                539,
+                864,
+                717,
+                884
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Kohl et al. Environ Evid (2018) 7:8"
+                    }
+                ]
+            },
+            "bbox": [
+                92,
+                39,
+                277,
+                51
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "Page 17 of 17"
+                    }
+                ]
+            },
+            "bbox": [
+                825,
+                40,
+                905,
+                53
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "BioMed Central"
+                    }
+                ]
+            },
+            "bbox": [
+                757,
+                865,
+                882,
+                886
+            ]
+        }
+    ]
+]

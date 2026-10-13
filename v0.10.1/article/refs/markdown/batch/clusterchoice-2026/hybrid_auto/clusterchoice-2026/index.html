@@ -1,0 +1,3796 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Systematic literature review tooling">
+      
+      
+      
+        <link rel="canonical" href="https://koosie0507.github.io/mapwisefox/latest/article/refs/markdown/batch/clusterchoice-2026/hybrid_auto/clusterchoice-2026/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Clusterchoice 2026 - MapwiseFox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#clusterchoice-a-web-based-tool-for-interpretable-clustering-and-algorithm-comparison-in-bibliometric-networks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../../../.." title="MapwiseFox" class="md-header__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MapwiseFox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Clusterchoice 2026
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../../.." title="MapwiseFox" class="md-nav__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MapwiseFox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../search/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Search
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/dates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/output-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/ir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intermediate representation (IR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/field-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/regex-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/query-object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QueryObject
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backends
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/acm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/ieee-xplore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IEEE Xplore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/science-direct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceDirect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/scopus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/springer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Springer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/web-of-science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web of Science
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/configuration/config-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/configuration/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legacy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legacy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/legacy/query-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query builder (deprecated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../deduplication/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deduplication
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deduplication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../deduplication/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../deduplication/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../deduplication/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../split/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Split
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../split/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../split/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../metrics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metrics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/getting-started/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Information Retrieval Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/getting-started/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-Rater Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How It Works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How It Works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/how-it-works/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Information Retrieval Metrics Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/how-it-works/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Inter-Rater Agreement Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../snowballing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowballing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowballing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../snowballing/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../snowballing/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../snowballing/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../assistant/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assistant
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assistant
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../assistant/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../assistant/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../assistant/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../web/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../web/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screen a primary-study list
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../web/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web operations and configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-r-t-i-c-l-e-i-n-f-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A R T I C L E I N F O
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-b-s-t-r-a-c-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A B S T R A C T
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-motivation-and-significance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Motivation and significance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-research-gaps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1. Research gaps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-clusterchoice-and-flca" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2. ClusterChoice and FLCA
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-study-aims" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.3. Study aims
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-software-description-and-methodology" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Software description and methodology
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#21-system-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1. System architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-co-word-network-construction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3: Co-word network construction
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#e-download-list" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        (E) Download list
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-computational-optimization-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2. Computational optimization strategy
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#23-implementation-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3. Implementation layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#24-ari-and-nmi-as-similarity-measures-for-clustering-algorithms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4. ARI and NMI as similarity measures for clustering algorithms
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#25-user-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.5. User workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-illustrative-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Illustrative examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-data-source" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Data source
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-results-of-coword-keyword-occurrences-in-clusterchoice" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Results of coword keyword occurrences in ClusterChoice
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/koosie0507/mapwisefox/edit/main/docs/article/refs/markdown/batch/clusterchoice-2026/hybrid_auto/clusterchoice-2026.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<p>Original Software Publication</p>
+<h1 id="clusterchoice-a-web-based-tool-for-interpretable-clustering-and-algorithm-comparison-in-bibliometric-networks">ClusterChoice: a web-based tool for interpretable clustering and algorithm comparison in bibliometric networks<a class="headerlink" href="#clusterchoice-a-web-based-tool-for-interpretable-clustering-and-algorithm-comparison-in-bibliometric-networks" title="Permanent link">&para;</a></h1>
+<p>Tsair-Wei Chien <sup>a</sup>, Lifan Chen <sup>b,*</sup>, Willy Chou <sup>c,d,**</sup></p>
+<p><sup>a</sup> Department of Medical Research, Chi Mei Medical Center, Tainan, Taiwan</p>
+<p><sup>b</sup> Department of Nursing, An Nan Hospital, China Medical University, Tainan, Taiwan</p>
+<p><sup>c</sup> Department of Leisure and Sports Management, CTBC University, Tainan, Taiwan</p>
+<p><sup>d</sup> Department of Physical Medicine and Rehabilitation, Chi-Mei Hospital, Liouying, Tainan, Taiwan</p>
+<h2 id="a-r-t-i-c-l-e-i-n-f-o">A R T I C L E I N F O<a class="headerlink" href="#a-r-t-i-c-l-e-i-n-f-o" title="Permanent link">&para;</a></h2>
+<p>Keywords: ClusterChoice Bibliometrics Cluster analysis FLCA Network visualization</p>
+<h2 id="a-b-s-t-r-a-c-t">A B S T R A C T<a class="headerlink" href="#a-b-s-t-r-a-c-t" title="Permanent link">&para;</a></h2>
+<p>Cluster analysis is widely used in bibliometric research, but dense networks often reduce readability, and clustering algorithms or quality indicators are frequently underreported. This study introduces ClusterChoice, a web-based R Shiny application for selecting interpretable clustering structures in bibliometric networks. The software accepts co-word occurrence, document–term matrix, and node–edge data, applies top-node filtering to reduce computational burden, and compares 11 clustering algorithms using modularity Q, mean silhouette score, ARI, and NMI. A SoftwareX bibliographic dataset was used to demonstrate practical utility. In the comparative analysis of 76 nodes(i.e., with many singleton with SS=0), most conventional algorithms showed similar modularity (Q = 0.65) but near-zero silhouette scores, indicating weak cohesion despite acceptable partitioning. Components-based methods improved silhouette values to 0.60–0.62. In contrast, FLCA achieved the highest modularity (Q = 0.80) and mean silhouette score (0.78), producing clearer leader–follower clusters. The SSplot for the top 20 nodes across six clusters further showed positive silhouette values, supporting cluster stability. By integrating top-node filtering, FLCA-based clustering, algorithm comparison, network visualization, SSplots, Kano plots, and exportable reports, ClusterChoice provides a practical and reproducible tool for improving bibliometric cluster selection and network-quality assessment.</p>
+<p>• Compares 11 clustering algorithms for bibliometric network analysis.</p>
+<p>• Uses top-node filtering to reduce dense co-word network complexity.</p>
+<p>• Reports modularity, silhouette, ARI, and NMI with exportable visual outputs.</p>
+<h2 id="metadata">Metadata<a class="headerlink" href="#metadata" title="Permanent link">&para;</a></h2>
+<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>v1.0</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/smilechien/clusterchoice/</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td>https://onlinerasch.shinyapps.io/flcacompare/</td></tr><tr><td>C4</td><td>Legal code license</td><td>MIT License</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>git</td></tr></table>
+
+<p>(continued )</p>
+<table><tr><td>C6</td><td>Software code languages, tools and services used</td><td>R</td></tr><tr><td>C7</td><td>Compilation requirements, operating environments and dependencies</td><td>Shiny, DT, igraph, dplyr, tibble, readr, visNetwork, RColorBrewer, ggplot2, ggrepel, and circlize</td></tr><tr><td>C8</td><td>Online demo MP4 video</td><td>https://youtu.be/uRhJljxbPS0</td></tr><tr><td>C9</td><td>Support email for questions</td><td>rasch.smile@gmail.com</td></tr></table>
+
+<p>Table 1<br />
+Pseudocode of the FLCA leader–follower clustering procedure.</p>
+<table><tr><td>Stage</td><td>Pseudocode</td></tr><tr><td>Input</td><td>Node table with name, value, optional value2; edge table with paired nodes and WCD; parameters: cluster_by, top_clusters = 5, base_per_cluster = 4, target_n = 20, min_size = 3, intra_delta = 2, inter_delta = 5.</td></tr><tr><td>Output</td><td>Final node clusters, leader-follower edges, top-20 sampled nodes, modularity Q, and silhouette statistics.</td></tr><tr><td>1</td><td>Normalize node names and numeric scores.</td></tr><tr><td>2</td><td>Select active FLCA score: use value for maturity mode or value2 for influence mode.</td></tr><tr><td>3</td><td>Sort nodes by descending active score and assign initial unique cluster IDs.</td></tr><tr><td>4</td><td>Normalize edges into Leader, Follower, and WCD.</td></tr><tr><td>5</td><td>For each edge, assign the higher-scored node as Leader and the lower-scored node as Follower.</td></tr><tr><td>6</td><td>For each follower, retain only one strongest leader link using maximum WCD; break ties by leader score and leader rank.</td></tr><tr><td>7</td><td>Identify true leaders as nodes with at least two followers; always retain the top-scored node as a leader.</td></tr><tr><td>8</td><td>Iteratively merge each non-leader follower into its leader&#x27;s cluster until no cluster assignment changes.</td></tr><tr><td>9</td><td>Detect small clusters with fewer than min_size members and merge them upward through their leader connection.</td></tr><tr><td>10</td><td>If only one cluster remains, split it into two rank-based subclusters to avoid a trivial one-cluster result.</td></tr><tr><td>11</td><td>Renumber clusters sequentially according to the highest active score within each cluster.</td></tr><tr><td>12</td><td>Apply major sampling: rank clusters by size and total active score.</td></tr><tr><td>13</td><td>Select the top top_clusters clusters.</td></tr><tr><td>14</td><td>From each selected cluster, take up to base_per_cluster highest-scored nodes.</td></tr><tr><td>15</td><td>Fill remaining positions by round-robin sampling from selected clusters until target_n = 20 is reached.</td></tr><tr><td>16</td><td>If still fewer than 20 nodes, fill by global active-score ranking.</td></tr><tr><td>17</td><td>Rebuild the sampled edge set using only edges among selected top-20 nodes.</td></tr><tr><td>18</td><td>Compute modularity Q for the final sampled clusters using weighted and unweighted undirected edges.</td></tr><tr><td>19</td><td>Compute silhouette statistics using distance transformed from edge weight: stronger WCD indicates shorter distance.</td></tr><tr><td>20</td><td>Apply intra-cluster and inter-cluster penalties for missing edges using intra_delta and inter_delta.</td></tr><tr><td>21</td><td>Return final clusters, leader-follower relations, sampled top-20 network, modularity Q, and silhouette values.</td></tr></table>
+
+<p>Note. A leader is operationally defined as a higher-ranked node that attracts one or more followers; Log status generated by FLCA is shown in Supplemental Appendix 1; flca_ma_sil_module.R in Github at https://github.com/smilechien/c lusterchoice/</p>
+<h2 id="1-motivation-and-significance">1. Motivation and significance<a class="headerlink" href="#1-motivation-and-significance" title="Permanent link">&para;</a></h2>
+<p>Clustering is a fundamental task in network analysis and community detection, aiming to partition nodes into meaningful groups based on structural relationships. Widely used algorithms, such as Louvain, Walktrap, Infomap, and label propagation, have been extensively applied in bibliometrics and complex network studies due to their computational efficiency and scalability [1–3]. However, these methods primarily optimize global criteria, such as modularity or information flow, and often overlook structural constraints required for interpretable clustering results [4].</p>
+<h2 id="11-research-gaps">1.1. Research gaps<a class="headerlink" href="#11-research-gaps" title="Permanent link">&para;</a></h2>
+<p>A key limitation of existing approaches is the absence of explicit hierarchical organization within clusters [5]. In many real-world networks—particularly bibliometric and collaboration networks—relationships naturally exhibit leader–follower dynamics, where central nodes (leaders) organize or influence surrounding nodes (followers) [6–12]. Conventional algorithms do not enforce such structures, often producing clusters with weak cohesion, fragmented groupings, or leaders lacking sufficient supporting members [13]. Moreover, dense co-word or collaboration networks frequently contain excessive nodes and edges, resulting in cluttered layouts that hinder interpretation [14]. Empirical studies further show that some algorithms may achieve acceptable modularity while yielding low or even negative silhouette scores, indicating poor internal cohesion [7,9].</p>
+<p>These issues are particularly critical in bibliometric analysis. Author collaboration networks are widely used to examine how scientific knowledge is generated and organized, where nodes represent authors and edges capture co-authorship or intellectual relationships [15]. In practice, such collaborations are rarely flat; instead, they often reflect implicit hierarchies in which senior or highly productive researchers act as leaders, while junior collaborators form follower groups [8,9,16]. Therefore, clustering methods should not only partition networks into communities but also reveal interpretable internal structures that reflect these hierarchical relationships.</p>
+<p>However, traditional clustering algorithms do not guarantee that clusters satisfy basic interpretability conditions, such as having a clear leader, sufficient members, and coherent internal connections [6]. This limitation may lead to misleading conclusions in bibliometric studies, particularly when interpreting academic leadership, mentoring capacity, or collaborative structures.</p>
+<h2 id="12-clusterchoice-and-flca">1.2. ClusterChoice and FLCA<a class="headerlink" href="#12-clusterchoice-and-flca" title="Permanent link">&para;</a></h2>
+<p>To address these gaps, this study introduces ClusterChoice [17], a web-based application designed to improve clustering interpretability and efficiency in bibliometric networks. The system integrates (i) a top-node filtering strategy to reduce network complexity before clustering, (ii) a leader–follower-oriented clustering framework based on Following Leader Clustering Algorithm (FLCA) [8,9,16], and (iii) a comparative evaluation module across multiple algorithms using metrics such as modularity, silhouette score, ARI, and NMI [18,19]. By combining computational reduction with structural constraints, ClusterChoice[17] enables users to identify clustering solutions that are both quantitatively robust and visually interpretable.</p>
+<h2 id="13-study-aims">1.3. Study aims<a class="headerlink" href="#13-study-aims" title="Permanent link">&para;</a></h2>
+<p>The objective of this study is to evaluate whether FLCA can produce more coherent and interpretable clustering results than conventional methods. Using bibliometric datasets, ClusterChoice compares multiple clustering algorithms and examines their ability to reveal meaningful collaboration structures while satisfying key clustering principles. Through this approach, the study aims to provide a practical and reproducible framework for selecting appropriate clustering methods in bibliometric and network analysis.</p>
+<h2 id="2-software-description-and-methodology">2. Software description and methodology<a class="headerlink" href="#2-software-description-and-methodology" title="Permanent link">&para;</a></h2>
+<p>ClusterChoise is a web-based bibliometric clustering and network analysis application developed in R with a Shiny interface. It is designed to transform co-word occurrence data or network-based inputs into interpretable clustering structures while reducing computational burden through an adaptive node-selection strategy. Unlike conventional clustering tools that operate on full-scale networks, ClusterChoise introduces a top-N node preselection mechanism (default: top 100 nodes by importance to reduce computation with many nodes and relations) to improve efficiency without sacrificing interpretability.</p>
+<p>The application integrates data preprocessing, network construction, clustering comparison, and visualization into a unified workflow. It supports multiple clustering algorithms, including FLCA (Table 1) and benchmark methods, and provides evaluation metrics such as silhouette score, modularity, and agreement indices (ARI, NMI) [18,19]. The system outputs interpretable visualizations including co-word networks, SSplots [12], and Sankey-style summaries [5], enabling users to assess clustering quality and thematic structure in a reproducible environment.</p>
+<p><img alt="" src="../images/5d12b06dc7942d1ee5139f57821c2434b8a2f99643416f25d5035884dfe6a061.jpg" /><br />
+Fig. 1. ClusterChoice Workflow with 5 modules.<br />
+Step 2: Node importance estimation and top-N selection</p>
+<h2 id="21-system-architecture">2.1. System architecture<a class="headerlink" href="#21-system-architecture" title="Permanent link">&para;</a></h2>
+<p>ClusterChoise follows a structured five-step analytical pipeline:</p>
+<ol>
+<li>
+<p>Data acquisition and normalization</p>
+</li>
+<li>
+<p>Node importance estimation and top-N selection</p>
+</li>
+<li>
+<p>Co-word network construction</p>
+</li>
+<li>
+<p>Clustering and comparative evaluation</p>
+</li>
+<li>
+<p>Visualization and export</p>
+</li>
+</ol>
+<p>This architecture converts raw co-word occurrence data or document-derived inputs into a reduced yet informative network rep resentation, followed by clustering analysis and visual interpretation.</p>
+<p>A key design principle is computational reduction before clustering. Instead of constructing and analyzing a full high-dimensional network, ClusterChoise first identifies the most informative nodes and restricts downstream computation to this subset. This improves scal ability and stability, particularly for large bibliometric datasets.</p>
+<p>Step 1: Data acquisition and normalization</p>
+<p>The system accepts multiple input formats, including:</p>
+<p>• Co-word occurrence tables (long format: document × term)</p>
+<p>• Wide document-term matrices</p>
+<p>• Predefined node–edge network data</p>
+<p>Uploaded data are parsed into a standardized internal representation. Text-based inputs are transformed into term-level structures, while network inputs are normalized into node and edge tables with consistent naming conventions (e.g., Leader, follower, WCD).</p>
+<p>This step ensures compatibility across heterogeneous data sources and prepares the dataset for subsequent node evaluation and filtering.</p>
+<p>To reduce computational complexity, ClusterChoise applies a node filtering strategy prior to network construction. Each node is assigned an importance score based on occurrence frequency or weighted connectivity (e.g., co-occurrence strength).</p>
+<p>Nodes are then ranked in descending order, and only the top-N nodes (default: 100) are retained:</p>
+<p>$$
+\mathscr {V} _ {t o p} = v _ {1}, v _ {2}, \dots , v _ {1 0 0}, \text {where} v a l u e (v _ {i}) \geq v a l u e (v _ {i + 1}),\tag{1}
+$$</p>
+<p>This step is critical because co-word networks scale quadratically with the number of nodes. By limiting the node set before edge generation, the algorithm significantly reduces memory usage and computational time.</p>
+<p>Importantly, this design preserves the core thematic structure of the dataset, as high-frequency or high-impact terms typically dominate semantic representation.</p>
+<h2 id="step-3-co-word-network-construction">Step 3: Co-word network construction<a class="headerlink" href="#step-3-co-word-network-construction" title="Permanent link">&para;</a></h2>
+<p>After node selection, ClusterChoise constructs a weighted co-word network based only on the filtered node set. Edges are generated using co-occurrence relationships:</p>
+<p>• In document-based data: two terms are linked if they co-occur within the same unit (e.g., sentence or document)</p>
+<p>• In matrix data: co-occurrence is derived via matrix multiplication</p>
+<p>• In edge input: weights are directly used</p>
+<p>The co-occurrence matrix is defined as:</p>
+<p>$$
+C = X ^ {T} X\tag{2}
+$$</p>
+<p>where X is the binary document-term matrix restricted to top-N nodes. Each edge weight represents the frequency or strength of co-</p>
+<p><img alt="" src="../images/dbde8cc7850be421a0d415dfb3dfc2213545cdb7b502fc4088f85936229133e6.jpg" /><br />
+Fig. 2. ClusterChoice homepage and plot menu.</p>
+<p><img alt="" src="../images/67d2f66581290ba6e0d68cb78206a9b2624667280158cba2b8aa50b527f34920.jpg" /><br />
+(D) Co-word occurrences</p>
+<p><img alt="" src="../images/5d072c461abbcc96aadd1606aa92f199250800d94d9b866c95eb82c136e79e6d.jpg" /></p>
+<h2 id="e-download-list">(E) Download list<a class="headerlink" href="#e-download-list" title="Permanent link">&para;</a></h2>
+<p>Download list for FLCA Process outputs Use these buttons to export the selected FLCA Process tables and publication-style plot PNGs generated under the current maturity/influence mode and major-sampling settings</p>
+<p>Selected nodes All FLCA nodes  Leader-follower e  Cluster summary CSV</p>
+<p>AAC summary CSSSplot PNG</p>
+<p>Kano PNG</p>
+<p>Circular chord PNG</p>
+<p>SankeyMATIC TSankeyMATIC noSankeyMATIC ed  Chord edges CSV</p>
+<p>occurrence (WCD, weighted centrality degree) clustering and visualization.</p>
+<p>• FLCA (Following Leader Clustering Algorithm)</p>
+<p>• Louvain</p>
+<p>• Walktrap</p>
+<p>Step 4: Clustering and comparative evaluation</p>
+<p>• Infomap</p>
+<p>• Label propagation</p>
+<p>ClusterChoise supports multiple clustering algorithms, including:</p>
+<p>• Edge betweenness</p>
+<p>• Connected components</p>
+<p><img alt="" src="../images/80f5764a15324ab7809bffbf37a857dd4a31e01896b6af06c5fb53e3f6c56df0.jpg" /><br />
+Fig. 3. The traditional network presents a dense structure with numerous nodes and edges.</p>
+<p>A distinguishing feature is the inclusion of FLCA-based reduction, where each node connects to its strongest neighbor, producing a simplified leader–follower structure.</p>
+<p>Clustering quality is evaluated using:</p>
+<p>• Modularity (Q) for network partition strength</p>
+<p>• Silhouette score (SS) for cluster cohesion and separation</p>
+<p>• Adjusted Rand Index (ARI) and Normalized Mutual Information (NMI) for agreement comparison with FLCA</p>
+<p>This multi-metric framework allows users to compare clustering outcomes across methods and identify the most interpretable structure.</p>
+<p>Step 5: Visualization and export</p>
+<p>ClusterChoise generates multiple visual outputs:</p>
+<p>• Co-word network graphs (leader–follower structure)</p>
+<p>• SSplots for cluster quality assessment</p>
+<p>• Kano-style plots for algorithm comparison</p>
+<p>• Sankey diagrams for flow-based interpretation</p>
+<p>These visualizations transform clustering results into interpretable insights, enabling users to understand thematic organization and cluster</p>
+<p>reliability.</p>
+<p>The export module provides:</p>
+<p>• Node and edge tables</p>
+<p>• Clustering results</p>
+<p>• High-resolution Figures</p>
+<p>This supports reproducibility and facilitates integration into academic manuscripts.</p>
+<h2 id="22-computational-optimization-strategy">2.2. Computational optimization strategy<a class="headerlink" href="#22-computational-optimization-strategy" title="Permanent link">&para;</a></h2>
+<p>A central innovation of ClusterChoise is its pre-clustering reduction strategy, where node filtering is applied before network con struction and clustering.</p>
+<p>Compared to traditional approaches:</p>
+<p>Conventional workflow:</p>
+<p>full nodes → full edges → clustering</p>
+<p>• ClusterChoise workflow:</p>
+<p>top-N nodes → reduced edges → clustering</p>
+<p><img alt="" src="../images/7cac81425f3080b3d78e28199920cfed268ceebf9cf95711437d4cdc99d1ee04.jpg" /><br />
+Fig. 4. The FLCA-based network (Fig. 4) produces a simplified leader–follower structure with fewer edges.</p>
+<p>This shift reduces computational complexity from:</p>
+<p>$$
+O \big (n ^ {2} \big) \to O \big (k ^ {2} \big), k \ll n,\tag{3}
+$$</p>
+<p>where n is the original number of nodes and k is the selected subset.</p>
+<p>This design is particularly effective for large bibliometric datasets, where full co-word matrices can be computationally expensive and visually cluttered.</p>
+<h2 id="23-implementation-layers">2.3. Implementation layers<a class="headerlink" href="#23-implementation-layers" title="Permanent link">&para;</a></h2>
+<p>ClusterChoise consists of four layers:</p>
+<ol>
+<li>
+<p>Interface layer (Shiny) – user input, parameter selection, visualization</p>
+</li>
+<li>
+<p>Preprocessing layer – data parsing and normalization</p>
+</li>
+<li>
+<p>Analytical engine – node filtering, network construction, clustering</p>
+</li>
+<li>
+<p>Rendering layer – visualization and export</p>
+</li>
+</ol>
+<p>This modular design separates user interaction from computation, ensuring both usability and reproducibility.</p>
+<h2 id="24-ari-and-nmi-as-similarity-measures-for-clustering-algorithms">2.4. ARI and NMI as similarity measures for clustering algorithms<a class="headerlink" href="#24-ari-and-nmi-as-similarity-measures-for-clustering-algorithms" title="Permanent link">&para;</a></h2>
+<p>ARI and NMI measure how similar each clustering result is to the reference clustering structure [9,10].</p>
+<p>Adjusted Rand Index (ARI) evaluates whether pairs of nodes are assigned consistently across two clustering methods. A value of 1.00 means perfect agreement, whereas values near 0 indicate random-level agreement.</p>
+<p>Normalized Mutual Information (NMI) measures how much information one clustering result shares with another. A value of 1.00 also indicates complete consistency between two clustering solutions.</p>
+<h2 id="25-user-workflow">2.5. User workflow<a class="headerlink" href="#25-user-workflow" title="Permanent link">&para;</a></h2>
+<p>From a user perspective, the workflow is shown below (Fig. 2):</p>
+<ol>
+<li>
+<p>Upload co-word or document data</p>
+</li>
+<li>
+<p>Select analysis settings (e.g., node limit, clustering method)</p>
+</li>
+<li>
+<p>Run analysis</p>
+</li>
+<li>
+<p>Inspect network and clustering results</p>
+</li>
+<li>
+<p>Export outputs</p>
+</li>
+</ol>
+<p>This streamlined pipeline enables efficient exploration of bibliometric structures while maintaining methodological rigor.</p>
+<p>To illustrate the use of ClusterChoice [17], three main functions are shown in Fig. 2 [21]: (1) uploading co-word occurrence data by selecting Upload CSV files, choosing Co-word occurrence, browsing the dataset file (dataset1.csv) [20], running the analysis, and viewing both Full Network and FLCA Reduced outputs; (2) examining clustering performance through the Quality and Visual Quality tabs; and (3) opening the FLCA Process tab to inspect visual results.</p>
+<p>Additionally, the interface supports FLCA parameter configuration, maturity/influence modes, clustering-quality evaluation, and exportable visual outputs including network dashboards, SSplots, Kano plots, Sankey diagrams, and downloadable publication-ready figures.</p>
+<h2 id="3-illustrative-examples">3. Illustrative examples<a class="headerlink" href="#3-illustrative-examples" title="Permanent link">&para;</a></h2>
+<h2 id="31-data-source">3.1. Data source<a class="headerlink" href="#31-data-source" title="Permanent link">&para;</a></h2>
+<p>Articles published in SoftwareX were retrieved from Web of Science core collection(WoSCC). The coverage period was from 2017 to 2026. Author-defined keywords were applied to ClusterChoice, ensuring full transparency and facilitates reproducibility for future bibliometric investigations.</p>
+<p>Study data are deposed in Github [20]. Since all articles stored in WoSCC do not contain identifiable patient information, ethical review approval was not required.</p>
+<h2 id="32-results-of-coword-keyword-occurrences-in-clusterchoice">3.2. Results of coword keyword occurrences in ClusterChoice<a class="headerlink" href="#32-results-of-coword-keyword-occurrences-in-clusterchoice" title="Permanent link">&para;</a></h2>
+<p>The traditional network (Fig. 3) presents a dense structure with numerous nodes and edges, resulting in visual clutter and limited</p>
+<h1 id="juality-of-clustering-algorithms-modularity-q-vs-mean-silhouette-scoi">juality of clustering algorithms: modularity Q vs mean silhouette scoi<a class="headerlink" href="#juality-of-clustering-algorithms-modularity-q-vs-mean-silhouette-scoi" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="../images/c8554d0f9297ca6f77dc7f40f64ac5853d9ffd8b8396f08c3b7d06a7a1e7ab53.jpg" /><br />
+Fig. 5. Quality of clustering algorithm in comparison by modularity Q and mean silhouette score: Note. FLCA at top right corner with Modularity Q and SS are shown on x- and y-axes, respectively.</p>
+<p>interpretability.</p>
+<p>In contrast, the FLCA-based network (Fig. 4) produces a simplified leader–follower structure with fewer edges, clearly defined clusters, and improved readability, facilitating more interpretable and meaningful clustering results.</p>
+<h2 id="33-comparative-analysis-of-clustering-algorithms">3.3. Comparative analysis of clustering algorithms<a class="headerlink" href="#33-comparative-analysis-of-clustering-algorithms" title="Permanent link">&para;</a></h2>
+<p>Fig. 5 and Table 2 compare clustering quality across algorithms using modularity Q and mean silhouette score. Most conventional algorithms showed similar modularity $( Q = 0 . 6 5 )$ but near-zero silhouette scores, indicating weak internal cohesion. Components-based methods improved silhouette values (0.60–0.62).</p>
+<p>In Table 2, most conventional algorithms have ARI ¼ 1.00 and NMI ${ \bf \mu } = { \bf 1 . 0 0 } ;$ , meaning they produced the same or highly identical partition structure under the full-edge setting. However, their silhouette scores were mostly 0.00, showing that agreement alone does not guarantee good cluster cohesion due to many singleton nodes in network, as shown in Fig. 3. FLCA is therefore reported separately because it uses a reducedconsistent leader–follower structure, achieving higher modularity (0.80) and silhouette (0.78).</p>
+<p>Importantly, both maturity and influence modes in Fig. 2 allow FLCA to identify leaders based on either node frequency (value) or edge connectivity strength (value2). In this case, both modes generate identical data patterns in top 20 nodes shown in Table 2.</p>
+<h2 id="34-flca-based-network-charts">3.4. FLCA-based network charts<a class="headerlink" href="#34-flca-based-network-charts" title="Permanent link">&para;</a></h2>
+<p>Figs. 6 and 7 present the FLCA-based visualization results. Fig. 2C illustrates an interactive leader–follower network, where major nodes (e.g., Machine learning, Python, Software) act as cluster leaders with directed links to followers, providing a clear and interpretable positive silhouette values (SS ≈ 0.22–0.52), indicating good cluster cohesion and separation, supporting the stability of the FLCA clustering.</p>
+<p>Table 2<br />
+Comparative performance of clustering algorithms.</p>
+<table><tr><td>No.</td><td>Method</td><td>n-cluster</td><td>modularity</td><td>silhouette</td><td>ARI</td><td>NMI</td><td>status</td><td>note</td><td>edges</td></tr><tr><td>1</td><td>Louvain</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>2</td><td>Optimal</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>3</td><td>Components</td><td>76</td><td>0.65</td><td>0.62</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>4</td><td>edge_betweenness</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>5</td><td>label_prop</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>6</td><td>Infomap</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>7</td><td>leading_eigen</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>8</td><td>Walktrap</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>9</td><td>fast_greedy</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>10</td><td>FLCA by maturity</td><td>76</td><td>0.80</td><td>0.78</td><td></td><td></td><td>ok</td><td>a</td><td>b</td></tr><tr><td>10</td><td>FLCA by influence</td><td>76</td><td>0.80</td><td>0.78</td><td></td><td></td><td>ok</td><td>a</td><td>b</td></tr><tr><td>11</td><td>Components</td><td>76</td><td>0.65</td><td>0.60</td><td>1.00</td><td>1.00</td><td>ok</td><td>c</td><td></td></tr></table>
+
+<p>Note: a.Weak edges dropped until target number of components is reached; b. reduced_consistent; c.Weak edges dropped until target number of components is reached; the higher overall silhouette value (\~0.78) was calculated from the broader FLCA clustering structure generated from the larger node set (approximately top 100 nodes distributed across multiple clusters)..</p>
+<p><img alt="" src="../images/7a38abdfad92061e1c2935a56dbc439cd35eb9e9ca2b2c2eeee6e15de777292b.jpg" /><br />
+Fig. 6. Sankey plot for displaying Top 20 nodes with a single edge from a follower to a corresponding leader.<br />
+hierarchical structure. Fig. 6 displays an Sankey-style network. Fig. 7 shows the SSplot of the top 20 nodes across six clusters, with mostly</p>
+<p><img alt="" src="../images/bf1f0921684e725ba175b2171a4afc4a43f3435314a2e3f2d72f81e02821a902.jpg" /><br />
+Fig. 7. Silhouette score plot for top 20 nodes in top 6 clusters: Note. the lower silhouette values (\~0.22–0.52) were calculated from the final major-sampling visualization subset consisting of the top 20 representative nodes distributed across only six major clusters.</p>
+<h2 id="341-to-examine-whether-the-study-achieved-its-goals">3.4.1. To examine whether the study achieved its goals<a class="headerlink" href="#341-to-examine-whether-the-study-achieved-its-goals" title="Permanent link">&para;</a></h2>
+<p>This section evaluates whether ClusterChoice achieved its main goals: reducing network complexity, improving cluster interpretability, and supporting algorithm selection. The results were examined using visual readability, leader–follower structure, modularity Q, silhouette score, and comparative algorithm performance. This assessment confirms that the proposed FLCA workflow provides clearer and more reliable clustering outputs than conventional network clustering approaches.</p>
+<h2 id="4-impact">4. Impact<a class="headerlink" href="#4-impact" title="Permanent link">&para;</a></h2>
+<p>Unlike traditional bibliometric tools such as CiteSpace [22], VOS viewer [23], and bibliometrix [24], ClusterChoice[17] integrates FLCA-based leader–follower clustering [8,9,16] with pre-analysis filtering, cluster-quality evaluation, and publication-oriented visualization within a unified browser-based workflow. Rather than focusing solely on network generation, the framework emphasizes interpretable cluster structures, standardized evaluation, and reproducible compari son of multiple clustering algorithms [4,7,12].</p>
+<p>The practical impact of the framework lies primarily in balancing computational efficiency, structural interpretability, and reproduc ibility. The proposed top-N node preselection strategy (default: top 100 nodes) substantially reduces computational burden in dense biblio metric networks by limiting the number of pairwise node relationships processed during clustering and visualization. This filtering mechanism improves runtime stability and visual readability while preserving the dominant thematic structure of the network [7]. However, low-frequency nodes may still contain potentially meaningful semantic information, and therefore the filtering strategy represents a tradeoff between computational tractability and fine-grained thematic completeness.</p>
+<p>ClusterChoice [17] further incorporates a structure-aware FLCA framework based on leader–follower assignment, maximum-association filtering, and major-sampling stabilization [8–12,16]. Compared with several conventional clustering methods evaluated in this study, FLCA produced higher overall modularity $( Q \approx 0 . 8 0 )$ together with substantially improved weighted mean silhouette scores $( S S \approx 0 . 7 8 – 0 . 8 8 ) _ { \scriptscriptstyle ; }$ indicating stronger global edge separation and improved node-level compactness. In contrast, several conventional methods produced acceptable modularity values but near-zero silhouette scores, reflecting fragmented cluster structures with weak local cohesion. These findings suggest that modularity alone may not sufficiently represent clustering quality in highly fragmented bibliometric networks [4,7,12].</p>
+<p>The integrated evaluation framework additionally combines modularity (Q), silhouette score (SS), adjusted Rand index (ARI), and normalized mutual information (NMI), enabling objective comparison of clustering structures generated by different algorithms [4,12]. This design improves methodological transparency and addresses the limited reproducibility and inconsistent reporting frequently observed in bibliometric network studies [7,12].</p>
+<p>From a software perspective (Figs. 1 and 2), the Shiny-based implementation supports multiple input formats and generates exportable visual outputs, including network diagrams, SSplots [7,12], Sankey diagrams [6], Kano plots [25], and structured summary tables. The browser-based workflow improves accessibility for users without advanced programming expertise while supporting reproducible bibliometric analysis and visualization.</p>
+<p>Nevertheless, several limitations should be noted. First, the top-N filtering strategy may exclude low-frequency but potentially meaningful nodes, which may affect detailed semantic interpretation. Second, the leader–follower assumption used in FLCA may not fully capture overlapping or non-hierarchical community structures [8–12]. Third, clustering performance may vary according to network density, dataset characteristics, and parameter settings, requiring cautious interpreta tion. Fourth, the current validation was primarily conducted using a SoftwareX bibliometric dataset, and broader cross-domain evaluation remains necessary to further establish generalizability. Finally, scalability for extremely large bibliometric networks may require future optimization using sparse-matrix processing or parallel computation strategies.</p>
+<p>Overall, ClusterChoice [17] contributes a practical and reproducible framework for bibliometric clustering analysis by integrating computational efficiency, interpretable network structure, objective cluster-quality evaluation, and publication-oriented visualization within a unified analytical environment.</p>
+<h2 id="5-conclusion">5. Conclusion<a class="headerlink" href="#5-conclusion" title="Permanent link">&para;</a></h2>
+<p>ClusterChoice provides an efficient and interpretable framework for bibliometric clustering. By combining top-N node filtering, FLCA-based leader–follower clustering, and comparative quality metrics, it reduces network complexity while improving cluster readability and evaluation transparency. The results support ClusterChoice as a practical webbased tool for selecting suitable clustering algorithms and generating reproducible visual outputs for bibliometric and network analysis.</p>
+<h2 id="data-availability">Data availability<a class="headerlink" href="#data-availability" title="Permanent link">&para;</a></h2>
+<p>The data are public and available at Github.</p>
+<h2 id="credit-authorship-contribution-statement">CRediT authorship contribution statement<a class="headerlink" href="#credit-authorship-contribution-statement" title="Permanent link">&para;</a></h2>
+<p>Tsair-Wei Chien: Methodology. Lifan Chen: Conceptualization. Willy Chou: Investigation.</p>
+<h2 id="declaration-of-competing-interest">Declaration of competing interest<a class="headerlink" href="#declaration-of-competing-interest" title="Permanent link">&para;</a></h2>
+<p>The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.</p>
+<h2 id="acknowledgments">Acknowledgments<a class="headerlink" href="#acknowledgments" title="Permanent link">&para;</a></h2>
+<p>We would like to acknowledge Github which allowing us to deposit our R code and datasets at no charges.</p>
+<h2 id="supplementary-materials">Supplementary materials<a class="headerlink" href="#supplementary-materials" title="Permanent link">&para;</a></h2>
+<p>Supplementary material associated with this article can be found, in the online version, at doi:10.1016/j.softx.2026.102794.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>[1] Hubert L, Arabie P. Comparing partitions. J. Classif. 1985;2(1):193–218.</p>
+<p>[2] Strehl A, Ghosh J. Cluster ensembles—a knowledge reuse framework fo combining multiple partitions. J. Mach. Learn. Res. 2002;3:583–617.</p>
+<p>[3] Newman MEJ. Modularity and community structure in networks. Proc. Natl. Acad. Sci. U S A 2006;103(23):8577–82.</p>
+<p>[4] Rousseeuw PJ. Silhouettes: a graphical aid to the interpretation and validation of cluster analysis. J. Comput. Appl. Math. 1987;20:53–65.</p>
+<p>[5] Blondel VD, Guillaume JL, Lambiotte R, Lefebvre E. Fast unfolding of communities in large networks. J. Stat. Mech. 2008;2008(10):P10008.</p>
+<p>[6] Lim SW, Chou W, Chen L. SankeyNetwork: A clear and concise visualization too for bibliometric data. MethodsX 2025;14:103379.</p>
+<p>[7] Chuang HY, Chou W. SilhouetteScoreinR: Beyond traditional network layouts by leveraging local cohesion and nearest neighbor separation. MethodsX 2025;15: 103622. https://doi.org/10.1016/j.mex.2025.103622. Published 2025 Sep 11.</p>
+<p>[8] Cheng TY, Ho SY, Chien TW, Chow JC, Chou W. A comprehensive approach for clustering analysis using follower-leading clustering algorithm (FLCA): Bibliometric analysis. Medicine (Baltimore) 2023;102(42):e35156. https://doi. org/10.1097/MD.0000000000035156.</p>
+<p>[9] Cheng YZ, Chien TW, Ho SY, Chou W. Visual impact beam plots: Analyzing research profiles and bibliometric metrics using the following-leading clustering algorithm (FLCA). Medicine (Baltimore) 2023;102(28):e34301. https://doi.org/ 10.1097/MD.0000000000034301.</p>
+<p>[10] Chien TW, Chou W. Visualizing leadership classifications in rectangular data using a basket model and co-word network analysis: a case study of U.S. HCAHPS survey results. BMC Med. Res. Methodol. 2025 Aug 20;25(1):195. https://doi.org/ 10.1186/s12874-025-02643-w. PMID: 40836275; PMCID: PMC12366396.</p>
+<p>[11] Li MJ, Lai FJ. Classifying research leadership in infantile hemangioma studies: A bibliometric analysis using Kano diagrams and absolute advantage coefficients. Medicine (Baltimore) 2025;104(40):e44905. https://doi.org/10.1097 MD.0000000000044905</p>
+<p>[12] Chien TW, Chen L, Chou W. SilhouettePlot: An R-based App Integrating Silhouette Scores into Network Plots for Enhanced Clarity and Meaning. SoftwareX 2026;34: 102652.</p>
+<p>[13] Rosvall M, Bergstrom CT. Maps of random walks on complex networks reveal community structure. Proc. Natl. Acad. Sci. U S A 2008;105(4):1118–23.</p>
+<p>[14] Pons P, Latapy M. Computing communities in large networks using random walks. J. Graph Algorithms Appl. 2006;10(2):191–218.</p>
+<p>[15] Traag VA, Waltman L, van Eck NJ. From Louvain to Leiden: guaranteeing well connected communities. Sci. Rep. 2019;9(1):5233.</p>
+<p>[16] Yen PC, Chou W, Chien TW, Jen TH. Analyzing fulminant myocarditis research trends and characteristics using the follower-leading clustering algorithm (FLCA): A bibliometric study. Medicine (Baltimore) 2023;102(26):e34169. https://doi.org/ 10.1097/MD.0000000000.</p>
+<p>[17] Chien TW. ClusterChoice. available at, https://smilechien.shinyapps.io/flcacompa re/; May 1, 2026.</p>
+<p>[18] Hubert L, Arabie P. Comparing partitions. J. Classif. 1985;2(1):193–218.</p>
+<p>[19] Strehl A, Ghosh J. Cluster ensembles—a knowledge reuse framework for combining multiple partitions. J. Mach. Learn. Res. 2002;3:583 617.</p>
+<p>[20] Github. ClusterChoice depository. May 1, 2026 available at https://github.com/ milechien/clusterchoice/</p>
+<p>[21] Chien TW. ClusterChoice via MP4 video. May 1, 2026 available at https://youtu. be/uRhJljxbPS0.</p>
+<p>[22] Chen C. CiteSpace II: Detecting and visualizing emerging trends and transient patterns in scientific literature. J. Am. Soc. Inf. Sci. Technol. 2006;57(3):359–77. https://doi.org/10.1002/asi.20317.</p>
+<p>[23] van Eck NJ, Waltman L. VOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38. https://doi.org/10.1007/s11192- 009-0146-3.</p>
+<p>[24] Aria M, Cuccurullo C. bibliometrix: An R-tool for comprehensive science mapping analysis. J. Informetr. 2017;11(4):959 75. https://doi.org/10.1016/j. joi.2017.08.007.</p>
+<p>[25] Kano Noriaki, Seraku N, Takahashi F, Tsuji S. Attractive quality and must-be quality. J. Jpn. Soc. Qual. Control 1984;14(2):39 48.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../../../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

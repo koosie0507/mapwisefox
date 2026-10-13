@@ -1,0 +1,3769 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Systematic literature review tooling">
+      
+      
+      
+        <link rel="canonical" href="https://koosie0507.github.io/mapwisefox/latest/article/refs/markdown/batch/bibexpy-2025/hybrid_auto/bibexpy-2025/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>BibexPy: Harmonizing the bibliometric symphony of Scopus and Web of Science - MapwiseFox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#bibexpy-harmonizing-the-bibliometric-symphony-of-scopus-and-web-of-science" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../../../.." title="MapwiseFox" class="md-header__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MapwiseFox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              BibexPy: Harmonizing the bibliometric symphony of Scopus and Web of Science
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../../../.." title="MapwiseFox" class="md-nav__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MapwiseFox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../search/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Search
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/dates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/dsl/output-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/ir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intermediate representation (IR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/field-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/regex-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/architecture/query-object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QueryObject
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backends
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/acm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/ieee-xplore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IEEE Xplore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/science-direct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceDirect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/scopus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/springer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Springer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/backends/web-of-science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web of Science
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/configuration/config-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/configuration/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legacy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legacy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/legacy/query-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query builder (deprecated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../search/reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../deduplication/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deduplication
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deduplication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../deduplication/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../deduplication/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../deduplication/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../split/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Split
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../split/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../split/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../metrics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metrics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/getting-started/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Information Retrieval Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/getting-started/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-Rater Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How It Works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How It Works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/how-it-works/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Information Retrieval Metrics Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../metrics/how-it-works/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Inter-Rater Agreement Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../snowballing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowballing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowballing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../snowballing/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../snowballing/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../snowballing/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../assistant/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assistant
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assistant
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../assistant/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../assistant/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../assistant/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../../../web/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../web/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screen a primary-study list
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../../../web/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web operations and configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-r-t-i-c-l-e-i-n-f-o" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A R T I C L E I N F O
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-b-s-t-r-a-c-t" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A B S T R A C T
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-metadata" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Metadata
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-motivation-and-significance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Motivation and significance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-software-description" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Software description
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Table 1
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#31-software-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. Software architecture
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#32-data-loading-and-preprocessing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. Data loading and preprocessing
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#33-pipelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Pipelines
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#34-deduplication-and-metadata-enhanced" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4. Deduplication and metadata enhanced
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#35-api-based-metadata-enrichment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.5. API based metadata enrichment
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#36-format-conversion" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.6. Format conversion
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#37-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.7. Performance metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#38-statistical-reporting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.8. Statistical reporting
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#39-automation-and-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.9. Automation and workflow
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#310-time-complexity-of-the-framework" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.10. Time complexity of the framework
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-illustrative-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. Illustrative examples
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. Impact
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Conclusions
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#credit-authorship-contribution-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CRediT authorship contribution statement
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#declaration-of-competing-interest" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Declaration of competing interest
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acknowledgements
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/koosie0507/mapwisefox/edit/main/docs/article/refs/markdown/batch/bibexpy-2025/hybrid_auto/bibexpy-2025.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="bibexpy-harmonizing-the-bibliometric-symphony-of-scopus-and-web-of-science">BibexPy: Harmonizing the bibliometric symphony of Scopus and Web of Science<a class="headerlink" href="#bibexpy-harmonizing-the-bibliometric-symphony-of-scopus-and-web-of-science" title="Permanent link">&para;</a></h1>
+<p><img alt="" src="../images/64bd578a55aca20aa98d7bb5a616828d85277a38ec4dd923bf16db0c9a0baa64.jpg" /></p>
+<p>Burak Can Kara <sup>a</sup>, Alperen S¸ ahin <sup>b</sup>, Tas¸kın Dirsehan <sup>c,d,e,*</sup></p>
+<p><sup>a</sup> Department of Construction, Merzifon Vocational School, Amasya University, Amasya, Türkiye</p>
+<p><sup>b</sup> Institute of Social Sciences, Marmara University, ˙Istanbul 34722 Türkiye</p>
+<p><sup>c</sup> Faculty of Business Administration, Marmara University, Istanbul 34854 Türkiye</p>
+<p><sup>d</sup> School of Social and Behavioral Sciences, Erasmus University, Rotterdam, the Netherlands</p>
+<p><sup>e</sup> LDE Centre for BOLD Cities, Rotterdam, the Netherlands</p>
+<h2 id="a-r-t-i-c-l-e-i-n-f-o">A R T I C L E I N F O<a class="headerlink" href="#a-r-t-i-c-l-e-i-n-f-o" title="Permanent link">&para;</a></h2>
+<p>Keywords: Bibliometric analysis tool Automated data integration Metadata enrichment software Scikit-learn Machine learning API-Based metadata processing</p>
+<h2 id="a-b-s-t-r-a-c-t">A B S T R A C T<a class="headerlink" href="#a-b-s-t-r-a-c-t" title="Permanent link">&para;</a></h2>
+<p>Bibliometric analyses frequently encounter issues such as duplicate records, missing metadata, and inconsistent formats, reducing reliability and efficiency. Existing solutions offer minimal assistance for automated data integration and enrichment, requiring researchers to rely on manual efforts. This paper presents a Python-based software solution that addresses these challenges by merging datasets from Scopus and Web of Science, performing DOI-based deduplication, and enhancing metadata using APIs such as Unpaywall and Semantic Scholar. BibexPy provides analysis-ready formats that work with VosViewer and Biblioshiny, minimizing human labor and enhancing data quality. It enables advanced analysis like as co-citation mapping and trend identification, promoting innovation in bibliometric research approaches.</p>
+<h2 id="1-metadata">1. Metadata<a class="headerlink" href="#1-metadata" title="Permanent link">&para;</a></h2>
+<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>BibexPy Hydrogen v1.0.0 - Initial Release</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/bcankara/BibexPy</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td>None</td></tr><tr><td>C4</td><td>Legal code license</td><td>GNU General Public License (GPL)</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>git</td></tr><tr><td>C6</td><td>Software code languages, tools and services used</td><td>python</td></tr><tr><td>C7</td><td>Compilation requirements, operating environments, and dependencies</td><td>python-dotenv (v1.0.0), pandas (v2.0.0), openpyxl (v3.1.2), numpy (v1.24.0), requests (v2.31.0), scikit-learn (v1.3.0), scipy (v1.11.0), tqdm (v4.65.0), xlrd (v2.0.1), xlsxwriter (v3.1.0), python (v3.9 or +)</td></tr><tr><td>C8</td><td>If available, link to developer documentation/manual</td><td>http://bibexpy.com/doc</td></tr><tr><td>C9</td><td>Support email for questions</td><td>info@bibexpy.com</td></tr></table>
+
+<h2 id="2-motivation-and-significance">2. Motivation and significance<a class="headerlink" href="#2-motivation-and-significance" title="Permanent link">&para;</a></h2>
+<p>Bibliometric analysis is increasingly being used in scientific research to identify trends, collaborations, and future disciplines [1–7]. Numerous software tools have been developed to facilitate bibliometric mapping and analysis, including widely recognized solutions such as Bibliometrix (Biblioshiny) [8], VOSviewer [9], CitNetExplorer [10], CiteSpace [11], CITation Analysis [12], BibExcel [13], SciMAT [14] ScientoPy [15], and pyBibX [16]. Although these systems have a wide range of capabilities, many fail to handle the essential difficulty of comprehensively integrating bibliometric data from numerous databases.</p>
+<p>The Web of Science (WoS) and Scopus databases are among of the most extensively utilized for bibliometric studies [17]. However, when attempting to integrate and analyze data from multiple sources in this manner, numerous challenges arise, including data format discrepancies, missing metadata, and duplicate records. Such issues necessitate manual effort, which might result in inconsistencies and mistakes [18]. Furthermore, differences in database structures make merging problematic. Scopus, for example, employs the "Cited-By" tag field to show author citations, whereas WoS does the same with "Cited-Reference"</p>
+<p>[19]. As a result, for these and other reasons, scholars frequently investigate databases independently, which limits the breadth of their research [20].</p>
+<p>Using a single citation database for bibliometric analysis can reduce the comprehensiveness and reliability of conclusions. Integrating information from several citation databases, such as Scopus and Web of Science, is critical for obtaining more reliable findings. However, this procedure can be time-consuming, particularly for large datasets, as it frequently necessitates extensive manual work to tackle issues like duplication and standardization [21,22]. Automated procedures for combining data from Scopus and Web of Science provide a streamlined and efficient way to improve bibliometric analysis.</p>
+<p>BibexPy is a comprehensive solution designed to address critical challenges in bibliometric data preparation, including dataset integration, deduplication, metadata enrichment, and format conversion. The software seamlessly merges records from Web of Science and Scopus, ensuring consistency across data sources. DOI-based deduplication not only enhances reliability by removing redundant entries but also enriches the dataset during the process by merging complementary information from duplicates. For instance, if one record is missing an author name or contains partial keywords, these gaps are filled by leveraging corresponding data from the duplicate entry. As a result, the deduplication process ensures both the removal of redundancy and the creation of a completer and more enriched dataset. Outputs are generated in formats compatible with tools like VosViewer and Biblioshiny, simplifying downstream analysis. For instance, the relevant information from the deduplicated item is used to fill in the blanks in a record that lacks an author name or has partial keywords. Consequently, the data deduplication process produces a more comprehensive and enhanced dataset in addition to eliminating inaccurate and missing data. In order to facilitate analysis with the preferred tool, outputs are generated in formats that are compatible with analysis programs like VosViewer and Biblioshiny.</p>
+<p>This study aims to explain in detail the contributions of BibexPy to bibliometric data preparation processes. First, the architecture and basic functions of the software are examined; then, these functions are discussed in detail. The operation of the software is demonstrated on a sample dataset and the state of the data before analysis is evaluated using the biblioshiny tool. The study also discusses the potential impact of BibexPy on future research and highlights its value for bibliometric</p>
+<p>analysis.</p>
+<h2 id="3-software-description">3. Software description<a class="headerlink" href="#3-software-description" title="Permanent link">&para;</a></h2>
+<p>BibexPy is a Python-based command-line tool designed to automate the preprocessing of bibliometric information obtained from Web of Science (WoS) and Scopus. The software efficiently performs critical activities such as data integration, deduplication, metadata enrichment, and format conversion, resulting in high-quality datasets suitable for complex bibliometric analysis. Fig. 1 depicts BibExPy’s file system layout, showing how the software organizes data inputs, processed files, and outputs within the workspace.</p>
+<p>Table 1 provides a comprehensive, step-by-step guide to installing and running BibexPy, making the installation process simple for users of</p>
+<h2 id="table-1">Table 1<a class="headerlink" href="#table-1" title="Permanent link">&para;</a></h2>
+<p>Comprehensive installation and usage instructions for BibexPy.</p>
+<table><tr><td></td><td>Step</td><td>Description</td><td>Command</td></tr><tr><td>1</td><td>Prerequisites</td><td>Ensure Python 3.9+ and Git are installed on your system.</td><td></td></tr><tr><td>2</td><td>Clone the Repository</td><td>Download the BibexPy project from GitHub using Git.</td><td>git clone https://github.com/bcankara/BibexPy.git</td></tr><tr><td>3</td><td>Navigate to the Directory</td><td>Move into the BibexPy project folder.</td><td>cd BibexPy</td></tr><tr><td>4</td><td>Install Dependencies</td><td>Install the required Python packages.</td><td>pip install -r requirements. txt</td></tr><tr><td colspan="4">For users who prefer a virtual environment (Optional):</td></tr><tr><td></td><td>Create</td><td>Create a Python virtual environment for isolated dependency management.</td><td>python -m venv</td></tr><tr><td></td><td>Activate</td><td>Activate virtual environment</td><td>Windows: venv\Scripts\activate Mac/Linux: source venv/bin/activate</td></tr><tr><td>5</td><td>Run the Software</td><td>Start BibexPy for bibliometric data processing.</td><td>python DataProcessor.py</td></tr><tr><td>6</td><td>Guided Workflow</td><td>Follow on-screen prompts for project selection, file processing, and optional metadata enrichment.</td><td></td></tr></table>
+
+<p><img alt="" src="../images/5e1c28d54926eb3950317808ac60a166333ca634acf6b6d19ce0871875f9f111.jpg" /><br />
+Fig. 1. File system structure of BibexPy.</p>
+<p>all technical levels. The combination of a clear file system (Fig. 1) and a detailed installation guide (Table 1) ensures that users can quickly and effectively use BibExPy for their bibliometric research needs.</p>
+<h2 id="31-software-architecture">3.1. Software architecture<a class="headerlink" href="#31-software-architecture" title="Permanent link">&para;</a></h2>
+<p>BibexPy, developed with Python 3.9, uses a number of powerful li braries for processing bibliometric data. The core features of the software are built on libraries such as "Pandas, NumPy, Scikit-learn and Scipy". For environmental variable management and API integration, "requests" and "dotenv" libraries are used. The current version of BibexPy can be run via a command line interface that provides interoperability across multiple platforms without requiring a graphical interface.</p>
+<p>Fig. 1 illustrates the software architecture of BibexPy. The software processes bibliometric datasets from Web of Science (".txt") and Scopus (".csv") files by performing various transformations and computations, thereby enriching and improving the datasets. The outputs include a consolidated dataset ("Prefix_Bib.xlsx"), files compatible with VosViewer ("Prefix_Vos.txt"), and statistical summaries. The VosViewer-compatible output format aligns with the original export format of Web of Science, making it suitable for use in other bibliometric analysis software as well (Fig. 2).</p>
+<p>The software architecture is made up of several, independent modules for data preprocessing and analysis. The data preprocessing modules perform data augmentation, metadata enrichment, and file format conversion to provide a high-quality dataset, while the analysis modules employ these processed datasets to generate auxiliary files and reports suited for advanced bibliometric tools. This modular approach assures scalability, maintainability, and flexibility, making BibexPy a depend able solution for bibliometric data preparation. The functions of BibexPy are further explored in the sections that follow.</p>
+<h2 id="32-data-loading-and-preprocessing">3.2. Data loading and preprocessing<a class="headerlink" href="#32-data-loading-and-preprocessing" title="Permanent link">&para;</a></h2>
+<p>The data loading process begins when the user saves Scopus (.csv) and WoS (.txt) files to the Workspace/Data directory. Before beginning the integration and enrichment procedures, the application consolidates these raw datasets. When multiple.csv or.txt files are provided, they are combined into unified files called wos.txt and scopus.csv, which are stored in the merged_raw directory. Upon successive executions with the same data, the user is offered the option of re-merging the raw files or using the previously merged dataset. This methodology not only assures a more efficient preparation workflow, but it also makes the combined raw datasets compatible with other bibliometric analysis tools.</p>
+<h2 id="33-pipelines">3.3. Pipelines<a class="headerlink" href="#33-pipelines" title="Permanent link">&para;</a></h2>
+<p>The BibexPy pipeline automates sequential operations for bibliometric data preparation and includes modular components for different processing processes. Each stage in the pipeline improves data quality and makes it compatible with subsequent bibliometric technologies.</p>
+<h2 id="34-deduplication-and-metadata-enhanced">3.4. Deduplication and metadata enhanced<a class="headerlink" href="#34-deduplication-and-metadata-enhanced" title="Permanent link">&para;</a></h2>
+<p>DOI-based matching is used to identify and delete duplicate entries, together with a procedure known as intelligent merging. This method integrates and consolidates overlapping data from both databases. For example, if the keywords in one database are keyword-1, keyword-2 and in the other keyword-1, keyword-3, the merged output will be keyword-1, keyword-2, and keyword-3. Additionally, for records without DOIs, duplication is eliminated by generating a unique key based on the title and year, with special characters deleted.</p>
+<h2 id="35-api-based-metadata-enrichment">3.5. API based metadata enrichment<a class="headerlink" href="#35-api-based-metadata-enrichment" title="Permanent link">&para;</a></h2>
+<p>Missing metadata fields such as abstracts, citation counts, and author affiliations are filled in by API connection with sources such as Scopus, Unpaywall, and Semantic Scholar. This component guarantees that datasets are complete and ready for further studies like co-citation mapping and trend analysis.</p>
+<h2 id="36-format-conversion">3.6. Format conversion<a class="headerlink" href="#36-format-conversion" title="Permanent link">&para;</a></h2>
+<p>BibexPy has powerful format conversion tools that generate outputs compatible with popular bibliometric analysis programs like as</p>
+<p><img alt="" src="../images/384bf9d75ba4d3b2792e7e54682b199b69e707f3346493a52dcb6d9fdcc9688b.jpg" /><br />
+Fig. 2. An overview of the software architecture of BibexPy.</p>
+<p>VosViewer and Biblioshiny. The software creates files in Excel ("Prefix_Bib.xlsx") and text ("Prefix_Vos.txt") formats, allowing for smooth connection with visualization and analysis tools.</p>
+<h2 id="37-performance-metrics">3.7. Performance metrics<a class="headerlink" href="#37-performance-metrics" title="Permanent link">&para;</a></h2>
+<p>To evaluate the accuracy and completeness of enriched metadata, we define two key metric categories: completeness metrics and quality status levels. These metrics help assess data coverage, track improvements through enrichment processes, and classify metadata quality based on missing information.</p>
+<p>a) Completeness Metrics: Completeness metrics measure how well metadata fields are populated and improved after enrichment. Field Coverage calculates the percentage of non-empty fields, indicating overall metadata completeness. API Enrichment Rate assesses how much the metadata quality improves after integration with external data sources. Merge Success Rate measures the percentage of re cords successfully combined without data loss or duplication. These indicators ensure that metadata enrichment processes effectively enhance data integrity.</p>
+<p>b) Quality Status Levels: To classify metadata quality, we define six levels based on the percentage of missing data. Excellent (0% missing data) indicates fully complete records, while Very Good (&lt;1%) represents minor gaps. Good (&lt;5%) is considered acceptable for most analyses, whereas Acceptable (&lt;20%) denotes moderate gaps. Poor (&lt;50%) suggests significant missing information, and Critical (≥50%) indicates unreliable metadata that requires substantial improvement. These quality status levels provide a standardized framework for evaluating the reliability of enriched metadata.</p>
+<h2 id="38-statistical-reporting">3.8. Statistical reporting<a class="headerlink" href="#38-statistical-reporting" title="Permanent link">&para;</a></h2>
+<p>The software generates detailed statistical summaries, including:</p>
+<p>a) Duplication rates.</p>
+<p>b) Metadata completeness ratios.</p>
+<p>c) Quality metrics for enriched datasets.</p>
+<p>d) API Based Enrichment field, source, value logs.</p>
+<p>These reports help users assess the quality and reliability of their processed datasets.</p>
+<h2 id="39-automation-and-workflow">3.9. Automation and workflow<a class="headerlink" href="#39-automation-and-workflow" title="Permanent link">&para;</a></h2>
+<p>The "DataProcessor" class is the primary access point for users, as it defines the pipeline phases and performs the automatic processing of bibliometric datasets. Users start the workflow with a single command:</p>
+<p>"python DataProcessor.py".</p>
+<p>The pipeline assists users with project selection, optional API enrichment, and data processing. When finished, the outputs are saved in the specified project directory. Users can utilize these results for bibliometric analysis or further processing in programs such as Vos-Viewer and Biblioshiny.</p>
+<h2 id="310-time-complexity-of-the-framework">3.10. Time complexity of the framework<a class="headerlink" href="#310-time-complexity-of-the-framework" title="Permanent link">&para;</a></h2>
+<p>The time complexity of BibexPy’s framework is influenced by the size of the input datasets and the operations performed, such as dedu plication and metadata enrichment. Key factors affecting time complexity include:</p>
+<p>a) Scalability: The pipeline efficiently processes both small and large datasets.</p>
+<p>b) API Integration: Metadata enrichment through API calls depends on the response times of external services.</p>
+<p>c) Computational Efficiency: BibexPy is optimized for performance using efficient algorithms for deduplication and data transformation.</p>
+<p>Overall, BibexPy balances computational efficiency with data quality, providing researchers with a scalable solution for bibliometric data preparation.</p>
+<h2 id="4-illustrative-examples">4. Illustrative examples<a class="headerlink" href="#4-illustrative-examples" title="Permanent link">&para;</a></h2>
+<p>The BibexPy framework offers multiple ways for users to interact with it, ensuring flexibility and ease of use. These options include:</p>
+<p>a) Command-Line Interface (CLI): The command-line interface is the principal interaction technique, allowing users to run the software with minimal effort. Listing 1 shows an example of using the CLI to process bibliometric datasets. Users launch the main script (python DataProcessor.py) and follow the prompts to choose a project, set up metadata enrichment, and generate output.</p>
+<p>b) Python API: Advanced users can use BibexPy’s modular architecture to directly access its classes and methods from Python programs. This enables greater flexibility and integration with other workflows.</p>
+<p>c) Script-Based Customization: The most flexible method to use BibexPy is to create short Python scripts that make use of its modular components. This technique enables greater customization and experimentation with other workflows.</p>
+<p>Listing 2 is an example of a Python script that shows how to use BibexPy to process bibliometric datasets. The script begins by loading the essential modules from BibexPy, which prepares the environment for data processing. The first stage is loading and merging datasets from Web of Science and Scopus into a single format using the DataImporter class.</p>
+<p>The next step is deduplication, which uses the Deduplicator module to remove redundant items based on DOI matches. The script then uses the MetadataEnricher class to add missing properties like abstracts, author affiliations, and citation counts via API.</p>
+<p>Finally, the FormatConverter module changes the data to a format that VosViewer and Biblioshiny can understand. The script automates every stage of bibliometric data preparation, resulting in a clean, enhanced dataset that is ready for analysis. This programmatic method allows researchers to construct custom workflows, adjust parameters, and expand the pipeline to meet specific bibliometric study objectives.</p>
+<h2 id="5-impact">5. Impact<a class="headerlink" href="#5-impact" title="Permanent link">&para;</a></h2>
+<p>BibexPy has cleared the path for comprehensive bibliometric research by enabling the rapid integration and processing of datasets from many sources, including Web of Science and Scopus. This capacity enables academics to investigate problems that were previously restricted by the limitations of manual data preparation, such as mapping research patterns across disciplines, assessing worldwide citation networks, and finding emergent study areas across domains [23,24]. By automating data integration, deduplication, and metadata enrichment, BibexPy facilitates the pursuit of current research issues [25–27]. It improves the reliability and comprehensiveness of bibliometric datasets, ensuring that analyses are based on high-quality data, and decreases preprocessing time dramatically, allowing researchers to focus on interpretation and insight generation.</p>
+<p>Although BibexPy is in its early stages of development, significan efficiency gains have been observed in initial tests with sample datasets. The results obtained in these tests clearly demonstrate the software’s impact and potential in bibliometric data preparation processes. As the software becomes more widely known and adopted, download statistics, citations in academic publications, and feedback from the user community will provide more comprehensive evidence of BibexPy’s impact.</p>
+<p>Fig. 3 illustrates the dataset quality improvements achieved through</p>
+<p><div class="highlight"><pre><span></span><code>Project Folders:
+    1. Project Sample 1
+    2. Project Sample 2
+    3. Project Sample 3
+Select project number: 2
+Selected Project: Project Sample 2
+Previously merged raw files found. What would you like to do?
+    1. Use previously merged files
+    2. Perform new merge
+Your choice (1/2): 1
+Using existing merged files...
+Processing WoS data...
+Data successfully saved to Workspace\Project Sample 2\Analysis_20241228_010119\Cell_Files\WoS.xlsx
+WoS data processing completed.
+Processing Scopus data...
+Data successfully saved to Workspace\Project Sample 2\Analysis_20241228_010119\Cell_Files\Scopus.xlsx
+Scopus data processing completed.
+Merging process in progress...
+Merge Summary:
+4119 records merged from 2 databases
+Total 6635 records, 2516 duplicates merged
+Completing category fields...
+Saving enhanced merge results...
+Save completed: Workspace\Project Sample 2\Analysis_20241228_010119\Cell_Files\Merged_Bib.xlsx
+</code></pre></div>
+Listing 1. An example of using the command-line interface (CLI).</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dotenv</span><span class="w"> </span><span class="kn">import</span> <span class="n">load_dotenv</span>
+
+<span class="c1"># Load .env file</span>
+<span class="n">load_dotenv</span><span class="p">()</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_metadata_from_crossref</span><span class="p">(</span><span class="n">doi</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract metadata from CrossRef API (Free, no key required)&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.crossref.org/works/</span><span class="si">{</span><span class="n">doi</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;keyFINDER/1.0 (mailto:your-email@example.com)&#39;</span>
+        <span class="p">}</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">work</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+</code></pre></div>
+<p>three stages of data processing: initial merging using Biblioshiny (Stage 1), intelligent merging with BibexPy (Stage 2), and API-based metadata enrichment with BibexPy (Stage 3). The figure highlights the progression in metadata completeness and reliability across key fields, demonstrating the impact of each stage on dataset quality. The data shown in the figure is derived from the information screen of Biblioshiny [1,28], regarding the quality of the data uploaded prior to analysis. The images visually support the outputs provided by BibexPy and its contributions to making bibliometric workflows more streamlined and efficient.</p>
+<table><tr><td rowspan="2">ID</td><td rowspan="2">Description</td><td colspan="3">Missing Counts</td><td colspan="3">Missing %</td><td colspan="3">Status</td></tr><tr><td>S-1</td><td>S-2</td><td>S-3</td><td>S-1</td><td>S-2</td><td>S-3</td><td>S-1</td><td>S-2</td><td>S-3</td></tr><tr><td>AU</td><td>Author</td><td>0</td><td>4</td><td>4</td><td>0</td><td>0.10</td><td>0.10</td><td>Excellent</td><td>Good</td><td>Good</td></tr><tr><td>DT</td><td>Document Type</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>SO</td><td>Journal</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>LA</td><td>Language</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>PY</td><td>Publication Year</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>TI</td><td>Title</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>TC</td><td>Total Citation</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>Excellent</td><td>Excellent</td><td>Excellent</td></tr><tr><td>AB</td><td>Abstract</td><td>46</td><td>14</td><td>13</td><td>1.12</td><td>0.34</td><td>0.32</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>C1</td><td>Affiliation</td><td>67</td><td>60</td><td>60</td><td>1.63</td><td>1.46</td><td>1.46</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>DI</td><td>DOI</td><td>178</td><td>150</td><td>150</td><td>4.32</td><td>3.64</td><td>3.64</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>RP</td><td>Corresponding Author</td><td>365</td><td>359</td><td>359</td><td>8.86</td><td>8.72</td><td>8.72</td><td>Good</td><td>Good</td><td>Good</td></tr><tr><td>DE</td><td>Keywords</td><td>600</td><td>587</td><td>81</td><td>14.57</td><td>14.25</td><td>1.97</td><td>Acceptable</td><td>Acceptable</td><td>Good</td></tr><tr><td>WC</td><td>Science Categories</td><td>1152</td><td>1152</td><td>113</td><td>27.97</td><td>27.97</td><td>2.74</td><td>Poor</td><td>Poor</td><td>Good</td></tr><tr><td>ID</td><td>Keywords Plus</td><td>2055</td><td>1536</td><td>214</td><td>49.89</td><td>37.29</td><td>5.20</td><td>Poor</td><td>Poor</td><td>Good</td></tr><tr><td>CR</td><td>Cited References</td><td>4119</td><td>1196</td><td>1196</td><td>100</td><td>29.04</td><td>29.04</td><td>Completely Missing</td><td>Poor</td><td>Poor</td></tr></table>
+
+<p>Fig. 3. Dataset quality progression across merging and enrichment stages Source: Compiled using the results of Biblioshiny analysis.</p>
+<p>In Stage 1, Biblioshiny was used as a foundational tool for dataset merging. While this stage resulted in high-quality integration for fields such as Author Information, Document Type, and DOI, several critical fields, including Abstracts, Affiliations, and Keywords, exhibited minor gaps, reflected by their "Good" ratings. This step provided a preliminary dataset for further enhancement but left some metadata incomplete.</p>
+<p>In Stage 2, BibexPy’s intelligent merging capabilities significantly improved the structural consistency and reliability of the dataset. While most fields maintained their quality levels from Stage 1, the merging process standardized metadata fields and reduced inconsistencies across sources. However, fields like Abstracts and Affiliations still required additional enrichment to reach full completeness.</p>
+<p>The most substantial improvement occurred in Stage 3, where BibexPy’s API-based metadata enrichment addressed missing fields and enhanced the dataset’s overall quality. Key fields such as Abstracts, Keywords, and Affiliations, which previously showed gaps, achieved an Excellent rating, reflecting their completeness. This stage ensured that all critical metadata fields were enriched and standardized, producing a comprehensive dataset suitable for advanced bibliometric analysis.</p>
+<p>Overall, Fig. 3 demonstrates that while merging processes (Stages 1 and 2) establish a reliable foundation, API-based enrichment (Stage 3) is essential for achieving complete and high-quality metadata integration.</p>
+<p>These numbers show the gradual improvement in dataset quality at each stage of processing, highlighting BibexPy s efficiency and the value it brings to bibliometric research workflows. Although BibexPy is primarily designed for academic use, its potential extends to commercial applications. Organizations in fields such as competitive intelligence, research impact analysis, and data-driven decision-making can utilize BibexPy to streamline bibliometric workflows and generate actionable insights. These capabilities could pave the way for collaborations, the development of specialized tools, or the creation of spin-off companies focused on tailored bibliometric solutions for industry needs. By democratizing access to advanced bibliometric tools, BibexPy is fostering a more inclusive, efficient, and innovative research ecosystem.</p>
+<h2 id="6-conclusions">6. Conclusions<a class="headerlink" href="#6-conclusions" title="Permanent link">&para;</a></h2>
+<p>BibexPy facilitates the preprocessing of bibliometric data by enabling the creation of comprehensive and integrated datasets. It aims to enhance the reliability and accuracy of bibliometric research by merging data from multiple sources. In this process, critical tasks such as duplicate record removal and missing data completion have been optimized to minimize manual effort. Consequently, researchers can conduct bibliometric analyses more efficiently and systematically.</p>
+<p>The flexible structure of BibexPy allows for continuous updates, ensuring that the software adapts to evolving research needs. It enhances the accessibility of bibliometric research and supports the development of new data-driven methodologies. Currently, BibexPy operates with full efficiency using Web of Science (WoS) and Scopus, while also supporting PubMed, Dimensions, Cochrane, Lens, and</p>
+<p>OpenAlex. However, these additional databases are still in the experi mental phase, and their performance will be further optimized in future updates to ensure seamless integration and usability. Future updates to BibexPy may expand its supported data sources and provide more customized solutions tailored to user needs. The integration of advanced data processing techniques and machine learning applications could facilitate a wide range of analyses, from citation network studies to text mining.</p>
+<p>Furthermore, incorporating big data analytics, natural language processing (NLP), and AI-based predictive algorithms into BibexPy could introduce significant innovations in bibliometric analysis. Interactive visualization tools and an optional graphical user interface may further enhance the user experience and improve accessibility. In this trajectory, BibexPy has the potential to evolve beyond a mere preprocessing tool for bibliometric analysis and become a comprehensive data analytics platform that shapes the broader landscape of scientific research.</p>
+<h2 id="credit-authorship-contribution-statement">CRediT authorship contribution statement<a class="headerlink" href="#credit-authorship-contribution-statement" title="Permanent link">&para;</a></h2>
+<p>Burak Can Kara: Writing – review &amp; editing, Writing – original draft, Software, Methodology, Formal analysis, Data curation, Concep tualization. Alperen S¸ ahin: Writing – review &amp; editing, Writing – original draft, Software, Methodology, Conceptualization. Tas¸kın Dir sehan: Writing – review &amp; editing, Supervision, Conceptualization.</p>
+<h2 id="declaration-of-competing-interest">Declaration of competing interest<a class="headerlink" href="#declaration-of-competing-interest" title="Permanent link">&para;</a></h2>
+<p>The authors declare the following financial interests/personal re lationships which may be considered as potential competing interests:</p>
+<p>Tas¸kın Dirsehan reports article publishing charges was provided by Erasmus University Rotterdam. The authors declare that they are the developers of BibexPy, the Python-based software presented in this paper. This relationship does not influence the integrity of the research findings, as the study adheres to standard scientific methodologies and objective analysis. If there are other authors, they declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.</p>
+<h2 id="acknowledgements">Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permanent link">&para;</a></h2>
+<p>Tas¸kın Dirsehan is grateful to Erasmus University Rotterdam for covering theopen-access article publishing charge.</p>
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<p>[1] Donthu N, et al. How to conduct a bibliometric analysis: an overview and guidelines. J Bus Res 2021;133:285 96. https://doi.org/10.1016/j. ibusres 2021.04 070</p>
+<p>[2] Subramanyam K. Bibliometric studies of research collaboration: a review. J Inf Sci 1983;6(1):33–8. https://doi.org/10.1177/016555158300600105</p>
+<p>[3] Zupic I, Cater ˇ T. Bibliometric methods in management and organization. Organ Res Methods 2015;18(3):429–72. https://doi.org/10.1177/1094428114562629</p>
+<p>[4] Wallin JA. Bibliometric methods: pitfalls and possibilities. Basic Clin Pharmaco Toxicol 2005;97(5):261 75. https://doi.org/10.1111/j.1742-7843.2005.pto_139. x.</p>
+<p>[5] Khaleel YL, Habeeb MA, Benotsmane R. Emerging trends in applying artificia intelligence to Monkeypox disease: a bibliometric analysis. Appl Data Sci Anal 2024;2024:148–64.</p>
+<p>[6] Demir S, Yomralioglu T. Bridging geo-data and natural gas pipeline design standards: a systematic review of BIM-GIS integration for natural gas pipeline asset management. Energies (Basel) 2024;17(10):2306. https://doi.org/10.3390 en17102306.</p>
+<p>[7] Chamorro K, et al. Comprehensive bibliometric analysis of advancements in artificial intelligence applications in medicine using Scopus database. Franklin Open 2025:100212.</p>
+<p>[8] Aria M, Cuccurullo C. bibliometrix: an R-tool for comprehensive science mapping analysis. J Informetr 2017;11(4):959–75. https://doi.org/10.1016/j. joi.2017.08.007.</p>
+<p>[9] Van Eck N, Waltman L. Software survey: VOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38.</p>
+<p>[10] Van Eck NJ, Waltman L. CitNetExplorer: a new software tool for analyzing and visualizing citation networks. J Informetr 2014;8(4):802–23. https://doi.org 10.1016/j.joi.2014.07.006</p>
+<p>[11] Chen C. CiteSpaceII: detecting and visualizing emerging trends and transient patterns in scientific literature. J Am Soc Inf Sci Technol 2006;57(3):359–77. https://doi.org/10.1002/asi.20317.</p>
+<p>[12] Gagolewski M. Bibliometric impact assessment with R and the CITAN package J Informetr 2011;5(4):678–92. https://doi.org/10.1016/j.joi.2011.06.006.</p>
+<p>[13] Persson O, Danell R, Schneider JW. How to use Bibexcel for various types of bibliometric analysis. Celebrating Scholarly Commun Stud: Festschrift Olle Persson 60th Birthday 2009;5(2009):9–24.</p>
+<p>[14] Cobo MJ, et al. SciMAT: a new science mapping analysis software tool. J Am Soc Inf Sci Technol 2012;63(8):1609–30. https://doi.org/10.1002/asi.22688.</p>
+<p>[15] Ruiz-Rosero J, Ramírez-Gonzalez ´ G, Viveros-Delgado J. Software survey: ScientoPy, a scientometric tool for topics trend analysis in scientific publications Scientometrics 2019;121(2):1165 88. https://doi.org/10.1007/s11192-019- 03213-w.</p>
+<p>[16] Pereira V, Basilio MP, Santos CHT. arXiv preprint. 2023. https://doi.org 10.48550/arXiv.2304.14516.</p>
+<p>[17] Zhu J, Liu W. A tale of two databases: the use of web of science and Scopus in academic papers. Scientometrics 2020;123(1):321–35. https://doi.org/10.1007/ s11192-020-03387-8.</p>
+<p>[18] Ferrara A, Salini S. Ten challenges in modeling bibliographic data for bibliometric analysis. Scientometrics 2012;93(3):765–85. https://doi.org/10.1007/s11192- 012-0810-x.</p>
+<p>[19] Echchakoui S. Why and how to merge Scopus and web of science during bibliometric analysis: the case of sales force literature from 1912 to 2019. J Market Anal 2020;8:165 84. https://doi.org/10.1057/s41270-020-00081-9.</p>
+<p>[20] Caputo A, Kargina M. A user-friendly method to merge Scopus and web of science data during bibliometric analysis. J Market Anal 2022;10(1):82 8. https://doi.org 10.1057/s41270-021-00142-7</p>
+<p>[21] Nikoli´c D, Ivanovi´c D, Ivanovi´c L. An open-source tool for merging data from multiple citation databases. Scientometrics 2024:1–23. https://doi.org/10.1007/ s11192-024-05076-2.</p>
+<p>[22] Kasaraneni H, Rosaline S. Automatic merging of Scopus and Web of Science data for simplified and effective bibliometric analysis. Ann Data Sci 2024;11(3): 785–802. https://doi.org/10.1007/s40745-022-00438-0</p>
+<p>[23] Ingwersen P, Christensen FH. Data set isolation for bibliometric online analyses of research publications: fundamental methodological issues. J Am society Inf Sc 1997;48(3):205–17. https://doi.org/10.1002/(SICI)1097-4571(199703)48: 3&lt;205::AID-ASI3&gt;3.0.CO;2-0.</p>
+<p>[24] Ullah R, Asghar I, Griffiths MG. An integrated methodology for bibliometric analysis: a case study of internet of things in healthcare applications. Sensors 2022; 23(1):67. https://doi.org/10.3390/s23010067.</p>
+<p>[25] Salamkar MA. Data integration: AI-driven approaches to streamline data integration from various sources. J AI-Assisted Sci Discovery 2023;3(1):668–94 https://doi.org/10.21275/SR230311115337</p>
+<p>[26] Bartol T, Stopar K, Budimir G. Visualization and knowledge discovery in metadata enriched aggregated data repositories harvesting from scopus and web of science information management in the big data era: for a better world: selected IMCW2015 papers. Sun Yat-sen Univ North: Hacettepe Univ 2015:1–5. https://doi. org/10.1002/asi.22688.</p>
+<p>[27] Ulrich H, et al. Understanding the nature of metadata: systematic review. J Med Internet Res 2022;24(1):e25440. https://doi.org/10.2196/25440.</p>
+<p>[28] Lim WM, Kumar S, Donthu N. How to combine and clean bibliometric data and us bibliometric tools synergistically: guidelines using metaverse research. J Bus Res 2024;182:114760. https://doi.org/10.1016/j.jbusres.2024.114760.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../../../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

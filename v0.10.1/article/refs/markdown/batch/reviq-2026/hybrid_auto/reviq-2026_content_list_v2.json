@@ -1,0 +1,2771 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "ReviQ: A systematic literature review workbench"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                58,
+                209,
+                554,
+                229
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "<sub>Philipp</sub> <sub>Haindl</sub> iD"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                237,
+                196,
+                254
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "University of Applied Sciences St. Pölten, Department of Computer Science & Security, St. Pölten, Austria"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                258,
+                534,
+                271
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A R T I C L E I N F O"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                298,
+                226,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Evidence-based software engineering PRISMA Reproducibility Research methodology tool Systematic literature review"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                325,
+                240,
+                390
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A B S T R A C T"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                337,
+                298,
+                460,
+                313
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We present ReviQ, an open-source workbench for systematic literature reviews (SLRs) that runs locally in Docker and does not require cloud accounts. The tool implements all eight phases of the Kitchenham and Charters (2007) methodology: project setup, BibTeX import with cross-database deduplication, title/abstract screening, full-text eligibility, snowballing with saturation tracking, quality assessment, configurable data extraction, and results visualization, including PRISMA 2020 flow diagrams. Reviewer agreement is quantified through Cohen’s � with asymptotic confidence intervals and PABAK, which is computed directly from the stored decisions. The complete project state—decisions, conflict resolutions, QA scores, extraction records, taxonomies, and source BibTeX files— can be exported as a versioned replication package and re-imported into another ReviQ instance, enabling third parties to audit or continue a review. We validated ReviQ by conducting a complete SLR on a software engineering topic across five databases, four snowballing iterations, 519 retrieved and 356 screened papers, involving two reviewers and resulting in 40 included studies. ReviQ is released under the GPL v3 license"
+                    }
+                ]
+            },
+            "bbox": [
+                334,
+                322,
+                942,
+                457
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Current code version"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                498,
+                198,
+                511
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 1 summarises the current code metadata for ReviQ, including the version, repository link, license, languages and runtimes used, and supported platforms."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                528,
+                939,
+                556
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 1"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                100,
+                597,
+                147,
+                609
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/df101f414a285a0758e22febd8592ec6274e3392e19563715021c1a1afd27ae8.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td colspan=\"3\">Code metadata.</td></tr><tr><td>Nr.</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>v1.0.0</td></tr><tr><td>C2</td><td>Permanent link to code/repository</td><td>https://github.com/philipphaindl/ReviQ</td></tr><tr><td>C3</td><td>Legal Code License</td><td>GNU General Public License v3</td></tr><tr><td>C4</td><td>Code versioning system used</td><td>Git</td></tr><tr><td>C5</td><td>Software code languages, tools, and services used</td><td>Python 3.12, FastAPI, SQLite, SQLModel, React 18, TypeScript, Vite, Tailwind CSS, Docker, Nginx</td></tr><tr><td>C6</td><td>Compilation requirements, operating environments &amp; dependencies</td><td>Docker and Docker Compose. Runs on Windows, macOS, and Linux.</td></tr><tr><td>C7</td><td>Link to developer documentation/manual</td><td>Included in README.md in the repository</td></tr><tr><td>C8</td><td>Support email for questions</td><td>philipp.haindl@ustp.at</td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                102,
+                610,
+                897,
+                742
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1 . Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                767,
+                260,
+                781
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The systematic literature review (SLR), as outlined by Kitchenham and Charters [1] within the context of evidence-based software engineering [2], comprises three main phases. Planning establishes the research questions, the search strategy across the chosen databases, and the inclusion/exclusion criteria. Conduct covers the execution of the database searches and the processing of candidates through screening by at least two independent reviewers, full-text eligibility assessment, optional citation snowballing [3], quality assessment, and structured data extraction. Reporting synthesises the extracted data and documents the entire process—most prominently via a Preferred Reporting Items for Systematic Reviews and Meta-Analyses (PRISMA) 2020 [4,5] flow diagram—so that the review can be audited and replicated. Each phase generates artefacts—decision logs, conflict records, agreement statistics, and PRISMA counts among them—which must be internally consistent and accessible for replication."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                788,
+                489,
+                829
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                509,
+                775,
+                942,
+                829
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "2352-7110/© 2026 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                911,
+                937,
+                924
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                416,
+                42,
+                579,
+                56
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                60,
+                74,
+                163,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                381,
+                76,
+                623,
+                90
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ELSEVIER"
+                    }
+                ]
+            },
+            "bbox": [
+                62,
+                146,
+                163,
+                162
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                445,
+                109,
+                557,
+                128
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                326,
+                146,
+                678,
+                160
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                840,
+                66,
+                939,
+                160
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Email address: philipp.haindl@ustp.at."
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                854,
+                287,
+                867
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2026.102814"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                875,
+                307,
+                887
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Received 18 April 2026; Received in revised form 22 May 2026; Accepted 11 June 2026"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                887,
+                539,
+                900
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/68af36c2264ba9894815d6b930114b3ccbcb77c9198606221e8d30b1e30dcec4.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Feature comparison of SLR tools. ∙ = supported, ◦ = partial, – = not supported."
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Feature</td><td>Rayyan</td><td>StArt</td><td>Parsifal</td><td>Covidence</td><td>ReviQ</td></tr><tr><td>Open source</td><td>•</td><td>•</td><td>•</td><td>-</td><td>•</td></tr><tr><td>Runs locally</td><td>-</td><td>•</td><td>-</td><td>-</td><td>•</td></tr><tr><td>BibTeX deduplication</td><td>•</td><td>○</td><td>•</td><td>•</td><td>•</td></tr><tr><td>Dual-reviewer screening</td><td>•</td><td>○</td><td>○</td><td>•</td><td>•</td></tr><tr><td>Conflict resolution UI</td><td>○</td><td>-</td><td>-</td><td>•</td><td>•</td></tr><tr><td>Cohen&#x27;s κ / PABAK</td><td>-</td><td>-</td><td>-</td><td>-</td><td>•</td></tr><tr><td>Snowballing tracking</td><td>-</td><td>•</td><td>-</td><td>-</td><td>•</td></tr><tr><td>Quality assessment</td><td>-</td><td>•</td><td>•</td><td>○</td><td>•</td></tr><tr><td>Configurable extraction</td><td>-</td><td>○</td><td>○</td><td>•</td><td>•</td></tr><tr><td>PRISMA 2020 diagram</td><td>-</td><td>-</td><td>-</td><td>•</td><td>•</td></tr><tr><td>Replication-package export</td><td>-</td><td>-</td><td>-</td><td>-</td><td>•</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                57,
+                94,
+                482,
+                237
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                277,
+                485,
+                382
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Since 2007, SLRs have become a widely adopted research methodology in the field of software engineering [6]. Subsequent work has highlighted both their increasing utilization and the recurring methodological challenges associated with them [7,8]. A primary concern in this context is the issue of tooling. When we conducted an SLR on a JVM-related topic, we initially documented decisions using a shared spreadsheet. It soon became evident that this approach was inadequate—parallel edits resulted in merge conflicts, the � computation required re-derivation with each decision change, and the PRISMA numbers in the manuscript frequently diverged from the actual counts until discrepancies were identified. This experience, which appears to be common among software engineering researchers [9,10], prompted the development of ReviQ."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                382,
+                487,
+                554
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Numerous tools have been developed to address various aspects of this issue. Marshall et al. [11] ofer a systematic feature analysis of existing SLR tools, while Al-Zubidy et al. [12] identify a prioritized set of value-added requirements for SLR tooling infrastructure. Rayyan [13] has emerged as the most widely adopted screening tool, featuring an intuitive web interface with semi-automated duplicate detection and label-based filtering; however, it is cloud-hosted and does not support phases beyond screening. StArt [14] encompasses the entire systematic reviewing process, including quality assessment (QA), and has recently incorporated snowballing support; nonetheless, it does not compute inter-rater agreement nor generate PRISMA 2020 diagrams. Parsifal<sup>1</sup> provides a web-based, protocol-driven workflow with quality assessment but lacks snowballing, � calculation, and any form of replicationpackage export. Covidence<sup>2</sup> is extensively utilized in the health sciences and ofers a refined dual-reviewer workflow with PRISMA output, yet it is a commercial cloud product with a free tier limited to a single review. Table 2 presents a comparison of features across these tools."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                554,
+                487,
+                778
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We developed ReviQ to address the existing gaps: a single, locallydeployable application that encompasses all phases of the Kitchenham and Charters methodology, calculates � with confidence intervals, generates PRISMA 2020 diagrams from live data, and consolidates the entire project state into a portable replication package. The tool operates within Docker, stores all data in a local SQLite database, and does not connect to any external servers."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                778,
+                485,
+                871
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/4a55b240137aa5ffbe99bd84e4eb965bdf2ee28550721f91c46b089f58080ed5.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. Two-container architecture of ReviQ. Container 1 serves the React frontend via Nginx; Container 2 runs the FastAPI backend with a persisted SQLite database. Both run on the researcher’s machine."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                531,
+                71,
+                915,
+                322
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The remainder of the paper proceeds as follows. Section 2 describes the architecture of ReviQ and its eight functional phases. Section 3 il lustrates ReviQ on a real validation SLR involving five databases, four snowballing iterations, and two independent reviewers. Section 4 discusses the tool’s research and educational impact, its positioning against related tools, and current limitations. Section 5 concludes."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                399,
+                939,
+                481
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2 . Software description"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                493,
+                665,
+                506
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1 . Software architecture"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                514,
+                663,
+                527
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ReviQ is a Docker [15] application comprising two containers, as illustrated in Fig. 1. The first container operates Nginx, which serves the React single-page application and reverse-proxies /api/* requests to the second container, a FastAPI [16] service implemented in Python 3.12. All state data is maintained within a SQLite database on a designated Docker volume (reviq-db-data), ensuring data persistence across container rebuilds. Initiating the application merely requires executing docker compose up --build; there is no necessity for configuring accounts, application programming interface (API) keys, or external databases."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                535,
+                939,
+                667
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The backend comprises ten route modules—one per SLR phase plus cross-cutting concerns like kappa, export, and report—and two service modules (bibtex_service for parsing and deduplication, kappa_service for agreement statistics). The database schema is structured with 16 SQLModel [17] tables that align with the SLR process, encompassing projects, reviewers, inclusion/exclusion/QA criteria, papers, reviewer decisions, final decisions, conflict logs, QA scores, extraction fields and records, snowballing iterations, taxonomy entries, database search strings, and paper–database links. The frontend operates exclusively through the REST API, with React Query managing all data retrieval and cache invalidation, thereby ensuring that the user interface is promptly updated upon the recording of a decision."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                667,
+                939,
+                827
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2 . Software functionalities"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                838,
+                675,
+                852
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ReviQ realises the SLR methodology as eight sequential phases that map onto the three main phases introduced in Section 1: Phase 1 (project setup) corresponds to Planning; Phases 2–7 (import, screening, eligibility, snowballing, quality assessment, and data extraction) constitute Conduct; and Phase 8 (results and PRISMA visualisation) constitutes Reporting. Fig. 2 illustrates the eight-phase ReviQ workflow, highlighting which phases are dual-reviewer activities, the iterative snowballing loop, and the final output phase. The sidebar of the application organizes these phases in the same sequential order. At the top of each phase page, a statistics bar displays real-time counts (retrieved, unique, duplicates, included, excluded, undecided), providing the reviewer with a continuous sense of progress."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                858,
+                939,
+                940
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                42,
+                105,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>1</sup> https://parsif.al."
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                912,
+                169,
+                926
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>2</sup> https://www.covidence.org."
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                926,
+                233,
+                939
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/0f5e6727f3833cd81ad056d144e95b474f4b69a59a3bddaea721754063747963.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Eight-phase SLR workflow following Kitchenham and Charters [1]. The dashed arrow indicates that snowballing [3] feeds new candidates back into screening."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                78,
+                70,
+                465,
+                329
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                407,
+                489,
+                488
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 1—Setup. The researcher initiates a project by establishing a title, description, and the name of the lead researcher, and registers up to five reviewers. Inclusion and exclusion criteria are delineated for each phase (screening or full-text), with each criterion assigned a label (e.g., E3) and a concise, human-readable name that subsequently appears in the exclusion breakdown of the PRISMA diagram. Quality assessment criteria are configured with a maximum score of either 0.5 or 1.0. Taxonomy categories (e.g., “Research Type” with values such as “Evaluation Research”, “Solution Proposal”, etc.) and custom extraction fields (free text, number, boolean, dropdown) are also defined at this stage. Finally, for each database, the researcher documents the search string, filter settings, search date, and result count—this metadata is directly incorporated into the generated protocol report."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                500,
+                489,
+                675
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 2—Import. BibTeX files are uploaded for each database from a directory on the host machine. ReviQ processes these files using bibtexparser [18] and performs deduplication across databases in two stages: initially based on the normalized Digital Object Identifier (DOI; converted to lowercase and stripped of whitespace), followed by a composite key of normalized title and normalized venue for entries lacking a DOI. The normalization process removes punctuation and collapses whitespace, thereby addressing minor formatting discrepancies between databases (e.g., “Proc. ICSE” versus “Proceedings of ICSE”). Each identified duplicate is logged with the citekey of the retained original; reviewers have the option to examine this log and override individual decisions if the heuristic proves incorrect. Language detection via langid flags non-English abstracts, facilitating the eficient application of exclusion criterion E3. A many-to-many link table (PaperDatabaseLink) records which databases identified each paper, enabling the calculation of per-database precision and recall in Phase 7."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                686,
+                489,
+                900
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 3—Screening. Each reviewer independently categorizes every paper as Include (I), Exclude (E), or Uncertain (U), with the option to select the governing criterion (e.g., E2—insuficient focus) and provide a free-text rationale. Papers are presented individually, displaying their title, authors, year, venue, abstract, and source database; a filter bar at the top facilitates narrowing the list to undecided, included, excluded, or uncertain items. Decisions are recorded per reviewer in the ReviewerDecision table. The backend system compares decisions between the two primary reviewers and identifies disagreements as conflicts. These conflicts are displayed in a dedicated conflict tab (Fig. 4), where each conflict shows the paper title, both reviewers’ decisions with their rationales side by side, and controls to resolve the conflict through discussion or arbitration. The resolution method and an optional note are documented in the ConflictLog table. Decisions can be exported as a JavaScript Object Notation (JSON) file, allowing co-reviewers working on separate machines to exchange them via email or shared drives and import them back; the source_file field on each imported decision preserves provenance."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                911,
+                489,
+                940
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                509,
+                66,
+                942,
+                277
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3 presents the screening view of Phase 3, with the paper list, per-paper decision badges, the total/undecided/included/excluded/uncertain counters, and the filter bar used to narrow the list during the review. Fig. 4 illustrates the conflict resolution view, displaying both reviewers’ decisions for a disputed paper alongside their rationales and the controls used to record the resolution."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                277,
+                942,
+                356
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 4—Eligibility. The same decision-making process is applicable to the full-text assessment, utilizing the inclusion and exclusion criteria established in Phase 1. Articles may include a full-text URL for expedited access or be marked as inaccessible if the full text cannot be obtained."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                369,
+                942,
+                424
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 5—Snowballing. Forward and backward citation chasing is conducted in accordance with Wohlin [3]. Each iteration is represented as a distinct entity within the database. The researcher imports a new BibTeX batch labeled snowballing:N (where � denotes the iteration number), which subsequently undergoes the standard screening and eligibility process. The iteration overview (Fig. 5) illustrates, for each iteration, the number of candidates retrieved, decided, included after screening, excluded, and those still undecided, along with a saturation indicator. When an iteration results in zero new inclusions, the researcher may designate it as saturated, indicating that the snowballing process has reached convergence."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                436,
+                942,
+                583
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 6—Quality assessment. In the evaluation process, included papers are assessed according to the QA criteria established in Phase 1. Each criterion is assigned a score of 0, 0.5, or 1 by individual reviewers. These scores are then normalized to a percentage and categorized as high (≥ 75% by default), medium (≥ 50%), or low, with both thresholds being adjustable for each project. A summary view provides an overview of the score distribution across all papers; Fig. 6 shows this distribution for the validation SLR."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                595,
+                942,
+                701
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 7—Data extraction. The extraction schema delineated in Phase 1 accommodates four distinct field types: free text, numerical, boolean, and dropdown with project-specific option lists. Taxonomy categories furnish an additional structured classification layer. A card view enumerates all papers, accompanied by a progress badge indicating the number of fields completed; a table view ofers a spreadsheet-style overview of all extraction records, which can be exported as comma-separated values (CSV). Fig. 7 illustrates the Research Type and Contribution Type taxonomy distributions for the validation SLR."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                713,
+                942,
+                834
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Phase 8—Results. The output is organized into three tabs. The PRISMA Flow tab presents a PRISMA 2020 [4] diagram as an inline SVG, featuring two parallel streams (database search and snowballing) and exclusion breakdowns per criterion. This diagram is available for download in both colour and greyscale variants suitable for publication. The Charts tab provides visualisations along four reporting dimensions and is deliberately not limited to selection metrics. For selection, it shows per-database"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                846,
+                942,
+                940
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                107,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/7cfc37c3b7aa54b484edea4216c9a6e2a236f77d87e949816fcfcb532233d180.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. Screening (Phase 3) showing a paper list with decision badges and a filter bar."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                75,
+                73,
+                919,
+                382
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/ee9c0f94255760c97f115ae932534ad0c54b29a9ec8139008c4f5ef14505395b.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. Conflict resolution view showing both reviewers’ decisions and resolution rationale."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                70,
+                432,
+                922,
+                747
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "precision, recall, and F1 scores together with a publication-year histogram and a venue distribution. For agreement, it shows Cohen’s � and PABAK with 95% confidence intervals per review phase. For quality, it shows the QA score distribution against the low/medium/high thresh olds. For synthesis, it shows a taxonomy-category distribution across the contribution- and research-type taxonomies and an aggregation of any user-defined extraction field. All charts are rendered as scalable vector graphics (SVG) and can be downloaded individually from the application, making them directly suitable for inclusion in publications without further processing. The same charts are also embedded in the supplementary PDF protocol report. The Export tab ofers four download options: a replication package (.zip) containing the complete project state and all BibTeX files, a PDF protocol report generated via fpdf2, a CSV extraction dataset, and BibTeX files categorized by inclusion status (included after screening, included after full-text, excluded)."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                813,
+                487,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                813,
+                939,
+                894
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Inter-rater agreement. ReviQ calculates Cohen’s � [19,20] using a 3 × 3 confusion matrix comprising the categories Include, Exclude, and"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                912,
+                939,
+                939
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                42,
+                105,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/dc605822c0c80916842b524190fa30ef8b6d174356480ad1af76c10b89227520.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5. Snowballing (Phase 5) with four forward iterations. Iteration 4 included zero new papers, confirming saturation."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                77,
+                74,
+                912,
+                305
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/cbd291ffeeb06d1b4fd876960fcf366550e33f267794278191f3badd8675b535.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 6. Quality score distribution (Phase 6, Charts tab) for the validation SLR: 40 papers assessed; low/medium/high thresholds at 50% and 75%; mean 80.5%, median 88.9%. The chart is available for download as an SVG."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                72,
+                361,
+                924,
+                619
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Uncertain. The category Uncertain is maintained as a separate entity rather than being merged with Include or Exclude, as reviewers intentionally use it to identify borderline cases requiring further discussion. Let � represent the number of papers for which both reviewers have rendered a decision. The observed agreement is given by "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { P _ { o } = \\frac { 1 } { n } \\sum _ { c } n _ { c c } , } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "while the expected agreement is "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\begin{array} { r } { P _ { e } = \\sum _ { c } ( R _ { c } / n ) ( C _ { c } / n ) . } \\end{array}"
+                    },
+                    {
+                        "type": "text",
+                        "content": "where "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "R _ { c }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "C _ { c }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote the row and column marginals, respectively. Consequently, "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\kappa = ( P _ { o } - P _ { e } ) / ( 1 - P _ { e } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". The 95% confidence interval is derived using the asymptotic standard error as described by Fleiss [21]. Given that SLR screening data are typically imbalanced, with the majority of papers being excluded, ReviQ also provides PABAK [22] "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( = 2 P _ { o } - 1 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", which accounts for prevalence and bias. Both metrics are interpreted according to the Landis and Koch [23] scale, which ranges from “poor” to “almost perfect” agreement. For projects involving more than two reviewers, all pairwise � values can be computed in a single request via the /kappa/all-pairs endpoint. Fig. 8 illustrates the agreement dashboard as presented in the application."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                684,
+                489,
+                911
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Reproducibility and sharing. ReviQ supports two complementary modes of sharing the review. The first is in-progress decision exchange: since reviewers work on separate machines without a shared server, each dualreviewer phase (Phase 3 Screening and Phase 4 Eligibility) provides an Export Decisions button that writes the current reviewer’s decisions to a JSON file, and an Import Decisions button that reads a co-reviewer’s JSON file into the local database. Importing a co-reviewer’s decisions immediately triggers automatic conflict detection—any paper on which the two reviewers disagree appears in the conflict tab without any manual comparison step. Both buttons invoke the operating system’s standard file-selection dialog; the JSON file itself can be transmitted via any channel (email, shared drive, USB stick). The source_file field on each imported decision records its provenance, so the origin of every decision is traceable."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                684,
+                942,
+                868
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The second mode is full-project replication: the Export tab in Phase 8 ofers a Replication Package download—a versioned ZIP archive containing the complete project state: decisions, conflict resolutions, QA"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                868,
+                942,
+                910
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                107,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/75cf4f40f94a9b21118c053afb5768cc437c783ec120a89533283dfe1052210d.jpg"
+                },
+                "content": "",
+                "chart_caption": [],
+                "chart_footnote": []
+            },
+            "bbox": [
+                73,
+                76,
+                495,
+                355
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/a14bbe075062c29d9b54fb9100566b8fa95dd90f3505cd89bc65a99aa90bdcaf.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 7. Research Type (left) and Contribution Type (right) taxonomy distributions (Phase 7/8, Charts tab) for the validation SLR: 40 papers across 4 categories each. Charts are available for download as SVG"
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                500,
+                79,
+                917,
+                356
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/52f6b8fd2c8c0c3584017bd3a8dce986a7115d6b4b4e40874a2fb4e5c76f21b7.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 8. Agreement dashboard: � = 0.509 (95% CI [0.331, 0.687]), PABAK = 0.486 Landis & Koch: “Moderate agreement”."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                62,
+                428,
+                477,
+                764
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "scores, extraction records, taxonomies, and all BibTeX source files. Any researcher can import this archive into a local ReviQ instance via the + Import Package action on the Overview page, which reproduces the review verbatim. This makes the package suitable for archival deposit alongside a publication, for transferring work between team members, or for providing a verifiable replication artefact to reviewers of the SLR paper itself. The same Export tab generates a PDF protocol report via fpdf2, covering the research protocol, per-database search strings and result counts, the PRISMA diagram, screening and eligibility statistics with � and PABAK, QA results, the extraction dataset, and a bibliography of all included papers."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                833,
+                485,
+                940
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                422,
+                939,
+                462
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3 . Illustrative example"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                472,
+                662,
+                486
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We employed ReviQ to perform an SLR on the usage patterns of a Java runtime interface. The review was conducted by two reviewers and encompassed five databases searched in February 2026: Scopus (217), IEEE Xplore (162), ACM DL (172), SpringerLink (56), and DBLP (1), totalling 608 hits. After BibTeX export and import, 495 records were available for deduplication; ReviQ identified and removed 139 duplicates via DOI and normalized title/venue matching, leaving 356 unique papers."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                493,
+                939,
+                598
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Six inclusion criteria were defined to capture papers describing the technology under review, discussing its practical applications, addressing challenges, or utilizing documented frameworks built upon it. Eleven exclusion criteria covered duplicates, insuficient focus, non-English publications, theses, non-peer-reviewed work, and of-topic domains."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                598,
+                939,
+                667
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.1 . Database stream"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                675,
+                636,
+                689
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Of the 356 screened papers, 326 were excluded at the title/abstract screening, leaving 30 papers for full-text assessment. Of these, 6 were excluded at the full-text stage, yielding 24 included studies from the database search."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                696,
+                939,
+                749
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2 . Snowballing stream"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                760,
+                653,
+                773
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Four forward citation iterations were conducted following Wohlin [3]. Iterations 1 through 3 retrieved 9, 8, and 4 candidates, of which 7, 6, and 3 were included respectively. Iteration 4 retrieved 3 candidates but included none, confirming saturation. Of the 24 candidates retrieved in total, 8 were excluded during screening; the remaining 16 proceeded to full-text assessment, all of which were included, yielding 16 additional studies. The two streams together yielded a final corpus of 40 studies. Fig. 9 presents the PRISMA 2020 diagram generated by ReviQ from the live project data."
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                780,
+                939,
+                899
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cohen’s � for screening was 0.509 (95% CI [0.331, 0.687]; PABAK = 0.486), indicating moderate agreement per Landis and Koch [23]. At full-text eligibility, both reviewers agreed on every paper (� = 1.0)."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                899,
+                939,
+                940
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                42,
+                105,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/ffe6516683a5a480e3b3ef2498f43f4b39013c8077c7d0f7ed68c6727c93f58d.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 9. PRISMA 2020 diagram generated by ReviQ for the validation SLR. Left: database search (� = 495 records from five databases, 24 included). Right: snowballing ( candidates from four iterations, 16 included). Exclusion boxes list per-criterion counts. The diagram is available for download in both colour and greyscale (For interpretation of the references to colour in this figure legend, the reader is referred to the web version of this article.)"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                115,
+                70,
+                882,
+                453
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nineteen screening conflicts were resolved by discussion; none required third-party arbitration."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                530,
+                487,
+                557
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Quality assessment used nine binary criteria covering research objective clarity, technical depth, empirical evaluation, threats to validity, replication support, related work comparison, contribution clarity, evaluation subject appropriateness, and performance measurement. The mean score was 80.6%, with 28 high-, 9 medium-, and 3 low-quality studies."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                558,
+                487,
+                636
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4 . Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                655,
+                127,
+                667
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "From a research standpoint, ReviQ significantly reduces the barriers to conducting methodologically rigorous systematic literature reviews. The integrated � computation eliminates a step that researchers frequently defer to a separate spreadsheet, often resulting in inconsistent calculations—sometimes applied to an incorrect subset of papers, sometimes using a 2×2 matrix when a 3×3 matrix would be more appropriate, and occasionally omitted altogether. The live updates of � and PABAK as decisions are recorded facilitate continuous monitoring of agreement throughout the review process, rather than solely at its conclusion."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                675,
+                487,
+                794
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The generation of the PRISMA diagram from the same database that stores the decisions ensures that the numbers in the diagram are consistent with the decision log [24]. This provides stronger assurance than a manually drawn figure, as our pre-ReviQ experience demonstrated that altering a single screening decision could inadvertently invalidate the PRISMA counts in the manuscript, with discrepancies only becoming apparent during a meticulous final review—if at all."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                794,
+                487,
+                886
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The replication-package export consolidates the entire project state into a versioned ZIP archive, thereby supporting the reproducibility requirements that several software engineering venues have begun to mandate. When published alongside an SLR, this package enables other researchers to verify reported counts against actual decisions, reuse the extraction data for meta-analyses, or extend the review with additional snowballing iterations."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                886,
+                487,
+                940
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                509,
+                530,
+                941,
+                569
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The decision to run all processes locally was intentional. Researchers at institutions with restrictive data policies—or those handling embargoed submissions—may be prohibited from uploading paper metadata to a third-party cloud service. ReviQ does not contact any external server. The Docker-based deployment ensures consistent behavior across Linux, macOS, and Windows without necessitating the manual installation of Python, Node.js, or any other runtime."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                569,
+                942,
+                663
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Beyond its primary research application, ReviQ can also serve as an educational tool. By enforcing the Kitchenham and Charters phase structure and making each step explicit—criteria definition before screening, dual-reviewer decisions before conflict resolution, and QA scoring before extraction—it provides students with a concrete, interactive walkthrough of the SLR methodology."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                663,
+                942,
+                742
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Discussion and comparison with related tools"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                760,
+                769,
+                773
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "No single feature sets ReviQ apart from existing tools; the diferentiator is their combination. Among the surveyed tools (Section 1, Table 2), Rayyan [13] ofers a polished cloud screening experience with label-based filtering but is confined to the screening phase, does not compute inter-rater agreement, and does not produce PRISMA diagrams. Covidence ofers a refined dual-reviewer workflow with PRISMA output, but is a commercial cloud product and—in the free tier—is limited to a single review per researcher. Among free, open-source tools, StArt [14] covers the broadest set of phases and has recently added snowballing, but does not compute � or PABAK, does not produce PRISMA 2020 diagrams, and ofers no equivalent to a singlefile replication-package export. Parsifal supports a protocol-driven workflow with quality assessment but lacks snowballing, agreement statistics, and replication-package export. ReviQ therefore combines local-only deployment, end-to-end phase coverage, integrated � and PABAK with confidence intervals, PRISMA 2020 generation from live data, and a single-file replication-package export—each available elsewhere in isolation but, to our knowledge, not jointly in a free and open-source tool."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                780,
+                942,
+                940
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                107,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "7"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                66,
+                485,
+                158
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The validation SLR was a small but realistic exercise of these capabilities. Screening agreement settled at the lower end of the Landis–Koch “moderate” band "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\kappa ~ = ~ 0 . 5 0 9 ) ;"
+                    },
+                    {
+                        "type": "text",
+                        "content": "had this been computed only at the review’s end, it would have been too late to inform reviewer calibration. Because ReviQ surfaced � as decisions were recorded, the value prompted a mid-review conversation about how strictly to apply criterion E2 (insuficient focus); we found this more informative than a single end-of-review snapshot. The 19 screening conflicts were all resolved by discussion rather than third-party arbitration, suggesting that screening disagreements are typically matters of interpretation rather than systematic error. Of the four snowballing iterations, only iterations 1–3 contributed new included papers; iteration 4 yielded zero inclusions and was marked as saturated, which made the decision to stop a quantitative rather than an intuitive one. The PRISMA diagram, regenerated from live data at submission time, agreed with the manually verified counts—a check our pre-ReviQ experience suggests would otherwise have required a separate manual reconciliation pass."
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                158,
+                485,
+                384
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Limitations. Several limitations remain. The asynchronous collaboration model, which relies on JSON export/import, works well for teams of two or three but does not scale for larger groups; a Git-based or sharedfilesystem sync layer is a planned enhancement. Currently, only BibTeX is supported as an import format; incorporating RIS and CSV import capabilities would enhance compatibility with databases that default to alternative formats. ReviQ does not yet provide AI-assisted screening, although the decision data stored within ReviQ, including paper metadata, reviewer labels, and rationales, could serve as training data for active-learning rankers. The PRISMA diagram presently implements only the two-stream layout as prescribed by the PRISMA 2020 statement (databases + other methods); reviews with more complex identification paths would require manual adjustments to the generated SVG. Lastly, ReviQ does not currently enforce blinding between reviewers—both reviewers can view each other’s names, although they cannot access each other’s decisions until they are exchanged."
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                409,
+                485,
+                622
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5 . Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                55,
+                649,
+                157,
+                660
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We have introduced ReviQ, an open-source SLR workbench that comprehensively addresses all eight phases of the Kitchenham and Charters methodology within a locally-deployed web application. The primary contributions of ReviQ, which extend beyond the capabilities of existing tools, include: (i) integrated computation of Cohen’s � and PABAK with confidence intervals, updated in real-time as decisions are made; (ii) automatic generation of PRISMA 2020 diagrams with exclusion counts per criterion, rendered as publication-ready SVGs; and (iii) a versioned replication-package export that consolidates all project data for archival purposes or transfer."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                669,
+                485,
+                800
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We validated the tool through application to a real SLR in the software engineering domain. This review involved two reviewers, five databases, 519 retrieved records, four snowballing iterations, and 40 included studies. The moderate screening agreement "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\kappa = 0 . 5 0 9 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "and the resolution of 19 conflicts via the built-in user interface demonstrate the tool’s capability to manage typical levels of disagreement encountered in practice. The PRISMA diagram and a 22-page protocol report were generated directly from the stored data, afirming that ReviQ can facilitate a review from initial setup to publication-ready outputs without the need for external tools."
+                    }
+                ]
+            },
+            "bbox": [
+                53,
+                800,
+                485,
+                895
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                66,
+                939,
+                105
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Future developments will focus on enabling real-time collaboration between reviewer instances, supporting RIS/CSV import, incorporating AI-assisted pre-screening, and implementing reviewer blinding."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                105,
+                939,
+                146
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of competing interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                163,
+                729,
+                176
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                184,
+                939,
+                224
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Data availability"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                242,
+                621,
+                255
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The source code described in this article is publicly available at https://github.com/philipphaindl/ReviQ under the GNU General Public License v3."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                263,
+                939,
+                302
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                321,
+                584,
+                332
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Kitchenham B, Charters S. Guidelines for performing systematic literature reviews in software engineering. Tech. Rep. EBSE-2007-01 Keele University and Durham University; 2007."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                524,
+                340,
+                937,
+                370
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Kitchenham BA, Dybå T, Jørgensen M. Evidence-based software engineering. In: Proceedings of the 26th international conference on software engineering (ICSE ’04). IEEE; 2004. p. 273–81. https://doi.org/10.1109/ICSE.2004.1317449"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                524,
+                370,
+                937,
+                399
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] Wohlin C. Guidelines for snowballing in systematic literature studies and a replication in software engineering. In: Proceedings of the 18th international conference on evaluation and assessment in software engineering (EASE '14). ACM: 2014 https://doi.org/10.1145/2601248.2601268"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                524,
+                399,
+                937,
+                438
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Page MJ, McKenzie JE, Bossuyt PM, Boutron I, Hofmann TC, Mulrow CD, Shamseer L, Tetzlaf JM, Akl EA, Brennan SE, Chou R, Glanville J, Grimshaw JM, Hróbjartsson A, Lalu MM, Li T, Loder EW, Mayo-Wilson E, McDonald S, McGuinness LA, Stewart LA, Thomas J, Tricco AC, Welch VA, Whiting P, Moher D. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. https://doi.org/10.1136/bmj.n71"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                524,
+                441,
+                937,
+                500
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Moher D, Liberati A, Tetzlaf J, Altman DG. PRISMA group, preferred reporting items for systematic reviews and meta-analyses: the PRISMA statement. PLOS Med 2009;6(7):e1000097. https://doi.org/10.1371/journal.pmed.1000097"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                501,
+                937,
+                530
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] Kitchenham B, Brereton OP, Budgen D, Turner M, Bailey J, Linkman S. Systemati literature reviews in software engineering – a systematic literature review. Inf Softw Technol 2009;51(1):7–15. https://doi.org/10.1016/j.infsof.2008.09.00"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                530,
+                937,
+                559
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Kitchenham B, Brereton P. A systematic review of systematic review process research in software engineering. Inf Softw Technol 2013;55(12):2049–75. https: //doi.org/10.1016/j.infsof.2013.07.010"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                561,
+                937,
+                591
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Brereton P, Kitchenham BA, Budgen D, Turner M, Khalil M. Lessons from applying the systematic literature review process within the software engineering domain. J Syst Softw 2007;80(4):571–83. https://doi.org/10.1016/j.jss.2006.07.009"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                592,
+                937,
+                621
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Napoleão BM, Felizardo KR, de Souza ÉF, Vijaykumar NL. Practical similarities and diferences between systematic literature reviews and systematic mappings: a tertiary study. In: Proceedings of the 29th international conference on software engineering and knowledge engineering (SEKE 2017); 2017. https://doi.org/10 18293/SEKE2017-069"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                524,
+                621,
+                937,
+                670
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Petersen K, Vakkalanka S, Kuzniarz L. Guidelines for conducting systematic mapping studies in software engineering: an update. Inf Softw Technol 2015;64:1–18. https://doi.org/10.1016/j.infsof.2015.03.007"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                672,
+                937,
+                701
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Marshall C, Brereton P, Kitchenham B. Tools to support systematic reviews in software engineering: a feature analysis. In: Proceedings of the 18th international conference on evaluation and assessment in software engineering (EASE ’14). ACM; 2014. https://doi.org/10.1145/2601248.2601270"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                701,
+                937,
+                741
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] Al-Zubidy A, Carver JC, Hale DP, Hassler EE. Vision for SLR tooling infrastructure: prioritizing value-added requirements. Inf Softw Technol 2017;91:74–86. https: //doi.org/10.1016/j.infsof.2017.06.007"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                742,
+                937,
+                771
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Ouzzani M, Hammady H, Fedorowicz Z, Elmagarmid A. Rayyan—a web and mobile app for systematic reviews. Syst Rev 2016;5(1):210. https://doi.org/10.1186/ s13643-016-0384-4"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                771,
+                937,
+                800
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Fabbri SCPF, Silva C, Hernandes EM, Octaviano F, Di Thommazo A, Belgamo A. Improvements in the StArt tool to better support the systematic review process. In: Proceedings of the 20th international conference on evaluation and assessment in software engineering (EASE ’16). ACM; 2016. https://doi.org/10.1145/2915970. 2916013"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                802,
+                937,
+                851
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] Merkel D. Docker: lightweight Linux containers for consistent development and deployment. Linux J 2014;2014(239):2."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                852,
+                937,
+                872
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Ramírez S. FastAPI framework, high performance, easy to learn, fast to code, ready for production; 2019 https://fastapi.tiangolo.com [Last accessed 18 April 2026]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                519,
+                872,
+                937,
+                892
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                42,
+                105,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "8"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Ramírez S. SQLModel: SQL databases in Python, designed for simplicity, compatibility, and robustness; 2021 https://sqlmodel.tiangolo.com [Last accessed 18 April 2026]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                68,
+                485,
+                97
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] Boulogne F, et al. bibtexparser: a Python library to parse and write BibTeX files; 2022 https://github.com/sciunto-org/python-bibtexparser [Last accessed 18 April 2026]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                99,
+                485,
+                128
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Cohen J. A coeficient of agreement for nominal scales. Educ Psychol Meas 1960;20(1):37–46."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                129,
+                485,
+                148
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[20] McHugh ML. Interrater reliability: the kappa statistic. Biochem Med 2012;22(3):276–82. https://doi.org/10.11613/BM.2012.031"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                148,
+                485,
+                168
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[21] Fleiss JL. Statistical methods for rates and proportions. 2nd ed. John Wiley & Sons; 1981."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                521,
+                68,
+                939,
+                88
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[22] Byrt T, Bishop J, Carlin JB. Bias, prevalence and kappa. J Clin Epidemio 1993;46(5):423–9."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                522,
+                88,
+                939,
+                108
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[23] Landis JR, Koch GG. The measurement of observer agreement for categorical data Biometrics 1977;33(1):159–74."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                522,
+                109,
+                937,
+                128
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[24] Budgen D, Brereton P, Drummond S, Williams N. Reporting systematic reviews: some lessons from a tertiary study. Inf Softw Technol 2018;95:62–74. https://doi. org/10.1016/j.infsof.2017.10.017"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                522,
+                129,
+                939,
+                158
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "P. Haindl"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                44,
+                107,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102814"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                52
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "9"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ]
+]

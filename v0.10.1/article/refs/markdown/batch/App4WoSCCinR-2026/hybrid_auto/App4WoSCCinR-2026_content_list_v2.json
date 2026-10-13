@@ -1,0 +1,4949 @@
+[
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Original Software Publication"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                182,
+                277,
+                197
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR: a web-based bibliometric analysis platform for the web of science core collection"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                58,
+                205,
+                815,
+                248
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Tsair-Wei Chien <sup>a</sup>, Lifan Chen <sup>b,*</sup>, Willy Chou <sup>c,d,**</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                262,
+                473,
+                279
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>a</sup> Department of Medical Research, Chi Mei Medical Center, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                287,
+                413,
+                298
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>b</sup> Department of Nursing, An Nan Hospital, China Medical University, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                298,
+                457,
+                310
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>c</sup> Department of Leisure and Sports Management, CTBC University, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                308,
+                445,
+                321
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>d</sup> Department of Physical Medicine and Rehabilitation, Linyin Chi-Mei Hospital, Tainan 710, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                319,
+                521,
+                332
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A R T I C L E I N F O"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                360,
+                194,
+                373
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Bibliometric software WoSCC metadata Visualization framework AAC metric Web-based application"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                384,
+                181,
+                451
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A B S T R A C T"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                334,
+                360,
+                436,
+                373
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Numerous bibliometric studies rely on specialized software to visualize Web of Science Core Collection (WoSCC) metadata, but direct, reproducible workflows for standard 72-column XLS files remain limited. We developed App4WoSCCinR, a web-based framework that enables users to upload WoSCC metadata and execute bibliometric analysis through a simple two-step process. Using SoftwareX articles published between 2017 and March 2026 as an illustrative dataset, the application generated a structured performance summary and visual outputs across countries, institutions, departments, authors, journals, keywords, and temporal trends. It also incorporates the Absolute Advantage Coefficient (AAC) to identify dominant entities within bibliometric networks. The demonstration showed that App4WoSCCinR can efficiently transform standard WoSCC metadata into interpretable summaries and visual analytics for research evaluation. Overall, the framework provides a practical and transparent solution for low-barrier bibliometric analysis directly from WoSCC spreadsheet exports."
+                    }
+                ]
+            },
+            "bbox": [
+                332,
+                384,
+                939,
+                506
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "● A web-based tool, App4WoSCCinR, was developed for streamlined bibliometric analysis from standard 72- column WoSCC metadata."
+                    }
+                ]
+            },
+            "bbox": [
+                334,
+                506,
+                937,
+                530
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "● The framework produced a summary report and over 100 visualizations across 10 metadata domains, incorporating AAC to quantify dominance."
+                    }
+                ]
+            },
+            "bbox": [
+                334,
+                530,
+                937,
+                554
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "● Analysis of 2,061 SoftwareX articles demonstrated the tool’s practical value for transparent, efficient, and reproducible bibliometric workflows."
+                    }
+                ]
+            },
+            "bbox": [
+                334,
+                554,
+                939,
+                578
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Metadata"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                615,
+                124,
+                627
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/369e8d74b49ebb64002abf24b9fc6e7b6e07cef9a49a7825d731bb774a13cda1.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "(continued on next column)"
+                    }
+                ],
+                "html": "<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>v1.0</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/smilechien/App4WoSCCinR/</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td>https://smilechien.shinyapps.io/woscc/</td></tr><tr><td>C4</td><td>Legal code license</td><td>MIT License</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>Git</td></tr><tr><td>C6</td><td>Software code languages, tools and services used</td><td>R</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                638,
+                484,
+                750
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/d0dc91238dfb95edc8935ae6eb1b88d92a961af8fb3c4925b2a98cdacf291f72.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "(continued )"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>C7</td><td>Compilation requirements, operating environments and dependencies</td><td>shiny, dplyr, tidyr, stringr, ggplot2, leaflet, readxl, DT, visNetwork, and bibliometrix.</td></tr><tr><td>C8</td><td>MP4 video</td><td>https://youtu.be/RbqA3KLAQjI</td></tr><tr><td>C9</td><td>Support email for questions</td><td>rasch.smile@gmail.com</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                512,
+                626,
+                937,
+                687
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                721,
+                715,
+                735
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Bibliometric analysis has become an important approach for evalu ating research productivity, identifying emerging trends, mapping knowledge structures, and assessing scholarly impact across disciplines [1–3]. Widely used tools such as CiteSpace [4], VOSviewer [5], and Bibliometrix [6] enable visualization from standardized Web of Science Core Collection (WoSCC) data [7].However, these tools typically require specific input formats and predefined workflows, limiting flexibility when working with commonly available 72-column Excel-exported WoSCC files."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                747,
+                939,
+                775
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "2352-7110/© 2026 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                911,
+                937,
+                925
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Received 24 March 2026; Received in revised form 27 May 2026; Accepted 1 June 2026"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                887,
+                546,
+                901
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Available online 4 June 2026"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                900,
+                225,
+                912
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                416,
+                42,
+                579,
+                56
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                58,
+                75,
+                161,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                379,
+                75,
+                621,
+                89
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                445,
+                105,
+                557,
+                124
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ELSEVIER"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                145,
+                161,
+                162
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                337,
+                145,
+                663,
+                160
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "国SoftwareXemont"
+                    }
+                ]
+            },
+            "bbox": [
+                838,
+                66,
+                937,
+                160
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Abbreviations: AAC, Absolute Advantage Coefficient; CSV, Comma-Separated Values; PNG, Portable Network Graphics; SSplot, Silhouette Plot; VBA, Visual Basic for Applications; WoS, Web of Science; WoSCC, Web of Science Core Collection; XLS, Excel Spreadsheet Format; XLSX, Office Open XML Spreadsheet Format; ZIP, Compressed Archive File."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                794,
+                939,
+                831
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "* Corresponding author at: Department of Nursing, An Nan Hospital, China Medical University, Tainan, Taiwan."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                831,
+                684,
+                844
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "** Corresponding author at: Chi-Mei Medical Center Liouying Hospital, No.201, Taikang, Liouying Dist., Tainan City 736402, Taiwan."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                843,
+                803,
+                857
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "E-mail addresses: smile@mail.chimei.org.tw (T.-W. Chien), leanne.chenlf@gmail.com (L. Chen), smilewilly@mail.chimei.org.tw (W. Chou)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                854,
+                831,
+                868
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2026.102770"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                876,
+                309,
+                889
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/88c098eea4c4fc376615f0674016ded4c0dd66319a23c039e64818fb02385fac.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. Homepage of App4WoSCCinR illustrating the two-step workflow."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                174,
+                66,
+                818,
+                334
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                370,
+                487,
+                462
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In practice, such 72-column files often require extensive manual preprocessing—including data cleaning, field standardization, and restructuring—before meaningful analysis can be conducted [8–12]. These steps are time-consuming, error-prone, and hinder reproduc ibility, particularly for users without programming expertise."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                462,
+                487,
+                530
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.1. Existing tools and remaining workflow challenges"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                548,
+                373,
+                562
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A mature software [4–6,13] ecosystem already supports such work with plain text files for non-coders. Reviews of bibliometric software have shown that these tools vary in scope, with different strengths in performance analysis, science mapping, preprocessing, visualization, and user accessibility [14]."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                575,
+                487,
+                640
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Recent developments have further expanded this ecosystem. For example, BibexPy [15] was introduced as a preprocessing-oriented tool for merging WoSCC and Scopus data, DOI-based deduplication, and metadata enrichment, while BiblioMerge [16] was designed to support merging, duplicate removal, author normalization, and compatibility with downstream bibliometric programs. These developments show that important progress has already been made in automating bibliometric workflows, especially for data integration and cleaning."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                641,
+                487,
+                746
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nonetheless, the availability of multiple tools does not eliminate a practical workflow challenge for many users(i.e., it still requires moving across several steps from exporting records and cleaning metadata to generating publication-ready Figures [17]. Even when robust tools are available, the overall process may remain fragmented for users who prefer a direct upload-and-run workflow on commonly downloaded spreadsheet files rather than multi-stage scripting or tool chaining. A practical need therefore remains for an integrated, accessible workflow that enables bibliometric visualization directly from WoSCC Excel metadata."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                746,
+                487,
+                878
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.2. Practical need for direct and reproducible WoSCC workflows"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                897,
+                438,
+                910
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "WoSCC [7] remains one of the most widely used sources for bibliometric research because it indexes journals, conference proceedings, and books across a broad range of disciplines [15,16]. WoSCC records can be exported to spreadsheet formats, which are convenient for users but may still require cleaning, normalization, restructuring, or format conversion before consistent downstream analysis. Related guidance and workflow papers likewise emphasize the importance of combining and cleaning bibliometric data before visualization and interpretation [8]."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                923,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                370,
+                939,
+                476
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This issue is not simply technical; it also affects accessibility and reproducibility. Code-based environments offer high flexibility, but users without programming experience may find preprocessing and multi-tool orchestration burdensome. Conversely, graphical tools may reduce the coding burden but still differ in import expectations, field handling, export options, or output types. Taken together, these workflow-level constraints suggest the value of a low-barrier framework that can accept a standard WoSCC export, perform core preprocessing steps transparently, and generate repro ducible bibliometric outputs within a single environment."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                477,
+                939,
+                607
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Additionally, reproducibility remains a major concern in bibliometric research. Many studies lack detailed reporting of data sources, including WoSCC subsets, coverage periods, and search dates, limiting replicability [18]. Furthermore, inconsistencies across databases—such as incomplete author–affiliation links, misclassified document types, and uneven identifier coverage—can introduce bias [19–24] on following visualizations."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                607,
+                939,
+                701
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.3. Study goal and scope"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                726,
+                668,
+                738
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To address this practical need, we developed App4WoSCCinR [25], a browser-based framework designed for users who want to move directly from a WoSCC spreadsheet export to automated bibliometric summaries and visual outputs with minimal manual intervention. In the current implementation, the platform is organized around a simple two-step workflow—data upload and automated execution—and produces both a structured summary report and a large set of exportable visualizations across multiple metadata domains."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                752,
+                939,
+                857
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Using articles indexed in WoSCC for SoftwareX as an illustrative case, the present study demonstrates how App4WoSCCinR supports metadata preprocessing, performance analysis, and Figure generation within a unified web workflow. The emphasis is therefore on implementation, usability, and reproducible output generation, while positioning the software as a practical complement to the existing bibliometric tool"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                857,
+                939,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/7853ef0baa43420d780868995951a137cbb029ae56f5534c5159a64fb1f34041.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. System architecture and workflow of App4WoSCCinR, showing the transformation of WoSCC spreadsheet input into normalized intermediate tables, domain level summary statistics, visualization outputs, and exportable reports."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                77,
+                66,
+                921,
+                564
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ecosystem."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                619,
+                127,
+                631
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.4. Contribution of the present work"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                646,
+                278,
+                660
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The contribution of App4WoSCCinR lies in workflow integration and accessibility. Specifically, the framework emphasizes: (1) direct handling of WoSCC spreadsheet exports; (2) minimal manual preprocessing; (3) browser-based execution; (4) automatic generation of structured summary panels and diverse visualization outputs in a single run; (5) and AAC-enhanced dominance [26,27] reporting as a comple mentary layer beyond simple counts and rankings."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                672,
+                487,
+                765
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this sense, the novelty of the software is practical rather than exclusive: it packages several otherwise separate steps into a streamlined web interface intended for transparent and reproducible biblio metric analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                765,
+                487,
+                818
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Software description"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                831,
+                218,
+                844
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR [25] is a web-based bibliometric analysis frame work developed to process standard 72-column WoSCC metadata and generate both structured summary reports and multi-domain visualization outputs within a unified workflow."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                857,
+                485,
+                910
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The software is designed to reduce manual preprocessing and to support reproducible bibliometric analysis through a streamlined upload-and-run interface. Beyond the user-facing simplicity of the platform, the system is organized as a modular analytical pipeline that separates data ingestion, metadata normalization, indicator computation, visualization rendering, and export."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                910,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                617,
+                939,
+                672
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. System architecture and workflow"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                686,
+                739,
+                699
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The architecture of App4WoSCCinR consists of five major modules:"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                712,
+                937,
+                726
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(1) input parsing,"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                738,
+                647,
+                752
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(2) metadata cleaning and normalization,"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                752,
+                801,
+                765
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(3) domain-wise aggregation and indicator computation,"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                765,
+                897,
+                779
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(4) visualization rendering, and"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                779,
+                737,
+                791
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(5) export and report generation."
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                791,
+                746,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The overall workflow begins with the upload of a WoSCC spreadsheet file (.xls or .xlsx) or the provision of a valid URL pointing to bibliometric data."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                817,
+                939,
+                857
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The imported records are parsed into an internal tabular structure and then passed to preprocessing routines that clean, standardize, and restructure key metadata fields. The normalized outputs are subsequently converted into domain-specific summary tables, which are used to compute bibliometric indicators and generate the final visualizations and summary report. The resulting outputs can then be displayed in the web interface or exported as image and archive files."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                857,
+                939,
+                938
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                58,
+                65,
+                379,
+                78
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The two-step workflow (Fig. 1) —data upload and automated execution—serves as the entry point to a deeper modular backend that transforms raw WoSCC spreadsheet metadata into publication-ready Figures."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                79,
+                487,
+                132
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. Modular design"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                145,
+                183,
+                158
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Five modules are involved in App4WoSCCinR, as shown in Fig. 2."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                172,
+                475,
+                185
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2.1. Module 1: Input parsing"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                199,
+                243,
+                211
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The input module accepts WoSCC metadata in spreadsheet form and supports both local file upload and URL-based loading. A demonstration dataset is also provided for rapid testing and illustration. Regardless of input source, all datasets are processed through the same parsing logic so that subsequent analytical steps remain consistent."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                211,
+                487,
+                277
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The software validates the file format, reads the raw worksheet content, checks that the imported structure is compatible with WoSCC style metadata, and converts the records into a standard internal data frame for downstream processing."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                278,
+                487,
+                331
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2.2. Module 2: Metadata cleaning and normalization"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                343,
+                381,
+                356
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The second module performs metadata preprocessing, including trimming, delimiter harmonization, missing-value handling, and restructuring of multi-value fields such as authors, affiliations, and keywords. This step is necessary because WoSCC spreadsheet exports, although convenient for users, often require normalization before consistent bibliometric analysis can be performed."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                356,
+                487,
+                436
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The preprocessing routines generate structured intermediate tables suitable for domain-level aggregation. For example, author, institution, department, country, and keyword fields are split, standardized, and transformed into countable analysis units. This module therefore acts as the bridge between raw WoSCC metadata and analysis-ready bibliometric objects."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                436,
+                487,
+                515
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2.3. Module 3: Domain-wise aggregation and indicator computation"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                57,
+                528,
+                463,
+                540
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "After normalization, the third module constructs summary tables across major metadata domains, including 10 metadata doamins. For each domain, the software computes bibliometric indicators such as publication count and h-index, and applies the Absolute Advantage Coefficient (AAC) [26,27] to quantify the relative dominance of leading entities."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                540,
+                487,
+                620
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "By separating aggregation from preprocessing, the software allows multiple visual outputs to be generated from the same standardized intermediate data rather than repeatedly transforming the original spreadsheet. This design improves consistency, efficiency, and trace ability across outputs."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                620,
+                487,
+                687
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2.4. Module 4: Visualization rendering"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                699,
+                300,
+                712
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The rendering module converts domain-level summary tables into graphical outputs. In the current implementation, App4WoSCCinR produces more than 100 visualizations spanning multiple metadata domains. These include summary plots[8], slope graphs, chord diagrams [28], Sankey-style relationship displays[29], Slope graphs[30], SSplot [31], world maps, regional maps for China and the United States, and Lotka-related author productivity displays."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                712,
+                487,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Different metadata structures are routed to different rendering functions. Temporal summaries are used to generate slope plots[30]; relational or co-occurrence data are used in chord and network-based displays; geographic tables are passed to map functions; and clustered data are used to construct SSplots[31]. This modular rendering approach allows the platform to support heterogeneous visualizations within a single analytical environment."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                804,
+                487,
+                897
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2.5. Module 5: Export and report generation"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                910,
+                332,
+                923
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The final module assembles the outputs into downloadable artifacts."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                923,
+                485,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A structured summary report is generated to present key contributors and bibliometric indicators across metadata domains, while individual Figs. can be exported as PNG files. In addition, a ZIP package of outputs can be downloaded to support reuse, sharing, and reproducibility."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                66,
+                939,
+                119
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This module ensures that App4WoSCCinR functions not only as an exploratory interface but also as a reporting tool capable of producing reusable materials for bibliometric research and presentation."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                119,
+                939,
+                158
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.3. Implementation layers"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                177,
+                672,
+                192
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "From an implementation perspective, App4WoSCCinR can be viewed as four interacting layers:"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                204,
+                939,
+                230
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(1) a front-end Shiny interface,"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                244,
+                732,
+                257
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(2) a server-side preprocessing layer,"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                258,
+                769,
+                269
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(3) an analytical engine, and"
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                271,
+                719,
+                283
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "(4) a Figure/Report export layer."
+                    }
+                ]
+            },
+            "bbox": [
+                526,
+                283,
+                744,
+                297
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The front-end interface manages file upload, URL input, execution, preview, and downloading. The server-side preprocessing layer handles raw-data parsing and metadata normalization. The analytical engine computes domain-level summaries and bibliometric indicators, including AAC-based dominance [26,27] reporting. The rendering and export layer then transforms these intermediate results into Figures and downloadable reports."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                310,
+                939,
+                401
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This layered design clarifies that the two-step user workflow is intentionally simple, whereas the software itself implements a structured backend pipeline for bibliometric data transformation and output generation."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                401,
+                939,
+                456
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4. Representative code logic"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                474,
+                689,
+                488
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To improve readability and reproducibility, the representative implementation is now presented as formatted R code listings. The native R pipe operator |> passes the output of the expression on its left to the function on its right, allowing sequential data-processing steps to be written clearly."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                501,
+                939,
+                567
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.1. WoSCC field parsing"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                578,
+                677,
+                593
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The parser imports the uploaded WoSCC spreadsheet, standardize column names, and trims character fields before downstream processing."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                593,
+                939,
+                633
+            ]
+        },
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "raw <- readxl::read_excel(input$file$datapath)\nraw <- raw |>\n  dplyr::rename_with(trimws) |>\n  dplyr::mutate(\n    dplyr::across(\n      where(is.character),\n      trimws\n    )\n  )"
+                    }
+                ],
+                "code_language": "r"
+            },
+            "bbox": [
+                512,
+                633,
+                937,
+                738
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.2. Author and affiliation normalization"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                767,
+                766,
+                780
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Multi-value metadata fields are separated into atomic units so that authors, affiliations, keywords, and related WoSCC fields can be counted consistently."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                781,
+                939,
+                820
+            ]
+        },
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "author_tbl <- raw |>\n  dplyr::select(AU) |>\n  tidyr::separate_rows(AU, sep = \";\") |>\n  dplyr::mutate(\n    AU = stringr::str_squish(AU)\n  ) |>\n  dplyr::filter(AU != \"\"\")"
+                    }
+                ],
+                "code_language": "txt"
+            },
+            "bbox": [
+                514,
+                822,
+                937,
+                902
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The same normalization strategy is applied to affiliations, keywords, countries, and other multi-value metadata fields. This ensures that summary tables are derived from standardized analytical units rather than raw spreadsheet strings."
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                923,
+                937,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "summary_tbl <- author_tbl |>\n  dplyr::count(AU, sort = TRUE) |>\n  dplyr::rename(\n    entity = AU,\n    n = n\n  )\nsummary_tbl <- add_h_index(summary_tbl)\nsummary_tbl <- add_aac(summary_tbl)"
+                    }
+                ],
+                "code_language": "txt"
+            },
+            "bbox": [
+                60,
+                605,
+                485,
+                697
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/2d4d46ded8c0e559bdcd65b33a2d04b8a8e3316469d9dac367c77dbe631a545e.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Summary report of leading entities across WoSCC metadata domains."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Note. AAC = Absolute Advantage Coefficient. h-index and publication counts are shown for the leading entities within each metadata domain. AAC values closer to 1 indicate stronger dominance of the leading entity relative to nearby competitors."
+                    }
+                ],
+                "html": "<table><tr><td>Domain</td><td>Top entities (Top 5)</td><td>h-index</td><td>Publications (n)</td><td>AAC</td></tr><tr><td>Country</td><td>United States; Spain; Germany; Poland; Italy</td><td>30; 13; 22; 13; 17</td><td>304; 193; 167; 156; 144</td><td>0.58</td></tr><tr><td>Institute</td><td>Delft University of Technology; National Institute of Telecommunications; University of Seville; AGH University of Krakow; Idaho National Laboratory</td><td>6; 5; 2; 4; 6</td><td>16; 14; 14; 13; 13</td><td>0.53</td></tr><tr><td>Department</td><td>Computer Science; Mechanical Engineering; Mathematics; Electrical and Computer Engineering; Physics</td><td>11; 7; 5; 7; 8</td><td>89; 26; 25; 22; 20</td><td>0.77</td></tr><tr><td>Author</td><td>Top 5 authors</td><td>6; 3; 4; 3; 2</td><td>16; 6; 6; 6; 5</td><td>0.73</td></tr><tr><td>Journal Year</td><td>SoftwareX 2025; 2024; 2023; 2022; 2020</td><td>54 7; 10; 17; 23; 30</td><td>2061 474; 358; 316; 214; 165</td><td>0 0.54</td></tr><tr><td>Document type</td><td>Article; Correction; Software Review; Review; Editorial Material</td><td>54; 0; 3; 3; 1</td><td>2020; 18; 16; 6; 1</td><td>0.99</td></tr><tr><td>Discipline</td><td>Computer Science</td><td>54</td><td>2061</td><td>0.5</td></tr><tr><td>Keyword</td><td>MODEL; ALGORITHM; DESIGN; SIMULATION</td><td>13; 7; 14; 10</td><td>105; 38; 35; 26</td><td>0.72</td></tr><tr><td>Region</td><td>Texas; Florida; Idaho; Michigan; Beijing</td><td>6; 6; 6; 5; 2</td><td>15; 13; 13; 13; 11</td><td>0.54</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                92,
+                482,
+                417
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                57,
+                485,
+                487,
+                525
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4.3. AAC-based dominance computation"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                538,
+                309,
+                549
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "After domain-level counts are generated, App4WoSCCinR appends summary indicators, including the h-index [32] and AAC [8,26,27,33], to identify dominant entities within each bibliometric domain. The following listing illustrates author-level summarization."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                551,
+                487,
+                604
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.5. AAC used to determine dominant strength over the next two elements"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                740,
+                478,
+                755
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The AAC was used to quantify the dominance strength of the leading entity relative to the next two ranked entities. Let "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\nu _ { 1 } , \\nu _ { 2 } ,"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "\\nu _ { 3 }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "denote the observed values of the first-, second-, and third-ranked entities, respectively."
+                    }
+                ]
+            },
+            "bbox": [
+                77,
+                766,
+                487,
+                781
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                509,
+                66,
+                939,
+                105
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The dominance ratio was calculated as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "r = ( \\nu _ { 1 } / \\nu _ { 2 } ) / ( \\nu _ { 2 } / \\nu _ { 3 } )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", and the AAC was then computed as "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "A A C = r / ( 1 + r )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Thus, AAC transforms the dominance ratio into a bounded coefficient between 0 and 1."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                105,
+                939,
+                145
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A higher AAC indicates stronger dominance of the leading entity over its nearest competitors, whereas a lower AAC suggests a more even distribution among the top-ranked entities. App4WoSCCinR provides an AAC dashboard to support visual interpretation of dominance patterns across bibliometric domains (Fig. 1) [33]."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                145,
+                939,
+                211
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.6. Multi-panel output generation"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                225,
+                715,
+                239
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Domain-specific tables are routed to plotting functions and then assembled into exportable outputs."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                250,
+                937,
+                277
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "p1 <- render_summary_plot(country_tbl)"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                278,
+                776,
+                291
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "p2 <- render_slope_plot(year_tbl)"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                291,
+                732,
+                303
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "p3 <- render_chord_plot(collab_tbl)"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                303,
+                744,
+                317
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "p4 <- render_ssplot(keyword_tbl)"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                317,
+                734,
+                330
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "export_plots(list(p1, p2, p3, p4), outdir = tempdir())"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                330,
+                850,
+                344
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "These examples are intended to illustrate the internal logic of the framework rather than to reproduce the full application code."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                343,
+                939,
+                370
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.7. Repository structure"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                384,
+                660,
+                398
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The repository is organized to reflect the modular architecture of the software. Core scripts and functions are grouped into components for input handling, metadata preprocessing, analytical summarization, AAC computation, visualization generation, and export. This structure helps readers identify the major implementation units responsible for parsing WoSCC data, constructing domain summaries, rendering Figures, and packaging outputs."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                409,
+                939,
+                504
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.8. User-facing workflow and functionalities"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                515,
+                776,
+                530
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "At the interface level, App4WoSCCinR provides a simplified two-step workflow(Fig.1):"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                542,
+                939,
+                569
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Upload WoSCC data"
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                582,
+                665,
+                595
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Users may either upload a WoSCC file (.xls/.xlsx) or provide a valid URL to bibliometric data, using the passcode 5730687835; a demo dataset is also available for rapid testing without a passcode."
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                595,
+                939,
+                635
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Run analysis"
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                635,
+                618,
+                648
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "4. By clicking the analysis function, the system automatically performs preprocessing, summary computation, and visualization rendering in real time."
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                648,
+                939,
+                688
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The main output functions include:"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                701,
+                746,
+                715
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Report, which generates a structured summary of bibliometric performance;"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                727,
+                939,
+                752
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Slope, which displays temporal publication trends;"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                754,
+                840,
+                767
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Chord, which visualizes inter-entity relationships;"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                767,
+                836,
+                781
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/a838f2a4ea0a478b477d671655d570711b0ee86693fe318167c8abb652ef4692.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Internal-validation of directly comparable outputs from Fig. 3 against WoSCC for the same SoftwareX dataset."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Note. Other domain comparison in Supplemental Appendix 2"
+                    }
+                ],
+                "html": "<table><tr><td>Output/domain</td><td>Definition used for validation</td><td>App4WoSCCinR result</td><td>WoSCC result</td><td>Agreement</td><td>Note</td></tr><tr><td>Total records</td><td>Number of retrieved SoftwareX records (2017–2026)</td><td>2,061</td><td>2,061</td><td>Exact</td><td>Same WoSCC search set</td></tr><tr><td>Overall h-index</td><td>h-index for the same retrieved record set</td><td>54</td><td>54</td><td>Exact</td><td>Same citation-report basis</td></tr><tr><td>Top country</td><td>Country with the highest publication count</td><td>United States = 304</td><td>United States = 304</td><td>Exact</td><td>Based on WoSCC address metadata</td></tr><tr><td>Top journal</td><td>Journal with the highest publication count</td><td>SoftwareX = 2,061</td><td>SoftwareX = 2,061</td><td>Exact</td><td>Dataset restricted to SoftwareX</td></tr><tr><td>Top publication year</td><td>Year with the highest publication count</td><td>2025 = 474</td><td>2025 = 474</td><td>Exact</td><td>Same year field in WoSCC</td></tr><tr><td>Top document type</td><td>Document type with the highest publication count</td><td>Article = 2,020</td><td>Article = 2,020</td><td>Exact</td><td>Same WoSCC document-type label</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                58,
+                820,
+                934,
+                920
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "World map for countries/regions"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                315,
+                66,
+                710,
+                89
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/1228511dc6a4ffa50ca1310a0cf6d256ca61e7377af9fbbfe10be864f49b8c8c.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. Global distribution and collaboration visualization(note. the upper panel shows country-level publication counts on a world map, while the lower chord diagram shows international collaboration patterns among major contributing countries)."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                200,
+                97,
+                803,
+                558
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• SSplot, which presents cluster structure and dominance;"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                609,
+                421,
+                622
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Map / China / USA, which provide geographic publication distri butions; and"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                622,
+                485,
+                646
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Lotka, which models the distribution of author productivity."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                648,
+                445,
+                662
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Optional download functions allow users to export Figures as PNG files and to save all outputs as a ZIP archive. Depending on dataset size and plotting complexity, execution time typically ranges from several seconds for small demonstration files to a few minutes for larger WoSCC datasets."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                674,
+                487,
+                740
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.9. Sample code snippets"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                765,
+                213,
+                779
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.9.1. R code for visualization and reporting"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                791,
+                321,
+                804
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR was implemented on shiny.io[34] to support auto mated bibliometric visualization and reporting from standard 72-col umn WoSCC metadata."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                804,
+                485,
+                843
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The framework integrates data preprocessing, metadata summarization, and visual output generation within a unified workflow. Rather than relying solely on single-purpose scripts for individual plots, this study used modular R code to produce a summary report and multiple visualization outputs across key metadata domains, including country, institution, department, author, journal, year, document type, discipline, keyword, and region."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                844,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this study, the generated outputs included summary plots, temporal trend plots, chord diagrams, Sankey diagrams, SSplots, geographic maps, and other bibliometric visualizations."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                609,
+                939,
+                648
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Following the reporting structure suggested in previous bibliometric studies [8,30], the results were organized into two parts: (1) performance analysis findings and (2) visualization outputs."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                648,
+                939,
+                688
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.9.2. R code used in this study"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                701,
+                700,
+                713
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "All data processing, visualization, and statistical analyses were conducted using R version 4.3.3 [35]. The application was developed and tested in the RStudio integrated development environment [36]. Core functions were written to automate metadata cleaning, restruc turing, summary reporting, dominance analysis, and Figure generation, thereby allowing users to complete bibliometric analysis through a simple upload-and-run web interface."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                713,
+                939,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The code base supports reproducible generation of publication indicators, AAC-based rankings, and over 100 visualizations from WoSCCexported metadata, as deposited in Github [37]. Instruction with MP4 video[38] and An example of url link [39] to App4WoSCCinR are presented."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                805,
+                939,
+                873
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/65b0ffc639db6017a3936775ff3dcf18a5f99358feffb3c3a7b8f15baeb2d5ae.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. Temporal trends of leading countries in SoftwareX publications from 2017 to 2026(Note. countries are vertically offset to avoid overlap among longitudinal trend lines and countries are ordered according to overall publication contribution, with higher-output countries placed first)."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                65,
+                65,
+                475,
+                337
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Illustrative examples"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                65,
+                673,
+                79
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.1. Data source"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                92,
+                616,
+                105
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Articles published in SoftwareX were retrieved from WoSCC, including both the Science Citation Index Expanded (SCI-Expanded) and the Social Sciences Citation Index (SSCI). The coverage period was from 2017 to 2026, with the search conducted on March 20, 2026. By specifying both the subsets and the temporal coverage, this study ensures full transparency and facilitates reproducibility for future bibliometric investigations. Study data are deposited in Github [31] and Supplemental Appendix 1, with buttons of Browse and Run WoS to show visualizations in Fig. 1 ."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                118,
+                939,
+                238
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2. Demonstrations of two results via App4WoSCCin R"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                257,
+                836,
+                271
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2.1. Performance analysis findings"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                283,
+                727,
+                297
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 1 table lists the leading entities across 10 WoSCC metadata domains, including h-index, publication count, and AAC. AAC indicates the dominance of the leading entity relative to the next-ranked competitors within each domain, including 2,061 articles with an overall hindex of 54 and incorporates publication counts (n), h-index values (h) [33], and AAC [8,27,28,34] scores to quantify dominance."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                297,
+                939,
+                375
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The results indicate that the United States is the leading country (n = "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "3 0 4 , \\mathrm { h } = 3 0 , \\mathrm { A A C } = 0 . 5 8 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ". Delft University of Technology (Netherlands) is the most prolific institution "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( \\mathtt { n } = 1 6 , \\mathtt { h } = 6 , \\mathtt { A A C } = 0 . 5 3 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", while the Department of Computer Science is the most prevalent affiliation (n = 89, h = 11, AAC = 0.77), and SoftwareX is the dominant journal, as"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                375,
+                939,
+                443
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "T20 keywords on SSplot"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                356,
+                457,
+                673,
+                482
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/89acb2f0ef95e4d4770d7631d75ea4cc41ce713c40c0d41534679b0ddf0eaa79.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5. SSplot visualization of FLCA-SIL-MA clustering results[25] for top keywords in SoftwareX publications(Note. the SSplot enables rapid visual interpretation of keyword clusters, AAC values, silhouette scores, and cluster structures at a glance)."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                213,
+                494,
+                786,
+                902
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "7"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/f9dfe21c230b4c41a44b4be1acd8c347de93b81ba9d9cc75b5fd65de6e3a91dd.jpg"
+                },
+                "content": "",
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                206,
+                112,
+                803,
+                331
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Provinces and municipalities of China, along with Hong Kong, Macao, and Taiwan"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                191,
+                344,
+                779,
+                448
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/cbce3573d07b0ef215b8e1d0da6baeaad5811f8df8ce3f5d40852650bcdfeb5a.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 6. Geographic distribution at regional level(note. the two maps show regional publication distributions across U.S. states and Chinese provinces/municipalities, with color intensity representing publication counts)."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                208,
+                452,
+                783,
+                742
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "expected from the dataset. Others are shown in Table 1."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                791,
+                398,
+                804
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 2 presents outputs that are directly comparable to native WoSCC summary fields and were therefore expected to match exactly when the same record set and counting rules were used. Other metadata comparisons are presented in Supplementary Table S1."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                805,
+                487,
+                860
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2.2. Visualization outputs"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                872,
+                225,
+                883
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR generates a world map in Fig. 3 showing publication counts by country, alongside a chord diagram illustrating international collaboration patterns among major contributing countries."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                883,
+                487,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The Fig. 4 displays yearly publication counts for the top contributing countries identified from WoSCC metadata. Red lines connect annual publication counts to illustrate longitudinal growth patterns. The United States demonstrated the highest and most sustained publication activity, whereas countries such as Spain, Poland, and China exhibited rapid increases in recent years. The visualization highlights dynamic shifts in international research productivity over time."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                791,
+                939,
+                883
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords were clustered using the FLCA. Colored bars represent cluster membership, whereas AAC values indicate dominance of the leading keyword within each cluster. Silhouette scores (SS) and modularity-related indicators are shown on the right to evaluate cluster cohesion and separation. Higher AAC and SS values indicate stronger thematic dominance and more stable cluster structures."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                883,
+                939,
+                925
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "8"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/7355a40557bdd6c060c524e885384a63807b8786c7e47158c7eadb43e73d8d33.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 3"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Feature-by-feature comparison of App4WoSCCinR with widely used bibliometric tool."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Note. Yes = explicitly supported as a core workflow element; Partial = available in a narrower, indirect, or less integrated form; No = not a primary or explicitly documented function in the compared source. Replace “Table X” with the final table number used in the manuscript."
+                    }
+                ],
+                "html": "<table><tr><td>Feature / criterion</td><td>App4WoSCCinR</td><td>CiteSpace</td><td>VOSviewer</td><td>bibliometrix / biblioshiny</td><td>BibexPy</td><td>BiblioMerge</td></tr><tr><td>Primary role</td><td>WoSCC upload-to-report</td><td>Mapping, visualization, exploration</td><td>Network, visualization</td><td>Bibliometric analysis in R</td><td>Preprocessing, merging, deduplication data</td><td>Merging, deduplication, normalizing data</td></tr><tr><td>Handling Excel (.xls/. xlsx)</td><td>Yes</td><td>No</td><td>No</td><td>Partial</td><td>No</td><td>No</td></tr><tr><td>No-code workflow</td><td>Yes</td><td>Partial</td><td>Partial</td><td>Yes (biblioshiny)</td><td>No</td><td>No</td></tr><tr><td>Preprocessing within workflow</td><td>Yes</td><td>Partial</td><td>Limited</td><td>Partial</td><td>Yes</td><td>Yes</td></tr><tr><td>Reduce manual wrangling data</td><td>Yes</td><td>No</td><td>No</td><td>Partial</td><td>Partial</td><td>Partial</td></tr><tr><td>Multi-domain summary report</td><td>Yes</td><td>Partial</td><td>No</td><td>Partial</td><td>No</td><td>No</td></tr><tr><td>Diverse visual outputs in one run</td><td>Yes</td><td>Partial</td><td>Partial</td><td>Partial</td><td>No</td><td>No</td></tr><tr><td>Network-mapping visualizations</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>No</td><td>No</td></tr><tr><td>Geographic, temporal outputs</td><td>Yes</td><td>Partial</td><td>Limited</td><td>Partial</td><td>No</td><td>No</td></tr><tr><td>Merge and deduplicate records</td><td>Partial</td><td>No</td><td>No</td><td>Partial</td><td>Yes</td><td>Yes</td></tr><tr><td>AAC-based dominance reporting</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>Exportable report / Figure package</td><td>Yes</td><td>Partial</td><td>Partial</td><td>Partial</td><td>No</td><td>No</td></tr><tr><td>URL-Link repot</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td><td>No</td></tr><tr><td>2-Step in a run</td><td>Yes</td><td>No</td><td>No</td><td>No</td><td>No</td><td>No</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                90,
+                937,
+                395
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                57,
+                438,
+                487,
+                479
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5."
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                78,
+                479,
+                122,
+                491
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The maps in Fig. 6 display publication distributions across U.S. states and Chinese provinces/municipalities (including Hong Kong, Macao, and Taiwan), providing finer-grained spatial insights into research activity."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                491,
+                487,
+                544
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Based on Table 3, the author productivity distribution only partly follows Lotka’s law."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                544,
+                485,
+                571
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.3. Reaching the study goals"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                592,
+                235,
+                606
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This study achieves the study goals that a streamlined web-based framework, implemented through App4WoSCCinR, can effectively (1) perform bibliometric analysis from standard 72-column WoSCC Excel metadata and (2) generate outputs with substantial analytical value."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                617,
+                487,
+                670
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "As shown in Table 3, the practical contribution of App4WoSCCinR is not to replace established science-mapping tools, but to provide an integrated, low-barrier workflow that accepts standard WoSCC Excel exports directly and generates structured summary reporting plus diverse visual outputs within a single web-based execution environment."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                670,
+                487,
+                737
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Through its two-step workflow—data upload and automated analysis—the system produced both a structured performance summary and over 100 visualizations across multiple metadata domains."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                737,
+                485,
+                776
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "These findings demonstrate that App4WoSCCinR is capable of sup porting bibliometric interpretation in a manner that is clear, efficient, and reproducible. In particular, the integration of the AAC [8,20,21,24, 27] enabled more nuanced identification of dominant entities than simple frequency rankings alone."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                776,
+                485,
+                843
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The proposed framework thus meets the study goal of providing a practical and transparent alternative for bibliometric analysis, especially for users seeking low-barrier and reproducible analytical tools."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                842,
+                487,
+                882
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                897,
+                129,
+                911
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR extends the earlier 10StepsinExcelforWoS framework [8] into a visualization-oriented bibliometric platform capable of processing standard 72-column WoSCC spreadsheet metadata through a browser-based workflow. By integrating metadata ingestion, preprocessing, structured reporting, AAC-enhanced dominance analysis, and multi-domain visualization within a single environment, the platform reduces manual preprocessing requirements and lowers technical barriers for bibliometric exploration."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                923,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                438,
+                939,
+                530
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Compared with established tools such as CiteSpace, VOSviewer, and Bibliometrix, the contribution of App4WoSCCinR lies primarily in workflow integration and direct handling of native WoSCC spreadsheet metadata rather than replacement of existing science-mapping software. The framework emphasizes rapid upload-and-run processing together with exportable structured summaries and diverse visualization outputs across countries, institutions, authors, journals, keywords, and temporal trends."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                530,
+                939,
+                636
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The inclusion of AAC [8,26,27,36] provides a complementary dominance-oriented indicator that extends conventional frequency-based summaries by quantifying the relative strength of leading entities compared with nearby competitors."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                636,
+                939,
+                689
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR also improves transparency of bibliometric preprocessing by documenting metadata normalization and structured aggregation workflows. This is particularly relevant because WoSCC metadata may contain inconsistencies such as incomplete affiliations, author-name ambiguity, inconsistent document-type labeling, and incomplete keyword coverage in historical records [40]. Although these issues cannot be fully eliminated by downstream software, deterministic preprocessing and normalization procedures can improve interpretability and reproducibility."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                689,
+                939,
+                808
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Several limitations should be addressed. First, the current imple mentation primarily supports WoSCC-derived metadata and does not yet provide direct interoperability with Scopus, Dimensions, or OpenAlex formats. Second, preprocessing outcomes may still be influenced by metadata incompleteness, author-disambiguation ambiguity, and database-specific indexing practices. Third, formal scalability bench marking for very large bibliometric datasets has not yet been systematically evaluated. These limitations remain important directions for future development and validation."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                808,
+                939,
+                928
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "9"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                950,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Conclusion"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                66,
+                156,
+                78
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "App4WoSCCinR offers a practical web-based framework for analyzing standard 72-column WoSCC metadata through a simple twostep workflow. By generating structured reports, diverse visualizations, and AAC-based dominance indicators without programming, it improves accessibility, transparency, and reproducibility for efficient bibliometric analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                92,
+                487,
+                171
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Data availability"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                185,
+                171,
+                197
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The data are public and available at Github."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                211,
+                346,
+                223
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "CRediT authorship contribution statement"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                238,
+                337,
+                250
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Tsair-Wei Chien: Methodology. Lifan Chen: Data curation, Conceptualization. Willy Chou: Investigation."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                264,
+                485,
+                290
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of competing interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                303,
+                280,
+                316
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                329,
+                485,
+                369
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgments"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                382,
+                181,
+                395
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We would like to acknowledge Github which allowing us to deposit our R code and datasets at no charges."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                409,
+                485,
+                435
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Supplementary materials"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                448,
+                226,
+                461
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Supplementary material associated with this article can be found, in the online version, at doi:10.1016/j.softx.2026.102770."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                475,
+                485,
+                501
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                514,
+                134,
+                527
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Ellegaard O, Wallin JA. The bibliometric analysis of scholarly production: How great is the impact? Scientometrics 2015;105(3):1809–31. https://doi.org/ 10.1007/s11192-015-1645-z."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                539,
+                472,
+                568
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Donthu N, Kumar S, Mukherjee D, Pandey N, Lim WM. How to conduct a bibliometric analysis: an overview and guidelines. J. Bus. Res. 2021;133:285–96. https://doi.org/10.1016/j.jbusres.2021.04.070."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                569,
+                478,
+                598
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] Zupic I, Cater ˇ T. Bibliometric methods in management and organization. Organ Res. Methods 2015;18(3):429–72. https://doi.org/10.1177/1094428114562629."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                600,
+                475,
+                619
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Chen C, CiteSpace II. Detecting and visualizing emerging trends and transient patterns in scientific literature. J. Am. Soc. Inf. Sci. Technol. 2006;57(3):359 77. https://doi.org/10.1002/asi.20317."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                620,
+                478,
+                648
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] van Eck NJ, Waltman L. VOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38. https://doi.org/10.1007/s11192- 009-0146-3."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                650,
+                468,
+                678
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] Aria M, Cuccurullo C. bibliometrix: An R-tool for comprehensive science mapping analysis. J. Informetr. 2017;11(4):959–75. https://doi.org/10.1016/j. joi.2017.08.007."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                680,
+                480,
+                708
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Clarivate. Web of Science Core Collection [database online]. Clarivate; 2025. Accessed June 24, 2025, https://www.webofscience.com/wos/woscc."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                709,
+                450,
+                730
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Chien TW, Chou W. 10StepsinExcelforWoS: streamlining bibliometric analysis in Web of Science using Microsoft Excel. SoftwareX 2025;32:102403. https://doi.org 10.1016/j.softx.2025.102403."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                731,
+                480,
+                759
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Abdelwahab SI, Taha MME, Farasani A, et al. The top 100 most cited articles in cardiovascular research: a bibliometric perspective. Curr. Probl. Cardiol. 2025;50 (11):103153."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                760,
+                480,
+                789
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Süer MS, Ergüder E, Demir S, Balas S¸ . Scientific response to the 2023 Kahramanmaras¸ earthquake: a bibliometric study. Ulus Travma. Acil Cerrahi. Derg. 2025;31(8):766–75."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                791,
+                480,
+                819
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Maldonado A, Coral M, Hern´andez G. Bibliometric analysis of 25 years of emergency medicine research in Latin America. J. Emerg. Med. 2025;76:124–34."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                820,
+                478,
+                839
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] R platform. Visualizations created through R scripts [Internet]. Accessed June 14, 2025. https://www.raschonline.com/raschonline/cbp.asp?cbp=InputwithTableb."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                841,
+                480,
+                860
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Bibliometrix. Biblioshiny [Internet]. Accessed April 17, 2026. https://www.bibl ometrix.org/home/index.php/layout/biblioshiny."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                861,
+                477,
+                880
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Bibliometrix. Main software to analyze bibliometric data [Internet]. Accessed April 17, 2026. https://www.bibliometrix.org/home/index.php/blog/135-main-so ftware-to-analyze-bibliometric-data."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                66,
+                934,
+                95
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] Kara BC, S¸ ahin A, BibexPy Dirsehan T. Harmonizing the bibliometric symphony of Scopus and Web of Science. SoftwareX 2025;30:102098. https://doi.org/10.1016 j.softx.2025.102098."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                97,
+                934,
+                126
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Diez-Junguitu D, MA ´ Pena-Cerezo. ˜ BiblioMerge: A Python-based automated tool to merge WoS and Scopus bibliographic data, compatible with Biblioshiny, BibExcel, VOSviewer, SciMAT and ScientoPy. J. Informetr. 2026;20(1):101770. https://doi. org/10.1016/j.joi.2026.101770."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                127,
+                934,
+                166
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Moral-Munoz ˜ JA, Herrera-Viedma E, Santisteban-Espejo A, Cobo MJ. Software tools for conducting bibliometric analysis in science: an up-to-date review. Prof Inf. 2020;29(1):e290103. https://doi.org/10.3145/epi.2020.ene.03."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                167,
+                927,
+                197
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] Liu W. The data source of this study is Web of Science Core Collection? Not enough. Scientometrics 2019;121(3):1815 24."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                197,
+                932,
+                216
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Philippe M, Ad`ele PH. The journal coverage of Web of Science and Scopus: a comparative analysis. Scientometrics 2016;106(1):213–28."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                216,
+                914,
+                237
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[20] Abdelghani M, Lesya B. The quality of the web of science data: a longitudinal study on the completeness of authors-addresses links. Scientometrics 2022;127(11): 6279–92."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                237,
+                934,
+                266
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[21] Vivek KS, Prashasti S, Mousumi K, Jacqueline L, Philipp M. The journal coverage of web of science, scopus and dimensions: a comparative analysis. Scientometrics 2021;126(6):5113–42."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                267,
+                934,
+                297
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[22] Alvarez-Bornstein ´ B, Morillo F, Bordons M. Funding acknowledgments in the Web of Science: completeness and accuracy of collected data. Scientometrics 2017;112 (3):1793–812."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                297,
+                934,
+                326
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[23] McVeigh M. Adding Early Access content to Journal Citation Reports: choosing a prospective model. Clarivate 2021. Accessed October 4, 2025. URL, https://clar vate.com/academia-government/blog/adding-early-access-content-to-journa l-citation-reports-choosing-a-prospective-model/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                327,
+                932,
+                366
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[24] Liu W. Caveats for the use of Web of Science Core Collection in old literatur retrieval and historical bibliometric analysis. Technol. Forecast. Soc. Change 2021; 172:121023. https://doi.org/10.1016/j.techfore.2021.121023"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                368,
+                934,
+                398
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[25] Chien TW, Yang S, Chou W, Wang WC. App4WoSCCinR: A web-based bibliometric analysis platform for the Web of Science Core Collection [Internet]. Published March 20, 2026. Accessed March 20, 2026. https://smilechien.shinyapps.io/wos cc/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                398,
+                932,
+                437
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[26] Chien TW. Cronbach's alpha with the dimension coefficient to jointly assess a scale's quality. Rasch. Meas Trans. 2012;26(3):1379."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                438,
+                915,
+                457
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[27] Yang TY, Chien TW, Lai FJ. Citation analysis of the 100 top-cited articles on the topic of hidradenitis suppurativa since 2013 using Sankey diagrams: bibliometric analysis. Medicine (Baltimore) 2022;101(44):e31144."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                457,
+                932,
+                488
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[28] Cheng TY, Ho SYC, Chien TW, Chou W. Global research trends in artificial intelligence for critical care with a focus on chord network charts: bibliometric analysis. Medicine (Baltimore) 2023;102(38):e35082. https://doi.org/10.1097/ MD.0000000000035082"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                489,
+                924,
+                527
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[29] Lim SW, Chou W, Chen L. SankeyNetwork: A clear and concise visualization too for bibliometric data. MethodsX 2025;14:103379."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                529,
+                932,
+                548
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[30] Lim SW, Chou W, Chow JC. Unexpected aberrant data patterns on slope graphs to examine article characteristics: Say good-bye to the burst bar chart in bibliometrics. Medicine (Baltimore) 2025;104(35):e42657. https://doi.org/ 10.1097/MD.0000000000042657."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                549,
+                932,
+                588
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[31] Chien TW, Chen L, Chou W. SilhouettePlot: An R-based app integrating silhouett scores into network plots for enhanced clarity and meaning. SoftwareX 2026;34: 102652."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                588,
+                932,
+                617
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[32] Hirsch JE. An index to quantify an individual's scientific research output. Proc. Natl. Acad. Sci. U S A 2005;102(46):16569–72. https://doi.org/10.1073/ pnas.0507655102."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                619,
+                922,
+                648
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[33] Chien TW. App for the interpretation of absolute advantage coefficient (AAC) [Internet]. Published March 20, 2026. Accessed March 20, 2026. https://smilech ien.shinyapps.io/AAC2/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                649,
+                931,
+                678
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[34] Posit. shinyapps.io user guide [Internet]. Accessed March 24, 2026. https://docs. posit.co/shinyapps.io/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                679,
+                931,
+                699
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[35] R Core Team. R: A Language and Environment for Statistical Computing [computer program]. Vienna, Austria: R Foundation for Statistical Computing; 2026. Accessed March 12, 2026, https://www.R-project.org/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                699,
+                932,
+                728
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[36] Posit PBC. RStudio: Integrated Development Environment for R [computer program]. Boston, MA: Posit Software, PBC; 2022. Accessed March 12, 2026, https://posit. co/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                728,
+                932,
+                757
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[37] GitHub. App4WoSCCinR [Internet]. Accessed March 14, 2026. https://github. com/smilechien/App4WoSCCinR."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                760,
+                915,
+                779
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[38] R platform. Instruction with MP4 video [Internet]. Accessed March 14, 2026. https://youtu.be/iwFYvwPPf4s."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                779,
+                914,
+                799
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[39] R platform. Example URL link to App4WoSCCinR [Internet]. Published March 20, 2026. Accessed March 20, 2026. https://smilechien.shinyapps.io/woscc/?cmc 57 30687835&?autorun=1&csv_url=https://raw.githubusercontent.com/smilechien/ raschonline/main/wosauthor.xls"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                799,
+                934,
+                838
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[40] Li H, Wu P. Trump cards: when web of science meets Harvard law review. J. Inf. Sci.. 2026. https://doi.org/10.1177/01655515261421186. Published online."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                839,
+                932,
+                858
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                52
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102770"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                52
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "10"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                952,
+                507,
+                960
+            ]
+        }
+    ]
+]

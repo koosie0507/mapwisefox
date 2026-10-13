@@ -1,0 +1,3700 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Systematic literature review tooling">
+      
+      
+      
+        <link rel="canonical" href="https://koosie0507.github.io/mapwisefox/latest/article/refs/markdown/skim/sms-builder/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Sms builder - MapwiseFox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/_mkdocstrings.css">
+    
+      <link rel="stylesheet" href="../../../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-introduction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="MapwiseFox" class="md-header__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MapwiseFox
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Sms builder
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="MapwiseFox" class="md-nav__button md-logo" aria-label="MapwiseFox" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MapwiseFox
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/koosie0507/mapwisefox" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../search/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Search
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Search
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    DSL
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DSL overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/syntax/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Syntax
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/operators/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operators
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/dates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/dsl/output-spec/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Output spec
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architecture
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Architecture
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/ir/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intermediate representation (IR)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/adapters/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Adapters
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/field-mapping/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Field mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/regex-handling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Regex handling
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/architecture/query-object/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QueryObject
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backends
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backends overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/acm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/ieee-xplore/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IEEE Xplore
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/science-direct/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ScienceDirect
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/scopus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Scopus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/springer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Springer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/backends/web-of-science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web of Science
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Configuration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/configuration/config-file/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Config file
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/configuration/persistence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legacy
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legacy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/legacy/query-builder/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Query builder (deprecated)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reference
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Reference
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../search/reference/grammar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Grammar reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../deduplication/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deduplication
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deduplication
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../deduplication/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../deduplication/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../deduplication/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../split/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Split
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../split/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../split/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Split workload CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../metrics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Metrics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/getting-started/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Information Retrieval Metrics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/getting-started/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inter-Rater Agreement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metrics CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How It Works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How It Works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/how-it-works/information-retrieval/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Information Retrieval Metrics Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../metrics/how-it-works/inter-rater-agreement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How Inter-Rater Agreement Works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../snowballing/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Snowballing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Snowballing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../snowballing/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../snowballing/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    How it works
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../snowballing/how-it-works/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    How it works
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../assistant/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Assistant
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Assistant
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../assistant/getting-started/installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../assistant/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Usage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../assistant/getting-started/cli-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../web/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Web
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_2" id="__nav_9_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Getting Started
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Getting Started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../web/getting-started/usage/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Screen a primary-study list
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_9_3" id="__nav_9_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_9_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Operations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../web/operations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Web operations and configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+    <a href="https://github.com/koosie0507/mapwisefox/edit/main/docs/article/refs/markdown/skim/sms-builder.md" title="Edit this page" class="md-content__button md-icon" rel="edit">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<p>=== Document parser messages ===
+Using Tesseract for OCR processing.
+OCR on page.number=0/1.
+OCR on page.number=2/3.
+OCR on page.number=3/4.
+OCR on page.number=5/6.
+OCR on page.number=6/7.
+OCR on page.number=7/8.
+OCR on page.number=8/9.</p>
+<!-- Start of picture text -->
+<p>PoE<br>F £ = eli £ = eli = eli eli &lt;.<br>ELSEVIER<br><!-- End of picture text --></p>
+<p>PoE F £ = eli £ = eli = eli eli &lt;. ELSEVIER </p>
+<p>~~el~~ </p>
+<!-- Start of picture text -->
+<p>Check for<br>| updates<br><!-- End of picture text --></p>
+<p><em>Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.</em> </p>
+<p><em>SoftwareX 17 (2022) 100935</em> </p>
+<h1 id="1-introduction"><strong>1. Introduction</strong><a class="headerlink" href="#1-introduction" title="Permanent link">&para;</a></h1>
+<p>The amount of scientific documents exceeds the capacity of readers to identify them. Thus, it is crucial to have protocols and tools for locating information to help us identify gaps, challenges, and other relevant aspects of our researches. In this context, Systematic Literature Review (SLR) helps reducing time in locating studies and favors decision making since the information presented by a literature review must be relevant, accessible, updated, and high-quality [1]. In general, SLRs have been marked by the evidence-based practice movement to minimize bias through the use of a specific research protocol [2]. </p>
+<p>There is also a movement in software engineering that seeks to use evidence-based research and thus brings in good practices in medicine to create systematic review studies. Such is the case of the work proposed by Kitchenham et al. [3] for the formalization of the concept of Evidence-based software engineering (EBSE), which supported the development of other important works like [2,4–7], and [8]. Consider that the Systematic Mapping Studies (SMS) is a kind of SRL widely accepted in software engineering. Therefore, it is important and necessary to define and follow processes that lead to the practical building of SMSs [9]. A SMS is an instrument frequently used to carry out a search, identification, and classification of studies in different fields. The Artificial Intelligence Research Group (AIRG) at the Technological University of Pereira in Colombia, extended and adapted a process for building SMSs with the evidence-based software engineering approach, based on the work in [3,7]. The stages that make up the process proposed by AIRG for building a SMS correspond to (1) Planning, (2) Study search, (3) Quality analysis, (4) Data collection, (5) Study analysis and classification, and (6) Results (see Section 1.1). These stages represent the combination of various aspects described mainly in [3,7], and the work of [8,10], which are shown in detail in Fig. 1. In this regard, AIRG identified the need to create a specialized software to support the SMS building process. This situation prompted the creation of the SMS-Builder software tool. We built this software intending to automate the process of making a SMS adaptively. This software tool provides support for several tasks: </p>
+<ul>
+<li>
+<p>a. Managing references. </p>
+</li>
+<li>
+<p>b. Supporting the selection and classification of studies. </p>
+</li>
+<li>
+<p>c. Helping the automated evaluation of studies. </p>
+</li>
+</ul>
+<h1 id="113-stage-3-quality-analysis"><em>1.1.3. Stage 3: Quality analysis</em><a class="headerlink" href="#113-stage-3-quality-analysis" title="Permanent link">&para;</a></h1>
+<p>This stage consists of defining and applying quality criteria to the studies included in the SMS. The process suggests determining criteria that have been used widely as accepted references in the field of study to which the SMS is being applied. Particularly, we consider three quality indices for the study evaluation, which are reducing bias in the SMS. </p>
+<p>CVI: This index makes it possible to judge the documents by identifying those most relevant to the SMS goals. The CVI index uses a quantitative scale of six levels from 0 to 5, in which zero implies a low relationship of the studies with the SMS objectives, and five means a high relationship of the studies with the SMS objectives [13,14]. </p>
+<p>SCI: The Study Citation Index considers the number of citations for each study regarding the publications’ age. This index lets us evaluate the impact study by a metric accepted in the scientific community. In this index, we seek to balance the citation of the studies. Thus, a citation in a recent paper has a higher value than in an old paper. See formula (1). </p>
+<p><strong>C</strong> is the <em>number of Citations in the period of time</em> , and <strong>Y</strong> is the <em>number of years since its publication</em> . </p>
+<p>Additionally, this index uses frequency analysis to identify the most relevant studies. </p>
+<p>IRRQ: This corresponds to the ‘‘Index of Relationship to Research Questions’’, see formula (2). </p>
+<p><strong>N</strong> corresponds to the <em>Number of RQs</em> to which the study is related. <strong>T</strong> is the <em>total of RQs</em> . </p>
+<h1 id="114-stage-4-data-collection"><em>1.1.4. Stage 4: Data collection</em><a class="headerlink" href="#114-stage-4-data-collection" title="Permanent link">&para;</a></h1>
+<p>This stage consists of designing and filling out the forms to obtain data and metadata from the SMS studies. </p>
+<h1 id="115-stage-5-analysis-and-classification-of-studies"><em>1.1.5. Stage 5: Analysis and classification of studies</em><a class="headerlink" href="#115-stage-5-analysis-and-classification-of-studies" title="Permanent link">&para;</a></h1>
+<p>According to the metrics defined in the Planning Stage, this stage analyzes studies selected in the SMS to search for answers to the RQs. </p>
+<ul>
+<li>d. Preparation of statistical reports about the studies selected. </li>
+</ul>
+<h1 id="116-stage-6-results"><em>1.1.6. Stage 6: Results</em><a class="headerlink" href="#116-stage-6-results" title="Permanent link">&para;</a></h1>
+<h1 id="11-process-for-building-a-sms"><em>1.1. Process for building a SMS</em><a class="headerlink" href="#11-process-for-building-a-sms" title="Permanent link">&para;</a></h1>
+<p>This section describes the six stages of the SMS building process shown in Fig. 1. </p>
+<h1 id="111-stage-1-planning"><em>1.1.1. Stage 1: Planning</em><a class="headerlink" href="#111-stage-1-planning" title="Permanent link">&para;</a></h1>
+<p>This stage consists of establishing the overall purpose to be achieved with the SMS. Planning includes setting aspects such as Goal(s), Research Question(s), and Metrics. For these aspects, the process followed the GQM (Goal/Question/Metric) model [11,12]; this model establishes the conceptual, operational, and quantitative level, respectively. </p>
+<h1 id="112-stage-2-search-for-studies"><em>1.1.2. Stage 2: Search for studies</em><a class="headerlink" href="#112-stage-2-search-for-studies" title="Permanent link">&para;</a></h1>
+<p>This stage supports the identification of studies to add to the SMS. The search for studies comprises of aspects such as (1) Determining the strategy, either independently or combined; (2) General identification of studies; (3) Screening; and (4) Study selection to be included in the SMS. </p>
+<p>This stage presents values collected from the SMS. It also provides the reader with a systematic way of approaching a particular topic by pointing out the specific studies about topics and other planning elements. If necessary, it is possible to include a meta-analysis as suggested by [2]. </p>
+<h1 id="2-software-description"><strong>2. Software description</strong><a class="headerlink" href="#2-software-description" title="Permanent link">&para;</a></h1>
+<p>This section describes information about the software architecture and functionalities of SMS-Builder. </p>
+<h1 id="21-software-architecture"><em>2.1. Software architecture</em><a class="headerlink" href="#21-software-architecture" title="Permanent link">&para;</a></h1>
+<p>SMS-Builder is a web application built with the Java 11 programming language. This software implements the <strong>Layers Architectural Pattern</strong> using five levels: Data Layer, Data Access Layer, Business Layer, Presentation Layer, and Client Layer. </p>
+<ul>
+<li>The <strong>Data Layer</strong> is responsible for storing information through the RDBMS Maria DB. </li>
+</ul>
+<p>2 </p>
+<!-- Start of picture text -->
+<h1 id="2-e-picocoa582ae3-snowballieee-definition-of-the-sources-of-search-baseline-documents-application-of-search-strings-and-application-of-inclusion-criteria-snowballing38-inclusion-criteria-pp-backwardforward3identified-studies-identified-studies-identified-studies32paga-tb2-total-studies-identifiedaeify6-remove-duplicate-studites-studies-identified-after-removal-of-duplicates285-eliminationcriteriaby-beienaial-studies-identified-after-applying-exclusion-criteria3-direct-inclusion-eligible-studies-direct-inclusionir-by-experts-9-grey-sources33-studies-included-in-the-systematic-mappingaos3-sof-quality-criteria-definition-evaluation-of-the-studiesbs-b-format-definition-data-extraction-in-the-formatson-osoove2s-83-definition-of-classifications-ge2-study-analysis-f-study-classification-data-tabulatione-ageo-schemes-topicso2s32-presentation-of-resultsae">2<br>: é Picoc<br>oa<br>582<br>ae3 Snowball<br>IEEE | Definition of the sources of search Baseline documents<br>§ Application of search strings and Application of inclusion criteria Snowballing<br>38 inclusion criteria PP (Backward/Forward)<br>3<br>Identified studies Identified studies Identified studies<br>32Paga tb<br>2 Total studies identified<br>a&amp;$<br>éi<br>Fy<br>6 Remove duplicate studites Studies identified after removal of duplicates<br>2€85 Eliminationcriteriaby beienaial Studies identified after applying exclusion criteria<br>3 Direct inclusion Eligible studies Direct inclusion<br>ir (by experts) 9 (Grey sources)<br>33 Studies included in the systematic mapping<br>aos#3 s‘of Quality criteria definition Evaluation of the studies<br>BS B Format definition Data extraction in the formats<br>on oS<br>oOve2S 83 Definition of classification<br>S ge2 Study analysis F Study classification Data tabulation<br>é age&lt;o schemes (topics)<br>o2<br>S32 Presentation of results<br>ae<br><!-- End of picture text --><a class="headerlink" href="#2-e-picocoa582ae3-snowballieee-definition-of-the-sources-of-search-baseline-documents-application-of-search-strings-and-application-of-inclusion-criteria-snowballing38-inclusion-criteria-pp-backwardforward3identified-studies-identified-studies-identified-studies32paga-tb2-total-studies-identifiedaeify6-remove-duplicate-studites-studies-identified-after-removal-of-duplicates285-eliminationcriteriaby-beienaial-studies-identified-after-applying-exclusion-criteria3-direct-inclusion-eligible-studies-direct-inclusionir-by-experts-9-grey-sources33-studies-included-in-the-systematic-mappingaos3-sof-quality-criteria-definition-evaluation-of-the-studiesbs-b-format-definition-data-extraction-in-the-formatson-osoove2s-83-definition-of-classifications-ge2-study-analysis-f-study-classification-data-tabulatione-ageo-schemes-topicso2s32-presentation-of-resultsae" title="Permanent link">&para;</a></h1>
+<!-- Start of picture text -->
+<p>Docker Container<br>Enterprise Application Container<br>Client Layer<br>Presentation Layer<br>Front Controller (Faces Servlet<br>UlComponent Managed Beans XHTML<br>Java Server Faces<br>Business Logic Layer<br>Data Access Layer<br>Java Persistence API<br>Data Layer — RDBMS - MariaDB<br><!-- End of picture text --></p>
+<p><em>Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.</em> </p>
+<p><em>SoftwareX 17 (2022) 100935</em> </p>
+<ul>
+<li>
+<p>Import references: The software allows importing references using Research Information System (RIS) formatted files. To this end, the software requires that the search process be performed externally, either through automated (database search), or using manual methods (direct inclusion and snowball search). The user needs to refine the references obtained to complete the metadata through a reference manager such as EndNote or Mendeley. This information is the main component needed to start the building process in SMS-Builder. </p>
+</li>
+<li>
+<p>Remove Duplicate: This function allows users to identify duplicate references that may have been indexed simultaneously in different databases. </p>
+</li>
+<li>
+<p>Screening: The software provides a GUI that helps users to visualize the references so as to refine the results of the automated search provided by the databases. Additionally, it is possible to add text notes and establish the citation relevance for each study (value used in the CVI calculation). </p>
+</li>
+<li>
+<p>Software functionalities to the stage 3: Quality Analysis </p>
+</li>
+<li>
+<p>Quality evaluation: By default, the software uses the CVI, SCI, and IRRQ indices to evaluate the quality of the studies. However, the user can add other customs indices. </p>
+</li>
+<li>
+<p>Metadata complement: Through this function, the software allows users to establish or update the year of publication, the number of citations, and the value relevance to calculate the SCI and CVI index. </p>
+</li>
+<li>
+<p>Software functionalities to the stage 4: Data Collection </p>
+<ul>
+<li>When building a SMS, the data collection stage requires time. The researcher needs to manage the information (capture, update, complement, and transfer) contained in the studies. This situation leads to errors in the SMSs. Therefore, SMS-Builder makes a significant contribution in automating the management of study metadata to support data collection. </li>
+</ul>
+</li>
+<li>
+<p>Search SPSs: Through this function, SMS-Builder allows users to find SPSs using metadata study information. </p>
+</li>
+<li>
+<p>Software functionalities to the stage 5: Analysis and Classification of Studies </p>
+</li>
+<li>
+<p>Classify studies by topic: This function facilitates the relationship between the analyzed studies and the topics specified in the SMS Planning Stage. </p>
+</li>
+<li>
+<p>Software functionalities to the stage 6: Results </p>
+</li>
+<li>
+<p>Export data: The software allows users to export data tables to formats such as XLSX, PDF, CSV, XML, and images to formats like JPG. </p>
+</li>
+<li>
+<p>Generation of statistical charts: The software generates statistical data and charts related to the studies and the stored information. </p>
+</li>
+</ul>
+<h1 id="3-illustrative-examples"><strong>3. Illustrative examples</strong><a class="headerlink" href="#3-illustrative-examples" title="Permanent link">&para;</a></h1>
+<p>This section shows some of the functionalities of the SMSBuilder software using a SMS building example. The example is related to the identification of Science Gateway frameworks, and it uses a combined search strategy between Database, Snowballing, and Inclusion Direct. </p>
+<h2 id="table-1"><strong>Table 1</strong><a class="headerlink" href="#table-1" title="Permanent link">&para;</a></h2>
+<p>Imported studies. </p>
+<table>
+<thead>
+<tr>
+<th>Search strategy</th>
+<th>Studies</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Database</td>
+<td>405</td>
+</tr>
+<tr>
+<td>Snowball</td>
+<td>34</td>
+</tr>
+<tr>
+<td>Direct Inclusion</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Total studies</td>
+<td><strong>442</strong></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th><strong>Table 2</strong><br>Debuging activities.</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debuging activities</td>
+<td>Studies</td>
+</tr>
+<tr>
+<td>Total imported studies</td>
+<td>+442</td>
+</tr>
+<tr>
+<td>Removed by Duplicate</td>
+<td>−62</td>
+</tr>
+<tr>
+<td>Descarted by Screening</td>
+<td>−212</td>
+</tr>
+<tr>
+<td>Selected Primary Studies</td>
+<td><strong>168</strong></td>
+</tr>
+</tbody>
+</table>
+<h1 id="31-sms-building-example"><em>3.1. SMS building example</em><a class="headerlink" href="#31-sms-building-example" title="Permanent link">&para;</a></h1>
+<p>The software supported different steps in the SMS building process, refining the studies as follows: </p>
+<h1 id="311-example-stage-1-planning"><em>3.1.1. Example stage 1: Planning</em><a class="headerlink" href="#311-example-stage-1-planning" title="Permanent link">&para;</a></h1>
+<p>The following SMS components were defined in this example: </p>
+<ul>
+<li>
+<p>Two Goals (G1 and G2) </p>
+</li>
+<li>
+<p>Two Research Questions (RQ1 and RQ2) </p>
+</li>
+<li>
+<p>Five Topics for RQ1 </p>
+</li>
+<li>
+<p>Two Topics for RQ2 </p>
+</li>
+</ul>
+<p>These elements were registered in the software using different interfaces like Fig. 3. </p>
+<h1 id="312-example-stage-2-search-for-studies"><em>3.1.2. Example stage 2: Search for studies</em><a class="headerlink" href="#312-example-stage-2-search-for-studies" title="Permanent link">&para;</a></h1>
+<p>In this example 442 studies were obtained through the import functionality (Table 1). </p>
+<p>SMS-Builder provides support for debugging studies through the ‘‘Removed Duplicated’’ and ‘‘Screening’’ functionalities. See the results of the debugging in the example, in Table 2. </p>
+<h1 id="313-example-stage-3-quality-analysis"><em>3.1.3. Example stage 3: Quality analysis</em><a class="headerlink" href="#313-example-stage-3-quality-analysis" title="Permanent link">&para;</a></h1>
+<p>The evaluation functionality allowed the automatic evaluation of the indices (CVI, CSI, and IRRQ). </p>
+<h1 id="314-example-stage-4-data-collection"><em>3.1.4. Example stage 4: Data collection</em><a class="headerlink" href="#314-example-stage-4-data-collection" title="Permanent link">&para;</a></h1>
+<p>In this example uses several SMS-Builder functionalities to minimize the work required by researchers. It starts with <strong>Screening</strong> which obtains relevant elements of each study and ends with the <strong>Analysis and Classification of Studies</strong> . There is another interface that allows users to filter SPSs using metadata study information. </p>
+<h1 id="315-example-stage-5-analysis-and-classification-of-studies"><em>3.1.5. Example stage 5: Analysis and classification of studies</em><a class="headerlink" href="#315-example-stage-5-analysis-and-classification-of-studies" title="Permanent link">&para;</a></h1>
+<p>SMS-Builder provides interfaces for the analysis and classification of studies using topics defined in the Planning Stage. Additionally, there are interfaces to see summary information regarding the analysis and classification of studies (Fig. 4). </p>
+<h1 id="316-example-stage-6-results"><em>3.1.6. Example stage 6: Results</em><a class="headerlink" href="#316-example-stage-6-results" title="Permanent link">&para;</a></h1>
+<p>All information processed by SMS-Builder is shown through several statistical interfaces such as the <em>SPSs by Topics by</em> </p>
+<p>5 </p>
+<!-- Start of picture text -->
+<p>= =: SMS = BUILDER :: SMS - IT Management Frameworks (&gt; Exit<br>Question Code: Question: Goal:<br>G1 G2 G3<br>Question Code Question Goal Code Topics<br>Frameworks o<br>What are the frameworks, Models a<br>models, methodologies, process oe<br>RQ1 and good practices for IT G1<br>resource and service Methodologies ica La<br>management applicable to TERS?<br>Process ft<br>Good practices a<br>What are the technological tools,<br>and standards with a science Technological tools &amp; ?<br>RQ2 gateway approach that allow the G2<br>IT resource and service 1c<br>management in TERS? Case study or a<br>Project<br><!-- End of picture text --></p>
+<!-- Start of picture text -->
+<p>= : SMS - BUILDER :: SMS - IT Management Frameworks (c&gt; ext )<br>Quality Index a<br>Evaluation v<br>Riss<br>RQ Topics SPS ID (Studies)<br>on fefameworks SPSO10SPS165 SPSO21 SPSO22 SPSO2B SPSO36 SPSO5O SPSO59 SPSOE1 SPSO73 SPSOS1 SPSO9S SPS115 SPS118 SPS130 SPS137 SPS143 SPS146 SPS152 SPS161 SPS162<br>RQI Models. ‘SPS028‘SPS165  SPS029 SPS035 SPS042 SPS047 SPSO59 SPSO70 SPSO71 SPSO79 SPS081 SPS093 SPS097 SPS107 SPS110 SPS121 SPS138 SPS143 SPS144 SPS152 SPS164<br>RQI Methodologies SPS019 SPSO38 SPS043 SPS074 SPSO77 SPS102 SPS104 SPS105 SPS111 SPS114 SPS124 SPS127 SPS144 SPS148 SPS158 SPS159 SPS161<br>RQI Process SPS002 SPS036 SPS046 SPSO79 SPS108 SPS124 SPS144 SPS153 SPS157 SPS158 SPS164<br>ROW 6 eractices ‘SPS001SPS063 SPS066‘SPS122 SPS125SPS002 SPS128 SPS072SPS004SPS129 SPS074SPSO09SPS131 SPSO75SPSO15SPS133 SPS140 SPSO86SPSO017  SPSOB7SPSO018 SPS141SPSO24 SPSOBB SPSO93 SPSO99SPS144 SPS145SPS030 SPSO33SPS147SPSO45 SPS100 SPS102SPS149SPS046SPS150 SPS106SPS048SPS152 SPS107 SPS108SPSO50 SPS153SPSO52SPS154 SPS109SPSO55 SPS158 SPS112SPSO56SPS160 SPS115 SPS116 SPS119SPSO57SPS163SPSO59 SPS164<br>‘SPS166<br>SPS004 SPS008 SPS010 SPS013 SPSO16 SPSO17 SPS018 SPS021 SPS023 SPS026 SPS027 SPSO33 SPS034 SPS039 SPS042 SPS043 SPS044 SPS045 SPS046<br>ia “iganaciegoaloe esis ‘SPS048‘SPSO088‘SPS152  SPSO49 SPSO90SPS153 SPS154 SPSO93 SPSO5OSPS157SPSO51SPSO94SPS158 SPS096SPSO54 SPSO57SPS160 SPS097SPS163 SPSO5E SPSO99SPS164 SPSO59 SPS102 SPS104 SPS105SPS166 SPSO6O SPSO61 SPS106SPSOE3 SPSO64 SPS06B SPS111 SPS114 SPS115 SPSO73 SPS120SPSO75 SPSO77 SPS126 SPS128 SPSO8O SPSOB3 SPSOBS SPS135 SPS139 SPS141<br>SPS001 SPS003 SPS004 SPSO0S SPSO06 SPS007 SPS008 SPSO11 SPS012 SPS013 SPSO14 SPS017 SPS018 SPSO20 SPS025 SPSO31 SPS032 SPS033 SPS034<br>SPS035 SPS037 SPSO39 SPS040 SPS041 SPS042 SPS043 SPS045 SPS047 SPS048 SPSO053 SPSO60 SPS062 SPSO63 SPSO65 SPS067 SPS069 SPS070 SPSO75<br>Ra2 Case study or Project ‘SPS076 SPSO78 SPSOBO SPSOB2 SPSOB4 SPSO87 SPSOBB SPSOB9 SPSO90 SPSO92 SPSO94 SPSO97 SPSO9B SPS100 SPS101 SPS102 SPS103 SPS104 SPS107<br>‘SPS108 SPS109 SPS112 SPS113 SPS116 SPS116 SPS117 SPS119 SPS123 SPS125 SPS126 SPS127 SPS128 SPS129 SPS130 SPS131 SPS132 SPS134 SPS135 SPS136<br>‘SPS137 SPS140 SPS142 SPS143 SPS145 SPS148 SPS149 SPS15O SPS151 SPS153 SPS154 SPS155 SPS156 SPSI60 SPS166 SPS167 SPSI68<br>kiss<br><!-- End of picture text --></p>
+<!-- Start of picture text -->
+<p>SMS-Builder :: Dashboard x<br>SMS - IT Management Frameworks Process Menu<br>Total studies imported from data base + 405 &gt; Stage 1 Planing<br>Duplicated studies -62 &gt; Stage 2 Search for studies<br>_ Oo ,<br>Eliminated by exclusion criteria studies - 212 &gt; Stage 3 Quality analisys<br>&gt; Stage 4 Data collection<br>Data Base 131<br>&gt; Stage 5 Analysis and classification of studies<br>SnowBall +34 &gt; Stage 6 Results<br>Direct Inclution +3 &gt; About SMS Process<br>Selected Primary Studies (SPSs) 168<br>Configuration<br>Resources<br>Roles<br>Personal Data<br>User Registration<br><!-- End of picture text --></p>
+<!-- Start of picture text -->
+<p>= = SMS - BUILDER :: SMS - IT Management Frameworks<br>“« &lt; 12 3 4 5 6 7 8 9 0 &gt; » (O78) 1-20de 442<br>Source ‘Studies Authors<br>Cintia, Paolo ; Tesconi, Maurizio ; Secondary, Corresponding Author ; Facchini, Angelo ;<br>aB24 SPRINGER ($0) Big5 Data and the transformationa of the city. Caldarelli,CorrespondingGuido; Gionis,; Andrienko,Aristides Gennady; Gionis,; Guidotti,AristidesRiccardo; Cresci,;  StefanoBoldrini, Chiara; Giannotti,; Author,Fosca ;<br>Andrienko, Natalia ; Mathioudakis, Michael<br>SPRINGER ASouthbibliometricAfrican Nationalanalysis toParks illustrate the role of an embedded research capability in vanWilgen, der Walt,Brian LuanitaW. ; Smit, Izak P.J. ; Boshoff, Nelius ; Solano-Fernandez, Sofia ; van<br>SCOPUS ‘A cloud-agnostic" queuing. system to support the "Implementation‘ of deadline-based. Oun,Pierantoni,OsamaGabrieleAbu ; Anagnostou,; Taylor, SimonAnastasiaJ.€. ; Kiss,; Kovacs,TamasJozsef; Terstyanszky,; Gesmier,GaborGregoire; ;<br>application execution policies Deataureerlenex<br>wos A Distributed Predictive Control of Energy Resources in Radiant Floor Buildings Rastegarpour, Soroush ; Palaiogiannis, Foivos ; Ferrarini, Luca<br>SCOPUS A Distributed Predictive Control of Energy Resources in Radiant Floor Buildings Palaiogiannis, Foivos ; Rastegarpour, Soroush ; Ferrarini, Luca<br>SPRINGER ace at multiple institutional affiliations: a study of authors in Germany, Japan Hottenrott, Hanna ; Lawson, Cornelia<br>casts Aassignment generic workflowand image for effectiveprocessingsampling of environmental vouchers with UUID WolfgangBosert, Simone; Rambold,; Feulner,GerhardMartin; Okach,; Triebel,DanielDagmarOsieko; Slimani, Abderachid ; Reichert,<br>wos A global survey of freshwater biological field stations Tockner, Klement ; Tydecks, Laura ; Ibelings, Bastiaan W.<br>SPRINGER sheet) ‘study of intellectual cohesion in digital humanities using bibliometric Teng, Muh Chyun ; CI , Yun Jen ; Chen, Kuang Hua<br>SPRINGER A Meta-Brokering Framework for Science Gateways Kertesz, Attila ; Karoczkai, Krisztian ; Kacsuk, Peter<br><!-- End of picture text --></p>
+<!-- Start of picture text -->
+<p>= :: SMS - BUILDER :: SMS - IT Management Frameworks<br>Question v<br># SPSs - Topics<br>| All cvi {| sci IRRQ<br>100<br>90<br>80<br>70<br>60<br>50<br>40<br>%0<br>*10 A 7|<br>° |<br>RQ1-Frameworks RQ1-Good practices FQ1-Methodologies RQ1-Models RQ1-Process RQ2-Case studyor Project Q2-Technological tools<br>6) Export<br><!-- End of picture text --></p>
+<!-- Start of picture text -->
+<h1 id="spss-topicstopics-all-cv-scl-irrqrq1-frameworks-210-50-30-110rq1-good-practices-600-130-150-440rq1-methodologies-170-70-20-100rq1-models-210-30-70-110rq1-process-10-40-20-60rq2-case-study-or-project-940-100-180-440rq2-technological-tools-670-190-130-410ise">SPSs - Topics<br>Topics All cv scl IRRQ<br>RQ1-Frameworks 21.0 5.0 3.0 11.0<br>RQ1-Good practices 60.0 13.0 15.0 44.0<br>RQ1-Methodologies 17.0 7.0 2.0 10.0<br>RQ1-Models 21.0 3.0 7.0 11.0<br>RQ1-Process 1.0 4.0 2.0 6.0<br>RQ2-Case study or Project 94.0 10.0 18.0 44.0<br>RQ2-Technological tools 67.0 19.0 13.0 41.0<br>¥ise<br><!-- End of picture text --><a class="headerlink" href="#spss-topicstopics-all-cv-scl-irrqrq1-frameworks-210-50-30-110rq1-good-practices-600-130-150-440rq1-methodologies-170-70-20-100rq1-models-210-30-70-110rq1-process-10-40-20-60rq2-case-study-or-project-940-100-180-440rq2-technological-tools-670-190-130-410ise" title="Permanent link">&para;</a></h1>
+<!-- Start of picture text -->
+<p>= :: SMS - BUILDER :: SMS - IT Management Frameworks<br>4 SPSs - Year<br>All | cvi () sci 5) irre<br>50<br>|<br>45 |<br>40 |<br>36 |<br>30 |<br>25 |<br>20 |<br>16 |<br>10 j |<br>| t u an J _<br>2016 2017 2018 2019 2020<br>&amp; Export<br><!-- End of picture text --></p>
+<!-- Start of picture text -->
+<h1 id="spss-yearyear-all-cv-sci-irrq2016-470-70-110-1802017-360-60-110-1502018-280-20-50-1202019-490-80-40-2002020-80-10kies">SPSs - Year<br>Year All cv sci IRRQ<br>2016 47.0 7.0 11.0 18.0<br>2017 36.0 6.0 11.0 15.0<br>2018 28.0 2.0 5.0 12.0<br>2019 49.0 8.0 4.0 20.0<br>2020 8.0 1.0<br>Kies<br><!-- End of picture text --><a class="headerlink" href="#spss-yearyear-all-cv-sci-irrq2016-470-70-110-1802017-360-60-110-1502018-280-20-50-1202019-490-80-40-2002020-80-10kies" title="Permanent link">&para;</a></h1>
+<p><em>Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.</em> </p>
+<p><em>SoftwareX 17 (2022) 100935</em> </p>
+<h2 id="table-3"><strong>Table 3</strong><a class="headerlink" href="#table-3" title="Permanent link">&para;</a></h2>
+<p>Some works supported by SMS-Builder. </p>
+<table>
+<thead>
+<tr>
+<th>Work Title</th>
+<th>Journal/Event</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Study-based Systematic Mapping Analysis of<br>Cloud Technologies for Leveraging IT Resource<br>and Service Management: The Case Study of<br>the Science Gateway Approach [17]</td>
+<td>Journal of Grid Computing</td>
+<td>Published</td>
+</tr>
+<tr>
+<td>Problems in Microservice Systems Testing: A<br>Systematic Mapping Study [18,19]</td>
+<td>JIISIC 2021 – XVI Jornadas Iberoamericanas de<br>Ingeniería de Software e Ingeniería del<br>Conocimiento, and Revista Investigación e<br>Innovación en Ingenierías</td>
+<td>Published</td>
+</tr>
+<tr>
+<td>Problems And Causes In Testing Microservices<br>Architecture: A Systematic Mapping Study [20]</td>
+<td>ISSTA 2021</td>
+<td>Published</td>
+</tr>
+<tr>
+<td>Identifying Advanced Transactional Models for<br>Microservices Architecture: A Systematic<br>Mapping Study [21]</td>
+<td>N/A</td>
+<td>In Process</td>
+</tr>
+<tr>
+<td>Serverless infrastructures in research support<br>technology ecosystems: a systematic mapping<br>study [22]</td>
+<td>N/A</td>
+<td>In Process</td>
+</tr>
+<tr>
+<td>Testing Model for Distributed System: A<br>Systematic Mapping Study [23]</td>
+<td>N/A</td>
+<td>In Process</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>Extensibility of the SMS from the availability of an instance of the software and the recorded data. </p>
+</li>
+<li>
+<p>Reduction of errors derived from data manipulation. </p>
+</li>
+<li>
+<p>Automation of statistical data generation. </p>
+</li>
+<li>
+<p>Adaptability to the sequence of steps performed in the SMS. </p>
+</li>
+<li>
+<p>English and Spanish language support. </p>
+</li>
+<li>
+<p>Promotes objectivity in the elaboration of the SMS by implementing strategies to avoid bias in selecting studies. </p>
+</li>
+</ul>
+<p>We also identified the following limiting aspects: </p>
+<ul>
+<li>
+<p>Import of references in RIS format. This format is available in tools such as Endnote, Mendeley, Zotero, among others. </p>
+</li>
+<li>
+<p>Limited set of digital databases. </p>
+</li>
+<li>
+<p>Data extraction from the studies included in the SMS was limited by the interfaces implemented in the software, which currently lacks a generic reporter. </p>
+</li>
+</ul>
+<p>As future work, we will consider the following aspects: a) To Implement techniques based on artificial intelligence and data science as natural language processing (NLP) to propose a taxonomic structure to organize the studies identified in the SMSs. b) To evaluate the SMS-Builder features formally looking for improvement its features. </p>
+<h1 id="declaration-of-competing-interest"><strong>Declaration of competing interest</strong><a class="headerlink" href="#declaration-of-competing-interest" title="Permanent link">&para;</a></h1>
+<p>The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper. </p>
+<h1 id="references"><strong>References</strong><a class="headerlink" href="#references" title="Permanent link">&para;</a></h1>
+<ul>
+<li>
+<p>[1] Higgins JP, Thomas J, Chandler J, Cumpston M, Li T, Page MJ, et al. Cochrane handbook for systematic reviews of interventions. John Wiley &amp; Sons; 2019. </p>
+</li>
+<li>
+<p>[2] Shepperd M. Combining evidence and meta-analysis in software engineering. In: Software engineering. Springer; 2010, p. 46–70. </p>
+</li>
+<li>
+<p>[3] Kitchenham BA, Dyba T, Jorgensen M. Evidence-based software engineering. In: Proceedings of the 26th international conference on software engineering. IEEE Computer Society; 2004, p. 273–81. </p>
+</li>
+<li>
+<p>[4] Kitchenham B. Guidelines for performing systematic literature reviews in software engineering. EBSE technical report EBSE-2007-01, 2007. </p>
+</li>
+<li>
+<p>[5] Kitchenham B, Brereton OP, Budgen D, Turner M, Bailey J, Linkman S. Systematic literature reviews in software engineering–a systematic literature review. Inf Softw Technol 2009;51(1):7–15. </p>
+</li>
+<li>
+<p>[6] Da Silva FQ, Santos AL, Soares S, França A, Monteiro C. Six years of systematic literature reviews in software engineering: an extended tertiary study. In: 32th international conference on software, ICSE, vol. 10. Cape Town, South Africa: IEEE Computer Society; p. 1–10. </p>
+</li>
+<li>
+<p>[7] Dyba T, Kitchenham BA, Jorgensen M. Evidence-based software engineering for practitioners. IEEE Softw. 2005;22(1):58–65. </p>
+</li>
+<li>
+<p>[8] Petersen K, Vakkalanka S, Kuzniarz L. Guidelines for conducting systematic mapping studies in software engineering: An update. Inf Softw Technol 2015;64:1–18. http://dx.doi.org/10.1016/j.infsof.2015.03.007, URL http://www.sciencedirect.com/science/article/pii/S0950584915000646. </p>
+</li>
+<li>
+<p>[9] Kitchenham B, Pretorius R, Budgen D, Brereton OP, Turner M, Niazi M, et al. Systematic literature reviews in software engineering–a tertiary study. Inf Softw Technol 2010;52(8):792–805. </p>
+</li>
+<li>
+<p>[10] Petersen K, Feldt R, Mujtaba S, Mattsson M. Systematic mapping studies in software engineering. In: Ease, vol.8. 2008, p. 68–77. </p>
+</li>
+<li>
+<p>[11] Basili VR. Software modeling and measurement: the Goal/Question/Metric paradigm. Report, 1992. </p>
+</li>
+<li>
+<p>[12] Caldiera VRBG, Rombach HD. The goal question metric approach. In: Encyclopedia of software engineering. 1994, p. 528–32. </p>
+</li>
+<li>
+<p>[13] Almanasreh E, Moles R, Chen TF. Evaluation of methods used for estimating content validity. Res. Soc. Admin. Pharm. 2019;15(2):214–21. </p>
+</li>
+<li>
+<p>[14] Yaghmaei F. Content validity and its estimation. J Med Educ Spring 2003;3:25–7. </p>
+</li>
+<li>
+<p>[15] Apache maven project. 2021, URL https://maven.apache.org/. [Accessed 8 april 2021]. </p>
+</li>
+<li>
+<p>[16] Git. 2021, URL https://git-scm.com/. [Accessed 8 april 2021]. </p>
+</li>
+<li>
+<p>[17] Sepúlveda-Rodríguez LE, Garrido JL, Chavarro-Porras JC, SanabriaOrdoñez JA, Candela-Uribe CA, Rodríguez-Domínguez C, GuerreroContreras G. Study-based systematic mapping analysis of cloud technologies for leveraging it resource and service management: the case study of the science gateway approach. Journal of Grid Computing 2021;19(4):1–28. http://dx.doi.org/10.1007/s10723-021-09587-7. </p>
+</li>
+<li>
+<p>[18] Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, SepúlvedaRodríguez LE, Sanabria-Ordoñez JA. Problems in microservice systems testing: A systematic mapping study. In: JIISIC 2021 – XVI Jornadas Iberoamericanas de Ingeniería de Software E Ingeniería Del Conocimiento. 2021, URL https://www.uautonoma.cl/jiisic2021/organizacion.html. </p>
+</li>
+<li>
+<p>[19] Candela Uribe CA, Gómez-Betancur D, Sepúlveda-Rodríguez L, ChavarroPorras J, Sanabria-Ordoñez J. Problemas en la implementación de pruebas en sistemas de microservicios: estudio de mapeo sistemático. Investigación e Innovación en Ingenierías 2021;9(3):3–17. http://dx.doi.org/10.17081/ invinno.9.3.5314, http://revistas.unisimon.edu.co/index.php/innovacioning/ article/view/5314. </p>
+</li>
+<li>
+<p>[20] Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, SepúlvedaRodríguez LE, Sanabria-Ordoñez JA. Problems And Causes In Testing Microservices Architecture: A Systematic Mapping Study. In: ECOOP and ISSTA 2021, URL https://conf.researchr.org/details/issta-2021/ecoopissta-2021-posters/8/Problems-And-Causes-In-Testing-MicroservicesArchitecture-A-Systematic-Mapping-Study. </p>
+</li>
+<li>
+<p>[21] Lugo Cabrera CM, Gómez-Betancur D, Candela-Uribe CA, ChavarroPorras JC, Sepúlveda-Rodríguez LE, Sanabria-Ordoñez JA. Identifying advanced transactional models for microservices architecture: A systematic mapping study. 2021. </p>
+</li>
+<li>
+<p>[22] Sepúlveda-Rodríguez LE, Chavarro-Porras JC, Sanabria-Ordoñez JA, CandelaUribe CA. Serverless infrastructures in research support technology ecosystems: a systematic mapping study.. 2021. </p>
+</li>
+<li>
+<p>[23] Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, SepúlvedaRodríguez LE, Sanabria-Ordoñez JA. Testing model for distributed system: A systematic mapping study. 2021. </p>
+</li>
+</ul>
+<p>10 </p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "content.code.copy", "content.action.edit"], "search": "../../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"provider": "mike"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

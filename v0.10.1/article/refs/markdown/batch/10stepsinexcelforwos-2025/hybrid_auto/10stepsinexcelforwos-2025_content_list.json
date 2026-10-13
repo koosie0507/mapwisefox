@@ -1,0 +1,2219 @@
+[
+    {
+        "type": "text",
+        "text": "Original Software Publication",
+        "bbox": [
+            58,
+            182,
+            277,
+            197
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "10StepsinExcelforWoS: Streamlining bibliometric analysis in web of science using Microsoft excel",
+        "text_level": 1,
+        "bbox": [
+            58,
+            205,
+            815,
+            249
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/446b3abfcde1edf0cc4b092ba54816da9591ed3ddb19c12a945ec8a96e6dbd30.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            838,
+            184,
+            887,
+            221
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Tsair-Wei Chien <sup>a</sup>, Willy Chou <sup>b,c,\\*</sup>",
+        "bbox": [
+            58,
+            262,
+            349,
+            279
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>a</sup> Department of Medical Research, Chi Mei Medical Center, Tainan, Taiwan",
+        "bbox": [
+            58,
+            286,
+            411,
+            298
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>b</sup> Department of Leisure and Sports Management, CTBC University, Tainan, Taiwan",
+        "bbox": [
+            58,
+            298,
+            445,
+            310
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>c</sup> Department of Physical Medicine and Rehabilitation, Liouying Chi-Mei Hospital, Tainan 736, Taiwan",
+        "bbox": [
+            58,
+            308,
+            529,
+            322
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A R T I C L E I N F O",
+        "text_level": 2,
+        "bbox": [
+            58,
+            349,
+            196,
+            361
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Keywords: Bibliometric analysis Web of science Excel VBA Data wrangling Visualization framework",
+        "bbox": [
+            58,
+            374,
+            181,
+            440
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A B S T R A C T",
+        "text_level": 2,
+        "bbox": [
+            334,
+            349,
+            436,
+            361
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Numerous bibliometric studies utilize professional software to generate visualizations from specialized text files downloaded from the Web of Science Core Collection (WoSCC). However, when using Microsoft Excel (MS Excel) files exported from WoSCC, researchers often face a series of manual and cumbersome data preprocessing tasks that hinder efficiency. To address this challenge, this study proposes a streamlined framework—10StepsinExcelforWoS—to facilitate bibliometric analysis using MS Excel. A total of 1719 articles published in the journal of SoftwareX between 2017 and 2025 were retrieved from WoSCC. The proposed method involves 10 sequential steps implemented via Visual Basic for Applications (VBA) within Excel to wrangle the data. Two types of visualizations were demonstrated: (1) a summary report for performance analysis and (2) Kano and Sankey diagrams to identify dominant entities in bibliometric research since 2017. Key findings identified the United States as the leading country; Delft University of Technology (Netherlands) as the top institution; the Department of Computer Science as the most prevalent affiliation—appearing across 60 uni versities for first authors and 42 for corresponding authors; Wojciech Salabun (Poland) as the most prolific author; and “MODEL” as the most prominent keyword.This study concludes that the 10StepsinExcelforWoS offers a practical, transparent, efficient, and reproducible workflow for conducting nuanced bibliometric analyses directly in MS Excel.",
+        "bbox": [
+            332,
+            373,
+            939,
+            557
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Metadata",
+        "text_level": 2,
+        "bbox": [
+            58,
+            593,
+            124,
+            606
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/83aed360ed32af31808010638a63109d67adf844e53eaa3bdae3c7ba174407d0.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>v1.0</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/smilechien/10StepsinExcelforWoS/</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td>Reproducible capsule (see Appendix, Table S1)</td></tr><tr><td>C4</td><td>Legal code license</td><td>ExcelWoS-2.0 License</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>git</td></tr><tr><td>C6</td><td>Software code languages, tools and services used</td><td>Excel VBA</td></tr><tr><td>C7</td><td>Compilation requirements, operating environments and dependencies</td><td>v1.0; install dependencies from requirements.txt; runs in browser on Windows</td></tr></table>",
+        "bbox": [
+            60,
+            615,
+            484,
+            788
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/907266718787d36a60b45c17653ca3717a8e9dc8396b268441acbf85c7e7adbb.jpg",
+        "table_caption": [
+            "(continued )"
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C8</td><td>If available, link to developer documentation/ manual</td><td>[Developer documentation with MP4 video]Documentation and tutorial video (see Appendix, Table S1)</td></tr><tr><td>C9</td><td>Support email for questions</td><td>rasch.smile @gmail.com</td></tr></table>",
+        "bbox": [
+            512,
+            602,
+            937,
+            669
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "1. Motivation and significance",
+        "text_level": 2,
+        "bbox": [
+            510,
+            704,
+            715,
+            717
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "In recent years, bibliometric analysis has become a cornerstone in evaluating academic productivity, research trends, and scholarly impact across disciplines [1]. While professional tools like CiteSpace[2], VOSviewer[3], and Bibliometrix[4] are widely adopted to generate visualizations from standardized text files exported from the Web of Science Core Collection (WoSCC)[5], their functionality often relies on specific file formats and predefined workflows. In contrast, Excel-exported",
+        "bbox": [
+            507,
+            730,
+            939,
+            823
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "2352-7110/© 2025 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by nc/4.0/).",
+        "bbox": [
+            55,
+            911,
+            937,
+            936
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            416,
+            42,
+            579,
+            56
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            58,
+            75,
+            161,
+            143
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "Contents lists available at ScienceDirect",
+        "bbox": [
+            379,
+            75,
+            621,
+            89
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX",
+        "bbox": [
+            445,
+            105,
+            557,
+            124
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "ELSEVIER",
+        "bbox": [
+            60,
+            145,
+            161,
+            162
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "journal homepage: www.elsevier.com/locate/softx",
+        "bbox": [
+            337,
+            145,
+            663,
+            160
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "国SoftwareXEemont",
+        "bbox": [
+            838,
+            66,
+            937,
+            160
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "\\* Corresponding author at: Chi-Mei Medical Center, No.201, Taikang Liuying Dist., Tainan City 73657, Taiwan.",
+        "bbox": [
+            65,
+            843,
+            678,
+            856
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "E-mail addresses: smile@mail.chimei.org.tw (T.-W. Chien), smilewilly@mail.chimei.org.tw (W. Chou).",
+        "bbox": [
+            75,
+            856,
+            633,
+            868
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "https://doi.org/10.1016/j.softx.2025.102403",
+        "bbox": [
+            58,
+            876,
+            309,
+            889
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "Received 30 July 2025; Received in revised form 3 October 2025; Accepted 7 October 2025 Available online 10 October 2025",
+        "bbox": [
+            57,
+            887,
+            564,
+            911
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "WoSCC files, although widely accessible, typically require laborious manual preprocessing steps before they can be used for in-depth bib liometric research(e.g., publications [1,6–8] that rely on the R platform [9]). These steps include data filtering, field standardization, metadata restructuring, and summary table generation—tasks that are both time-consuming and prone to inconsistency, especially for novice users.",
+        "bbox": [
+            55,
+            65,
+            487,
+            146
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1. Research gaps in current bibliometric workflows",
+        "text_level": 2,
+        "bbox": [
+            58,
+            158,
+            364,
+            171
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Despite the maturity of bibliometric software, several gaps remain in the practical workflow for researchers aiming to use Excel-based outputs:",
+        "bbox": [
+            57,
+            184,
+            485,
+            224
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(1) Lack of streamlined preprocessing for Excel data: Researchers often face tedious, repetitive operations when attempting to clean and structure raw Excel data from WoSCC, which hinders reproducibility and deters early-career scholars.",
+        "bbox": [
+            73,
+            237,
+            487,
+            290
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(2) Insufficient integration of VBA-based automation: Few studies leverage Microsoft Excel’s scripting capabilities (i.e., Visual Basic for Applications, VBA) to automate and simplify these bibliometric tasks.",
+        "bbox": [
+            73,
+            290,
+            485,
+            341
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(3) Limited reproducible frameworks for non-specialists: Most bibliometric tools require some level of software familiarity (e.g., Java, R, Python), which creates a barrier for users with limited programming backgrounds. Moreover, the non-transparency of the data source will hinder the reproducibility of some corre sponding studies [10].",
+        "bbox": [
+            73,
+            341,
+            487,
+            422
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(4) Ranking only for metadata elements: Traditional bibliometric methods rely on frequency-based rankings, lacking analytical depth. The underused dominance coefficient (DC) [11,12] can quantify gaps between top-ranked elements.",
+        "bbox": [
+            73,
+            422,
+            487,
+            476
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.2. Addressing the practical needs of bibliometric researchers",
+        "text_level": 2,
+        "bbox": [
+            58,
+            486,
+            418,
+            501
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Exploring graphs (e.g., slope, summary report, or other charts) is crucial for researchers, as they offer a clearer view of complex temporal relationships in bibliometric data [1]. For example, adopting slope graphs enhances the interpretability of time-series data, improves trend identification, and conveys comparative dynamics more effectively. However, methods for extracting core elements are based on sufficient data collected with datasets (e.g., those in MS Excel).That is, the quality and accuracy of those graph visualizations depend heavily on rigorous data wrangling prior to analysis.",
+        "bbox": [
+            57,
+            514,
+            487,
+            633
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Bibliometric data exported from databases like WoSCC often contain inconsistencies, duplicates, and unstructured metadata across key variables such as publication year, affiliation, and keywords [10]. Without proper cleaning, restructuring, and filtering, the input data may lead to misleading or cluttered visualizations. Therefore, data wrangling is a foundational step to ensure that only statistically relevant and compa rably formatted elements are fed into visualization tools like slope graphs, ultimately enabling more precise and meaningful insights into scholarly trends over time. Likewise, data wrangling before conducting performance analysis of metadata entities is essential to ensure the generation of reliable and interpretable summary reports. However, the technique of ’data mugging’—the systematic extraction and restructuring of key bibliometric fields—has received limited attention in previous studies [1].",
+        "bbox": [
+            55,
+            633,
+            487,
+            817
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To close these gaps, there is a pressing need for a lightweight, transparent, and reproducible Excel-based framework that facilitates bibliometric analysis without depending on complex software environments. Such a solution would be especially valuable in educational settings or for interdisciplinary researchers who may not have access to specialized bibliometric platforms.",
+        "bbox": [
+            55,
+            817,
+            487,
+            897
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.3. Challenges of reproducibility and transparency in bibliometric studies",
+        "text_level": 2,
+        "bbox": [
+            510,
+            66,
+            929,
+            80
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Previous bibliometric case studies have struggled with reproduc ibility and transparency due to incomplete disclosure of data-processing steps and opaque workflows. As Liu [10] noted, reporting “Web of Science Core Collection” without specifying subsets (e.g., SCI-Expanded, SSCI), coverage years, or search date undermines reproducibility. Moreover, database-focused studies document concrete inconsistencies that can bias results, including coverage/indexing differences across WoS and Scopus; incomplete or erroneous funding acknowledgments; missing/ambiguous author–affiliation links; document-type and Early Access mislabeling; uneven identifier coverage (ORCID/ResearcherID); and variable availability of abstracts, Author Keywords, and Keywords Plus [13–18].",
+        "bbox": [
+            507,
+            92,
+            939,
+            250
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To address these issues, our framework operationalizes a transparent, auditable pipeline: (i) record full data provenance (database, subsets, years, search date); (ii) normalize authors, affiliations, docu ment types, Early Access, and keyword fields; (iii) de-duplicate primarily by DOI (with title-based fallback); (iv) log every transformation; and (v) perform analyst-supervised identity checks that combine full names with affiliation/country, using ORCID where available. The workflow is implemented in Excel/VBA (“10StepsinExcelforWoS”) and integrates DC analysis [11,12], thereby standardizing wrangling, strengthening quality control, and improving reproducibility.",
+        "bbox": [
+            507,
+            250,
+            939,
+            384
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.4. Study goal and contribution",
+        "text_level": 2,
+        "bbox": [
+            510,
+            408,
+            705,
+            421
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This study proposes a novel framework titled 10StepsinExcelforWoS (or ExcelWoS for short), which utilizes a 10-step VBA-powered process in Microsoft Excel (MS Excel) to streamline bibliometric data wrangling, visualization, and performance reporting. The method was applied to analyze articles indexed in WoSCC. Two types of visual outputs were generated:",
+        "bbox": [
+            507,
+            433,
+            939,
+            514
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(1) a summarized performance report [1] based on ten key met adata elements, and",
+        "bbox": [
+            529,
+            525,
+            937,
+            552
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "(2) Kano and Sankey diagrams [1,19–21] to identify dominant countries in bibliometric publishing.",
+        "bbox": [
+            529,
+            553,
+            939,
+            580
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "By validating this Excel-based approach, the study aims to enhance the transparency, accessibility, and reproducibility of bibliometric research. The framework also responds to growing demands for simplified tools that support nuanced academic insights.",
+        "bbox": [
+            507,
+            592,
+            939,
+            644
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This study aims to evaluate whether a structured, VBA-powered Excel workflow—implemented through the 10StepsinExcelforWoS framework—can generate bibliometric visualizations and performance analyses that are comparable in clarity and analytical value to those produced by specialized software, while offering improved accessibility, usability, and reproducibility.",
+        "bbox": [
+            507,
+            644,
+            939,
+            725
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "2. Software description",
+        "text_level": 2,
+        "bbox": [
+            510,
+            740,
+            670,
+            752
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To streamline bibliometric analysis using MS Excel, this study developed a standardized 10-step “ExcelWoS” framework. This approach employs VBA to automate data wrangling, performance summarization, and visualization tasks for records exported from the database of WoSCC.",
+        "bbox": [
+            507,
+            766,
+            939,
+            833
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "2.1. Software architecture",
+        "text_level": 2,
+        "bbox": [
+            509,
+            857,
+            668,
+            871
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "2.1.1. Summary report created in MS excel",
+        "text_level": 2,
+        "bbox": [
+            509,
+            883,
+            766,
+            897
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Before creating the summary report, author-made MS-Excel module [22] and instruction with MP4 video[23] can be downloaded and viewed on the R-platform[9].",
+        "bbox": [
+            509,
+            897,
+            939,
+            936
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            58,
+            42,
+            183,
+            54
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2",
+        "bbox": [
+            494,
+            952,
+            505,
+            960
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/73c8f81f0951a56a0f6b28b30490c68cf35ab5ff3abc2dda2a4cc92369a492d4.jpg",
+        "image_caption": [
+            "10StepsinExcelforWoS Framework",
+            "raschonline.com/raschonline/wosextractdataabc2bkaa.zip",
+            "Fig. 1. 10StepsinExcelforWoS Framework through 10 steps for data mugging with the MS Excel file in zip."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            70,
+            90,
+            475,
+            365
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.1.2. Five steps for extracting data from WoSCC",
+        "text_level": 2,
+        "bbox": [
+            58,
+            431,
+            349,
+            443
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The following steps outline the procedure for extracting and orga nizing data exported from WoSCC using the downloaded Excel tool [22]:",
+        "bbox": [
+            58,
+            443,
+            485,
+            472
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1. Insert Journal Impact Factors: Ensure that the Journal Impact Factors (e.g., from Journal Citation Reports: Impact Factor List 2025 [24]) are deposited in Sheet1 of the spreadsheet.",
+        "bbox": [
+            60,
+            484,
+            487,
+            523
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2. Rename Downloaded Files Using R: Use the provided R script to rename all Excel files downloaded into the wos folder. This ensures consistent naming for batch processing [25].",
+        "bbox": [
+            60,
+            523,
+            487,
+            562
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3. Set File Path and Verify File List: Open the designated Excel file (e. g., named data) and set the file path to:",
+        "bbox": [
+            60,
+            563,
+            485,
+            588
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "C:\\Users\\user\\Downloads\\wos\\",
+        "bbox": [
+            92,
+            588,
+            289,
+            602
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Confirm that the renamed file names are listed vertically from cell A2 downward.",
+        "bbox": [
+            78,
+            602,
+            485,
+            627
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "4. Activate VBA Import: Click the “From WoS in folder” macro button. This will trigger the VBA automation process to import data from each listed file.",
+        "bbox": [
+            60,
+            627,
+            485,
+            667
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "5. Consolidate Data into ALL Worksheet: In the “ddd” worksheet, click the icon labeled “Paste data into All in AG.” This action automatically transfers and consolidates the imported data into the ALL worksheet, ready for further data wrangling and analysis.",
+        "bbox": [
+            60,
+            668,
+            487,
+            722
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.1.3. Keywords from keyplus to top 10 using R script",
+        "text_level": 2,
+        "bbox": [
+            58,
+            733,
+            376,
+            747
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The R script [26] was applied to obtain top 10 keywords pasted to the spreadsheet of author at the cell of A82 downward.",
+        "bbox": [
+            58,
+            747,
+            487,
+            774
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.2. Software functionalities and steps for implementing excelwos",
+        "text_level": 2,
+        "bbox": [
+            58,
+            791,
+            436,
+            805
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "To emphasize the importance of reproducibility in bibliometric research [27], we parsed the WoSCC Excel export fields (e.g., Authors, Affiliations, Countries), in which multiple entries are separated by semicolons (;). Using the split function in MS Excel VBA, we also marked special tokens such as the corresponding author and their affiliation details (e.g., Mengist, W (corresponding author)).",
+        "bbox": [
+            55,
+            818,
+            487,
+            899
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.2.1. infographic design for 10StepsinExcelforWoS",
+        "text_level": 2,
+        "bbox": [
+            58,
+            910,
+            361,
+            923
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Click on icons 1 to 10 in the two spreadsheets titled “ALL” and",
+        "bbox": [
+            77,
+            923,
+            487,
+            936
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "“author,” following these 10 steps (Fig. 1):",
+        "bbox": [
+            509,
+            66,
+            769,
+            79
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.2.2. Ten steps for arranging data in MS excel",
+        "text_level": 2,
+        "bbox": [
+            510,
+            92,
+            789,
+            105
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "1. Import data: Transfer content from cell AG1 to A1 in the ALL spreadsheet.",
+        "bbox": [
+            532,
+            118,
+            939,
+            143
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2. Extract metadata categories: Use the Country field in the ALL spreadsheet to extract metadata categories.",
+        "bbox": [
+            532,
+            145,
+            939,
+            171
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3. Calculate CJAL score: Compute the CJAL score using the provided metrics [28,29].",
+        "bbox": [
+            532,
+            171,
+            937,
+            197
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "4. Extract metadata each: Collect all relevant metadata (e.g., keywords and KeyPlus) into the spreadsheet.",
+        "bbox": [
+            532,
+            197,
+            937,
+            223
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "5. Obtain Top 10 elements: In the author spreadsheet, retrieve the top 10 elements for each metadata entity.",
+        "bbox": [
+            532,
+            224,
+            939,
+            250
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "6. Compute h-index by category: In column Y, calculate the h index for each metadata category (excluding keywords).",
+        "bbox": [
+            532,
+            250,
+            937,
+            277
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "7. Overall h-index: Refer to cell author!AD94 for the overall hindex across all articles.",
+        "bbox": [
+            532,
+            277,
+            937,
+            302
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "8. Calculate CJAL score for keywords: Use rows 82 to 91 in the keyword section to calculate the CJAL score for each keyword [28,29].",
+        "bbox": [
+            532,
+            303,
+            939,
+            341
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "9. Keyword-specific h-index: Use columns V82 to Y82 to compute the h-index [30] for each keyword.",
+        "bbox": [
+            531,
+            341,
+            939,
+            368
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "10. Read summary report: Click on the spreadsheet titled “10descriptionmap” to view the final summary report.",
+        "bbox": [
+            524,
+            369,
+            939,
+            395
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.3. Sample code snippets",
+        "text_level": 2,
+        "bbox": [
+            510,
+            409,
+            665,
+            423
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.3,1. R platform for visuals using Kano and Sankey diagrams",
+        "text_level": 2,
+        "bbox": [
+            509,
+            435,
+            875,
+            448
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "It is recommended to use visual coding scripts [31] for generating Kano and Sankey diagrams, utilizing a CSV file (e.g., country.csv) containing keyword co-occurrence data. The resulting Kano diagram categorizes entities into four quadrants: Leader, Lone Wolf, Follower, and Coworker. Classification is based on the Dominance Coefficient (DC) [11,12], which quantifies relative influence. Leadership strength is further divided into five tiers: Super $( \\mathrm { D C } \\ge 0 . 8 )$ , Quasi-Super $( \\mathrm { D C } \\geq 0 . 7 ) ,$ Strong $( \\mathrm { D C } \\geq 0 . 6 )$ , Moderate $( \\mathrm { D C } \\geq 0 . 5 ) _ { \\mathrm { : } }$ , and Weak $( \\mathrm { D C } < 0 . 5 )$ [32]. As such, incorporating DC with KD [19,21] (or Sankey diagram[1]) enhances clarity by illustrating dominance or imbalance across metadata entities, offering more insightful bibliometric evaluation.",
+        "bbox": [
+            507,
+            448,
+            939,
+            593
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Based on structured reports suggested by authors [1], the findings were presented in two subsections: (1) Performance Analysis Findings and (2) Visualization Outputs.",
+        "bbox": [
+            507,
+            593,
+            939,
+            634
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.3.2 R package used in this study",
+        "text_level": 2,
+        "bbox": [
+            509,
+            646,
+            712,
+            659
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Visualizations in R created on the R platform [31] were used to draw Kano and Sankey diagrams. All data processing and statistical analyses were conducted using R software version 4.1.3 [33], and the generation of time-series visualizations and result output was performed within the RStudio integrated development environment [34].",
+        "bbox": [
+            507,
+            659,
+            939,
+            727
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3. Illustrative examples",
+        "text_level": 2,
+        "bbox": [
+            510,
+            738,
+            672,
+            752
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "3.1. Data source",
+        "text_level": 2,
+        "bbox": [
+            510,
+            765,
+            615,
+            778
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "In line with recommendations by Liu [10], we explicitly disclose the details of the dataset used in this study. Articles were retrieved from the Web of Science Core Collection (WoSCC), including both the Science Citation Index Expanded (SCI-Expanded) and the Social Sciences Citation Index (SSCI). The coverage period was from 2017 to 2025, with the search conducted on July 29, 2025. By specifying both the subsets and the temporal coverage, this study ensures full transparency and facilitates reproducibility for future bibliometric investigations.",
+        "bbox": [
+            507,
+            791,
+            939,
+            897
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "These articles were retrieved to identify leading metadata categories and verify the study hypothesis. Study data are deposed in Github [35]. Since all articles stored in WoSCC do not contain identifiable patient",
+        "bbox": [
+            507,
+            897,
+            939,
+            936
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            58,
+            42,
+            183,
+            54
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3",
+        "bbox": [
+            494,
+            952,
+            505,
+            960
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Performance analytics of 10-element entities by counts, and DC for each entity(n=1,719)",
+        "text_level": 1,
+        "bbox": [
+            131,
+            66,
+            863,
+            172
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/fb692dbd88efcdc9a26c1b845e17669e707c369f58965071d9ecdcd53ffa50b7.jpg",
+        "image_caption": [
+            "Fig. 2. Summary report for article elements in bibliometric research since 2017."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            137,
+            181,
+            863,
+            851
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            58,
+            42,
+            184,
+            54
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "image",
+        "img_path": "images/d15dc08fed016122a122095c622f5c14ff20aa94caadb4c3a91014f47e5f3e2a.jpg",
+        "image_caption": [
+            "Top 20 collaboration countries",
+            "Fig. 3. Country-bases leader DC strength."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            223,
+            95,
+            771,
+            412
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "information, ethical review approval was not required.",
+        "bbox": [
+            58,
+            448,
+            389,
+            462
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.2. Demonstrations of data via 10StepsinExcelforWoS",
+        "text_level": 2,
+        "bbox": [
+            58,
+            475,
+            379,
+            488
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.2.1 Performance analysis findings",
+        "text_level": 2,
+        "bbox": [
+            58,
+            501,
+            268,
+            514
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Fig. 2 displays a performance summary report outlining major contributors and corresponding counts across ten key metadata categories in bibliometric research from 2017 to 2025. The analysis incorporates metrics such as the number of publications by corresponding authors (RP), first authors (FP), h-index values [30], and DC scores [11,12]. In total, 1719 articles were analyzed, with an overall h-index of 48.",
+        "bbox": [
+            57,
+            515,
+            487,
+            593
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Key insights drawn from the performance report include the leading contribution of United States, with Delft Univ Technol (Netherlands) as the most prolific institution, and the Department of Computer Science as the most frequently listed organizational affiliation. Wojciech Salabun from Poland emerged as the most productive author, and SoftwareX as the most common journal as expected. Other dominant attributes include the year 2024, the document type \"Article\", the Department of Computer Science as the most prevalent affiliation—appearing across 60 universities for first authors and 42 for corresponding authors, and the most frequent keyword “MODEL” Notably, the most cited pub lication—a 2018 article by Susi Lehtola(U.S)—received 551 citations.",
+        "bbox": [
+            57,
+            593,
+            487,
+            738
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Among all top-performing entities, only the document type \"Article\" achieved a DC score above 0.70 (DC = 0.99), suggesting that no other entity held a clearly dominant position (i.e., >0.7) within its respective category during the study period.",
+        "bbox": [
+            57,
+            738,
+            487,
+            791
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.2.2 Visualization outputs",
+        "text_level": 2,
+        "bbox": [
+            58,
+            804,
+            218,
+            817
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Author collaborations and co-keyword occurrences were clustered using Follower-Leading Clustering algorithm(FLCA) [1,21,36]. Top 20 elements were selected and shown on either Kano or Sankey diagram. United States (Fig. 3) emerges as a strong leader with a DC of 0.60.",
+        "bbox": [
+            57,
+            818,
+            487,
+            870
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In contrast, Politecn Torino(Italy) is not classified as a leader (Fig. 4) due to limited collaborative influence in the field, while the keyword “MODEL” (Fig. 5) represents a strong leader (DC = 0.61).",
+        "bbox": [
+            58,
+            871,
+            485,
+            911
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.4. To tests the study hypothesis",
+        "text_level": 2,
+        "bbox": [
+            510,
+            448,
+            707,
+            462
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The findings of this study confirm that a structured, VBA-driven Excel workflow—implemented through the ExcelWoS framework—can successfully generate bibliometric visualizations and performance analyses that are comparable in clarity and analytical value to those (e.g., shown in Table 1) produced by any specialized bibliometric software, while providing enhanced accessibility, usability, and reproducibility for researchers, as shown in author-made MS-Excel module [22] and instruction with MP4 video [23].",
+        "bbox": [
+            507,
+            475,
+            939,
+            581
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "4. Impact",
+        "text_level": 2,
+        "bbox": [
+            510,
+            593,
+            583,
+            607
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The ExcelWoS tool introduces a new capability in bibliometric research by automating data wrangling for downstream analysis—a function not available in any of the 10,248 PubMed-indexed bibliometric studies to date [36]. This transition from manual data handling to automated resolution with ExcelWoS unlocks several novel research avenues. For example, researchers can now analyze disciplinary characteristics by article category with clear and concise bibliometric outputs [1], and make comparisons across institutions or countries—task that previously required cumbersome tables and graphs.",
+        "bbox": [
+            507,
+            619,
+            939,
+            738
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "ExcelWoS significantly advances the pursuit of existing bibliometric questions by enhancing both the granularity and automation of the datawrangling process. In contrast to traditional tools such as VOSviewer [3], Bibliometrix [4], and CiteSpace [2], which lack built-in data preparation capabilities, ExcelWoS integrates FLCA-based clustering [1, 37] alongside Kano and Sankey diagram visualizations [1,19,20,32]. This integration streamlines bibliometric workflows and minimizes the need for manual curation.",
+        "bbox": [
+            507,
+            738,
+            939,
+            844
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In practice, ExcelWoS has already facilitated the extraction of extensive metadata for downstream analyses. The accompanying R scripts [9] are designed for user-friendliness, allowing researchers without advanced programming expertise to conduct bibliometric analyses efficiently. Early adopters [1,6–8] have reported significant reductions in metadata preparation time and enhanced clarity in translating metadata into a structured format. ExcelWoS for future",
+        "bbox": [
+            507,
+            844,
+            939,
+            938
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            58,
+            42,
+            183,
+            54
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Top 20 collaboration institutes",
+        "text_level": 1,
+        "bbox": [
+            228,
+            65,
+            747,
+            98
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/cc9923f3b8f67240bb5295dd2db41cc11e84dff034e5c4da1b94b8d9a7ff6d27.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            223,
+            97,
+            734,
+            469
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "table",
+        "img_path": "images/6dcc593358b6664d688bce8b8b8942de77b01db4620181a461aaeea6727b7d98.jpg",
+        "table_caption": [
+            "Fig. 4. Institute-bases leader DC strength across multiple clusters."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Institute</td><td>count</td><td>edge</td><td>cluster</td></tr><tr><td>Politecn Torino(Italy)</td><td>12</td><td>5</td><td>3</td></tr><tr><td>Natl Inst Telecommun(Poland)</td><td>11</td><td>5</td><td>2</td></tr><tr><td>Polish Acad Sci(Poland)</td><td>11</td><td>4</td><td>8</td></tr><tr><td>Chinese Acad Sci(China)</td><td>9</td><td>8</td><td>1</td></tr><tr><td>Rhein Westfal TH Aachen(Germany)</td><td>8</td><td>5</td><td>4</td></tr><tr><td>UCL(U.K)</td><td>7</td><td>4</td><td>9</td></tr><tr><td>USDA ARS(U.S)</td><td>7</td><td>3</td><td>10</td></tr><tr><td>Russian Acad Sci(Russia)</td><td>6</td><td>5</td><td>5</td></tr><tr><td>Sejong Univ(South Korea)</td><td>6</td><td>3</td><td>13</td></tr><tr><td>Seoul Natl Univ(South Korea)</td><td>5</td><td>3</td><td>13</td></tr><tr><td>Cardiff Univ(Australia)</td><td>4</td><td>4</td><td>6</td></tr><tr><td>Cardiff Univ(U.K)</td><td>4</td><td>4</td><td>6</td></tr><tr><td>NASA(U.S)</td><td>4</td><td>4</td><td>7</td></tr><tr><td>Democritus Univ Thrace(Greece)</td><td>4</td><td>3</td><td>11</td></tr><tr><td>Lawrence Berkeley Natl Lab(U.S)</td><td>4</td><td>3</td><td>12</td></tr><tr><td>Res Ctr Ecoenvironm Sci(China)</td><td>3</td><td>3</td><td>1</td></tr><tr><td>Inst Automat Complex Power Syst(Germany)</td><td>3</td><td>3</td><td>4</td></tr><tr><td>Matrosov Inst Syst Dynam &amp; Control Theory(Russia)</td><td>3</td><td>3</td><td>5</td></tr><tr><td>Arid Land Agr Res Ctr(U.S)</td><td>3</td><td>3</td><td>10</td></tr><tr><td>US Geol Survey(U.S)</td><td>3</td><td>3</td><td>14</td></tr></table>",
+        "bbox": [
+            233,
+            484,
+            771,
+            789
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "integration into library systems, institutional dashboards, and Software as a Service (SaaS) platforms can be expected.",
+        "bbox": [
+            57,
+            825,
+            487,
+            853
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "ExcelWoS fills a critical gap in bibliometric methodology by providing an accessible, user-friendly tool for metadata wrangling. Thi enhancement streamlines the analytical process, thereby accelerating scholarly discovery and supporting more effective institutional knowledge management.",
+        "bbox": [
+            57,
+            853,
+            487,
+            918
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "A notable strength of this study is its proactive handling of WoSCC metadata limitations. While previous research has identified inconsistencies and biases in key fields [10], we implemented systematic cleaning of author information, consistency checks for publication and citation data, and validation across multiple metadata categories. These steps improved data reliability and interpretability, transforming what is often a source of limitation into a methodological strength.",
+        "bbox": [
+            78,
+            918,
+            487,
+            931
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            507,
+            825,
+            939,
+            905
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Recognizing WoSCC limitations (author–affiliation links; author identifiers), we used 10StepsinExcelforWoS for post-retrieval cleaning;",
+        "bbox": [
+            509,
+            905,
+            939,
+            931
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            58,
+            42,
+            183,
+            54
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            796,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6",
+        "bbox": [
+            494,
+            952,
+            505,
+            960
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Top 20 coword keywords plus",
+        "text_level": 2,
+        "bbox": [
+            90,
+            66,
+            458,
+            90
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "chart",
+        "img_path": "images/0b5048f77ca9174cc25a6bcd470f9b7caae79beb5b6f3c50ef40ac7c09eaf489.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 5. Keyword-based leader DC strength driven by MODEL with occurrence counts."
+        ],
+        "chart_footnote": [],
+        "bbox": [
+            67,
+            107,
+            480,
+            320
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "table",
+        "img_path": "images/78c86fb2aeb2f94ced34b3d7ccbde17905e10a4d5fda722918a80ad42566337c.jpg",
+        "table_caption": [
+            "Summary comparing the strengths with performance reports and Kano diagrams in bibliometrics."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Item</td><td>Visualization Method</td><td>Purpose</td><td>Output software</td><td>Distinct Feature</td></tr><tr><td>1</td><td>Performance Report [1]</td><td>Overview of top entities</td><td>Top 10 lists by category [22,26]</td><td>Includes DC and h-index</td></tr><tr><td>2</td><td>Kano diagram [19,32]</td><td>Classification of Leader by DC score</td><td>Super leader has DC  $\\geq 0.70$  outside the control circle [31]</td><td>Four features in each quadrant</td></tr><tr><td>3</td><td>Sankey diagram [1]</td><td>Clear relationship between nodes</td><td>Blocks sized by flow [1,31]</td><td>Blocks colored by cluster</td></tr></table>",
+        "bbox": [
+            60,
+            418,
+            484,
+            549
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "pre-step wrangling (Fig. 1) is outside the tool’s scope.",
+        "bbox": [
+            58,
+            568,
+            384,
+            581
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Established work has shown that database-level metadata characteristics—such as coverage differences, author–affiliation linkage quality, document-type/Early Access handling, and the availability of abstracts/keywords [13–18]—can affect bibliometric indicators and should be explicitly managed in study designs.",
+        "bbox": [
+            55,
+            582,
+            487,
+            648
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "5. Conclusion",
+        "text_level": 2,
+        "bbox": [
+            58,
+            660,
+            156,
+            673
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "This study introduces ExcelWoS, a lightweight yet powerful VBAdriven framework that addresses critical gaps in bibliometric work flows, particularly for researchers relying on Excel-exported data from WoSCC. By automating ten essential steps—including data wrangling, performance reporting, and visualization—ExcelWoS enhances the reproducibility, accessibility, and interpretability of bibliometric analyses. It integrates advanced features such as FLCA clustering and dominance coefficient (DC) scoring, producing insightful visual outputs like summary reports, Kano diagrams, and Sankey diagrams.",
+        "bbox": [
+            55,
+            687,
+            487,
+            805
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "As a transparent and reproducible framework, ExcelWoS offers strong potential for integration into institutional dashboards, library systems, and future SaaS platforms. Ultimately, ExcelWoS democratizes bibliometric analysis, streamlines scholarly evaluation, and opens new avenues for trend discovery and academic decision-making.",
+        "bbox": [
+            55,
+            805,
+            487,
+            872
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Data availability",
+        "text_level": 2,
+        "bbox": [
+            58,
+            885,
+            171,
+            897
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The data are public and available at Github [35].",
+        "bbox": [
+            78,
+            911,
+            376,
+            924
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "CRediT authorship contribution statement",
+        "bbox": [
+            509,
+            66,
+            789,
+            79
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Tsair-Wei Chien: Methodology, Conceptualization. Willy Chou: Investigation.",
+        "bbox": [
+            509,
+            92,
+            937,
+            119
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Declaration of competing interest",
+        "text_level": 2,
+        "bbox": [
+            510,
+            139,
+            732,
+            153
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.",
+        "bbox": [
+            509,
+            167,
+            939,
+            206
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Acknowledgments",
+        "text_level": 2,
+        "bbox": [
+            510,
+            221,
+            633,
+            235
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We would like to acknowledge Github which allowing us to deposit our R code and datasets at no charges.",
+        "bbox": [
+            509,
+            248,
+            937,
+            274
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Supplementary materials",
+        "text_level": 2,
+        "bbox": [
+            510,
+            290,
+            677,
+            303
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Supplementary material associated with this article can be found, in the online version, at doi:10.1016/j.softx.2025.102403.",
+        "bbox": [
+            509,
+            316,
+            939,
+            343
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "References",
+        "text_level": 2,
+        "bbox": [
+            510,
+            358,
+            586,
+            370
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[1] Lim SW, Chou W, Chen L. SankeyNetwork: a clear and concise visualization tool for bibliometric data. MethodsX 2025;14:103379.",
+        "bbox": [
+            517,
+            383,
+            934,
+            403
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[2] Chen C, CiteSpace II. Detecting and visualizing emerging trends and transient patterns in scientific literature. J Am Soc Inf Sci Technol 2006;57(3):359–77. https://doi.org/10.1002/asi.20317.",
+        "bbox": [
+            517,
+            403,
+            915,
+            433
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[3] van Eck NJ, Waltman L. Software survey: vOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38. https://doi.org/ 10.1007/s11192-009-0146-3.",
+        "bbox": [
+            517,
+            433,
+            917,
+            462
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[4] Aria M, Cuccurullo C. Bibliometrix: an R-tool for comprehensive science mapping analysis. J Inf 2017;11(4):959–75. https://doi.org/10.1016/j.joi.2017.08.007",
+        "bbox": [
+            517,
+            462,
+            934,
+            482
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[5] Clarivate. Web of science core collection [database]. Clarivate; 2025. accessed June 24, 2025. URL: https://www.webofscience.com/wos/woscc (2025/6/14).",
+        "bbox": [
+            517,
+            484,
+            921,
+            503
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[6] Abdelwahab SI, Taha MME, Farasani A, et al. The top 100 most cited articles in cardiovascular research: a bibliometric perspective. Curr Probl Cardiol 2025;50 (11):103153.",
+        "bbox": [
+            517,
+            504,
+            927,
+            533
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[7] Süer MS, Ergüder E, Demir S, Balas S¸ . Scientific response to the 2023 Kahramanmaras¸ earthquake: a bibliometric study. Ulus Travma Acil Cerrahi Derg 2025;31(8):766 75.",
+        "bbox": [
+            517,
+            534,
+            934,
+            563
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[8] Maldonado A, Coral M, Hernandez ´ G. Bibliometric analysis of 25 years of emergency medicine research in Latin America. J Emerg Med 2025;76:124–34.",
+        "bbox": [
+            517,
+            564,
+            922,
+            583
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[9] R-platform. Visualizations created through R scripts. URL: https://www.raschonlin e.com/raschonline/cbp.asp?cbp InputwithTableb (2025/6/14).",
+        "bbox": [
+            517,
+            583,
+            932,
+            604
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[10] Liu W. The data source of this study is Web of Science Core Collection? Not enough. Scientometrics 2019;121(3):1815 24.",
+        "bbox": [
+            512,
+            604,
+            932,
+            622
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[11] Chien TW. Cronbach s alpha with the dimension coefficient to jointly assess a scale s quality. Rasch Meas. Trans. 2012;26(3):1379.",
+        "bbox": [
+            512,
+            624,
+            917,
+            644
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[12] Yang TY, Chien TW, Lai FJ. Citation analysis of the 100 top-cited articles on the topic of hidradenitis suppurativa since 2013 using Sankey diagrams: bibliometric analysis. Medicine 2022;101(44):e31144.",
+        "bbox": [
+            512,
+            644,
+            932,
+            674
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[13] Philippe M, Ad\\`ele PH. The journal coverage of Web of Science and Scopus: a comparative analysis. Scientometrics 2016;106(1):213–28.",
+        "bbox": [
+            512,
+            674,
+            914,
+            694
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[14] Abdelghani M, Lesya B. The quality of the web of science data: a longitudinal study on the completeness of authors-addresses links. Scientometrics 2022;127(11): 6279–92.",
+        "bbox": [
+            512,
+            694,
+            932,
+            723
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[15] Vivek KS, Prashasti S, Mousumi K, Jacqueline L, Philipp M. The journal coverage of Web of Science, Scopus and Dimensions: a comparative analysis. Scientometric 2021;126(6):5113 42.",
+        "bbox": [
+            512,
+            723,
+            934,
+            754
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[16] Alvarez-Bornstein ´ B, Morillo F, Bordons M. Funding acknowledgments in the Web of Science: completeness and accuracy of collected data. Scientometrics 2017;112 (3):1793–812.",
+        "bbox": [
+            512,
+            755,
+            934,
+            784
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[17] McVeigh M. Adding early access content to journal citation reports: choosing a prospective model. Clarivate; 2021. Accessed October 4, 2025. URL: https://clari vate.com/academia-government/blog/adding-early-access-content-to-journa l-citation-reports-choosing-a-prospective-model/.",
+        "bbox": [
+            512,
+            785,
+            932,
+            824
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[18] Liu W. Caveats for the use of Web of Science Core Collection in old literatur retrieval and historical bibliometric analysis. Technol Forecast Soc Change 2021; 172:121023. https://doi.org/10.1016/j.techfore.2021.121023",
+        "bbox": [
+            512,
+            825,
+            931,
+            854
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[19] Kano N, Seraku N, Takahashi F, Tsuji S. Attractive Quality and Must-be Quality. J Jpn Soc Qual Control 1984;14(2):39 48.",
+        "bbox": [
+            512,
+            854,
+            927,
+            875
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[20] Kao WC, Chow JC, Chou W, Chen L. Discrepancy between countries most mentioned in earthquake-related articles and those most affected by major earthquakes since 1965: a bibliometric analysis. Medicine 2025;104(38):e43953.",
+        "bbox": [
+            512,
+            876,
+            929,
+            905
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[21] Chuang HY, SilhouetteScoreinR Chou W. Beyond traditional network layouts by leveraging local cohesion and nearest neighbor separation. MethodsX 2025;15: 103622.",
+        "bbox": [
+            512,
+            906,
+            927,
+            934
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            58,
+            42,
+            183,
+            54
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            798,
+            42,
+            939,
+            54
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "7",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "ref_text",
+        "text": "[22] R platform. Author-made MS-Excel module. URL: raschonline.com/raschonl ne/wosextractdataabc2bkaa.zip (2025/6/14).",
+        "bbox": [
+            60,
+            66,
+            458,
+            85
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[23] R platform. Instruction with MP4 video. URL: https://youtu.be/iwFYvwPPf4s (2025/6/14).",
+        "bbox": [
+            60,
+            87,
+            462,
+            105
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[24] Journals Citation Reports. Impact Factor List. URL: https://journalsinsights.com/jo urnals-impact-factor-list; 2025 (2025/6/14).",
+        "bbox": [
+            60,
+            107,
+            480,
+            126
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[25] R platform. Batch file to change file names in wos folder. URL: raschonline.com/ raschonline/cbp.asp?cbp=Changefilenamesinafolder (2025/6/14).",
+        "bbox": [
+            60,
+            127,
+            480,
+            146
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[26] R platform. Top 10 keywords are extracted in R. URL:raschonline.com/ raschonline/cbp.asp?cbp=Top10keywordsfrequency (2025/6/14).",
+        "bbox": [
+            60,
+            147,
+            433,
+            167
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[27] Doshi R, Kaleel A. Bibliometric Analysis of Generative AI and Large Language Models in the Scopus Database: trends, Insights, and Research Landscape. App Data Sci Anal 2025;2025:7–18.",
+        "bbox": [
+            60,
+            167,
+            470,
+            196
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[28] Yeh JT, Shulruf B, Lee HC, et al. Faculty appointment and promotion in Taiwan’s medical schools, a systematic analysis. BMC Med Educ 2022;22:356.",
+        "bbox": [
+            60,
+            197,
+            480,
+            216
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[29] Shao Y, Chien TW, Jang FL. The use of radar plots with the Yk-index to identify which authors contributed the most to the journal of Medicine in 2020 and 2021: a bibliometric analysis. Medicine 2022;101(45):e31033.",
+        "bbox": [
+            60,
+            218,
+            480,
+            245
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[30] Hirsch JE. An Index to Quantify an Individual’s Scientific Research Output. Proc Natl Acad Sci USA 2005;102(46):16569–72.",
+        "bbox": [
+            512,
+            66,
+            929,
+            85
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[31] R. platform. Kano diagram in R. URL: raschonline.com/raschonline/cbpgeo.asp? cbp=FLCAalgorithmexample5 (2025/6/14).",
+        "bbox": [
+            512,
+            87,
+            929,
+            105
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[32] Li MJ, Lai FJ. Classifying research leadership in infantile hemangioma studies: a bibliometric analysis using Kano diagrams and absolute advantage coefficients Medicine 2025. In press.",
+        "bbox": [
+            512,
+            107,
+            927,
+            136
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[33] R Core Team. R: a language and environment for statistical computing. Vienna, Austria. URL: https://www.R-project.org/ (Accessed June 12, 2025).",
+        "bbox": [
+            512,
+            137,
+            924,
+            157
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[34] Posit PBC. RStudio: integrated development environment for R. Boston, MA: Posit Software, PBC; 2022. Available from: https://posit.co/.",
+        "bbox": [
+            512,
+            157,
+            934,
+            177
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[35] Github. 10StepsinExcelforWoS. URL: https://github.com/smilechien/10StepsinEx elforWoS/ (2025/7/14).",
+        "bbox": [
+            512,
+            177,
+            932,
+            196
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[36] PubMed. Over 10,248 bibliometric articles indexed in PubMed. URL: https://pubmed.ncbi.nlm.nih.gov/?term=bibliometric%5BMeSH+Major+Topic% 5D&sort=date(2025/7/14).",
+        "bbox": [
+            512,
+            197,
+            931,
+            226
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "ref_text",
+        "text": "[37] Chien TW, Chou W. Visualizing leadership classifications in rectangular data using a basket model and co-word network analysis: a case study of U.S. HCAHPS surve results. BMC Med Res Methodol 2025;25(1):195.",
+        "bbox": [
+            512,
+            226,
+            934,
+            257
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "T.-W. Chien and W. Chou",
+        "bbox": [
+            60,
+            42,
+            183,
+            52
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 32 (2025) 102403",
+        "bbox": [
+            798,
+            42,
+            939,
+            52
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "8",
+        "bbox": [
+            494,
+            952,
+            504,
+            960
+        ],
+        "page_idx": 7
+    }
+]

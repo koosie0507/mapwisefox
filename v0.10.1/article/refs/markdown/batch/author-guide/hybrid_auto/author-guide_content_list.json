@@ -1,0 +1,7253 @@
+[
+    {
+        "type": "text",
+        "text": "SoftwareX",
+        "text_level": 2,
+        "bbox": [
+            53,
+            97,
+            193,
+            118
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Open access",
+        "bbox": [
+            53,
+            123,
+            141,
+            137
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Guide for authors",
+        "text_level": 2,
+        "bbox": [
+            55,
+            179,
+            234,
+            199
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "About the journal",
+        "bbox": [
+            55,
+            212,
+            180,
+            229
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Aims and scope",
+        "bbox": [
+            63,
+            235,
+            191,
+            250
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Peer review",
+        "bbox": [
+            63,
+            252,
+            166,
+            267
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Open access",
+        "bbox": [
+            63,
+            268,
+            171,
+            284
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Ethics and policies",
+        "text_level": 2,
+        "bbox": [
+            57,
+            290,
+            183,
+            307
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Ethics in publishing",
+        "bbox": [
+            63,
+            313,
+            213,
+            330
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Submission declaration",
+        "bbox": [
+            63,
+            331,
+            240,
+            346
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Authorship",
+        "bbox": [
+            63,
+            347,
+            161,
+            362
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Changes to authorship",
+        "bbox": [
+            63,
+            362,
+            237,
+            378
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Declaration of competing interests",
+        "bbox": [
+            63,
+            379,
+            313,
+            395
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Funding sources",
+        "bbox": [
+            63,
+            395,
+            195,
+            411
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Declaration of generative AI use",
+        "bbox": [
+            63,
+            411,
+            297,
+            426
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Preprints",
+        "bbox": [
+            63,
+            426,
+            148,
+            443
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Use of inclusive language",
+        "bbox": [
+            63,
+            444,
+            254,
+            458
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Reporting sex- and gender-based analyses",
+        "bbox": [
+            63,
+            460,
+            361,
+            476
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Jurisdictional claims",
+        "bbox": [
+            63,
+            476,
+            222,
+            492
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Studies in humans",
+        "bbox": [
+            63,
+            492,
+            208,
+            508
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Delayed publication",
+        "bbox": [
+            63,
+            508,
+            218,
+            524
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Withdrawal, correction or retraction",
+        "bbox": [
+            63,
+            525,
+            323,
+            541
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Writing and formatting",
+        "text_level": 2,
+        "bbox": [
+            57,
+            546,
+            215,
+            564
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "File format",
+        "bbox": [
+            63,
+            570,
+            161,
+            586
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Title page",
+        "bbox": [
+            63,
+            587,
+            154,
+            602
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Abstract",
+        "bbox": [
+            63,
+            602,
+            148,
+            618
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Keywords",
+        "bbox": [
+            63,
+            618,
+            154,
+            634
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Highlights",
+        "bbox": [
+            63,
+            634,
+            156,
+            652
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Graphical abstract",
+        "bbox": [
+            63,
+            651,
+            210,
+            667
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Math formulae",
+        "bbox": [
+            63,
+            668,
+            188,
+            683
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Tables",
+        "bbox": [
+            63,
+            684,
+            131,
+            699
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Figures, images and artwork",
+        "bbox": [
+            63,
+            700,
+            274,
+            715
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Generative AI and Figures, images and other artwork",
+        "bbox": [
+            63,
+            715,
+            430,
+            732
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Supplementary material",
+        "bbox": [
+            63,
+            733,
+            247,
+            747
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Video",
+        "bbox": [
+            63,
+            749,
+            127,
+            764
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Research data",
+        "bbox": [
+            63,
+            765,
+            183,
+            781
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Data statement",
+        "bbox": [
+            63,
+            781,
+            191,
+            797
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Data linking",
+        "bbox": [
+            63,
+            797,
+            168,
+            813
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Co-submission of related data, methods or protocols",
+        "bbox": [
+            63,
+            814,
+            427,
+            829
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Journal specific information: Writing and formatting",
+        "bbox": [
+            63,
+            831,
+            425,
+            846
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Article structure",
+        "bbox": [
+            63,
+            847,
+            193,
+            862
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "References",
+        "bbox": [
+            63,
+            863,
+            159,
+            878
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Submitting your manuscript",
+        "text_level": 2,
+        "bbox": [
+            57,
+            885,
+            245,
+            901
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Submission checklist",
+        "bbox": [
+            63,
+            908,
+            223,
+            923
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Submit online",
+        "bbox": [
+            63,
+            925,
+            178,
+            940
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "After receiving a final decision",
+        "bbox": [
+            57,
+            948,
+            257,
+            961
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            969,
+            447,
+            983
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            58,
+            35,
+            104,
+            66
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            16,
+            797,
+            30
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "ScienceDirect",
+        "bbox": [
+            116,
+            43,
+            232,
+            61
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_number",
+        "text": "1/23",
+        "bbox": [
+            934,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Article Transfer Service",
+        "bbox": [
+            63,
+            34,
+            234,
+            46
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Publishing agreement",
+        "bbox": [
+            65,
+            49,
+            230,
+            63
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "License options",
+        "bbox": [
+            65,
+            67,
+            186,
+            79
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Open access",
+        "bbox": [
+            65,
+            83,
+            168,
+            95
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Permission for copyrighted works",
+        "bbox": [
+            63,
+            99,
+            303,
+            112
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Proof correction",
+        "bbox": [
+            65,
+            115,
+            191,
+            128
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "DOI link",
+        "bbox": [
+            65,
+            131,
+            141,
+            143
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Responsible sharing",
+        "bbox": [
+            65,
+            147,
+            217,
+            161
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Resources for authors",
+        "bbox": [
+            58,
+            170,
+            203,
+            183
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Elsevier Researcher Academy",
+        "bbox": [
+            63,
+            193,
+            274,
+            205
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Language and editing services",
+        "bbox": [
+            63,
+            209,
+            282,
+            223
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Getting help and support",
+        "bbox": [
+            58,
+            231,
+            225,
+            246
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Author support",
+        "bbox": [
+            63,
+            256,
+            186,
+            269
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "About the journal",
+        "text_level": 2,
+        "bbox": [
+            63,
+            318,
+            240,
+            336
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Aims and scope",
+        "text_level": 2,
+        "bbox": [
+            63,
+            348,
+            198,
+            363
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "SoftwareX aims to acknowledge the impact of software on today's research practice, and on new scientific discoveries in almost al research domains. SoftwareX also aims to stress the importance of the software developers who are, in part, responsible for this impact.",
+        "bbox": [
+            63,
+            366,
+            910,
+            413
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "To this end, SoftwareX aims to support publication of research software in such a way that:",
+        "bbox": [
+            63,
+            431,
+            653,
+            445
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The software is given a stamp of scientific relevance, and provided with a peer-reviewed recognition of scientific impact;",
+        "bbox": [
+            72,
+            463,
+            868,
+            478
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The software developers are given the credits they deserve;",
+        "bbox": [
+            72,
+            495,
+            476,
+            510
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The software is citable, allowing traditional metrics of scientific excellence to apply;",
+        "bbox": [
+            72,
+            527,
+            634,
+            543
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The academic career paths of software developers are supported rather than hindered;",
+        "bbox": [
+            72,
+            561,
+            654,
+            575
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The software is publicly available for inspection, validation, and re-use.",
+        "bbox": [
+            72,
+            593,
+            553,
+            608
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Above all, SoftwareX aims to inform researchers about software applications, tools and libraries with a (proven) potential to impact the process of scientific discovery in various domains. The journal is multidisciplinary and accepts submissions from within and acros subject domains such as those represented within the broad thematic areas below:",
+        "bbox": [
+            63,
+            625,
+            932,
+            671
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Mathematical and Physical Sciences;",
+        "bbox": [
+            72,
+            690,
+            333,
+            703
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Environmental Sciences;",
+        "bbox": [
+            72,
+            722,
+            252,
+            736
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Medical and Biological Sciences;",
+        "bbox": [
+            72,
+            756,
+            304,
+            769
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Humanities, Arts and Social Sciences.",
+        "bbox": [
+            72,
+            788,
+            335,
+            801
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Originating from these broad thematic areas, the journal also welcomes submissions of software that works in cross cutting thematic areas, such as citizen science, cybersecurity, digital economy, energy, global resource stewardship, health and wellbeing, etcetera",
+        "bbox": [
+            63,
+            820,
+            930,
+            851
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "SoftwareX specifically aims to accept submissions representing domain-independent software that may impact more than one research domain.",
+        "bbox": [
+            63,
+            869,
+            885,
+            898
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Domain independent underpinning software tools and technologies have for too long been underrepresented in academic literature. We wish to ensure that these software items get academic recognition and welcome submissions of software tools and services that may otherwise not have a publication home. Examples include mathematical or image processing libraries or methodologies, visualization tools, data management, etcetera",
+        "bbox": [
+            63,
+            917,
+            922,
+            948
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            141,
+            28
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            63,
+            34,
+            878,
+            64
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Through the quality of the description and of the (potential) impact of the software deposited we aim that significant reuse will occur both within and without the original developing domain and therefore encourage consideration ofthis reuse factor when submitting and in the language used within the description.",
+        "bbox": [
+            63,
+            82,
+            924,
+            129
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Submissions to SoftwareX consist of two major parts:",
+        "bbox": [
+            63,
+            147,
+            412,
+            160
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "A short descriptive paper of 4000-word limit;",
+        "bbox": [
+            72,
+            179,
+            383,
+            193
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "An open-source software distribution with support material.",
+        "bbox": [
+            72,
+            212,
+            481,
+            225
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "The manuscript you submit must be regarded as an accompanying note for the benefit of readers and potential users ofyour software.",
+        "bbox": [
+            63,
+            244,
+            873,
+            273
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Submissions are accepted only if they follow the journal-specific templates:",
+        "bbox": [
+            63,
+            293,
+            553,
+            306
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Word templates (please note that figures must be directly embedded in the .docx file):",
+        "bbox": [
+            63,
+            325,
+            619,
+            338
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            65,
+            357,
+            260,
+            370
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Software update",
+        "bbox": [
+            63,
+            391,
+            178,
+            403
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "LaTeX templates:",
+        "bbox": [
+            65,
+            423,
+            178,
+            436
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            65,
+            455,
+            260,
+            468
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Software update.",
+        "bbox": [
+            63,
+            488,
+            180,
+            500
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "For any questions contact us at: softwarex@elsevier.com",
+        "bbox": [
+            63,
+            520,
+            437,
+            533
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "All software publications published in SoftwareX are hosted on a repository on GitHub. A copy of the 'accepted for publication' version of software/code will be copied to the journal's GitHub repository for archiving purposes.",
+        "bbox": [
+            63,
+            552,
+            927,
+            582
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Go to the SoftwareX GitHub repository",
+        "bbox": [
+            63,
+            585,
+            319,
+            598
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Peer review",
+        "text_level": 2,
+        "bbox": [
+            65,
+            618,
+            164,
+            631
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "This journal follows a single anonymized review process. Your submission will initially be assessed by our editors to determine suitability for publication in this journal. Ifyour submission is deemed suitable, it will typically be sent to be reviewed by a minimum of two reviewers for an independent expert assessment of the scientific quality. The decision as to whether your article is accepted or rejected will be made by our editors.",
+        "bbox": [
+            63,
+            636,
+            922,
+            699
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Read more about peer review.",
+        "bbox": [
+            65,
+            718,
+            262,
+            730
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Our editors are not involved in making decisions about papers which:",
+        "bbox": [
+            63,
+            749,
+            516,
+            763
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "they have written themselves.",
+        "bbox": [
+            72,
+            782,
+            287,
+            795
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "have been written by family members or colleagues.",
+        "bbox": [
+            72,
+            814,
+            430,
+            828
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "relate to products or services in which they have an interest.",
+        "bbox": [
+            72,
+            847,
+            481,
+            860
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Any such submissions will be subject to the journal's usual procedures and peer review will be handled independently of the edito involved and their research group. Read more about editor duties.",
+        "bbox": [
+            63,
+            879,
+            905,
+            909
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Authors may submit a formal appeal request to the editorial decision, provided it meets all the requirements and follows the procedure outlined in Elsevier’s Appeal Policy. Only one appeal per submission will be considered and the appeal decision will be",
+        "bbox": [
+            63,
+            928,
+            897,
+            958
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3/23",
+        "bbox": [
+            932,
+            971,
+            959,
+            980
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Special issues and article collections",
+        "text_level": 2,
+        "bbox": [
+            63,
+            67,
+            363,
+            80
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The peer review process for special issues and article collections follows the same process as outlined above for regular submissions, except, a guest editor may send the submissions out to the reviewers and may recommend a decision to the journal editor. Th journal editor oversees the peer review process of all special issues and article collections to ensure the high standards of publishing ethics and responsiveness are respected and is responsible for the final decision regarding acceptance or rejection of articles.",
+        "bbox": [
+            63,
+            85,
+            922,
+            149
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Open access",
+        "text_level": 2,
+        "bbox": [
+            63,
+            167,
+            173,
+            181
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "We refer you to our open access information page to learn about open access options for this journal.",
+        "bbox": [
+            63,
+            185,
+            720,
+            199
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Ethics and policies",
+        "text_level": 2,
+        "bbox": [
+            65,
+            219,
+            249,
+            236
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Ethics in publishing",
+        "text_level": 2,
+        "bbox": [
+            65,
+            248,
+            228,
+            263
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Authors must follow ethical guidelines stated in Elsevier's Publishing Ethics Policy.",
+        "bbox": [
+            63,
+            266,
+            595,
+            280
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Submission declaration",
+        "text_level": 2,
+        "bbox": [
+            63,
+            300,
+            260,
+            313
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "When authors submit an article to an Elsevier journal it is implied that:",
+        "bbox": [
+            63,
+            318,
+            526,
+            332
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The work described has not been published previously except in the form of a preprint, an abstract, a published lecture, academi thesis or registered report. See our policy on multiple, redundant or concurrent publication.",
+        "bbox": [
+            72,
+            350,
+            927,
+            381
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The article is not under consideration for publication elsewhere.",
+        "bbox": [
+            72,
+            399,
+            506,
+            413
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The article's publication is approved by all authors and tacitly or explicitly by the responsible authorities where the work was carried out.",
+        "bbox": [
+            72,
+            431,
+            895,
+            461
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "If accepted, the article will not be published elsewhere in the same form, in English or in any other language, including electronically, without the written consent of the copyright-holder.",
+        "bbox": [
+            72,
+            480,
+            856,
+            511
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "To verify compliance with our journal publishing policies, we may check your manuscript with our screening tools.",
+        "bbox": [
+            63,
+            527,
+            801,
+            543
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Authorship",
+        "text_level": 2,
+        "bbox": [
+            65,
+            561,
+            161,
+            576
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "All authors should have made substantial contributions to all of the following:",
+        "bbox": [
+            63,
+            580,
+            574,
+            594
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "1. The conception and design of the study, or acquisition of data, or analysis and interpretation of data",
+        "bbox": [
+            72,
+            613,
+            739,
+            627
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "2. Drafting the article or revising it critically for important intellectual content.",
+        "bbox": [
+            72,
+            645,
+            582,
+            659
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "3. Final approval of the version to be submitted.",
+        "bbox": [
+            74,
+            677,
+            387,
+            690
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "All authors are accountable for all aspects of the work, to ensure that questions related to the accuracy or integrity of any part of the work are appropriately investigated and resolved.",
+        "bbox": [
+            63,
+            709,
+            922,
+            740
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Authors should appoint a single corresponding author to communicate with the journal during the editorial process. This individua submits the manuscript and all required documentation to the journal, and serves as the primary contact between the journal and the co-authors. Only the corresponding author’s affiliation will be used to determine eligibility for a publishing agreement, and possible discounts related to it. Affiliations of other co-authors are not relevant for eligibility",
+        "bbox": [
+            63,
+            757,
+            915,
+            822
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Changes to authorship",
+        "text_level": 2,
+        "bbox": [
+            65,
+            840,
+            255,
+            854
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The editors of this journal generally will not consider changes to authorship once a manuscript has been submitted. It is importan that authors carefully consider the authorship list and order of authors and provide a definitive author list at submission.",
+        "bbox": [
+            63,
+            858,
+            910,
+            889
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The policy ofthis journal around authorship changes:",
+        "bbox": [
+            63,
+            907,
+            415,
+            921
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "fi nal.",
+        "bbox": [
+            65,
+            34,
+            104,
+            46
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "All authors must be listed in the manuscript and their details entered into the submission system. Changes can only be made prio to acceptance, and only if approved by the journal editor. This includes additions, deletion, or rearrangement of author names",
+        "bbox": [
+            72,
+            34,
+            929,
+            64
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Requests to change authorship must be made by the corresponding author using the Authorship Change Request form. The corresponding author must provide the reason for the request to the journal editor with written confirmation from all authors including any authors being added or removed, that they agree with the changes. Requests which do not comply with the instructions outlined in the form will not be considered.",
+        "bbox": [
+            72,
+            82,
+            907,
+            143
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "This journal does not allow authorship changes after acceptance. This includes additions, deletions, or the rearrangement of author names, including changes to the corresponding author",
+        "bbox": [
+            72,
+            162,
+            897,
+            193
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The review process may be paused while a change in authorship request is being considered.",
+        "bbox": [
+            72,
+            211,
+            690,
+            225
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Change requests made by the authors without the Authorship Change Request form or editor approval may result in the rejection of the manuscript, or retraction if the article has already been published.",
+        "bbox": [
+            72,
+            244,
+            925,
+            274
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Declaration ofcompeting interests",
+        "text_level": 2,
+        "bbox": [
+            65,
+            294,
+            351,
+            309
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "All authors must disclose any financial and personal relationships with other people or organizations that could inappropriately influence or bias their work. Examples of potential competing interests include:",
+        "bbox": [
+            63,
+            312,
+            893,
+            342
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Employment",
+        "bbox": [
+            72,
+            361,
+            178,
+            374
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Consultancies",
+        "bbox": [
+            72,
+            393,
+            186,
+            406
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Stock ownership",
+        "bbox": [
+            72,
+            426,
+            200,
+            439
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Honoraria",
+        "bbox": [
+            72,
+            458,
+            163,
+            470
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Paid expert testimony",
+        "bbox": [
+            72,
+            489,
+            235,
+            504
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Patent applications or registrations",
+        "bbox": [
+            72,
+            523,
+            324,
+            536
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Grants or any other funding",
+        "bbox": [
+            72,
+            556,
+            274,
+            569
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Affiliation with the journal as an Editor or Advisory Board Member",
+        "bbox": [
+            72,
+            587,
+            518,
+            601
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The declarations tool should always be completed.",
+        "bbox": [
+            63,
+            619,
+            395,
+            633
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Authors with a journal affiliation to declare should enter the following text under “Other Activities” within the declarations tool and should inform the journal and publisher prior to completing the submission process:",
+        "bbox": [
+            63,
+            652,
+            917,
+            683
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Given their role as [AUTHORJOURNAL ROLE TITLE], [AUTHOR NAME] had no involvement in the peer-review ofthis article and has no access to information regarding its peer-review. Full responsibility for the editorial process for this article was delegated to anothe journal editor.",
+        "bbox": [
+            63,
+            700,
+            893,
+            747
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Editorial disclosure statements will be included as a footnote and/or in the declaration of competing interest section of the article",
+        "bbox": [
+            63,
+            765,
+            905,
+            778
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Authors with no competing interests to declare should select the option \"I have nothing to declare\".",
+        "bbox": [
+            63,
+            797,
+            708,
+            812
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The resulting Word document containing your declaration should be uploaded at the \"attach/upload files\" step in the submission process. It is important that the Word document is saved in the .doc/.docx file format. Author signatures are not required.",
+        "bbox": [
+            63,
+            829,
+            898,
+            860
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Funding sources",
+        "text_level": 2,
+        "bbox": [
+            65,
+            879,
+            202,
+            895
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "Authors must disclose any funding sources who provided financial support for the conduct of the research and/or preparation of th article. The role of sponsors, if any, should be declared in relation to the study design, collection, analysis and interpretation of data writing of the report and decision to submit the article for publication. If funding sources had no such involvement this should be stated in your submission",
+        "bbox": [
+            63,
+            898,
+            919,
+            960
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "List funding sources in this standard way to facilitate compliance to funder's requirements:",
+        "bbox": [
+            63,
+            34,
+            656,
+            47
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Funding: This work was supported by the National Institutes ofHealth [grant numbers xxxx, yyyy]; the Bill & Melinda Gates Foundation, Seattle, WA [grant number zzzz]; and the United States Institutes ofPeace [grant number aaaa].",
+        "bbox": [
+            63,
+            66,
+            909,
+            97
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "It is not necessary to include detailed descriptions on the program or type of grants, scholarships and awards. When funding is from block grant or other resources available to a university, college, or other research institution, submit the name of the institute or organization that provided the funding",
+        "bbox": [
+            63,
+            115,
+            930,
+            161
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "If no funding has been provided for the research, it is recommended to include the following sentence:",
+        "bbox": [
+            63,
+            179,
+            728,
+            193
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "This research did not receive any specific grant from funding agencies in the public, commercial, or not-for-profit sectors.",
+        "bbox": [
+            63,
+            212,
+            821,
+            225
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Declaration ofgenerative AI use",
+        "text_level": 2,
+        "bbox": [
+            65,
+            244,
+            331,
+            259
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Authors must declare the use of generative AI tools in the manuscript preparation process upon submission of the paper.",
+        "bbox": [
+            63,
+            263,
+            846,
+            277
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Generative AI and AI-assisted technologies (“AI tools”) have been rapidly adopted in research and scholarly publishing, offering significant benefits while requiring clear standards for responsible and transparent use.",
+        "bbox": [
+            63,
+            294,
+            888,
+            326
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Authors preparing a manuscript for this journal may use AI tools to support them. However, these tools must never be used as a substitute for human critical thinking, expertise and evaluation. AI tools may only be applied with human oversight and control.",
+        "bbox": [
+            63,
+            344,
+            893,
+            374
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Please read Elsevier’s detailed author policy on the use of AI tools, as stated in Elsevier’s generative AI policies for journals.",
+        "bbox": [
+            63,
+            393,
+            858,
+            406
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ultimately, authors are responsible and accountable for the contents of their work. This includes accountability for:",
+        "bbox": [
+            63,
+            425,
+            809,
+            439
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Carefully reviewing and verifying the accuracy, comprehensiveness, and impartiality of all AI-generated output (including checking the sources, as AI-generated references can be incorrect or fabricated).",
+        "bbox": [
+            72,
+            457,
+            873,
+            488
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Editing and adapting all material thoroughly to ensure the manuscript represents the author’s authentic and original contribution and reflects their own analysis, interpretation, insights and ideas.",
+        "bbox": [
+            72,
+            506,
+            850,
+            537
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ensuring accuracy and originality of any AI generated images and provide appropriate attribution where relevant.",
+        "bbox": [
+            72,
+            555,
+            828,
+            569
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ensuring the use of any tools or sources, AI-based or otherwise, is made clear and transparent to readers. IfAI tools have been used, we require a disclosure statement upon submission; please see example below.",
+        "bbox": [
+            72,
+            587,
+            905,
+            618
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ensuring the manuscript is developed in a way that safeguards data privacy, intellectual property and other rights, by checking the terms and conditions of any AI tool that is used.",
+        "bbox": [
+            72,
+            636,
+            912,
+            665
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Finally, authors must not list or cite AI tools as an author or co-author on the manuscript since authorship implies responsibilities and tasks that can only be attributed to, and performed by, humans.",
+        "bbox": [
+            63,
+            684,
+            929,
+            715
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The use ofAI tools in the manuscript preparation process must be declared by adding a statement at the end of the manuscript when the paper is first submitted. The statement will appear in the published work and should be placed in a new section before th references list. An example:",
+        "bbox": [
+            63,
+            733,
+            927,
+            778
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Title of new section: Declaration ofgenerative AI and AI-assisted technologies in the manuscript preparation process.",
+        "bbox": [
+            63,
+            797,
+            806,
+            810
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Statement: During the preparation ofthis work the author(s) used [NAME OF TOOL/ SERVICE] in order to [REASON]. After using this tool/service, the author(s) reviewed and edited the content as needed and take(s) full responsibility for the content ofthe published article",
+        "bbox": [
+            63,
+            814,
+            927,
+            845
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "The declaration does not apply to the use of basic tools, such as tools used to check grammar, spelling and references. In addition, authors are not required to disclose the use ofAI tools or features within specialist disability-related assistive technology, provided these are used solely for accessibility purposes.",
+        "bbox": [
+            63,
+            863,
+            910,
+            909
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Ifyou have nothing to disclose, you do not need to add a statement.",
+        "bbox": [
+            63,
+            928,
+            506,
+            941
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Please note: to protect authors’ rights and the confidentiality of their research, this journal does not currently allow academic editors and reviewers to upload an unpublished manuscript into a generative AI tool, as is stated in Elsevier’s generative AI policies fo journals. However, AI tools may be used in a supportive capacity by editors and reviewers to improve structure and language of the review report or editorial decision letter or to conduct a background literature search. Elsevier is actively evaluating compliant A tools and may revise this policy in the future",
+        "bbox": [
+            63,
+            34,
+            924,
+            112
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Preprints",
+        "text_level": 2,
+        "bbox": [
+            65,
+            131,
+            144,
+            146
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Preprint sharing",
+        "text_level": 2,
+        "bbox": [
+            65,
+            149,
+            176,
+            164
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Authors may share preprints in line with Elsevier's article sharing policy. Sharing preprints, such as on a preprint server, will not count as prior publication.",
+        "bbox": [
+            63,
+            166,
+            927,
+            196
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We advise you to read our policy on multiple, redundant or concurrent publication.",
+        "bbox": [
+            63,
+            214,
+            602,
+            228
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "In support of Open Science, this journal offers its authors a free preprint posting service on SSRN, Elsevier’s preprint and early research repository.",
+        "bbox": [
+            63,
+            247,
+            877,
+            277
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "During submission to this journal, you can choose to post your manuscript on SSRN, and it will be made publicly available as soon as it passes the journal's initial desk review.",
+        "bbox": [
+            63,
+            294,
+            922,
+            326
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "As a preprint on SSRN, your manuscript will benefit from:",
+        "bbox": [
+            63,
+            344,
+            437,
+            357
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Early registration with a preprint DOI (Digital Object Identifier)",
+        "bbox": [
+            72,
+            376,
+            500,
+            391
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "A link from the preprint to the version of record if published in this journa",
+        "bbox": [
+            72,
+            409,
+            569,
+            423
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Preprint posting, sharing, and download availability that facilitates collaboration and early citations",
+        "bbox": [
+            72,
+            441,
+            742,
+            456
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Your decision to post or not post your preprint will have no effect on the editorial process or publication outcome with the journal. Fo additional information, please consult the SSRN Terms of Use and FAQs.",
+        "bbox": [
+            63,
+            474,
+            929,
+            504
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "It is expected that the corresponding author will seek approval from all co-authors before agreeing to post the manuscript publicly prior to peer review, on SSRN.",
+        "bbox": [
+            63,
+            521,
+            914,
+            552
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Use ofinclusive language",
+        "text_level": 2,
+        "bbox": [
+            63,
+            571,
+            274,
+            587
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "Inclusive language acknowledges diversity, conveys respect to all people, is sensitive to differences, and promotes equa opportunities. Authors should ensure their work uses inclusive language throughout and contains nothing which might imply one individual is superior to another on the grounds of:",
+        "bbox": [
+            63,
+            590,
+            902,
+            637
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "age",
+        "bbox": [
+            72,
+            657,
+            121,
+            669
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "gender",
+        "bbox": [
+            72,
+            688,
+            141,
+            701
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "race",
+        "bbox": [
+            72,
+            721,
+            124,
+            732
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "ethnicity",
+        "bbox": [
+            72,
+            753,
+            151,
+            766
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "culture",
+        "bbox": [
+            72,
+            785,
+            141,
+            797
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "sexual orientation",
+        "bbox": [
+            72,
+            816,
+            213,
+            829
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "disability or health condition",
+        "bbox": [
+            72,
+            848,
+            279,
+            862
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "We recommend avoiding the use of descriptors about personal attributes unless they are relevant and valid. Write for gende neutrality with the use of plural nouns (\"clinicians, patients/clients\") as default. Wherever possible, avoid using \"he, she,\" or \"he/she.\"",
+        "bbox": [
+            63,
+            881,
+            915,
+            912
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "No assumptions should be made about the beliefs of readers and writing should be free from bias, stereotypes, slang, reference t dominant culture and/or cultural assumptions.",
+        "bbox": [
+            63,
+            929,
+            905,
+            960
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "7/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "These guidelines are meant as a point of reference to help you identify appropriate language but are by no means exhaustive or definitive.",
+        "bbox": [
+            63,
+            34,
+            890,
+            63
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Reporting sex- and gender-based analyses",
+        "text_level": 2,
+        "bbox": [
+            65,
+            82,
+            412,
+            98
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "There is no single, universally agreed-upon set of guidelines for defining sex and gender. We offer the following guidance:",
+        "bbox": [
+            63,
+            101,
+            848,
+            116
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Sex and gender-based analyses (SGBA) should be integrated into research design when research involves or pertains to humans, animals or eukaryotic cells. This should be done in accordance with any requirements set by funders or sponsors and bes practices within a field.",
+        "bbox": [
+            72,
+            133,
+            915,
+            180
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Sex and/or gender dimensions of the research should be addressed within the article or declared as a limitation to the generalizability of the research.",
+        "bbox": [
+            72,
+            198,
+            851,
+            229
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Definitions of sex and/or gender applied should be explicitly stated to enhance the precision, rigor and reproducibility of the research and to avoid ambiguity or conflation of terms and the constructs to which they refer.",
+        "bbox": [
+            72,
+            247,
+            888,
+            277
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We advise you to read the Sex and Gender Equity in Research (SAGER) guidelines and the SAGER checklist (PDF) on the EASE website which offer systematic approaches to the use of sex and gender information in study design, data analysis, outcome reporting and research interpretation.",
+        "bbox": [
+            63,
+            294,
+            914,
+            342
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "For further information we suggest reading the rationale behind and recommended use of the SAGER guidelines.",
+        "bbox": [
+            63,
+            360,
+            792,
+            374
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Definitions ofsex and/or gender",
+        "text_level": 2,
+        "bbox": [
+            65,
+            393,
+            277,
+            406
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "We ask authors to define how sex and gender have been used in their research and publication. Some guidance:",
+        "bbox": [
+            63,
+            409,
+            789,
+            423
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Sex generally refers to a set of biological attributes that are associated with physical and physiological features such a chromosomal genotype, hormonal levels, internal and external anatomy. A binary sex categorization (male/female) is usually designated at birth (\"sex assigned at birth\") and is in most cases based solely on the visible external anatomy of a newborn. In reality, sex categorizations include people who are intersex/have differences of sex development (DSD)",
+        "bbox": [
+            72,
+            441,
+            902,
+            505
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Gender generally refers to socially constructed roles, behaviors and identities of women, men and gender-diverse people tha occur in a historical and cultural context and may vary across societies and over time. Gender influences how people view themselves and each other, how they behave and interact and how power is distributed in society",
+        "bbox": [
+            72,
+            521,
+            898,
+            570
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Depending on the focus of a paper, sex and/or gender may or may not be relevant to the content of the paper. We recognize that beliefs, attitudes, and laws relating to sex and gender may vary. These articles do not attempt to dictate author beliefs but rathe require that, where relevant to an author’s research or paper, the author must provide clear explanations of how the paper and research define and use sex and gender",
+        "bbox": [
+            63,
+            587,
+            900,
+            651
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Jurisdictional claims",
+        "text_level": 2,
+        "bbox": [
+            63,
+            669,
+            235,
+            684
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Elsevier respects the decisions taken by its authors as to how they choose to designate territories and identify their affiliations in thei published content. Elsevier’s policy is to take a neutral position with respect to territorial disputes or jurisdictional claims, including, but not limited to, maps and institutional affiliations. For journals that Elsevier publishes on behalf of a third party owner, the owne may set its own policy on these issues",
+        "bbox": [
+            63,
+            687,
+            925,
+            751
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Maps: Readers should be able to locate any study areas shown within maps using common mapping platforms. Maps should only show the area actually studied and authors should not include a location map which displays a larger area than the boundin box of the study area. Authors should add a note clearly stating that \"map lines delineate study areas and do not necessarily depict accepted national boundaries”. During the review process, Elsevier’s editors may request authors to change maps if these guidelines are not followed.",
+        "bbox": [
+            72,
+            768,
+            925,
+            848
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Institutional affiliations: Authors should use either the full, standard title of their institution or the standard abbreviation of the institutional name so that the institutional name can be independently verified for research integrity purposes.",
+        "bbox": [
+            72,
+            865,
+            912,
+            896
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Studies in humans",
+        "text_level": 2,
+        "bbox": [
+            65,
+            915,
+            218,
+            929
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "Authors must follow ethical guidelines for research involving humans, their data, and/or their biological materials (e.g. organs, tissues). Authors should ensure that they adhere to the following:",
+        "bbox": [
+            63,
+            933,
+            885,
+            963
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            447,
+            983
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "8/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "All studies must be performed in compliance with relevant laws, regulations, and institutional guidelines and that the appropriate institutional committee(s) has/have approved them. For instance, medical research involving humans should be carried out in accordance with the World Medical Association Declaration of Helsinki: Ethical principles for medical research involving human participants and should follow the International Committee of Medical Journal Editors (ICMJE) recommendations for the conduct, reporting, editing and publication of scholarly work in medical journals and aim to be representative of human populations in terms of sex, age and ethnicity. Sex and gender terms should be used correctly, as outlined in the “Reporting Sex- and Gender-based analyses” section of this journal’s Guide for Authors.",
+        "bbox": [
+            72,
+            33,
+            893,
+            146
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Informed consent must be obtained for research with human participants, including their data or biological materials. Consent must be given without coercion, and the privacy rights of human participants must always be observed. Ifyour study contains human participants, please read Elsevier’s full human research policy for further information",
+        "bbox": [
+            72,
+            162,
+            912,
+            210
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Authors should be aware that written (or electronic) consent is required for certain studies under national laws. In studies where only verbal informed consent was obtained, authors should include justification for the absence of written consent, the name of the approving ethics committee, and a statement on how verbal consent was recorded",
+        "bbox": [
+            95,
+            228,
+            927,
+            275
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Consent for publication should also be obtained.",
+        "bbox": [
+            95,
+            293,
+            430,
+            306
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Authors must obtain and retain explicit written consent for any identifiable participant materials (e.g. case details, videos recordings, images, photographs, and illustrations). All participant information must be de-identified: do not include names or personal identifiers (e.g., initials, ID numbers, DOB)",
+        "bbox": [
+            72,
+            325,
+            909,
+            373
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Images should be used only when scientifically necessary and with explicit consent, and nonessential identifying details must be removed. If identifiers are altered to ensure anonymity, authors must confirm that scientific meaning is not affected. Full anonymized images (e.g., x-rays, scans) that contain no identifying marks and are not accompanied by identifying text do not require formal consent, though informing the patient is good practice. Case reports always require consent. Simply obscuring identity (e.g., eye bars or blurring) is not sufficient without consent.",
+        "bbox": [
+            72,
+            390,
+            919,
+            470
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Written consents must be retained by the authors. They should not be provided to this journal unless this is specifically requeste in exceptional circumstances, for example, when a legal issue arises. Only then should you provide copies of the consents, or evidence that all relevant consents were obtained.",
+        "bbox": [
+            72,
+            487,
+            922,
+            533
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Appropriate consents and safeguards should be in place for research with vulnerable populations, as described in Elsevier’ human research policy. In many countries, additional ethical approval may be needed for research with those who lack the capacity to consent (e.g. children or those with mental health or neurological conditions including dementia).",
+        "bbox": [
+            72,
+            552,
+            888,
+            600
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "For the full policy, see “Consent requirements for case reports, personal information, and images.”",
+        "bbox": [
+            72,
+            617,
+            723,
+            631
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "All studies involving human participants require a statement that details any ethical approval(s), guidelines followed, confirmation of informed consent, and any other necessary information in line with Elsevier’s human research policy. The statement should contain the date and reference number of any ethical approval(s) obtained",
+        "bbox": [
+            63,
+            649,
+            929,
+            696
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "If ethical approval is not required by national laws or where a study has been granted an exemption from an ethics committee, the statement must explain why the study is exempt and confirm that the appropriate protocols for protecting the rights and privacy o all participants were utilized during the execution of the research (e.g. no coercion to participate, full disclosure of study requirements and risks, consent of participants (or their Legal Representatives), no release of participant data without their knowledge, etc.)",
+        "bbox": [
+            63,
+            714,
+            932,
+            778
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Human biological material",
+        "text_level": 2,
+        "bbox": [
+            63,
+            796,
+            289,
+            810
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "For all studies that use human organs or tissues, sufficient evidence must be provided that these were procured in line with WHO Guiding Principles on Human Cell, Tissue and Organ Transplantation. The source of the organs or tissues used in clinical researc must be transparent and traceable and must not be sourced from executed prisoners or prisoners of conscience, consistent with recommendations by Global Rights Compliance on Mitigating Human Rights Risks in Transplantation Medicine",
+        "bbox": [
+            63,
+            814,
+            900,
+            878
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "For clinical studies, a statement of informed consent having been obtained from a patient or their legal representative, paired with ethical approval for the study from a suitable institution, as required by the policies of the journal, may be considered sufficien evidence, but the journal reserves the right to request additional evidence in cases where it feels this is not sufficient",
+        "bbox": [
+            63,
+            895,
+            910,
+            942
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "9/23",
+        "bbox": [
+            932,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "If the manuscript describes organ transplantation authors must additionally declare within the manuscript that:",
+        "bbox": [
+            63,
+            34,
+            794,
+            48
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Autonomous consent, free from coercion, was obtained from the donor(s) or their next of kin.",
+        "bbox": [
+            72,
+            66,
+            690,
+            80
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Organs and/or tissues were not sourced from executed prisoners or prisoners of conscience",
+        "bbox": [
+            72,
+            99,
+            683,
+            112
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Delayed publication",
+        "text_level": 2,
+        "bbox": [
+            65,
+            131,
+            232,
+            146
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Ifyou need to delay the publication ofyour article for any reason, please contact the editorial office of the journal or our Journa Article Publishing Support Center at the earliest possible opportunity. While we will try to ensure that your article is not published before a certain date ifyou make your request on a timely basis, we cannot guarantee this. Please also note that once the agreed period of delay has expired the article may be published at any time thereafter.",
+        "bbox": [
+            63,
+            149,
+            900,
+            212
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Withdrawal, correction or retraction",
+        "text_level": 2,
+        "bbox": [
+            63,
+            231,
+            363,
+            246
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "For questions about article withdrawal, correction, or retraction, please consult Elsevier’s Article Correction, Retraction and Remova Policy.",
+        "bbox": [
+            63,
+            249,
+            922,
+            279
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Writing and formatting",
+        "text_level": 2,
+        "bbox": [
+            63,
+            299,
+            297,
+            318
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "File format",
+        "text_level": 2,
+        "bbox": [
+            65,
+            329,
+            161,
+            343
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "We ask you to provide editable source files for your entire submission (including figures, tables and text graphics). Some guidelines:",
+        "bbox": [
+            63,
+            347,
+            910,
+            362
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Save files in an editable format, using the extension .doc/.docx for Word files and .tex for LaTeX files. A PDF is not an acceptabl source file.",
+        "bbox": [
+            72,
+            380,
+            907,
+            409
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Format Word files in a single-column layout. Double-column formatting is only permitted for LaTeX submissions.",
+        "bbox": [
+            72,
+            428,
+            816,
+            443
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Remove any strikethrough and underlined text from your manuscript, unless it has scientific significance related to your article",
+        "bbox": [
+            72,
+            461,
+            910,
+            475
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Use spell-check and grammar-check functions to avoid errors.",
+        "bbox": [
+            72,
+            494,
+            496,
+            508
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "We advise you to read our Step-by-step guide to publishing with Elsevier.",
+        "bbox": [
+            63,
+            526,
+            535,
+            539
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Title page",
+        "text_level": 2,
+        "bbox": [
+            65,
+            558,
+            151,
+            574
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "You are required to include the following details in the title page information:",
+        "bbox": [
+            63,
+            577,
+            569,
+            592
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Article title. Article titles should be concise and informative. Please avoid abbreviations and formulae, where possible, unless the are established and widely understood, e.g. DNA.",
+        "bbox": [
+            72,
+            609,
+            927,
+            639
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Author names. Provide the given name(s) and family name(s) of each author. The order of authors should match the order in the submission system. Carefully check that all names are accurately spelled. If needed, you can add your name between parentheses in your own script after the English transliteration.",
+        "bbox": [
+            72,
+            658,
+            929,
+            705
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Affiliations, referring to where the work was carried out, below the author names. Indicate affiliations using a lower-case superscript letter immediately after the author's name and in front of the corresponding address. Ensure that you provide the ful name and postal address of each affiliation, including the country name and, if available, the email address of each author.",
+        "bbox": [
+            72,
+            722,
+            924,
+            770
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Corresponding author. Clearly indicate who will handle correspondence for your article at all stages of the refereeing and publication process and also post-publication. This responsibility includes answering any future queries about your results, data, methodology and materials. It is important that the email address and contact details ofyour corresponding author are kept up to date during the submission and publication process.",
+        "bbox": [
+            72,
+            788,
+            920,
+            851
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Present/permanent address. If an author has moved since the work described in your article was carried out, or the author wa visiting during that time, a \"present address\" (or \"permanent address\") can be indicated by a footnote to the author's name. The address where the author carried out the work must be retained as their main affiliation address. Use superscript Arabic numerals for such footnotes.",
+        "bbox": [
+            72,
+            869,
+            915,
+            931
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "10/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Abstract",
+        "text_level": 2,
+        "bbox": [
+            65,
+            35,
+            141,
+            47
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "You are required to provide a concise and factual abstract which does not exceed 250 words. The abstract should briefly state the purpose ofyour research, principal results and major conclusions. Some guidelines:",
+        "bbox": [
+            63,
+            52,
+            900,
+            83
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Abstracts must be able to stand alone as abstracts are often presented separately from the article.",
+        "bbox": [
+            72,
+            101,
+            728,
+            115
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Avoid references. If any are essential to include, ensure that you cite the author(s) and year(s).",
+        "bbox": [
+            72,
+            133,
+            693,
+            148
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Avoid non-standard or uncommon abbreviations. If any are essential to include, ensure they are defined within your abstract at first mention.",
+        "bbox": [
+            72,
+            166,
+            912,
+            195
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Keywords",
+        "text_level": 2,
+        "bbox": [
+            65,
+            215,
+            149,
+            229
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "You are required to provide 1 to 7 keywords for indexing purposes. Keywords should be written in English. Please try to avoid keyword consisting of multiple words (using \"and\" or \"of\").",
+        "bbox": [
+            63,
+            234,
+            929,
+            263
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We recommend that you only use abbreviations in keywords if they are firmly established in the field.",
+        "bbox": [
+            63,
+            281,
+            718,
+            296
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Highlights",
+        "text_level": 2,
+        "bbox": [
+            65,
+            315,
+            154,
+            330
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "You are encouraged to provide article highlights at submission.",
+        "bbox": [
+            63,
+            332,
+            478,
+            347
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Highlights are a short collection of bullet points that should capture the novel results ofyour research as well as any new methods used during your study. Highlights will help increase the discoverability ofyour article via search engines. Some guidelines:",
+        "bbox": [
+            63,
+            365,
+            907,
+            395
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Submit highlights as a separate editable file in the online submission system with the word \"highlights\" included in the file name.",
+        "bbox": [
+            72,
+            414,
+            922,
+            428
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Highlights should consist of 3 to 5 bullet points, each a maximum of 85 characters, including spaces.",
+        "bbox": [
+            72,
+            447,
+            737,
+            461
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "We encourage you to view example article highlights and read about the benefits of their inclusion.",
+        "bbox": [
+            63,
+            479,
+            707,
+            493
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Graphical abstract",
+        "text_level": 2,
+        "bbox": [
+            65,
+            512,
+            223,
+            527
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "You are encouraged to provide a graphical abstract at submission.",
+        "bbox": [
+            63,
+            530,
+            500,
+            545
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "The graphical abstract summarizes the contents ofyour article in a concise, pictorial, professional form, highlighting important aspects of the research. It is designed to appeal to an interdisciplinary audience, and draw more attention to your online article Some guidelines:",
+        "bbox": [
+            63,
+            562,
+            893,
+            609
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Ensure you have obtained the necessary permission to include any third party owned material in a graphical abstract.",
+        "bbox": [
+            72,
+            627,
+            850,
+            642
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Use of generative AI or AI-assisted tools in the production of graphical abstracts must align with Elsevier’s GenAI Policies for Journals.",
+        "bbox": [
+            72,
+            659,
+            893,
+            690
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Submit your graphical abstract as a separate file in the online submission system.",
+        "bbox": [
+            72,
+            709,
+            619,
+            722
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Ensure the image is 531 x 1328 pixels (h x w) or proportionally more, and is readable at a size of 5 x 13 cm.",
+        "bbox": [
+            72,
+            741,
+            762,
+            755
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Preferred file types for graphical abstracts are TIFF, EPS, PDF or MS Office files.",
+        "bbox": [
+            72,
+            774,
+            599,
+            787
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "More information, examples and a template can be found in the graphical abstract guidelines",
+        "bbox": [
+            65,
+            806,
+            676,
+            820
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Math formulae",
+        "text_level": 2,
+        "bbox": [
+            65,
+            840,
+            191,
+            853
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Submit math equations as editable text, not as images.",
+        "bbox": [
+            72,
+            866,
+            449,
+            879
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Present simple formulae in line with normal text, where possible.",
+        "bbox": [
+            72,
+            898,
+            511,
+            912
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Use the solidus (/) instead of a horizontal line for small fractional terms such as X/Y.",
+        "bbox": [
+            72,
+            931,
+            632,
+            944
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "page_number",
+        "text": "11/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 10
+    },
+    {
+        "type": "text",
+        "text": "Present variables in italics.",
+        "bbox": [
+            72,
+            34,
+            267,
+            47
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Denote powers of e by exp.",
+        "bbox": [
+            72,
+            67,
+            267,
+            80
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Display equations separately from your text, numbering them consecutively in the order they are referred to within your text.",
+        "bbox": [
+            72,
+            98,
+            893,
+            112
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Tables",
+        "text_level": 2,
+        "bbox": [
+            65,
+            131,
+            122,
+            145
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Tables must be submitted as editable text, not as images. Some guidelines:",
+        "bbox": [
+            63,
+            149,
+            553,
+            164
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Place tables next to the relevant text or on a separate page(s) at the end ofyour article.",
+        "bbox": [
+            72,
+            181,
+            653,
+            196
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Cite all tables in the manuscript text.",
+        "bbox": [
+            72,
+            214,
+            333,
+            228
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Number tables consecutively according to their appearance in the text.",
+        "bbox": [
+            72,
+            247,
+            550,
+            260
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Please provide captions along with the tables.",
+        "bbox": [
+            72,
+            279,
+            392,
+            293
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Place any table notes below the table body.",
+        "bbox": [
+            72,
+            312,
+            373,
+            325
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Avoid vertical rules and shading within table cells.",
+        "bbox": [
+            72,
+            344,
+            417,
+            357
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "We recommend that you use tables sparingly, ensuring that any data presented in tables is not duplicating results described elsewhere in the article.",
+        "bbox": [
+            63,
+            376,
+            868,
+            406
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Figures, images and artwork",
+        "text_level": 2,
+        "bbox": [
+            65,
+            426,
+            303,
+            441
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Figures, images, diagrams and other graphical media (artwork) must be supplied as separate files along with the manuscript, in line with these artwork and media instructions. Some excerpts:",
+        "bbox": [
+            63,
+            444,
+            920,
+            474
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "When submitting artwork:",
+        "bbox": [
+            63,
+            492,
+            242,
+            506
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Cite all images in the manuscript text.",
+        "bbox": [
+            72,
+            525,
+            340,
+            539
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Number images according to the order they appear within your article.",
+        "bbox": [
+            72,
+            558,
+            550,
+            571
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Submit each image as a separate file using a logical naming convention for your files (for example, Figure\\_1, Figure\\_2 etc).",
+        "bbox": [
+            72,
+            590,
+            878,
+            605
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Text graphics may be embedded in the text at the appropriate position. Ifyou are working with LaTeX, text graphics may also be embedded in the file.",
+        "bbox": [
+            72,
+            621,
+            915,
+            652
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Captions",
+        "text_level": 2,
+        "bbox": [
+            63,
+            671,
+            143,
+            686
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "All artwork must have a caption. A caption should consist of a brief title (not displayed on the figure itself) and a description of the image. Keep the amount oftext in any image to a minimum, though any symbol or abbreviation should be explained",
+        "bbox": [
+            63,
+            689,
+            905,
+            721
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Read how to add captions to your submission here.",
+        "bbox": [
+            65,
+            738,
+            398,
+            753
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Formats",
+        "text_level": 2,
+        "bbox": [
+            65,
+            772,
+            139,
+            785
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "When your artwork is finalized, \"save as\" or convert your electronic artwork to the formats listed below taking into account the given resolution requirements for line drawings, halftones, and line/halftone combinations:",
+        "bbox": [
+            63,
+            790,
+            922,
+            821
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Vector drawings: Save as EPS or PDF files embedding the font or saving the text as \"graphics.\"",
+        "bbox": [
+            72,
+            838,
+            695,
+            853
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Color or grayscale photographs (halftones): Save as TIFF, JPG or PNG files using a minimum of 300 dpi (for single column width: min. 1063 pixels, full page width: 2244 pixels).",
+        "bbox": [
+            72,
+            871,
+            909,
+            902
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Bitmapped line drawings: Save as TIFF, JPG or PNG files, using a minimum of 1000 dpi (for single column width: min. 3543 pixels, full page width: 7480 pixels).",
+        "bbox": [
+            72,
+            919,
+            914,
+            948
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "page_number",
+        "text": "12/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 11
+    },
+    {
+        "type": "text",
+        "text": "Combinations bitmapped line/halftones (color or grayscale): Save as TIFF, JPG or PNG files using a minimum of 500 dpi (for single column: min. 1772 pixels, full page width: 3740 pixels).",
+        "bbox": [
+            72,
+            33,
+            920,
+            64
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Please do not submit:",
+        "bbox": [
+            65,
+            82,
+            210,
+            96
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Files that are too low in resolution.",
+        "bbox": [
+            72,
+            115,
+            319,
+            128
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Artwork where text is disproportionately small compared to the image size, as text may become unreadable.",
+        "bbox": [
+            72,
+            146,
+            792,
+            161
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Different images or graphs combined into one, as this affects accessibility",
+        "bbox": [
+            72,
+            179,
+            570,
+            193
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Color artwork",
+        "text_level": 2,
+        "bbox": [
+            65,
+            212,
+            183,
+            227
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "If you submit usable color figures with your accepted article, we will ensure that they appear in color online.",
+        "bbox": [
+            63,
+            230,
+            762,
+            244
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Please ensure that color images are accessible to all, including those with impaired color vision. Learn more about color and web accessibility.",
+        "bbox": [
+            63,
+            263,
+            898,
+            293
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Generative AI and Figures, images and other artwork",
+        "text_level": 2,
+        "bbox": [
+            63,
+            312,
+            500,
+            326
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Please read our policy on the use of generative AI and AI-assisted tools in figures, images and artwork, which can be found in Elsevier’s GenAI Policies for Journals. This policy states:",
+        "bbox": [
+            63,
+            330,
+            873,
+            361
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "AI tools may be used to support the creation of explanatory images (such as flow charts, conceptual diagrams, or schematic illustrations)",
+        "bbox": [
+            72,
+            379,
+            893,
+            409
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "AI tools may be used to create data visualizations (such as plots, charts, graphs, or heatmaps) when the output is directly derived from underlying data using reproducible analytical, computational, or statistical methods.",
+        "bbox": [
+            72,
+            428,
+            924,
+            458
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "AI tools must not be used to create or alter images that represent primary observed or experimental data (such as western blots, microscopy images, histology images, or patient images) that were not directly obtained in the research. This includes adjustments to brightness, contrast, or color balance, which should only be done using established image processing software",
+        "bbox": [
+            72,
+            476,
+            920,
+            524
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "This policy does not prevent the use of AI tools in formal research design or research methods (such as in AI-assisted imaging approaches used for collection and/or interpretation of the underlying research data or predictive modelling of clinical outcomes based on patient data).",
+        "bbox": [
+            72,
+            541,
+            925,
+            588
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Authors are responsible for ensuring the accuracy and originality of all images submitted for publication. Ifyou used generative AI tools to create images in your manuscript, you should disclose this in each image caption as well as in the general Generative A disclosure statement.",
+        "bbox": [
+            63,
+            606,
+            907,
+            652
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Supplementary material",
+        "text_level": 2,
+        "bbox": [
+            63,
+            671,
+            267,
+            687
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "We encourage the use of supplementary materials such as applications, images and sound clips to enhance research. Some guidelines:",
+        "bbox": [
+            63,
+            689,
+            865,
+            720
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Supplementary material should be accurate and relevant to the research.",
+        "bbox": [
+            72,
+            739,
+            565,
+            752
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Cite all supplementary files in the manuscript text.",
+        "bbox": [
+            72,
+            771,
+            420,
+            785
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Submit all supplementary materials at the same time as your manuscript.",
+        "bbox": [
+            72,
+            804,
+            569,
+            816
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Include a concise, descriptive caption for each supplementary file, describing its content",
+        "bbox": [
+            72,
+            835,
+            666,
+            850
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "After submission supplementary files can only be added or replaced in the revision stage of the editorial process.",
+        "bbox": [
+            72,
+            869,
+            816,
+            883
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Be aware that all supplementary materials provided will appear online in the exact same way as received. These files will not be checked, formatted or typeset by the production team.",
+        "bbox": [
+            72,
+            900,
+            917,
+            929
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "page_number",
+        "text": "13/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 12
+    },
+    {
+        "type": "text",
+        "text": "Video",
+        "text_level": 2,
+        "bbox": [
+            65,
+            34,
+            117,
+            48
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "This journal accepts video material and animation sequences to support and enhance your scientific research. We encourage you to include links to video or animation files within articles. Some guidelines:",
+        "bbox": [
+            63,
+            52,
+            917,
+            83
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "When including video or animation file links within your article, refer to the video or animation content by adding a note in you text where the file should be placed.",
+        "bbox": [
+            72,
+            101,
+            914,
+            131
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Clearly label files ensuring the given file name is directly related to the file content.",
+        "bbox": [
+            72,
+            149,
+            626,
+            164
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Provide files in one of our recommended file formats. Files should be within our preferred maximum file size of 150 MB per file, 1 GB in total.",
+        "bbox": [
+            72,
+            181,
+            912,
+            211
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Provide \"stills\" for each of your files. These will be used as standard icons to personalize the link to your video data. You can choose any frame from your video or animation or make a separate image.",
+        "bbox": [
+            72,
+            230,
+            885,
+            261
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Provide descriptive text in your manuscript to refer to the video content. This text helps ensure accessibility for visually impaired readers who rely on descriptive information. For journals publishing in print this is also essential, as video and animation files cannot be embedded in the print version.",
+        "bbox": [
+            72,
+            279,
+            914,
+            326
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "We publish all video and animation files supplied in the electronic version of your article.",
+        "bbox": [
+            63,
+            344,
+            639,
+            357
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "For more detailed instructions, we recommend that you read our guidelines on submitting video content to be included in the body of an article.",
+        "bbox": [
+            63,
+            376,
+            927,
+            406
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Research data",
+        "text_level": 2,
+        "bbox": [
+            63,
+            426,
+            186,
+            439
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "We are committed to supporting the storage of, access to and discovery of research data, and our research data policy sets out the principles guiding how we work with the research community to support a more efficient and transparent research process.",
+        "bbox": [
+            63,
+            444,
+            910,
+            475
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Research data refers to the results of observations or experimentation that validate research findings, which may also include software, code, models, algorithms, protocols, methods and other useful materials related to the project.",
+        "bbox": [
+            63,
+            492,
+            878,
+            524
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Please read our guidelines on sharing research data for more information on depositing, sharing and using research data and othe relevant research materials.",
+        "bbox": [
+            63,
+            541,
+            917,
+            571
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Research data deposit, citation and linking",
+        "text_level": 2,
+        "bbox": [
+            63,
+            590,
+            346,
+            604
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "For this journal, Option C instructions from our research data guidelines apply. This means that you are required to:",
+        "bbox": [
+            63,
+            607,
+            811,
+            621
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Deposit your research data in a relevant data repository.",
+        "bbox": [
+            72,
+            639,
+            457,
+            653
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Cite and link to this dataset in your article.",
+        "bbox": [
+            72,
+            671,
+            368,
+            684
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "If this is not possible, make a statement explaining why research data cannot be shared.",
+        "bbox": [
+            72,
+            703,
+            661,
+            717
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Data statement",
+        "text_level": 2,
+        "bbox": [
+            65,
+            737,
+            198,
+            751
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "To foster transparency, you are required to state the availability of any data at submission.",
+        "bbox": [
+            63,
+            755,
+            651,
+            769
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Ensuring data is available may be a requirement ofyour funding body or institution. Ifyour data is unavailable to access or unsuitable to post, you can state the reason why (e.g., your research data includes sensitive or confidential information such as patient data) during the submission process. This statement will appear with your published article on ScienceDirect.",
+        "bbox": [
+            63,
+            787,
+            930,
+            834
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Read more about the importance and benefits ofproviding a data statement.",
+        "bbox": [
+            63,
+            852,
+            567,
+            866
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Data linking",
+        "text_level": 2,
+        "bbox": [
+            65,
+            885,
+            170,
+            900
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Linking to the data underlying your work increases your exposure and may lead to new collaborations. It also provides readers with a better understanding of the described research.",
+        "bbox": [
+            63,
+            904,
+            925,
+            933
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "page_number",
+        "text": "14/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 13
+    },
+    {
+        "type": "text",
+        "text": "Ifyour research data has been made available in a data repository there are a number of ways your article can be linked directly to the dataset:",
+        "bbox": [
+            63,
+            34,
+            910,
+            63
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Provide a link to your dataset when prompted during the online submission process.",
+        "bbox": [
+            72,
+            82,
+            634,
+            96
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "For some data repositories, a repository banner will automatically appear next to your published article on ScienceDirect.",
+        "bbox": [
+            72,
+            114,
+            873,
+            129
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "You can also link relevant data or entities within the text ofyour article through the use of identifiers. Use the following format: Database: 12345 (e.g. TAIR: AT1G01020; CCDC: 734053; PDB: 1XFN).",
+        "bbox": [
+            72,
+            146,
+            910,
+            177
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Learn more about linking research data and research articles in ScienceDirect.",
+        "bbox": [
+            63,
+            195,
+            575,
+            209
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Co-submission ofrelated data, methods or protocols",
+        "text_level": 2,
+        "bbox": [
+            63,
+            229,
+            494,
+            244
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "You are encouraged to publish a description ofyour research data, methods, or protocols related to your regular article as a co submission article in Data in Brief or MethodsX",
+        "bbox": [
+            63,
+            247,
+            890,
+            275
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "This co-submission can be submitted at the same time as your regular manuscript submission to this journal. If both your regular and co-submitted manuscripts are accepted for publication, they will be linked together on ScienceDirect, thereby promoting research reproducibility, interoperability, and open science.",
+        "bbox": [
+            63,
+            294,
+            927,
+            343
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Prepare a separate manuscript describing your research data, methods, or protocols using the mandatory templates from Data in Brief or in MethodsX.",
+        "bbox": [
+            72,
+            360,
+            927,
+            390
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Submit this co-submission alongside your regular manuscript as a separate submission item; on the ‘Attach files’ page in Editoria Manager, after which it will be automatically forwarded to the Data in Brief or MethodsX and assigned an editor.",
+        "bbox": [
+            72,
+            409,
+            927,
+            439
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "For associated Article Processing Charge (APC) details, please visit:",
+        "bbox": [
+            72,
+            457,
+            523,
+            472
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "MethodsX",
+        "bbox": [
+            97,
+            491,
+            186,
+            502
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Data in Brief",
+        "bbox": [
+            97,
+            523,
+            203,
+            536
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Please note: Due to the automated process of submitting to Data in Brief or MethodsX, only after acceptance will you be presented with a personalized OA Article Publishing Charge based on your individual context (your country, institutional affiliation, and any society membership for example).",
+        "bbox": [
+            63,
+            555,
+            902,
+            602
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Please visit co-submission Researcher Support page for more information on how to submit a co-submission.",
+        "bbox": [
+            63,
+            619,
+            769,
+            633
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Journal specific information: Writing and formatting",
+        "text_level": 2,
+        "bbox": [
+            63,
+            653,
+            493,
+            669
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Use ofword processing software",
+        "text_level": 2,
+        "bbox": [
+            63,
+            671,
+            281,
+            684
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "It is important that the file be saved in the native format of the word processor used. The text should be in single-column format. Keep the layout of the text as simple as possible. Most formatting codes will be removed and replaced on processing the article. In particular, do not use the word processor's options to justify text or to hyphenate words. However, do use bold face, italics, subscripts superscripts etc. When preparing tables, ifyou are using a table grid, use only one grid for each individual table and not a grid fo each row. If no grid is used, use tabs, not spaces, to align columns. The electronic text should be prepared in a way very similar to tha of conventional manuscripts (see also the Guide to Publishing with Elsevier). Note that source files of figures, tables and text graphic will be required whether or not you embed your figures in the text. See also the section on Electronic artwork.",
+        "bbox": [
+            63,
+            687,
+            930,
+            800
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "To avoid unnecessary errors you are strongly advised to use the 'spell-check' and 'grammar-check' functions ofyour word processor. When preparing your manuscript, please make sure that you strictly adhere to the Template for Original Software Publications",
+        "bbox": [
+            63,
+            816,
+            915,
+            848
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "LaTeX",
+        "text_level": 2,
+        "bbox": [
+            63,
+            866,
+            107,
+            878
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "The format of a software article is very different to a traditional research article. We will only consider software articles that ar submitted using SoftwareX's template. You will find both a Word and a LaTeX template immediately below. Choose the one you prefe and fill in each section, without altering any format settings.",
+        "bbox": [
+            63,
+            881,
+            927,
+            928
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Word templates (please note that figures must be directly embedded in the .docx file):",
+        "bbox": [
+            63,
+            946,
+            619,
+            960
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "page_number",
+        "text": "15/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            447,
+            983
+        ],
+        "page_idx": 14
+    },
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            65,
+            34,
+            260,
+            46
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Software update",
+        "bbox": [
+            65,
+            67,
+            178,
+            79
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "LaTeX templates:",
+        "bbox": [
+            65,
+            99,
+            178,
+            111
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            65,
+            131,
+            260,
+            143
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Software update",
+        "bbox": [
+            65,
+            162,
+            176,
+            175
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Additional support for your LaTeX submission:",
+        "bbox": [
+            63,
+            196,
+            363,
+            208
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Journal Article Publishing Support Center LaTeX FAQs and support.",
+        "bbox": [
+            63,
+            228,
+            496,
+            241
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Researcher Academy’s “Beginners’ guide to writing a manuscript in LaTeX”.",
+        "bbox": [
+            63,
+            261,
+            550,
+            274
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Article structure",
+        "text_level": 2,
+        "bbox": [
+            65,
+            294,
+            202,
+            307
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Article sections",
+        "bbox": [
+            65,
+            312,
+            170,
+            324
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Divide your manuscript into clearly defined and numbered sections. Number subsections 1.1 (then 1.1.1, 1.1.2, ...), then 1.2, etc.",
+        "bbox": [
+            72,
+            337,
+            890,
+            350
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Use the numbering format when cross-referencing within your article. Do not just refer to \"the text.\"",
+        "bbox": [
+            72,
+            369,
+            734,
+            382
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "You may give subsections a briefheading. Headings should appear on a separate line.",
+        "bbox": [
+            72,
+            401,
+            648,
+            414
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Do not include the article abstract within section numbering.",
+        "bbox": [
+            72,
+            434,
+            488,
+            447
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Footnotes",
+        "text_level": 2,
+        "bbox": [
+            63,
+            467,
+            136,
+            479
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "We advise you to use footnotes sparingly. Ifyou include footnotes in your article, ensure that they are numbered consecutively.",
+        "bbox": [
+            63,
+            483,
+            880,
+            497
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "You may use system features that automatically build footnotes into text. Alternatively, you can indicate the position of footnote within the text and present them in a separate section at the end ofyour article.",
+        "bbox": [
+            63,
+            514,
+            898,
+            545
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Acknowledgements",
+        "text_level": 2,
+        "bbox": [
+            63,
+            564,
+            198,
+            577
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Include any individuals who provided you with help during your research, such as help with language, writing or proofreading, in the acknowledgements section.",
+        "bbox": [
+            63,
+            580,
+            925,
+            609
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Acknowledgements should be placed in a separate section which appears directly before the reference list. Do not include acknowledgements on your title page, as a footnote to your title, or anywhere else in your article other than in the separate acknowledgements section.",
+        "bbox": [
+            63,
+            627,
+            863,
+            675
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Author contributions: CRediT",
+        "text_level": 2,
+        "bbox": [
+            65,
+            693,
+            257,
+            705
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Corresponding authors are required to acknowledge co-author contributions using CRediT (Contributor Roles Taxonomy) roles:",
+        "bbox": [
+            63,
+            709,
+            882,
+            722
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Conceptualization",
+        "bbox": [
+            72,
+            741,
+            213,
+            755
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Data curation",
+        "bbox": [
+            72,
+            775,
+            186,
+            787
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Formal analysis",
+        "bbox": [
+            72,
+            807,
+            196,
+            820
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Funding acquisition",
+        "bbox": [
+            72,
+            840,
+            222,
+            852
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Investigation",
+        "bbox": [
+            74,
+            872,
+            180,
+            885
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Methodology",
+        "bbox": [
+            74,
+            904,
+            180,
+            917
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Project administration",
+        "bbox": [
+            74,
+            936,
+            240,
+            948
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "page_number",
+        "text": "16/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            444,
+            982
+        ],
+        "page_idx": 15
+    },
+    {
+        "type": "text",
+        "text": "Resources",
+        "bbox": [
+            72,
+            34,
+            161,
+            47
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Software",
+        "bbox": [
+            72,
+            66,
+            154,
+            79
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Supervision",
+        "bbox": [
+            72,
+            99,
+            171,
+            112
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Validation",
+        "bbox": [
+            72,
+            130,
+            163,
+            143
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Visualization",
+        "bbox": [
+            72,
+            162,
+            178,
+            175
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Writing – original draft",
+        "bbox": [
+            72,
+            195,
+            245,
+            209
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Writing – review and editing",
+        "bbox": [
+            72,
+            228,
+            277,
+            242
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Not all CRediT roles will apply to every manuscript and some authors may contribute through multiple roles",
+        "bbox": [
+            63,
+            260,
+            765,
+            274
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "We advise you to read more about CRediT and view an example ofa CRediT author statement.",
+        "bbox": [
+            63,
+            293,
+            675,
+            307
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Appendices",
+        "text_level": 2,
+        "bbox": [
+            63,
+            325,
+            146,
+            338
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "We ask you to use the following format for appendices:",
+        "bbox": [
+            63,
+            341,
+            425,
+            356
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Identify individual appendices within your article using the format: A, B, etc.",
+        "bbox": [
+            72,
+            374,
+            582,
+            388
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Give separate numbering to formulae and equations within appendices using formats such as Eq. (A.1), Eq. (A.2), etc. and in subsequent appendices, Eq. (B.1), Eq. (B. 2) etc. In a similar way, give separate numbering to tables and figures using formats such as Table A.1; Fig. A.1, etc.",
+        "bbox": [
+            72,
+            406,
+            925,
+            453
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "References",
+        "text_level": 2,
+        "bbox": [
+            65,
+            472,
+            159,
+            486
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "References within text",
+        "text_level": 2,
+        "bbox": [
+            63,
+            489,
+            213,
+            502
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Any references cited within your article should also be present in your reference list and vice versa. Some guidelines:",
+        "bbox": [
+            63,
+            506,
+            814,
+            521
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "References cited in your abstract must be given in full.",
+        "bbox": [
+            72,
+            539,
+            442,
+            552
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "We recommend that you do not include unpublished results and personal communications in your reference list, though you ma mention them in the text ofyour article.",
+        "bbox": [
+            72,
+            571,
+            924,
+            601
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Any unpublished results and personal communications included in your reference list must follow the standard reference style o the journal. In substitution of the publication date add \"unpublished results\" or \"personal communication.\"",
+        "bbox": [
+            72,
+            619,
+            922,
+            650
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "References cited as \"in press\" imply that the item has been accepted for publication.",
+        "bbox": [
+            72,
+            668,
+            634,
+            683
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Linking to cited sources will increase the discoverability ofyour research. We encourage the use of Digital Object Identifiers (DOIs) as reference links, as they provide a permanent link to the electronic article referenced.",
+        "bbox": [
+            63,
+            700,
+            922,
+            731
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Before submission, check that all data provided in your reference list are correct, including any references which have been copied Providing correct reference data allows us to link to abstracting and indexing services such as Scopus, Crossref and PubMed. Any incorrect surnames, journal or book titles, publication years or pagination within your references may prevent link creation.",
+        "bbox": [
+            63,
+            747,
+            909,
+            797
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Reference style",
+        "text_level": 2,
+        "bbox": [
+            63,
+            814,
+            168,
+            827
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Indicate references by number(s) in square brackets in line in the text. You can refer to author names within your text, but you mus always give the reference number, e.g., \"as demonstrated [3,6]. Barnaby and Jones [8] obtained a different result ....\"",
+        "bbox": [
+            63,
+            829,
+            910,
+            860
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Number the references in the reference list in the order in which they appear in the text.",
+        "bbox": [
+            63,
+            879,
+            632,
+            892
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "Please note the shortened form for last page number. e.g., 51-9, and that for more than 6 authors the first 6 should be listed followed by 'et al.'.",
+        "bbox": [
+            63,
+            910,
+            920,
+            941
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            141,
+            28
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "page_number",
+        "text": "17/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 16
+    },
+    {
+        "type": "text",
+        "text": "For further details you are referred to Recommendations for the Conduct, Reporting, Editing and Publication of Scholarly Work in Medical Journals and more samples of formatted references.",
+        "bbox": [
+            63,
+            33,
+            895,
+            64
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Abbreviate journal names according to the List ofTitle Word Abbreviations (LTWA).",
+        "bbox": [
+            63,
+            82,
+            599,
+            96
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Examples:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            115,
+            136,
+            129
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to a journal publication:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            146,
+            294,
+            160
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[1] Van der Geer J, Hanraads JAJ, Lupton RA. The art of writing a scientific article. J Sci Commun 2020;163:51-9. https://doi.org/10.1016/j.sc.2020.00372.",
+        "bbox": [
+            63,
+            162,
+            767,
+            193
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to a journal publication with an article number:",
+        "text_level": 2,
+        "bbox": [
+            63,
+            211,
+            444,
+            225
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[2] Van der Geer J, Hanraads JAJ, Lupton RA. The art of writing a scientific article. Heliyon. 2022;19:e00205. https://doi.org/10.1016/j.heliyon.2022.e00205.",
+        "bbox": [
+            63,
+            228,
+            747,
+            259
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to a book:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            277,
+            203,
+            288
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[3] Strunk Jr W, White EB. The elements of style. 4th ed. New York: Longman; 2000.",
+        "bbox": [
+            65,
+            293,
+            594,
+            307
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to a chapter in a book:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            325,
+            282,
+            338
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[4] Mettam GR, Adams LB. How to prepare an electronic version ofyour article. In: Jones BS, Smith RZ, editors. Introduction to the electronic age, New York: E-Publishing Inc; 2023, p. 281-304.",
+        "bbox": [
+            63,
+            341,
+            898,
+            372
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to a website:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            390,
+            220,
+            403
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[5] Cancer Research UK. Cancer statistics reports for the UK,",
+        "bbox": [
+            65,
+            406,
+            454,
+            420
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "http://www.cancerresearchuk.org/aboutcancer/statistics/cancerstatsreport/; 2023 [accessed 13 March 2023].",
+        "bbox": [
+            65,
+            423,
+            762,
+            437
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to a dataset:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            456,
+            220,
+            468
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[6] Oguro M, Imahiro S, Saito S, Nakashizuka T. Mortality data for Japanese oak wilt disease and surrounding forest compositions [dataset]. Mendeley Data. 2015. https://doi.org/10.17632/xwj98nb39r.1.",
+        "bbox": [
+            65,
+            470,
+            898,
+            502
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Reference to software:",
+        "text_level": 2,
+        "bbox": [
+            65,
+            520,
+            215,
+            533
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "[7] Coon E, Berndt M, Jan A, Svyatsky D, Atchley A, Kikinzon E, et al. Advanced Terrestrial Simulator (ATS). Version 0.88 [software] Zenodo; 2020 Mar 25. https://doi.org/10.5281/zenodo.3727209.",
+        "bbox": [
+            63,
+            535,
+            885,
+            565
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Web references",
+        "text_level": 2,
+        "bbox": [
+            63,
+            585,
+            171,
+            596
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "When listing web references, as a minimum you should provide the full URL and the date when the reference was last accessed. Additional information (e.g. DOI, author names, dates or reference to a source publication) should also be provided, if known",
+        "bbox": [
+            63,
+            601,
+            885,
+            631
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "You can list web references separately under a new heading directly after your reference list or include them in your reference list.",
+        "bbox": [
+            63,
+            649,
+            900,
+            663
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Data references",
+        "text_level": 2,
+        "bbox": [
+            65,
+            682,
+            173,
+            694
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "We encourage you to cite underlying or relevant datasets within article text and to list data references in the reference list.",
+        "bbox": [
+            63,
+            697,
+            856,
+            711
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "When citing data references, you should include:",
+        "bbox": [
+            65,
+            730,
+            383,
+            744
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "author name(s)",
+        "bbox": [
+            72,
+            763,
+            193,
+            776
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "dataset title",
+        "bbox": [
+            72,
+            796,
+            173,
+            808
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "data repository",
+        "bbox": [
+            74,
+            828,
+            193,
+            841
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "version (where available)",
+        "bbox": [
+            72,
+            860,
+            255,
+            873
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "year",
+        "bbox": [
+            74,
+            894,
+            124,
+            904
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "global persistent identifier",
+        "bbox": [
+            74,
+            925,
+            265,
+            938
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "page_number",
+        "text": "18/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            444,
+            982
+        ],
+        "page_idx": 17
+    },
+    {
+        "type": "text",
+        "text": "Add [dataset] immediately before your reference. This will help us to properly identify the dataset. The [dataset] identifier will not appear in your published article.",
+        "bbox": [
+            63,
+            33,
+            897,
+            64
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Software references",
+        "text_level": 2,
+        "bbox": [
+            63,
+            82,
+            200,
+            95
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Cite software (including computational code, scripts, models, notebooks and libraries) in the same way as other sources o information to support proper attribution and credit, reproducibility, collaboration and reuse, and encourage building on the work o others to further research. To facilitate this, useful information is provided in this article on the essentials of software citation by FORCE 11, of which Elsevier is a member.",
+        "bbox": [
+            63,
+            98,
+            925,
+            161
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "A reference to software should include the following elements:",
+        "bbox": [
+            63,
+            179,
+            473,
+            193
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Creator(s): the authors or project that developed the software.",
+        "bbox": [
+            72,
+            212,
+            493,
+            225
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Title: the name of the software.",
+        "bbox": [
+            72,
+            244,
+            297,
+            256
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Publication venue: the publication venue of the software, preferably, an archive or repository that provides permanent identifiers.",
+        "bbox": [
+            72,
+            275,
+            920,
+            291
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Date: the date the software was published. This is the date associated with a release or version of the software, or “n.d.” if the date is unknown.",
+        "bbox": [
+            72,
+            309,
+            929,
+            338
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Identifier: a resolvable pointer to the software, preferably, a PID that resolves to a landing page containing descriptive metadata about the software, similar to how a Digital Object Identifier (DOI) for a paper that points to a page about the paper rather tha directly to a representation of the paper, such as the PDF. DOIs are preferable, and other examples of PIDs include Handles, RRIDs, ASCL IDs, swMath IDs, Software Heritage IDs, ARK Alliance, etc. If there is no PID for the software, a URL to where the software exists may be the best identifier available.",
+        "bbox": [
+            72,
+            357,
+            920,
+            437
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Version: the identifier for the version of the software being referenced. If the version is unidentified or unknown, the date of access should be used.",
+        "bbox": [
+            72,
+            455,
+            927,
+            485
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Type: some reference styles (e.g., APA), require a bracketed description of the citation (e.g., [Computer software]) to be included.",
+        "bbox": [
+            72,
+            502,
+            907,
+            518
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "If an article exists that describes the software, it should be cited as an additional reference, as well as citing the software itself. Do not cite the article instead of the software.",
+        "bbox": [
+            63,
+            536,
+            907,
+            565
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Preprint references",
+        "text_level": 2,
+        "bbox": [
+            63,
+            585,
+            195,
+            598
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "We ask you to mark preprints clearly. You should include the word \"preprint\" or the name of the preprint server as part of you reference and provide the preprint DOI.",
+        "bbox": [
+            63,
+            601,
+            878,
+            631
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Where a preprint has subsequently become available as a peer-reviewed publication, use the formal publication as your reference",
+        "bbox": [
+            63,
+            649,
+            907,
+            664
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "If there are preprints that are central to your work or that cover crucial developments in the topic, but they are not yet formall published, you may reference the preprint",
+        "bbox": [
+            63,
+            681,
+            885,
+            712
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Reference management software",
+        "text_level": 2,
+        "bbox": [
+            63,
+            731,
+            286,
+            743
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Most journals have their reference template available in popular reference management software products. These include products that support Citation Style Language (CSL) such as Mendeley Reference Manager.",
+        "bbox": [
+            63,
+            746,
+            915,
+            777
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Ifyou use a citation plug-in from these products, select the relevant journal template and all your citations and bibliographies wil automatically be formatted in the journal style. We advise you to remove all field codes before submitting your manuscript to any reference management software product",
+        "bbox": [
+            63,
+            795,
+            907,
+            841
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "If a template is not available for this journal, follow the format given in examples in the reference style section of this Guide fo Authors.",
+        "bbox": [
+            63,
+            860,
+            885,
+            890
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Submitting your manuscript",
+        "text_level": 2,
+        "bbox": [
+            63,
+            910,
+            341,
+            928
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Submission checklist",
+        "text_level": 2,
+        "bbox": [
+            63,
+            940,
+            239,
+            954
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "page_number",
+        "text": "19/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 18
+    },
+    {
+        "type": "text",
+        "text": "Before completing the submission ofyour manuscript, we advise you to read our submission checklist:",
+        "bbox": [
+            65,
+            34,
+            727,
+            47
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "One author has been designated as the corresponding author and their full contact details (email address, full postal address, and phone numbers) have been provided. Only the corresponding author’s affiliation will be used to determine eligibility for th publishing agreement.",
+        "bbox": [
+            72,
+            66,
+            914,
+            112
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "All files have been uploaded, including artwork, videos, and supplementary materials. Don’t forget to include tables and footnotes in the files, and to submit captions",
+        "bbox": [
+            72,
+            130,
+            867,
+            160
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Spelling and grammar checks have been carried out.",
+        "bbox": [
+            72,
+            179,
+            434,
+            193
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "All references in the article text are cited in the reference list, and vice versa.",
+        "bbox": [
+            72,
+            212,
+            584,
+            225
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Permission has been obtained for the use of any copyrighted material from other sources, including the Web.",
+        "bbox": [
+            72,
+            244,
+            792,
+            258
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "For open access articles, all authors understand that they are responsible for payment of the article publishing charge (APC) if th manuscript is accepted. Payment of the APC may be covered by the corresponding author's institution, or the research funder.",
+        "bbox": [
+            72,
+            277,
+            925,
+            307
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "The format of a software article is very different to a traditional research article. We will only consider software articles that are submitted using SoftwareX's template. You will find both a Word and a LaTeX template immediately below. Choose the one you prefe and fill in each section, without altering any format settings.",
+        "bbox": [
+            63,
+            325,
+            927,
+            372
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Word templates (please note that figures must be directly embedded in the .docx file):",
+        "bbox": [
+            63,
+            390,
+            619,
+            404
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            65,
+            423,
+            260,
+            436
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Software update",
+        "bbox": [
+            63,
+            456,
+            178,
+            468
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "LaTeX templates:",
+        "bbox": [
+            65,
+            488,
+            178,
+            500
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            63,
+            520,
+            260,
+            533
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Software update",
+        "bbox": [
+            65,
+            552,
+            176,
+            565
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Please note that the following constraints apply:",
+        "bbox": [
+            65,
+            585,
+            383,
+            598
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Maximum word count: 4000 excluding: title, authors, affiliations, references, metadata tables and including: abstract, running text, captions, footnotes. Maximum six (6) figures.",
+        "bbox": [
+            63,
+            617,
+            915,
+            646
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "To submit your code/software you can:",
+        "bbox": [
+            63,
+            665,
+            318,
+            678
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Store your code/software in an open-access GitHub repository where it is publicly available. Record the URL needed to retrieve the code in the metadata table found in the required article templates. Please avoid using GitLab or other hosting platforms as this wil slow the editorial process ofyour submission.",
+        "bbox": [
+            63,
+            697,
+            914,
+            744
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Please make sure that the permanent link to the GitHub repository includes the following requirements:",
+        "bbox": [
+            63,
+            763,
+            737,
+            776
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "a. README.md and LICENSE.txt files. Your README.md file should be well-written, explaining the use, installation, and purpose of your proposed software. Please see other notable and well-cited GitHub repositories (including official GitHub guidance) for a better understanding ofcode documentation.",
+        "bbox": [
+            63,
+            795,
+            919,
+            841
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "b. Source code in a repo/src directory.",
+        "bbox": [
+            63,
+            860,
+            311,
+            873
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "All software and code must be open source and released under a recognized legal license such as those listed below and by the Open Source Initiative. Any licenses which are not listed below need to be approved by the Journal's Editorial Office.",
+        "bbox": [
+            63,
+            892,
+            922,
+            923
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "page_number",
+        "text": "20/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 19
+    },
+    {
+        "type": "text",
+        "text": "Any additional material that you consider relevant to your submission can be uploaded and submitted either as \"Supplementar Material\" or \"Supplementary data\".",
+        "bbox": [
+            63,
+            34,
+            893,
+            64
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "The submission website for SoftwareX is located at: https://www.editorialmanager.com/softx. You may need to establish a new use account, and later can consolidate it with any prior Elsevier user accounts",
+        "bbox": [
+            63,
+            82,
+            914,
+            112
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "If you are submitting an unpublished code/software for the first time, it is important that you select \"Original Software Publication\" when you reach the \"Article Type\" step in the submission process. Ifyou are submitting an update to a code or software previously published on SoftwareX, please choose \"Software Update\" as \"Article Type\".",
+        "bbox": [
+            63,
+            130,
+            912,
+            177
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Uploading your manuscript in EM",
+        "bbox": [
+            63,
+            196,
+            287,
+            209
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Microsoft Word submission:",
+        "bbox": [
+            63,
+            228,
+            250,
+            240
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "a. Use the template to create your manuscript.",
+        "bbox": [
+            63,
+            261,
+            370,
+            274
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "b. Upload directly the .docx file of your manuscript on Editorial Manager in the field \"\\*Manuscript (Word or PDF file)\".",
+        "bbox": [
+            63,
+            293,
+            818,
+            306
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "LaTeX submission:",
+        "bbox": [
+            63,
+            326,
+            188,
+            338
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "a. Use the template to create your manuscript.",
+        "bbox": [
+            63,
+            357,
+            370,
+            370
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "b. Upload the PDF file ofyour manuscript in the field \"\\*Manuscript (Word or PDF file)\" and provide the complete set of source files (.tex, figures, bibliography) as a .zip archive in the field \"Zip file containing LaTeX source files\".",
+        "bbox": [
+            63,
+            390,
+            898,
+            420
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "c. Should you need any additional style file for compilation, please visit our LaTeX instructions page or contact us via email.",
+        "bbox": [
+            63,
+            439,
+            858,
+            453
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "For any questions or comments, please contact us at: softwarex@elsevier.com.",
+        "bbox": [
+            63,
+            472,
+            577,
+            485
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "We look forward to receiving your submission and thank you for your contribution.",
+        "bbox": [
+            63,
+            502,
+            599,
+            517
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Submit online",
+        "text_level": 2,
+        "bbox": [
+            63,
+            537,
+            183,
+            551
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Our online submission system guides you through the process steps of entering your manuscript details and uploading your files. The system converts your article files to a single PDF file used in the peer-review process.",
+        "bbox": [
+            63,
+            555,
+            922,
+            585
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Editable files (e.g., Word, LaTeX) are required to typeset your article for final publication. All correspondence, including notification of the editor's decision and requests for revision, is sent by email.",
+        "bbox": [
+            63,
+            602,
+            922,
+            633
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Please follow this link to submit your paper.",
+        "bbox": [
+            65,
+            652,
+            350,
+            665
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "After receiving a final decision",
+        "text_level": 2,
+        "bbox": [
+            63,
+            686,
+            363,
+            703
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Article Transfer Service",
+        "text_level": 2,
+        "bbox": [
+            63,
+            715,
+            255,
+            730
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "If your manuscript is more suitable for an alternative journal published by Elsevier, you may receive an email asking you to conside transferring your manuscript via Elsevier's Article Transfer Service.",
+        "bbox": [
+            63,
+            734,
+            914,
+            764
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "The recommendation could come from the journal editor, a dedicated in-house scientific managing editor, a tool-assisted recommendation or a combination",
+        "bbox": [
+            63,
+            782,
+            853,
+            813
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Ifyou agree with the recommendation, your manuscript will be transferred and independently reviewed by the editors of the new journal. You will have the opportunity to make revisions, if necessary, before the submission is complete at the destination journal",
+        "bbox": [
+            63,
+            831,
+            907,
+            862
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Publishing agreement",
+        "text_level": 2,
+        "bbox": [
+            65,
+            881,
+            249,
+            895
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "Authors will be asked to complete a publishing agreement after acceptance. The corresponding author will receive a link to the onlin agreement by email. We advise you to read Elsevier's policies related to copyright to learn more about our copyright policies and your, and your employer’s/institution’s, additional rights for subscription and open access articles.",
+        "bbox": [
+            63,
+            898,
+            929,
+            946
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "page_number",
+        "text": "21/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 20
+    },
+    {
+        "type": "text",
+        "text": "License options",
+        "text_level": 2,
+        "bbox": [
+            65,
+            34,
+            195,
+            49
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Authors will be offered open access user license options which will determine how you, and third parties, can reuse your open access article. We advise that you review these options and any funding body license requirements before selecting a license option.",
+        "bbox": [
+            63,
+            52,
+            920,
+            84
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Open access",
+        "text_level": 2,
+        "bbox": [
+            63,
+            102,
+            173,
+            117
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "We refer you to our open access information page to learn about open access options for this journal.",
+        "bbox": [
+            63,
+            120,
+            720,
+            135
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Permission for copyrighted works",
+        "text_level": 2,
+        "bbox": [
+            65,
+            153,
+            341,
+            168
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "If excerpts from other copyrighted works are included in your article, you must obtain written permission from the copyright owners and credit the source(s) within your article using Elsevier's permission request and license form.",
+        "bbox": [
+            63,
+            171,
+            920,
+            203
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Proof correction",
+        "text_level": 2,
+        "bbox": [
+            65,
+            219,
+            200,
+            235
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "To ensure a fast publication process we will ask you to provide proof corrections within two days.",
+        "bbox": [
+            63,
+            239,
+            693,
+            253
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Corresponding authors will be sent an email which includes a link to our online proofing system, allowing annotation and correction of proofs online. The environment is similar to Word. You can edit text, comment on figures and tables and answer questions raised by our copy editor. Our web-based proofing service ensures a faster and less error-prone process.",
+        "bbox": [
+            63,
+            271,
+            930,
+            319
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "You can choose to annotate and upload your edits on the PDF version of your article, if preferred. We will provide you with proofing instructions and available alternative proofing methods in our email.",
+        "bbox": [
+            63,
+            336,
+            910,
+            368
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Alt text for images and captions or audio descriptions for videos may have been added to improve accessibility. These have been independently provided by Elsevier and generated with the aid ofAI, please check these in your proofs. You can find more information in this alt text guide and Elsevier's page about improving accessibility.",
+        "bbox": [
+            63,
+            384,
+            929,
+            432
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "The purpose of the proof is to check the typesetting, editing, completeness and correctness ofyour article text, tables and figures. Significant changes to your article at the proofing stage will only be considered with approval of the journal editor.",
+        "bbox": [
+            63,
+            449,
+            902,
+            481
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "DOI link",
+        "text_level": 2,
+        "bbox": [
+            65,
+            499,
+            139,
+            513
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "A Digital Object Identifier (DOI) link to the published version ofyour open access article on ScienceDirect will be sent by email to the corresponding author. You can share the DOI link via email and within your social networks.",
+        "bbox": [
+            63,
+            516,
+            917,
+            548
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Responsible sharing",
+        "text_level": 2,
+        "bbox": [
+            65,
+            565,
+            232,
+            582
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "We encourage you to share and promote your article to give additional visibility to your work, enabling your paper to contribute t scientific progress and foster the exchange of scientific developments within your field. Read more about how to responsibly share and promote your article.",
+        "bbox": [
+            63,
+            583,
+            907,
+            632
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Resources for authors",
+        "text_level": 2,
+        "bbox": [
+            65,
+            651,
+            281,
+            668
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Elsevier Researcher Academy",
+        "text_level": 2,
+        "bbox": [
+            65,
+            680,
+            304,
+            695
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Ifyou would like help to improve your submission or navigate the publication process, support is available via Elsevier Researche Academy.",
+        "bbox": [
+            63,
+            699,
+            902,
+            728
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Elsevier Researcher Academy offers free e-learning modules, webinars, downloadable guides and research writing and peer review process resources.",
+        "bbox": [
+            63,
+            747,
+            910,
+            778
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Language and editing services",
+        "text_level": 2,
+        "bbox": [
+            63,
+            796,
+            316,
+            812
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "We recommend that you write in American or British English but not a combination ofboth.",
+        "bbox": [
+            63,
+            815,
+            659,
+            829
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Ifyou feel the English language in your manuscript requires editing to eliminate possible grammatical or spelling errors and to conform to correct scientific English, you may wish to use the English Language Editing service provided by Elsevier’s Author Services",
+        "bbox": [
+            63,
+            847,
+            925,
+            878
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Getting help and support",
+        "text_level": 2,
+        "bbox": [
+            65,
+            897,
+            314,
+            916
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "text",
+        "text": "Author support",
+        "text_level": 2,
+        "bbox": [
+            65,
+            927,
+            193,
+            942
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            16,
+            139,
+            28
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevier",
+        "bbox": [
+            348,
+            17,
+            797,
+            29
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "page_number",
+        "text": "22/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            35,
+            970,
+            446,
+            983
+        ],
+        "page_idx": 21
+    },
+    {
+        "type": "page_footnote",
+        "text": "All content on this site: Copyright © 2026 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.",
+        "bbox": [
+            55,
+            279,
+            915,
+            300
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "28/07/2026, 11:15",
+        "bbox": [
+            35,
+            17,
+            139,
+            28
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "Guide for authors - SoftwareX - ISSN 2352-7110 | ScienceDirect.com by Elsevie",
+        "bbox": [
+            348,
+            16,
+            797,
+            29
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "We recommend that you visit our Journal Article Publishing Support Center ifyou have questions about the editorial process o require technical support for your submission. Some useful links:",
+        "bbox": [
+            63,
+            33,
+            882,
+            64
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "Five pre-submission tips",
+        "bbox": [
+            72,
+            82,
+            250,
+            96
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "How can I track the status of my submitted article?",
+        "bbox": [
+            72,
+            114,
+            425,
+            128
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "When will my article be published?",
+        "bbox": [
+            72,
+            146,
+            319,
+            160
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            58,
+            214,
+            117,
+            260
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "footer",
+        "text": "https://www.sciencedirect.com/journal/softwarex/publish/guide-for-authors",
+        "bbox": [
+            37,
+            970,
+            446,
+            982
+        ],
+        "page_idx": 22
+    },
+    {
+        "type": "page_number",
+        "text": "23/23",
+        "bbox": [
+            925,
+            970,
+            959,
+            980
+        ],
+        "page_idx": 22
+    }
+]

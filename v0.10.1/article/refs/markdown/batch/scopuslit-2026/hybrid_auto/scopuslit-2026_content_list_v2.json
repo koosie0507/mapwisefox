@@ -1,0 +1,2343 @@
+[
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "ScopusLit: An end-to-end Web-based tool for bibliometric analysis"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                58,
+                206,
+                732,
+                226
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Orlando Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                240,
+                203,
+                257
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Universidad Industrial de Santander, Bucaramanga, Santander, Colombia"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                264,
+                396,
+                277
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A R T I C L E I N F O"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                307,
+                194,
+                319
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Bibliometric analysis Scopus Systematic literature review Topic modeling"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                330,
+                200,
+                385
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A B S T R A C T"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                334,
+                306,
+                436,
+                319
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Bibliometric analysis supports systematic literature reviews, but it often requires disconnected tools for search, data storage, analysis, visualization, and export. This paper presents ScopusLit, an open-source, browser-based application for analyzing scientific literature indexed in Scopus through an integrated, zero-code workflow. Developed in Python with Streamlit and pybliometrics, ScopusLit executes Scopus Advanced Search queries through the API, retrieves abstracts, stores reproducible JSON datasets, and provides bibliometric, network, and abstract-level text analyses. Its functionality is demonstrated using a search query that retrieved 1036 records in 52 s and downloaded abstracts with 100% success in 678 s. The example illustrates temporal, geographic, keyword, co-occurrence, TF-IDF, and topic-modeling outputs, including network generation and NMF topic modeling. By combining Scopus-based retrieval, analysis, consolidation, and publication-ready export in a single web interface, ScopusLit reduces manual transfers between tools and supports reproducible bibliometric workflows for review-oriented research."
+                    }
+                ]
+            },
+            "bbox": [
+                332,
+                330,
+                939,
+                466
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Code metadata"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                501,
+                159,
+                514
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/060f51caee7facb40da2f15df115fa8f17852da3d08b559e9f352ee4e5e0ec12.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td>Current code version</td><td>V1.0</td></tr><tr><td>Permanent link to code/repository used for this code version</td><td>https://github.com/odarroyo/ScopusLit</td></tr><tr><td>Legal code license</td><td>GNU General Public License (GPL) v3</td></tr><tr><td>Code versioning system used</td><td>git</td></tr><tr><td>Software code languages, tools and services used</td><td>Python, Streamlit</td></tr><tr><td>Compilation requirements, operating environments and dependencies</td><td>Python ≥ 3.10, streamlit, pybliometrics, plotly, pandas, numpy, wordcloud, matplotlib, scikit-learn, openpyxl, kaleido, matplotlib-venn, networkx</td></tr><tr><td>If available, link to developer documentation/manual</td><td>Documentation: https://github.com/odarroyo/ScopusLitVideo with features demonstration: https://youtu.be/arD2MqpedSw</td></tr><tr><td>Support email for questions</td><td>orlando.arroyo@uis.edu.co</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                63,
+                523,
+                482,
+                703
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                742,
+                263,
+                756
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Bibliometric analysis is a cornerstone of systematic literature reviews, research trend identification, and science mapping [1]. Researchers frequently rely on the Scopus database, one of the largest curated abstract and citation databases of peer-reviewed literature, encompassing over 27,000 titles from >7000 publishers [2]. However, conducting rigorous bibliometric studies typically requires combining multiple disconnected tools: Scopus’s web interface for search, spreadsheet software for data cleaning, specialized bibliometric software for analysis, and graphic design tools for producing publication-quality figures."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                769,
+                487,
+                836
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                501,
+                939,
+                567
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "While several established tools facilitate these analyses, they often present distinct limitations. For instance, VOSviewer [3] excels in the network visualization of co-authorship, co-citation, and keyword co-occurrence, yet it lacks text analysis capabilities and requires manual data importation. Similarly, Bibliometrix [4] offers comprehensive bibliometric indicators but demands proficiency in R programming. Tools like CiteSpace [5] and Publish or Perish [6] also exhibit constraints, either by relying on manual file transfers or offering limited visualization and text analysis capabilities. Consequently, none of these alternatives provides an integrated, zero-code workflow that spans from Scopus query execution to abstract-level text analysis. Conversely, programmatic solutions such as the pybliometrics Python library [7] offer robust API access but requires coding expertise, limiting accessibility for non-programmers."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                566,
+                939,
+                751
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To bridge this gap, this paper introduces ScopusLit, a web-based application designed for the comprehensive bibliometric analysis of Scopus-indexed literature. Developed in Python using the Streamlit web framework [8] and the pybliometrics API client [7], ScopusLit delivers an end-to-end workflow. The tool executes Advanced Search queries, persists results locally, generates over 20 types of bibliometric visualizations, performs natural language processing on abstracts, and exports publication-ready datasets and figures. It is specifically designed to support researchers, graduate students, and authors who require a streamlined process for producing review articles and comparing multiple search strategies."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                751,
+                939,
+                832
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2026.102733"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                877,
+                309,
+                889
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "2352-7110/© 2026 The Author. Published by Elsevier B.V. This is an open access article under the CC BY-NC license (http://creativecommons.org/licenses/by nc/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                912,
+                937,
+                938
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                416,
+                42,
+                579,
+                56
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                58,
+                75,
+                161,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                379,
+                75,
+                621,
+                89
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ELSEVIER"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                146,
+                161,
+                162
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                445,
+                105,
+                557,
+                124
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                337,
+                145,
+                663,
+                160
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "国SoftwareXa Eemont"
+                    }
+                ]
+            },
+            "bbox": [
+                838,
+                66,
+                937,
+                160
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Original Software Publication"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                182,
+                277,
+                197
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Check for updates"
+                    }
+                ]
+            },
+            "bbox": [
+                838,
+                184,
+                887,
+                221
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "E-mail address: orlando.arroyo@uis.edu.co."
+                    }
+                ]
+            },
+            "bbox": [
+                77,
+                854,
+                315,
+                868
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Received 13 March 2026; Received in revised form 5 May 2026; Accepted 15 May 2026 Available online 20 May 2026"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                887,
+                542,
+                912
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                57,
+                66,
+                487,
+                131
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ScopusLit has three distinctive features. First, it consolidates search execution, full abstract retrieval, and analysis into a single environment, eliminating manual file transfers. Second, it natively integrates advanced text analytics—specifically TF-IDF extraction and topic modeling (NMF/LDA) on abstracts. Third, its consolidation feature enables union and comparison modes via Venn overlap analysis, directly supporting the multi-query workflows essential to the PRISMA systematic review methodology [9]."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                131,
+                487,
+                238
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Software description"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                250,
+                218,
+                264
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. Software architecture"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                277,
+                216,
+                290
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ScopusLit is implemented as a single Python file (app.py) organized into 10 sections. The application follows a functional programming paradigm with grouped utility functions comprising 74 functions in total. While this design favors portability and ease of inspection, the functional nature is friendly to modularization to improve maintainability and scalability. Running the main script starts a local Streamlit web server accessible from any browser."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                303,
+                487,
+                395
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The application follows a three-layer separation. The data layer (Sections 2–4 of the source code) handles all interactions with external systems, including Scopus API communication via pybliometrics for searches and abstract retrieval, and local file system operations for JSON persistence. All API calls are wrapped in retry logic to respect Scopus rate limits. The analysis layer (Section 5-6 of the source code) contains pure computation functions that take pandas DataFrames or abstract dictionaries as input and return processed data structures. These functions have no side effects and no dependency on Streamlit, making them independently testable. Section 5 covers bibliometric computations (publication counts, author rankings, citation statistics, and cooccurrence network analysis), while Section 6 covers natural language processing (TF-IDF vectorization, topic modeling, word cloud generation). The presentation layer (Sections 7–9 of the source code) handles all visualization using Plotly [10] and matplotlib [11], data export via openpyxl [12] and pandas, and user interface rendering through Streamlit components, session state, and page routing."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                395,
+                487,
+                620
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ScopusLit uses Streamlit’s session state mechanism to persist appli cation state across user interactions, since Streamlit re-executes the entire script on every widget interaction. Eleven state variables manage the currently loaded search, cached DataFrames, h-index data, topic modeling results, and navigation state. Loading a search populates the search data and its derived DataFrame; loading a consolidation populates the merged DataFrame and combined abstracts. Each search is stored as a self-contained JSON file with a UUID-based filename in a local data directory, capturing the query string, execution date, complete result set, and any downloaded abstracts."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                620,
+                487,
+                660
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                65,
+                939,
+                158
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. Software functionalities"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                181,
+                680,
+                195
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ScopusLit implements 20 features organized into five functional categories: search and storage, bibliometric analysis, abstract text analysis, search consolidation, and export."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                208,
+                939,
+                248
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Search and Storage. Users initiate the workflow Fig. 1 by entering a Scopus Advanced Search query. To conserve API quotas, ScopusLit features a \"Result Estimation\" function that retrieves the expected document count before initiating a full download. Once executed, the search results—including all metadata—are saved automatically. Users can subsequently trigger the abstract download module, which retrieves full abstract texts incrementally, saving progress every 25 documents to prevent data loss during long retrieval processes or network interruptions."
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                259,
+                939,
+                379
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Bibliometric Analysis. Upon loading a saved search, a tabbed interface provides comprehensive, interactive visualizations of the dataset. Key analyses include:"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                379,
+                939,
+                419
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "○ Timeline and Sources: A dual-axis chart displays publications per year alongside cumulative growth, while a horizontal bar chart identifies the top 15 publishing journals. ScopusLit citation analysis is implemented through the Scopus citedby_count field. The software computes total citations, mean citations, median citations, and maximum citations for the retrieved corpus. It also identifies the top 20 most cited documents, generates a citation distribution histogram, and plots average citations by publication year. The software groups publications by year, calculates cumulative publication counts, identifies the peak publication year, and visualizes annual production trends."
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                419,
+                939,
+                563
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "○ Geography and Authorship: Geographic distribution is mapped using an interactive choropleth world map, alongside top contributing countries and affiliations. The author tab highlights top contributors and features an on-demand \"Fetch h-index\" tool that queries the AuthorRetrieval API. Co-authorship and collaboration patterns are addressed through both tabular and networkbased analyses. The software extracts author names from Scopus metadata, counts the most productive authors, identifies frequent"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                563,
+                939,
+                670
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "ScopusLit Software Workflow"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                337,
+                688,
+                653,
+                707
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/5dcf1a633f222aa34fc649f769531d018dbba9edc32cd868658fc481a133fd05.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. ScopusLit workflow and features."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                134,
+                684,
+                858,
+                915
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "O. Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "co-author pairs, and visualizes the distribution of authors per article. In addition, it builds co-occurrence networks using networkx, including author co-authorship networks, keyword cooccurrence networks, and country collaboration networks. These networks include adjustable thresholds, node limits, selectable layouts, community detection, and summary metrics such as number of nodes, edges, communities, density, and average degree. trend analysis is addressed through temporal and thematic evolution tools."
+                    }
+                ]
+            },
+            "bbox": [
+                87,
+                66,
+                487,
+                184
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "○ Keywords and Citations: Keyword frequencies are visualized through bar charts and word clouds. Citation analysis provides distribution histograms, summary metrics, and temporal citation trends. ScopusLit tracks keyword evolution over time by crosstabulating the most frequent author keywords by publication year and displaying them as a heatmap."
+                    }
+                ]
+            },
+            "bbox": [
+                77,
+                184,
+                487,
+                264
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Abstract Text Analysis. When abstracts are successfully retrieved, ScopusLit unlocks an advanced natural language processing (NLP) pipeline."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                264,
+                487,
+                303
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The text-analysis workflow has three components. First, the abstract word cloud concatenates all non-empty abstracts and removes a combined stopword list composed of the default wordcloud English stop words, an added Spanish stopword list, and additional domain-generic terms such as “abstract,” “study,” “results,” “method,” “research,” “analysis,” “data,” “model,” “et,” and “al.”"
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                316,
+                487,
+                395
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Second, the TF-IDF module uses scikit-learn’s TfidfVectorizer [13]. The default parameters are: max_features=1000, stop_words=\"english\", max_df=0.85, min_df=2, and ngram_range=(1, 2). Thus, the system considers unigrams and bigrams, excludes very common terms appearing in >85% of abstracts, excludes terms appearing in fewer than two abstracts, and returns the top 30 terms ranked by average TF-IDF score across the corpus. At least three non-empty abstracts are required. Third, topic modeling is performed on TF-IDF vectors using either Non-negative Matrix Factorization or Latent Dirichlet Allocation, selected by the user in the interface. The default method is NMF, and the default number of topics is five. Users can choose between 3 and 10 topics through a slider. The topic model uses max_features=2000, stop_words=\"english\", max_df=0.85, and min_df=2. For NMF, the software uses n_components=n_topics, random_state=42, and max_iter=300; for LDA, it uses n_components=n_topics, random_- state=42, and max_iter=20. The model requires at least max(5, n_topics) non-empty abstracts. ScopusLit provides an exploratory interface in which the user specifies the desired granularity. A lower number of topics gives broader thematic groupings, whereas a higher number gives more specific but potentially more fragmented themes. Importantly, the TF-IDF is implemented in the compute_tfidf_terms(); NMF/LDA topic modeling is implemented in compute_topic_model() ."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                395,
+                487,
+                687
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Search Consolidation. To support complex systematic reviews that require the synthesis of multiple search strings, ScopusLit includes a powerful consolidation module. Researchers can select multiple saved searches and merge them in one of two modes:"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                698,
+                487,
+                751
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "○ Union mode: Concatenates datasets and automatically dedupli cates entries based on the Scopus unique identifier (EID), applying the full Phase 2 and 3 analytical pipeline to the merged corpus."
+                    }
+                ]
+            },
+            "bbox": [
+                77,
+                751,
+                487,
+                791
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "○ Comparison Mode: Generates comparative visualizations, including overlaid publication timelines, grouped keyword bar charts, and a document overlap analysis utilizing tabular statistics and Venn diagrams based on Matplotlib [14,15] (for up to three searches) to illustrate the precise intersection of different research queries."
+                    }
+                ]
+            },
+            "bbox": [
+                75,
+                791,
+                487,
+                868
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Export Capabilities. The platform ensures comprehensive data portability. Full results and analytical summaries can be exported as CSV files or multi-sheet Excel workbooks. Concurrently, all charts—which adhere to a cohesive visual specification utilizing the color-blind friendly Set2 palette—can be exported as publicationready 300 DPI PNG files via the Kaleido rendering engine [16] and Matplotlib."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                870,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                527,
+                65,
+                939,
+                93
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "User navigation is seamlessly routed through a four-page structure (New Search, Saved Searches, Analysis, Consolidation), supported by a persistent sidebar for rapid access to saved datasets."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                105,
+                939,
+                146
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Illustrative example"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                158,
+                665,
+                172
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This example demonstrates and profiles the performance of ScopusLit using the search equation: TITLE-ABS-KEY((\"learning analytics\" OR \"academic analytics\" OR \"educational data mining\") AND (\"at-risk student*\" OR \"student risk\" OR \"academic risk\" OR \"early warning\" OR \"early alert\" OR \"dropout prediction\" OR \"student performance prediction\" OR \"course failure\" OR \"academic failure\") AND (\"predictive model*\" OR \"risk model*\" OR \"machine learning\" OR \"classification\" OR \"prediction\" OR \"analytics dashboard*\" OR \"early warning system*\")). The goal of this search was a broad search on analytics applications to quantify student risk, especially in learning analytics / educational data mining. A companion video demonstrating the application functionality with another search equation is also available at the link referenced in the Code Metadata Table. After inserting the equation, the results estimation was 1036 documents, whose title information was recovered in 52 s, yielding a rate of roughly 20 documents/s. Subsequently, abstract retrieval was conducted in 678 s with 100% success, for a rate of 1.5 abstracts/s. Similar timings were obtained for equations that yielded larger and smaller corpus. ScopusLit stores the results in a single JSON format for portability and allows exporting the results in either CSV or Excel files for easier inspection. The file size for this case was 4.5 MB. ScopusLit allows a variety of bibliometric analyses based on the information stored in the JSON files. Basic ones include the citation count and the country distribution, as exemplified in Figs. 2 and 3. These two figures appear instantly on their corresponding tabs once an analysis is run."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                184,
+                939,
+                540
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Network analysis is another feature of ScopusLit. It performs cooccurrence networks of words, countries and authors. For this purpose, it extracts the affiliation_country, author_names and authkeywords fields from the Scopus metadata stored in the JSON files and leverages NetworkX Python library to create co-occurrence, co-authorship and Country collaboration networks. Users can define the minimum number of co-occurrences and maximum number of nodes. Fig. 4 displays the word co-occurrence network, which was generated with 6 minimum cooccurrences and 40 maximum nodes in 13.7 s on an Apple M4 Pro SoC,."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                540,
+                939,
+                659
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Previous figures were generated using the entire set of search results. ScopusLit allows result generation using filtered search results. Users can filter by year range, document types, countries and minimum citations. Fig. 5 show the results for keyword analysis -word cloud and evolution along time- when a filter is applied to consider journal articles and years between 2016 and 2026."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                659,
+                939,
+                738
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Based on the abstract retrieval, ScopusLit performs text analysis based on documents for which abstracts were downloaded. On the text analysis tab, the app indicated the number of abstracts available for the process. Word clouds (see Fig. 6), TF-IDF and topic analysis. For the latter, users can select either the NMF or LDA [13] techniques.(Fig. 7)"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                738,
+                939,
+                804
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 7 shows the topic-word heatmap over the entire search results using NMF for 5 topics, which was generated by ScopusLit in 2 s. The LDA analysis yields almost identical results in 3 s. Users interpret the output by examining the top 10 weighted terms for each topic and the accompanying topic-word heatmap. The listed terms indicate the semantic content of each latent topic, while the heatmap shows the rela tive contribution of each term to each topic. The output should be interpreted as an exploratory thematic summary of the abstract corpus."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                804,
+                941,
+                911
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "O. Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/f5117c00d5f72f875613d70b96760b5e50b12ef8eaad694551e7b155de3eab9b.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Publications per year."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                220,
+                98,
+                776,
+                327
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/98b75a84cc8757b4782ad5803c5f370d8e1cd428a17bfe16e2020e7eb0e7d32c.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. Map of publications by country."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                206,
+                375,
+                789,
+                569
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                609,
+                129,
+                622
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Bibliometric analysis is essential for literature reviews and is argu ably among the most transversal and interdisciplinary tool researchers have at their disposal. It has been applied across disciplines such as resource allocation [17], engineering education [18] and underground mining operations [19]. ScopusLit is an open-source tool that lowers the barrier to bibliometric analysis by integrating search, analysis, and visualization into a single browser-based interface with no programming requirement. This makes quantitative literature analysis accessible to researchers who lack programming skills or familiarity with specialized bibliometric software. Table 1 compares ScopusLit with established bibliometric tools across key functional dimensions."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                634,
+                487,
+                779
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 1 compares ScopusLit with established bibliometric tools using a functional criterion: a feature is marked as supported when it is available natively within the tool’s standard workflow, limited when it is available only for a narrower subset of outputs or with restricted customization, partial when it can be achieved through additional steps, scripts, or external packages, and not supported when it is not part of the tool’s documented workflow."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                780,
+                487,
+                872
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "As shown in Table 1, ScopusLit’s main contribution is the native integration of Scopus query execution, abstract retrieval, bibliometric analysis, abstract-level text mining, search consolidation, and export within a single browser-based, zero-code interface. Established tool such as VOSviewer, Bibliometrix, CiteSpace, and Publish or Perish provide mature and widely used capabilities, particularly for science mapping, citation analysis, and bibliometric indicators. However, ScopusLit emphasizes a different use case: reducing manual transfers between platforms and supporting multi-query, Scopus-centered systematic review workflows from data retrieval to publication-ready outputs."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                872,
+                487,
+                925
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                607,
+                939,
+                699
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The tool enables reproducible bibliometric workflows. Each search is persisted as a JSON file that captures the query, execution date, full result set, and downloaded abstracts. This enables exact reproduction of analyses and facilitates sharing of bibliometric datasets between collaborators. The consolidation feature, with both union and comparison modes, directly supports the multi-query workflow typical of systematic reviews following the PRISMA methodology [9]."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                699,
+                939,
+                793
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The inclusion of TF-IDF term extraction and topic modeling on full abstract corpora represents a capability not available in the most widely used bibliometric tools. This allows researchers to move beyond keyword-based analysis to identify latent thematic structures in the literature, which is particularly valuable for characterizing emerging or interdisciplinary research fields. From a practical standpoint, every visualization can be exported at 300 DPI, meeting the minimum resolution requirements of most scientific journals. The multi-sheet Excel export provides immediately usable supplementary materials for review articles."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                793,
+                939,
+                925
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "O. Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/049cd793da48f8b582606221eabeddc59f440030cd38f62f61cdfab323b96b6a.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Keyword Co-occurrence Network"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. Word co-occurrence network."
+                    }
+                ],
+                "image_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Keyword Word Cloud"
+                    }
+                ]
+            },
+            "bbox": [
+                208,
+                104,
+                811,
+                378
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/3ef631999ce9a41074bb26fc2cd2ed5252de2c92517911a1f4abcb327568c5a2.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a)"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                268,
+                446,
+                732,
+                634
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/3aea378cde53620a6d3b5f63c6f27e08ce6cf5b6e44e21bcdece8025ea0f1e83.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b)"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 5. Filtered results for a) Keywords word cloud and b) Keywords evolution."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                255,
+                697,
+                764,
+                863
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "O. Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "performance mining identifydataset classifier problemectiveness timcarisk system compared D early 七 algorithm dnelpriskstudentC learner feature selection Predtr outcome ①future propose csupport workmodelsimpro learning analytic edu ucat 1ona education studen applied insight formance Random Forest predicting student framework application"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                228,
+                71,
+                771,
+                277
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 6. Abstract word cloud."
+                    }
+                ]
+            },
+            "bbox": [
+                416,
+                288,
+                578,
+                301
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Topic 1: data, performance, student, educational, mining, prediction, students, used, techniques, edm Topic 2: students, course, risk, academic, early, courses, learning, predict, identify, failure Topic 3: model, models, accuracy, academic, random, predictive, forest, performance, score, dataset Topic 4: learning, analytics, ai, data, education, student, online, research, machine, systems Topic 5: dropout, moocs, rate, courses, student, rates, online, high, prediction, drop"
+                    }
+                ]
+            },
+            "bbox": [
+                183,
+                325,
+                613,
+                416
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Topic-Word Weights"
+                    }
+                ]
+            },
+            "bbox": [
+                186,
+                437,
+                302,
+                448
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/89631fa8c6db79f5370ed1404e091bc0be8ea477837e67acda50144a701ead3c.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 7. ScopusLit results for topic modeling based on NMF."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                188,
+                467,
+                811,
+                609
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/c2df6f5e4ae4ce223b60d0e4a09e0fc9fca056927417d03bd964327f99b248c6.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Comparison of ScopusLit with established bibliometric tools. ✓ = supported; — = not supported."
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>Feature</td><td>ScopusLit</td><td>VOSviewer</td><td>Bibliometrix</td><td>Publish or Perish</td><td>CiteSpace</td></tr><tr><td>Interface</td><td>Web browser</td><td>Desktop</td><td>R / Shiny</td><td>Desktop</td><td>Desktop</td></tr><tr><td>Built-in Scopus search</td><td>✓</td><td>—</td><td>—</td><td>✓</td><td>—</td></tr><tr><td>Abstract retrieval</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Bibliometric charts</td><td>✓</td><td>Limited</td><td>✓</td><td>✓</td><td>✓</td></tr><tr><td>Co-occurrence networks</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr><tr><td>TF-IDF on abstracts</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Topic modeling</td><td>✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr><tr><td>Search consolidation</td><td>✓</td><td>—</td><td>Partial</td><td>—</td><td>—</td></tr><tr><td>Co-citation / coupling</td><td>—</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr><tr><td>300 DPI export</td><td>✓</td><td>✓</td><td>✓</td><td>—</td><td>✓</td></tr><tr><td>Programming required</td><td>None</td><td>None</td><td>R</td><td>None</td><td>None</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                679,
+                936,
+                822
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Current limitations include exclusive support for the Scopus database and absence of co-citation and bibliographic coupling analysis (which require cited reference data not available from the search API). Future developments will target co-citation and bibliographic coupling analysis using the AbstractRetrieval references endpoint, integration with OpenAlex or Semantic Scholar for open-access metadata enrichment, BibTeX and RIS export for reference managers, temporal keyword evolution analysis, and cloud deployment templates for multi-user access."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                841,
+                487,
+                934
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                839,
+                939,
+                867
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                883,
+                615,
+                897
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This paper presented ScopusLit, an open-source, web-based appli cation for bibliometric analysis of scientific literature indexed in the"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                910,
+                939,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "O. Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Scopus database. The tool is built on Python with Streamlit and pybliometrics, and provides a complete workflow from search execution through analysis and export without requiring programming knowledge from the user."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                66,
+                487,
+                118
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The key contributions of ScopusLit are the integration of API-based search, abstract retrieval, and analysis within a single zero-code interface; the incorporation of TF-IDF and topic modeling on abstracts; cooccurrence network analysis for keywords, authors, and countries; and the search consolidation feature with union and comparison modes supporting systematic review workflows. An illustrative example shows that ScopusLit can retrieve, store, analyze, and visualize a corpus of more than one thousand records using a reproducible JSON-based workflow. The results demonstrate the practical value of combining API-based retrieval with bibliometric indicators, co-occurrence networks, TF-IDF extraction, and topic modeling in one environment. A full workflow of document and abstract retrieval on a query of 1036 took <15 min, including figure generation and abstract topic modeling."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                118,
+                487,
+                290
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The main current limitation is the exclusive dependence on Scopus metadata and API access. As a result, ScopusLit does not yet support multi-database retrieval or advanced citation-based analyses such as cocitation and bibliographic coupling. From a software-development perspective a future direction is to transition ScopusLit from its current monolithic implementation toward a modular architecture, which would improve maintainability, facilitate testing, and encourage community-driven extensions and contributions."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                290,
+                487,
+                395
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of generative AI and AI-assisted technologies in the writing process"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                409,
+                473,
+                435
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "During the preparation of this work the author used Claude to check spelling, grammar, and overall text improvement. After using this tool, the author reviewed and edited the content as needed and takes full responsibility for the content of the publication."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                448,
+                487,
+                501
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of competing interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                514,
+                280,
+                527
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The author of this manuscript, declares that he has no conflicts of interest, either financial or non-financial, that could have inappropri ately influenced the design, analysis, or interpretation of this development. I confirm that I have no affiliations or conflicts of interest that may introduce bias into the presented software."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                540,
+                487,
+                593
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                510,
+                66,
+                769,
+                79
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                92,
+                586,
+                105
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Pritchard A. Statistical bibliography or bibliometrics? J Doc 1969;25(4):348–9."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                116,
+                922,
+                128
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Baas J, Schotten M, Plume A, Cotˆ ´e G, Karimi R. Scopus as a curated, high-quality bibliometric data source for academic research in quantitative science studies. Quant Sci Stud 2020;1(1):377–86. https://doi.org/10.1162/qss_a_00019."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                128,
+                932,
+                157
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] van Eck NJ, Waltman L. Software survey: vOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38. https://doi.org/ 10.1007/s11192-009-0146-3."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                158,
+                919,
+                187
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Aria M, Cuccurullo C. Bibliometrix: an R-tool for comprehensive science mapping analysis. J Inf 2017;11(4):959–75. https://doi.org/10.1016/j.joi.2017.08.007."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                187,
+                934,
+                208
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Chen C. CiteSpace II: detecting and visualizing emerging trends and transient patterns in scientific literature. J Am Soc Inf Sci Technol 2006;57(3):359–77. https://doi.org/10.1002/asi.20317."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                208,
+                914,
+                237
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] Harzing AW. Publish or perish [Online]. Available: https://harzing.com/resource s/publish-or-perish; 2007."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                238,
+                932,
+                258
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Rose ME, Kitchin JR. Pybliometrics: scriptable bibliometrics using a Python interface to Scopus. SoftwareX 2019;10:100263. https://doi.org/10.1016/j. softx.2019.100263."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                258,
+                905,
+                287
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Streamlit Inc. Streamlit: a faster way to build and share data apps [Online]. Available: https://streamlit.io/; 2024."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                288,
+                907,
+                308
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Page MJ, et al. The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. BMJ 2021;372:n71. https://doi.org/10.1136/bmj.n71."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                308,
+                927,
+                327
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Plotly Technologies Inc.. Plotly: collaborative data science [Online]. Available: https://plotly.com/; 2024."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                327,
+                919,
+                348
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Hunter JD. Matplotlib: a 2D graphics environment. Comput Sci Eng 2007;9(3): 90–5. https://doi.org/10.1109/MCSE.2007.55."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                348,
+                922,
+                368
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] Gazoni E, Clark C. Openpyxl: a Python library to read/write Excel 2010 xlsx/xlsm files [Online]. Available: https://openpyxl.readthedocs.io/; 2024."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                369,
+                932,
+                389
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Pedregosa F, et al. Scikit-learn: machine learning in Python. J Mach Learn Res 2011;12:2825–30."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                389,
+                919,
+                408
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Hunter JD. Matplotlib: a 2D graphics environment. Comput Sci Eng 2007;9(3): 90–5. https://doi.org/10.1109/MCSE.2007.55."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                408,
+                922,
+                428
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] Nekrasov K. Matplotlib-venn: venn diagram plotting routines for Python/ matplotlib [Online]. Available: https://github.com/konstantint/matplotlib-venn; 2024."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                428,
+                927,
+                457
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Mease J. Kaleido: fast static image export for web-based visualization libraries [Online]. Available: https://github.com/plotly/Kaleido; 2020"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                459,
+                919,
+                479
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Cotrina-Teatino MA, Marquina-Araujo JJ. Hotelling rule in non-renewable resources: a bibliometric and systematic literature review analysis. Resour policy 2024;98:105342."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                479,
+                931,
+                508
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] Villalba-Morales JD, Jerez S, Parra R, Obando JC, Guzm´an A, Benjumea JM Cundumi O. Emerging Trends in structural mechanics education: a bibliometric approach from the perspective of Colombian professors. Buildings 2026;16(1):219"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                509,
+                929,
+                539
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Polo Salinas J, Marquina Araujo JJ, Cotrina Teatino MA. Uncertainty in underground mining operations: a bibliometric and systematic literature review analysis. World J Eng 2025;22(6):1328–43."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                539,
+                927,
+                569
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "O. Arroyo"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                110,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 34 (2026) 102733"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "7"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ]
+]

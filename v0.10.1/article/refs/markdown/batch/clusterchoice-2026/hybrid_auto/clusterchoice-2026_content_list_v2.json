@@ -1,0 +1,4508 @@
+[
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Original Software Publication"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                182,
+                277,
+                197
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoice: a web-based tool for interpretable clustering and algorithm comparison in bibliometric networks"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                58,
+                205,
+                813,
+                248
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Tsair-Wei Chien <sup>a</sup>, Lifan Chen <sup>b,*</sup>, Willy Chou <sup>c,d,**</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                262,
+                473,
+                279
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>a</sup> Department of Medical Research, Chi Mei Medical Center, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                287,
+                413,
+                298
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>b</sup> Department of Nursing, An Nan Hospital, China Medical University, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                298,
+                457,
+                310
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>c</sup> Department of Leisure and Sports Management, CTBC University, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                308,
+                445,
+                321
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>d</sup> Department of Physical Medicine and Rehabilitation, Chi-Mei Hospital, Liouying, Tainan, Taiwan"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                319,
+                512,
+                332
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A R T I C L E I N F O"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                360,
+                196,
+                373
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: ClusterChoice Bibliometrics Cluster analysis FLCA Network visualization"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                384,
+                169,
+                451
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "A B S T R A C T"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                334,
+                360,
+                436,
+                373
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Cluster analysis is widely used in bibliometric research, but dense networks often reduce readability, and clustering algorithms or quality indicators are frequently underreported. This study introduces ClusterChoice, a web-based R Shiny application for selecting interpretable clustering structures in bibliometric networks. The software accepts co-word occurrence, document–term matrix, and node–edge data, applies top-node filtering to reduce computational burden, and compares 11 clustering algorithms using modularity Q, mean silhouette score, ARI, and NMI. A SoftwareX bibliographic dataset was used to demonstrate practical utility. In the comparative analysis of 76 nodes(i.e., with many singleton with SS=0), most conventional algorithms showed similar modularity (Q = 0.65) but near-zero silhouette scores, indicating weak cohesion despite acceptable partitioning. Components-based methods improved silhouette values to 0.60–0.62. In contrast, FLCA achieved the highest modularity (Q = 0.80) and mean silhouette score (0.78), producing clearer leader–follower clusters. The SSplot for the top 20 nodes across six clusters further showed positive silhouette values, supporting cluster stability. By integrating top-node filtering, FLCA-based clustering, algorithm comparison, network visualization, SSplots, Kano plots, and exportable reports, ClusterChoice provides a practical and reproducible tool for improving bibliometric cluster selection and network-quality assessment."
+                    }
+                ]
+            },
+            "bbox": [
+                332,
+                384,
+                939,
+                554
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Compares 11 clustering algorithms for bibliometric network analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                347,
+                554,
+                737,
+                566
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Uses top-node filtering to reduce dense co-word network complexity."
+                    }
+                ]
+            },
+            "bbox": [
+                347,
+                567,
+                737,
+                578
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Reports modularity, silhouette, ARI, and NMI with exportable visual outputs."
+                    }
+                ]
+            },
+            "bbox": [
+                347,
+                578,
+                779,
+                591
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Metadata"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                627,
+                124,
+                641
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/420dc38c8c34f8fc68849be922ccbc62cb74e3d65dae073fab39072a9d18c1ac.jpg"
+                },
+                "table_caption": [],
+                "table_footnote": [],
+                "html": "<table><tr><td>Nr</td><td>Code metadata description</td><td>Metadata</td></tr><tr><td>C1</td><td>Current code version</td><td>v1.0</td></tr><tr><td>C2</td><td>Permanent link to code/repository used for this code version</td><td>https://github.com/smilechien/clusterchoice/</td></tr><tr><td>C3</td><td>Permanent link to reproducible capsule</td><td>https://onlinerasch.shinyapps.io/flcacompare/</td></tr><tr><td>C4</td><td>Legal code license</td><td>MIT License</td></tr><tr><td>C5</td><td>Code versioning system used</td><td>git</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                650,
+                482,
+                756
+            ]
+        },
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/7ca06a0c6581b00fcad4e1216c77251aa422e9a8bc001e0b2b6c01c6c3ae7060.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "(continued )"
+                    }
+                ],
+                "table_footnote": [],
+                "html": "<table><tr><td>C6</td><td>Software code languages, tools and services used</td><td>R</td></tr><tr><td>C7</td><td>Compilation requirements, operating environments and dependencies</td><td>Shiny, DT, igraph, dplyr, tibble, readr, visNetwork, RColorBrewer, ggplot2, ggrepel, and circlize</td></tr><tr><td>C8</td><td>Online demo MP4 video</td><td>https://youtu.be/uRhJljxbPS0</td></tr><tr><td>C9</td><td>Support email for questions</td><td>rasch.smile@gmail.com</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                514,
+                636,
+                937,
+                720
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "2352-7110/© 2026 The Authors. Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                911,
+                937,
+                924
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                416,
+                42,
+                579,
+                56
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                58,
+                75,
+                161,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                379,
+                75,
+                621,
+                89
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "ELSEVIER"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                145,
+                161,
+                162
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                445,
+                105,
+                557,
+                124
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                337,
+                145,
+                663,
+                160
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "国SoftwareXa Eemont"
+                    }
+                ]
+            },
+            "bbox": [
+                838,
+                66,
+                937,
+                160
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Abbreviations: AAC, Absolute Advantage Coefficient; ARI, Adjusted Rand Index; FLCA, Following Leader Clustering Algorithm; NMI, Normalized Mutual Information; Q, Modularity; SS, Silhouette Score; WCD, Weighted Co-occurrence Degree; WoSCC, Web of Science Core Collection."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                807,
+                939,
+                831
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "* Corresponding author at: An Nan Hospital, No. 66, Section 2, Zhanghe Rd., Annan District, Tainan City 709, Taiwan."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                831,
+                719,
+                844
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "** Corresponding author at: Chi-Mei Medical Center, 901 Chung Hwa Road, Yung Kung Dist., Tainan 710, Taiwan."
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                843,
+                700,
+                856
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "E-mail addresses: smile@mail.chimei.org.tw (T.-W. Chien), leanne.chenlf@gmail.com (L. Chen), smilewilly@mail.chimei.org.tw (W. Chou)."
+                    }
+                ]
+            },
+            "bbox": [
+                73,
+                854,
+                831,
+                868
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2026.102794"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                876,
+                310,
+                889
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Available online 11 June 2026"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                901,
+                231,
+                912
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "Received 3 May 2026; Received in revised form 25 May 2026; Accepted 9 June 2026"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                887,
+                529,
+                901
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/6d708c5be3d89aaa0fbf341b7fbfaad5f8208cbee9c311e4fcbd3450edc6b17b.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Pseudocode of the FLCA leader–follower clustering procedure."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Note. A leader is operationally defined as a higher-ranked node that attracts one or more followers; Log status generated by FLCA is shown in Supplemental Appendix 1; flca_ma_sil_module.R in Github at https://github.com/smilechien/c lusterchoice/"
+                    }
+                ],
+                "html": "<table><tr><td>Stage</td><td>Pseudocode</td></tr><tr><td>Input</td><td>Node table with name, value, optional value2; edge table with paired nodes and WCD; parameters: cluster_by, top_clusters = 5, base_per_cluster = 4, target_n = 20, min_size = 3, intra_delta = 2, inter_delta = 5.</td></tr><tr><td>Output</td><td>Final node clusters, leader-follower edges, top-20 sampled nodes, modularity Q, and silhouette statistics.</td></tr><tr><td>1</td><td>Normalize node names and numeric scores.</td></tr><tr><td>2</td><td>Select active FLCA score: use value for maturity mode or value2 for influence mode.</td></tr><tr><td>3</td><td>Sort nodes by descending active score and assign initial unique cluster IDs.</td></tr><tr><td>4</td><td>Normalize edges into Leader, Follower, and WCD.</td></tr><tr><td>5</td><td>For each edge, assign the higher-scored node as Leader and the lower-scored node as Follower.</td></tr><tr><td>6</td><td>For each follower, retain only one strongest leader link using maximum WCD; break ties by leader score and leader rank.</td></tr><tr><td>7</td><td>Identify true leaders as nodes with at least two followers; always retain the top-scored node as a leader.</td></tr><tr><td>8</td><td>Iteratively merge each non-leader follower into its leader&#x27;s cluster until no cluster assignment changes.</td></tr><tr><td>9</td><td>Detect small clusters with fewer than min_size members and merge them upward through their leader connection.</td></tr><tr><td>10</td><td>If only one cluster remains, split it into two rank-based subclusters to avoid a trivial one-cluster result.</td></tr><tr><td>11</td><td>Renumber clusters sequentially according to the highest active score within each cluster.</td></tr><tr><td>12</td><td>Apply major sampling: rank clusters by size and total active score.</td></tr><tr><td>13</td><td>Select the top top_clusters clusters.</td></tr><tr><td>14</td><td>From each selected cluster, take up to base_per_cluster highest-scored nodes.</td></tr><tr><td>15</td><td>Fill remaining positions by round-robin sampling from selected clusters until target_n = 20 is reached.</td></tr><tr><td>16</td><td>If still fewer than 20 nodes, fill by global active-score ranking.</td></tr><tr><td>17</td><td>Rebuild the sampled edge set using only edges among selected top-20 nodes.</td></tr><tr><td>18</td><td>Compute modularity Q for the final sampled clusters using weighted and unweighted undirected edges.</td></tr><tr><td>19</td><td>Compute silhouette statistics using distance transformed from edge weight: stronger WCD indicates shorter distance.</td></tr><tr><td>20</td><td>Apply intra-cluster and inter-cluster penalties for missing edges using intra_delta and inter_delta.</td></tr><tr><td>21</td><td>Return final clusters, leader-follower relations, sampled top-20 network, modularity Q, and silhouette values.</td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                60,
+                90,
+                482,
+                558
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                625,
+                263,
+                638
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Clustering is a fundamental task in network analysis and community detection, aiming to partition nodes into meaningful groups based on structural relationships. Widely used algorithms, such as Louvain, Walktrap, Infomap, and label propagation, have been extensively applied in bibliometrics and complex network studies due to their computational efficiency and scalability [1–3]. However, these methods primarily optimize global criteria, such as modularity or information flow, and often overlook structural constraints required for interpretable clustering results [4]."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                651,
+                487,
+                771
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.1. Research gaps"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                791,
+                174,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A key limitation of existing approaches is the absence of explicit hierarchical organization within clusters [5]. In many real-world networks—particularly bibliometric and collaboration networks—relationships naturally exhibit leader–follower dynamics, where central nodes (leaders) organize or influence surrounding nodes (followers) [6–12]. Conventional algorithms do not enforce such structures, often producing clusters with weak cohesion, fragmented groupings, or leaders lacking sufficient supporting members [13]. Moreover, dense co-word or collaboration networks frequently contain excessive nodes and edges, resulting in cluttered layouts that hinder interpretation [14]. Empirical studies further show that some algorithms may achieve acceptable modularity while yielding low or even negative silhouette scores, indicating poor internal cohesion [7,9]."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                818,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                509,
+                66,
+                939,
+                118
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "These issues are particularly critical in bibliometric analysis. Author collaboration networks are widely used to examine how scientific knowledge is generated and organized, where nodes represent authors and edges capture co-authorship or intellectual relationships [15]. In practice, such collaborations are rarely flat; instead, they often reflect implicit hierarchies in which senior or highly productive researchers act as leaders, while junior collaborators form follower groups [8,9,16]. Therefore, clustering methods should not only partition networks into communities but also reveal interpretable internal structures that reflect these hierarchical relationships."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                119,
+                939,
+                250
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "However, traditional clustering algorithms do not guarantee that clusters satisfy basic interpretability conditions, such as having a clear leader, sufficient members, and coherent internal connections [6]. This limitation may lead to misleading conclusions in bibliometric studies, particularly when interpreting academic leadership, mentoring capacity, or collaborative structures."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                250,
+                939,
+                330
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.2. ClusterChoice and FLCA"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                349,
+                685,
+                361
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To address these gaps, this study introduces ClusterChoice [17], a web-based application designed to improve clustering interpretability and efficiency in bibliometric networks. The system integrates (i) a top-node filtering strategy to reduce network complexity before clustering, (ii) a leader–follower-oriented clustering framework based on Following Leader Clustering Algorithm (FLCA) [8,9,16], and (iii) a comparative evaluation module across multiple algorithms using metrics such as modularity, silhouette score, ARI, and NMI [18,19]. By combining computational reduction with structural constraints, ClusterChoice[17] enables users to identify clustering solutions that are both quantitatively robust and visually interpretable."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                375,
+                939,
+                520
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1.3. Study aims"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                540,
+                610,
+                553
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The objective of this study is to evaluate whether FLCA can produce more coherent and interpretable clustering results than conventional methods. Using bibliometric datasets, ClusterChoice compares multiple clustering algorithms and examines their ability to reveal meaningful collaboration structures while satisfying key clustering principles. Through this approach, the study aims to provide a practical and reproducible framework for selecting appropriate clustering methods in bibliometric and network analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                566,
+                939,
+                672
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Software description and methodology"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                686,
+                786,
+                699
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoise is a web-based bibliometric clustering and network analysis application developed in R with a Shiny interface. It is designed to transform co-word occurrence data or network-based inputs into interpretable clustering structures while reducing computational burden through an adaptive node-selection strategy. Unlike conventional clustering tools that operate on full-scale networks, ClusterChoise introduces a top-N node preselection mechanism (default: top 100 nodes by importance to reduce computation with many nodes and relations) to improve efficiency without sacrificing interpretability."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                712,
+                939,
+                831
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The application integrates data preprocessing, network construction, clustering comparison, and visualization into a unified workflow. It supports multiple clustering algorithms, including FLCA (Table 1) and benchmark methods, and provides evaluation metrics such as silhouette score, modularity, and agreement indices (ARI, NMI) [18,19]. The system outputs interpretable visualizations including co-word networks, SSplots [12], and Sankey-style summaries [5], enabling users to assess clustering quality and thematic structure in a reproducible environment."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                831,
+                939,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/5d12b06dc7942d1ee5139f57821c2434b8a2f99643416f25d5035884dfe6a061.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. ClusterChoice Workflow with 5 modules."
+                    },
+                    {
+                        "type": "text",
+                        "content": "Step 2: Node importance estimation and top-N selection"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                124,
+                66,
+                872,
+                438
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. System architecture"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                477,
+                206,
+                490
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoise follows a structured five-step analytical pipeline:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                503,
+                460,
+                515
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Data acquisition and normalization"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                529,
+                312,
+                542
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Node importance estimation and top-N selection"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                543,
+                396,
+                556
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Co-word network construction"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                556,
+                282,
+                569
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Clustering and comparative evaluation"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                569,
+                334,
+                582
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Visualization and export"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                583,
+                243,
+                595
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This architecture converts raw co-word occurrence data or document-derived inputs into a reduced yet informative network rep resentation, followed by clustering analysis and visual interpretation."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                609,
+                485,
+                648
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A key design principle is computational reduction before clustering. Instead of constructing and analyzing a full high-dimensional network, ClusterChoise first identifies the most informative nodes and restricts downstream computation to this subset. This improves scal ability and stability, particularly for large bibliometric datasets."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                648,
+                487,
+                715
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Step 1: Data acquisition and normalization"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                727,
+                339,
+                740
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The system accepts multiple input formats, including:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                752,
+                403,
+                767
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Co-word occurrence tables (long format: document × term)"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                780,
+                438,
+                793
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Wide document-term matrices"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                794,
+                265,
+                805
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Predefined node–edge network data"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                807,
+                299,
+                819
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Uploaded data are parsed into a standardized internal representation. Text-based inputs are transformed into term-level structures, while network inputs are normalized into node and edge tables with consistent naming conventions (e.g., Leader, follower, WCD)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                833,
+                487,
+                886
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This step ensures compatibility across heterogeneous data sources and prepares the dataset for subsequent node evaluation and filtering."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                886,
+                485,
+                912
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To reduce computational complexity, ClusterChoise applies a node filtering strategy prior to network construction. Each node is assigned an importance score based on occurrence frequency or weighted connectivity (e.g., co-occurrence strength)."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                503,
+                939,
+                556
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nodes are then ranked in descending order, and only the top-N nodes (default: 100) are retained:"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                556,
+                939,
+                582
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "\\mathscr {V} _ {t o p} = v _ {1}, v _ {2}, \\dots , v _ {1 0 0}, \\text {where} v a l u e (v _ {i}) \\geq v a l u e (v _ {i + 1}),\\tag{1}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/4a4ddb5425f965e6d2c319e1fd7570718201ab14f8de612e4cfe0ce2f1ef96e4.jpg"
+                }
+            },
+            "bbox": [
+                512,
+                588,
+                816,
+                602
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This step is critical because co-word networks scale quadratically with the number of nodes. By limiting the node set before edge generation, the algorithm significantly reduces memory usage and computational time."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                609,
+                939,
+                662
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Importantly, this design preserves the core thematic structure of the dataset, as high-frequency or high-impact terms typically dominate semantic representation."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                662,
+                939,
+                702
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Step 3: Co-word network construction"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                529,
+                715,
+                763,
+                728
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "After node selection, ClusterChoise constructs a weighted co-word network based only on the filtered node set. Edges are generated using co-occurrence relationships:"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                741,
+                939,
+                781
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• In document-based data: two terms are linked if they co-occur within the same unit (e.g., sentence or document)"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                794,
+                939,
+                820
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• In matrix data: co-occurrence is derived via matrix multiplication"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                820,
+                927,
+                833
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• In edge input: weights are directly used"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                833,
+                773,
+                847
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The co-occurrence matrix is defined as:"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                860,
+                769,
+                873
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "C = X ^ {T} X\\tag{2}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/7eb962ddab641e29ba0a10b757bde6da7f7d9a4f2767564f4ddc9b077efd1d67.jpg"
+                }
+            },
+            "bbox": [
+                510,
+                880,
+                566,
+                892
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where X is the binary document-term matrix restricted to top-N nodes. Each edge weight represents the frequency or strength of co-"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                905,
+                939,
+                931
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/dbde8cc7850be421a0d415dfb3dfc2213545cdb7b502fc4088f85936229133e6.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. ClusterChoice homepage and plot menu."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                216,
+                100,
+                364,
+                802
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/67d2f66581290ba6e0d68cb78206a9b2624667280158cba2b8aa50b527f34920.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "(D) Co-word occurrences"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                374,
+                103,
+                734,
+                413
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/5d072c461abbcc96aadd1606aa92f199250800d94d9b866c95eb82c136e79e6d.jpg"
+                },
+                "content": "",
+                "chart_caption": [],
+                "chart_footnote": []
+            },
+            "bbox": [
+                371,
+                470,
+                786,
+                651
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "(E) Download list"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                388,
+                656,
+                601,
+                680
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Download list for FLCA Process outputs Use these buttons to export the selected FLCA Process tables and publication-style plot PNGs generated under the current maturity/influence mode and major-sampling settings"
+                    }
+                ]
+            },
+            "bbox": [
+                374,
+                687,
+                697,
+                723
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Selected nodes All FLCA nodes  Leader-follower e  Cluster summary CSV"
+                    }
+                ]
+            },
+            "bbox": [
+                381,
+                726,
+                739,
+                740
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "AAC summary CSSSplot PNG"
+                    }
+                ]
+            },
+            "bbox": [
+                381,
+                751,
+                532,
+                764
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Kano PNG"
+                    }
+                ]
+            },
+            "bbox": [
+                554,
+                751,
+                611,
+                764
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Circular chord PNG"
+                    }
+                ]
+            },
+            "bbox": [
+                640,
+                751,
+                729,
+                764
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "SankeyMATIC TSankeyMATIC noSankeyMATIC ed  Chord edges CSV"
+                    }
+                ]
+            },
+            "bbox": [
+                381,
+                775,
+                726,
+                789
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "occurrence (WCD, weighted centrality degree) clustering and visualization."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                838,
+                487,
+                865
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• FLCA (Following Leader Clustering Algorithm)"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                838,
+                831,
+                853
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Louvain"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                853,
+                586,
+                865
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Walktrap"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                866,
+                591,
+                878
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Step 4: Clustering and comparative evaluation"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                877,
+                361,
+                892
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Infomap"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                878,
+                588,
+                891
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Label propagation"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                892,
+                645,
+                904
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoise supports multiple clustering algorithms, including:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                904,
+                470,
+                919
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Edge betweenness"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                905,
+                645,
+                916
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Connected components"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                918,
+                675,
+                931
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/80f5764a15324ab7809bffbf37a857dd4a31e01896b6af06c5fb53e3f6c56df0.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. The traditional network presents a dense structure with numerous nodes and edges."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                147,
+                69,
+                853,
+                580
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A distinguishing feature is the inclusion of FLCA-based reduction, where each node connects to its strongest neighbor, producing a simplified leader–follower structure."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                619,
+                487,
+                658
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Clustering quality is evaluated using:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                658,
+                305,
+                672
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Modularity (Q) for network partition strength"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                684,
+                363,
+                697
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Silhouette score (SS) for cluster cohesion and separation"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                698,
+                428,
+                711
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Adjusted Rand Index (ARI) and Normalized Mutual Information (NMI) for agreement comparison with FLCA"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                711,
+                485,
+                738
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This multi-metric framework allows users to compare clustering outcomes across methods and identify the most interpretable structure."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                750,
+                487,
+                778
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Step 5: Visualization and export"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                790,
+                275,
+                804
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoise generates multiple visual outputs:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                815,
+                371,
+                829
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Co-word network graphs (leader–follower structure)"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                843,
+                406,
+                856
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• SSplots for cluster quality assessment"
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                856,
+                310,
+                868
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Kano-style plots for algorithm comparison"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                870,
+                344,
+                882
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Sankey diagrams for flow-based interpretation"
+                    }
+                ]
+            },
+            "bbox": [
+                65,
+                883,
+                368,
+                895
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "These visualizations transform clustering results into interpretable insights, enabling users to understand thematic organization and cluster"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                907,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "reliability."
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                619,
+                578,
+                631
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The export module provides:"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                631,
+                707,
+                645
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Node and edge tables"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                658,
+                665,
+                670
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Clustering results"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                672,
+                640,
+                684
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• High-resolution Figures"
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                684,
+                677,
+                698
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This supports reproducibility and facilitates integration into academic manuscripts."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                711,
+                937,
+                738
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. Computational optimization strategy"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                752,
+                752,
+                766
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A central innovation of ClusterChoise is its pre-clustering reduction strategy, where node filtering is applied before network con struction and clustering."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                778,
+                937,
+                817
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Compared to traditional approaches:"
+                    }
+                ]
+            },
+            "bbox": [
+                529,
+                818,
+                754,
+                832
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Conventional workflow:"
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                844,
+                673,
+                857
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "full nodes → full edges → clustering"
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                870,
+                732,
+                883
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• ClusterChoise workflow:"
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                897,
+                673,
+                910
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "top-N nodes → reduced edges → clustering"
+                    }
+                ]
+            },
+            "bbox": [
+                510,
+                923,
+                771,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/7cac81425f3080b3d78e28199920cfed268ceebf9cf95711437d4cdc99d1ee04.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. The FLCA-based network (Fig. 4) produces a simplified leader–follower structure with fewer edges."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                213,
+                68,
+                783,
+                403
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This shift reduces computational complexity from:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                440,
+                384,
+                453
+            ]
+        },
+        {
+            "type": "equation_interline",
+            "content": {
+                "math_content": "O \\big (n ^ {2} \\big) \\to O \\big (k ^ {2} \\big), k \\ll n,\\tag{3}",
+                "math_type": "latex",
+                "image_source": {
+                    "path": "images/6fe4366be2c8ff08ed8a221573f27b0a1de4deb762d6785f49f0f7f12c7db9fb.jpg"
+                }
+            },
+            "bbox": [
+                58,
+                461,
+                181,
+                477
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "where n is the original number of nodes and k is the selected subset."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                486,
+                472,
+                500
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This design is particularly effective for large bibliometric datasets, where full co-word matrices can be computationally expensive and visually cluttered."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                501,
+                487,
+                540
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.3. Implementation layers"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                558,
+                220,
+                571
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoise consists of four layers:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                583,
+                302,
+                598
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Interface layer (Shiny) – user input, parameter selection, visualization"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                611,
+                485,
+                636
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Preprocessing layer – data parsing and normalization"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                636,
+                411,
+                650
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Analytical engine – node filtering, network construction, clustering"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                650,
+                485,
+                664
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Rendering layer – visualization and export"
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                664,
+                347,
+                677
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This modular design separates user interaction from computation, ensuring both usability and reproducibility."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                689,
+                485,
+                717
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4. ARI and NMI as similarity measures for clustering algorithms"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                733,
+                442,
+                747
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ARI and NMI measure how similar each clustering result is to the reference clustering structure [9,10]."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                760,
+                485,
+                786
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Adjusted Rand Index (ARI) evaluates whether pairs of nodes are assigned consistently across two clustering methods. A value of 1.00 means perfect agreement, whereas values near 0 indicate random-level agreement."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                786,
+                487,
+                839
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Normalized Mutual Information (NMI) measures how much information one clustering result shares with another. A value of 1.00 also indicates complete consistency between two clustering solutions."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                839,
+                487,
+                880
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.5. User workflow"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                897,
+                178,
+                910
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "From a user perspective, the workflow is shown below (Fig. 2):"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                923,
+                460,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Upload co-word or document data"
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                440,
+                741,
+                453
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Select analysis settings (e.g., node limit, clustering method)"
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                453,
+                890,
+                467
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Run analysis"
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                467,
+                613,
+                479
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Inspect network and clustering results"
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                480,
+                764,
+                493
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Export outputs"
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                494,
+                626,
+                506
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This streamlined pipeline enables efficient exploration of bibliometric structures while maintaining methodological rigor."
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                519,
+                937,
+                544
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "To illustrate the use of ClusterChoice [17], three main functions are shown in Fig. 2 [21]: (1) uploading co-word occurrence data by selecting Upload CSV files, choosing Co-word occurrence, browsing the dataset file (dataset1.csv) [20], running the analysis, and viewing both Full Network and FLCA Reduced outputs; (2) examining clustering performance through the Quality and Visual Quality tabs; and (3) opening the FLCA Process tab to inspect visual results."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                544,
+                939,
+                638
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Additionally, the interface supports FLCA parameter configuration, maturity/influence modes, clustering-quality evaluation, and exportable visual outputs including network dashboards, SSplots, Kano plots, Sankey diagrams, and downloadable publication-ready figures."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                638,
+                939,
+                692
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Illustrative examples"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                706,
+                672,
+                718
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.1. Data source"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                732,
+                616,
+                745
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Articles published in SoftwareX were retrieved from Web of Science core collection(WoSCC). The coverage period was from 2017 to 2026. Author-defined keywords were applied to ClusterChoice, ensuring full transparency and facilitates reproducibility for future bibliometric investigations."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                757,
+                939,
+                823
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Study data are deposed in Github [20]. Since all articles stored in WoSCC do not contain identifiable patient information, ethical review approval was not required."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                824,
+                939,
+                865
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2. Results of coword keyword occurrences in ClusterChoice"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                883,
+                865,
+                897
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The traditional network (Fig. 3) presents a dense structure with numerous nodes and edges, resulting in visual clutter and limited"
+                    }
+                ]
+            },
+            "bbox": [
+                509,
+                910,
+                939,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                504,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "juality of clustering algorithms: modularity Q vs mean silhouette scoi"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                191,
+                66,
+                806,
+                84
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/c8554d0f9297ca6f77dc7f40f64ac5853d9ffd8b8396f08c3b7d06a7a1e7ab53.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5. Quality of clustering algorithm in comparison by modularity Q and mean silhouette score: Note. FLCA at top right corner with Modularity Q and SS are shown on x- and y-axes, respectively."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                344,
+                85,
+                652,
+                667
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "interpretability."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                716,
+                157,
+                728
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In contrast, the FLCA-based network (Fig. 4) produces a simplified leader–follower structure with fewer edges, clearly defined clusters, and improved readability, facilitating more interpretable and meaningful clustering results."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                728,
+                487,
+                783
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.3. Comparative analysis of clustering algorithms"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                804,
+                351,
+                818
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5 and Table 2 compare clustering quality across algorithms using modularity Q and mean silhouette score. Most conventional algorithms showed similar modularity "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( Q = 0 . 6 5 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "but near-zero silhouette scores, indicating weak internal cohesion. Components-based methods improved silhouette values (0.60–0.62)."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                831,
+                487,
+                897
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In Table 2, most conventional algorithms have ARI ¼ 1.00 and NMI "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "{ \\bf \\mu } = { \\bf 1 . 0 0 } ;"
+                    },
+                    {
+                        "type": "text",
+                        "content": ", meaning they produced the same or highly identical partition structure under the full-edge setting. However, their silhouette scores were mostly 0.00, showing that agreement alone does not guarantee good cluster cohesion due to many singleton nodes in network, as shown in Fig. 3. FLCA is therefore reported separately because it uses a reducedconsistent leader–follower structure, achieving higher modularity (0.80) and silhouette (0.78)."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                897,
+                487,
+                936
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                716,
+                939,
+                781
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Importantly, both maturity and influence modes in Fig. 2 allow FLCA to identify leaders based on either node frequency (value) or edge connectivity strength (value2). In this case, both modes generate identical data patterns in top 20 nodes shown in Table 2."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                781,
+                939,
+                836
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.4. FLCA-based network charts"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                857,
+                702,
+                871
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Figs. 6 and 7 present the FLCA-based visualization results. Fig. 2C illustrates an interactive leader–follower network, where major nodes (e.g., Machine learning, Python, Software) act as cluster leaders with directed links to followers, providing a clear and interpretable positive silhouette values (SS ≈ 0.22–0.52), indicating good cluster cohesion and separation, supporting the stability of the FLCA clustering."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                883,
+                939,
+                936
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "7"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/bc44b7e06093b7bb3958e01f97aa7f8efd8ca02d72ac3f29bcb058de4c7557e5.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 2"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Comparative performance of clustering algorithms."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Note: a.Weak edges dropped until target number of components is reached; b. reduced_consistent; c.Weak edges dropped until target number of components is reached; the higher overall silhouette value (~0.78) was calculated from the broader FLCA clustering structure generated from the larger node set (approximately top 100 nodes distributed across multiple clusters).."
+                    }
+                ],
+                "html": "<table><tr><td>No.</td><td>Method</td><td>n-cluster</td><td>modularity</td><td>silhouette</td><td>ARI</td><td>NMI</td><td>status</td><td>note</td><td>edges</td></tr><tr><td>1</td><td>Louvain</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>2</td><td>Optimal</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>3</td><td>Components</td><td>76</td><td>0.65</td><td>0.62</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>4</td><td>edge_betweenness</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>5</td><td>label_prop</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>6</td><td>Infomap</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>7</td><td>leading_eigen</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>8</td><td>Walktrap</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>9</td><td>fast_greedy</td><td>76</td><td>0.65</td><td>0.00</td><td>1.00</td><td>1.00</td><td>ok</td><td></td><td>full</td></tr><tr><td>10</td><td>FLCA by maturity</td><td>76</td><td>0.80</td><td>0.78</td><td></td><td></td><td>ok</td><td>a</td><td>b</td></tr><tr><td>10</td><td>FLCA by influence</td><td>76</td><td>0.80</td><td>0.78</td><td></td><td></td><td>ok</td><td>a</td><td>b</td></tr><tr><td>11</td><td>Components</td><td>76</td><td>0.65</td><td>0.60</td><td>1.00</td><td>1.00</td><td>ok</td><td>c</td><td></td></tr></table>",
+                "table_type": "simple_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                58,
+                90,
+                937,
+                244
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/7a38abdfad92061e1c2935a56dbc439cd35eb9e9ca2b2c2eeee6e15de777292b.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 6. Sankey plot for displaying Top 20 nodes with a single edge from a follower to a corresponding leader."
+                    }
+                ],
+                "chart_footnote": [
+                    {
+                        "type": "text",
+                        "content": "hierarchical structure. Fig. 6 displays an Sankey-style network. Fig. 7 shows the SSplot of the top 20 nodes across six clusters, with mostly"
+                    }
+                ]
+            },
+            "bbox": [
+                240,
+                308,
+                747,
+                885
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "8"
+                    }
+                ]
+            },
+            "bbox": [
+                494,
+                952,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/bf1f0921684e725ba175b2171a4afc4a43f3435314a2e3f2d72f81e02821a902.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 7. Silhouette score plot for top 20 nodes in top 6 clusters: Note. the lower silhouette values (~0.22–0.52) were calculated from the final major-sampling visualization subset consisting of the top 20 representative nodes distributed across only six major clusters."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                136,
+                68,
+                878,
+                447
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                57,
+                496,
+                487,
+                525
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.4.1. To examine whether the study achieved its goals"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                535,
+                379,
+                549
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This section evaluates whether ClusterChoice achieved its main goals: reducing network complexity, improving cluster interpretability, and supporting algorithm selection. The results were examined using visual readability, leader–follower structure, modularity Q, silhouette score, and comparative algorithm performance. This assessment confirms that the proposed FLCA workflow provides clearer and more reliable clustering outputs than conventional network clustering approaches."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                549,
+                487,
+                656
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                669,
+                131,
+                682
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Unlike traditional bibliometric tools such as CiteSpace [22], VOS viewer [23], and bibliometrix [24], ClusterChoice[17] integrates FLCA-based leader–follower clustering [8,9,16] with pre-analysis filtering, cluster-quality evaluation, and publication-oriented visualization within a unified browser-based workflow. Rather than focusing solely on network generation, the framework emphasizes interpretable cluster structures, standardized evaluation, and reproducible compari son of multiple clustering algorithms [4,7,12]."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                694,
+                487,
+                800
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The practical impact of the framework lies primarily in balancing computational efficiency, structural interpretability, and reproduc ibility. The proposed top-N node preselection strategy (default: top 100 nodes) substantially reduces computational burden in dense biblio metric networks by limiting the number of pairwise node relationships processed during clustering and visualization. This filtering mechanism improves runtime stability and visual readability while preserving the dominant thematic structure of the network [7]. However, low-frequency nodes may still contain potentially meaningful semantic information, and therefore the filtering strategy represents a tradeoff between computational tractability and fine-grained thematic completeness."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                799,
+                487,
+                933
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                496,
+                939,
+                523
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoice [17] further incorporates a structure-aware FLCA framework based on leader–follower assignment, maximum-association filtering, and major-sampling stabilization [8–12,16]. Compared with several conventional clustering methods evaluated in this study, FLCA produced higher overall modularity "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( Q \\approx 0 . 8 0 )"
+                    },
+                    {
+                        "type": "text",
+                        "content": "together with substantially improved weighted mean silhouette scores "
+                    },
+                    {
+                        "type": "equation_inline",
+                        "content": "( S S \\approx 0 . 7 8 – 0 . 8 8 ) _ { \\scriptscriptstyle ; }"
+                    },
+                    {
+                        "type": "text",
+                        "content": "indicating stronger global edge separation and improved node-level compactness. In contrast, several conventional methods produced acceptable modularity values but near-zero silhouette scores, reflecting fragmented cluster structures with weak local cohesion. These findings suggest that modularity alone may not sufficiently represent clustering quality in highly fragmented bibliometric networks [4,7,12]."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                523,
+                939,
+                682
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The integrated evaluation framework additionally combines modularity (Q), silhouette score (SS), adjusted Rand index (ARI), and normalized mutual information (NMI), enabling objective comparison of clustering structures generated by different algorithms [4,12]. This design improves methodological transparency and addresses the limited reproducibility and inconsistent reporting frequently observed in bibliometric network studies [7,12]."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                682,
+                939,
+                774
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "From a software perspective (Figs. 1 and 2), the Shiny-based implementation supports multiple input formats and generates exportable visual outputs, including network diagrams, SSplots [7,12], Sankey diagrams [6], Kano plots [25], and structured summary tables. The browser-based workflow improves accessibility for users without advanced programming expertise while supporting reproducible bibliometric analysis and visualization."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                774,
+                939,
+                866
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Nevertheless, several limitations should be noted. First, the top-N filtering strategy may exclude low-frequency but potentially meaningful nodes, which may affect detailed semantic interpretation. Second, the leader–follower assumption used in FLCA may not fully capture overlapping or non-hierarchical community structures [8–12]. Third, clustering performance may vary according to network density, dataset characteristics, and parameter settings, requiring cautious interpreta tion. Fourth, the current validation was primarily conducted using a SoftwareX bibliometric dataset, and broader cross-domain evaluation remains necessary to further establish generalizability. Finally, scalability for extremely large bibliometric networks may require future optimization using sparse-matrix processing or parallel computation strategies."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                866,
+                939,
+                933
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                796,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "9"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                950,
+                505,
+                960
+            ]
+        }
+    ],
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                57,
+                66,
+                487,
+                170
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Overall, ClusterChoice [17] contributes a practical and reproducible framework for bibliometric clustering analysis by integrating computational efficiency, interpretable network structure, objective cluster-quality evaluation, and publication-oriented visualization within a unified analytical environment."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                171,
+                487,
+                238
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Conclusion"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                253,
+                156,
+                266
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "ClusterChoice provides an efficient and interpretable framework for bibliometric clustering. By combining top-N node filtering, FLCA-based leader–follower clustering, and comparative quality metrics, it reduces network complexity while improving cluster readability and evaluation transparency. The results support ClusterChoice as a practical webbased tool for selecting suitable clustering algorithms and generating reproducible visual outputs for bibliometric and network analysis."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                279,
+                487,
+                373
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Data availability"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                388,
+                171,
+                401
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The data are public and available at Github."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                414,
+                346,
+                427
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "CRediT authorship contribution statement"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                443,
+                337,
+                457
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Tsair-Wei Chien: Methodology. Lifan Chen: Conceptualization. Willy Chou: Investigation."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                470,
+                485,
+                496
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of competing interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                522,
+                280,
+                535
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                548,
+                487,
+                588
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgments"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                602,
+                181,
+                617
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We would like to acknowledge Github which allowing us to deposit our R code and datasets at no charges."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                629,
+                485,
+                656
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Supplementary materials"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                672,
+                226,
+                684
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Supplementary material associated with this article can be found, in the online version, at doi:10.1016/j.softx.2026.102794."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                698,
+                485,
+                725
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                66,
+                586,
+                78
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Hubert L, Arabie P. Comparing partitions. J. Classif. 1985;2(1):193–218."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                90,
+                890,
+                100
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Strehl A, Ghosh J. Cluster ensembles—a knowledge reuse framework fo combining multiple partitions. J. Mach. Learn. Res. 2002;3:583–617."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                103,
+                887,
+                121
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] Newman MEJ. Modularity and community structure in networks. Proc. Natl. Acad. Sci. U S A 2006;103(23):8577–82."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                121,
+                932,
+                141
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] Rousseeuw PJ. Silhouettes: a graphical aid to the interpretation and validation of cluster analysis. J. Comput. Appl. Math. 1987;20:53–65."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                141,
+                934,
+                161
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Blondel VD, Guillaume JL, Lambiotte R, Lefebvre E. Fast unfolding of communities in large networks. J. Stat. Mech. 2008;2008(10):P10008."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                161,
+                934,
+                181
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] Lim SW, Chou W, Chen L. SankeyNetwork: A clear and concise visualization too for bibliometric data. MethodsX 2025;14:103379."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                181,
+                932,
+                201
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Chuang HY, Chou W. SilhouetteScoreinR: Beyond traditional network layouts by leveraging local cohesion and nearest neighbor separation. MethodsX 2025;15: 103622. https://doi.org/10.1016/j.mex.2025.103622. Published 2025 Sep 11."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                201,
+                929,
+                230
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Cheng TY, Ho SY, Chien TW, Chow JC, Chou W. A comprehensive approach for clustering analysis using follower-leading clustering algorithm (FLCA): Bibliometric analysis. Medicine (Baltimore) 2023;102(42):e35156. https://doi. org/10.1097/MD.0000000000035156."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                232,
+                926,
+                271
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Cheng YZ, Chien TW, Ho SY, Chou W. Visual impact beam plots: Analyzing research profiles and bibliometric metrics using the following-leading clustering algorithm (FLCA). Medicine (Baltimore) 2023;102(28):e34301. https://doi.org/ 10.1097/MD.0000000000034301."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                517,
+                272,
+                927,
+                311
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Chien TW, Chou W. Visualizing leadership classifications in rectangular data using a basket model and co-word network analysis: a case study of U.S. HCAHPS survey results. BMC Med. Res. Methodol. 2025 Aug 20;25(1):195. https://doi.org/ 10.1186/s12874-025-02643-w. PMID: 40836275; PMCID: PMC12366396."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                312,
+                934,
+                351
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Li MJ, Lai FJ. Classifying research leadership in infantile hemangioma studies: A bibliometric analysis using Kano diagrams and absolute advantage coefficients. Medicine (Baltimore) 2025;104(40):e44905. https://doi.org/10.1097 MD.0000000000044905"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                351,
+                931,
+                390
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] Chien TW, Chen L, Chou W. SilhouettePlot: An R-based App Integrating Silhouette Scores into Network Plots for Enhanced Clarity and Meaning. SoftwareX 2026;34: 102652."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                392,
+                934,
+                422
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Rosvall M, Bergstrom CT. Maps of random walks on complex networks reveal community structure. Proc. Natl. Acad. Sci. U S A 2008;105(4):1118–23."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                423,
+                915,
+                443
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Pons P, Latapy M. Computing communities in large networks using random walks. J. Graph Algorithms Appl. 2006;10(2):191–218."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                443,
+                932,
+                462
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] Traag VA, Waltman L, van Eck NJ. From Louvain to Leiden: guaranteeing well connected communities. Sci. Rep. 2019;9(1):5233."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                462,
+                924,
+                482
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Yen PC, Chou W, Chien TW, Jen TH. Analyzing fulminant myocarditis research trends and characteristics using the follower-leading clustering algorithm (FLCA): A bibliometric study. Medicine (Baltimore) 2023;102(26):e34169. https://doi.org/ 10.1097/MD.0000000000."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                482,
+                934,
+                520
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Chien TW. ClusterChoice. available at, https://smilechien.shinyapps.io/flcacompa re/; May 1, 2026."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                523,
+                934,
+                542
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] Hubert L, Arabie P. Comparing partitions. J. Classif. 1985;2(1):193–218."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                543,
+                890,
+                553
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Strehl A, Ghosh J. Cluster ensembles—a knowledge reuse framework for combining multiple partitions. J. Mach. Learn. Res. 2002;3:583 617."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                553,
+                890,
+                573
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[20] Github. ClusterChoice depository. May 1, 2026 available at https://github.com/ milechien/clusterchoice/"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                573,
+                932,
+                593
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[21] Chien TW. ClusterChoice via MP4 video. May 1, 2026 available at https://youtu. be/uRhJljxbPS0."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                593,
+                931,
+                612
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[22] Chen C. CiteSpace II: Detecting and visualizing emerging trends and transient patterns in scientific literature. J. Am. Soc. Inf. Sci. Technol. 2006;57(3):359–77. https://doi.org/10.1002/asi.20317."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                614,
+                931,
+                643
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[23] van Eck NJ, Waltman L. VOSviewer, a computer program for bibliometric mapping. Scientometrics 2010;84(2):523–38. https://doi.org/10.1007/s11192- 009-0146-3."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                643,
+                921,
+                672
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[24] Aria M, Cuccurullo C. bibliometrix: An R-tool for comprehensive science mapping analysis. J. Informetr. 2017;11(4):959 75. https://doi.org/10.1016/j. joi.2017.08.007."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                673,
+                934,
+                703
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[25] Kano Noriaki, Seraku N, Takahashi F, Tsuji S. Attractive quality and must-be quality. J. Jpn. Soc. Qual. Control 1984;14(2):39 48."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                703,
+                912,
+                723
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "T.-W. Chien et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                144,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 35 (2026) 102794"
+                    }
+                ]
+            },
+            "bbox": [
+                798,
+                42,
+                939,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "10"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                952,
+                507,
+                960
+            ]
+        }
+    ]
+]

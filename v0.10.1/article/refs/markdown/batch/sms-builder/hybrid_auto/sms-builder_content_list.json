@@ -1,0 +1,2773 @@
+[
+    {
+        "type": "text",
+        "text": "Original software publication",
+        "bbox": [
+            58,
+            181,
+            290,
+            199
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "SMS-Builder: An adaptive software tool for building systematic mapping studies",
+        "text_level": 1,
+        "bbox": [
+            57,
+            204,
+            737,
+            248
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/406b19361c423bca3629d382482c633763043aaa7509767d853fdca92da8292b.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            833,
+            206,
+            882,
+            244
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Christian A. Candela-Uribe <sup>a,b,∗</sup>, Luis E. Sepúlveda-Rodríguez <sup>a,b</sup>, Julio C. Chavarro-Porras <sup>b</sup>, John A. Sanabria-Ordoñez <sup>c</sup>, José Luis Garrido <sup>d</sup>, Carlos Rodríguez-Domínguez <sup>d</sup>, Gabriel Guerrero-Contreras <sup>e</sup>",
+        "bbox": [
+            55,
+            255,
+            813,
+            306
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>a</sup> Technological University of Pereira, Colombia",
+        "bbox": [
+            58,
+            308,
+            300,
+            322
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>b</sup> University of Quindío, Colombia",
+        "bbox": [
+            58,
+            320,
+            236,
+            332
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>c</sup> University of Valle, Colombia",
+        "bbox": [
+            58,
+            331,
+            220,
+            343
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>d</sup> University of Granada, Spain",
+        "bbox": [
+            58,
+            341,
+            220,
+            354
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "<sup>e</sup> University of Cádiz, Spain",
+        "bbox": [
+            58,
+            351,
+            203,
+            366
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "a r t i c l e i n f o",
+        "text_level": 2,
+        "bbox": [
+            58,
+            388,
+            225,
+            402
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Article history: Received 27 April 2021 Received in revised form 21 September 2021 Accepted 1 December 2021",
+        "bbox": [
+            58,
+            414,
+            290,
+            461
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Keywords: Systematic literature review Systematic mapping study Empirical software engineering",
+        "bbox": [
+            58,
+            467,
+            226,
+            515
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "a b s t r a c t",
+        "text_level": 2,
+        "bbox": [
+            332,
+            388,
+            450,
+            403
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "A Systematic Mapping Study is an instrument frequently used to carry out a search process, identifi cation, and classification of studies in different fields. Researchers in front of this type of process have a challenge while managing the data about these studies. This paper presents a software tool that has been created to help those who need to build a systematic mapping study. In addition, this work follows the evidence-based software engineering approach and extends it through a software tool by including different ways of adapting this process.",
+        "bbox": [
+            329,
+            414,
+            939,
+            488
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "© 2021 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/).",
+        "bbox": [
+            359,
+            486,
+            939,
+            515
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Code metadata",
+        "text_level": 2,
+        "bbox": [
+            58,
+            571,
+            161,
+            585
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Current code version Permanent link to code/repository used for this code version Code Ocean compute capsule Legal Code License Code versioning system used Software code languages, tools, and services used Compilation requirements, operating environments & dependencies",
+        "bbox": [
+            62,
+            593,
+            431,
+            670
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Software metadata",
+        "text_level": 2,
+        "bbox": [
+            58,
+            680,
+            188,
+            694
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "table",
+        "img_path": "images/d9776a9bd8e2c9ec581c58b55a70fb181a118c78b3023cde7828a590d68b44c4.jpg",
+        "table_caption": [],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Current software version</td><td>2.1</td></tr><tr><td>Permanent link to executables of this version</td><td>https://hub.docker.com/r/griduq/sms-builder</td></tr><tr><td>Legal Software License</td><td>GPL 3.0</td></tr><tr><td>Computing platforms/Operating Systems</td><td>Multi-platform through Docker (linux + web application)</td></tr><tr><td>Installation requirements &amp; dependencies</td><td></td></tr><tr><td>If available, link to user manual - if formally published include a reference to the publication in the reference list</td><td>https://hub.docker.com/r/griduq/sms-builder</td></tr><tr><td>Support email for questions</td><td>christian.candela@upt.edu.co</td></tr></table>",
+        "bbox": [
+            62,
+            699,
+            937,
+            791
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            418,
+            41,
+            578,
+            56
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            60,
+            73,
+            163,
+            143
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "Contents lists available at ScienceDirect",
+        "bbox": [
+            369,
+            74,
+            631,
+            90
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "",
+        "bbox": [
+            60,
+            145,
+            163,
+            162
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX",
+        "bbox": [
+            440,
+            105,
+            559,
+            128
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "journal homepage: www.elsevier.com/locate/softx",
+        "bbox": [
+            336,
+            143,
+            663,
+            160
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "header",
+        "text": "SOFTWARE X",
+        "bbox": [
+            833,
+            66,
+            932,
+            158
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "∗ Corresponding author at: Technological University of Pereira, Colombia. E-mail addresses:, christiancandela@uniquindio.edu.co (Christian A. Candela-Uribe), lesepulveda@uniquindio.edu.co (Luis E. Sepúlveda-Rodríguez), jchavar@utp.edu.co (Julio C. Chavarro-Porras),",
+        "bbox": [
+            58,
+            846,
+            470,
+            894
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "page_footnote",
+        "text": "john.sanabria@correounivalle.edu.co (John A. Sanabria-Ordoñez), igarrido@ugr.es (José Luis Garrido), carlosrodriguez@ugr.es (Carlos Rodríguez-Domínguez), gabriel.guerrero@uca.es (Gabriel Guerrero-Contreras).",
+        "bbox": [
+            509,
+            846,
+            857,
+            892
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "footer",
+        "text": "https://doi.org/10.1016/j.softx.2021.100935 2352-7110/© 2021 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)",
+        "bbox": [
+            55,
+            902,
+            922,
+            929
+        ],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "1. Introduction",
+        "text_level": 2,
+        "bbox": [
+            58,
+            66,
+            169,
+            80
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The amount of scientific documents exceeds the capacity of readers to identify them. Thus, it is crucial to have protocols and tools for locating information to help us identify gaps, challenges, and other relevant aspects of our researches. In this context, Systematic Literature Review (SLR) helps reducing time in locating studies and favors decision making since the information presented by a literature review must be relevant, accessible, updated, and high-quality [1]. In general, SLRs have been marked by the evidence-based practice movement to minimize bias through the use of a specific research protocol [2].",
+        "bbox": [
+            55,
+            94,
+            487,
+            229
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "There is also a movement in software engineering that seeks to use evidence-based research and thus brings in good practices in medicine to create systematic review studies. Such is the case of the work proposed by Kitchenham et al. [3] for the formalization of the concept of Evidence-based software engineering (EBSE), which supported the development of other important works like [2,4–7], and [8]. Consider that the Systematic Mapping Studies (SMS) is a kind of SRL widely accepted in software engineering. Therefore, it is important and necessary to define and follow processes that lead to the practical building of SMSs [9]. A SMS is an instrument frequently used to carry out a search, identification, and classification of studies in different fields. The Artificial Intelligence Research Group (AIRG) at the Technological University of Pereira in Colombia, extended and adapted a process for building SMSs with the evidence-based software engineering approach, based on the work in [3,7]. The stages that make up the process proposed by AIRG for building a SMS correspond to (1) Planning, (2) Study search, (3) Quality analysis, (4) Data collection, (5) Study analysis and classification, and (6) Results (see Section 1.1). These stages represent the combination of various aspects described mainly in [3,7], and the work of [8,10], which are shown in detail in Fig. 1. In this regard, AIRG identified the need to create a specialized software to support the SMS building process. This situation prompted the creation of the SMS-Builder software tool. We built this software intending to automate the process of making a SMS adaptively. This software tool provides support for several tasks:",
+        "bbox": [
+            55,
+            228,
+            489,
+            592
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "a. Managing references.",
+        "bbox": [
+            80,
+            598,
+            243,
+            612
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "b. Supporting the selection and classification of studies.",
+        "bbox": [
+            80,
+            611,
+            452,
+            626
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "c. Helping the automated evaluation of studies.",
+        "bbox": [
+            80,
+            626,
+            400,
+            639
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "d. Preparation of statistical reports about the studies selected.",
+        "bbox": [
+            80,
+            639,
+            485,
+            653
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1. Process for building a SMS",
+        "text_level": 2,
+        "bbox": [
+            58,
+            675,
+            258,
+            689
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This section describes the six stages of the SMS building process shown in Fig. 1.",
+        "bbox": [
+            58,
+            704,
+            485,
+            731
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1.1. Stage 1: Planning",
+        "text_level": 2,
+        "bbox": [
+            58,
+            746,
+            215,
+            760
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This stage consists of establishing the overall purpose to be achieved with the SMS. Planning includes setting aspects such as Goal(s), Research Question(s), and Metrics. For these aspects, the process followed the GQM (Goal/Question/Metric) model [11,12]; this model establishes the conceptual, operational, and quantitative level, respectively.",
+        "bbox": [
+            55,
+            760,
+            487,
+            842
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1.2. Stage 2: Search for studies",
+        "text_level": 2,
+        "bbox": [
+            58,
+            856,
+            270,
+            870
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This stage supports the identification of studies to add to the SMS. The search for studies comprises of aspects such as (1) Determining the strategy, either independently or combined; (2) General identification of studies; (3) Screening; and (4) Study selection to be included in the SMS.",
+        "bbox": [
+            55,
+            870,
+            487,
+            938
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1.3. Stage 3: Quality analysis",
+        "text_level": 2,
+        "bbox": [
+            510,
+            66,
+            710,
+            79
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This stage consists of defining and applying quality criteria to the studies included in the SMS. The process suggests determining criteria that have been used widely as accepted references in the field of study to which the SMS is being applied. Particularly, we consider three quality indices for the study evaluation, which are reducing bias in the SMS.",
+        "bbox": [
+            507,
+            79,
+            939,
+            160
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "CVI: This index makes it possible to judge the documents by identifying those most relevant to the SMS goals. The CVI index uses a quantitative scale of six levels from 0 to 5, in which zero implies a low relationship of the studies with the SMS objectives, and five means a high relationship of the studies with the SMS objectives [13,14].",
+        "bbox": [
+            507,
+            160,
+            939,
+            240
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "SCI: The Study Citation Index considers the number of citations for each study regarding the publications’ age. This index lets us evaluate the impact study by a metric accepted in the scientific community. In this index, we seek to balance the citation of the studies. Thus, a citation in a recent paper has a higher value than in an old paper. See formula (1).",
+        "bbox": [
+            507,
+            240,
+            939,
+            322
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "equation",
+        "text": "$$\nS C I = \\frac {C}{Y}\\tag{1}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            510,
+            336,
+            571,
+            365
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "C is the number of Citations in the period of time, and Y is the number of years since its publication.",
+        "bbox": [
+            509,
+            368,
+            939,
+            395
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Additionally, this index uses frequency analysis to identify the most relevant studies",
+        "bbox": [
+            509,
+            395,
+            939,
+            423
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "IRRQ: This corresponds to the ‘‘Index of Relationship to Research Questions’’, see formula (2).",
+        "bbox": [
+            507,
+            422,
+            937,
+            451
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "equation",
+        "text": "$$\nI R R Q = \\frac {N}{T}\\tag{2}\n$$",
+        "text_format": "latex",
+        "bbox": [
+            510,
+            453,
+            584,
+            482
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "N corresponds to the Number of RQs to which the study is related. T is the total of RQs.",
+        "bbox": [
+            509,
+            486,
+            939,
+            514
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1.4. Stage 4: Data collection",
+        "text_level": 2,
+        "bbox": [
+            510,
+            528,
+            705,
+            542
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This stage consists of designing and filling out the forms to obtain data and metadata from the SMS studies.",
+        "bbox": [
+            509,
+            540,
+            939,
+            569
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1.5. Stage 5: Analysis and classification of studies",
+        "text_level": 2,
+        "bbox": [
+            510,
+            583,
+            838,
+            598
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "According to the metrics defined in the Planning Stage, this stage analyzes studies selected in the SMS to search for answers to the RQs.",
+        "bbox": [
+            507,
+            598,
+            939,
+            639
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "1.1.6. Stage 6: Results",
+        "text_level": 2,
+        "bbox": [
+            510,
+            653,
+            655,
+            667
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This stage presents values collected from the SMS. It also provides the reader with a systematic way of approaching a particular topic by pointing out the specific studies about topics and other planning elements. If necessary, it is possible to include a meta-analysis as suggested by [2].",
+        "bbox": [
+            507,
+            665,
+            939,
+            735
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "2. Software description",
+        "text_level": 2,
+        "bbox": [
+            509,
+            747,
+            677,
+            762
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "This section describes information about the software architecture and functionalities of SMS-Builder.",
+        "bbox": [
+            509,
+            776,
+            937,
+            804
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "2.1. Software architecture",
+        "text_level": 2,
+        "bbox": [
+            509,
+            818,
+            678,
+            833
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "SMS-Builder is a web application built with the Java 11 programming language. This software implements the Layers Architectural Pattern using five levels: Data Layer, Data Access Layer, Business Layer, Presentation Layer, and Client Layer.",
+        "bbox": [
+            507,
+            846,
+            939,
+            901
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "• The Data Layer is responsible for storing information through the RDBMS Maria DB.",
+        "bbox": [
+            529,
+            910,
+            942,
+            936
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "page_number",
+        "text": "2",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 1
+    },
+    {
+        "type": "image",
+        "img_path": "images/bedfcbac5c1c686448795b08edb0a05261982833f54dabd11bec8556facfb5d9.jpg",
+        "image_caption": [
+            "Fig. 1. The process proposed by AIRG for building a SMS."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            174,
+            83,
+            818,
+            665
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "• The Data Access Layer manages the flow of information between the Data Layer and the Business Layer. The Data Access Layer uses JAVA’s ORM (Object Relation Mapping) called JPA (Java Persistence API).",
+        "bbox": [
+            78,
+            704,
+            487,
+            760
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "• The Business Layer contains Business Classes and EJB (Enterprise Java Beans), exposing functionalities towards the Presentation Layer. The Business Classes fulfill specific tasks of the application logic, such as the import of references.",
+        "bbox": [
+            78,
+            760,
+            487,
+            814
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "• The Presentation Layer is responsible for providing the server-side web components that allow access to Business Layer’s functions. The Presentation Layer uses the Java Server Faces, a framework extended by the PrimeFaces set of features.",
+        "bbox": [
+            78,
+            815,
+            487,
+            882
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "• The Client Layer is responsible for the execution of the web components provided by the Presentation Layer. The Client Layer constitutes a Graphical User Interface (GUI) that allows users to interact with the application. This layer consists of web pages that enable access to the application (Fig. 2).",
+        "bbox": [
+            78,
+            883,
+            487,
+            938
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            542,
+            704,
+            939,
+            733
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As a complement, the application architecture uses the following set of tools. Maven supports project structuring, and dependency management [15] and GIT provides version control and change management at URL https://github.com/grid-uq/smsbuilder [16]. To facilitate the reproduction and study of the results obtained in each SMS managed by the application, we have encapsulated the software execution environment using Containers.",
+        "bbox": [
+            507,
+            741,
+            939,
+            834
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "2.2. Software functionalitie",
+        "text_level": 2,
+        "bbox": [
+            510,
+            844,
+            692,
+            860
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "SMS-Builder was built as an adaptable software tool to help researchers follow a SMS building process. A relevant feature of the software is its ability to adapt according to the initial configuration. This feature is essential, since a SMS is not the result of a rigid process. The process may vary according to the area of study and the particular needs of researchers. The adaptability of the software is reflected in the following actions:",
+        "bbox": [
+            509,
+            871,
+            939,
+            939
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "page_number",
+        "text": "3",
+        "bbox": [
+            494,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 2
+    },
+    {
+        "type": "image",
+        "img_path": "images/6f6dff01de712f0e4d87ced4cbbcf2ac24d4e1daaf07f120a6c17f3441a7ec68.jpg",
+        "image_caption": [
+            "Fig. 2. Software architecture."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            136,
+            68,
+            855,
+            736
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            57,
+            775,
+            489,
+            803
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "• Definition of goals, research questions, and topics related to each other, affecting statistical reports.",
+        "bbox": [
+            78,
+            810,
+            485,
+            837
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "• Classification of studies according to set topics.",
+        "bbox": [
+            78,
+            837,
+            406,
+            849
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "• Evaluation of studies based on customized quality indexes.",
+        "bbox": [
+            78,
+            849,
+            482,
+            863
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "• Management of access to the application through the configuration of users, roles, and privileges.",
+        "bbox": [
+            78,
+            863,
+            485,
+            891
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Some of the main functionalities of the software are shown below and are classified according to the stage of the process for building a SMS.",
+        "bbox": [
+            57,
+            897,
+            487,
+            938
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "• Software functionalities to the stage 1: Planning",
+        "bbox": [
+            529,
+            775,
+            865,
+            789
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "These software functions make it possible to define fundamental aspects to develop the SMS according to its process. It starts with the name and description of the mapping. It continues with the specification of one or more goals. Subsequently, one or several research questions must be chosen, as the case may be, which must be related to the previously established goals. Next, the user needs to define the topics related to each research question.",
+        "bbox": [
+            576,
+            791,
+            939,
+            918
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "• Software functionalities to the stage 2: Search for Studies – Import references: The software allows importing references using Research Information System (RIS) formatted files. To this end, the software requires that the search process be performed externally, either through automated (database search), or using manual methods (direct inclusion and snowball search). The user needs to refine the references obtained to complete the metadata through a reference manager such as EndNote or Mendeley. This information is the main component needed to start the building process in SMS-Builder.",
+        "bbox": [
+            529,
+            923,
+            926,
+            936
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "page_number",
+        "text": "4",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            110,
+            66,
+            487,
+            214
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Remove Duplicate: This function allows users to identify duplicate references that may have been indexed simultaneously in different databases.",
+        "bbox": [
+            110,
+            215,
+            487,
+            255
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Screening: The software provides a GUI that helps users to visualize the references so as to refine the results of the automated search provided by the databases. Additionally, it is possible to add text notes and establish the citation relevance for each study (value used in the CVI calculation).",
+        "bbox": [
+            110,
+            255,
+            487,
+            337
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Software functionalities to the stage 3: Quality Analysis",
+        "text_level": 2,
+        "bbox": [
+            78,
+            343,
+            462,
+            358
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Quality evaluation: By default, the software uses the CVI, SCI, and IRRQ indices to evaluate the quality of the studies. However, the user can add other customs indices.",
+        "bbox": [
+            110,
+            365,
+            487,
+            419
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Metadata complement: Through this function, the software allows users to establish or update the year of publication, the number of citations, and the value relevance to calculate the SCI and CVI index.",
+        "bbox": [
+            110,
+            419,
+            487,
+            474
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Software functionalities to the stage 4: Data Collection",
+        "text_level": 2,
+        "bbox": [
+            78,
+            480,
+            455,
+            494
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "When building a SMS, the data collection stage requires time. The researcher needs to manage the information (capture, update, complement, and transfer) contained in the studies. This situation leads to errors in the SMSs. Therefore, SMS-Builder makes a significant contribution in automating the management of study metadata to support data collection.",
+        "bbox": [
+            119,
+            496,
+            487,
+            593
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Search SPSs: Through this function, SMS-Builder allows users to find SPSs using metadata study information.",
+        "bbox": [
+            110,
+            601,
+            485,
+            631
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Software functionalities to the stage 5: Analysis and Classification of Studies",
+        "bbox": [
+            78,
+            639,
+            485,
+            667
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Classify studies by topic: This function facilitates the relationship between the analyzed studies and the topics specified in the SMS Planning Stage.",
+        "bbox": [
+            110,
+            673,
+            487,
+            716
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Software functionalities to the stage 6: Results",
+        "bbox": [
+            78,
+            722,
+            403,
+            736
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Export data: The software allows users to export data tables to formats such as XLSX, PDF, CSV, XML, and images to formats like JPG.",
+        "bbox": [
+            110,
+            742,
+            485,
+            784
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "– Generation of statistical charts: The software generates statistical data and charts related to the studies and the stored information.",
+        "bbox": [
+            110,
+            784,
+            487,
+            825
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3. Illustrative examples",
+        "text_level": 2,
+        "bbox": [
+            58,
+            841,
+            226,
+            854
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "This section shows some of the functionalities of the SMS-Builder software using a SMS building example. The example is related to the identification of Science Gateway frameworks, and it uses a combined search strategy between Database, Snowballing, and Inclusion Direct.",
+        "bbox": [
+            55,
+            868,
+            487,
+            938
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "table",
+        "img_path": "images/022177921f5dfdd07996a837dacf9624e259a591e084ede36e146a4b3ed8b62c.jpg",
+        "table_caption": [
+            "Table 1",
+            "Imported studies."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Search strategy</td><td>Studies</td></tr><tr><td>Database</td><td>405</td></tr><tr><td>Snowball</td><td>34</td></tr><tr><td>Direct Inclusion</td><td>3</td></tr><tr><td>Total studies</td><td>442</td></tr></table>",
+        "bbox": [
+            512,
+            100,
+            936,
+            165
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "table",
+        "img_path": "images/4d7615d2adad37be6a16af89078a23423689a15e0c7e138f735a4f53c4a28015.jpg",
+        "table_caption": [
+            "Table 2",
+            "Debuging activities."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Debuging activities</td><td>Studies</td></tr><tr><td>Total imported studies</td><td>+442</td></tr><tr><td>Removed by Duplicate</td><td>-62</td></tr><tr><td>Descarted by Screening</td><td>-212</td></tr><tr><td>Selected Primary Studies</td><td>168</td></tr></table>",
+        "bbox": [
+            512,
+            225,
+            937,
+            288
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1. SMS building example",
+        "text_level": 2,
+        "bbox": [
+            510,
+            321,
+            682,
+            336
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The software supported different steps in the SMS building process, refining the studies as follows:",
+        "bbox": [
+            509,
+            350,
+            939,
+            379
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1.1. Example stage 1: Planning",
+        "text_level": 2,
+        "bbox": [
+            510,
+            395,
+            721,
+            409
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The following SMS components were defined in this example:",
+        "bbox": [
+            527,
+            409,
+            937,
+            424
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Two Goals (G1 and G2)",
+        "bbox": [
+            529,
+            430,
+            702,
+            443
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Two Research Questions (RQ1 and RQ2)",
+        "bbox": [
+            529,
+            443,
+            811,
+            457
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Five Topics for RQ1",
+        "bbox": [
+            529,
+            457,
+            677,
+            471
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "• Two Topics for RQ2",
+        "bbox": [
+            529,
+            472,
+            678,
+            485
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "These elements were registered in the software using different interfaces like Fig. 3.",
+        "bbox": [
+            509,
+            491,
+            939,
+            520
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1.2. Example stage 2: Search for studies",
+        "text_level": 2,
+        "bbox": [
+            510,
+            537,
+            776,
+            551
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this example 442 studies were obtained through the import functionality (Table 1).",
+        "bbox": [
+            509,
+            551,
+            939,
+            578
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "SMS-Builder provides support for debugging studies through the ‘‘Removed Duplicated’’ and ‘‘Screening’’ functionalities. See the results of the debugging in the example, in Table 2.",
+        "bbox": [
+            509,
+            578,
+            939,
+            621
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1.3. Example stage 3: Quality analysis",
+        "text_level": 2,
+        "bbox": [
+            509,
+            636,
+            766,
+            651
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "The evaluation functionality allowed the automatic evaluation of the indices (CVI, CSI, and IRRQ).",
+        "bbox": [
+            507,
+            651,
+            939,
+            680
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1.4. Example stage 4: Data collection",
+        "text_level": 2,
+        "bbox": [
+            510,
+            697,
+            759,
+            709
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "In this example uses several SMS-Builder functionalities to minimize the work required by researchers. It starts with Screening which obtains relevant elements of each study and ends with the Analysis and Classification of Studies. There is another interface that allows users to filter SPSs using metadata study information.",
+        "bbox": [
+            507,
+            709,
+            939,
+            793
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1.5. Example stage 5: Analysis and classification of studie",
+        "text_level": 2,
+        "bbox": [
+            510,
+            810,
+            892,
+            823
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "SMS-Builder provides interfaces for the analysis and classification of studies using topics defined in the Planning Stage. Additionally, there are interfaces to see summary information regarding the analysis and classification of studies (Fig. 4).",
+        "bbox": [
+            507,
+            824,
+            939,
+            880
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "3.1.6. Example stage 6: Results",
+        "text_level": 2,
+        "bbox": [
+            510,
+            896,
+            710,
+            910
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "text",
+        "text": "All information processed by SMS-Builder is shown through several statistical interfaces such as the SPSs by Topics by",
+        "bbox": [
+            509,
+            910,
+            939,
+            938
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            502,
+            55
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "page_number",
+        "text": "5",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 4
+    },
+    {
+        "type": "image",
+        "img_path": "images/6cc8398552f5ee5e495349d428ae44e6c7550f886c4f8a06026845140e4a5462.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            186,
+            83,
+            801,
+            464
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/8a6be2f47854fbc94e609d16d58e411be7a8d590a2d19a9dcccc1b6f9208807c.jpg",
+        "image_caption": [
+            "Fig. 3. Stage 1.",
+            "Fig. 4. Classification of studies table."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            184,
+            517,
+            801,
+            785
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "Quality Indices screen and SPSs by Year screen, among others (see Section 3.4).",
+        "bbox": [
+            57,
+            827,
+            485,
+            854
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "3.2. Summary screen",
+        "text_level": 2,
+        "bbox": [
+            58,
+            868,
+            196,
+            883
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "This function displays consolidated information about the SMS in progress. The summary includes the total number of studies analyzed, the studies excluded by multiple indexing, the sum of studies selected, and different research strategies such as Database, Snowballing, and Direct Included (Fig. 5).",
+        "bbox": [
+            57,
+            897,
+            487,
+            938
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            507,
+            827,
+            939,
+            854
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "3.3. Remove duplicate screen",
+        "text_level": 2,
+        "bbox": [
+            510,
+            868,
+            699,
+            883
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "text",
+        "text": "This functionality allows users to identify duplicate studies. These duplicates were generated because of the multiple indexing process (Fig. 6).",
+        "bbox": [
+            509,
+            897,
+            939,
+            938
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "page_number",
+        "text": "6",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 5
+    },
+    {
+        "type": "image",
+        "img_path": "images/73ee6d08d1c2b3f3af87f948053d96e8f5a922c3faf088fc64096c6bec301440.jpg",
+        "image_caption": [],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            186,
+            69,
+            803,
+            440
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "image",
+        "img_path": "images/fba0fe0ffdb32491310e9621a85032a2e685ff16af47237405e73cd3c0be0173.jpg",
+        "image_caption": [
+            "Fig. 5. Review summary.",
+            "Fig. 6. Remove duplicate."
+        ],
+        "image_footnote": [],
+        "content": "",
+        "bbox": [
+            184,
+            486,
+            801,
+            781
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "3.4. Statistical data",
+        "text_level": 2,
+        "bbox": [
+            58,
+            824,
+            186,
+            838
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "The software provides a set of information to perform statistical data analysis about the Selected Primary Studies (SPSs), including:",
+        "bbox": [
+            57,
+            857,
+            487,
+            899
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "• Data table with the ratio of SPSs to RQs.",
+        "bbox": [
+            78,
+            910,
+            361,
+            923
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "• Data table with the relationship of SPSs to Topics.",
+        "bbox": [
+            78,
+            924,
+            423,
+            938
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "• Data table and a bar chart showing the number of SPSs per Year and Quality Index.",
+        "bbox": [
+            529,
+            824,
+            937,
+            858
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "• Data table with a bar and a pie chart showing the number of SPSs by Publication Type.",
+        "bbox": [
+            529,
+            858,
+            939,
+            890
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "• Bar and pie chart, and a data table with information to display SPSs according to the Search Strategy.",
+        "bbox": [
+            529,
+            891,
+            939,
+            924
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "text",
+        "text": "• Data table with a bar and pie chart showing SPSs by Topics.",
+        "bbox": [
+            529,
+            924,
+            939,
+            938
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "page_number",
+        "text": "7",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 6
+    },
+    {
+        "type": "chart",
+        "img_path": "images/ae514ff3d0850e092e9fa110bbbefd311f7d0d13ec1fa40baf7fad71a7147eb7.jpg",
+        "content": "",
+        "chart_caption": [
+            "Fig. 7. SPSs by topics by Quality Indices chart."
+        ],
+        "chart_footnote": [],
+        "bbox": [
+            186,
+            68,
+            803,
+            365
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• Data table and a bar chart showing SPSs by Topics and by Quality Indices.",
+        "bbox": [
+            78,
+            408,
+            485,
+            435
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• Data table with a bar and pie chart showing SPSs per RQs.",
+        "bbox": [
+            78,
+            435,
+            480,
+            448
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• Data table with a bar and pie chart showing the average Quality Indices by Year.",
+        "bbox": [
+            78,
+            448,
+            485,
+            476
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• Data table and Word Cloud chart. The Word Cloud highlights the keywords with the highest frequency in the SPSs.",
+        "bbox": [
+            78,
+            476,
+            485,
+            505
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "In the following Sections 3.4.1 and 3.4.2 the aforementioned example shows two statistical interfaces available in the software:",
+        "bbox": [
+            57,
+            514,
+            487,
+            554
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "3.4.1. SPSs by topics by quality indices screen",
+        "text_level": 2,
+        "bbox": [
+            58,
+            575,
+            349,
+            588
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This interface includes a chart with a cross-analysis among SPSs, Topics, RQs, and Quality Indices (CVI, SCI, and IRRQ), see Figs. 7 and 8. In this example, the SMS indicated the following:",
+        "bbox": [
+            57,
+            588,
+            487,
+            631
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• With reference to RQ1, the topic ‘‘Process’’ registered the lowest number with 11 SPSs equivalent to 6.55% of the 168 SPSs. In contrast, the topic ‘‘Good practice’’ registered the highest number, with 60 SPSs, equivalent to 35.71%.",
+        "bbox": [
+            78,
+            636,
+            487,
+            691
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• In the case of RQ2, the topics ‘‘Technological tool’’ and ‘‘Case study or project’’ achieved a significant number, with 67 and 94 SPSs equivalent to 39.88% and 55.95%, respectively.",
+        "bbox": [
+            78,
+            692,
+            487,
+            733
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "3.4.2. SPSs by year screen",
+        "text_level": 2,
+        "bbox": [
+            58,
+            759,
+            228,
+            771
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This interface includes a chart with cross analysis among SPSs, publication year, and Quality Indices (CVI, SCI, and IRRQ) screen (Figs. 9 and 10). This example shows a decrease in the number of studies published since 2017, dropping from 47 SPSs published in 2016 to 28 SPSs published in 2018. In contrast, by 2019, there is an increase in 2016 with a total of 49 SPSs. According to the SCI index, the SMS presented the largest number of SPSs in the most representative quartile from 2016 to 2017. Regarding the CVI index, the SMS shows a regular number of SPSs per Year, except for 2018 and 2020. Considering the IRRQ index, the SMS indicates that no SPSs are recorded for 2020, perhaps because this study only considers the first quarter of the year.",
+        "bbox": [
+            55,
+            773,
+            489,
+            939
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "4. Impact",
+        "text_level": 2,
+        "bbox": [
+            510,
+            408,
+            584,
+            422
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "This software tool aims to contribute to the research processes that involve the building of a SMS. The software tool reduces time, human error, and bias. As a result, SMS-Builder unifies and automates mapping information management and enables researchers to concentrate their efforts on analyzing information about SMSs. Furthermore, data management automation in SMS helps to reduce human error. SMS-Builder also reduces bias in SMSs through the use of indexes for quality assessment. This software tool provides three quality indices by default and allows additional quality indices at researchers’ discretion.",
+        "bbox": [
+            507,
+            436,
+            939,
+            569
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "SMS-Builder was created through international cooperation with five universities, three of them from Colombia (the Technological University of Pereira, the University of Quindío, and the University of Valle), and two from Spain (the University of Granada, and the University of Cádiz). Furthermore, in these same universities, we have begun an empirical evaluation with several postgraduate students, who have used SMS-Builder building their SMSs as shown in Table 3.",
+        "bbox": [
+            507,
+            569,
+            939,
+            677
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "As a result of the empirical evaluation, feedback was obtained that allowed improving SMS-Builder in aspects such as:",
+        "bbox": [
+            509,
+            677,
+            939,
+            706
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• Lastest version (3.0.2021.09.14)",
+        "bbox": [
+            529,
+            712,
+            757,
+            726
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Functionality was improved to customize the steps of the process for SMS construction.",
+        "bbox": [
+            561,
+            733,
+            939,
+            760
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– The classification structure by year was improved, including the classification by year.",
+        "bbox": [
+            561,
+            760,
+            937,
+            786
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Improved the interface to remove duplicates.",
+        "bbox": [
+            563,
+            788,
+            878,
+            800
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Statistical data was supplemented.",
+        "bbox": [
+            563,
+            800,
+            810,
+            814
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Registration of search strings",
+        "bbox": [
+            563,
+            815,
+            774,
+            828
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "• Next version:",
+        "text_level": 2,
+        "bbox": [
+            529,
+            834,
+            638,
+            848
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Bibtex format support for importing references.",
+        "bbox": [
+            561,
+            857,
+            895,
+            870
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Customization of the digital databases to be used.",
+        "bbox": [
+            563,
+            870,
+            909,
+            882
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Inclusion of SPS links to the destination indicated in the reference.",
+        "bbox": [
+            563,
+            883,
+            939,
+            910
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Adding support for data collection template.",
+        "bbox": [
+            563,
+            911,
+            873,
+            924
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "text",
+        "text": "– Support for eligibility criteria during screening – Support for the application of the CVC content validity coefficient to mitigate bias.",
+        "bbox": [
+            563,
+            925,
+            889,
+            938
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "page_number",
+        "text": "8",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 7
+    },
+    {
+        "type": "table",
+        "img_path": "images/93f7327a963f63b9737ab96c4d141b757764265de65f77725fb4678ac05a1016.jpg",
+        "table_caption": [
+            "Fig. 8. SPSs by Topics by Quality Indices data table."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"5\"># SPSs - Topics</td></tr><tr><td>Topics</td><td>All</td><td>CVI</td><td>SCI</td><td>IRRQ</td></tr><tr><td>RQ1-Frameworks</td><td>21.0</td><td>5.0</td><td>3.0</td><td>11.0</td></tr><tr><td>RQ1-Good practices</td><td>60.0</td><td>13.0</td><td>15.0</td><td>44.0</td></tr><tr><td>RQ1-Methodologies</td><td>17.0</td><td>7.0</td><td>2.0</td><td>10.0</td></tr><tr><td>RQ1-Models</td><td>21.0</td><td>3.0</td><td>7.0</td><td>11.0</td></tr><tr><td>RQ1-Process</td><td>11.0</td><td>4.0</td><td>2.0</td><td>6.0</td></tr><tr><td>RQ2-Case study or Project</td><td>94.0</td><td>10.0</td><td>18.0</td><td>44.0</td></tr><tr><td>RQ2-Technological tools</td><td>67.0</td><td>19.0</td><td>13.0</td><td>41.0</td></tr></table>",
+        "bbox": [
+            186,
+            68,
+            803,
+            254
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "chart",
+        "img_path": "images/f6d88cfc8a03d1ca77a2bcb26043cdc754baf8adf62f93370e0a82ec7390dd05.jpg",
+        "content": "",
+        "chart_caption": [],
+        "chart_footnote": [],
+        "bbox": [
+            184,
+            298,
+            805,
+            569
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/777afcbccd0771022a41a6067a17409bd42a62bc29dd3d5fad1cd85482d4ec03.jpg",
+        "table_caption": [
+            "Fig. 9. SPSs by Year chart.",
+            "Fig. 10. SPSs by Year data table."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td colspan=\"5\"># SPSs - Year</td></tr><tr><td>Year</td><td>All</td><td>CVI</td><td>SCI</td><td>IRRQ</td></tr><tr><td>2016</td><td>47.0</td><td>7.0</td><td>11.0</td><td>18.0</td></tr><tr><td>2017</td><td>36.0</td><td>6.0</td><td>11.0</td><td>15.0</td></tr><tr><td>2018</td><td>28.0</td><td>2.0</td><td>5.0</td><td>12.0</td></tr><tr><td>2019</td><td>49.0</td><td>8.0</td><td>4.0</td><td>20.0</td></tr><tr><td>2020</td><td>8.0</td><td></td><td>1.0</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td></tr></table>",
+        "bbox": [
+            184,
+            612,
+            805,
+            766
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "",
+        "bbox": [
+            110,
+            808,
+            487,
+            836
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "5. Conclusions",
+        "text_level": 2,
+        "bbox": [
+            58,
+            853,
+            164,
+            867
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "For researchers, the construction of an SMS is not a trivial activity since the management of the data set usually requires a significant investment of their time and involves manual activities that could induce errors and biases in the SMS results.",
+        "bbox": [
+            55,
+            882,
+            487,
+            938
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Therefore, we built SMS-Builder as a software tool to assist in building SMSs in a systematic, agile, reliable, and objective way.",
+        "bbox": [
+            507,
+            807,
+            939,
+            839
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "Through empirical testing of SMS-Builder, we identified the following benefits:",
+        "bbox": [
+            507,
+            839,
+            939,
+            871
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "• Reduced management time of the studies that comprise the SMS.",
+        "bbox": [
+            529,
+            877,
+            939,
+            907
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "• Identification and elimination of duplicate studies.",
+        "bbox": [
+            529,
+            910,
+            880,
+            924
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "text",
+        "text": "• Reproducibility of the process.",
+        "bbox": [
+            529,
+            925,
+            749,
+            938
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "page_number",
+        "text": "9",
+        "bbox": [
+            492,
+            945,
+            504,
+            955
+        ],
+        "page_idx": 8
+    },
+    {
+        "type": "table",
+        "img_path": "images/e6a2bc1e1582d15903c6da96cbd0f82177c37335081bb30df6c20b32cba7d50a.jpg",
+        "table_caption": [
+            "Table 3",
+            "Some works supported by SMS-Builder."
+        ],
+        "table_footnote": [],
+        "table_body": "<table><tr><td>Work Title</td><td>Journal/Event</td><td>Status</td></tr><tr><td>Study-based Systematic Mapping Analysis of Cloud Technologies for Leveraging IT Resource and Service Management: The Case Study of the Science Gateway Approach [17]</td><td>Journal of Grid Computing</td><td>Published</td></tr><tr><td>Problems in Microservice Systems Testing: A Systematic Mapping Study [18,19]</td><td>JIISIC 2021 – XVI Jornadas Iberoamericanas de Ingeniería de Software e Ingeniería del Conocimiento, and Revista Investigación e Innovación en Ingenierías</td><td>Published</td></tr><tr><td>Problems And Causes In Testing Microservices Architecture: A Systematic Mapping Study [20]</td><td>ISSTA 2021</td><td>Published</td></tr><tr><td>Identifying Advanced Transactional Models for Microservices Architecture: A Systematic Mapping Study [21]</td><td>N/A</td><td>In Process</td></tr><tr><td>Serverless infrastructures in research support technology ecosystems: a systematic mapping study [22]</td><td>N/A</td><td>In Process</td></tr><tr><td>Testing Model for Distributed System: A Systematic Mapping Study [23]</td><td>N/A</td><td>In Process</td></tr></table>",
+        "bbox": [
+            60,
+            85,
+            937,
+            324
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Extensibility of the SMS from the availability of an instance of the software and the recorded data.",
+        "bbox": [
+            78,
+            341,
+            485,
+            366
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Reduction of errors derived from data manipulation.",
+        "bbox": [
+            78,
+            368,
+            440,
+            380
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Automation of statistical data generation.",
+        "bbox": [
+            78,
+            382,
+            369,
+            394
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Adaptability to the sequence of steps performed in the SMS.",
+        "bbox": [
+            78,
+            394,
+            485,
+            408
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• English and Spanish language support.",
+        "bbox": [
+            78,
+            409,
+            349,
+            422
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Promotes objectivity in the elaboration of the SMS by implementing strategies to avoid bias in selecting studies.",
+        "bbox": [
+            78,
+            422,
+            485,
+            448
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "We also identified the following limiting aspects:",
+        "bbox": [
+            78,
+            453,
+            406,
+            469
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Import of references in RIS format. This format is available in tools such as Endnote, Mendeley, Zotero, among others.",
+        "bbox": [
+            78,
+            477,
+            485,
+            504
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Limited set of digital databases.",
+        "bbox": [
+            78,
+            505,
+            305,
+            517
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "• Data extraction from the studies included in the SMS was limited by the interfaces implemented in the software, which currently lacks a generic reporter.",
+        "bbox": [
+            78,
+            518,
+            489,
+            558
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "As future work, we will consider the following aspects: a) To Implement techniques based on artificial intelligence and data science as natural language processing (NLP) to propose a taxonomic structure to organize the studies identified in the SMSs. b) To evaluate the SMS-Builder features formally looking for improvement its features.",
+        "bbox": [
+            55,
+            564,
+            487,
+            644
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "Declaration of competing interest",
+        "text_level": 2,
+        "bbox": [
+            58,
+            654,
+            295,
+            669
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper.",
+        "bbox": [
+            57,
+            680,
+            485,
+            721
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "text",
+        "text": "References",
+        "text_level": 2,
+        "bbox": [
+            58,
+            730,
+            139,
+            745
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[1] Higgins JP, Thomas J, Chandler J, Cumpston M, Li T, Page MJ, et al. Cochrane handbook for systematic reviews of interventions. John Wiley & Sons; 2019.",
+        "bbox": [
+            67,
+            755,
+            485,
+            788
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[2] Shepperd M. Combining evidence and meta-analysis in software engineering. In: Software engineering. Springer; 2010, p. 46–70.",
+        "bbox": [
+            68,
+            788,
+            485,
+            809
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[3] Kitchenham BA, Dyba T, Jorgensen M. Evidence-based software engineering. In: Proceedings of the 26th international conference on software engineering, JEEE Computer Society: 2004, p. 273–81.",
+        "bbox": [
+            68,
+            809,
+            485,
+            841
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[4] Kitchenham B. Guidelines for performing systematic literature reviews in software engineering. EBSE technical report EBSE-2007-01, 2007.",
+        "bbox": [
+            68,
+            841,
+            485,
+            862
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[5] Kitchenham B, Brereton OP, Budgen D, Turner M, Bailey J, Linkman S. Systematic literature reviews in software engineering–a systematic literature review. Inf Softw Technol 2009:51(1):7-15.",
+        "bbox": [
+            68,
+            862,
+            485,
+            892
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[6] Da Silva FQ, Santos AL, Soares S, França A, Monteiro C. Six years of systematic literature reviews in software engineering: an extended tertiary study. In: 32th international conference on software, ICSE, vol. 10. Cape Town, South Africa: IEEE Computer Society; p. 1–10.",
+        "bbox": [
+            68,
+            892,
+            485,
+            936
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[7] Dyba T, Kitchenham BA, Jorgensen M. Evidence-based software engineering for practitioners. IEEE Softw. 2005;22(1):58–65.",
+        "bbox": [
+            519,
+            343,
+            937,
+            365
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[8] Petersen K, Vakkalanka S, Kuzniarz L. Guidelines for conducting systematic mapping studies in software engineering: An update. Inf Softw Technol 2015;64:1–18. http://dx.doi.org/10.1016/j.infsof.2015.03.007, URL http://www.sciencedirect.com/science/article/pii/S0950584915000646.",
+        "bbox": [
+            519,
+            365,
+            937,
+            408
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[9] Kitchenham B, Pretorius R, Budgen D, Brereton OP, Turner M, Niazi M, et al. Systematic literature reviews in software engineering–a tertiary study. f f h l ( )",
+        "bbox": [
+            517,
+            408,
+            937,
+            438
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[10] Petersen K, Feldt R, Mujtaba S, Mattsson M. Systematic mapping studies in software engineering. In: Ease, vol.8. 2008, p. 68–77.",
+        "bbox": [
+            512,
+            438,
+            937,
+            461
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[11] Basili VR. Software modeling and measurement: the Goal/Question/Metric paradigm. Report, 1992.",
+        "bbox": [
+            512,
+            460,
+            937,
+            481
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[12] Caldiera VRBG, Rombach HD. The goal question metric approach. In: Encyclopedia of software engineering. 1994, p. 528–32.",
+        "bbox": [
+            512,
+            481,
+            937,
+            501
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[13] Almanasreh E, Moles R, Chen TF. Evaluation of methods used for estimating content validity. Res. Soc. Admin. Pharm. 2019;15(2):214–21.",
+        "bbox": [
+            512,
+            501,
+            937,
+            523
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[14] Yaghmaei F. Content validity and its estimation. J Med Educ Spring 2003;3:25–7.",
+        "bbox": [
+            512,
+            523,
+            937,
+            544
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[15] Apache maven project. 2021, URL https://maven.apache.org/. [Accessed 8 april 2021].",
+        "bbox": [
+            512,
+            543,
+            937,
+            564
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[16] Git. 2021, URL https://git-scm.com/. [Accessed 8 april 2021].",
+        "bbox": [
+            514,
+            564,
+            868,
+            575
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[17] Sepúlveda-Rodríguez LE, Garrido JL, Chavarro-Porras JC, Sanabria-Ordoñez JA, Candela-Uribe CA, Rodríguez-Domínguez C, Guerrero-Contreras G. Study-based systematic mapping analysis of cloud technologies for leveraging it resource and service management: the case study of the science gateway approach. Journal of Grid Computing 2021;19(4):1–28. http://dx.doi.org/10.1007/s10723-021-09587-7.",
+        "bbox": [
+            514,
+            575,
+            939,
+            639
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[18] Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, Sepúlveda-Rodríguez LE, Sanabria-Ordoñez JA. Problems in microservice systems testing: A systematic mapping study. In: JIISIC 2021 – XVI Jornadas Iberoamericanas de Ingeniería de Software E Ingeniería Del Conocimiento. 2021, URL https://www.uautonoma.cl/jiisic2021/organizacion.html.",
+        "bbox": [
+            512,
+            639,
+            937,
+            693
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[19] Candela Uribe CA, Gómez-Betancur D, Sepúlveda-Rodríguez L, Chavarro-Porras J, Sanabria-Ordoñez J. Problemas en la implementación de pruebas en sistemas de microservicios: estudio de mapeo sistemático. Investigación e Innovación en Ingenierías 2021;9(3):3–17. http://dx.doi.org/10.17081/ invinno.9.3.5314, http://revistas.unisimon.edu.co/index.php/innovacioning l / /",
+        "bbox": [
+            512,
+            693,
+            937,
+            757
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[20] Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, Sepúlveda-Rodríguez LE, Sanabria-Ordoñez JA. Problems And Causes In Testing Microservices Architecture: A Systematic Mapping Study. In: ECOOP and ISSTA 2021, URL https://conf.researchr.org/details/issta-2021/ecoopissta-2021-posters/8/Problems-And-Causes-In-Testing-Microservices-Architecture-A-Systematic-Mapping-Study",
+        "bbox": [
+            512,
+            757,
+            937,
+            822
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[21] Lugo Cabrera CM, Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, Sepúlveda-Rodríguez LE, Sanabria-Ordoñez JA. Identifying advanced transactional models for microservices architecture: A systematic mapping study. 2021",
+        "bbox": [
+            512,
+            822,
+            937,
+            863
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[22] Sepúlveda-Rodríguez LE, Chavarro-Porras JC, Sanabria-Ordoñez JA, Candela-Uribe CA. Serverless infrastructures in research support technology ecosystems: a systematic mapping study.. 2021.",
+        "bbox": [
+            512,
+            863,
+            937,
+            897
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "ref_text",
+        "text": "[23] Gómez-Betancur D, Candela-Uribe CA, Chavarro-Porras JC, Sepúlveda-Rodríguez LE. Sanabria-Ordoñez IA. Testing model for distributed system: A systematic mapping study. 2021",
+        "bbox": [
+            512,
+            896,
+            937,
+            928
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "Christian A. Candela-Uribe, Luis E. Sepúlveda-Rodríguez, Julio C. Chavarro-Porras et al.",
+        "bbox": [
+            58,
+            42,
+            504,
+            55
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "header",
+        "text": "SoftwareX 17 (2022) 100935",
+        "bbox": [
+            786,
+            42,
+            939,
+            55
+        ],
+        "page_idx": 9
+    },
+    {
+        "type": "page_number",
+        "text": "10",
+        "bbox": [
+            490,
+            945,
+            507,
+            955
+        ],
+        "page_idx": 9
+    }
+]

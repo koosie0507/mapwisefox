@@ -1,0 +1,3224 @@
+[
+    [
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Original software publication"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                181,
+                290,
+                197
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "litstudy: A Python package for literature reviews"
+                    }
+                ],
+                "level": 1
+            },
+            "bbox": [
+                58,
+                205,
+                581,
+                226
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens <sup>a,b,∗</sup>, Alessio Sclocco <sup>a</sup>, Henk Dreuning <sup>b</sup>, Ben van Werkhoven <sup>a</sup>, Pieter Hijma <sup>c</sup>, Jason Maassen <sup>a</sup>, Rob V. van Nieuwpoort <sup>a,b</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                234,
+                697,
+                269
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/d086f13871abbcb0b68ed9582b1c8064d9c8458780fe83b743a81c6142f73949.jpg"
+                },
+                "content": "",
+                "image_caption": [],
+                "image_footnote": []
+            },
+            "bbox": [
+                833,
+                206,
+                882,
+                244
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>a</sup> Netherlands eScience Center, Science Park 402, Amsterdam, The Netherlands"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                271,
+                460,
+                283
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>b</sup> University of Amsterdam, Science Park 904, Amsterdam, The Netherlands"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                282,
+                445,
+                293
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>c</sup> Vrije Universiteit Amsterdam, De Boelelaan 1111, Amsterdam, The Netherlands"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                293,
+                472,
+                306
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "a r t i c l e i n f o"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                329,
+                223,
+                341
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Article history: Received 18 February 2022 Received in revised form 24 June 2022 Accepted 6 September 2022"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                355,
+                265,
+                401
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Keywords: Literature review Python Jupyter Bibliometrics"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                408,
+                154,
+                464
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "a b s t r a c t"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                332,
+                327,
+                450,
+                341
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Researchers are often faced with exploring new research domains. Broad questions about the research domain, such as who are the influential authors or what are important topics, are difficult to answer due to the overwhelming number of relevant publications. Therefore, we present litstudy: a Python package that enables answering such questions using simple scripts or Jupyter notebooks. The package enables selecting scientific publications and studying their metadata using visualizations, bibliographic network analysis, and natural language processing. The software was previously used in a publication on the landscape of Exascale computing, and we envision great potential for reuse"
+                    }
+                ]
+            },
+            "bbox": [
+                329,
+                354,
+                939,
+                440
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "© 2022 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)."
+                    }
+                ]
+            },
+            "bbox": [
+                359,
+                440,
+                939,
+                467
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Code metadata"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                535,
+                161,
+                549
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Current code version Permanent link to code/repository used for this code version Permanent link to Reproducible Capsule Legal Code License Code versioning system used Software code languages, tools, and services used Compilation requirements, operating environments & dependencies If available Link to developer documentation/manual Support email for questions"
+                    }
+                ]
+            },
+            "bbox": [
+                63,
+                559,
+                431,
+                659
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "1.0.2 https://github.com/ElsevierSoftwareX/SOFTX-D-22-00050 https://doi.org/10.5281/zenodo.3386071 Apache License 2.0 git Python Python >= 3.6 https://nlesc.github.io/litstudy https://github.com/NLeSC/litstudy/issues"
+                    }
+                ]
+            },
+            "bbox": [
+                505,
+                558,
+                813,
+                659
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "1. Motivation and significance"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                693,
+                272,
+                707
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Researchers often have to explore new scientific domains that are outside their field of expertise. Examples include experienced scholars who want to explore new research directions or earlycareer researchers (e.g., students) who want to understand the scientific domain of the topic that they will be working on."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                720,
+                487,
+                786
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "However, getting a good broad overview of an area of study is often difficult due to the large number of relevant publications that are available nowadays. For instance, on Elsevier’s Scopus, the search query ‘‘deep learning’’ yields 166,583 results, ‘‘energy-efficient computer architectures’’ yields 17,085 results, and ‘‘parallel programming model’’ yields 6,306 results.<sup>1</sup> Going through such a list of publications manually is a monumental effort. Literature reviews present a solution to this problem, but they might not always be available, may be too broad or too narrow in scope, and can be outdated quickly for fast-moving research areas."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                786,
+                487,
+                842
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                692,
+                939,
+                784
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this work, we present litstudy [1]: a Python package that assists in exploring scientific literature. The package can be used from simple Python scripts or Jupyter notebooks [2], allowing researchers to quickly and interactively experiment with different ideas and methods. Our package is built upon and compatible with many popular tools from Python’s data science ecosystem, such as Pandas [3,4] and NumPy [5]. The package is available for installation from the Python Package Index (PyPi).<sup>2</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                784,
+                939,
+                863
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "2352-7110/© 2022 The Author(s). Published by Elsevier B.V. This is an open access article under the CC BY license (http://creativecommons.org/licenses/by/4.0/)"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                912,
+                922,
+                926
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                418,
+                41,
+                578,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                60,
+                74,
+                161,
+                143
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Contents lists available at ScienceDirect"
+                    }
+                ]
+            },
+            "bbox": [
+                369,
+                75,
+                631,
+                89
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": []
+            },
+            "bbox": [
+                60,
+                145,
+                161,
+                161
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                440,
+                107,
+                559,
+                127
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "journal homepage: www.elsevier.com/locate/softx"
+                    }
+                ]
+            },
+            "bbox": [
+                337,
+                145,
+                662,
+                158
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "国SoftwareX"
+                    }
+                ]
+            },
+            "bbox": [
+                833,
+                66,
+                932,
+                160
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>∗</sup> Corresponding author at: Netherlands eScience Center, Science Park 402, d h h l d"
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                857,
+                487,
+                880
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "E-mail address: s.heldens@esciencecenter.nl (Stijn Heldens)."
+                    }
+                ]
+            },
+            "bbox": [
+                80,
+                880,
+                408,
+                892
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>1</sup> Queries were performed on the 13th of December 2021."
+                    }
+                ]
+            },
+            "bbox": [
+                521,
+                878,
+                843,
+                892
+            ]
+        },
+        {
+            "type": "page_footer",
+            "content": {
+                "page_footer_content": [
+                    {
+                        "type": "text",
+                        "content": "https://doi.org/10.1016/j.softx.2022.101207"
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                902,
+                290,
+                915
+            ]
+        }
+    ],
+    [
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/ba8532bf0b2f9010427f75185567b6a08476d076f7b4b30c215f60d4770da2cc.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 1. Software architecture of litstudy.."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                194,
+                69,
+                800,
+                211
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                57,
+                266,
+                487,
+                293
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Overall, litstudy offers five main features:"
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                293,
+                376,
+                307
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Extract metadata of scientific documents from various sources. A unified interface allows data from different sources to be combined."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                313,
+                487,
+                353
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Filter, select, deduplicate, and annotate collections of documents."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                353,
+                485,
+                379
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Compute and plot general statistics on the metadata of the documents (e.g., statistics per year, per author, per journal, etc.)."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                379,
+                485,
+                419
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Generate, plot, and analyze various bibliographic networks that reveal relations between publications and their authors."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                419,
+                485,
+                445
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "• Automatic topic discovery based on natural language processing (NLP)."
+                    }
+                ]
+            },
+            "bbox": [
+                78,
+                446,
+                485,
+                472
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In particular, litstudy is useful for performing bibliometric analysis [6] or for the early stages of a mapping review [7] (also referred to as a scoping review [8]), where the goal is to get a broad overview of a research field. Our package can also be of assistance during a systematic literature review. For instance, Kitchenham & Charters [7] provide guidelines for performing such reviews in software engineering and litstudy is useful during several stages, most notably during identification of research and selection of primary studies. However, supporting the user during a complete systematic review [9] is not the primary goal of litstudy, and we refer to Kohl et al. [10] for an overview of tools that do have that aim."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                477,
+                487,
+                635
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Several Python packages for the analysis of scientific literature already exist and we give examples of a few of them. Libraries such as pybliometrics [11], pubmedpy [12], and arxiv.py [13] provide access to the API of Scopus, PubMed, and arXiv, respectively, but these libraries do not provide any further analysis or visualization functionality. PubTrends [14] is a tool for scientific literature exploration written in Python and Java, but it is not a Python library that can be used from within a Python script. Metaknowledge [15] and Tethne [16] are two Python libraries that support parsing of bibliographic data from different sources and analysis of citation networks. These tools differ from litstudy in that they do not support other types of analysis, such as plotting statistics on document metadata or topic discovery using natural language processing."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                634,
+                487,
+                819
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2. Software description"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                828,
+                226,
+                843
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, we discuss the functionality of litstudy. The package is implemented in Python. The software architecture (see Fig. 1) consists of six modules that are discussed in the following sections: Bibliographic Data Sources (Section 2.1), Filtering (Section 2.2), Statistics (Section 2.3), Bibliographic Networks (Section 2.4), Plotting (Section 2.5), and Natural Language Processing (NLP) (Section 2.6)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                854,
+                487,
+                907
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                266,
+                939,
+                307
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.1. Bibliographic data sources"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                317,
+                709,
+                332
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "litstudy supports several methods to retrieve metadata of scientific publications. Note that litstudy only works on metadata, it does not fetch or have access to the content of documents."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                344,
+                939,
+                383
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Table 1 lists the supported sources and their properties. All sources provide basic metadata such as the title, authors, publication date, and DOI (Digital Object Identifier). Some also provide the abstract, which is required when using automatic topic discovery. Several sources provide data on references/citations, required for constructing bibliographic networks (Section 2.4)."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                382,
+                939,
+                461
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Several online citations databases for scientific literature exist and litstudy supports four of them: Scopus [17], Semantic Scholar [18], CrossRef. [19], and dblp [20]. For each, litstudy offers convenient functions to query the database (e.g., litstudy.search_scopus for Scopus). We found Scopus to be the most comprehensive, but it is not a free service and access requires a Scopus account."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                460,
+                939,
+                549
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Besides performing a search query, some of these services also allow finding the metadata for a specific document based on its DOI. For litstudy, we make use of this by offering a process that we call refinement. This process consists in fetching additional metadata for documents already present in a set, such as the results of a previous query on another service."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                549,
+                939,
+                627
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Besides querying online databases, litstudy also supports loading several citation file formats. Citations in RIS and BibTeX, two file formats for managing academic citations, can be imported. Additionally, results from the online search engine of IEEE (IEEE Xplorer [21]) and Springer (SpringerLink [22]) can also be imported into litstudy. To use this functionality, one needs to export the results from the publishers’ website into a CSV file first. While the data provided by these CSV files is minimal, the citations can be improved using the refinement process described above."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                627,
+                939,
+                757
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.2. Filtering, selection, deduplication, and annotation"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                769,
+                853,
+                783
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In litstudy, each document is represented as an abstract Document class which offers access to the metadata of each document in a unified fashion. A collection of Document objects is represented by a DocumentSet class. This class supports all set options (i.e., union, intersection, difference, subset) to allow creating a new DocumentSet from other sets. For instance, it is possible to query two different sources and merge the two DocumentSets into one large DocumentSet. When merging, litstudy performs deduplication (i.e., removal of duplicate entries) based on unique document identifiers (i.e., DOI, PubMed ID, Scopus ID) or, as a fallback, a fuzzy match on the titles."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                795,
+                941,
+                939
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens, Alessio Sclocco, Henk Dreuning et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                324,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                786,
+                42,
+                939,
+                55
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "2"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                945,
+                504,
+                955
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>2</sup> https://pypi.org/project/litstudy/."
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                923,
+                260,
+                938
+            ]
+        }
+    ],
+    [
+        {
+            "type": "table",
+            "content": {
+                "image_source": {
+                    "path": "images/a51bdd04411c402b8fd3a9379cc8c86d5401172d148afa085e4bb3b201bc7282.jpg"
+                },
+                "table_caption": [
+                    {
+                        "type": "text",
+                        "content": "Table 1"
+                    },
+                    {
+                        "type": "text",
+                        "content": "Bibliographic data sources supported by litstudy."
+                    }
+                ],
+                "table_footnote": [
+                    {
+                        "type": "text",
+                        "content": "Yes* in Cited by indicates that only the number of citations is provided, not the full list of citations."
+                    }
+                ],
+                "html": "<table><tr><td rowspan=\"2\">Name</td><td colspan=\"2\">Search by</td><td colspan=\"4\">Information provided</td><td rowspan=\"2\">Quality</td></tr><tr><td>Query</td><td>DOI</td><td>Basics</td><td>Abstract</td><td>Refs.</td><td>Cited by</td></tr><tr><td>Scopus [17]</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>★★★</td></tr><tr><td>Semantic Scholar [18]</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes*</td><td>★★☆</td></tr><tr><td>CrossRef [19]</td><td>-</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Yes*</td><td>★★☆</td></tr><tr><td>dblp [20]</td><td>Yes</td><td>-</td><td>Yes</td><td>-</td><td>-</td><td>-</td><td>★☆☆</td></tr><tr><td>Publisher&#x27;s Search Engine</td><td>Yes</td><td>-</td><td>Yes</td><td>Yes</td><td>-</td><td>Yes</td><td>★★☆</td></tr><tr><td>BibTeX</td><td>-</td><td>-</td><td>Yes</td><td>-</td><td>-</td><td>-</td><td>☆☆☆</td></tr><tr><td>RIS</td><td>-</td><td>-</td><td>Yes</td><td>-</td><td>-</td><td>-</td><td>☆☆☆</td></tr></table>",
+                "table_type": "complex_table",
+                "table_nest_level": 1
+            },
+            "bbox": [
+                147,
+                87,
+                848,
+                201
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A more advanced feature provided by litstudy is support for annotation by assigning properties to the documents in a DocumentSet. For example, a text property could be the journal name, a integer property could be the citations count and a boolean property could be whether a certain keyword is mentioned. Annotations can be used to explore the dataset further since they enable interactions between the different functions in litstudy. For example, it is possible to plot a histogram where documents are grouped on the journal name or plot a bibliographic network where the node size follows from the citation count."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                240,
+                487,
+                385
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.3. Statistics"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                397,
+                149,
+                412
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "litstudy allows statistics to be extracted from a DocumentSet. Examples include the publications per year, per author, per affiliation, per country/continent of affiliation, or per venue. These statistics can either be returned as a Pandas DataFrame [3,4] for further analysis or directly plotted as bar graphs in a Jupyter notebook. Note that not all data sources provide sufficient information to extract all statistics, thus a DocumentSet may first need to be refined to calculate some of these statistics. For instance, the country of affiliations is not provided by BibTex files, but is provided by Scopus."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                424,
+                489,
+                558
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.4. Bibliographic networks"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                569,
+                236,
+                583
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "A bibliographic network is a type of graph where nodes represent authors or publications and edges represent the relation between them (e.g., citation or co-authorship). Five types of networks can be extracted from a DocumentSet using litstudy: citation network [23], co-citation network [24], bibliographic coupling network [25], co-author network [26], and author-publication network [27]. Each network is returned as a networkx.Graph object, enabling further graph analysis using the networkx ecosystem [28] (e.g., connected components discovery, PageRank scoring, community detection)."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                595,
+                487,
+                728
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.5. Plotting"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                740,
+                142,
+                755
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "litstudy provides plotting utilities for the statistics discussed in Section 2.3, and for the bibliographic networks discussed in Section 2.4. Plotting of statistics is done using seaborn [29] and matplotlib [30] which can be done directly from within a Jupyter notebook. Plotting of the networks is done as an interactive visualization using pyvis [31]."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                766,
+                487,
+                848
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "2.6. Natural language processing"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                858,
+                270,
+                872
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Unsupervised topic modeling [32] is a technique from natural language processing (NLP) that discovers abstract topics in a ll f l h f h d ff h d mains have different vocabularies. For instance, machine learning papers uses different terms (e.g., ‘dataset’, ‘validation’, ‘training’) than papers on cryptography (e.g., ‘encryption’, ‘security’, ‘protocol’). Topic modeling methods automatically detect a set of topics, where each topic is described using a small set of words and each document has weights assigned towards these topics. Topic modeling is done in three steps:"
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                883,
+                487,
+                938
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                239,
+                939,
+                327
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "preprocess The function litstudy.build_corpus takes the words from the title/abstract of each document in a DocumentSet, performs various preprocessing steps, and returns a Corpus object. Because the exact preprocessing steps required could be problemdependent [32], litstudy provides many options (such as stemming, word removal, n-gram detection, etc.)."
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                336,
+                939,
+                450
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "train Two topic models are currently supported by litstudy: NMF [33,34] (Non-negative Matrix Factorization) and LDA [35] (Latent Dirichlet Allocation). NMF is a factorization algorithm commonly used for dimensionality reduction, while LDA is a generative statistical model based on a probabilistic method. The package gensim [36] is used to train the topic models. In practice, we find the results by NMF to be of higher quality than LDA for scientific abstracts."
+                    }
+                ]
+            },
+            "bbox": [
+                552,
+                450,
+                939,
+                578
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "visualize There are various methods in litstudy to visualize the resulting topics such as plotting word distribution histograms, visualizing the topics as word clouds, and embedding the documents in a 2D ‘landscape map’ [37]."
+                    }
+                ]
+            },
+            "bbox": [
+                527,
+                578,
+                939,
+                650
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3. Illustrative example"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                673,
+                670,
+                688
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this section, we illustrate the use of litstudy exploring the field of GPU programming models. GPUs (Graphics Processing Units) are specialized parallel processors that are nowadays used to handle workloads for science, computer graphics, and machine learning. However, programming GPUs remains challenging, which is why there is research on new programming models for these devices."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                707,
+                939,
+                808
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.1. Compiling the dataset"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                832,
+                682,
+                848
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Listing 1 illustrates one way to use litstudy. Note that this example can be executed from a Jupyter notebook [2], which allows for interactive exploration. Lines 3–18 show how to construct a dataset in multiple steps. For this example, results from IEEE Xplore and Springer Link were exported as CSV files for the following search query: GPU AND ‘‘programming model’’. Lines 4–7 load and merge the content of these files."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                866,
+                939,
+                939
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens, Alessio Sclocco, Henk Dreuning et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                324,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                786,
+                42,
+                937,
+                55
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "3"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                945,
+                504,
+                955
+            ]
+        }
+    ],
+    [
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [
+                    {
+                        "type": "text",
+                        "content": "Listing 1: Example of how to use litstudy."
+                    }
+                ],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "import litstudy\n\n# Load the CSV files.\ndocs_ieee = litstudy.load_ieee_csv(\"ieee_results.csv\")\ndocs_springer = litstudy.load_springer_csv(\"springer_results.csv\")\ndocs_csv = docs_ieee | docs_springer\nprint(len(docs_csv), \"papers loaded\")\n\n# Refine using Scopus.\ndocs_scopus, docs_notfound = litstudy.refine_scopus(docs_csv)\nprint(len(docs_scopus), \"found on Scopus, \", len(docs_notfound), \"not found\"))\n\n# Plot year histogram.\nlitstudy.plot_year_histogram(docs_scopus)  # Fig. 2(a)\n\n# Filter on publication year.\ndocs = docs_scopus.filter_docs(lambda d: d.publication_year >= 2000)\nprint(len(docs), \"papers\")\n\n# Plot general statistics and networks.\nlitstudy.plot_author_histogram(docs)          # Fig. 2(b)\nlitstudy.plot_affiliation_histogram(docs, limit=15)  # Fig. 2(c)\nlitstudy.plot_country_histogram(docs)          # Fig. 2(d)\n\n# Build corpus and plot word distributions.\ncorpus = litstudy.build_corpus(docs, ngram_threshold=0.6)\nlitstudy.plot_word_distribution(corpus, limit=100)  # Fig. 3\n\n# Train topic model and plot topics as word clouds.\nnum_topics = 15\ntopic_model = litstudy.train_nmf_model(corpus, num_topics)\nlitstudy.plot_topic_clouds(topic_model)  # Fig. 4"
+                    }
+                ],
+                "code_language": "python"
+            },
+            "bbox": [
+                60,
+                66,
+                941,
+                395
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                431,
+                485,
+                459
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The metadata in these CSV files is minimal, so line 10 searches Scopus for the corresponding documents. In this example, 1387 citations are found on Scopus, while 53 unavailable citations are discarded. Line 14 plots the number of publications per year, revealing one document from 1997 (Fig. 2(a)). This is an error since GPUs were not used for general computing until around 2005. This error can easily be corrected, showing the value of interactive exploration. Line 17 filters out the documents published before 2000, resulting in a final dataset of 1386 papers."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                459,
+                487,
+                583
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.2. Basic exploration"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                601,
+                200,
+                616
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Lines 20–23 plot general statistics: the number of publications per author (Fig. 2(b)), per affiliation (Fig. 2(c)), and per country of affiliation (Fig. 2(d))."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                631,
+                487,
+                673
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Lines 25–32 show an example of topic modeling. Line 26 builds a corpus from the set of documents. This functions takes many parameters and, in this example, the parameter ngram_threshold is provided so common sequences of words are recognized as n-grams.<sup>3</sup> For example, the terms big and data are recognized as a single term big_data, instead of two separate words. Line 27 plots the word distribution (Fig. 3). Line 31 trains an NMF topic model with 15 topics and line 32 plots the topics as word clouds (Fig. 4). The automatically generated topics appear meaningful: Some topics are on applications (e.g., topic 2: sequence alignment; topic 12: particle simulation; topic 14: image algorithms), other topics are on data structures (e.g., topic 7: matrices; topic 11: graph), and yet other topics are on computer science topics (e.g., topic 1: clusters; topic 5: OpenCL; topic 9: cloud services; topic 13: task scheduling)."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                673,
+                487,
+                881
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "3.3. Further exploration"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                510,
+                431,
+                665,
+                446
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Listing 2 shows an example of how further exploration can be done using document properties. From Fig. 4 we can conclude that topic 6 is on big data computing. We can then add a property indicating whether each document strongly belongs to this topic or not. This is done in three steps: line 3 finds the topic that most strongly represents the term big_data, line 4 finds the topic weights, and line 5 adds a boolean property bigdata_topic to each document indicating if its weight for the Big Data topic exceeds a threshold (for this example, it is 0.1)."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                460,
+                939,
+                582
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Lines 7–13 define two groups (i.e., having the bigdata_topic property or not) and plot the number of publications per year (Fig. 5(a)) and publication venue (Fig. 5(b)) for these two groups. The first figure shows that the interest in Big Data within the GPU programming community is still rising since the fraction of papers on Big Data increases per year: from 14% in 2011 to 26% in 2021. The second figure shows that some journals focus mostly on Big Data (e.g., ‘‘Journal of Big Data’’) and others not at all (e.g., ‘‘Journal of Real-Time Image Processing’’)."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                582,
+                939,
+                703
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 6 visualizes the citation network where node color indicates the bigdata_topic property. Note that inside a Jupyter notebook this visualization can be explored interactively. The figure shows that it is common for documents on Big Data (blue nodes) to cite other Big Data documents. Further analysis shows that this is indeed the case: it is 3.1× more likely that a paper on Big Data cites another paper on Big Data compared to an arbitrary paper citing a Big Data paper."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                703,
+                939,
+                813
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "4. Impact"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                827,
+                584,
+                842
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In an ACM Computing Surveys paper, litstudy was used by Heldens et al. [38] to explore the domain of exascale computing. Exascale computing refers to large-scale computer systems capable of performing at least 10<sup>18</sup> floating-point operations per second, which is roughly six orders of magnitude more than a modern CPU. The domain of exascale computing is broad and covers all aspects of high-performance computing, including software, computer architectures, energy efficiency, networks, software, and the scientific community. This makes it challenging to obtain a good and complete overview of exascale computing."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                856,
+                939,
+                938
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens, Alessio Sclocco, Henk Dreuning et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                324,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                786,
+                42,
+                939,
+                55
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>3</sup> The NPMI (Normalized Pointwise Mutual Information) function from gensim is used to score the frequency of each n-gram, which yields a number between −1 (uncommon) and +1 (common)."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                901,
+                487,
+                938
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "4"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                945,
+                504,
+                955
+            ]
+        }
+    ],
+    [
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/f8952a7a8109a34411efb1c00acb485d89dcaeba06b698abdbef173b3a8171aa.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a) Publication years."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                132,
+                69,
+                492,
+                225
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/3f1caaa7e13ceadaec5785be6d81a918404fa5c6deabe1ad88aa787749ac3241.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b) Author names"
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                504,
+                69,
+                863,
+                226
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/352be77066318112238618cf44aa3c7a8382f99eddb45c1846c188f2d176a859.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(c) Author affiliations."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                132,
+                258,
+                492,
+                416
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/9f5706f9579308c4cfeeab2debab9b7a831c9c1f605b2582dfa5e00849c07ebb.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(d) Countries of author affiliations."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                507,
+                259,
+                863,
+                416
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/ad524a1fb3459b44803e3020712d0e45b1b3b9e6a95281cb0c206f0d4de680b1.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 2. Example of general statistics."
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 3. Example word distribution for corpus"
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                142,
+                481,
+                850,
+                580
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/73c578fb27cc1a5bf38dace2d251688d9b2bfe94fce0bf67dc66564f2e9fbcdf.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 4. Visualization of topic model using word clouds. Each word cloud represents one of the 15 detected topics where the size of the words indicate the relevance of each word to the topic."
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                191,
+                616,
+                803,
+                771
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                819,
+                487,
+                872
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The work by Heldens et al. [38] used a three-stage methodology where each step incorporated data-driven techniques (using litstudy) alongside manual analysis. The work concluded that there has been great progress in tackling the two traditional major barriers for exascale computing, but two new challenges are emerging. The research would have been impossible without litstudy."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                872,
+                487,
+                938
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                819,
+                939,
+                846
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We believe litstudy can be of great assistance in applying the same (or similar) method to other fields of study. The authors of this paper have supervised several undergraduate and graduate students that have used the software to explore related literature. Several Ph.D. students have already contacted us that used litstudy to explore the literature for their research field. The package is available as open-source software and statistics on the project’s GitHub repository [1] show that there is also a clear interest from the community with already 23 stars<sup>4</sup> and 11 f k <sup>5</sup>"
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                844,
+                939,
+                938
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens, Alessio Sclocco, Henk Dreuning et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                324,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                786,
+                42,
+                937,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "5"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                945,
+                504,
+                955
+            ]
+        }
+    ],
+    [
+        {
+            "type": "code",
+            "content": {
+                "code_caption": [
+                    {
+                        "type": "text",
+                        "content": "Listing 2: Advanced example that shows the use of document properties."
+                    }
+                ],
+                "code_content": [
+                    {
+                        "type": "text",
+                        "content": "# Add property \"bigdata_topic\" to documents.\nthreshold = 0.1\nbigdata_topic = topic_model.best_topic_for_token(\"big_data\")\nweights = topic_model.documents_topics(bigdata_topic)\ndocs.add_column(\"bigdata_topic\", weights > threshold)\n\n# Plot statistics on year of publication and publication venues.\ngroups = {\n    \"Big Data related\": \"bigdata_topic\",\n    \"Other\": \"not bigdata_topic\",\n}\nlitstudy.plot_year_histogram(docs, groups=groups, stacked=True)  # Fig. 5(a)\nlitstudy.plot_venue_histogram(docs, groups=groups, stacked=True) # Fig. 5(b)\n\n# Plot citation network.\nlitstudy.network.plot_citation_network(docs, color=\"bigdata_topic\")  # Fig. 6"
+                    }
+                ],
+                "code_language": "python"
+            },
+            "bbox": [
+                62,
+                66,
+                566,
+                234
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/8bbd6ce4adeabc9f29cb32fe9c04a979e5a3ce25276fe3416e33bdabbe1565ca.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(a) Publication years."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                131,
+                274,
+                492,
+                431
+            ]
+        },
+        {
+            "type": "chart",
+            "content": {
+                "image_source": {
+                    "path": "images/6de083309bcdec3afeccf399ad0b3e8b019b1185774027653132f14efc2b69e0.jpg"
+                },
+                "content": "",
+                "chart_caption": [
+                    {
+                        "type": "text",
+                        "content": "(b) Publication venues."
+                    }
+                ],
+                "chart_footnote": []
+            },
+            "bbox": [
+                504,
+                271,
+                863,
+                431
+            ]
+        },
+        {
+            "type": "image",
+            "content": {
+                "image_source": {
+                    "path": "images/4367e7434a35206c8ce6a8ddceb31e8720afbf623d88e781ce7e5c5f27b2402c.jpg"
+                },
+                "content": "",
+                "image_caption": [
+                    {
+                        "type": "text",
+                        "content": "Fig. 5. Example of statistics for Big Data topic within the dataset."
+                    },
+                    {
+                        "type": "text",
+                        "content": "Fig. 6. Example of a citation network: nodes represent publications and the edges indicate citations. Node size indicates number of citations. Node color indicates whether a publication is on Big Data (blue) or not (orange). Inside a Jupyter notebook this is an interactive network visualization. A node on the bottom left has been selected in the visualization, highlighting its adjacent edges. (For interpretation of the references to color in this figure legend, the reader is referred to the web version of this article.)"
+                    }
+                ],
+                "image_footnote": []
+            },
+            "bbox": [
+                206,
+                491,
+                791,
+                694
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                55,
+                764,
+                487,
+                804
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "5. Conclusions"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                815,
+                164,
+                829
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "In this work, we present litstudy, a Python package for exploring scientific literature by allowing users to select scientific publications and analyze their metadata using visualizations, network analysis, and natural language processing. The software was used to explore the landscape of Exascale computing, and several Ph.D. students already used the tool to map the landscape of the related work for their research. Given their positive feedback and interest from the community, we envision great potential for reuse."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                841,
+                487,
+                895
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": []
+            },
+            "bbox": [
+                507,
+                764,
+                939,
+                836
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Declaration of competing interest"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                509,
+                860,
+                747,
+                876
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "The authors declare that they have no known competing financial interests or personal relationships that could have appeared to influence the work reported in this paper."
+                    }
+                ]
+            },
+            "bbox": [
+                507,
+                895,
+                939,
+                938
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens, Alessio Sclocco, Henk Dreuning et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                324,
+                55
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                786,
+                42,
+                939,
+                55
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "4 https://github.com/NLeSC/litstudy/stargazers, 21th of June 2022."
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                911,
+                431,
+                925
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>5</sup> https://github.com/NLeSC/litstudy/network/members, 21th of June 2022."
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                924,
+                472,
+                938
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "6"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                945,
+                504,
+                955
+            ]
+        }
+    ],
+    [
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Data availability"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                66,
+                174,
+                80
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "No data was used for the research described in the article."
+                    }
+                ]
+            },
+            "bbox": [
+                77,
+                92,
+                465,
+                105
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Acknowledgments"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                119,
+                189,
+                133
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "We are grateful to all people that contributed to litstudy in one way or the other, either through code commits<sup>6</sup> or live discussions. In particular, we thank dr. W.A. Günther for many helpful discussions on natural language processing, and the two anonymous reviewers for their valuable time and feedback."
+                    }
+                ]
+            },
+            "bbox": [
+                55,
+                145,
+                487,
+                213
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "Funding"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                230,
+                121,
+                245
+            ]
+        },
+        {
+            "type": "paragraph",
+            "content": {
+                "paragraph_content": [
+                    {
+                        "type": "text",
+                        "content": "This work has received funding from the European Union’s Horizon 2020 research and innovation programme under grant agreements No 777533 (PROCESS) and No 823988 (ESiWACE2), and the Netherlands eScience Center under file number 027.016.G06."
+                    }
+                ]
+            },
+            "bbox": [
+                57,
+                257,
+                487,
+                324
+            ]
+        },
+        {
+            "type": "title",
+            "content": {
+                "title_content": [
+                    {
+                        "type": "text",
+                        "content": "References"
+                    }
+                ],
+                "level": 2
+            },
+            "bbox": [
+                58,
+                340,
+                137,
+                354
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[1] Heldens S. litstudy. Zenodo; 2022, http://dx.doi.org/10.5281/zenodo. 3386071, URL https://github.com/NLeSC/litstudy."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                366,
+                484,
+                388
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[2] Kluyver T, Ragan-Kelley B, Pérez F, Granger B, Bussonnier M, Frederic J, et al. Jupyter Notebooks – a publishing format for reproducible computational workflows. In: Loizides F, Scmidt B, editors. Positioning and power in academic publishing: players, agents and agendas. IOS Press; 2016, p. 87–90, URL https://eprints.soton.ac.uk/403913/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                388,
+                485,
+                441
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[3] The pandas development team. pandas-dev/pandas: Pandas. Zenodo; 2020 http://dx.doi.org/10.5281/zenodo.3509134."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                442,
+                485,
+                462
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[4] McKinney W. Data structures for statistical computing in python. In: van der Walt S, Millman J, editors. Proceedings of the 9th Python in science conference. 2010, p. 56–61. http://dx.doi.org/10.25080/Majora-92bf1922- 00a."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                462,
+                485,
+                505
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[5] Harris CR, Millman KJ, van der Walt SJ, Gommers R, Virtanen P, Cournapeau D, et al. Array programming with NumPy. Nature 2020;585(7825):357–62. http://dx.doi.org/10.1038/s41586-020-2649-2"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                506,
+                485,
+                538
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[6] De Bellis N. Bibliometrics and citation analysis: from the science citation index to cybermetrics. scarecrow Press; 2009."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                539,
+                485,
+                559
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[7] Kitchenham B, Charters S, et al. Guidelines for performing systematic literature reviews in software engineering version 2.3. Engineering 2007;45(4ve):1051."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                561,
+                485,
+                593
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[8] Wohlin C, Runeson P, da Mota Silveira Neto PA, Engström E, do Carmo Machado I, de Almeida ES. On the reliability of mapping studies in software engineering. J Syst Softw 2013;86(10):2594–610. http://dx.doi org/10.1016/j.jss.2013.04.076, URL https://www.sciencedirect.com/science article/pii/S0164121213001234."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                593,
+                485,
+                646
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[9] Kitchenham B, Brereton P. A systematic review of systematic review process research in software engineering. Inf Softw Technol 2013;55(12):2049–75."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                67,
+                646,
+                485,
+                679
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[10] Marshall C, Brereton P. Tools to support systematic literature reviews in software engineering: A mapping study. In: 2013 ACM/IEEE International symposium on empirical software engineering and measurement. IEEE; 2013. p. 296–9."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                62,
+                679,
+                484,
+                721
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[11] Rose ME, Kitchin JR. Pybliometrics: Scriptable bibliometrics using a python interface to scopus. SoftwareX 2019;10:100263. http://dx.doi.org/10.1016/j. softx.2019.100263, URL https://www.sciencedirect.com/science/article/pii S2352711019300573."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                60,
+                722,
+                485,
+                764
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[12] pubmedpy https://github.com/dhimmel/pubmedpy."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                68,
+                815,
+                79
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[13] Arxiv.py v1.4.2. 2022, https://pypi.org/project/arxiv/. [Accessed 21 June 2022]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                79,
+                937,
+                100
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[14] Shpynov O, Nikolai K. PubTrends: A scientific literature explorer. In: Proceedings of the 12th ACM Conference on bioinformatics, computational biology, and health informatics. BCB ’21, New York, NY, USA: Association for Computing Machinery; 2021, http://dx.doi.org/10.1145/3459930. 3469501."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                100,
+                937,
+                153
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[15] McIlroy-Young R, McLevey J, Anderson J. Metaknowledge: open source software for social networks, bibliometrics, and sociology of knowledge research. 2015, http://www.networkslab.org/metaknowledge."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                155,
+                937,
+                186
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[16] Peirson BRE, et al. Tethne v0.7. 2016, http://diging.github.io/tethne/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                187,
+                907,
+                197
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[17] Scopus - The largest database of peer-reviewed literature. 2022, https: //www.elsevier.com/solutions/scopus."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                197,
+                937,
+                219
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[18] Semantic scholar. 2022, https://www.semanticscholar.org/about. [Accessed 27 January 2022]"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                219,
+                937,
+                240
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[19] Crossref. 2022, https://www.crossref.org/about/. [Accessed 27 January 2022]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                240,
+                937,
+                262
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[20] Dblp. 2022, https://dblp.org/db/about/. [Accessed 27 January 2022]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                262,
+                902,
+                274
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[21] IEEE xplore. 2022, https://ieeexplore.ieee.org/Xplore. [Accessed 27 January 2022]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                274,
+                937,
+                293
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[22] SpringerLink. 2022, https://link.springer.com/. [Accessed 27 January 2022]."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                293,
+                937,
+                306
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[23] Price DJ. Networks of scientific papers. Growth Knowl Read Organ Retrieval Information 1967;145–55. http://dx.doi.org/10.1126/science.149.3683.510."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                307,
+                937,
+                327
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[24] Small H. Co-citation in the scientific literature: A new measure of the relationship between two documents. J Am Soc Inf Sci 1973;24(4):265–9. http://dx.doi.org/10.1002/asi.4630240406."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                327,
+                937,
+                359
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[25] Martyn J. Bibliographic coupling. J Doc 1964. http://dx.doi.org/10.1108 eb026352."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                360,
+                937,
+                380
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[26] Savić M, Ivanović M, Jain LC. Co-authorship networks: An introduction. In: Complex networks in software. knowledge, and social systems. Cham: Springer International Publishing; 2019, p. 179–92. http://dx.doi.org/10. 1007/978-3-319-91196-0_5."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                380,
+                937,
+                423
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[27] Batagelj V, Cerinšek M. On bibliographic networks. Scientometrics 2013;96(3):845–64. http://dx.doi.org/10.1007/s11192-012-0940-1."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                424,
+                937,
+                446
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[28] Hagberg A, Swart P, S. Chult D. Exploring network structure, dynamics, and function using networkx. In: Proceedings of the 7th Python in science conference. 2008, p. 11–5"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                446,
+                937,
+                477
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[29] Waskom ML. Seaborn: statistical data visualization. J Open Source Softw 2021;6(60):3021. http://dx.doi.org/10.21105/joss.03021."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                477,
+                937,
+                500
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[30] Hunter JD. Matplotlib: A 2D graphics environment. Comput Sci Eng 2007;9(3):90–5. http://dx.doi.org/10.1109/MCSE.2007.55."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                500,
+                937,
+                520
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[31] Unpingco J. Pyvis v0.2.1. 2016, https://pypi.org/project/pyvis/."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                520,
+                873,
+                533
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[32] Aggarwal CC, Zhai CX. Mining text data. Springer Publishing Company, Incorporated; 2012."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                533,
+                937,
+                554
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[33] Xu W, Liu X, Gong Y. Document clustering based on non-negative matrix factorization. In: Proceedings of the 26th Annual international ACM SIGIR conference on research and development in informaion retrieval. SIGIR ’03, New York, NY, USA: ACM; 2003, p. 267–73. http://dx.doi.org/10.1145 860435.860485."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                554,
+                937,
+                607
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[34] Shahnaz F, Berry MW, Pauca VP, et al. Document clustering using nonnegative matrix factorization. Inf Process Manage 2006;42(2):373–86. http: //dx.doi.org/10.1016/j.ipm.2004.11.005."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                607,
+                937,
+                640
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[35] Blei DM, Ng AY, Jordan MI. Latent Dirichlet allocation. J Mach Learn Res 2003;3(Jan):993–1022."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                640,
+                937,
+                662
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[36] Řehůřek R, Sojka P. Software framework for topic modelling with large corpora. In: Proceedings of the LREC 2010 Workshop on new challenges for NLP frameworks. Valletta, Malta: ELRA; 2010, p. 45–50."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                512,
+                662,
+                937,
+                694
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[37] Choo J, Lee C, Reddy CK, et al. UTOPIAN: user-driven topic modeling based on interactive nonnegative matrix factorization. IEEE Trans Vis Comput Graphics 2013;19(12):1992–2001. http://dx.doi.org/10.1109/TVCG. 2013.212."
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                694,
+                937,
+                736
+            ]
+        },
+        {
+            "type": "list",
+            "content": {
+                "list_type": "reference_list",
+                "list_items": [
+                    {
+                        "item_type": "text",
+                        "item_content": [
+                            {
+                                "type": "text",
+                                "content": "[38] Heldens S, Hijma P, Werkhoven BV, Maassen J, Belloum ASZ, Van Nieuwpoort RV. The landscape of exascale research: A data-driven literature analysis. ACM Comput Surv 2020;53(2). http://dx.doi.org/10.1145/3372390"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "bbox": [
+                514,
+                737,
+                937,
+                770
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "Stijn Heldens, Alessio Sclocco, Henk Dreuning et al."
+                    }
+                ]
+            },
+            "bbox": [
+                58,
+                42,
+                324,
+                54
+            ]
+        },
+        {
+            "type": "page_header",
+            "content": {
+                "page_header_content": [
+                    {
+                        "type": "text",
+                        "content": "SoftwareX 20 (2022) 101207"
+                    }
+                ]
+            },
+            "bbox": [
+                786,
+                42,
+                937,
+                54
+            ]
+        },
+        {
+            "type": "page_number",
+            "content": {
+                "page_number_content": [
+                    {
+                        "type": "text",
+                        "content": "7"
+                    }
+                ]
+            },
+            "bbox": [
+                492,
+                945,
+                504,
+                955
+            ]
+        },
+        {
+            "type": "page_footnote",
+            "content": {
+                "page_footnote_content": [
+                    {
+                        "type": "text",
+                        "content": "<sup>6</sup> https://github.com/NLeSC/litstudy/graphs/contributors."
+                    }
+                ]
+            },
+            "bbox": [
+                68,
+                923,
+                374,
+                938
+            ]
+        }
+    ]
+]
