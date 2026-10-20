@@ -117,7 +117,8 @@ WORKDIR "/opt/mapwisefox"
 COPY . .
 
 RUN --mount=type=cache,target=/root/.cache/uv \
-    uv sync --all-packages --no-editable --no-dev --frozen
+    uv sync --all-packages --no-editable --no-dev --frozen && \
+    uv run python -c "from mapwisefox.search.dsl.parser import Parser; Parser()"
 
 FROM python:3.13.7-slim AS backend-runtime
 LABEL authors="Andrei Olar"

@@ -19,6 +19,14 @@ search = "mapwisefox.search:run_command"
 [tool.uv]
 package = true
 
+[build-system]
+requires = ["uv_build>=0.8.14,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "mapwisefox.search"
+namespace = true
+
 [tool.uv.sources]
 clarivate-wos-starter-python-client = { git = "https://github.com/clarivate/wosstarter_python_client.git" }
 
