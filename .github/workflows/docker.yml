@@ -62,7 +62,7 @@ jobs:
           images: ghcr.io/${{ github.repository }}
           tags: |
             type=ref,event=tag
-            type=raw,value=latest,enable={{is_default_branch}}
+            type=raw,value=latest
 
       - if: steps.tag.outputs.skip != 'true'
         name: Build and push
@@ -70,6 +70,7 @@ jobs:
         with:
           context: .
           target: backend-runtime
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
