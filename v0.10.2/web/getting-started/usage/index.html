@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Import an Excel primary-study list, make screening decisions, and resume your survey.">
+        <meta name="description" content="Import an Excel primary-study list, make screening decisions, and resume your primary-study list.">
       
       
       
@@ -3185,10 +3185,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#import-the-survey" class="md-nav__link">
+  <a href="#import-the-primary-study-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Import the survey
+        Import the primary-study list
       
     </span>
   </a>
@@ -3218,10 +3218,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#delete-a-survey" class="md-nav__link">
+  <a href="#delete-a-primary-study-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Delete a survey
+        Delete a primary-study list
       
     </span>
   </a>
@@ -3390,10 +3390,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#import-the-survey" class="md-nav__link">
+  <a href="#import-the-primary-study-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Import the survey
+        Import the primary-study list
       
     </span>
   </a>
@@ -3423,10 +3423,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#delete-a-survey" class="md-nav__link">
+  <a href="#delete-a-primary-study-list" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Delete a survey
+        Delete a primary-study list
       
     </span>
   </a>
@@ -3503,28 +3503,28 @@
 <span class="p">}</span>
 </code></pre></div>
 <p>If you do not upload criteria, you can still include a record. You can exclude a record by clearing the default inclusion criterion. An exclusion always needs at least one reason.</p>
-<h2 id="import-the-survey">Import the survey<a class="headerlink" href="#import-the-survey" title="Permanent link">&para;</a></h2>
+<h2 id="import-the-primary-study-list">Import the primary-study list<a class="headerlink" href="#import-the-primary-study-list" title="Permanent link">&para;</a></h2>
 <ol>
-<li>Open the web application and select <strong>Import a survey</strong>.</li>
+<li>Open the web application and select <strong>Import a primary study list</strong>.</li>
 <li>Choose the <code>.xlsx</code> workbook.</li>
 <li>Optionally choose <code>selection-criteria.json</code>.</li>
 <li>Enter a <strong>Worksheet name</strong> when the primary-study list is not on the first worksheet.</li>
 <li>Under <strong>Field mappings</strong>, add a mapping for every workbook header that differs from a standard field name.</li>
 <li>Select <strong>Upload</strong>.</li>
 </ol>
-<p>The survey list shows the selected worksheet, completed records, and remaining records. Select the pencil icon for the survey to begin.</p>
+<p>The primary-study list shows the selected worksheet, completed records, and remaining records. Select the pencil icon for the list to begin.</p>
 <h2 id="review-and-decide">Review and decide<a class="headerlink" href="#review-and-decide" title="Permanent link">&para;</a></h2>
 <p>The screening view shows a record's title, bibliographic details, abstract, keywords, and links when available. Check or clear the inclusion and exclusion criteria, then select <strong>Include</strong> or <strong>Exclude</strong> to save the decision.</p>
 <p>An exclusion saves its selected criterion labels in the exclusion-reason column. An inclusion writes <code>include</code> to the decision column and clears its exclusion reasons. After saving, the view moves to the next undecided record when one exists.</p>
 <p>Use the navigation controls to move to the first, previous, next, or last record. Use the dashed-circle control for the first undecided record and the fast-forward control for the next undecided record. You can also enter a zero-based record index in <strong>Go to</strong>.</p>
 <h2 id="track-and-resume-work">Track and resume work<a class="headerlink" href="#track-and-resume-work" title="Permanent link">&para;</a></h2>
-<p>Return to the survey list at any time. Its progress bar shows completed records and the number remaining. When you reopen a survey without a record index, MapwiseFox opens the first undecided record. This lets you resume screening after closing the browser or restarting the service.</p>
+<p>Return to the primary-study list at any time. Its progress bar shows completed records and the number remaining. When you reopen a list without a record index, MapwiseFox opens the first undecided record. This lets you resume screening after closing the browser or restarting the service.</p>
 <p>The imported workbook retains your decisions. Back up or export that workbook from the configured uploads directory when you need a copy outside the application.</p>
-<h2 id="delete-a-survey">Delete a survey<a class="headerlink" href="#delete-a-survey" title="Permanent link">&para;</a></h2>
-<p>On the survey list, select the trash icon, then confirm <strong>Yes</strong>. This deletes the uploaded workbook and its MapwiseFox survey metadata.</p>
+<h2 id="delete-a-primary-study-list">Delete a primary-study list<a class="headerlink" href="#delete-a-primary-study-list" title="Permanent link">&para;</a></h2>
+<p>On the primary-study list, select the trash icon, then confirm <strong>Yes</strong>. This deletes the uploaded workbook and its MapwiseFox list metadata.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Deleting a survey is permanent in the application. It does not restore the workbook to its state before screening.</p>
+<p>Deleting a primary-study list is permanent in the application. It does not restore the workbook to its state before screening.</p>
 </div>
 
 
