@@ -4,6 +4,7 @@ import pytest
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
 
+from mapwisefox.web._workspace_version import WORKSPACE_VERSION
 from mapwisefox.web.api import auth_api_router, config_api_router, health_api_router
 from mapwisefox.web._deps import current_user, settings, user_upload_dir
 from mapwisefox.web.config import AppSettings
@@ -67,6 +68,7 @@ def test_config_returns_frontend_context(client):
         "decisionColumn": "include",
         "exclusionReasonColumn": "exclude_reason",
         "backendVersion": version("mapwisefox-web-backend"),
+        "workspaceVersion": WORKSPACE_VERSION,
     }
 
 

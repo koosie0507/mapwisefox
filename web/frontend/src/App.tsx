@@ -50,13 +50,13 @@ function AppRoutes({config, authenticated}: {config: AppConfig; authenticated: b
                 <Route path="/evidence/:fileName" element={<EvidencePage/>}/>
                 <Route path="*" element={<ErrorPage message="Page not found."/>}/>
             </Routes>
-            <Footer backendVersion={config.backendVersion}/>
+            <Footer backendVersion={config.backendVersion} workspaceVersion={config.workspaceVersion}/>
         </>
     );
 }
 
-function Footer({backendVersion}: {backendVersion: string}): ReactElement {
-    return <footer className="footer-container"><small><span>MapwiseFox | Frontend v{__FRONTEND_VERSION__} | Backend v{backendVersion}</span></small></footer>;
+function Footer({backendVersion, workspaceVersion}: {backendVersion: string; workspaceVersion: string}): ReactElement {
+    return <footer className="footer-container"><small><span>MapwiseFox v{workspaceVersion} (frontend=v{__FRONTEND_VERSION__},backend={backendVersion})</span></small></footer>;
 }
 
 export default function App(): ReactElement {

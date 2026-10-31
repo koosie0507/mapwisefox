@@ -67,7 +67,7 @@ The backend reads environment variables with the `MWF_WEB_` prefix. Set them in 
 | `MWF_WEB_TOKEN_SECRET` | unset | Secret used to sign application tokens. Required when authentication is enabled. |
 | `MWF_WEB_OIDC_CACHE_PATH` | `<uploads-dir>/.oidc-cache.json` | Path for cached OIDC metadata and login state. |
 
-Set the decision and exclusion-reason column names before uploading a workbook. They are recorded for that imported survey. The names must differ and cannot replace mapped evidence columns.
+Set the decision and exclusion-reason column names before uploading a workbook. They are recorded for that imported primary-study list. The names must differ and cannot replace mapped evidence columns.
 
 ## Optional OIDC authentication
 

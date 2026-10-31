@@ -1,6 +1,6 @@
 ---
 title: Screen a primary-study list
-description: Import an Excel primary-study list, make screening decisions, and resume your survey.
+description: Import an Excel primary-study list, make screening decisions, and resume your primary-study list.
 tags:
 - web
 - excel
@@ -47,16 +47,16 @@ Upload a JSON selection-criteria file with the workbook to show your rules in th
 
 If you do not upload criteria, you can still include a record. You can exclude a record by clearing the default inclusion criterion. An exclusion always needs at least one reason.
 
-## Import the survey
+## Import the primary-study list
 
-1. Open the web application and select **Import a survey**.
+1. Open the web application and select **Import a primary study list**.
 2. Choose the `.xlsx` workbook.
 3. Optionally choose `selection-criteria.json`.
 4. Enter a **Worksheet name** when the primary-study list is not on the first worksheet.
 5. Under **Field mappings**, add a mapping for every workbook header that differs from a standard field name.
 6. Select **Upload**.
 
-The survey list shows the selected worksheet, completed records, and remaining records. Select the pencil icon for the survey to begin.
+The primary-study list shows the selected worksheet, completed records, and remaining records. Select the pencil icon for the list to begin.
 
 ## Review and decide
 
@@ -68,13 +68,13 @@ Use the navigation controls to move to the first, previous, next, or last record
 
 ## Track and resume work
 
-Return to the survey list at any time. Its progress bar shows completed records and the number remaining. When you reopen a survey without a record index, MapwiseFox opens the first undecided record. This lets you resume screening after closing the browser or restarting the service.
+Return to the primary-study list at any time. Its progress bar shows completed records and the number remaining. When you reopen a list without a record index, MapwiseFox opens the first undecided record. This lets you resume screening after closing the browser or restarting the service.
 
 The imported workbook retains your decisions. Back up or export that workbook from the configured uploads directory when you need a copy outside the application.
 
-## Delete a survey
+## Delete a primary-study list
 
-On the survey list, select the trash icon, then confirm **Yes**. This deletes the uploaded workbook and its MapwiseFox survey metadata.
+On the primary-study list, select the trash icon, then confirm **Yes**. This deletes the uploaded workbook and its MapwiseFox list metadata.
 
 !!! warning
-    Deleting a survey is permanent in the application. It does not restore the workbook to its state before screening.
+    Deleting a primary-study list is permanent in the application. It does not restore the workbook to its state before screening.

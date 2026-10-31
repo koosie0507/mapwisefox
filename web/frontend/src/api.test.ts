@@ -14,6 +14,7 @@ const config = {
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
     backendVersion: "0.9.1",
+    workspaceVersion: "0.10.2",
 };
 
 const workbook = {name: "study.xlsx", worksheetName: "Studies", recordCount: 1, unfilledRecordCount: 1};

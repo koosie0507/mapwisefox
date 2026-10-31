@@ -68,10 +68,10 @@ export default function Home({config}: {config: AppConfig}) {
             <main className={styles.listSection}>
                 <div className={styles.listHeader}>
                     <div>
-                        <p className={styles.eyebrow}>Your surveys</p>
+                        <p className={styles.eyebrow}>Your primary study lists</p>
                         <h2>Continue where you left off</h2>
                     </div>
-                    <span className={styles.listCount}>{workbooks.length} {workbooks.length === 1 ? "survey" : "surveys"}</span>
+                    <span className={styles.listCount}>{workbooks.length} {workbooks.length === 1 ? "primary study list" : "primary study lists"}</span>
                 </div>
                 <div className={styles.tableShell}>
                     <table className={styles.table}>
@@ -90,14 +90,14 @@ export default function Home({config}: {config: AppConfig}) {
                                               aria-label={`Completion for ${workbook.name}`}/>
                                 </td>
                                 <td className={styles.actions}>
-                                    <Link className={styles.iconButton} to={`/evidence/${encodeURIComponent(workbook.name)}`} aria-label={`Edit ${workbook.name}`} title="Edit survey">
+                                    <Link className={styles.iconButton} to={`/evidence/${encodeURIComponent(workbook.name)}`} aria-label={`Edit ${workbook.name}`} title="Edit primary study list">
                                         <Pencil aria-hidden="true" size={16}/>
                                     </Link>
                                     {pendingDelete === workbook.name ? <span className={styles.confirmation}>
                                         <span>Delete?</span>
                                         <button className={styles.confirmButton} type="button" onClick={() => void deleteWorkbook(workbook.name)}>Yes</button>
                                         <button className={styles.cancelButton} type="button" onClick={() => setPendingDelete(null)}>No</button>
-                                    </span> : <button className={`${styles.iconButton} ${styles.deleteButton}`} type="button" onClick={() => setPendingDelete(workbook.name)} aria-label={`Delete ${workbook.name}`} title="Delete survey">
+                                    </span> : <button className={`${styles.iconButton} ${styles.deleteButton}`} type="button" onClick={() => setPendingDelete(workbook.name)} aria-label={`Delete ${workbook.name}`} title="Delete primary study list">
                                         <Trash2 aria-hidden="true" size={16}/>
                                     </button>}
                                 </td>
@@ -106,7 +106,7 @@ export default function Home({config}: {config: AppConfig}) {
                         </tbody>
                     </table>
                 </div>
-                <p className={styles.emptyState} id="empty-list" hidden={workbooks.length > 0}>No surveys uploaded yet.</p>
+                <p className={styles.emptyState} id="empty-list" hidden={workbooks.length > 0}>No primary study lists uploaded yet.</p>
             </main>
         </>
     );

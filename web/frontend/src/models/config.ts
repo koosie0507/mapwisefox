@@ -10,4 +10,5 @@ export type AppConfig = {
     decisionColumn: string;
     exclusionReasonColumn: string;
     backendVersion: string;
+    workspaceVersion: string;
 };

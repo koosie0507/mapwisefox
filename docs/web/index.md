@@ -21,7 +21,7 @@ The tool is useful during the study-selection stage of a Systematic Literature R
 - Include a record or exclude it with one or more reasons.
 - Use an optional criteria file to show your inclusion and exclusion rules.
 - See completion and remaining-record counts, then resume at the first undecided record.
-- Delete a survey when you no longer need its workbook.
+- Delete a primary-study list when you no longer need its workbook.
 
 ## Start screening
 

@@ -41,7 +41,7 @@ export default function UploadWorkbook({config, onUpload}: UploadWorkbookProps) 
     }
 
     return <details className={styles.uploadDetails}>
-        <summary>Import a survey</summary>
+        <summary>Import a primary study list</summary>
         <form ref={formRef} className={styles.uploadForm} encType="multipart/form-data" onSubmit={submit}>
             <label htmlFor="workbook-file">Workbook file</label>
             <input id="workbook-file" type="file" name="file" accept=".xlsx,.csv" required/>

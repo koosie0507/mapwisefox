@@ -4,6 +4,7 @@ from fastapi import APIRouter, Depends
 from pydantic import BaseModel, ConfigDict, Field
 
 from mapwisefox.web._deps import current_user, settings
+from mapwisefox.web._workspace_version import WORKSPACE_VERSION
 from mapwisefox.web.config import AppSettings
 from mapwisefox.web.model import UserInfo
 from .workbooks._cache import SUPPORTED_FIELDS
@@ -30,6 +31,7 @@ class FrontendConfig(BaseModel):
     decision_column: str = Field(alias="decisionColumn")
     exclusion_reason_column: str = Field(alias="exclusionReasonColumn")
     backend_version: str = Field(alias="backendVersion")
+    workspace_version: str = Field(alias="workspaceVersion")
 
 
 @router.get("/config", response_model=FrontendConfig, response_model_by_alias=True)
@@ -49,4 +51,5 @@ def frontend_config(
         decisionColumn=config.decision_column,
         exclusionReasonColumn=config.exclusion_reason_column,
         backendVersion=version("mapwisefox-web-backend"),
+        workspaceVersion=WORKSPACE_VERSION,
     )

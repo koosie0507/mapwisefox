@@ -77,6 +77,11 @@ filename = "CITATION.cff"
 search = "version: {current_version}"
 replace = "version: {new_version}"
 
+[[tool.bumpversion.files]]
+filename = "web/backend/src/mapwisefox/web/_workspace_version.py"
+search = 'WORKSPACE_VERSION = "{current_version}"'
+replace = 'WORKSPACE_VERSION = "{new_version}"'
+
 [tool.bumpversion.parts.pre_label]
 values = ["dev", "final"]
 optional_value= "final"

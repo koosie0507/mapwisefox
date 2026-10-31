@@ -7,6 +7,7 @@ const config = {
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
     backendVersion: "0.9.1",
+    workspaceVersion: "0.10.2",
 };
 
 function jsonResponse(body: unknown, status = 200): Response {
@@ -65,8 +66,9 @@ describe("application composition", () => {
 
         expect(await screen.findByRole("heading", {name: "Primary study lists"})).toBeInTheDocument();
         expect(screen.getByRole("img", {name: "Mapwisefox"})).toBeInTheDocument();
-        expect(screen.getByText("No surveys uploaded yet.")).toBeVisible();
-        expect(screen.getByText(/Frontend v\S+ \| Backend v\S+/)).toBeVisible();
+        expect(screen.getByText("No primary study lists uploaded yet.")).toBeVisible();
+        const footer = document.querySelector("footer.footer-container span");
+        expect(footer?.textContent).toBe(`MapwiseFox v0.10.2 (frontend=v0.9.7,backend=0.9.1)`);
     });
 
     it("shows login instead of protected content when refresh fails", async () => {

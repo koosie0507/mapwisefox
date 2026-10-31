@@ -17,6 +17,7 @@ const config = {
     decisionColumn: "include",
     exclusionReasonColumn: "exclude_reason",
     backendVersion: "0.9.1",
+    workspaceVersion: "0.10.2",
 };
 
 const workbook = {name: "studies.xlsx", worksheetName: "Studies", recordCount: 2, unfilledRecordCount: 2};
@@ -36,7 +37,7 @@ describe("Home", () => {
         expect(await screen.findByText("studies.xlsx")).toBeInTheDocument();
         expect(screen.getByText("Welcome, Ada")).toBeInTheDocument();
         expect(screen.getByText("0 / 2 complete")).toBeInTheDocument();
-        expect(screen.queryByText("No surveys uploaded yet.")).not.toBeVisible();
+        expect(screen.queryByText("No primary study lists uploaded yet.")).not.toBeVisible();
     });
 
     it("shows the empty state when loading fails", async () => {
@@ -44,7 +45,7 @@ describe("Home", () => {
         render(<MemoryRouter><Home config={config}/></MemoryRouter>);
 
         expect(await screen.findByRole("status")).toHaveTextContent("Could not load workbooks.");
-        expect(screen.getByText("No surveys uploaded yet.")).toBeVisible();
+        expect(screen.getByText("No primary study lists uploaded yet.")).toBeVisible();
     });
 
     it("uploads and deletes workbooks", async () => {
@@ -159,6 +160,6 @@ describe("Home", () => {
     it("keeps the upload form collapsed until requested", () => {
         render(<MemoryRouter><Home config={config}/></MemoryRouter>);
 
-        expect(screen.getByText("Import a survey").closest("details")).not.toHaveAttribute("open");
+        expect(screen.getByText("Import a primary study list").closest("details")).not.toHaveAttribute("open");
     });
 });
